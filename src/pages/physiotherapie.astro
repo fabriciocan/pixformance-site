@@ -7,152 +7,118 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
-const stats = [
-  { value: '750.000', label: 'Trainierende / Jahr', icon: 'users' },
-  { value: '5M', label: 'Workouts / Jahr', icon: 'activity' },
-  { value: '600+', label: 'Funktionelle Übungen', icon: 'zap' },
+const benefits = [
+  {
+    icon: 'layers',
+    title: '500+ Übungen – ein Gerät',
+    description: 'Auf der Online Plattform können individuelle Trainingspläne aus einer Sammlung von über 500 funktionellen Übungen zusammengestellt werden.',
+    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+  },
+  {
+    icon: 'users',
+    title: 'Zeitgleiche Betreuung',
+    description: 'Dank der patentierten Software können mehrere Patienten gleichzeitig und ohne personellen Mehraufwand betreut werden.',
+    gradient: 'from-[#4A3D91] to-[#02308C]',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Patienten werden Kunden',
+    description: 'Individuelle Trainingseinheiten sowie Maßnahmen zur Sekundärprävention können als eine zusätzliche Einnahmequelle angeboten werden.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+  {
+    icon: 'file-text',
+    title: 'Effiziente Verwaltung',
+    description: 'Auf der Online Plattform wird der Trainingsverlauf jedes Patienten für eine Trainingsanalyse und -optimierung exakt dokumentiert.',
+    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
+  },
+  {
+    icon: 'target',
+    title: 'Individuelles Training',
+    description: 'Trainingsprogramme können auf den Gesundheitszustand und den Therapiebedarf jedes Patienten zugeschnitten werden.',
+    gradient: 'from-[#86C9BC] to-[#8B1E81]',
+  },
+  {
+    icon: 'clock',
+    title: 'Zeit für das Wesentliche',
+    description: 'Der Therapeut muss nicht jede Übung persönlich vormachen und spart Zeit – was wiederum der Betreuung aller Patienten zugutekommt.',
+    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+  },
 ];
 
 const features = [
   {
-    icon: 'camera',
-    title: 'Die integrierte 2D Full-HD Kamera erfasst 25 Gelenkpunkte',
-    gradient: 'from-[#8B1E81] to-[#4A3D91]',
-    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Scanpunkte-2.gif',
-  },
-  {
-    icon: 'monitor',
-    title: 'Virtueller Personal Trainer zeigt Übungen am Display',
-    gradient: 'from-[#4A3D91] to-[#02308C]',
     image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif',
+    title: 'Einfache Übungsanleitung',
+    description: 'Der Trainierende stellt sich vor die Pixformance Station und die auszuführende Übung wird von einem virtuellen Trainer auf dem Bildschirm vorgeführt.',
   },
   {
-    icon: 'message-square',
-    title: 'Textliches und visuelles Feedback am Bildschirm',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
+    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Scanpunkte-2.gif',
+    title: 'Präzise Bewegungsanalyse',
+    description: 'Eine Kamera mit Tiefensensor scannt sekundenschnell 25 Gelenk- und 9 statische Punkte des Trainierenden und analysiert die Bewegungen.',
+  },
+  {
     image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Hinweis-2.gif',
-  },
-  {
-    icon: 'award',
-    title: 'Die patentierte Station liefert personalisiertes Feedback',
-    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
-    image: '/images/Live-Feedback-EN-2022.png',
+    title: 'Feedback in Echtzeit',
+    description: 'Die Pixformance Station gibt Feedback in Echtzeit. So ist sichergestellt, dass die Übungen richtig und sicher ausgeführt werden.',
   },
 ];
 
 const testimonials = [
   {
-    name: 'Gabriele Buchstein',
-    role: 'Leitende Physiotherapeutin',
-    company: 'Sauerlandklinik Hachen',
-    quote: 'Die Patienten sind begeistert und sehr motiviert. Davon profitieren auch wir als Therapeuten, da die Patienten dadurch besser und zielgerichteter ihre Übungen ausführen.',
-    image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
-  },
-  {
-    name: 'Christoph Schneider',
-    role: 'Therapieleitung',
-    company: 'Niederrhein-Klinik',
-    quote: 'Auf der Suche nach einer Möglichkeit, die Patienten selbstständig aktiv werden zu lassen, haben wir uns für Pixformance entschieden.',
-    image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
-  },
-  {
     name: 'Heike Schaible',
     role: 'Inhaberin',
-    company: 'Physiotherapie Praxis',
-    quote: 'Ich will mit Pixformance einen zweiten Selbstzahlerbereich aufbauen und damit vor allem meinen Mitarbeitenden eine einfachere und abwechslungsreichere Arbeit bieten.',
+    company: 'Physiotherapie Praxis "Raum für Gesundheit"',
     image: '/images/heikeschaible.600x400.jpg',
+    quote: 'Ich will mit Pixformance einen zweiten Selbstzahlerbereich aufbauen und damit vor allem meinen Mitarbeitenden entgegenkommen und ihnen eine einfachere und abwechslungsreichere Arbeit bieten.',
   },
   {
-    name: 'Erwin Kuglmeier',
+    name: 'Axel-André Richter',
     role: 'Inhaber',
-    company: 'Fitnessclub California',
-    quote: 'Meine Mitglieder können mit Pixformance individuell angeleitet und für das Training motiviert werden. Das Handling ist sehr einfach!',
-    image: '/images/Erwin-Kuglmeier-Fitness-California-Pixformance-300x300.png',
+    company: 'Gesundheitspraxis Richter & Lopez',
+    image: '/images/Axel-Andre-Richter-und-Lopez-Pixformance.png',
+    quote: 'Ich kann das neue Training ganz individuell für jeden unserer Patienten gestalten. Vom Leistungssportler bis zur Omi ist für jeden das Richtige dabei.',
   },
   {
-    name: 'Kim Essink',
-    role: 'Inhaberin',
-    company: 'Fitnessclub Essink',
-    quote: 'Wir haben uns bewusst für Pixformance entschieden, weil wir uns sicher waren, dass sich unser Investment schnell auszahlen würde.',
-    image: '/images/Pixformance-Kim-Essink.png',
+    name: 'Volker Sutor',
+    role: 'Inhaber',
+    company: 'Physiotherapiezentren »Reha Rondell«',
+    image: '/images/Pixformance-Volker-Sutor-Testimonial.png',
+    quote: 'Ein gezieltes Gesundheitstraining mit dem virtuellen Trainer erhöht die Effizienz der Behandlung und schafft mehr Zeit für die eigentliche Betreuung meiner Patienten.',
   },
-  {
-    name: 'Christoph Oratsch',
-    role: 'Leitung Therapie',
-    company: 'AUVA Unfallkrankenhaus',
-    quote: 'Von Patientenseite kommt ein großes Interesse gegenüber der Pixformance Stationen. Viele kommen von sich aus und wollen ein Trainingsprogramm.',
-    image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
-  },
-];
-
-const solutions = [
-  {
-    title: 'PHYSIOTHERAPIE',
-    href: '/physiotherapie',
-    icon: 'heart',
-    color: '#8B1E81',
-    image: '/images/Pixformance-Digitales-Rehageraet-Spass-beim-Training-1.png',
-  },
-  {
-    title: 'KLINIK',
-    href: '/klinik',
-    icon: 'activity',
-    color: '#4A3D91',
-    image: '/images/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png',
-  },
-  {
-    title: 'FITNESS',
-    href: '/fitness',
-    icon: 'zap',
-    color: '#02308C',
-    image: '/images/Pixformance-Fitness-Digitales-Sportgeraet-Fitnessstudio-eroeffnen-eGym-voll-vernetzt.jpg',
-  },
-  {
-    title: 'BGM',
-    href: '/firmen-fitness',
-    icon: 'users',
-    color: '#6BDBD1',
-    image: '/images/Pixformance-225402_BGM_Pixformance_Funktionelles-Training_Milon_Virtuelles-Training_Sport-im-Buero-bearbeitet.jpg',
-  },
-];
-
-const partners = [
-  'Oxford Brookes University',
-  'Charité',
-  'Sauerlandklinik',
-  'Mrs.Sporty',
-  'Medical Park',
-  'FemmeFit',
 ];
 ---
 
-<BaseLayout title="Digitale Fitnessgeräte & Therapiegeräte von Pixformance">
+<BaseLayout
+  title="Physiotherapie - Pixformance Sports GmbH"
+  description="Digitale Bewegungstherapie mit Pixformance: Ein voll vernetztes Konzept für Ihre Physiotherapie-Praxis oder Ihr Reha-Zentrum"
+>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
 
   <!-- Hero Section -->
-  <section class="relative bg-white overflow-hidden py-12 md:py-16">
+  <section class="relative bg-white overflow-hidden py-12 md:py-20">
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hover:bg-[#8B1E81]/20 hover:border-[#8B1E81]/30 transition-all duration-300 cursor-pointer">
-            <Icon name="zap" size="sm" />
-            Digitale Transformation
+            <Icon name="heart" size="sm" />
+            Physiotherapie
           </span>
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digitale Fitnessgeräte & Therapiegeräte
-          <span class="text-[#8B1E81]"> von Pixformance</span>
+          Digitale Bewegungstherapie
+          <span class="text-[#8B1E81]"> für Ihre Praxis</span>
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#8B1E81] hero-animate" style="animation-delay: 0.3s;">
-          Mehr Umsatz. Mehr Entlastung.
+          Physiotherapie von morgen: Digital versorgt, gesünder vernetzt
         </p>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Revolutionieren Sie Ihr Business mit modernster Technologie für digitale Bewegungsanalyse und Echtzeit-Feedback.
+          Keine Technik der Welt kann Therapeuten ersetzen. Die Digitalisierung in der Physiotherapie und Rehabilitation ist jedoch ein effektiver Weg, Therapeuten zu entlasten und Patienten noch intensiver zu betreuen.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
@@ -161,7 +127,7 @@ const partners = [
             href="/testen"
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Unverbindlich testen
+            Jetzt beraten lassen
             <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
           <Button
@@ -174,24 +140,12 @@ const partners = [
             <Icon name="play-circle" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
-
-        <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
-          {stats.map((stat, index) => (
-            <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#8B1E81]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
-              <div class="text-3xl md:text-4xl font-bold text-[#8B1E81] group-hover:scale-110 transition-transform duration-300">
-                {stat.value}
-              </div>
-              <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Mission Section -->
-  <section class="py-12 md:py-20 bg-white">
+  <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
         <div class="space-y-6" data-scroll="slide-left">
@@ -203,13 +157,11 @@ const partners = [
           </div>
 
           <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight">
-            Gesundheits- und Fitnessexperten befähigen
+            Therapeuten befähigen, Patienten begeistern
           </h2>
 
           <p class="text-lg text-foreground-muted leading-relaxed">
-            Unsere Mission ist es, durch die beste Technologie für digitale Bewegungsanalyse,
-            Gesundheits- und Fitnessexperten zu befähigen, ihr wirtschaftliches und professionelles
-            Potential zu verwirklichen.
+            Unsere Mission ist es – mit der besten Technologie für digitale Bewegungsanalyse – eine individuelle Lösung für Therapeuten und deren ganz spezielle Patienten zu kreieren.
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 pt-4">
@@ -217,9 +169,9 @@ const partners = [
               <div class="w-12 h-12 rounded-xl bg-[#8B1E81] flex items-center justify-center">
                 <Icon name="check" size="md" class="text-white" />
               </div>
-              <h3 class="font-bold text-lg">Virtueller Personal Trainer</h3>
+              <h3 class="font-bold text-lg">Echtzeit-Korrektur</h3>
               <p class="text-sm text-foreground-muted">
-                Professionelle Anleitung für jeden Trainierenden.
+                Präzises Feedback während der Übungsausführung.
               </p>
             </div>
 
@@ -227,9 +179,9 @@ const partners = [
               <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center">
                 <Icon name="zap" size="md" class="text-white" />
               </div>
-              <h3 class="font-bold text-lg">Echtzeit-Korrektur</h3>
+              <h3 class="font-bold text-lg">Therapeuten entlasten</h3>
               <p class="text-sm text-foreground-muted">
-                Sicheres und effektives Training garantiert.
+                Mehr Zeit für individuelle Betreuung.
               </p>
             </div>
           </div>
@@ -237,8 +189,8 @@ const partners = [
 
         <div class="relative" data-scroll="slide-right">
           <img
-            src="/images/Digital-Training-Device-eHealth-Telemedicine-Feedback-Pixformance-Station-2020-EN-mobil-web.png"
-            alt="Pixformance Station"
+            src="/images/Pixformance-Physiotherapie-Digitalisierung-Digitales-Trainingsgeraet-Spass-Beim-Training.png"
+            alt="Pixformance Physiotherapie Training"
             class="rounded-2xl shadow-xl w-full h-auto"
             loading="lazy"
           />
@@ -248,47 +200,84 @@ const partners = [
   </section>
 
   <!-- Features Section -->
-  <section class="py-12 md:py-20 bg-gray-50">
+  <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
           <Icon name="sparkles" size="sm" />
-          Innovative Technologie
+          Korrektur in Echtzeit
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Digitale Fitnessgeräte mit Echtzeit-Korrektur
+          Wie funktioniert das Training?
         </h2>
+        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
+          Die Pixformance Station ermöglicht durchgehende Anleitung hinsichtlich Genauigkeit, Tempo sowie Präzision einer Übungsausführung.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid md:grid-cols-3 gap-6">
         {features.map((feature, index) => (
           <Card
             variant="elevated"
-            padding="none"
+            padding="lg"
             class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="fade-up"
+            data-scroll="scale"
             data-delay={index + 1}
           >
-            <div class="relative h-80 overflow-hidden">
-              <div class={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+            <div class="relative h-64 overflow-hidden rounded-lg mb-4">
               <img
                 src={feature.image}
                 alt={feature.title}
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute top-4 left-4">
-                <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-500`}>
-                  <Icon name={feature.icon} size="sm" class="text-white" />
-                </div>
-              </div>
             </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors duration-300">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {feature.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
 
-            <div class="p-4">
-              <h3 class="font-semibold text-sm leading-tight group-hover:text-[#8B1E81] transition-colors duration-300">
-                {feature.title}
-              </h3>
+  <!-- Benefits Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+          <Icon name="star" size="sm" />
+          Vorteile
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Wirtschaftlich autonom dank Selbstzahlerbereich
+        </h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          Pixformance gibt Therapeuten die Möglichkeit, den Selbstzahlerbereich und damit ein zusätzliches Standbein im zweiten Gesundheitsmarkt aufzubauen oder zu erweitern.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+              <Icon name={benefit.icon} size="md" class="text-white" />
             </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors">
+              {benefit.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {benefit.description}
+            </p>
           </Card>
         ))}
       </div>
@@ -301,11 +290,14 @@ const partners = [
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
           <Icon name="message-circle" size="sm" />
-          Kundenstimmen
+          Erfolgsgeschichten
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
           Was unsere Kunden sagen
         </h2>
+        <p class="text-lg text-foreground-muted mt-4">
+          Mit über 450.000 Trainierenden weltweit findet sich das Pixformance Trainings- und Therapiekonzept bereits in den Top-Rehakliniken Deutschlands
+        </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -315,7 +307,7 @@ const partners = [
             padding="lg"
             class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
             data-scroll="scale"
-            data-delay={Math.min(index + 1, 6)}
+            data-delay={index + 1}
           >
             <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81]/0 to-[#6BDBD1]/0 group-hover:from-[#8B1E81]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
 
@@ -350,63 +342,6 @@ const partners = [
     </div>
   </section>
 
-  <!-- Solutions Section -->
-  <section class="py-12 md:py-20 bg-gray-50">
-    <div class="container">
-      <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
-          <Icon name="grid" size="sm" />
-          Unsere Lösungen
-        </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Individuelle Lösungen
-        </h2>
-        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
-          Als Pionier in der Gestaltung digitaler Business Transformationen bieten wir Ihnen
-          individuelle Lösungen für maximalen Erfolg.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {solutions.map((solution, index) => (
-          <a
-            href={solution.href}
-            class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4"
-            data-scroll="fade-up"
-            data-delay={index + 1}
-          >
-            <div class="relative h-80">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
-              <div class={`absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} style={`background: linear-gradient(to top, ${solution.color}dd, transparent);`}></div>
-              <img
-                src={solution.image}
-                alt={solution.title}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
-              />
-
-              <div class="absolute top-6 left-6 z-20">
-                <div class="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" style={`background-color: ${solution.color};`}>
-                  <Icon name={solution.icon} size="md" class="text-white" />
-                </div>
-              </div>
-
-              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
-                <h3 class="font-bold text-2xl text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">
-                  {solution.title}
-                </h3>
-                <div class="flex items-center gap-2 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                  <span>Mehr erfahren</span>
-                  <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform" />
-                </div>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
@@ -414,12 +349,11 @@ const partners = [
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Bereit für die digitale Transformation?
+          Sie wünschen eine individuelle Beratung?
         </h2>
 
         <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Kontaktieren Sie uns für eine unverbindliche Beratung und erfahren Sie,
-          wie Pixformance Ihr Unternehmen revolutionieren kann.
+          Viele Fragen lassen sich persönlich einfach schneller klären. Wir freuen uns über Ihre Nachricht!
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center pt-4">
@@ -482,15 +416,6 @@ const partners = [
 
   [data-scroll="fade-up"].is-visible {
     transform: translateY(0);
-  }
-
-  /* Fade In */
-  [data-scroll="fade"] {
-    opacity: 0;
-  }
-
-  [data-scroll="fade"].is-visible {
-    opacity: 1;
   }
 
   /* Slide In Left */
@@ -566,4 +491,3 @@ const partners = [
     observer.observe(el);
   });
 </script>
-

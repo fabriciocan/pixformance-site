@@ -1,0 +1,90 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const departments = [
+  {
+    title: 'Allgemeine Anfragen',
+    subtitle: 'Für alle Fragen rund um Pixformance',
+    icon: 'mail',
+    email: 'contact@pixformance.com',
+    phone: '+49 (0)30 39 80 56 10',
+  },
+  {
+    title: 'Produktberatung',
+    subtitle: 'Beratung zu unseren Produkten',
+    icon: 'package',
+    email: 'beratung@pixformance.com',
+  },
+  {
+    title: 'Marketing und PR',
+    subtitle: 'Presse und Marketinganfragen',
+    icon: 'megaphone',
+    email: 'marketing@pixformance.com',
+  },
+  {
+    title: 'Technischer Support',
+    subtitle: 'Hilfe bei technischen Fragen',
+    icon: 'headphones',
+    email: 'helpdesk@pixformance.com',
+  },
+];
+---
+
+<section class="py-16 md:py-24 bg-background-secondary">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Kontaktieren Sie uns
+      </h2>
+      <p class="text-lg text-foreground-muted">
+        Wählen Sie den passenden Ansprechpartner
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        departments.map((dept) => (
+          <Card variant="elevated" padding="lg" hover>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="p-3 rounded-lg bg-primary/10">
+                  <Icon name={dept.icon} size="lg" class="text-primary" />
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-semibold text-lg mb-1">{dept.title}</h3>
+                  <p class="text-xs text-foreground-muted uppercase tracking-wide">
+                    {dept.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                {dept.phone && (
+                  <div class="flex items-center gap-2 text-sm">
+                    <Icon name="phone" size="sm" class="text-primary" />
+                    <a
+                      href={`tel:${dept.phone.replace(/\s/g, '')}`}
+                      class="hover:text-primary transition-colors"
+                    >
+                      {dept.phone}
+                    </a>
+                  </div>
+                )}
+                <div class="flex items-center gap-2 text-sm">
+                  <Icon name="mail" size="sm" class="text-primary" />
+                  <a
+                    href={`mailto:${dept.email}`}
+                    class="hover:text-primary transition-colors"
+                  >
+                    {dept.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

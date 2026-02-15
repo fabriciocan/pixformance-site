@@ -1,0 +1,48 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const features = [
+  {
+    icon: 'camera',
+    title: 'Die integrierte 2D Full-HD Kamera erfasst 25 Gelenkpunkte',
+  },
+  {
+    icon: 'monitor',
+    title: 'Virtueller Personal Trainer zeigt Übungen am Display',
+  },
+  {
+    icon: 'message-square',
+    title: 'Textliches und visuelles Feedback am Bildschirm',
+  },
+  {
+    icon: 'award',
+    title: 'Die patentierte Station liefert personalisiertes Feedback',
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+        Digitale Fitnessgeräte mit Echtzeit-Korrektur
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        features.map((feature) => (
+          <Card variant="elevated" padding="lg" hover>
+            <div class="flex items-start gap-4">
+              <div class="p-3 rounded-lg bg-primary/10">
+                <Icon name={feature.icon} size="lg" class="text-primary" />
+              </div>
+              <h3 class="font-semibold flex-1">{feature.title}</h3>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

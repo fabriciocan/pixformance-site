@@ -1,0 +1,191 @@
+---
+/**
+ * Header Component - Pixformance
+ * Simplified navigation header for Pixformance website
+ */
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/cn';
+import { headerVariants, headerInnerVariants } from './header.variants';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props extends HTMLAttributes<'header'> {
+  position?: 'fixed' | 'sticky' | 'static';
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'solid' | 'transparent';
+  nav?: NavItem[];
+  class?: string;
+}
+
+const {
+  position = 'sticky',
+  size = 'md',
+  variant = 'default',
+  nav = [
+    { label: 'Home', href: '/' },
+    { label: 'Konzept', href: '/konzept' },
+    { label: 'Unverbindlich testen', href: '/testen' },
+  ],
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const navItems: NavItem[] = nav;
+
+const currentPath = Astro.url.pathname;
+const hasLogoSlot = Astro.slots.has('logo');
+
+const headerClasses = cn(headerVariants({ position, variant }), className);
+const innerClasses = headerInnerVariants({ size });
+
+function isActive(href: string): boolean {
+  if (href.startsWith('#')) return false;
+  // Exact match for home page
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+}
+
+const menuId = `mobile-menu-${Math.random().toString(36).slice(2, 9)}`;
+const buttonId = `${menuId}-button`;
+---
+
+<header class={headerClasses} {...attrs}>
+  <div class={innerClasses}>
+    {/* Logo */}
+    {
+      hasLogoSlot ? (
+        <a href="/" class="flex items-center">
+          <slot name="logo" />
+        </a>
+      ) : (
+        <a href="/" class="flex items-center gap-2">
+          <span class="font-display text-xl font-bold text-primary">Pixformance</span>
+        </a>
+      )
+    }
+
+    {/* Desktop Navigation */}
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+      {
+        navItems.map(({ label, href }) => (
+          <a
+            href={href}
+            class={cn(
+              'nav-link rounded-md px-3 py-2 text-sm font-medium',
+              'transition-colors',
+              isActive(href)
+                ? 'text-primary font-semibold'
+                : 'text-foreground-muted hover:text-foreground'
+            )}
+            aria-current={isActive(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+
+    {/* Actions Area */}
+    <div class="flex items-center gap-2">
+      <Button size="sm" href="/testen" class="hidden md:inline-flex">
+        Unverbindlich testen
+      </Button>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        type="button"
+        id={buttonId}
+        class={cn(
+          'inline-flex items-center justify-center rounded-md p-2 md:hidden',
+          'text-foreground-muted hover:text-foreground',
+          'transition-colors'
+        )}
+        aria-expanded="false"
+        aria-controls={menuId}
+        aria-label="Toggle menu"
+      >
+        <span class="menu-icon">
+          <Icon name="menu" size="md" />
+        </span>
+        <span class="close-icon hidden">
+          <Icon name="x" size="md" />
+        </span>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu */}
+  <div
+    id={menuId}
+    class="border-border bg-background hidden border-t md:hidden"
+    role="navigation"
+    aria-label="Mobile navigation"
+  >
+    <div class="mx-auto max-w-6xl space-y-1 px-6 py-4">
+      {
+        navItems.map(({ label, href }) => (
+          <a
+            href={href}
+            class={cn(
+              'mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium',
+              'transition-colors',
+              isActive(href) ? 'text-primary font-semibold' : 'text-foreground-muted hover:text-foreground'
+            )}
+            aria-current={isActive(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+      <div class="border-border mt-3 border-t pt-3">
+        <Button fullWidth href="/testen">
+          Unverbindlich testen
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script define:vars={{ menuId, buttonId }}>
+  function initMobileMenu() {
+    const button = document.getElementById(buttonId);
+    const menu = document.getElementById(menuId);
+    const menuIcon = button?.querySelector('.menu-icon');
+    const closeIcon = button?.querySelector('.close-icon');
+
+    if (!button || !menu || !menuIcon || !closeIcon) return;
+
+    let isOpen = false;
+
+    function toggle() {
+      isOpen = !isOpen;
+      button.setAttribute('aria-expanded', isOpen.toString());
+
+      if (isOpen) {
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        menu.classList.remove('hidden');
+      } else {
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        menu.classList.add('hidden');
+      }
+    }
+
+    button.addEventListener('click', toggle);
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggle();
+      });
+    });
+  }
+
+  initMobileMenu();
+  document.addEventListener('astro:page-load', initMobileMenu);
+</script>

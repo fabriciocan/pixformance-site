@@ -1,0 +1,43 @@
+/* =============================================================================
+   Pixformance Design Tokens - Color Primitives
+   =============================================================================
+   Brand colors and grayscale for Pixformance
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     Grayscale
+     --------------------------------------------------------------------------- */
+  --gray-0: oklch(100% 0 0);
+  --gray-100: oklch(96.5% 0 0);
+  --gray-200: oklch(91.3% 0 0);
+  --gray-300: oklch(83% 0 0);
+  --gray-400: oklch(68% 0 0);
+  --gray-500: oklch(52% 0 0);
+  --gray-600: oklch(43% 0 0);
+  --gray-700: oklch(34% 0 0);
+  --gray-800: oklch(26% 0 0);
+  --gray-900: oklch(19.4% 0 0);
+  --gray-950: oklch(12% 0 0);
+
+  /* ---------------------------------------------------------------------------
+     Pixformance Brand Colors
+     --------------------------------------------------------------------------- */
+  --pixformance-purple: #8B1E81;
+  --pixformance-dark-purple: #4A3D91;
+  --pixformance-blue: #02308C;
+  --pixformance-turquoise: #6BDBD1;
+  --pixformance-green: #86C9BC;
+  --pixformance-light-green: #CCDFDC;
+  --pixformance-yellow-green: #EBF244;
+  --pixformance-yellow: #FFED00;
+  --pixformance-red: #C12B28;
+  --pixformance-pink: #F4D2D4;
+
+  /* ---------------------------------------------------------------------------
+     Neutral Colors
+     --------------------------------------------------------------------------- */
+  --pixformance-white: #FFFFFF;
+  --pixformance-black: #000000;
+  --pixformance-gray: #515454;
+}

@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'turquoise' | 'white' | 'black';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { variant = 'turquoise', size = 'md', class: className } = Astro.props;
+
+const sizes = {
+  sm: 'h-8',
+  md: 'h-12',
+  lg: 'h-16',
+};
+
+const logos = {
+  turquoise: '/images/logo/logoTURQUOISE.png',
+  white: '/images/logo/logoWHITE.png',
+  black: '/images/logo/LogoBLACK.png',
+};
+---
+
+<img
+  src={logos[variant]}
+  alt="Pixformance"
+  class={`${sizes[size]} ${className || ''}`}
+/>

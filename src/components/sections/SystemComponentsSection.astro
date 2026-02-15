@@ -1,0 +1,132 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+
+const components = [
+  {
+    number: '01',
+    title: 'Pixformance Station',
+    subtitle: 'Das Trainingskonzept Herzstück: Die patentierte Pixformance Station.',
+    description:
+      'Ein freistehendes, digitales Fitnessgerät sowie Therapiegerät, das von Experten aus Wissenschaft, Technologie, Medizin und Fitness entwickelt wurde. Die Station vermisst dank innovativer Software auf Basis von 25 Gelenkpunkten sekundenschnell den Körper jedes Trainierenden, analysiert präzise die Bewegungsausführung und gibt digitales Feedback in Echtzeit – wodurch ein besonders effektives und sicheres Funktionelles Training ermöglicht wird.',
+    features: [
+      'Freistehendes, digitales Fitnessgerät und Therapiegerät',
+      'Entwickelt von Experten aus Wissenschaft, Technologie, Medizin und Fitness',
+      'Innovative Software basierend auf 25 Gelenkpunkten',
+      'Sekundenschnelle Körpervermessung',
+      'Präzise Bewegungsanalyse',
+      'Digitales Feedback in Echtzeit',
+      'Über 600 funktionelle Übungen',
+      'Einsatz im Einzel- oder Gruppentraining',
+    ],
+    icon: 'monitor',
+    color: 'primary',
+  },
+  {
+    number: '02',
+    title: 'Pixformance Online Plattform',
+    subtitle:
+      'Ein weiterer fester Trainingskonzept Bestandteil ist die Pixformance Online Plattform.',
+    description:
+      'Hier werden alle Trainingsdaten der Trainierenden und Patienten gespeichert. Dies bietet sowohl unseren Geschäftspartnern, als auch den Trainierenden die Möglichkeit, Trainingsfortschritte jederzeit nachverfolgen zu können und das Training faktenbasiert zu optimieren. Es besteht Zugriff auf einen Übungskatalog mit über 600 funktionellen Übungen, aus denen sich mit wenigen Klicks eigene Workouts und Trainingspläne zusammenstellen, exakt nachverfolgen und optimieren lassen.',
+    features: [
+      'Speicherung aller Trainingsdaten',
+      'Nachverfolgung von Trainingsfortschritten',
+      'Faktenbasierte Trainingsoptimierung',
+      'Zugriff auf Übungskatalog mit über 600 funktionellen Übungen',
+      'Einfache Erstellung eigener Workouts und Trainingspläne',
+      'Exakte Nachverfolgung und Optimierung',
+    ],
+    icon: 'globe',
+    color: 'secondary',
+  },
+  {
+    number: '03',
+    title: 'Pixformance Home',
+    subtitle: 'Die Pixformance App vervollständigt unser digitales Trainingskonzept.',
+    description:
+      'Die App bietet Zugriff auf Trainingspläne, Übungsfortschritte und Historie, egal wann und wo. Für Trainierende bieten wir ein ortsunabhängiges 360° Pixformance Training sowie zahlreiche Funktionen, um die Gesundheit und Fitness zu verbessern.',
+    features: [
+      'Zugriff auf Trainingspläne jederzeit und überall',
+      'Übungsfortschritte und Historie',
+      'Ortsunabhängiges 360° Pixformance Training',
+      'Zahlreiche Funktionen zur Verbesserung von Gesundheit und Fitness',
+    ],
+    icon: 'smartphone',
+    color: 'accent',
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-16">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Die 3 Komponenten des Trainingskonzepts
+      </h2>
+      <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+        Unser vollständig vernetztes System aus Station, Plattform und App
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {
+        components.map((component, index) => (
+          <div
+            class={`${index % 2 === 1 ? 'bg-background-secondary' : ''} -mx-4 md:-mx-0 px-4 md:px-8 py-8 rounded-lg`}
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* Number and Icon */}
+              <div class="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-4">
+                <Badge
+                  variant="default"
+                  class="text-3xl font-bold px-6 py-3 bg-primary text-primary-foreground"
+                >
+                  {component.number}
+                </Badge>
+                <div class="p-4 rounded-lg bg-primary/10">
+                  <Icon name={component.icon} size="xl" class="text-primary" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div class="lg:col-span-10 space-y-4">
+                <div>
+                  <h3 class="font-display text-2xl md:text-3xl font-bold mb-2">
+                    {component.title}
+                  </h3>
+                  <p class="text-lg font-semibold text-primary mb-4">
+                    {component.subtitle}
+                  </p>
+                  <p class="text-foreground-muted leading-relaxed">
+                    {component.description}
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div>
+                  <h4 class="font-semibold mb-3">Hauptmerkmale:</h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {component.features.map((feature) => (
+                      <div class="flex items-start gap-2">
+                        <Icon
+                          name="check-circle"
+                          size="sm"
+                          class="text-success mt-0.5 flex-shrink-0"
+                        />
+                        <span class="text-sm text-foreground-muted">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

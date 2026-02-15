@@ -1,0 +1,38 @@
+---
+interface Tab {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  activeTab: string;
+}
+
+const { tabs, activeTab } = Astro.props;
+---
+
+<div class="border-b border-border bg-background">
+  <div class="container">
+    <nav class="flex gap-8 overflow-x-auto">
+      {
+        tabs.map((tab) => (
+          <a
+            href={tab.href}
+            class={`
+              py-4 px-2 text-sm font-semibold uppercase tracking-wide whitespace-nowrap
+              border-b-2 transition-colors
+              ${
+                tab.href === activeTab
+                  ? 'border-secondary text-secondary'
+                  : 'border-transparent text-foreground-muted hover:text-foreground hover:border-border'
+              }
+            `}
+          >
+            {tab.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</div>

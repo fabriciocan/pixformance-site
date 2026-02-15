@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import ContactForm from '@/components/forms/ContactForm.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+---
+
+<BaseLayout title="Pixformance - Kontakt">
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="py-24">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="font-display text-5xl font-bold mb-6 text-center">Kontakt</h1>
+        <p class="text-xl text-foreground-muted text-center mb-12">
+          Nehmen Sie Kontakt mit uns auf
+        </p>
+        
+        <Card variant="elevated" padding="xl">
+          <ContactForm />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

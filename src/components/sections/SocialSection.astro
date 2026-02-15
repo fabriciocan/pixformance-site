@@ -1,0 +1,65 @@
+---
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const socialLinks = [
+  {
+    platform: 'Facebook',
+    icon: 'facebook',
+    url: 'https://facebook.com/Pixformance',
+    handle: '@Pixformance',
+  },
+  {
+    platform: 'Instagram',
+    icon: 'instagram',
+    url: 'https://instagram.com/pixformance',
+    handle: '@pixformance',
+  },
+  {
+    platform: 'LinkedIn',
+    icon: 'linkedin',
+    url: 'https://linkedin.com/company/pixformance-sports-gmbh',
+    handle: 'Pixformance Sports GmbH',
+  },
+  {
+    platform: 'YouTube',
+    icon: 'youtube',
+    url: 'https://youtube.com/channel/UCw-sWITx6ElTie7ep57Mz2w',
+    handle: 'Pixformance',
+  },
+];
+---
+
+<section class="py-16 md:py-24 bg-background-secondary">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Folgen Sie uns
+      </h2>
+      <p class="text-sm text-foreground-muted uppercase tracking-wide">
+        Bleiben Sie mit uns in Verbindung
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {
+        socialLinks.map((social) => (
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col items-center gap-3 p-6 rounded-lg bg-background hover:bg-primary/5 transition-all hover:shadow-md group"
+          >
+            <div class="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+              <Icon name={social.icon} size="lg" class="text-primary" />
+            </div>
+            <div class="text-center">
+              <p class="font-semibold text-sm">{social.platform}</p>
+              <p class="text-xs text-foreground-muted">{social.handle}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

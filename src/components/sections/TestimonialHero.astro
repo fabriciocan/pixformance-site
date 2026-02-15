@@ -1,0 +1,93 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Avatar from '@/components/ui/data-display/Avatar/Avatar.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+interface Props {
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  image?: string;
+  stats?: { label: string; value: string }[];
+}
+
+const {
+  name,
+  role,
+  company,
+  quote,
+  image,
+  stats = [{ label: 'Trainierende weltweit', value: '750.000+' }],
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-background-secondary">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Erfolgsgeschichte
+      </h2>
+      <p class="text-lg text-foreground-muted">
+        Mit über 750.000 Trainierenden weltweit
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      {/* Testimonial Card */}
+      <Card variant="elevated" padding="xl">
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <Avatar fallback={name.split(' ').map((n) => n[0]).join('')} size="lg" />
+            <div>
+              <p class="font-bold text-lg">{name}</p>
+              <p class="text-sm text-foreground-muted">{role}</p>
+              <p class="text-sm font-semibold text-primary">{company}</p>
+            </div>
+          </div>
+
+          <blockquote class="text-lg italic text-foreground-muted border-l-4 border-primary pl-4">
+            "{quote}"
+          </blockquote>
+
+          <Button variant="outline" href="#erfolgsgeschichten">
+            Alle Erfolgsgeschichten
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+      </Card>
+
+      {/* Stats & Info */}
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-display text-2xl font-bold mb-4">Globale Reichweite</h3>
+          <p class="text-foreground-muted leading-relaxed">
+            Mit über 750.000 Trainierenden weltweit findet sich das Pixformance Trainings-
+            und Therapiekonzept bereits in den Top-Rehakliniken Deutschlands, in
+            Physiotherapie Praxen sowie in Fitnessstudios.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {
+            stats.map((stat) => (
+              <Card variant="outline" padding="lg">
+                <p class="text-3xl font-bold text-primary mb-2">{stat.value}</p>
+                <p class="text-sm text-foreground-muted">{stat.label}</p>
+              </Card>
+            ))
+          }
+          <Card variant="outline" padding="lg">
+            <p class="text-3xl font-bold text-primary mb-2">600+</p>
+            <p class="text-sm text-foreground-muted">Funktionelle Übungen</p>
+          </Card>
+          <Card variant="outline" padding="lg">
+            <p class="text-3xl font-bold text-primary mb-2">100%</p>
+            <p class="text-sm text-foreground-muted">Digital vernetzt</p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

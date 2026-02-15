@@ -1,0 +1,34 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const solutions = [
+  { title: 'PHYSIOTHERAPIE', href: '/physiotherapie' },
+  { title: 'KLINIK', href: '/klinik' },
+  { title: 'FITNESS', href: '/fitness' },
+  { title: 'BGM', href: '/bgm' },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+        INDIVIDUELLE LÖSUNGEN
+      </h2>
+      <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+        Als Pionier in der Gestaltung digitaler Business Transformationen
+        bieten wir maßgeschneiderte Lösungen für verschiedene Branchen.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        solutions.map((s) => (
+          <Card variant="outline" padding="lg" hover href={s.href}>
+            <h3 class="font-bold text-xl text-center">{s.title}</h3>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

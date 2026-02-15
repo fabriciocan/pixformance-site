@@ -1,0 +1,71 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const addresses = [
+  {
+    title: 'Hauptniederlassung',
+    subtitle: 'Unser Hauptsitz',
+    company: 'Pixformance Sports GmbH',
+    street: 'Hauptstraße 19 – 20',
+    city: '14624 Dallgow-Döberitz',
+    country: 'Deutschland',
+  },
+  {
+    title: 'Niederlassung Berlin',
+    subtitle: 'Unser Standort in Berlin',
+    company: 'Pixformance Sports GmbH',
+    street: 'Helmholtzstraße 2 – 9',
+    additional: 'GSG Hof / Aufgang H',
+    city: '10587 Berlin',
+    country: 'Deutschland',
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Unsere Standorte
+      </h2>
+      <p class="text-lg text-foreground-muted">
+        Besuchen Sie uns in Deutschland
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        addresses.map((address) => (
+          <Card variant="elevated" padding="lg">
+            <div class="space-y-4">
+              <div>
+                <h3 class="font-display text-xl font-bold mb-1">
+                  {address.title}
+                </h3>
+                <p class="text-xs text-foreground-muted uppercase tracking-wide">
+                  {address.subtitle}
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <Icon
+                  name="map-pin"
+                  size="md"
+                  class="text-primary mt-1 flex-shrink-0"
+                />
+                <div class="text-sm">
+                  <p class="font-semibold">{address.company}</p>
+                  <p>{address.street}</p>
+                  {address.additional && <p>{address.additional}</p>}
+                  <p>{address.city}</p>
+                  <p>{address.country}</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

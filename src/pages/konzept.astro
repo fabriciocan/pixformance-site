@@ -1,0 +1,466 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const components = [
+  {
+    icon: 'monitor',
+    title: 'Pixformance Station',
+    description: 'Die patentierte Station mit 2D Full-HD Kamera erfasst 25 Gelenkpunkte',
+    image: '/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
+  },
+  {
+    icon: 'globe',
+    title: 'Online Plattform',
+    description: 'Zentrale Verwaltung aller Trainierenden und Trainingsprogramme',
+    image: '/images/Pixformance-Online-Platform-Functional-Training-fully-connected.jpg',
+  },
+  {
+    icon: 'smartphone',
+    title: 'Mobile App',
+    description: 'Training überall - zu Hause oder unterwegs mit der Pixformance App',
+    image: '/images/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg',
+  },
+];
+
+const technologies = [
+  {
+    icon: 'cpu',
+    title: 'Innovative Software',
+    color: '#8B1E81',
+    features: [
+      'Basierend auf 25 Gelenkpunkten',
+      'Sekundenschnelle Körpervermessung',
+      'Präzise Bewegungsanalyse',
+      'Patentierte Technologie',
+    ],
+  },
+  {
+    icon: 'message-square',
+    title: 'Digitales Feedback',
+    color: '#6BDBD1',
+    features: [
+      'Echtzeit-Korrektur',
+      'Textliches Feedback',
+      'Visuelles Feedback',
+      'Personalisierte Anpassungen',
+    ],
+  },
+  {
+    icon: 'network',
+    title: 'Vernetzung',
+    color: '#4A3D91',
+    features: [
+      'Station ↔ Online Plattform',
+      'Online Plattform ↔ App',
+      'Nahtlose Datensynchronisation',
+      'Zentrale Verwaltung',
+    ],
+  },
+];
+
+const targetGroups = [
+  {
+    icon: 'building',
+    title: 'Top-Rehakliniken Deutschlands',
+    description: 'Führende Einrichtungen vertrauen auf Pixformance',
+  },
+  {
+    icon: 'heart',
+    title: 'Physiotherapie Praxen',
+    description: 'Optimale Unterstützung für Therapeuten',
+  },
+  {
+    icon: 'activity',
+    title: 'Fitnessstudios',
+    description: 'Moderne Trainingskonzepte für Studios',
+  },
+  {
+    icon: 'briefcase',
+    title: 'Betriebliches Gesundheitsmanagement',
+    description: 'Gesunde und leistungsfähige Mitarbeiter',
+  },
+];
+
+const keyFeatures = [
+  {
+    icon: 'users',
+    title: 'Über 600 Funktionelle Übungen',
+    description: 'Umfangreiche Übungsbibliothek für jeden Gesundheitszustand',
+  },
+  {
+    icon: 'zap',
+    title: 'Virtueller Personal Trainer',
+    description: 'Professionelle Anleitung durch digitalen Trainer am Display',
+  },
+  {
+    icon: 'target',
+    title: 'Personalisierte Trainingspläne',
+    description: 'Individuell angepasst an Fitnesslevel und Ziele',
+  },
+  {
+    icon: 'shield',
+    title: 'Sichere Ausführung',
+    description: 'Echtzeit-Korrektur verhindert Fehlhaltungen und Verletzungen',
+  },
+];
+---
+
+<BaseLayout
+  title="Pixformance - Digitales Trainingskonzept"
+  description="Voll vernetztes Training mit Station, Online Plattform und App. Über 600 funktionelle Übungen mit Echtzeit-Feedback."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-white overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B1E81] text-white text-sm font-bold shadow-lg">
+            <Icon name="zap" size="sm" />
+            VOLL VERNETZTES TRAINING
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Digitales Trainingskonzept für Ihre Patienten & Mitglieder
+        </h1>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          Die Pixformance Station mit patentierter Software, eine Online Plattform und eine
+          App – aus diesen Komponenten besteht unser digitales, voll vernetztes
+          Trainingskonzept. Mit der besten Technologie für die digitale Bewegungsanalyse
+          stellen wir höchst effektives Funktionelles Training für jedes Fitnesslevel und
+          jeden Gesundheitszustand bereit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Components -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+          <Icon name="layers" size="sm" />
+          360° System
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Die 3 Komponenten des Systems
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {components.map((component, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src={component.image}
+                alt={component.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div class="absolute top-4 left-4">
+                <div class="w-12 h-12 rounded-xl bg-[#8B1E81] flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                  <Icon name={component.icon} size="md" class="text-white" />
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2 group-hover:text-[#8B1E81] transition-colors">
+                {component.title}
+              </h3>
+              <p class="text-sm text-foreground-muted">
+                {component.description}
+              </p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+          <Icon name="star" size="sm" />
+          Features
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Hauptmerkmale des Systems
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {keyFeatures.map((feature, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#8B1E81] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <Icon name={feature.icon} size="lg" class="text-white" />
+            </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {feature.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Highlights -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+          <Icon name="cpu" size="sm" />
+          Technologie
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Technologie-Highlights
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {technologies.map((tech, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class="space-y-4">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" style={`background-color: ${tech.color};`}>
+                <Icon name={tech.icon} size="lg" class="text-white" />
+              </div>
+              <h3 class="font-display text-xl font-bold group-hover:text-[#8B1E81] transition-colors">
+                {tech.title}
+              </h3>
+              <ul class="space-y-3">
+                {tech.features.map((feature) => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <Icon name="check-circle" size="sm" class="text-[#86C9BC] mt-0.5 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Groups -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+          <Icon name="users" size="sm" />
+          Zielgruppen
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Erfolgreich eingesetzt in
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {targetGroups.map((group, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#8B1E81] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <Icon name={group.icon} size="lg" class="text-white" />
+            </div>
+            <h3 class="font-semibold mb-2 group-hover:text-[#8B1E81] transition-colors">
+              {group.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {group.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+
+      <div class="text-center" data-scroll="fade-up">
+        <div class="inline-block p-8 rounded-2xl bg-gradient-to-br from-[#8B1E81]/10 to-[#6BDBD1]/10 border border-[#8B1E81]/20">
+          <p class="text-4xl md:text-5xl font-bold text-[#8B1E81] mb-2">750.000+</p>
+          <p class="text-lg text-foreground-muted">Trainierende weltweit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center" data-scroll="fade-up">
+        <Icon name="quote" size="xl" class="text-white/20 mb-6 mx-auto" />
+
+        <blockquote class="text-2xl md:text-3xl font-bold text-white mb-8 leading-relaxed">
+          "Mit Pixformance haben wir einen zweiten Selbstzahlerbereich aufgebaut. Die digitale Bewegungstherapie begeistert unsere Patienten und hat sich schnell amortisiert."
+        </blockquote>
+
+        <div class="flex items-center justify-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Icon name="user" size="lg" class="text-white" />
+          </div>
+          <div class="text-left">
+            <p class="font-bold text-white text-lg">Heike Schaible</p>
+            <p class="text-white/80 text-sm">Inhaberin</p>
+            <p class="text-white/60 text-sm">Physiotherapiepraxis Raum für Gesundheit, Stuttgart</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81]">
+          <Icon name="headphones" size="sm" />
+          Beratung
+        </span>
+
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Wir beraten Sie gerne
+        </h2>
+
+        <p class="text-xl text-foreground-muted max-w-2xl mx-auto">
+          Viele Fragen lassen sich persönlich einfach schneller klären. Wir freuen uns über Ihre Nachricht!
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/testen" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Unverbindlich testen
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform" />
+          </Button>
+          <Button size="lg" variant="outline" href="/kontakt" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Kontakt aufnehmen
+            <Icon name="mail" size="sm" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  /* Fade In Up */
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  /* Scale In */
+  [data-scroll="scale"] {
+    transform: scale(0.9);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+
+  [data-scroll][data-delay="4"] {
+    transition-delay: 0.4s;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-scroll attribute
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

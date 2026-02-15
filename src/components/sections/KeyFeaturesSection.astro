@@ -1,0 +1,80 @@
+---
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const features = [
+  {
+    icon: 'network',
+    title: 'Voll vernetztes System',
+    description: 'Station, Plattform und App arbeiten nahtlos zusammen',
+  },
+  {
+    icon: 'zap',
+    title: 'Beste Technologie',
+    description: 'Digitale Bewegungsanalyse auf höchstem Niveau',
+  },
+  {
+    icon: 'users',
+    title: 'Für jeden geeignet',
+    description: 'Jedes Fitnesslevel und jeden Gesundheitszustand',
+  },
+  {
+    icon: 'user-check',
+    title: 'Virtueller Trainer',
+    description: 'Professionelle Übungsanleitungen',
+  },
+  {
+    icon: 'activity',
+    title: 'Echtzeit-Korrektur',
+    description: 'Sofortiges Feedback für sichere Ausführung',
+  },
+  {
+    icon: 'list',
+    title: '600+ Übungen',
+    description: 'Umfangreicher Katalog funktioneller Übungen',
+  },
+  {
+    icon: 'bar-chart',
+    title: 'Faktenbasiert',
+    description: 'Datengestützte Trainingsoptimierung',
+  },
+  {
+    icon: 'settings',
+    title: 'Flexibel',
+    description: 'Einzel- und Gruppentraining möglich',
+  },
+  {
+    icon: 'globe',
+    title: 'Ortsunabhängig',
+    description: 'Training in der Einrichtung und zu Hause',
+  },
+];
+---
+
+<section class="py-16 md:py-24 bg-background-secondary">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Schlüsselmerkmale des Konzepts
+      </h2>
+      <p class="text-lg text-foreground-muted">
+        Was macht unser digitales Trainingskonzept so besonders?
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        features.map((feature) => (
+          <div class="flex items-start gap-4 p-6 rounded-lg bg-background hover:shadow-md transition-shadow">
+            <div class="p-3 rounded-lg bg-primary/10 flex-shrink-0">
+              <Icon name={feature.icon} size="lg" class="text-primary" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">{feature.title}</h3>
+              <p class="text-sm text-foreground-muted">{feature.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout title="Pixformance - AGB">
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="py-24">
+    <div class="container max-w-4xl">
+      <h1 class="font-display text-5xl font-bold mb-12">Allgemeine Geschäftsbedingungen</h1>
+      
+      <div class="prose prose-lg max-w-none space-y-8">
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">§ 1 Geltungsbereich</h2>
+          <p class="text-foreground-muted">
+            Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen 
+            Pixformance Sports GmbH und ihren Kunden.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">§ 2 Vertragsschluss</h2>
+          <p class="text-foreground-muted">
+            Der Vertrag kommt durch Annahme des Angebots durch den Kunden zustande.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">§ 3 Leistungsumfang</h2>
+          <p class="text-foreground-muted">
+            Der Leistungsumfang ergibt sich aus der jeweiligen Leistungsbeschreibung 
+            und den individuellen Vereinbarungen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

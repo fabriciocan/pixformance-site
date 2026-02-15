@@ -1,0 +1,60 @@
+---
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const blogPosts = [
+  {
+    title: 'Bewegung bei Krebs: Einsatz komplementärer und alternativer Therapien bei krebskranken Kindern',
+    excerpt: 'Wie Bewegungstherapie krebskranken Kindern helfen kann...',
+    href: '#',
+  },
+  {
+    title: 'Patienten (digital) aktivieren!',
+    excerpt: 'Wie Rehakliniken einen Anreiz zur Bewegungsaktivierung schaffen können',
+    href: '#',
+  },
+  {
+    title: 'Innovationen in der Rehabilitation und Medizin',
+    excerpt: 'Was hinter Reha-Geräten zur digitalen Bewegungsanalyse steckt',
+    href: '#',
+  },
+  {
+    title: 'Physiotherapie Unterstützung',
+    excerpt:
+      'Bedeutet der Selbstzahlerbereich für meine Mitarbeitenden und mich nicht noch mehr Arbeit?',
+    href: '#',
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+        Neueste Blogbeiträge
+      </h2>
+      <p class="text-sm text-foreground-muted uppercase tracking-wide">
+        Aktuelle Beiträge aus unserem Blog
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        blogPosts.map((post) => (
+          <Card variant="elevated" padding="lg" hover href={post.href}>
+            <div class="space-y-3">
+              <h3 class="font-semibold text-lg line-clamp-2">{post.title}</h3>
+              <p class="text-sm text-foreground-muted line-clamp-2">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center gap-2 text-primary text-sm font-medium">
+                Weiterlesen
+                <Icon name="arrow-right" size="sm" />
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

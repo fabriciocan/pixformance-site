@@ -1,0 +1,161 @@
+---
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+interface Props {
+  variant?: 'default' | 'compact';
+}
+
+const { variant = 'default' } = Astro.props;
+---
+
+<form class="space-y-6" id="contact-form">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {/* Nome */}
+    <div>
+      <label for="name" class="block text-sm font-medium mb-2">
+        Name <span class="text-error">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="Ihr Name"
+      />
+    </div>
+
+    {/* Email */}
+    <div>
+      <label for="email" class="block text-sm font-medium mb-2">
+        E-Mail <span class="text-error">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="ihre.email@beispiel.de"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {/* Empresa */}
+    <div>
+      <label for="company" class="block text-sm font-medium mb-2">
+        Unternehmen / Einrichtung
+      </label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="Ihr Unternehmen"
+      />
+    </div>
+
+    {/* Telefone */}
+    <div>
+      <label for="phone" class="block text-sm font-medium mb-2">
+        Telefon
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="+49 (0) ..."
+      />
+    </div>
+  </div>
+
+  {/* Interesse */}
+  <div>
+    <label for="interest" class="block text-sm font-medium mb-2">
+      Interessenbereich
+    </label>
+    <select
+      id="interest"
+      name="interest"
+      class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+    >
+      <option value="">Bitte wählen...</option>
+      <option value="physiotherapie">Physiotherapie</option>
+      <option value="klinik">Klinik</option>
+      <option value="fitness">Fitness</option>
+      <option value="bgm">BGM (Betriebliches Gesundheitsmanagement)</option>
+      <option value="other">Sonstiges</option>
+    </select>
+  </div>
+
+  {/* Mensagem */}
+  <div>
+    <label for="message" class="block text-sm font-medium mb-2">
+      Ihre Nachricht <span class="text-error">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="6"
+      class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+      placeholder="Teilen Sie uns mit, wie wir Ihnen helfen können..."
+    ></textarea>
+  </div>
+
+  {/* Checkbox de privacidade */}
+  <div class="flex items-start gap-3">
+    <input
+      type="checkbox"
+      id="privacy"
+      name="privacy"
+      required
+      class="mt-1 rounded border-border focus:ring-2 focus:ring-primary"
+    />
+    <label for="privacy" class="text-sm text-foreground-muted">
+      Ich habe die <a href="/datenschutz" class="text-primary hover:underline"
+        >Datenschutzerklärung</a
+      > gelesen und bin damit einverstanden. <span class="text-error">*</span>
+    </label>
+  </div>
+
+  {/* Botão de envio */}
+  <div class="flex justify-start">
+    <Button size="lg" type="submit">
+      Anfrage senden
+      <Icon name="send" size="sm" />
+    </Button>
+  </div>
+
+  {/* Mensagem de sucesso/erro */}
+  <div id="form-message" class="hidden"></div>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const messageDiv = document.getElementById('form-message');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Aqui você pode adicionar a lógica de envio do formulário
+    // Por enquanto, apenas mostra uma mensagem de sucesso
+
+    if (messageDiv) {
+      messageDiv.classList.remove('hidden');
+      messageDiv.className =
+        'p-4 rounded-lg bg-success/10 text-success border border-success/20';
+      messageDiv.textContent =
+        'Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden.';
+
+      form.reset();
+
+      setTimeout(() => {
+        messageDiv.classList.add('hidden');
+      }, 5000);
+    }
+  });
+</script>
