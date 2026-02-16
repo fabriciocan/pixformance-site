@@ -1,0 +1,536 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Pionierarbeit im Selbstzahlerbereich - Dieter Geier - Pixformance"
+  description="Wie Herr Geier mit Pixformance Patienten und Wirtschaftlichkeit verbindet. Erfolgsgeschichte aus der Physiotherapiepraxis in Neuburg a.d. Donau."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#8B1E81]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a
+            href="/erfolgsgeschichten"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hover:bg-[#8B1E81]/20 transition-colors"
+          >
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Übersicht
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="heart" size="sm" />
+            Physiotherapie
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Pionierarbeit im Selbstzahlerbereich
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Wie Herr Geier mit Pixformance Patienten und Wirtschaftlichkeit verbindet
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <p class="text-lg text-foreground-muted leading-relaxed mb-8">
+          <strong class="text-foreground">Seit 2007 führt Herr Geier erfolgreich seine Physiotherapiepraxis mit einem Team von 14 Fachkräften.</strong>
+          Schon früh erkannte er das Potenzial, den Selbstzahlerbereich als zusätzliches Standbein aufzubauen – nicht nur als wirtschaftliche Ergänzung zur klassischen Physiotherapie, sondern vor allem, um seinen Patienten eine durchgängige, individuelle Betreuung auf höchstem Niveau zu bieten. Mit der Integration der Pixformance Station ist es ihm gelungen, diesen Bereich nachhaltig auszubauen und gleichzeitig die Zufriedenheit seiner Patienten zu steigern.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/Physiotherapeut-Praxisinhaber-Dieter-Geier-Neuburg-an-der-Donau.jpg.webp"
+                alt="Dieter Geier - Physiotherapeut & Praxisinhaber"
+                class="w-full h-auto"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <!-- Info -->
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">
+                Dieter Geier
+              </h2>
+              <p class="text-xl text-[#8B1E81] font-semibold">
+                Physiotherapeut & Praxisinhaber
+              </p>
+            </div>
+
+            <!-- Praxis Info Card -->
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="briefcase" size="md" class="text-[#8B1E81]" />
+                Praxis Kurzprofil
+              </h3>
+
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Ort</p>
+                    <p class="text-sm">Neuburg a.d. Donau</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Gegründet</p>
+                    <p class="text-sm">2007</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="activity" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Schwerpunkte</p>
+                    <p class="text-sm">Physiotherapie, Training, Massagen, Beckengesundheit</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Mitarbeiterzahl</p>
+                    <p class="text-sm">14 Therapeuten</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Weitere Infos</p>
+                    <a
+                      href="https://www.geier-physiotherapie.de"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-[#8B1E81] hover:underline"
+                    >
+                      www.geier-physiotherapie.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Grenzen des Kassensystems und steigende Patientenerwartungen
+          </h2>
+
+          <div class="space-y-4 text-lg text-foreground-muted leading-relaxed">
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Oft ist das Budget der Verordnungen einfach nicht ausreichend, um die Bedürfnisse der Patienten vollständig abzudecken"
+              </p>
+            </Card>
+
+            <p>
+              erklärt Herr Geier. Viele Patienten hätten nach Abschluss der Physiotherapie das Bedürfnis, weiter zu trainieren, um ihre Gesundheit zu erhalten.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Der Wunsch, in die eigene Gesundheit zu investieren, ist in den letzten Jahren stark gestiegen. Aber die Patienten erwarten zu Recht Qualität – nicht irgendein Standardprogramm, sondern etwas, das wirklich auf sie abgestimmt ist."
+              </p>
+            </Card>
+
+            <p>
+              Auch wirtschaftlich war für Herrn Geier früh klar, dass der Selbstzahlerbereich eine wichtige Säule für die Zukunft seiner Praxis werden könnte.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Gerade in Zeiten steigender Kosten und bürokratischer Hürden ist es essentiell, zusätzliche Einnahmequellen zu erschließen, die auch einen echten Mehrwert für die Patienten bieten"
+              </p>
+            </Card>
+
+            <p>betont er.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 1 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-5xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Physiotherapie-Geier-Pixformance-Training-im-Selbstzahlerbereich-Neuburg-an-der-Donau2.jpg.webp"
+            alt="Pixformance Training im Selbstzahlerbereich"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Pixformance als ideale Lösung für Patienten und Praxis
+          </h2>
+
+          <div class="space-y-4 text-lg text-foreground-muted leading-relaxed">
+            <p>
+              Im Jahr 2024 entdeckte Herr Geier auf der TheraPro in Stuttgart Pixformance – ein digitales Trainingskonzept, das ihn und sein Team sofort überzeugte.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic">
+                „Die Möglichkeit, individuelle Programme für jeden Patienten zu erstellen, die er über einen QR-Code abrufen kann, hat uns besonders gefallen. So können wir sicherstellen, dass jede Übung exakt auf die Diagnose und den Gesundheitszustand des Patienten abgestimmt ist."
+              </p>
+            </Card>
+
+            <p>
+              Pixformance wird in der Praxis ausschließlich im Selbstzahlerbereich genutzt. Das Besondere am Training ist natürlich das Echtzeit-Feedback. Der Patient wird während des Trainings direkt gescannt und bekommt sofort Feedback zur Übungsausführung.
+            </p>
+
+            <p>
+              Nach einer individuellen Einführung durch einen Therapeuten ermöglicht dies ein eigenständiges Training der Patienten an der Pixformance Station.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic">
+                „Wir Therapeuten werten die Ergebnisse aus und geben regelmäßiges Feedback – das schafft Vertrauen und sorgt dafür, dass die Patienten ihre Ziele erreichen"
+              </p>
+            </Card>
+
+            <p>erklärt Herr Geier.</p>
+
+            <p>
+              Besonders schätzen die Patienten die visuelle Unterstützung durch Pixformance.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic">
+                „Die Emojis und Symbole während des Trainings sind ein echtes Highlight. Sie motivieren die Patienten und helfen, die Übungen korrekt auszuführen"
+              </p>
+            </Card>
+
+            <p>
+              ergänzt er. Die Kombination aus digitaler Präzision und persönlicher Betreuung durch Fachkräfte hebt Pixformance deutlich von anderen Trainingsmöglichkeiten ab.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 2 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-5xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-Station-im-Selbstzahlerbereich-Trainingsraum-der-Physiotherapie-Geier-Neuburg-an-der-Donau.jpg.webp"
+            alt="Pixformance Station im Trainingsraum"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Pionierarbeit im Selbstzahlerbereich
+          </h2>
+
+          <div class="space-y-4 text-lg text-foreground-muted leading-relaxed">
+            <p>
+              Mit dem gezielten Aufbau des Selbstzahlerbereichs hat sich Herr Geiers Praxis als Vorreiter positioniert.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Seit Jahren setzen wir auf Digitalisierung und innovative Lösungen, um unseren Patienten das Beste zu bieten. Pixformance ergänzt unser Angebot perfekt und zeigt, dass sich Qualität und Wirtschaftlichkeit hervorragend verbinden lassen"
+              </p>
+            </Card>
+
+            <p>erklärt er.</p>
+
+            <p>
+              Die Praxis verfolgt dabei eine klare Strategie: Patienten sollen sich sicher fühlen, in ihre Gesundheit zu investieren.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Viele schätzen es, dass sie bei uns trainieren können, anstatt in ein anonymes Fitnessstudio zu gehen. Sie wissen, dass sie hier von Fachkräften betreut werden, die ihre Diagnose und Geschichte kennen."
+              </p>
+            </Card>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Qualität und Teamarbeit als Erfolgsrezept
+          </h2>
+
+          <div class="space-y-4 text-lg text-foreground-muted leading-relaxed">
+            <p>
+              Die Einführung von Pixformance verlief reibungslos – dank guter Vorbereitung und Einbindung des Teams.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic">
+                „Am Anfang waren einige Kollegen skeptisch, aber nach den Schulungen und eigenen Erfahrungen mit der Station war das Eis schnell gebrochen. Heute nutzt das gesamte Team Pixformance und sieht den Mehrwert"
+              </p>
+            </Card>
+
+            <p>berichtet Herr Geier.</p>
+
+            <p>
+              Auch die Patientenresonanz ist durchweg positiv.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic">
+                „Das individuelle Training, die angenehme Atmosphäre und die hochwertigen Programme – das alles überzeugt die Patienten und motiviert sie, aktiv zu bleiben. Das Vertrauen, das wir durch unsere persönliche Betreuung aufbauen, ist dabei ein zentraler Erfolgsfaktor."
+              </p>
+            </Card>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Fazit: Ein Konzept mit Zukunft
+          </h2>
+
+          <div class="space-y-4 text-lg text-foreground-muted leading-relaxed">
+            <p>
+              Mit Pixformance ist es Herrn Geier gelungen, den Selbstzahlerbereich seiner Praxis nicht nur wirtschaftlich erfolgreich zu gestalten, sondern auch seinen Patienten einen echten Mehrwert zu bieten.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Die Kombination aus moderner Technologie und persönlicher Betreuung durch Fachkräfte ist genau das, was die Menschen heute erwarten"
+              </p>
+            </Card>
+
+            <p>fasst er zusammen.</p>
+
+            <p>
+              Herr Geier ermutigt andere Praxisinhaber, den Selbstzahlerbereich auszubauen:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Ich würde mir direkt eine Pixformance Station anschaffen und das Team von Anfang an mitnehmen. Es ist wichtig, klar zu kommunizieren, dass es keine Konkurrenz zur Physiotherapie ist, sondern eine sinnvolle Ergänzung."
+              </p>
+            </Card>
+
+            <p>
+              Außerdem rät er, Patienten schon während der Rezepttherapie auf die Möglichkeiten im Selbstzahlerbereich aufmerksam zu machen.
+            </p>
+
+            <p>
+              Die Praxis bleibt damit nicht nur wirtschaftlich stabil, sondern setzt auch Maßstäbe in der Branche.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#8B1E81]/5 border-l-4 border-[#8B1E81]">
+              <p class="text-foreground italic">
+                „Pixformance hat uns geholfen, Pionierarbeit im Selbstzahlerbereich zu leisten. Es ist ein Konzept, das ich jeder Praxis empfehlen kann, die Qualität und Wirtschaftlichkeit verbinden möchte"
+              </p>
+            </Card>
+
+            <p>so Herr Geier abschließend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="xl" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 py-6">
+              <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-[#8B1E81]">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+                  alt="Tobias Baader - COO"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="text-center md:text-left">
+                <p class="text-sm text-foreground-muted mb-2">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-2xl text-foreground mb-1">Tobias Baader</h3>
+                <p class="text-lg text-[#8B1E81] font-semibold">COO</p>
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              href="/testen"
+              class="bg-[#8B1E81] hover:bg-[#4A3D91] text-white"
+            >
+              Schreiben Sie uns
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="/erfolgsgeschichten"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hover:bg-[#8B1E81]/20 transition-colors"
+        >
+          <Icon name="arrow-left" size="sm" />
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  /* Fade In Up */
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  /* Scale In */
+  [data-scroll="scale"] {
+    transform: scale(0.95);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-scroll attribute
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
