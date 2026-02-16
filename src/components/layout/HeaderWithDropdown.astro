@@ -37,6 +37,12 @@ const losungenItems = [
   { label: 'Firmen Fitness', href: '/firmen-fitness' },
 ];
 
+const unternehmensLinks = [
+  { label: 'Über uns', href: '/ueber-uns' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
+];
+
 function isActive(href: string): boolean {
   if (href.startsWith('#')) return false;
   if (href === '/') return currentPath === '/';
@@ -44,6 +50,7 @@ function isActive(href: string): boolean {
 }
 
 const isLosungenActive = losungenItems.some((item) => isActive(item.href));
+const isUnternehmensActive = unternehmensLinks.some((item) => isActive(item.href));
 
 const menuId = `mobile-menu-${Math.random().toString(36).slice(2, 9)}`;
 const buttonId = `${menuId}-button`;
@@ -68,32 +75,6 @@ const buttonId = `${menuId}-button`;
 
     {/* Desktop Navigation */}
     <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-      <a
-        href="/"
-        class={cn(
-          'nav-link rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/') ? 'text-primary font-semibold' : 'text-foreground-muted hover:text-foreground'
-        )}
-        aria-current={isActive('/') ? 'page' : undefined}
-      >
-        Home
-      </a>
-
-      <a
-        href="/konzept"
-        class={cn(
-          'nav-link rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/konzept')
-            ? 'text-primary font-semibold'
-            : 'text-foreground-muted hover:text-foreground'
-        )}
-        aria-current={isActive('/konzept') ? 'page' : undefined}
-      >
-        Konzept
-      </a>
-
       {/* Lösungen Dropdown */}
       <div class="relative group">
         <button
@@ -131,6 +112,57 @@ const buttonId = `${menuId}-button`;
         </div>
       </div>
 
+      {/* Unternehmen Dropdown */}
+      <div class="relative group">
+        <button
+          class={cn(
+            'nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
+            'transition-colors',
+            isUnternehmensActive
+              ? 'text-primary font-semibold'
+              : 'text-foreground-muted hover:text-foreground'
+          )}
+        >
+          Unternehmen
+          <Icon name="chevron-down" size="sm" />
+        </button>
+
+        {/* Dropdown Menu */}
+        <div
+          class="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50"
+        >
+          {
+            unternehmensLinks.map((item) => (
+              <a
+                href={item.href}
+                class={cn(
+                  'block px-4 py-2 text-sm hover:bg-secondary/10 first:rounded-t-lg last:rounded-b-lg',
+                  isActive(item.href)
+                    ? 'text-primary font-semibold'
+                    : 'text-foreground-muted hover:text-foreground'
+                )}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a
+        href="/konzept"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/konzept')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/konzept') ? 'page' : undefined}
+      >
+        Konzept
+      </a>
+
       <a
         href="/testen"
         class={cn(
@@ -142,7 +174,7 @@ const buttonId = `${menuId}-button`;
         )}
         aria-current={isActive('/testen') ? 'page' : undefined}
       >
-        Unverbindlich testen
+        Testen
       </a>
     </nav>
 
@@ -183,29 +215,6 @@ const buttonId = `${menuId}-button`;
     aria-label="Mobile navigation"
   >
     <div class="mx-auto max-w-6xl space-y-1 px-6 py-4">
-      <a
-        href="/"
-        class={cn(
-          'mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/') ? 'text-primary font-semibold' : 'text-foreground-muted hover:text-foreground'
-        )}
-      >
-        Home
-      </a>
-      <a
-        href="/konzept"
-        class={cn(
-          'mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/konzept')
-            ? 'text-primary font-semibold'
-            : 'text-foreground-muted hover:text-foreground'
-        )}
-      >
-        Konzept
-      </a>
-
       {/* Lösungen Mobile Submenu */}
       <div class="space-y-1">
         <p class="px-3 py-2 text-xs font-semibold text-foreground-muted uppercase">
@@ -229,6 +238,42 @@ const buttonId = `${menuId}-button`;
         }
       </div>
 
+      {/* Unternehmen Mobile Submenu */}
+      <div class="space-y-1">
+        <p class="px-3 py-2 text-xs font-semibold text-foreground-muted uppercase">
+          Unternehmen
+        </p>
+        {
+          unternehmensLinks.map((item) => (
+            <a
+              href={item.href}
+              class={cn(
+                'mobile-nav-link block rounded-md px-6 py-2 text-sm font-medium',
+                'transition-colors',
+                isActive(item.href)
+                  ? 'text-primary font-semibold'
+                  : 'text-foreground-muted hover:text-foreground'
+              )}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <a
+        href="/konzept"
+        class={cn(
+          'mobile-nav-link block rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/konzept')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+      >
+        Konzept
+      </a>
+
       <a
         href="/testen"
         class={cn(
@@ -239,7 +284,7 @@ const buttonId = `${menuId}-button`;
             : 'text-foreground-muted hover:text-foreground'
         )}
       >
-        Unverbindlich testen
+        Testen
       </a>
 
       <div class="border-border mt-3 border-t pt-3">
