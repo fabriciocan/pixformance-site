@@ -152,11 +152,11 @@ const stats = [
   </HeaderWithDropdown>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-[#8B1E81]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81]">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
             <Icon name="award" size="sm" />
             Erfolgsgeschichten
           </span>
@@ -164,7 +164,7 @@ const stats = [
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
           Pixformance
-          <span class="text-[#8B1E81]"> Erfolgsgeschichten</span>
+          <span class="text-[#02308C]"> Erfolgsgeschichten</span>
         </h1>
 
         <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
@@ -175,11 +175,11 @@ const stats = [
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
-            <div class="group space-y-2 p-6 rounded-2xl bg-white hover:bg-[#8B1E81]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate shadow-lg" style={`animation-delay: ${0.4 + index * 0.1}s;`}>
-              <div class="w-12 h-12 mx-auto rounded-xl bg-[#8B1E81] flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+            <div class="group space-y-2 p-6 rounded-2xl bg-white hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate shadow-lg" style={`animation-delay: ${0.4 + index * 0.1}s;`}>
+              <div class="w-12 h-12 mx-auto rounded-xl bg-[#02308C] flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <Icon name={stat.icon} size="md" class="text-white" />
               </div>
-              <div class="text-3xl md:text-4xl font-bold text-[#8B1E81] group-hover:scale-110 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
               <div class="text-sm text-foreground-muted">{stat.label}</div>
@@ -194,7 +194,7 @@ const stats = [
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-12" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="heart" size="sm" />
           Physiotherapie
         </span>
@@ -217,7 +217,7 @@ const stats = [
             data-delay={Math.min(index + 1, 6)}
           >
             <div class="relative h-64 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#8B1E81]/90 transition-all duration-500"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#02308C]/90 transition-all duration-500"></div>
               <img
                 src={story.image}
                 alt={story.person}
@@ -226,7 +226,7 @@ const stats = [
               />
 
               <div class="absolute top-4 left-4 z-20">
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#8B1E81]">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
                   <Icon name="heart" size="sm" />
                   Physiotherapie
                 </span>
@@ -245,11 +245,11 @@ const stats = [
             <div class="p-6 space-y-4">
               <div class="space-y-2">
                 <div class="flex items-start gap-2">
-                  <Icon name="user" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <Icon name="user" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
                   <p class="text-sm font-semibold text-foreground">{story.person}</p>
                 </div>
                 <div class="flex items-start gap-2">
-                  <Icon name="map-pin" size="sm" class="text-[#8B1E81] mt-1 flex-shrink-0" />
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
                   <p class="text-sm text-foreground-muted">{story.location}</p>
                 </div>
               </div>
@@ -258,7 +258,7 @@ const stats = [
                 variant="default"
                 size="sm"
                 href={`/erfolgsgeschichten/${story.id}`}
-                class="w-full group-hover:bg-[#8B1E81] transition-colors"
+                class="w-full group-hover:bg-[#02308C] transition-colors"
               >
                 Mehr lesen
                 <Icon name="arrow-right" size="sm" />
@@ -432,7 +432,7 @@ const stats = [
 
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
@@ -449,7 +449,7 @@ const stats = [
           <Button
             size="lg"
             href="/testen"
-            class="bg-white text-[#8B1E81] hover:bg-gray-100"
+            class="bg-black text-white hover:bg-black/80"
           >
             Jetzt unverbindlich testen
             <Icon name="arrow-right" size="sm" />
@@ -458,7 +458,7 @@ const stats = [
             size="lg"
             variant="outline"
             href="/konzept"
-            class="border-2 border-white text-white hover:bg-white hover:text-[#8B1E81]"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
             Unser Konzept entdecken
           </Button>

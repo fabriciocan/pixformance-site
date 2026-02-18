@@ -78,14 +78,14 @@ const performanceBenefits = [
   <!-- Hero Section -->
   <section class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-background to-background-secondary">
     <div class="container text-center max-w-4xl">
-      <p class="text-lg md:text-xl text-foreground-muted mb-4">
+      <p class="text-lg md:text-xl text-foreground-muted mb-4 hero-animate" style="animation-delay: 0.1s;">
         Betriebliches Gesundheitsmanagement
       </p>
-      <h1 class="font-display text-4xl md:text-6xl font-bold mb-6">
+      <h1 class="font-display text-4xl md:text-6xl font-bold mb-6 hero-animate" style="animation-delay: 0.2s;">
         Wir machen Ihr Team:<br />
         <span class="text-primary">stärker. Besser. effizienter.</span>
       </h1>
-      <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+      <p class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
         Pixformance als innovative Lösung für effiziente BGM-Maßnahmen und eine ganzheitliche
         Gesundheitsförderung – individuell für jeden Mitarbeiter.
       </p>
@@ -95,12 +95,12 @@ const performanceBenefits = [
   <!-- WIE MIT EINEM TRAINER -->
   <section class="py-16 md:py-24 bg-background-secondary">
     <div class="container">
-      <h2 class="font-display text-4xl md:text-5xl font-bold mb-12 text-center uppercase">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-12 text-center uppercase" data-scroll="fade-up">
         Wie mit einem Trainer
       </h2>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
+        <div class="space-y-6" data-scroll="slide-left">
           <p class="text-lg text-foreground-muted">
             Pixformance revolutioniert das Functional Training: Die patentierte Pixformance Station
             vermisst auf Basis von 25 Gelenkpunkten sekundenschnell den Körper jedes Trainierenden,
@@ -113,7 +113,7 @@ const performanceBenefits = [
             dadurch noch effektiver.
           </p>
         </div>
-        <div>
+        <div data-scroll="slide-right">
           <img
             src="/images/Pixformance-225402_BGM_Pixformance_Funktionelles-Training_Milon_Virtuelles-Training_Sport-im-Buero-bearbeitet.jpg"
             alt="Funktionelles Training im Büro"
@@ -128,7 +128,7 @@ const performanceBenefits = [
   <!-- VIRTUELLES PERSONAL TRAINING -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 lowercase">
           Virtuelles personal training
         </h2>
@@ -140,7 +140,7 @@ const performanceBenefits = [
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div class="space-y-6">
+        <div class="space-y-6" data-scroll="slide-left">
           <div class="flex gap-4">
             <div class="text-4xl font-bold text-primary shrink-0">1</div>
             <div>
@@ -175,7 +175,7 @@ const performanceBenefits = [
           </div>
         </div>
 
-        <div>
+        <div data-scroll="slide-right">
           <img
             src="/images/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png"
             alt="Pixformance Station"
@@ -190,7 +190,7 @@ const performanceBenefits = [
   <!-- AUF IHRE ZIELE AUSGERICHTET -->
   <section class="py-16 md:py-24 bg-background-secondary">
     <div class="container">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
           Auf Ihre Ziele ausgerichtet
         </h2>
@@ -202,11 +202,11 @@ const performanceBenefits = [
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {benefits.map((benefit) => (
-          <Card variant="elevated" padding="lg" class="border-2 border-secondary/20">
+        {benefits.map((benefit, index) => (
+          <Card variant="elevated" padding="lg" data-scroll="fade-up" data-delay={Math.min(index + 1, 6)}>
             <div class="flex flex-col gap-4">
-              <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
-                <Icon name={benefit.icon} size="lg" class="text-secondary" />
+              <div class={`w-12 h-12 rounded-lg flex items-center justify-center ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
+                <Icon name={benefit.icon} size="lg" class="text-white" />
               </div>
               <h3 class="font-bold text-xl">{benefit.title}</h3>
               <p class="text-foreground-muted">{benefit.description}</p>
@@ -570,20 +570,29 @@ const performanceBenefits = [
   </section>
 
   <!-- CTA Final -->
-  <section class="py-16 md:py-24 bg-primary text-primary-foreground">
-    <div class="container text-center">
-      <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
-        Bereit für betriebliches Gesundheitsmanagement?
-      </h2>
-      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-        Kontaktieren Sie uns für eine unverbindliche Beratung und erfahren Sie,
-        wie Pixformance Ihre Mitarbeiter stärker, besser und effizienter macht.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <Button size="lg" variant="secondary" href="/testen">
-          Jetzt Beratung anfragen
-          <Icon name="arrow-right" size="sm" />
-        </Button>
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Bereit für betriebliches Gesundheitsmanagement?
+        </h2>
+
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Kontaktieren Sie uns für eine unverbindliche Beratung und erfahren Sie,
+          wie Pixformance Ihre Mitarbeiter stärker, besser und effizienter macht.
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/testen" class="bg-black text-white hover:bg-black/80">
+            Jetzt Kontakt aufnehmen
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/konzept" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            Mehr über unsere Lösungen
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -595,4 +604,52 @@ const performanceBenefits = [
   details[open] > summary .accordion-icon {
     transform: rotate(180deg);
   }
+
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible { opacity: 1; }
+
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
 </style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

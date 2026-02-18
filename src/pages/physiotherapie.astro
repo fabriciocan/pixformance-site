@@ -6,19 +6,27 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHERAPIE', href: '/physiotherapie' },
+  { label: 'KLINIK', href: '/klinik' },
+  { label: 'FITNESS', href: '/fitness' },
+  { label: 'BGM', href: '/firmen-fitness' },
+];
 
 const benefits = [
   {
     icon: 'layers',
     title: '500+ Übungen – ein Gerät',
     description: 'Auf der Online Plattform können individuelle Trainingspläne aus einer Sammlung von über 500 funktionellen Übungen zusammengestellt werden.',
-    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
   {
     icon: 'users',
     title: 'Zeitgleiche Betreuung',
     description: 'Dank der patentierten Software können mehrere Patienten gleichzeitig und ohne personellen Mehraufwand betreut werden.',
-    gradient: 'from-[#4A3D91] to-[#02308C]',
+    gradient: 'from-[#6BDBD1] to-[#02308C]',
   },
   {
     icon: 'trending-up',
@@ -36,13 +44,13 @@ const benefits = [
     icon: 'target',
     title: 'Individuelles Training',
     description: 'Trainingsprogramme können auf den Gesundheitszustand und den Therapiebedarf jedes Patienten zugeschnitten werden.',
-    gradient: 'from-[#86C9BC] to-[#8B1E81]',
+    gradient: 'from-[#86C9BC] to-[#02308C]',
   },
   {
     icon: 'clock',
     title: 'Zeit für das Wesentliche',
     description: 'Der Therapeut muss nicht jede Übung persönlich vormachen und spart Zeit – was wiederum der Betreuung aller Patienten zugutekommt.',
-    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
 ];
 
@@ -97,12 +105,15 @@ const testimonials = [
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
 
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/physiotherapie" />
+
   <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-12 md:py-20">
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hover:bg-[#8B1E81]/20 hover:border-[#8B1E81]/30 transition-all duration-300 cursor-pointer">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
             <Icon name="heart" size="sm" />
             Physiotherapie
           </span>
@@ -110,10 +121,10 @@ const testimonials = [
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
           Digitale Bewegungstherapie
-          <span class="text-[#8B1E81]"> für Ihre Praxis</span>
+          <span class="text-[#02308C]"> für Ihre Praxis</span>
         </h1>
 
-        <p class="text-2xl md:text-3xl font-bold text-[#8B1E81] hero-animate" style="animation-delay: 0.3s;">
+        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
           Physiotherapie von morgen: Digital versorgt, gesünder vernetzt
         </p>
 
@@ -150,7 +161,7 @@ const testimonials = [
       <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
         <div class="space-y-6" data-scroll="slide-left">
           <div class="inline-block">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81]">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
               <Icon name="target" size="sm" />
               Unsere Mission
             </span>
@@ -166,7 +177,7 @@ const testimonials = [
 
           <div class="grid md:grid-cols-2 gap-6 pt-4">
             <div class="space-y-3">
-              <div class="w-12 h-12 rounded-xl bg-[#8B1E81] flex items-center justify-center">
+              <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center">
                 <Icon name="check" size="md" class="text-white" />
               </div>
               <h3 class="font-bold text-lg">Echtzeit-Korrektur</h3>
@@ -203,7 +214,7 @@ const testimonials = [
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="sparkles" size="sm" />
           Korrektur in Echtzeit
         </span>
@@ -232,7 +243,7 @@ const testimonials = [
                 loading="lazy"
               />
             </div>
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors duration-300">
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors duration-300">
               {feature.title}
             </h3>
             <p class="text-sm text-foreground-muted">
@@ -248,7 +259,7 @@ const testimonials = [
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="star" size="sm" />
           Vorteile
         </span>
@@ -269,10 +280,10 @@ const testimonials = [
             data-scroll="fade-up"
             data-delay={index + 1}
           >
-            <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
               <Icon name={benefit.icon} size="md" class="text-white" />
             </div>
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors">
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
               {benefit.title}
             </h3>
             <p class="text-sm text-foreground-muted">
@@ -288,7 +299,7 @@ const testimonials = [
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="message-circle" size="sm" />
           Erfolgsgeschichten
         </span>
@@ -309,12 +320,12 @@ const testimonials = [
             data-scroll="scale"
             data-delay={index + 1}
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81]/0 to-[#6BDBD1]/0 group-hover:from-[#8B1E81]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
 
             <div class="relative space-y-4">
               <div class="flex items-center gap-3">
                 <div class="relative">
-                  <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] to-[#6BDBD1] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -323,9 +334,9 @@ const testimonials = [
                   />
                 </div>
                 <div>
-                  <div class="font-bold group-hover:text-[#8B1E81] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
                   <div class="text-sm text-foreground-muted">{testimonial.role}</div>
-                  <div class="text-sm text-[#8B1E81] font-semibold">{testimonial.company}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
                 </div>
               </div>
 
@@ -344,7 +355,7 @@ const testimonials = [
 
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
@@ -360,7 +371,7 @@ const testimonials = [
           <Button
             size="lg"
             href="/testen"
-            class="bg-white text-[#8B1E81] hover:bg-gray-100"
+            class="bg-black text-white hover:bg-black/80"
           >
             Jetzt Kontakt aufnehmen
             <Icon name="arrow-right" size="sm" />
@@ -369,7 +380,7 @@ const testimonials = [
             size="lg"
             variant="outline"
             href="/konzept"
-            class="border-2 border-white text-white hover:bg-white hover:text-[#8B1E81]"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
             Mehr über unsere Lösungen
           </Button>

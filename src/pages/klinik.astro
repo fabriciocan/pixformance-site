@@ -6,6 +6,14 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHERAPIE', href: '/physiotherapie' },
+  { label: 'KLINIK', href: '/klinik' },
+  { label: 'FITNESS', href: '/fitness' },
+  { label: 'BGM', href: '/firmen-fitness' },
+];
 
 const stats = [
   { value: '450.000+', label: 'Trainierende / Jahr', icon: 'users' },
@@ -18,13 +26,13 @@ const benefits = [
     icon: 'users',
     title: 'Patientenaktivierung',
     description: 'Motivierende digitale Trainingsumgebung steigert die aktive Teilnahme der Patienten.',
-    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
   {
     icon: 'heart',
     title: 'Personalentlastung',
     description: 'Therapeuten können sich auf komplexe Fälle konzentrieren, während Pixformance das Standardtraining übernimmt.',
-    gradient: 'from-[#4A3D91] to-[#02308C]',
+    gradient: 'from-[#6BDBD1] to-[#02308C]',
   },
   {
     icon: 'trending-up',
@@ -42,13 +50,13 @@ const benefits = [
     icon: 'target',
     title: 'Therapietreue',
     description: 'Gamification-Elemente erhöhen die Motivation und damit die Therapietreue.',
-    gradient: 'from-[#86C9BC] to-[#8B1E81]',
+    gradient: 'from-[#86C9BC] to-[#02308C]',
   },
   {
     icon: 'shield',
     title: 'Qualitätssicherung',
     description: 'Standardisierte Übungsausführung durch Echtzeit-Feedback sichert gleichbleibende Qualität.',
-    gradient: 'from-[#8B1E81] to-[#4A3D91]',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
 ];
 
@@ -100,12 +108,15 @@ const features = [
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
 
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/klinik" />
+
   <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-12 md:py-20">
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] hover:bg-[#8B1E81]/20 hover:border-[#8B1E81]/30 transition-all duration-300 cursor-pointer">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
             <Icon name="activity" size="sm" />
             Klinik & Rehabilitation
           </span>
@@ -113,10 +124,10 @@ const features = [
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
           Innovatives digitales
-          <span class="text-[#8B1E81]"> Reha-Sportgerät</span>
+          <span class="text-[#02308C]"> Reha-Sportgerät</span>
         </h1>
 
-        <p class="text-2xl md:text-3xl font-bold text-[#8B1E81] hero-animate" style="animation-delay: 0.3s;">
+        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
           Für Klinik und Rehabilitation
         </p>
 
@@ -147,8 +158,8 @@ const features = [
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
-            <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#8B1E81]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
-              <div class="text-3xl md:text-4xl font-bold text-[#8B1E81] group-hover:scale-110 transition-transform duration-300">
+            <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
+              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
               <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
@@ -163,7 +174,7 @@ const features = [
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="layers" size="sm" />
           Voll vernetztes System
         </span>
@@ -184,10 +195,10 @@ const features = [
             data-scroll="scale"
             data-delay={index + 1}
           >
-            <div class="w-16 h-16 rounded-xl bg-[#8B1E81] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+            <div class="w-16 h-16 rounded-xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
               <Icon name={feature.icon} size="lg" class="text-white" />
             </div>
-            <h3 class="font-bold text-xl mb-2 group-hover:text-[#8B1E81] transition-colors">
+            <h3 class="font-bold text-xl mb-2 group-hover:text-[#02308C] transition-colors">
               {feature.title}
             </h3>
             <p class="text-sm text-foreground-muted">
@@ -203,7 +214,7 @@ const features = [
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="star" size="sm" />
           Vorteile
         </span>
@@ -221,10 +232,10 @@ const features = [
             data-scroll="fade-up"
             data-delay={index + 1}
           >
-            <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
               <Icon name={benefit.icon} size="md" class="text-white" />
             </div>
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#8B1E81] transition-colors">
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
               {benefit.title}
             </h3>
             <p class="text-sm text-foreground-muted">
@@ -240,7 +251,7 @@ const features = [
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81] mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="message-circle" size="sm" />
           Erfolgsgeschichten
         </span>
@@ -261,12 +272,12 @@ const features = [
             data-scroll="scale"
             data-delay={index + 1}
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81]/0 to-[#6BDBD1]/0 group-hover:from-[#8B1E81]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
 
             <div class="relative space-y-4">
               <div class="flex items-center gap-3">
                 <div class="relative">
-                  <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] to-[#6BDBD1] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -275,9 +286,9 @@ const features = [
                   />
                 </div>
                 <div>
-                  <div class="font-bold group-hover:text-[#8B1E81] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
                   <div class="text-sm text-foreground-muted">{testimonial.role}</div>
-                  <div class="text-sm text-[#8B1E81] font-semibold">{testimonial.company}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
                 </div>
               </div>
 
@@ -296,7 +307,7 @@ const features = [
 
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
@@ -312,7 +323,7 @@ const features = [
           <Button
             size="lg"
             href="/testen"
-            class="bg-white text-[#8B1E81] hover:bg-gray-100"
+            class="bg-black text-white hover:bg-black/80"
           >
             Jetzt kostenlos testen
             <Icon name="arrow-right" size="sm" />
@@ -321,7 +332,7 @@ const features = [
             size="lg"
             variant="outline"
             href="/konzept"
-            class="border-2 border-white text-white hover:bg-white hover:text-[#8B1E81]"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
             Mehr erfahren
           </Button>

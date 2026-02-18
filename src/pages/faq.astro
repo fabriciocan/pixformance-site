@@ -59,7 +59,7 @@ const faqs = [
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8B1E81]/10 border border-[#8B1E81]/20 text-sm font-bold text-[#8B1E81]">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
             <Icon name="help-circle" size="sm" />
             FAQ
           </span>
@@ -67,7 +67,7 @@ const faqs = [
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
           Häufig gestellte Fragen
-          <span class="text-[#8B1E81]"> zu Pixformance</span>
+          <span class="text-[#02308C]"> zu Pixformance</span>
         </h1>
 
         <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
@@ -90,14 +90,14 @@ const faqs = [
             data-delay={Math.min(index + 1, 6)}
           >
             <div class="faq-header flex items-start gap-4">
-              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#8B1E81]/10 flex items-center justify-center group-hover:bg-[#8B1E81] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Icon name={faq.icon} size="md" class="text-[#8B1E81] group-hover:text-white transition-colors duration-300" />
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#02308C]/10 flex items-center justify-center group-hover:bg-[#02308C] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Icon name={faq.icon} size="md" class="text-[#02308C] group-hover:text-white transition-colors duration-300" />
               </div>
 
               <div class="flex-1">
-                <h3 class="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-[#8B1E81] transition-colors duration-300 flex items-center justify-between">
+                <h3 class="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-[#02308C] transition-colors duration-300 flex items-center justify-between">
                   {faq.question}
-                  <Icon name="chevron-down" size="sm" class="faq-chevron text-[#8B1E81] transition-transform duration-300 flex-shrink-0 ml-4" />
+                  <Icon name="chevron-down" size="sm" class="faq-chevron text-[#02308C] transition-transform duration-300 flex-shrink-0 ml-4" />
                 </h3>
 
                 <div class="faq-answer overflow-hidden transition-all duration-500" style="max-height: 0;">
@@ -128,7 +128,7 @@ const faqs = [
           data-scroll="scale"
           data-delay="1"
         >
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-[#8B1E81] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
             <Icon name="users" size="lg" class="text-white" />
           </div>
           <h3 class="font-bold text-xl mb-3 text-foreground">450.000+</h3>
@@ -168,7 +168,7 @@ const faqs = [
 
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#8B1E81] via-[#4A3D91] to-[#02308C]"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
@@ -189,7 +189,7 @@ const faqs = [
           <Button
             size="lg"
             href="/testen"
-            class="bg-white text-[#8B1E81] hover:bg-gray-100"
+            class="bg-black text-white hover:bg-black/80"
           >
             Kontakt aufnehmen
             <Icon name="mail" size="sm" />
@@ -198,7 +198,7 @@ const faqs = [
             size="lg"
             variant="outline"
             href="/konzept"
-            class="border-2 border-white text-white hover:bg-white hover:text-[#8B1E81]"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
             Mehr über Pixformance erfahren
             <Icon name="arrow-right" size="sm" />
