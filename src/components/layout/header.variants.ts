@@ -24,9 +24,9 @@ export const headerInnerVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-12',
-        md: 'h-14',
-        lg: 'h-16',
+        sm: 'h-14',
+        md: 'h-16 md:h-24',
+        lg: 'h-20 md:h-28',
       },
     },
     defaultVariants: {

@@ -4,8 +4,7 @@
 @import './tokens/spacing.css';
 @import './themes/pixformance.css';
 
-@import '@fontsource-variable/manrope';
-@import '@fontsource-variable/outfit';
+@import '@fontsource-variable/montserrat';
 
 @theme {
   /* Colors */
@@ -17,8 +16,8 @@
   --color-border: var(--border);
 
   /* Typography */
-  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Outfit Variable', var(--font-sans);
+  --font-sans: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Montserrat Variable', var(--font-sans);
 
   /* Border Radius */
   --radius-sm: 0.375rem;
