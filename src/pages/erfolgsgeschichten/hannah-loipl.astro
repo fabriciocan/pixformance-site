@@ -1,0 +1,427 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Neue Wege dank digitaler Rehabilitation - Hannah G. - Pixformance"
+  description="Motivation und Spaß beim Genesungsprozess in der Medical Park-Klinik Loipl. Hannah G. berichtet, wie digitales Training mit Pixformance ihre neurologische Reha verändert hat."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a
+            href="/erfolgsgeschichten"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+          >
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Übersicht
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="activity" size="sm" />
+            Klinik
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Neue Wege dank digitaler Rehabilitation
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Motivation und Spaß beim Genesungsprozess in der Medical Park-Klinik Loipl
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C] mb-8">
+          <p class="text-foreground italic text-base md:text-xl">
+            „Das Echtzeit-Feedback und die Anzeige der geschafften Wiederholungen nach jeder Übung zeigten mir, wie positiv ich mich entwickelte und motivierten mich beim Training."
+          </p>
+          <p class="text-sm text-foreground-muted mt-3 font-semibold">— Hannah G., ehemalige Patientin an der Medical Park-Klinik in Loipl</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/Hannah-Medical-Park-Loipl-Pixformance.jpg"
+                alt="Hannah G. - Patientin an der Medical Park-Klinik Loipl"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <!-- Info -->
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">
+                Hannah G.
+              </h2>
+              <p class="text-xl text-[#02308C] font-semibold">
+                Ehemalige Patientin
+              </p>
+            </div>
+
+            <!-- Klinik Info Card -->
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="activity" size="md" class="text-[#02308C]" />
+                Klinik Kurzprofil
+              </h3>
+
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Standort</p>
+                    <p class="text-sm">Bischofswiesen-Loipl, Bayerische Alpen</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="heart" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Schwerpunkte</p>
+                    <p class="text-sm">Neurologische und orthopädische Rehabilitation</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="star" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Besonderheit</p>
+                    <p class="text-sm">Einsatz modernster Technologien und Behandlungsmethoden</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Aufenthalt Hannah G.</p>
+                    <p class="text-sm">5 Wochen neurologische Reha</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Hochwertige Rehabilitation und patientenzentrierte Pflege
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Medical Park Loipl, gelegen in der malerischen Landschaft der Bayerischen Alpen, steht für hochwertige Rehabilitation und patientenzentrierte Pflege. Als renommierte Einrichtung bietet der Medical Park Loipl ein umfassendes Spektrum an Therapiemöglichkeiten, die sich insbesondere auf neurologische und orthopädische Rehabilitation konzentrieren. Die Klinik ist bekannt für ihren Einsatz modernster Technologien und Behandlungsmethoden.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Eine bedeutende Facette dieser fortschrittlichen Behandlungsansätze ist die Partnerschaft mit Pixformance. Medical Park Loipl integriert das Pixformance Konzept bereits sehr erfolgreich in seine Therapieprogramme. Diese Zusammenarbeit ermöglicht es Patienten, wie im Fall von Hannah, von einer personalisierten und technologisch unterstützten Therapie zu profitieren, die speziell auf ihre Bedürfnisse zugeschnitten ist.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Die Partnerschaft zwischen Medical Park Loipl und Pixformance ist ein Beispiel dafür, wie moderne Technologie erfolgreich in die Welt der Rehabilitation integriert werden kann, um die Genesung und das Training der Patienten effektiver, motivierender und messbarer zu gestalten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 1 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Hannah-Medical-Park-Loipl-Pixformance-1.jpg"
+            alt="Hannah G. beim Training mit Pixformance in der Medical Park-Klinik Loipl"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Fortschrittlicher Genesungsweg mit Spaß und Motivation – dank digitaler Technologie
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Im Rahmen einer neurologischen Reha war Hannah für fünf Wochen im Medical Park Loipl – mit einem klaren Ziel: die Verbesserung ihres Lymphflusses und die Stärkung ihres Gleichgewichts. Anfangs war dies eine Herausforderung, wie sie selbst sagt:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Ich war frustriert, weil ich viele Übungen nicht hinbekommen habe. Doch die Prozentzahlen und die Anzeige der geschafften Wiederholungen nach jeder Übung waren ein direktes Feedback, das mir zeigte, wie positiv ich mich entwickelte."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Mit jedem Trainingstag bei Pixformance machte Hannah spürbare Fortschritte.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Durch das direkte Feedback, dass ich jeden Tag ein paar mehr Wiederholungen geschafft habe, wurde die Motivation von Tag zu Tag größer."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Dies half ihr, anfängliche Hindernisse zu überwinden. Die intuitive Bedienung von Pixformance spielte eine wichtige Rolle in Hannahs Erfolg.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Die Bedienung der Station ist selbsterklärend und einfach in der Handhabung. Man kann einzelne Übungen bei Bedarf auch skippen."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Ein besonderes Highlight für Hannah waren die Squats mit Sidelift im Wechsel.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Hier kombinieren sich Kniebeugen mit Gleichgewichtsübungen zu einer tollen Mischung."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Besondere Motivation durch visuelles Echtzeit-Feedback und Trainingsauswertung
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Die visuellen Hinweise während des Trainings waren für Hannah von unschätzbarem Wert.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Erst damit waren die Übungen wirklich verständlich."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Und wenn die „100" auf dem Bildschirm erschien, war es für sie jedes Mal ein besonderer Moment.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Hannah blickt zurück auf eine erfolgreiche Zeit mit Pixformance im Medical Park Loipl.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Nach anfänglicher Skepsis habe ich richtig Spaß an Pixformance gefunden und finde es eine tolle Ergänzung zum Training am Gerät."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Hannah G.</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Durch ihre Erfahrung mit Pixformance und den erzielten Fortschritten empfiehlt sie das Pixformance Training anderen, die ähnliche Ziele verfolgen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#02308C] via-[#4A3D91] to-[#8B1E81]"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="xl" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+                  alt="Tobias Baader - COO"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+                <p class="text-lg text-[#02308C] font-semibold">COO</p>
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              href="/testen"
+              class="bg-[#02308C] hover:bg-[#4A3D91] text-white"
+            >
+              Schreiben Sie uns
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="/erfolgsgeschichten"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+        >
+          <Icon name="arrow-left" size="sm" />
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  /* Fade In Up */
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  /* Scale In */
+  [data-scroll="scale"] {
+    transform: scale(0.95);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-scroll attribute
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

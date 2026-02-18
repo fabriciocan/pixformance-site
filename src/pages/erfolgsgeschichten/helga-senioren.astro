@@ -1,0 +1,360 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Krafttraining für Senioren im Sitzen - Mehr Bewegung im Rollstuhl - Pixformance"
+  description="Helga, 84 Jahre, trainiert trotz Rollstuhl mit Pixformance und integriert Bewegung in ihren Alltag. Personalisiertes Training für jedes Alter und jeden Gesundheitszustand."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#6BDBD1]/20 to-[#02308C]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a
+            href="/erfolgsgeschichten"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+          >
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Übersicht
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#6BDBD1]/20 border border-[#6BDBD1]/40 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="zap" size="sm" />
+            Fitness
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Mehr Bewegung im Rollstuhl dank digitaler Unterstützung
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Krafttraining für Senioren im Sitzen – personalisiertes Training für jedes Alter und jeden Gesundheitszustand
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Quote -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+          <p class="text-foreground italic text-2xl md:text-3xl font-display font-bold leading-snug">
+            „Für mich war klar: Ich möchte aktiv bleiben."
+          </p>
+          <p class="text-sm text-foreground-muted mt-3 font-semibold">— Helga, 84 Jahre</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/pixformance-krafttraining-fuer-senioren-im-sitzen-fit-im-rollstuhl-1.jpg"
+                alt="Helga, 84 Jahre, beim Training mit Pixformance im Rollstuhl"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <!-- Info -->
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">
+                Helga
+              </h2>
+              <p class="text-xl text-[#02308C] font-semibold">
+                84 Jahre – Fitness-Studio-Mitglied
+              </p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <div class="space-y-6 text-foreground-muted">
+                <p class="text-base md:text-lg leading-relaxed">
+                  Mit 84 Jahren sitzt Helga im Rollstuhl. Das hindert sie aber nicht daran, regelmäßig mit ihrer Tochter das Fitnessstudio zu besuchen. Dank der Pixformance Station kann sie auch im Sitzen fleißig ihre Übungen trainieren.
+                </p>
+
+                <Card variant="elevated" padding="md" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+                  <p class="text-foreground italic text-sm md:text-base">
+                    „Ich muss ganz ehrlich sagen, es ist schön. Ich freue mich am meisten darüber, dass ich wieder in Bewegung komme. Als mein Bein abgenommen wurde, habe ich direkt gesagt, es muss für mich irgendwas geben, wo ich mich alleine gut betätigen kann. Nur alleine in der Wohnung zu sitzen – das ist nichts für mich."
+                  </p>
+                </Card>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Voller Motivation Bewegung in den Alltag integrieren
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Helga kann ihre Übungen an der digitalen Trainingsstation problemlos auch im Sitzen durchführen. Die Station erkennt ihren Nutzer und analysiert dessen Bewegungen — egal ob im Sitzen oder Stehen, ob groß oder klein. Das digitale Echtzeit-Feedback hilft ihr und spornt sie an, die Übungen diszipliniert durchzuführen. Die Übungen mit dem Stock sind ihre Lieblingsübungen. Das Boxen ist zwar manchmal anstrengend:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Da bin ich manchmal zu langsam und erreiche die Kreise nicht rechtzeitig. Aber Herausforderung muss ja schließlich auch sein, kann ja nicht immer alles nur Spaß machen."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Helga</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Vor allem die Trainingsergebnisse am Ende jeder Übung geben ihr einen großen Motivationsschub:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Da achte ich auch immer drauf, ich möchte nicht angeben, aber ich bin am Ende nur ganz selten unter 60 % und ganz häufig bei 100 %."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Helga</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/pixformance-krafttraining-fuer-senioren-im-sitzen-fit-im-rollstuhl-2.jpg"
+            alt="Helga beim Pixformance Training - Krafttraining für Senioren im Sitzen"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Spürbare Verbesserungen im Alltag
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Im Alltag merkt Helga durch das regelmäßige Training bereits deutliche Verbesserungen: Sie kann alleine aus dem Rollstuhl aufstehen und sich aufs Sofa oder ins Auto setzen. An guten Tagen schafft sie es sogar, die Treppe ohne Unterstützung zu laufen.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Auch wenn ich ein Handicap habe, muss ich nicht nur in der Wohnung sitzen. Deshalb gehe ich da auch ins Fitnessstudio und sage: Hier bin ich. Dann tue ich was für mich. Und dann hat sich der Tag wieder gelohnt."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Helga</p>
+            </Card>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            100 neue Übungen – davon viele im Sitzen
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Bei Pixformance ist es besonders wichtig, dass jedem Patienten, Mitglied und Trainierenden das perfekte Training geboten werden kann. Dafür wurden rund 100 neue Übungen entwickelt — darunter auch viele im Sitzen, speziell für Menschen im Rollstuhl wie Helga.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Aus einer vielseitigen Auswahl von über 270 funktionellen Übungen können personalisierte Trainingspläne erstellt, nachverfolgt und anhand der Trainingsfortschritte faktenbasiert optimiert werden.
+            </p>
+
+            <!-- Feature boxes -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+              <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 text-center">
+                <p class="text-3xl font-bold text-[#02308C] mb-2">270+</p>
+                <p class="text-sm text-foreground-muted">funktionelle Übungen</p>
+              </Card>
+              <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 text-center">
+                <p class="text-3xl font-bold text-[#02308C] mb-2">100+</p>
+                <p class="text-sm text-foreground-muted">neue Übungen darunter im Sitzen</p>
+              </Card>
+              <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 text-center">
+                <p class="text-3xl font-bold text-[#02308C] mb-2">84</p>
+                <p class="text-sm text-foreground-muted">Jahre alt – Training ohne Grenzen</p>
+              </Card>
+            </div>
+
+            <p class="text-base md:text-lg">
+              Das Krafttraining für Senioren im Sitzen ist dabei nicht nur in Fitnessstudios anwendbar, sondern ebenso in der Physiotherapie, Rehabilitation, Kliniken und in Seniorenheimen — für jeden individuellen Trainings- und Gesundheitszustand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#02308C] via-[#4A3D91] to-[#8B1E81]"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="xl" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+                  alt="Tobias Baader - COO"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+                <p class="text-lg text-[#02308C] font-semibold">COO</p>
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              href="/testen"
+              class="bg-[#02308C] hover:bg-[#4A3D91] text-white"
+            >
+              Schreiben Sie uns
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="/erfolgsgeschichten"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+        >
+          <Icon name="arrow-left" size="sm" />
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  [data-scroll="scale"] {
+    transform: scale(0.95);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

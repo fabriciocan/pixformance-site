@@ -1,0 +1,458 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Qualitätssteigerung durch digitale Trainingstherapie - Christoph Oratsch - Pixformance"
+  description="Das AUVA Unfallkrankenhaus Klagenfurt ist das erste Haus der AUVA-Gruppe mit digitalem Produkt in der Therapie. Therapieleiter Christoph Oratsch über den Einsatz von Pixformance."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a
+            href="/erfolgsgeschichten"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+          >
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Übersicht
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="activity" size="sm" />
+            Klinik
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Qualitätssteigerung durch digitale Trainingstherapie
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            AUVA Unfallkrankenhaus Klagenfurt am Wörthersee, Österreich
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Quote -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+          <p class="text-foreground italic text-base md:text-xl">
+            „Die Digitalisierung ist auch bei Kollegen oft Thema, jedoch fehlt häufig noch der letzte Schritt zur Umsetzung. Mit der Anschaffung der Pixformance Stationen sind wir bei der AUVA nun das erste Haus mit digitalem Produkt in der Therapie und übernehmen eine Vorreiterrolle. Da sind wir natürlich sehr stolz drauf."
+          </p>
+          <p class="text-sm text-foreground-muted mt-3 font-semibold">— Christoph Oratsch, Therapieleiter AUVA Unfallkrankenhaus Klagenfurt</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/christoph-oratsch-600x400-1.jpg"
+                alt="Christoph Oratsch - Therapieleiter AUVA Unfallkrankenhaus Klagenfurt"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <!-- Info -->
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">
+                Christoph Oratsch
+              </h2>
+              <p class="text-xl text-[#02308C] font-semibold">
+                Therapieleiter AUVA Unfallkrankenhaus Klagenfurt
+              </p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="activity" size="md" class="text-[#02308C]" />
+                Klinik Kurzprofil
+              </h3>
+
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Ort</p>
+                    <p class="text-sm">Klagenfurt, Österreich</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Gegründet</p>
+                    <p class="text-sm">1953</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="heart" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Schwerpunkt</p>
+                    <p class="text-sm">Unfallchirurgie, Orthopädie</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Patientenkapazität</p>
+                    <p class="text-sm">100 Betten</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Weitere Infos</p>
+                    <a
+                      href="https://www.ukhklagenfurt.at"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-[#02308C] hover:underline"
+                    >
+                      www.ukhklagenfurt.at
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Digitaler Vorreiter der AUVA-Gruppe
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Das Unfallkrankenhaus Klagenfurt am Wörthersee (UKH) gehört zur Gruppe der neun von der AUVA betriebenen Unfallkrankenhäuser. Es ist laut Therapieleiter Christoph Oratsch ein kleines, aber sehr modernes und fortschrittliches Krankenhaus mit stationären und ambulanten Versorgungsmöglichkeiten. Die Physiotherapie stellt ein wichtiges Standbein der Klinik dar und hilft den Patienten, ihre Bewegungs- und Funktionsfähigkeit zu verbessern, wiederherzustellen oder zu erhalten.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Oratsch sieht den Schritt in Richtung Digitalisierung nicht als Veränderung, sondern als zusätzliches Angebot und dadurch als Qualitätssteigerung für die Therapie. Vor der Investition haben sich der Therapieleiter und sein Team bei einer 6-monatigen Teststellung ein genaues Bild der Möglichkeiten mit Pixformance gemacht. Schlussendlich entschieden sie sich für vier Pixformance Stationen, die in einem Gruppentherapieraum platziert werden.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 1 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-2-web.jpg"
+            alt="Pixformance Trainingstherapie im AUVA Unfallkrankenhaus Klagenfurt"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Auf digitalem Weg die Selbstständigkeit der Patienten fordern
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Wenn ein Patient aufgenommen wird, wird zuerst überprüft, ob die Trainingstherapie mit Pixformance möglich ist — insbesondere ob die Belastungs- und Bewegungsvorgaben von chirurgischer Seite vorliegen. Ist das der Fall, wird ein individuelles Trainingsprogramm mit wenigen Klicks auf der Online-Plattform erstellt. Das erste Training findet unter therapeutischer Begleitung statt. Anschließend können die Patienten eigenständig vor der Station trainieren.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Pixformance ist für uns eine super Unterstützung, um das klassische Hausübungsprogramm zielgerichteter durchzuführen. Wir haben so eine bessere Trainingsplanung, da die Übungen individuell mit den Wiederholungen, Schwierigkeitsstufen, Laufzeit, etc. einzustellen sind, dass die Patienten genau das machen, was der Therapeut will. Außerdem hilft ihnen die Anleitung durch die Kurzvideos auf den Stationen ungemein bei der Übungsausführung."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Die Übungen sind abwechslungsreich und reichen weit über klassisches Krafttraining hinaus. Oratsch erklärt:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Wenn man Übungen nur ausdruckt, sträuben sich die Patienten oft, herausfordernde Übungen, die aber essenziell für den Therapieerfolg sind, auszuüben und stellen diese hinten an oder lassen sie ausfallen."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Dank der Anleitung durch den virtuellen Trainer werden die Patienten motiviert, ihre Übungen stets korrekt und sauber auszuführen — was sich positiv auf den langfristigen Therapieerfolg auswirkt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 2 – two images side by side -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-5-web.jpg"
+            alt="Patient beim Training an der Pixformance Station in Klagenfurt"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-7-web.jpg"
+            alt="Therapeut und Patient bei der Pixformance Trainingstherapie"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Intensive Patientenbetreuung auch über den Klinikaufenthalt hinaus
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Über das Training vor Ort in Klagenfurt hinaus wird jedem Patienten die Pixformance App empfohlen — vor allem im ambulanten Bereich, um die Trainingstherapie zuhause zu festigen. Oratsch erzählt von einem elfjährigen Patienten, dessen Familie während der Therapie eine COVID-Infektion durchmachte. Vier Wochen lang konnte er nicht in die Klinik kommen — dank der Pixformance App trainierte er trotzdem weiter. Bei seiner Rückkehr waren deutliche Fortschritte erkennbar.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Kürzlich erst haben wir eine junge Dame nach einer Schulteroperation telegestützt mithilfe der Pixformance App begleitet. Sie kommt dann einmal die Woche in die Klinik und macht die restliche Therapie zuhause. Das ist eine wirklich tolle Möglichkeit für nicht so mobile Patienten."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Christoph Oratsch</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Das Feedback der Patienten ist generell sehr positiv — Oratsch berichtet sogar von Patienten, die von sich aus ein Trainingsprogramm anfragen.
+            </p>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Zeitgewinn und mehr Patienten bei gleicher Personalressource
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Neben den Vorteilen für die Patienten profitieren auch die Therapeuten des UKH von der digitalen Unterstützung.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Durch Pixformance haben wir einen enormen Zeitgewinn. Wir können leichter mehr Patienten versorgen, bei gleicher Personalressource."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Christoph Oratsch</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Zudem lobt er die große Individualisierbarkeit der Pixformance Übungen: Von 18 bis 75 Jahren, von Kreuzbandriss bis Schulterverletzungen — für alle Patienten kann das passende Trainingsprogramm angeboten werden.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 3 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-4.web_.jpg"
+            alt="Pixformance Trainingstherapie AUVA Klagenfurt"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#02308C] via-[#4A3D91] to-[#8B1E81]"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="xl" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+                  alt="Tobias Baader - COO"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+                <p class="text-lg text-[#02308C] font-semibold">COO</p>
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              href="/testen"
+              class="bg-[#02308C] hover:bg-[#4A3D91] text-white"
+            >
+              Schreiben Sie uns
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="/erfolgsgeschichten"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+        >
+          <Icon name="arrow-left" size="sm" />
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  [data-scroll="scale"] {
+    transform: scale(0.95);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
