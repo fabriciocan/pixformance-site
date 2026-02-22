@@ -16,9 +16,9 @@ const tabs = [
 ];
 
 const stats = [
-  { value: '450.000+', label: 'Trainierende / Jahr', icon: 'users' },
-  { value: '600+', label: 'Kliniken & Rehazentren', icon: 'building' },
-  { value: '500+', label: 'Funktionelle Übungen', icon: 'zap' },
+  { value: '450.000+', count: 450000, suffix: '+', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: '600+', count: 600, suffix: '+', label: 'Kliniken & Rehazentren', icon: 'globe' },
+  { value: '500+', count: 500, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
 ];
 
 const benefits = [
@@ -47,7 +47,7 @@ const benefits = [
     gradient: 'from-[#6BDBD1] to-[#86C9BC]',
   },
   {
-    icon: 'target',
+    icon: 'check-circle',
     title: 'Therapietreue',
     description: 'Gamification-Elemente erhöhen die Motivation und damit die Therapietreue.',
     gradient: 'from-[#86C9BC] to-[#02308C]',
@@ -86,7 +86,7 @@ const testimonials = [
 
 const features = [
   {
-    icon: 'camera',
+    icon: 'eye',
     title: '2D Full-HD Kamera',
     description: 'Erfasst 25 Gelenkpunkte in Echtzeit für präzise Bewegungsanalyse',
   },
@@ -96,7 +96,7 @@ const features = [
     description: 'Zeigt Übungen am 43" Display und gibt visuelles Feedback',
   },
   {
-    icon: 'activity',
+    icon: 'zap',
     title: 'Echtzeit-Korrektur',
     description: 'Sofortiges Feedback zur Bewegungsausführung während des Trainings',
   },
@@ -117,22 +117,17 @@ const features = [
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
-            <Icon name="activity" size="sm" />
-            Klinik & Rehabilitation
+            <Icon name="zap" size="sm" />
+            Innovatives, Reha Sportgerät für Klinik und Rehabilitation
           </span>
         </div>
 
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Innovatives digitales
-          <span class="text-[#02308C]"> Reha-Sportgerät</span>
+        <h1 class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          Aktivieren Sie Ihre Patienten und entlasten Sie Ihre Therapeuten.
         </h1>
 
-        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
-          Für Klinik und Rehabilitation
-        </p>
-
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Steigern Sie die Effizienz Ihrer Therapie und entlasten Sie Ihr Personal mit der führenden digitalen Trainingslösung für Rehakliniken.
+          Die Pixformance Station ist ein innovatives Reha Sportgerät und bietet Patienten ein sicheres Training im Rahmen einer Bewegungstherapie – ganz individuell, je nach Indikation und Gesundheitszustand. Das Reha Sportgerät wurde entwickelt, um Patienten bei einer Reha-Therapie zu mehr Bewegung zu aktivieren und Therapeuten bei der Betreuung zu entlasten. 
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
@@ -151,7 +146,7 @@ const features = [
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Beratung anfragen
-            <Icon name="headphones" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
+            <Icon name="phone" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
 
@@ -159,7 +154,12 @@ const features = [
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
-              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
+              <div
+                class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter"
+                data-count={stat.count}
+                data-suffix={stat.suffix}
+                data-large={stat.count >= 10000 ? 'true' : 'false'}
+              >
                 {stat.value}
               </div>
               <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
@@ -252,7 +252,7 @@ const features = [
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="message-circle" size="sm" />
+          <Icon name="check-circle" size="sm" />
           Erfolgsgeschichten
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
@@ -293,8 +293,7 @@ const features = [
               </div>
 
               <div class="relative">
-                <Icon name="quote" size="lg" class="text-[#6BDBD1]/20 absolute -top-1 -left-1" />
-                <p class="text-sm text-foreground-muted italic leading-relaxed pl-6 relative">
+                <p class="text-sm text-foreground-muted italic leading-relaxed border-l-2 border-[#6BDBD1] pl-4">
                   "{testimonial.quote}"
                 </p>
               </div>
@@ -429,8 +428,50 @@ const features = [
     });
   }, observerOptions);
 
-  // Observe all elements with data-scroll attribute
   document.querySelectorAll('[data-scroll]').forEach((el) => {
     observer.observe(el);
+  });
+
+  // Counter animation for stats
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.count || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const isLarge = el.dataset.large === 'true';
+    const duration = 1800;
+    const start = performance.now();
+
+    function formatNumber(n: number): string {
+      if (isLarge) {
+        return n.toLocaleString('de-DE');
+      }
+      return n.toString();
+    }
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = formatNumber(current) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target as HTMLElement);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-counter').forEach((el) => {
+    counterObserver.observe(el);
   });
 </script>

@@ -17,7 +17,7 @@ const tabs = [
 
 const benefits = [
   {
-    icon: 'layers',
+    icon: 'monitor',
     title: '500+ Übungen – ein Gerät',
     description: 'Auf der Online Plattform können individuelle Trainingspläne aus einer Sammlung von über 500 funktionellen Übungen zusammengestellt werden.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
@@ -35,19 +35,19 @@ const benefits = [
     gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
   {
-    icon: 'file-text',
+    icon: 'table',
     title: 'Effiziente Verwaltung',
     description: 'Auf der Online Plattform wird der Trainingsverlauf jedes Patienten für eine Trainingsanalyse und -optimierung exakt dokumentiert.',
     gradient: 'from-[#6BDBD1] to-[#86C9BC]',
   },
   {
-    icon: 'target',
+    icon: 'heart',
     title: 'Individuelles Training',
     description: 'Trainingsprogramme können auf den Gesundheitszustand und den Therapiebedarf jedes Patienten zugeschnitten werden.',
     gradient: 'from-[#86C9BC] to-[#02308C]',
   },
   {
-    icon: 'clock',
+    icon: 'zap',
     title: 'Zeit für das Wesentliche',
     description: 'Der Therapeut muss nicht jede Übung persönlich vormachen und spart Zeit – was wiederum der Betreuung aller Patienten zugutekommt.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
@@ -119,9 +119,9 @@ const testimonials = [
           </span>
         </div>
 
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digitale Bewegungstherapie
-          <span class="text-[#02308C]"> für Ihre Praxis</span>
+        <h1 class="font-display text-xl md:text-xll lg:text-xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Digitale 
+          <span class="text-[#02308C]"> Bewegungstherapie</span>
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
@@ -173,29 +173,9 @@ const testimonials = [
 
           <p class="text-lg text-foreground-muted leading-relaxed">
             Unsere Mission ist es – mit der besten Technologie für digitale Bewegungsanalyse – eine individuelle Lösung für Therapeuten und deren ganz spezielle Patienten zu kreieren.
+            Die digitale Bewegungstherapie von Pixformance entlastet bei der Übungsanleitung und begleitet Patienten somit höchst effektiv auf dem Genesungsweg.
           </p>
 
-          <div class="grid md:grid-cols-2 gap-6 pt-4">
-            <div class="space-y-3">
-              <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center">
-                <Icon name="check" size="md" class="text-white" />
-              </div>
-              <h3 class="font-bold text-lg">Echtzeit-Korrektur</h3>
-              <p class="text-sm text-foreground-muted">
-                Präzises Feedback während der Übungsausführung.
-              </p>
-            </div>
-
-            <div class="space-y-3">
-              <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center">
-                <Icon name="zap" size="md" class="text-white" />
-              </div>
-              <h3 class="font-bold text-lg">Therapeuten entlasten</h3>
-              <p class="text-sm text-foreground-muted">
-                Mehr Zeit für individuelle Betreuung.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div class="relative" data-scroll="slide-right">
@@ -210,10 +190,38 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Echtzeit-Korrektur Highlight -->
+  <section class="py-20 bg-[#02308C] relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute top-1/2 right-1/3 w-40 h-40 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-6" data-scroll="fade-up">
+
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1]">
+          <Icon name="zap" size="sm" />
+          Live-Technologie
+        </span>
+
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Echtzeit-Korrektur
+        </h2>
+
+        <p class="text-xl text-white/70 max-w-2xl mx-auto">
+          Präzises Feedback während der Übungsausführung.
+        </p>
+
+
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
-  <section class="py-12 md:py-20 bg-white">
+  <section class="py-16 md:py-24 bg-white">
     <div class="container">
-      <div class="text-center mb-8" data-scroll="fade-up">
+      <div class="text-center mb-14" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="sparkles" size="sm" />
           Korrektur in Echtzeit
@@ -226,30 +234,39 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
         {features.map((feature, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="scale"
+          <div
+            class="group flex flex-col"
+            data-scroll="fade-up"
             data-delay={index + 1}
           >
-            <div class="relative h-64 overflow-hidden rounded-lg mb-4">
+            <!-- Step number -->
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-5xl font-bold text-[#02308C]/10 leading-none select-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div class="h-px flex-1 bg-[#02308C]/10"></div>
+            </div>
+
+            <!-- GIF container — flex-1 makes all same height, object-contain shows full image -->
+            <div class="flex-1 rounded-2xl overflow-hidden bg-gray-50 shadow-md group-hover:shadow-xl transition-shadow duration-500 mb-5 flex items-center justify-center">
               <img
                 src={feature.image}
                 alt={feature.title}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                class="w-full h-full object-contain block"
                 loading="lazy"
               />
             </div>
+
+            <!-- Text -->
             <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors duration-300">
               {feature.title}
             </h3>
-            <p class="text-sm text-foreground-muted">
+            <p class="text-sm text-foreground-muted leading-relaxed">
               {feature.description}
             </p>
-          </Card>
+          </div>
         ))}
       </div>
     </div>
@@ -291,6 +308,118 @@ const testimonials = [
             </p>
           </Card>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Individuelle Lösung Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-14 max-w-3xl mx-auto" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="layout" size="sm" />
+          Flexibilität
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Ihre individuelle Lösung
+        </h2>
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          Mit Pixformance haben Sie maximale Flexibilität. Sie können Ihre Patienten über das Rezept hinaus zu gesunden, treuen und zahlenden Kunden transformieren und Ihre Einrichtung mit digitaler, innovativer Trainingsausstattung auf ein ganz neues Level heben.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- Card 1 Station -->
+        <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="1">
+          <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center mb-4">
+              <Icon name="monitor" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">1</div>
+            <h3 class="text-xl font-bold text-gray-900">Station</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              Schon mit einer Station ist ein Einzeltraining mit und ohne Therapeut in jedes bestehende Praxiskonzept integrierbar.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Für 1–2 Trainierende
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Für kleinere und mittelgroße Praxen mit begrenztem Platz
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Benötigt nur ca. 6 m² Fläche
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 Stationen — destaque -->
+        <div class="flex flex-col rounded-2xl bg-[#02308C] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden ring-2 ring-[#6BDBD1]" data-scroll="fade-up" data-delay="2">
+          <div class="px-6 pt-8 pb-6 border-b border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
+              <Icon name="users" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#6BDBD1] leading-none mb-1">2</div>
+            <h3 class="text-xl font-bold text-white">Stationen</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-white/70 leading-relaxed">
+              Schon mit zwei Stationen sind Einzeltrainings sowie das Training in der Kleingruppe möglich.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Für bis zu 4 Trainierende
+              </li>
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Für mittelgroße Praxen
+              </li>
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Benötigt nur ca. 20 m² Fläche
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3+ Stationen -->
+        <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="3">
+          <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center mb-4">
+              <Icon name="trending-up" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">3+</div>
+            <h3 class="text-xl font-bold text-gray-900">Stationen</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              Ab drei Stationen sind abwechslungsreiche Einzeltrainings sowie Gruppenkurse als eigenes innovatives Trainingskonzept möglich.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Ab 5 Trainierenden
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Für mittlere bis große Einrichtungen
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Integrierbar ab ca. 30 m² Fläche
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
