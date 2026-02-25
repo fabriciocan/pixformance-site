@@ -1,47 +1,59 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PixformanceLogo from '@/components/PixformanceLogo.astro';
-import Card from '@/components/ui/data-display/Card/Card.astro';
-import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import Button from '@/components/ui/form/Button/Button.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HeaderWithDropdown from "@/components/layout/HeaderWithDropdown.astro";
+import Footer from "@/components/layout/Footer.astro";
+import PixformanceLogo from "@/components/PixformanceLogo.astro";
+import Card from "@/components/ui/data-display/Card/Card.astro";
+import Icon from "@/components/ui/primitives/Icon/Icon.astro";
+import Button from "@/components/ui/form/Button/Button.astro";
 
 const faqs = [
   {
-    question: 'Ist die Pixformance Station für meine Einrichtung geeignet?',
-    answer: 'Mit über 450.000 Trainierenden pro Jahr wird Pixformance bereits in Fitnessclubs, Unternehmen, Physiotherapie Praxen und Reha-Kliniken eingesetzt.\n\nVon der ersten Planung der Räume über die Installation der notwendigen Ausrüstung bis hin zur Aufrechterhaltung einer optimalen Trainingssteuerung: Wir erstellen das richtige Fitness- und Gesundheitsprogramm für Ihre Einrichtung – ganz nach Ihren Wünschen und Anforderungen.\n\nIhr persönlicher Berater begleitet Sie auf Ihrem Weg zum Erfolg und macht Pixformance zur perfekten Lösung für Sie.',
-    icon: 'check-circle',
+    question: "Ist die Pixformance Station für meine Einrichtung geeignet?",
+    answer: `<p>Mit über 450.000 Trainierenden pro Jahr wird Pixformance bereits in Fitnessclubs, Unternehmen, Physiotherapie Praxen und Reha-Kliniken eingesetzt.</p>
+<p>Von der ersten Planung der Räume über die Installation der notwendigen Ausrüstung bis hin zur Aufrechterhaltung einer optimalen Trainingssteuerung: Wir erstellen das richtige Fitness- und Gesundheitsprogramm für Ihre Einrichtung – ganz nach Ihren Wünschen und Anforderungen.</p>
+<p>Ihr persönlicher Berater begleitet Sie auf Ihrem Weg zum Erfolg und macht Pixformance zur perfekten Lösung für Sie.</p>`,
+    icon: "check-circle",
   },
   {
-    question: 'Wurde die Pixformance Station dazu entwickelt, einen echten Trainer oder Therapeuten zu ersetzen?',
-    answer: 'Keinesfalls. Pixformance steht nicht im Wettbewerb mit Personal Trainern oder Therapeuten, sondern ist eine höchst effektive und sichere Unterstützung für sie. Mit Pixformance bieten Personal Trainer und Therapeuten Ihren Mitgliedern und Patienten eine effiziente und intelligente Möglichkeit, optimal, messbar und besonders sicher zu trainieren.\n\nDie Pixformance Station verfügt über einen virtuellen Trainer, welcher die Übung vorführt. Außerdem erhält der Trainierende ein Echtzeit-Feedback während der Übungsausführung, welches Verbesserungshinweise liefert. Dies ermöglicht es Trainierenden, auch eigenständig und ohne menschliche Aufsicht zu trainieren, so dass ein Personal Trainer oder Therapeut mehrere Personen gleichzeitig betreuen kann. Dennoch kann und soll die Pixformance Station die persönliche Betreuung und Aufmerksamkeit eines Menschen niemals ersetzen, sondern Trainer und Therapeuten effektiv bei ihrer Arbeit unterstützen.',
-    icon: 'users',
+    question:
+      "Wurde die Pixformance Station dazu entwickelt, einen echten Trainer oder Therapeuten zu ersetzen?",
+    answer: `<p>Keinesfalls. Pixformance steht nicht im Wettbewerb mit Personal Trainern oder Therapeuten, sondern ist eine höchst effektive und sichere Unterstützung für sie. Mit Pixformance bieten Personal Trainer und Therapeuten Ihren Mitgliedern und Patienten eine effiziente und intelligente Möglichkeit, optimal, messbar und besonders sicher zu trainieren.</p>
+<p>Die Pixformance Station verfügt über einen virtuellen Trainer, welcher die Übung vorführt. Außerdem erhält der Trainierende ein Echtzeit-Feedback während der Übungsausführung, welches Verbesserungshinweise liefert. Dies ermöglicht es Trainierenden, auch eigenständig und ohne menschliche Aufsicht zu trainieren, so dass ein Personal Trainer oder Therapeut mehrere Personen gleichzeitig betreuuen kann. Dennoch kann und soll die Pixformance Station die persönliche Betreuung und Aufmerksamkeit eines Menschen niemals ersetzen, sondern Trainer und Therapeuten effektiv bei ihrer Arbeit unterstützen.</p>`,
+    icon: "users",
   },
   {
-    question: 'Wie groß ist die Pixformance Station?',
-    answer: 'Die Maße der Pixformance Station sind 128,5 cm x 76 cm x 50,0 cm.',
-    icon: 'maximize',
+    question: "Wie groß ist die Pixformance Station?",
+    answer: `<p>Die Maße der Pixformance Station sind 128,5 cm x 76 cm x 50,0 cm.</p>
+<p><img src="https://www.pixformance.com/wp-content/uploads/2020/03/masse-pixformance-station-functional-training-fitness-physio-training-digital-ehealth-300x241.png" alt="Die Pixformance Station 2.0 ist 76 cm breit, 50 cm tief und 128,5 cm hoch." width="300" height="241" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px;" /></p>`,
+    icon: "maximize",
   },
   {
-    question: 'Wie viel Platz wird für das Training mit Pixformance benötigt?',
-    answer: 'Der Abstand vom Gerät beträgt ca. 1,60 m bis 2,30 m zum Trainierenden und 1,0 m bis 1,5 m zu jeder Seite.\n\nDer Platz in Ihrer Einrichtung ist begrenzt? Wir bieten Ihnen eine individuelle Lösung, die auf Ihre Bedürfnisse zugeschnitten ist.',
-    icon: 'move',
+    question: "Wie viel Platz wird für das Training mit Pixformance benötigt?",
+    answer: `<p>Der Abstand vom Gerät beträgt ca. <strong>1,60 m bis 2,30 m</strong> zum Trainierenden und <strong>1,0 m bis 1,5 m</strong> zu jeder Seite.</p>
+<p><img src="https://www.pixformance.com/wp-content/uploads/2020/03/Pixformance-Station-2-0-Abmessungen-dimension-functional-training-fitness-physio-training-digital-ehealth-300x300.png" alt="Der Abstand zum Trainierenden von der Pixformance Station 2.0 sollte 1,60 - 2,30 m betragen. Zudem sollte zu jeder Seite 1,0 bis 1,5 m Platz sein." width="300" height="300" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;" /></p>
+<p>Der Platz in Ihrer Einrichtung ist begrenzt? Wir bieten Ihnen eine individuelle Lösung, die auf Ihre Bedürfnisse zugeschnitten ist.</p>`,
+    icon: "move",
   },
   {
-    question: 'Funktioniert die Pixformance Station mit WLAN?',
-    answer: 'Die Pixformance Station selbst kann nicht mit einem WLAN-Netzwerk verbunden werden. Es ist eine permanente Verbindung der Station mit dem Internet über ein LAN-Kabel erforderlich. Wenn Sie die Pixformance Station jedoch nicht direkt an das LAN-Netzwerk anschließen können, ist es möglich, eine Internetverbindung über einen WLAN-Repeater bzw. mobilen Router mit integrierter LAN-Buchse herzustellen.',
-    icon: 'wifi',
+    question: "Funktioniert die Pixformance Station mit WLAN?",
+    answer: `<p>Die Pixformance Station selbst kann nicht mit einem WLAN-Netzwerk verbunden werden. Es ist eine permanente Verbindung der Station mit dem Internet über ein LAN-Kabel erforderlich. Wenn Sie die Pixformance Station jedoch nicht direkt an das LAN-Netzwerk anschließen können, ist es möglich, eine Internetverbindung über einen WLAN-Repeater bzw. mobilen Router mit integrierter LAN-Buchse herzustellen.</p>`,
+    icon: "wifi",
   },
   {
-    question: 'Welche örtlichen Voraussetzungen sollten bei der Nutzung der Pixformance Station erfüllt werden?',
-    answer: 'Die Station kann nur im Innenbereich betrieben werden.\n\nIhre Trainingsfläche sollte ebeneerdig, schwingungsarm und nicht reflektierend sein.\n\nDamit die Kamera optimal funktioniert, vermeiden Sie direktes Sonnenlicht und frontalen Lichteinfall.',
-    icon: 'map-pin',
+    question:
+      "Welche örtlichen Voraussetzungen sollten bei der Nutzung der Pixformance Station erfüllt werden?",
+    answer: `<p>Die Station kann <strong>nur im Innenbereich</strong> betrieben werden.</p>
+<p>Ihre Trainingsfläche sollte ebenerdig, schwingungsarm und nicht reflektierend sein.</p>
+<p>Damit die Kamera optimal funktioniert, vermeiden Sie direktes Sonnenlicht und frontalen Lichteinfall.</p>`,
+    icon: "map-pin",
   },
   {
-    question: 'Wird ein Hard- und Software Support nach dem Kauf der Pixformance Station angeboten?',
-    answer: 'Sollten Hardware-Probleme auftreten (Kamera, Sensor, Computer oder Bildschirm), stellen wir Ihnen die Ersatzteile zur Verfügung. Auch bei Softwareproblemen ist unser Support Team jederzeit telefonisch für Sie da.\n\nAutomatische Updates für die Pixformance Station, neue Workouts, aber auch Aktualisierungen auf der Pixformance Online Plattform, gehören für uns übrigens zum Service und stehen Ihnen kostenlos zur Verfügung.',
-    icon: 'settings',
+    question:
+      "Wird ein Hard- und Software Support nach dem Kauf der Pixformance Station angeboten?",
+    answer: `<p>Sollten Hardware-Probleme auftreten (Kamera, Sensor, Computer oder Bildschirm), stellen wir Ihnen die Ersatzteile zur Verfügung. Auch bei Softwareproblemen ist unser Support Team jederzeit telefonisch für Sie da.</p>
+<p>Automatische Updates für die Pixformance Station, neue Workouts, aber auch Aktualisierungen auf der Pixformance Online Plattform, gehören für uns übrigens zum Service und stehen Ihnen kostenlos zur Verfügung.</p>`,
+    icon: "settings",
   },
 ];
 ---
@@ -55,23 +67,28 @@ const faqs = [
   </HeaderWithDropdown>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-[#6BDBD1]/10 to-[#86C9BC]/10 overflow-hidden py-12 md:py-16">
+  <section
+    class="relative bg-gradient-to-br from-[#6BDBD1]/10 to-[#86C9BC]/10 overflow-hidden py-12 md:py-16"
+  >
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
-            <Icon name="help-circle" size="sm" />
-            FAQ
-          </span>
         </div>
 
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Häufig gestellte Fragen
-          <span class="text-[#02308C]"> zu Pixformance</span>
+        <h1
+          class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate"
+          style="animation-delay: 0.2s;"
+        >
+          Funktionelles Training
+          <span class="text-[#02308C]"> mit Pixformance</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          Funktionelles Training mit Pixformance – Alle Antworten auf Ihre Fragen
+        <p
+          class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate"
+          style="animation-delay: 0.3s;"
+        >
+          Was ist beim funktionellen Training mit der Pixformance Station zu
+          beachten?
         </p>
       </div>
     </div>
@@ -81,108 +98,71 @@ const faqs = [
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="max-w-4xl mx-auto space-y-6">
-        {faqs.map((faq, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] bg-white cursor-pointer faq-card"
-            data-scroll="fade-up"
-            data-delay={Math.min(index + 1, 6)}
-          >
-            <div class="faq-header flex items-start gap-4">
-              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#02308C]/10 flex items-center justify-center group-hover:bg-[#02308C] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Icon name={faq.icon} size="md" class="text-[#02308C] group-hover:text-white transition-colors duration-300" />
-              </div>
+        {
+          faqs.map((faq, index) => (
+            <Card
+              variant="elevated"
+              padding="lg"
+              class="group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] bg-white cursor-pointer faq-card"
+              data-scroll="fade-up"
+              data-delay={Math.min(index + 1, 6)}
+            >
+              <div class="faq-header flex items-start gap-4">
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-[#02308C] transition-colors duration-300 flex items-center justify-between">
+                    {faq.question}
+                    <Icon
+                      name="chevron-down"
+                      size="sm"
+                      class="faq-chevron text-[#02308C] transition-transform duration-300 flex-shrink-0 ml-4"
+                    />
+                  </h3>
 
-              <div class="flex-1">
-                <h3 class="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-[#02308C] transition-colors duration-300 flex items-center justify-between">
-                  {faq.question}
-                  <Icon name="chevron-down" size="sm" class="faq-chevron text-[#02308C] transition-transform duration-300 flex-shrink-0 ml-4" />
-                </h3>
-
-                <div class="faq-answer overflow-hidden transition-all duration-500" style="max-height: 0;">
-                  <div class="pt-2 space-y-3">
-                    {faq.answer.split('\n\n').map((paragraph) => (
-                      <p class="text-foreground-muted leading-relaxed">
-                        {paragraph}
-                      </p>
-                    ))}
+                  <div
+                    class="faq-answer overflow-hidden transition-all duration-500"
+                    style="max-height: 0;"
+                  >
+                    <div class="pt-2 space-y-3 prose prose-blue max-w-none text-foreground-muted leading-relaxed">
+                      <Fragment set:html={faq.answer} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Info Cards Section -->
-  <section class="py-12 md:py-20 bg-gray-50">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <Card
-          variant="elevated"
-          padding="lg"
-          class="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
-          data-scroll="scale"
-          data-delay="1"
-        >
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <Icon name="users" size="lg" class="text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-foreground">450.000+</h3>
-          <p class="text-foreground-muted">Trainierende pro Jahr</p>
-        </Card>
-
-        <Card
-          variant="elevated"
-          padding="lg"
-          class="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
-          data-scroll="scale"
-          data-delay="2"
-        >
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-[#6BDBD1] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <Icon name="map-pin" size="lg" class="text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-foreground">600+</h3>
-          <p class="text-foreground-muted">Installationen weltweit</p>
-        </Card>
-
-        <Card
-          variant="elevated"
-          padding="lg"
-          class="text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
-          data-scroll="scale"
-          data-delay="3"
-        >
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <Icon name="headphones" size="lg" class="text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-foreground">24/7</h3>
-          <p class="text-foreground-muted">Support für unsere Kunden</p>
-        </Card>
+            </Card>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"
+    >
+    </div>
 
     <div class="container relative">
-      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
-        <div class="w-20 h-20 mx-auto rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6">
+      <div
+        class="max-w-4xl mx-auto text-center space-y-8"
+        data-scroll="fade-up"
+      >
+        <div
+          class="w-20 h-20 mx-auto rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6"
+        >
           <Icon name="message-circle" size="lg" class="text-white" />
         </div>
 
-        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+        <h2
+          class="font-display text-4xl md:text-6xl font-bold text-white leading-tight"
+        >
           Wir beraten Sie gerne
         </h2>
 
         <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Viele Fragen lassen sich persönlich einfach schneller klären.
-          Wir freuen uns über Ihre Nachricht!
+          Viele Fragen lassen sich persönlich einfach schneller klären. Wir
+          freuen uns über Ihre Nachricht!
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center pt-4">
@@ -210,7 +190,10 @@ const faqs = [
             <Icon name="phone" size="md" />
             <div class="text-left">
               <p class="text-sm font-semibold">Telefon</p>
-              <a href="tel:+4930398056100" class="hover:text-white transition-colors">
+              <a
+                href="tel:+4930398056100"
+                class="hover:text-white transition-colors"
+              >
                 +49 (0)30 39 80 56 10
               </a>
             </div>
@@ -220,7 +203,10 @@ const faqs = [
             <Icon name="mail" size="md" />
             <div class="text-left">
               <p class="text-sm font-semibold">E-Mail</p>
-              <a href="mailto:info@pixformance.com" class="hover:text-white transition-colors">
+              <a
+                href="mailto:info@pixformance.com"
+                class="hover:text-white transition-colors"
+              >
                 info@pixformance.com
               </a>
             </div>
@@ -262,7 +248,9 @@ const faqs = [
   /* Scroll Animation Styles */
   [data-scroll] {
     opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   [data-scroll].is-visible {
@@ -336,38 +324,38 @@ const faqs = [
   // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: "0px 0px -50px 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+        entry.target.classList.add("is-visible");
       }
     });
   }, observerOptions);
 
   // Observe all elements with data-scroll attribute
-  document.querySelectorAll('[data-scroll]').forEach((el) => {
+  document.querySelectorAll("[data-scroll]").forEach((el) => {
     observer.observe(el);
   });
 
   // FAQ Accordion functionality
-  document.querySelectorAll('.faq-card').forEach((card) => {
-    const header = card.querySelector('.faq-header');
+  document.querySelectorAll(".faq-card").forEach((card) => {
+    const header = card.querySelector(".faq-header");
 
-    header?.addEventListener('click', () => {
-      const isActive = card.classList.contains('active');
+    header?.addEventListener("click", () => {
+      const isActive = card.classList.contains("active");
 
       // Close all other FAQs
-      document.querySelectorAll('.faq-card').forEach((otherCard) => {
+      document.querySelectorAll(".faq-card").forEach((otherCard) => {
         if (otherCard !== card) {
-          otherCard.classList.remove('active');
+          otherCard.classList.remove("active");
         }
       });
 
       // Toggle current FAQ
-      card.classList.toggle('active', !isActive);
+      card.classList.toggle("active", !isActive);
     });
   });
 </script>
