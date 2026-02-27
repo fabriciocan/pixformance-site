@@ -1,0 +1,895 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const stats = [
+  { value: '750.000+', count: 750000, suffix: '+', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: '1100+', count: 1100, suffix: '+', label: 'Kliniken & Rehazentren', icon: 'globe' },
+  { value: '600+', count: 600, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
+];
+
+const testimonials = [
+  {
+    name: 'Martijn Van Der Pijl',
+    role: 'Inhaber',
+    company: 'SlimBezig! in Veldhoven, Niederlande',
+    image: '/images/SlimBezig_Martijn-Van-Der-Pijl-300x298.png',
+    quote: 'Mit Pixformance bieten wir ein breites Spektrum an funktionellen Übungen und ein digitales Personal Training, mit dem unsere Trainer die Mitglieder herausfordern können. Darüber hinaus können die Übungen auch ohne Trainer verantwortungsvoll durchgeführt werden.',
+  },
+  {
+    name: 'Esther van der Land',
+    role: 'Inhaberin',
+    company: 'Boutique Studio FemmeFit in Naarden, Niederlande',
+    image: '/images/esther-van-der-land-FemmeFit-Naarden.png',
+    quote: 'Pixformance steht für kontinuierliches und nachhaltiges Umsatzwachstum und zufriedenere Mitglieder, die bleiben.',
+  },
+  {
+    name: 'Erwin Kuglmeier',
+    role: 'Inhaber',
+    company: 'Fitnessclub California',
+    image: '/images/Erwin-Kuglmeier-Fitness-California-Pixformance-300x300.png',
+    quote: 'Meine Mitglieder können mit Pixformance individuell angeleitet und für das Training motiviert werden. Besonders gefällt mir, dass das Handling sehr einfach ist und die Station wenig Platz braucht!',
+  },
+  {
+    name: 'Kim Essink',
+    role: 'Inhaberin',
+    company: 'Fitnessclub Essink in Eindhoven',
+    image: '/images/Pixformance-Kim-Essink.png',
+    quote: 'Wir haben uns bewusst für Pixformance entschieden, weil wir die Gelegenheit erkannt haben und uns sicher waren, dass sich unser Investment schnell auszahlen würde.',
+  },
+  {
+    name: 'Ingeborg Modde',
+    role: 'Inhaberin',
+    company: 'Sweat Health Center in Oostburg, Niederlande',
+    image: '/images/Pixformance-Ingeborg-Modde.png',
+    quote: 'Es passt perfekt in unser Milon-Konzept. Schnell, effizient, sicher und meine Mitglieder erhalten immer ein Feedback von der Station.',
+  },
+  {
+    name: 'Carina Dworak',
+    role: 'Inhaberin',
+    company: 'Mrs.Sporty Club in Wien, Österreich',
+    image: '/images/carina-dworak-mrssporty-wien-pixformance.png',
+    quote: 'Das Schöne an Pixformance ist, dass die Mitglieder immer mit einem Personal Trainer trainieren und so besonders effektive Trainingsergebnisse erzielen.',
+  },
+];
+
+const carouselImages = [
+  '/images/carousel-lp/1-punkt-500.webp',
+  '/images/carousel-lp/2-punkt-500.webp',
+  '/images/carousel-lp/3-punkt-500.webp',
+  '/images/carousel-lp/4-punkt-500.webp',
+  '/images/carousel-lp/5-punkt-500.webp',
+  '/images/carousel-lp/6-punkt-km9pu4-500.webp',
+];
+
+const clientLogos = [
+  'Logo-Charite.png',
+  'Logo-Essink-Sportscentrum-1.png',
+  'Logo-Femme-Fit-1.png',
+  'Logo-Gesundheitsrondell-Reharondell.png',
+  'Logo-GiB-Gesundheit-in-Bewegung-1.png',
+  'Logo-Medical-Park.png',
+  'Logo-MrsSporty-Mrs-Sporty.png',
+  'Logo-Therapiezentrum-Rombach.png',
+];
+---
+
+<BaseLayout
+  title="Pixformance - Mehr Zeit. Mehr Umsatz. Mehr Möglichkeiten."
+  description="60 Tage testen: Digitale Trainingsgeräte und Therapiegeräte von Pixformance. Jetzt unverbindlich anfragen."
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- HERO SECTION -->
+  <section class="relative py-20 md:py-32 bg-black overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
+
+    <div class="container relative text-center max-w-4xl mx-auto">
+      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0.1s;">
+        MEHR ZEIT. MEHR UMSATZ.<br />
+        <span class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
+      </h1>
+
+      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.3s;">
+        <button
+          id="hero-cta-btn"
+          class="inline-flex items-center gap-2 px-4 py-2.5 sm:px-8 sm:py-4 bg-white text-[#02308C] font-bold text-xs sm:text-lg rounded-full border-2 border-red-500 hover:bg-[#6BDBD1] hover:border-[#6BDBD1] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+        >
+          60 TAGE TESTEN - ANGEBOT GÜLTIG BIS <span id="offer-deadline"></span>
+          
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP MODAL - 60 Tage Testen -->
+  <div id="popup-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div id="popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 md:p-10">
+      <button id="popup-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer">
+        <Icon name="x" size="md" />
+      </button>
+
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-[#02308C] mb-6">
+        Jetzt 60 Tage in Ihrem Unternehmen testen
+      </h2>
+
+      <form id="popup-form" class="space-y-4">
+        <div>
+          <label for="popup-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
+          <input type="text" id="popup-firma" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="popup-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-vorname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+          <div>
+            <label for="popup-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-nachname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+        </div>
+        <div>
+          <label for="popup-email" class="block text-sm font-bold mb-1 text-gray-700">Email <span class="text-red-500">*</span></label>
+          <input type="email" id="popup-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div>
+          <label for="popup-telefon" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
+          <input type="tel" id="popup-telefon" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="flex items-start gap-3 pt-2">
+          <input type="checkbox" id="popup-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+          <label for="popup-privacy" class="text-xs text-gray-600 leading-relaxed">
+            Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+          </label>
+        </div>
+        <div id="popup-form-message" class="hidden"></div>
+        <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          ANGEBOT ANFORDERN
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- VIDEO + MULTI-STEP FORM SECTION -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
+        <!-- YouTube Video -->
+        <div data-scroll="slide-left">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl w-full" style="padding-bottom: 56.25%;">
+            <iframe
+              src="https://www.youtube.com/embed/QHGnWb-glyE"
+              title="Pixformance Training"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Multi-Step Form -->
+        <div class="bg-gray-50 rounded-2xl p-8 shadow-lg" data-scroll="slide-right">
+          <!-- Step 1 -->
+          <div id="form-step-1">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+              Willst du mehr über unser digitales Trainingskonzept erfahren?
+            </h3>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-gray-700">Zeitgleiche Patienten-Betreuung bei selbem Personal</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-gray-700">Digitale Übungsanleitung</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-gray-700">Pro Patient 5 – 10 Min. Zeit sparen</span>
+              </li>
+            </ul>
+            <div class="space-y-4">
+              <div>
+                <label for="step1-email" class="block text-sm font-bold mb-2 text-gray-700">Email</label>
+                <input type="email" id="step1-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" placeholder="ihre.email@beispiel.de" />
+              </div>
+              <button id="step1-next" type="button" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                Weiter
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="form-step-2" class="hidden">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+              Nur noch ein Schritt!
+            </h3>
+            <form id="multistep-form" class="space-y-4">
+              <input type="hidden" id="step2-email-hidden" name="email" />
+              <div>
+                <label for="step2-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
+                <input type="text" id="step2-firma" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="step2-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-vorname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div>
+                  <label for="step2-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-nachname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+              </div>
+              <div>
+                <label for="step2-telefon" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
+                <input type="tel" id="step2-telefon" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="flex items-start gap-3 pt-2">
+                <input type="checkbox" id="step2-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+                <label for="step2-privacy" class="text-xs text-gray-600 leading-relaxed">
+                  Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+                </label>
+              </div>
+              <div id="multistep-form-message" class="hidden"></div>
+              <button type="submit" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                MEHR INFOS ANFORDERN
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT LOGOS BANNER -->
+  <section class="py-10 bg-gray-50">
+    <div class="container">
+      <div class="clients-track-wrapper overflow-hidden">
+        <div class="clients-track flex items-center gap-12">
+          {[...Array(2)].map(() =>
+            clientLogos.map((logo) => (
+              <img
+                src={`/images/clients/${logo}`}
+                alt={logo.replace(/Logo-|-\d+\.png|\.png/g, ' ').trim()}
+                class="h-44 w-auto max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0"
+                loading="lazy"
+              />
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE BLOCKS - alternating layout -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="space-y-16 md:space-y-24">
+
+        <!-- 1. KI-gestützte Trainingspläne — Text Left / Image Right -->
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              KI-gestützte Trainingspläne
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Der neue Pixformance KI-Assistent erstellt in Sekunden smarte Trainingspläne – angepasst an Patientenziele, Einschränkungen und verfügbare Ausrüstung. So sparen Therapeuten Zeit und Patienten trainieren noch gezielter.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/ki-infoblock-500.webp" alt="KI-gestützte Trainingspläne" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 2. Patentiertes Feedback — Image Left / Text Right -->
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Patentiertes Feedback in Echtzeit
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Die Pixformance Station gibt Feedback in Echtzeit. So ist sichergestellt, dass die Übungen richtig und sicher ausgeführt werden - wie unter Anleitung eines echten Therapeuten.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patentiertes Feedback in Echtzeit" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 3. Einfache Übungsanleitung — Text Left / Image Right -->
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Einfache Übungsanleitung
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Der Trainierende positioniert sich vor der Pixformance Station, während ein virtueller Trainer die Übung auf dem Bildschirm demonstriert.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/pixformancestation-gif-to-webp-converter-300.webp" alt="Einfache Übungsanleitung" class="w-4/5 mx-auto h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 4. Präzise Bewegungsanalyse — Image Left / Text Right -->
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Präzise Bewegungsanalyse
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Während der Übungsausführung scannt eine Kamera mit eingebautem Tiefensensor sekundenschnell 25 Gelenk- und 9 statische Punkte des Trainierenden und analysiert die Bewegungen.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Präzise Bewegungsanalyse" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL SECTION -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Training in Aktion
+        </h2>
+      </div>
+
+      <div class="relative" data-scroll="fade-up">
+        <div class="carousel-wrapper overflow-hidden">
+          <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-in-out">
+            {carouselImages.map((image, index) => (
+              <div class="carousel-slide shrink-0 w-[320px] md:w-[400px]">
+                <img
+                  src={image}
+                  alt={`Pixformance Training ${index + 1}`}
+                  class="w-full h-auto rounded-2xl"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-left" size="md" />
+        </button>
+        <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-right" size="md" />
+        </button>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="text-center mt-10 md:mt-12" data-scroll="fade-up">
+        <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+          MEHR ERFAHREN
+          <Icon name="arrow-right" size="sm" />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="py-16 md:py-20 bg-[#02308C]">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto text-center">
+        {stats.map((stat, index) => (
+          <div class="space-y-3 p-6" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="flex justify-center mb-2">
+              <Icon name={stat.icon} size="lg" class="text-[#6BDBD1]" />
+            </div>
+            <div
+              class="text-4xl md:text-5xl font-bold text-[#6BDBD1] stat-counter"
+              data-count={stat.count}
+              data-suffix={stat.suffix}
+              data-large={stat.count >= 10000 ? 'true' : 'false'}
+            >
+              {stat.value}
+            </div>
+            <div class="text-sm text-white/70">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Erfolgsgeschichten
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Was unsere Kunden sagen
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+            <div class="relative space-y-4">
+              <div class="flex items-center gap-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-14 h-14 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 transition-all duration-500"
+                  loading="lazy"
+                />
+                <div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
+                </div>
+              </div>
+              <p class="text-sm text-foreground-muted italic leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° KONZEPT CTA CARD -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-white rounded-3xl shadow-xl p-8 md:p-12 overflow-hidden" data-scroll="fade-up">
+        <div class="space-y-6">
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Das voll vernetzte 360°-Pixformance Trainings- und Therapiekonzept bietet eine sinnvolle und zeitgemäße Ergänzung, um Physiotherapeuten bei der Betreuung zu entlasten und auf lange Sicht mehr Umsatz durch erhöhte Betreuungsmöglichkeiten oder den Aufbau eines Selbstzahlerbereichs zu generieren. Bestellen Sie noch heute Ihre Teststellung und finden Sie heraus, ob das Konzept zu Ihrer Einrichtung passt!
+          </p>
+          <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+            MEHR ERFAHREN
+            <Icon name="arrow-right" size="sm" />
+          </button>
+        </div>
+        <div>
+          <img
+            src="/images/imgs-lp/pixformance-360-grad-konzept-online-plattform-app-digitales-sportgeraet-png-to-webp-converter-500.webp"
+            alt="Pixformance 360° Konzept"
+            class="w-full h-auto rounded-2xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CONTACT FORM -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-scroll="scale">
+          <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+          <div class="relative p-8 md:p-12">
+            <div class="text-center mb-8">
+              <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+                Willst du mehr über unser digitales Trainingskonzept erfahren?
+              </h2>
+              <p class="text-lg text-white/90">
+                Wir freuen uns auf Ihre unverbindliche Anfrage!
+              </p>
+            </div>
+
+            <form id="final-contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-firma" class="block text-sm font-bold mb-2 text-white">Firma <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-firma" name="company" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-vorname" class="block text-sm font-bold mb-2 text-white">Vorname <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-vorname" name="first_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-nachname" class="block text-sm font-bold mb-2 text-white">Nachname <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-nachname" name="last_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-email" class="block text-sm font-bold mb-2 text-white">E-Mail-Adresse <span class="text-[#FFED00]">*</span></label>
+                  <input type="email" id="final-email" name="email" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div>
+                <label for="final-telefon" class="block text-sm font-bold mb-2 text-white">Telefonnummer <span class="text-[#FFED00]">*</span></label>
+                <input type="tel" id="final-telefon" name="phone" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" placeholder="+49" />
+              </div>
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="final-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-0 bg-white/95 text-[#02308C] focus:ring-4 focus:ring-white/50 shadow-lg" />
+                <label for="final-privacy" class="text-sm text-white/95 leading-relaxed">
+                  Ich habe die <a href="/datenschutz" class="text-[#FFED00] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten und allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+                </label>
+              </div>
+              <div id="final-form-message" class="hidden"></div>
+              <div class="flex justify-center pt-6">
+                <button type="submit" class="w-full md:w-auto px-16 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg">
+                  SENDEN
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Clients Carousel */
+  .clients-track {
+    animation: scroll-logos 20s linear infinite;
+    width: max-content;
+  }
+
+  .clients-track-wrapper:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-logos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  [data-scroll="slide-left"] {
+    transform: translateX(-40px);
+  }
+
+  [data-scroll="slide-left"].is-visible {
+    transform: translateX(0);
+  }
+
+  [data-scroll="slide-right"] {
+    transform: translateX(40px);
+  }
+
+  [data-scroll="slide-right"].is-visible {
+    transform: translateX(0);
+  }
+
+  [data-scroll="scale"] {
+    transform: scale(0.9);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+
+  /* Popup animation */
+  #popup-modal.flex {
+    animation: popup-in 0.3s ease-out;
+  }
+
+  @keyframes popup-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #popup-modal.flex > div:last-child {
+    animation: popup-slide 0.3s ease-out;
+  }
+
+  @keyframes popup-slide {
+    from { transform: translateY(20px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+
+  // Calculate deadline: last day of next month
+  function getOfferDeadline() {
+    var now = new Date();
+    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
+    var day = String(nextMonth.getDate()).padStart(2, '0');
+    var month = String(nextMonth.getMonth() + 1).padStart(2, '0');
+    var year = String(nextMonth.getFullYear()).slice(-2);
+    return day + '.' + month + '.' + year;
+  }
+
+  function getUrlParams() {
+    var params = {};
+    new URLSearchParams(window.location.search).forEach(function (v, k) { params[k] = v; });
+    return params;
+  }
+
+  function getCookies() {
+    var cookies = {};
+    if (!document.cookie) return cookies;
+    document.cookie.split(';').forEach(function (c) {
+      var i = c.indexOf('=');
+      if (i === -1) return;
+      var k = c.slice(0, i).trim();
+      var v = c.slice(i + 1).trim();
+      try { cookies[k] = decodeURIComponent(v); } catch (e) { cookies[k] = v; }
+    });
+    return cookies;
+  }
+
+  function submitForm(formData, messageEl, formEl) {
+    var payload = {
+      company: formData.get('company') || '',
+      first_name: formData.get('first_name') || '',
+      last_name: formData.get('last_name') || '',
+      email: formData.get('email') || '',
+      phone: formData.get('phone') || '',
+      privacy_accepted: formData.get('privacy') === 'on',
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      referrer: document.referrer || '',
+      submitted_at: new Date().toISOString(),
+      url_params: getUrlParams(),
+      cookies: getCookies(),
+      form_source: 'landing-page',
+    };
+
+    var btn = formEl.querySelector('[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) {
+        if (r.ok) {
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-4 rounded-xl bg-green-50 text-green-700 border-2 border-green-200 font-semibold text-center';
+          messageEl.textContent = 'Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden.';
+          formEl.reset();
+          setTimeout(function () { messageEl.classList.add('hidden'); }, 5000);
+        } else {
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+          messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+        }
+      })
+      .catch(function () {
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+        messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+      })
+      .finally(function () {
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+      });
+  }
+
+  function init() {
+    // Set deadline text
+    var deadline = getOfferDeadline();
+    var deadlineEls = document.querySelectorAll('#offer-deadline');
+    deadlineEls.forEach(function (el) { el.textContent = deadline; });
+
+    // POPUP MODAL
+    var modal = document.getElementById('popup-modal');
+    var heroBtn = document.getElementById('hero-cta-btn');
+    var closeBtn = document.getElementById('popup-close');
+    var overlay = document.getElementById('popup-overlay');
+    var popupTriggers = document.querySelectorAll('.popup-trigger');
+
+    function openPopup() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    if (heroBtn) heroBtn.addEventListener('click', openPopup);
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+    if (overlay) overlay.addEventListener('click', closePopup);
+    popupTriggers.forEach(function (btn) { btn.addEventListener('click', openPopup); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closePopup();
+    });
+
+    // POPUP FORM
+    var popupForm = document.getElementById('popup-form');
+    var popupMsg = document.getElementById('popup-form-message');
+    if (popupForm) {
+      popupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(popupForm), popupMsg, popupForm);
+      });
+    }
+
+    // MULTI-STEP FORM
+    var step1 = document.getElementById('form-step-1');
+    var step2 = document.getElementById('form-step-2');
+    var step1Next = document.getElementById('step1-next');
+    var step1Email = document.getElementById('step1-email');
+    var step2EmailHidden = document.getElementById('step2-email-hidden');
+
+    if (step1Next) {
+      step1Next.addEventListener('click', function () {
+        if (!step1Email.value || !step1Email.checkValidity()) {
+          step1Email.reportValidity();
+          return;
+        }
+        step2EmailHidden.value = step1Email.value;
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+      });
+    }
+
+    var multistepForm = document.getElementById('multistep-form');
+    var multistepMsg = document.getElementById('multistep-form-message');
+    if (multistepForm) {
+      multistepForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(multistepForm), multistepMsg, multistepForm);
+      });
+    }
+
+    // FINAL CONTACT FORM
+    var finalForm = document.getElementById('final-contact-form');
+    var finalMsg = document.getElementById('final-form-message');
+    if (finalForm) {
+      finalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(finalForm), finalMsg, finalForm);
+      });
+    }
+
+    // CAROUSEL
+    var track = document.getElementById('carousel-track');
+    var prevBtn = document.getElementById('carousel-prev');
+    var nextBtn = document.getElementById('carousel-next');
+    var currentSlide = 0;
+
+    if (track && prevBtn && nextBtn) {
+      var slides = track.querySelectorAll('.carousel-slide');
+      var totalSlides = slides.length;
+
+      function getSlideWidth() {
+        if (!slides[0]) return 350;
+        return slides[0].offsetWidth + 24; // width + gap
+      }
+
+      function updateCarousel() {
+        var slideWidth = getSlideWidth();
+        var maxOffset = (totalSlides * slideWidth) - track.parentElement.offsetWidth;
+        var offset = Math.min(currentSlide * slideWidth, maxOffset);
+        track.style.transform = 'translateX(-' + Math.max(0, offset) + 'px)';
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (currentSlide > 0) { currentSlide--; updateCarousel(); }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        var slideWidth = getSlideWidth();
+        var maxSlide = totalSlides - Math.floor(track.parentElement.offsetWidth / slideWidth);
+        if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
+      });
+    }
+
+    // ANIMATED COUNTERS
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.count, 10);
+          var suffix = el.dataset.suffix || '';
+          var isLarge = el.dataset.large === 'true';
+          var duration = 1800;
+          var start = performance.now();
+
+          function animate(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.floor(eased * target);
+            el.textContent = (isLarge ? current.toLocaleString('de-DE') : current) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stat-counter').forEach(function (el) {
+      counterObserver.observe(el);
+    });
+
+    // SCROLL ANIMATIONS
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('[data-scroll]').forEach(function (el) {
+      scrollObserver.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

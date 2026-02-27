@@ -18,7 +18,7 @@ const tabs = [
 const benefits = [
   {
     icon: 'monitor',
-    title: '500+ Übungen – ein Gerät',
+    title: '600+ Übungen – ein Gerät',
     description: 'Auf der Online Plattform können individuelle Trainingspläne aus einer Sammlung von über 500 funktionellen Übungen zusammengestellt werden.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
@@ -56,7 +56,7 @@ const benefits = [
 
 const features = [
   {
-    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif',
+    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1-NEW.gif',
     title: 'Einfache Übungsanleitung',
     description: 'Der Trainierende stellt sich vor die Pixformance Station und die auszuführende Übung wird von einem virtuellen Trainer auf dem Bildschirm vorgeführt.',
   },
@@ -119,7 +119,7 @@ const testimonials = [
           </span>
         </div>
 
-        <h1 class="font-display text-xl md:text-xll lg:text-xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
           Digitale 
           <span class="text-[#02308C]"> Bewegungstherapie</span>
         </h1>
@@ -234,38 +234,37 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+      <div class="space-y-16 md:space-y-24">
         {features.map((feature, index) => (
           <div
-            class="group flex flex-col"
+            class={`grid md:grid-cols-2 gap-8 md:gap-12 items-center  ${index % 2 !== 0 ? 'md-reverse' : ''}`}
             data-scroll="fade-up"
             data-delay={index + 1}
           >
-            <!-- Step number -->
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-5xl font-bold text-[#02308C]/10 leading-none select-none">
+            <!-- Text -->
+            <div class={`space-y-4 ${index % 2 !== 0 ? 'md:order-2' : ''}`} data-scroll={index % 2 === 0 ? 'slide-left' : 'slide-right'}>
+              <span class="text-6xl md:text-7xl font-bold text-[#6BDBD1] leading-none select-none">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <div class="h-px flex-1 bg-[#02308C]/10"></div>
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+                {feature.title}
+              </h3>
+              <p class="text-lg text-foreground-muted leading-relaxed">
+                {feature.description}
+              </p>
             </div>
 
-            <!-- GIF container — flex-1 makes all same height, object-contain shows full image -->
-            <div class="flex-1 rounded-2xl overflow-hidden bg-gray-50 shadow-md group-hover:shadow-xl transition-shadow duration-500 mb-5 flex items-center justify-center">
-              <img
-                src={feature.image}
-                alt={feature.title}
-                class="w-full h-full object-contain block"
-                loading="lazy"
-              />
+            <!-- Image -->
+            <div class={`${index % 2 !== 0 ? 'md:order-1' : ''}`} data-scroll={index % 2 === 0 ? 'slide-right' : 'slide-left'}>
+              <div class="rounded-2xl overflow-hidden">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  class="w-full h-auto object-contain block"
+                  loading="lazy"
+                />
+              </div>
             </div>
-
-            <!-- Text -->
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors duration-300">
-              {feature.title}
-            </h3>
-            <p class="text-sm text-foreground-muted leading-relaxed">
-              {feature.description}
-            </p>
           </div>
         ))}
       </div>

@@ -77,6 +77,34 @@ const buttonId = `${menuId}-button`;
 
     {/* Desktop Navigation */}
     <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+   <a
+        href="/testen"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/testen')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/testen') ? 'page' : undefined}
+      >
+         Unverbindlich testen
+      </a>
+            <a
+        href="/konzept"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/konzept')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/konzept') ? 'page' : undefined}
+      >
+        Konzept
+      </a>
+
+   
       {/* Lösungen Dropdown */}
       <div class="relative group">
         <button
@@ -151,33 +179,7 @@ const buttonId = `${menuId}-button`;
         </div>
       </div>
 
-      <a
-        href="/konzept"
-        class={cn(
-          'nav-link rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/konzept')
-            ? 'text-primary font-semibold'
-            : 'text-foreground-muted hover:text-foreground'
-        )}
-        aria-current={isActive('/konzept') ? 'page' : undefined}
-      >
-        Konzept
-      </a>
 
-      <a
-        href="/testen"
-        class={cn(
-          'nav-link rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/testen')
-            ? 'text-primary font-semibold'
-            : 'text-foreground-muted hover:text-foreground'
-        )}
-        aria-current={isActive('/testen') ? 'page' : undefined}
-      >
-        Testen
-      </a>
     </nav>
 
     {/* Actions Area */}

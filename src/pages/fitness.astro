@@ -135,13 +135,13 @@ const memberBenefits = [
   <BreadcrumbTabs tabs={tabs} activeTab="/fitness" />
 
   <!-- Hero Section -->
-  <section class="py-16 md:py-24">
+  <section class="pt-20 md:pt-20">
     <div class="container text-center max-w-4xl">
       <h1
-        class="font-display text-2xl md:text-3xl text-[#02308C] font-bold mb-6 hero-animate"
+        class="font-display text-4xl md:text-6xl text-[#02308C] font-bold mb-6 hero-animate"
         style="animation-delay: 0.1s;"
       >
-        Personalisiertes training unter virtueller anleitung
+        Personalisiertes Training unter virtueller Anleitung
       </h1>
       <p
         class="text-xl text-foreground-muted hero-animate"
@@ -155,13 +155,13 @@ const memberBenefits = [
   </section>
 
   <!-- Besser trainieren - Einfacher betreuen -->
-  <section class="py-16 md:py-24 bg-background-secondary">
+  <section class="py-8 md:py-8 bg-background-secondary">
     <div class="container">
       <h2
         class="font-display text-2xl md:text-3xl font-bold mb-12 text-center"
         data-scroll="fade-up"
       >
-        Besser trainieren<br />Einfacher betreuen
+        Besser trainieren, einfacher betreuen.
       </h2>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -216,7 +216,14 @@ const memberBenefits = [
             <div
               class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
             >
-              <Icon name="play-circle" size="lg" class="text-primary" />
+              <!-- Monitor/Screen icon - exercise displayed on screen -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M20 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+                <path d="M7 9l3 3-3 3"></path>
+                <path d="M13 12h4"></path>
+              </svg>
             </div>
             <div>
               <h3 class="font-bold text-xl mb-2">Einfache Übungsanleitung</h3>
@@ -232,7 +239,14 @@ const memberBenefits = [
             <div
               class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
             >
-              <Icon name="camera" size="lg" class="text-primary" />
+              <!-- Scan Line icon (Lucide) - movement analysis -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                <path d="M7 12h10"></path>
+              </svg>
             </div>
             <div>
               <h3 class="font-bold text-xl mb-2">Präzise Bewegungsanalyse</h3>
@@ -248,7 +262,11 @@ const memberBenefits = [
             <div
               class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
             >
-              <Icon name="zap" size="lg" class="text-primary" />
+              <!-- Real-time feedback/correction icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
             </div>
             <div>
               <h3 class="font-bold text-xl mb-2">Feedback in Echtzeit</h3>
@@ -263,11 +281,11 @@ const memberBenefits = [
 
         <div data-scroll="slide-right" class="flex justify-center">
           <img
-            src="/images/Station-Single-Test-Menina-White-Rooms.png"
+            src="/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif"
             alt="Trainingsanalyse auf dem Bildschirm"
-            class="rounded-lg shadow-2xl w-full max-w-[429px] object-contain"
-            width="429"
-            height="674"
+            class="rounded-lg shadow-2xl w-20max-w-[429px] object-contain"
+            width="270"
+            height="380"
             loading="lazy"
           />
         </div>
@@ -450,7 +468,7 @@ const memberBenefits = [
 
           <div class="md:col-span-3">
             <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
-              Sie wünschen eine individuelle beratung?
+              Sie wünschen eine individuelle Beratung?
             </h2>
             <Button size="lg" href="/testen">
               SCHREIBEN SIE UNS
@@ -835,8 +853,8 @@ const memberBenefits = [
         {
           memberBenefits.map((benefit) => (
             <Card variant="elevated" padding="lg">
-              <h3 class="font-bold text-xl mb-3">{benefit.title}</h3>
-              <p class="text-foreground-muted">{benefit.description}</p>
+              <h3 class="font-bold text-xl mb-3 text-center">{benefit.title}</h3>
+              <p class="text-foreground-muted text-center">{benefit.description}</p>
             </Card>
           ))
         }
