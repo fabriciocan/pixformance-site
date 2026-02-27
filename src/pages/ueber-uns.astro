@@ -31,10 +31,20 @@ const managementBoard = [
 ];
 
 const team = [
+ {
+    name: 'Valerie Bures-Bönström',
+    role: 'CEO',
+    image: '/images/Valerie_Bönström_CEO_Pixformance.jpg',
+  },
   {
-    name: 'Fabio Manes',
-    role: 'Sales Director DACH',
-    image: '/images/Fabio-Manes-Pixformance-Sales-Director-DACH.jpg',
+    name: 'Tobias Baader',
+    role: 'COO',
+    image: '/images/Tobias-Baader-Head-Of-Business-Development-Pixformance.jpg',
+  },
+  {
+    name: 'Davi Wazlawick',
+    role: 'Director',
+    image: '/images/Davi-Wazlawick-Pixformance-3.jpg',
   },
   {
     name: 'Patricia Olear',
@@ -140,7 +150,7 @@ const stats = [
           <p>
             Unsere patentierte Technologie revolutioniert die Art und Weise, wie Menschen trainieren.
             Mit über <span class="font-bold text-[#02308C]">600 Installationen weltweit</span> und mehr als
-            <span class="font-bold text-[#02308C]">450.000 Trainierenden</span> setzen wir neue Maßstäbe in
+            <span class="font-bold text-[#02308C]">750.000 Trainierenden</span> setzen wir neue Maßstäbe in
             Physiotherapie, Klinik, Fitness und betrieblichem Gesundheitsmanagement.
           </p>
 
@@ -156,50 +166,6 @@ const stats = [
   </section>
 
   <!-- Management Board Section -->
-  <section class="py-12 md:py-20 bg-gray-50">
-    <div class="container">
-      <div class="text-center mb-12" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="star" size="sm" />
-          Geschäftsführung
-        </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Unser Management Board
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {managementBoard.map((member, index) => (
-          <Card
-            variant="elevated"
-            padding="none"
-            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
-            data-scroll="scale"
-            data-delay={index + 1}
-          >
-            <div class="relative h-80 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 group-hover:from-[#02308C]/80 transition-all duration-500"></div>
-              <img
-                src={member.image}
-                alt={member.name}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
-              />
-
-              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
-                <h3 class="font-bold text-xl text-white mb-1 group-hover:translate-x-2 transition-transform duration-300">
-                  {member.name}
-                </h3>
-                <p class="text-white/90 text-sm font-semibold">
-                  {member.role}
-                </p>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- Team Section -->
   <section class="py-12 md:py-20 bg-white">

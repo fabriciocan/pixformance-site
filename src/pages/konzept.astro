@@ -66,22 +66,22 @@ const technologies = [
 
 const targetGroups = [
   {
-    icon: 'building',
+    svgIcon: '/images/konzept-icons/17.svg',
     title: 'Top-Rehakliniken Deutschlands',
     description: 'Führende Einrichtungen vertrauen auf Pixformance',
   },
   {
-    icon: 'heart',
+    svgIcon: '/images/konzept-icons/18.svg',
     title: 'Physiotherapie Praxen',
     description: 'Optimale Unterstützung für Therapeuten',
   },
   {
-    icon: 'activity',
+    svgIcon: '/images/konzept-icons/20.svg',
     title: 'Fitnessstudios',
     description: 'Moderne Trainingskonzepte für Studios',
   },
   {
-    icon: 'briefcase',
+    svgIcon: '/images/konzept-icons/16.svg',
     title: 'Betriebliches Gesundheitsmanagement',
     description: 'Gesunde und leistungsfähige Mitarbeiter',
   },
@@ -120,8 +120,20 @@ const keyFeatures = [
   </HeaderWithDropdown>
 
   <!-- Hero Section -->
-  <section class="relative bg-white overflow-hidden py-12 md:py-16">
-    <div class="container">
+  <section class="relative bg-white overflow-hidden">
+
+    <!-- Hero Banner Image -->
+    <div class="relative w-full hero-animate" style="animation-delay: 0.1s;">
+      <img
+        src="/images/Pixformance-Gruppentraining-Physiotherapie-Digitale-Rehabilitation-eHealth-Funktionelles-Training-Banner.jpg"
+        alt="Pixformance Gruppentraining Physiotherapie Digitale Rehabilitation"
+        class="w-full h-auto object-cover"
+        loading="eager"
+      />
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+    </div>
+
+    <div class="container py-12 md:py-16">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C] text-white text-sm font-bold shadow-lg">
@@ -255,9 +267,7 @@ const keyFeatures = [
             data-delay={index + 1}
           >
             <div class="space-y-4">
-              <div class="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" style={`background-color: ${tech.color};`}>
-                <Icon name={tech.icon} size="lg" class="text-white" />
-              </div>
+
               <h3 class="font-display text-xl font-bold group-hover:text-[#02308C] transition-colors">
                 {tech.title}
               </h3>
@@ -299,7 +309,7 @@ const keyFeatures = [
             data-delay={index + 1}
           >
             <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#02308C] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-              <Icon name={group.icon} size="lg" class="text-white" />
+              <img src={group.svgIcon} alt={group.title} class="w-8 h-8 object-contain" loading="lazy" />
             </div>
             <h3 class="font-semibold mb-2 group-hover:text-[#02308C] transition-colors">
               {group.title}

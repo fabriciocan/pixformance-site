@@ -494,28 +494,92 @@ const benefits = [
     }
   </style>
 
-  <script>
-    // Form handling
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const messageDiv = document.getElementById("form-message");
+  <script is:inline>
+    (function () {
+      var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
 
-    form?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      if (messageDiv) {
-        messageDiv.classList.remove("hidden");
-        messageDiv.className =
-          "p-4 rounded-xl bg-[#86C9BC]/10 text-[#86C9BC] border-2 border-[#86C9BC]/20 font-semibold text-center";
-        messageDiv.textContent =
-          "Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden.";
-
-        form.reset();
-
-        setTimeout(() => {
-          messageDiv.classList.add("hidden");
-        }, 5000);
+      function getUrlParams() {
+        var params = {};
+        new URLSearchParams(window.location.search).forEach(function (value, key) { params[key] = value; });
+        return params;
       }
-    });
+
+      function getCookies() {
+        var cookies = {};
+        if (!document.cookie) return cookies;
+        document.cookie.split(';').forEach(function (cookie) {
+          var idx = cookie.indexOf('=');
+          if (idx === -1) return;
+          var key = cookie.slice(0, idx).trim();
+          var value = cookie.slice(idx + 1).trim();
+          try { cookies[key] = decodeURIComponent(value); } catch (e) { cookies[key] = value; }
+        });
+        return cookies;
+      }
+
+      function initTesteForm() {
+        var form = document.getElementById("contact-form");
+        var messageDiv = document.getElementById("form-message");
+        if (!form || !messageDiv) return;
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          var submitBtn = form.querySelector('[type="submit"]');
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
+
+          var formData = new FormData(form);
+          var payload = {
+            name: formData.get('name') || '',
+            email: formData.get('email') || '',
+            company: formData.get('company') || '',
+            phone: formData.get('phone') || '',
+            interest: formData.get('interest') || '',
+            message: formData.get('message') || '',
+            privacy_accepted: formData.get('privacy') === 'on',
+            page_url: window.location.href,
+            page_path: window.location.pathname,
+            referrer: document.referrer || '',
+            submitted_at: new Date().toISOString(),
+            url_params: getUrlParams(),
+            cookies: getCookies(),
+          };
+
+          fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+            .then(function (response) {
+              if (response.ok) {
+                messageDiv.classList.remove("hidden");
+                messageDiv.className = "p-4 rounded-xl bg-[#86C9BC]/10 text-[#86C9BC] border-2 border-[#86C9BC]/20 font-semibold text-center";
+                messageDiv.textContent = "Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden.";
+                form.reset();
+                setTimeout(function () { messageDiv.classList.add("hidden"); }, 5000);
+              } else {
+                messageDiv.classList.remove("hidden");
+                messageDiv.className = "p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center";
+                messageDiv.textContent = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+              }
+            })
+            .catch(function () {
+              messageDiv.classList.remove("hidden");
+              messageDiv.className = "p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center";
+              messageDiv.textContent = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+            })
+            .finally(function () {
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+            });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTesteForm);
+      } else {
+        initTesteForm();
+      }
+    })();
 
     // Intersection Observer for scroll animations
     const observerOptions = {
