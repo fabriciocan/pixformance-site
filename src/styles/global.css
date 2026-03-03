@@ -41,6 +41,12 @@ body {
   line-height: var(--leading-normal);
 }
 
+/* Prevent horizontal overflow from animations (translateX) and wide elements */
+main,
+section {
+  overflow-x: clip;
+}
+
 h1,
 h2,
 h3,
@@ -69,5 +75,39 @@ h6 {
   .container {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile: Typography & Alignment
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* Reduce heading and paragraph sizes on mobile */
+  :root {
+    --text-base: 0.875rem;
+    --text-lg: 0.9375rem;
+    --text-xl: 1rem;
+    --text-3xl: 1.25rem;
+    --text-4xl: 1.375rem;
+    --text-5xl: 1.625rem;
+    --text-6xl: 1.875rem;
+    --text-7xl: 2rem;
+  }
+
+  /* Center headings and paragraphs inside sections on mobile.
+     Explicit text-left / text-right classes will override this rule
+     since class selectors have higher specificity. */
+  section h1,
+  section h2,
+  section h3,
+  section h4,
+  section p {
+    text-align: center;
+  }
+
+  /* Center stacked button / CTA groups on mobile */
+  section .flex-col {
+    align-items: center;
   }
 }
