@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Pionierarbeit im Selbstzahlerbereich - Dieter Geier - Pixformance"
   description="Wie Herr Geier mit Pixformance Patienten und Wirtschaftlichkeit verbindet. Erfolgsgeschichte aus der Physiotherapiepraxis in Neuburg a.d. Donau."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Pionierarbeit im Selbstzahlerbereich – Dieter Geier",
+    "description": "Wie Herr Geier mit Pixformance Patienten und Wirtschaftlichkeit verbindet. Erfolgsgeschichte aus der Physiotherapiepraxis in Neuburg a.d. Donau.",
+    "url": "https://pixformance.com/erfolgsgeschichten/dieter-geier",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

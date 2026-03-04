@@ -98,8 +98,18 @@ const testimonials = [
 ---
 
 <BaseLayout
-  title="Physiotherapie - Pixformance Sports GmbH"
-  description="Digitale Bewegungstherapie mit Pixformance: Ein voll vernetztes Konzept für Ihre Physiotherapie-Praxis oder Ihr Reha-Zentrum"
+  title="Digitale Bewegungstherapie für Physiotherapiepraxen | Pixformance"
+  description="Pixformance für Physiotherapeuten: Automatisiertes Feedback, bis zu 4 Patienten gleichzeitig, 600+ Übungen. Selbstzahlerbereich aufbauen & Therapeuten entlasten."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Digitale Bewegungstherapie – Physiotherapie",
+    "description": "Digitale Bewegungstherapie für Physiotherapiepraxen. Automatisiertes Feedback, Betreuung von bis zu 4 Patienten gleichzeitig, Aufbau eines wirtschaftlichen Selbstzahlerbereichs.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Physiotherapy Technology",
+    "areaServed": ["DE", "AT", "CH"],
+    "url": "https://pixformance.com/physiotherapie"
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

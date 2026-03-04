@@ -125,7 +125,18 @@ const memberBenefits = [
 ---
 
 <BaseLayout
-  title="Innovative Sportgeräte für Fitness - Pixformance Sports GmbH"
+  title="Digitale Fitnessgeräte für Fitnessstudios | Pixformance"
+  description="Pixformance für Fitnessstudios: Mitgliederbindung steigern, Umsatz erhöhen, individuelles Training ohne Mehraufwand. 600+ funktionelle Übungen mit Echtzeit-Feedback."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Digitale Fitnessgeräte – Fitnessstudios",
+    "description": "Digitale Trainingsgeräte für Fitnessstudios und Fitnessclubs. Mitgliederbindung und Umsatz steigern mit individuellem Training auch ohne Personal.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Fitness Technology",
+    "areaServed": ["DE", "AT", "CH", "NL"],
+    "url": "https://pixformance.com/fitness"
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Neue Wege dank digitaler Rehabilitation - Hannah G. - Pixformance"
   description="Motivation und Spaß beim Genesungsprozess in der Medical Park-Klinik Loipl. Hannah G. berichtet, wie digitales Training mit Pixformance ihre neurologische Reha verändert hat."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Neue Wege dank digitaler Rehabilitation – Hannah G.",
+    "description": "Wie digitales Training mit Pixformance in der Medical Park-Klinik Loipl die neurologische Rehabilitation verändert hat.",
+    "url": "https://pixformance.com/erfolgsgeschichten/hannah-loipl",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

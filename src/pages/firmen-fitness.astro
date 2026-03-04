@@ -76,7 +76,20 @@ const performanceBenefits = [
 ];
 ---
 
-<BaseLayout title="Digitale Fitnessgeräte fürs Büro – Pixformance">
+<BaseLayout
+  title="Betriebliches Gesundheitsmanagement (BGM) mit Pixformance"
+  description="Pixformance für Unternehmen: Steuerlich absetzbar bis 500 €/MA. Reduzierte Fehlzeiten, stärkere Mitarbeiterbindung. Digitales Fitness für Ihr Büro."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance BGM – Betriebliches Gesundheitsmanagement",
+    "description": "Digitale Fitness-Lösung für betriebliches Gesundheitsmanagement. Steuerlich absetzbar bis 500 € pro Mitarbeiter und Jahr. Reduziert Fehlzeiten, stärkt Mitarbeiterbindung.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Corporate Wellness Technology",
+    "areaServed": ["DE", "AT", "CH"],
+    "url": "https://pixformance.com/firmen-fitness"
+  }}
+>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>

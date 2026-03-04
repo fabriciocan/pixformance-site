@@ -103,7 +103,20 @@ const features = [
 ];
 ---
 
-<BaseLayout title="Reha Sportgeräte für Rehakliniken - Pixformance">
+<BaseLayout
+  title="Rehageräte & digitale Trainingstherapie für Kliniken | Pixformance"
+  description="Pixformance für Rehakliniken: Patientenaktivierung, Therapeutenentlastung, digitale Dokumentation. 1.100+ Kliniken vertrauen auf Pixformance. Jetzt testen."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Digitale Trainingstherapie – Klinik & Rehabilitation",
+    "description": "Digitale Rehageräte für Kliniken und Rehazentren. Patientenaktivierung, Therapeutenentlastung, Betreuung von bis zu 4 Patienten gleichzeitig.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Rehabilitation Technology",
+    "areaServed": ["DE", "AT", "CH"],
+    "url": "https://pixformance.com/klinik"
+  }}
+>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>

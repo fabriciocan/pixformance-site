@@ -81,8 +81,21 @@ const stats = [
 ---
 
 <BaseLayout
-  title="Über uns - Pixformance"
-  description="Etabliertes Markt-Know-How trifft Start-up-Dynamik. Unermüdliche Innovationskraft seit 2012."
+  title="Über Pixformance Sports GmbH – Pionier der digitalen Bewegungsanalyse"
+  description="Pixformance seit 2012: Marktpionier in digitaler Bewegungsanalyse. 600+ Installationen weltweit, 750.000+ Trainierende. CEO Valerie Bures-Bönström."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Über Pixformance Sports GmbH",
+    "description": "Pixformance wurde 2012 gegründet und ist Pionier in der digitalen Bewegungsanalyse. Über 600 Installationen weltweit, 750.000+ Trainierende.",
+    "url": "https://pixformance.com/ueber-uns",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "foundingDate": "2012",
+      "description": "Marktpionier in digitaler Bewegungsanalyse und Echtzeit-Feedback für Physiotherapie, Kliniken, Fitness und BGM."
+    }
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

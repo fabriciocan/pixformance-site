@@ -56,11 +56,25 @@ const faqs = [
     icon: "settings",
   },
 ];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer.replace(/<[^>]+>/g, '').trim(),
+    },
+  })),
+};
 ---
 
 <BaseLayout
-  title="FAQ - Häufig gestellte Fragen zu Pixformance"
-  description="Häufig gestellte Fragen zu Pixformance – funktionelles Training mit digitaler Bewegungsanalyse. Erfahren Sie mehr über die Pixformance Station."
+  title="FAQ – Häufige Fragen zur Pixformance Station"
+  description="Alle Antworten zu Pixformance: Eignung, Platzbedarf, Netzwerk, Trainer-Kompatibilität, Maße und mehr. Häufig gestellte Fragen zur Pixformance Station."
+  jsonLd={faqJsonLd}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

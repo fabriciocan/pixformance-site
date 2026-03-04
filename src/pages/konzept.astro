@@ -112,8 +112,18 @@ const keyFeatures = [
 ---
 
 <BaseLayout
-  title="Pixformance - Digitales Trainingskonzept"
-  description="Voll vernetztes Training mit Station, Online Plattform und App. Über 600 funktionelle Übungen mit Echtzeit-Feedback."
+  title="Digitales Trainingskonzept – Station, Plattform & App | Pixformance"
+  description="Das Pixformance Konzept: 2D Full-HD Kamera, 25 Gelenkpunkte, 600+ funktionelle Übungen, virtueller Personal Trainer. Voll vernetztes System für Physiotherapie & Fitness."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Pixformance Station",
+    "description": "Digitales Trainingsgerät mit patentierter 2D Full-HD Kamera für Echtzeit-Bewegungsanalyse. 25 Gelenkpunkte, virtueller Personal Trainer, 600+ funktionelle Übungen.",
+    "brand": {"@type": "Brand", "name": "Pixformance"},
+    "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "image": "https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
+    "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

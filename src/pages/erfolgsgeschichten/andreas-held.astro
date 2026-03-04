@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Virtuelle Trainingsunterstützung in der Taekwondo Sportschule - Dr. Andreas Held - Pixformance"
   description="Digitale Sportgeräte im Einsatz bei der Kampfkunstschule YU-Taekwondo in Österreich. Dr. Andreas Held über das computergestützte Training mit Pixformance."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Virtuelle Trainingsunterstützung in der Taekwondo Sportschule – Dr. Andreas Held",
+    "description": "Digitale Sportgeräte im Einsatz bei der Kampfkunstschule YU-Taekwondo in Österreich. Dr. Andreas Held über das computergestützte Training mit Pixformance.",
+    "url": "https://pixformance.com/erfolgsgeschichten/andreas-held",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

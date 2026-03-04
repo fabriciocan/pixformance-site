@@ -79,8 +79,16 @@ const clientLogos = [
 ---
 
 <BaseLayout
-  title="Pixformance - Mehr Zeit. Mehr Umsatz. Mehr Möglichkeiten."
-  description="60 Tage testen: Digitale Trainingsgeräte und Therapiegeräte von Pixformance. Jetzt unverbindlich anfragen."
+  title="60 Tage Pixformance kostenlos testen – Jetzt starten"
+  description="Jetzt 60 Tage Pixformance kostenlos testen. Digitale Bewegungsanalyse für Physiotherapie, Klinik & Fitness. Unverbindlich, mit persönlicher Beratung und Schulung."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "60 Tage Pixformance kostenlos testen",
+    "description": "Testen Sie Pixformance 60 Tage kostenlos. Digitale Bewegungsanalyse für Physiotherapie, Klinik und Fitness.",
+    "url": "https://pixformance.com/lp",
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

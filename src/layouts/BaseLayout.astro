@@ -5,12 +5,58 @@ import ChatWidget from '@/components/ChatWidget.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
-  title = 'Pixformance - Digitale Fitnessgeräte & Therapiegeräte',
-  description = 'Mehr Umsatz. Mehr Entlastung.',
+  title = 'Pixformance – Digitale Fitnessgeräte & Therapiegeräte mit Echtzeit-Feedback',
+  description = 'Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 750.000+ Trainierende/Jahr. 600+ Übungen. Echtzeit-Korrekturfeedback.',
+  image = 'https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
+  canonical,
+  type = 'website',
+  noindex = false,
+  jsonLd,
 } = Astro.props;
+
+const canonicalURL = canonical ?? Astro.url.href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Pixformance Sports GmbH',
+  url: 'https://pixformance.com',
+  logo: 'https://pixformance.com/images/pix-favicon.png',
+  foundingDate: '2012',
+  description:
+    'Pionier in digitaler Bewegungsanalyse und Echtzeit-Feedback für Physiotherapie, Kliniken, Fitness und betriebliches Gesundheitsmanagement.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'info@pixformance.com',
+    availableLanguage: ['German', 'English'],
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/pixformance',
+    'https://www.youtube.com/@pixformance',
+  ],
+  areaServed: ['DE', 'AT', 'CH', 'NL'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Pixformance',
+  url: 'https://pixformance.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://pixformance.com/?s={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 
 <!doctype html>
@@ -18,10 +64,57 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+
+    <!-- Primary Meta -->
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/images/pix-favicon.png" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    }
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Pixformance" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/png" href="/images/pix-favicon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#02308C" />
+
+    <!-- Sitewide JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Sitewide JSON-LD: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <!-- Per-page JSON-LD -->
+    {jsonLd && (
+      Array.isArray(jsonLd)
+        ? jsonLd.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <!-- Usercentrics CMP -->
     <script is:inline id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="yk8ozPuvYY744O" async></script>
+
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

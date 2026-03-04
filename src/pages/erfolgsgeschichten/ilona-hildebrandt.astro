@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Digitale Therapie für Parkinson Patienten - Ilona Hildebrandt - Pixformance"
   description="Wie die Physiotherapie Steglitz in Berlin mit Pixformance einen besseren Überblick des Krankheitsverlaufs bei Parkinson Patienten gewinnt und die Motivation steigert."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Digitale Therapie für Parkinson-Patienten – Ilona Hildebrandt",
+    "description": "Wie die Physiotherapie Steglitz in Berlin mit Pixformance den Krankheitsverlauf bei Parkinson besser dokumentiert und die Patientenmotivation steigert.",
+    "url": "https://pixformance.com/erfolgsgeschichten/ilona-hildebrandt",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

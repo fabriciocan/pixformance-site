@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Wieder fit zurück ins Leben - Christoph Schneider - Pixformance"
   description="Patientenaktivierung mithilfe digitaler Therapiegeräte in der Niederrhein Klinik, Korschenbroich. Christoph Schneider über den Einsatz von Pixformance in der Rehabilitation."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Wieder fit zurück ins Leben – Christoph Schneider, Niederrhein-Klinik",
+    "description": "Patientenaktivierung mithilfe digitaler Therapiegeräte in der Niederrhein Klinik, Korschenbroich. Christoph Schneider über den Einsatz von Pixformance in der Rehabilitation.",
+    "url": "https://pixformance.com/erfolgsgeschichten/christoph-schneider",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

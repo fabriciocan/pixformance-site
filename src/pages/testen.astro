@@ -32,8 +32,16 @@ const benefits = [
 ---
 
 <BaseLayout
-  title="Pixformance - Unverbindlich testen"
-  description="Testen Sie Pixformance in Ihrer Einrichtung. Wir freuen uns auf Ihre unverbindliche Anfrage!"
+  title="Pixformance 30 Tage kostenlos testen – Jetzt anfragen"
+  description="Testen Sie Pixformance unverbindlich: Persönliche Beratung, Einrichtung & Schulung inklusive. Jetzt Beratungsgespräch anfragen."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Pixformance testen – Beratungsanfrage",
+    "description": "Pixformance 30 Tage kostenlos testen. Persönliche Beratung, Installation und Schulung inklusive.",
+    "url": "https://pixformance.com/testen",
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

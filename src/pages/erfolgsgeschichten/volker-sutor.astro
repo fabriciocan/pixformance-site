@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Kundenbindung in der Physiotherapie mit digitalem funktionellen Training – Gesundheitsrondell - Pixformance"
   description="Volker Sutor vom Gesundheitsrondell erklaert, wie digitales funktionelles Training mit Pixformance die Kundenbindung staerkt und Patienten zu langfristigen Mitgliedern macht."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Kundenbindung in der Physiotherapie mit digitalem Training – Gesundheitsrondell",
+    "description": "Volker Sutor erklärt, wie digitales Training mit Pixformance die Kundenbindung stärkt und Patienten zu langfristigen Mitgliedern macht.",
+    "url": "https://pixformance.com/erfolgsgeschichten/volker-sutor",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

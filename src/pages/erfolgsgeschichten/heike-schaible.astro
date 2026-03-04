@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Selbstzahlerbereich erfolgreich aufbauen - Heike Schaible - Pixformance"
   description="Wie Heike Schaible mit ihrer Physiotherapie Praxis Raum für Gesundheit in Stuttgart Schritt für Schritt einen erfolgreichen Selbstzahlerbereich aufgebaut hat."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Selbstzahlerbereich erfolgreich aufbauen – Heike Schaible",
+    "description": "Wie Heike Schaible mit ihrer Physiotherapie Praxis in Stuttgart Schritt für Schritt einen erfolgreichen Selbstzahlerbereich aufgebaut hat.",
+    "url": "https://pixformance.com/erfolgsgeschichten/heike-schaible",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

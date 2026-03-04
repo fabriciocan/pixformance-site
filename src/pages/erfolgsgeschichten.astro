@@ -153,8 +153,16 @@ const stats = [
 ---
 
 <BaseLayout
-  title="Pixformance Erfolgsgeschichten - Pixformance Sports GmbH"
-  description="Bereits über 450.000 Trainierende und über 600 Gesundheitseinrichtungen und Fitnessstudios nutzen unser Trainingskonzept. Mehr erfahren →"
+  title="Erfolgsgeschichten – Kunden berichten über Pixformance"
+  description="Echte Erfahrungsberichte von Physiotherapeuten, Klinikleiterinnen und Fitnessclub-Inhabern. 600+ Einrichtungen. Lesen Sie, wie Pixformance ihnen hilft."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Pixformance Erfolgsgeschichten",
+    "description": "Erfahrungsberichte von Kunden aus Physiotherapie, Kliniken, Fitnessstudios und BGM über ihren Erfolg mit Pixformance.",
+    "url": "https://pixformance.com/erfolgsgeschichten",
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

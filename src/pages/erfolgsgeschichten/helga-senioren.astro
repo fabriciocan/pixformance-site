@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Krafttraining für Senioren im Sitzen - Mehr Bewegung im Rollstuhl - Pixformance"
   description="Helga, 84 Jahre, trainiert trotz Rollstuhl mit Pixformance und integriert Bewegung in ihren Alltag. Personalisiertes Training für jedes Alter und jeden Gesundheitszustand."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Krafttraining für Senioren im Sitzen – Mehr Bewegung auch im Rollstuhl",
+    "description": "Helga, 84 Jahre, trainiert trotz Rollstuhl mit Pixformance. Personalisiertes Training für jedes Alter und jeden Gesundheitszustand.",
+    "url": "https://pixformance.com/erfolgsgeschichten/helga-senioren",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

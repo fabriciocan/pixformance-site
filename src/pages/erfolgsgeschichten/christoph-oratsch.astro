@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Qualitätssteigerung durch digitale Trainingstherapie - Christoph Oratsch - Pixformance"
   description="Das AUVA Unfallkrankenhaus Klagenfurt ist das erste Haus der AUVA-Gruppe mit digitalem Produkt in der Therapie. Therapieleiter Christoph Oratsch über den Einsatz von Pixformance."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Qualitätssteigerung durch digitale Trainingstherapie – Christoph Oratsch",
+    "description": "AUVA Unfallkrankenhaus Klagenfurt als erstes Haus der AUVA-Gruppe mit digitalem Trainingsgerät in der Therapie. Therapieleiter Christoph Oratsch über Pixformance.",
+    "url": "https://pixformance.com/erfolgsgeschichten/christoph-oratsch",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

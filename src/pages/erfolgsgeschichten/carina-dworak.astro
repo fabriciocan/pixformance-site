@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Die Evolution einer Fitnesskette durch digitales Training - Carina Dworak - Pixformance"
   description="Wie Mrs.Sporty Inhaberin Carina Dworak mit 7 Pixformance Geräten ihre Investition in 3 Monaten zurückgewann und doppelt so viele Mitglieder gewann."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Die Evolution einer Fitnesskette durch digitales Training – Carina Dworak",
+    "description": "Wie Mrs.Sporty Inhaberin Carina Dworak mit 7 Pixformance Geräten ihre Investition in 3 Monaten zurückgewann und doppelt so viele Mitglieder gewann.",
+    "url": "https://pixformance.com/erfolgsgeschichten/carina-dworak",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

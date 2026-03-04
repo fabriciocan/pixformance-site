@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Eine Fitnessstudio Investition, die sich auszahlt - Kim Essink - Pixformance"
   description="Pixformance als Kundenmagnet im Essink Sportcentrum in Eindhoven. Einblicke von Inhaberin Kim Essink, Personal Trainer Sil Hoving und zwei Mitgliedern."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Eine Fitnessstudio-Investition, die sich auszahlt – Kim Essink",
+    "description": "Pixformance als Kundenmagnet im Essink Sportcentrum in Eindhoven. Inhaberin Kim Essink über ROI und Mitgliederzufriedenheit.",
+    "url": "https://pixformance.com/erfolgsgeschichten/kim-essink",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

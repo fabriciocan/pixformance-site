@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Motiviertere Patienten durch digitale Therapie bei MS - Gabriele Buchstein - Pixformance"
   description="Wie die Sauerlandklinik Hachen mit Pixformance MS-Patienten zu mehr Motivation, mehr Wiederholungen und einem schnelleren Therapieerfolg verhilft."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Motiviertere Patienten durch digitale Therapie bei MS – Gabriele Buchstein",
+    "description": "Wie die Sauerlandklinik Hachen mit Pixformance MS-Patienten zu mehr Motivation, mehr Wiederholungen und einem schnelleren Therapieerfolg verhilft.",
+    "url": "https://pixformance.com/erfolgsgeschichten/gabriele-buchstein",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

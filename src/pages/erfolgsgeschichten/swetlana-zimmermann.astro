@@ -11,6 +11,16 @@ import Button from '@/components/ui/form/Button/Button.astro';
 <BaseLayout
   title="Mit digitaler Bewegungstherapie mehr Patienten betreuen - Schlossphysio - Pixformance"
   description="Die Physiotherapie Praxis Schlossphysio in Winterthur, Schweiz, betreut mit Pixformance mehr Patienten zur selben Zeit – ohne Zusatzpersonal."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mit digitaler Bewegungstherapie mehr Patienten betreuen – Schlossphysio",
+    "description": "Die Physiotherapie Praxis Schlossphysio in Winterthur, Schweiz, betreut mit Pixformance mehr Patienten gleichzeitig ohne zusätzliches Personal.",
+    "url": "https://pixformance.com/erfolgsgeschichten/swetlana-zimmermann",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

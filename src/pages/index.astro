@@ -131,7 +131,32 @@ const partners = [
 ];
 ---
 
-<BaseLayout title="Digitale Fitnessgeräte & Therapiegeräte von Pixformance">
+<BaseLayout
+  title="Pixformance – Digitale Fitnessgeräte & Therapiegeräte mit Echtzeit-Feedback"
+  description="Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 750.000+ Trainierende/Jahr. 600+ Übungen. Echtzeit-Korrekturfeedback."
+  image="https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Pixformance – Digitale Fitnessgeräte & Therapiegeräte",
+      "description": "Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 750.000+ Trainierende/Jahr.",
+      "url": "https://pixformance.com",
+      "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Pixformance Station",
+      "description": "Digitales Trainingsgerät mit 2D Full-HD Kamera und Echtzeit-Bewegungsanalyse. 25 Gelenkpunkte, virtueller Personal Trainer, 600+ funktionelle Übungen.",
+      "brand": {"@type": "Brand", "name": "Pixformance"},
+      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH"},
+      "image": "https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
+      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR"},
+      "category": "Fitness Equipment"
+    }
+  ]}
+>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
