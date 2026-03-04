@@ -141,12 +141,15 @@ const partners = [
 
     <!-- Hero Image -->
     <div class="relative w-full hero-animate" style="animation-delay: 0.1s;">
-      <img
-        src="/images/header-2.webp"
-        alt="Pixformance digitale Fitnessgeräte"
-        class="w-full h-170 object-cover"
-        loading="eager"
-      />
+      <picture>
+        <source media="(max-width: 768px)" srcset="/images/hero-mobile.webp">
+        <img
+          src="/images/header-2.webp"
+          alt="Pixformance digitale Fitnessgeräte"
+          class="w-full object-cover h-auto md:h-170"
+          loading="eager"
+        />
+      </picture>
       <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
     </div>
 
