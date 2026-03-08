@@ -89,22 +89,22 @@ const targetGroups = [
 
 const keyFeatures = [
   {
-    icon: 'users',
+    icon: 'layers',
     title: 'Über 600 Funktionelle Übungen',
     description: 'Umfangreiche Übungsbibliothek für jeden Gesundheitszustand',
   },
   {
-    icon: 'zap',
+    icon: 'monitor',
     title: 'Virtueller Personal Trainer',
     description: 'Professionelle Anleitung durch digitalen Trainer am Display',
   },
   {
-    icon: 'target',
+    icon: 'settings',
     title: 'Personalisierte Trainingspläne',
     description: 'Individuell angepasst an Fitnesslevel und Ziele',
   },
   {
-    icon: 'shield',
+    icon: 'check-circle',
     title: 'Sichere Ausführung',
     description: 'Echtzeit-Korrektur verhindert Fehlhaltungen und Verletzungen',
   },
@@ -168,52 +168,43 @@ const keyFeatures = [
   </section>
 
   <!-- System Components -->
-  <section class="py-12 md:py-20 bg-gray-50">
+  <section class="py-12 md:py-20 bg-white">
     <div class="container">
-      <div class="text-center mb-12" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="layers" size="sm" />
-          360° System
-        </span>
+
+      <!-- Title -->
+      <div class="text-center mb-10" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-5xl font-bold">
           Die 3 Komponenten des Systems
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        {components.map((component, index) => (
-          <Card
-            variant="elevated"
-            padding="none"
-            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="fade-up"
-            data-delay={index + 1}
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src={component.image}
-                alt={component.title}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute top-4 left-4">
-                <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center shadow-lg group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                  <Icon name={component.icon} size="md" class="text-white" />
-                </div>
-              </div>
-            </div>
+      <!-- Central image showing all 3 components together -->
+      <div class="flex justify-center mb-12" data-scroll="fade-up">
+        <img
+          src="/images/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg"
+          alt="Die 3 Komponenten: Pixformance Station, Online Plattform und Mobile App"
+          class="max-w-lg w-full object-contain"
+          loading="lazy"
+        />
+      </div>
 
-            <div class="p-6">
-              <h3 class="font-bold text-xl mb-2 group-hover:text-[#02308C] transition-colors">
-                {component.title}
-              </h3>
-              <p class="text-sm text-foreground-muted">
-                {component.description}
-              </p>
+      <!-- 3 component columns -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {components.map((component, index) => (
+          <div class="flex flex-col items-center text-center gap-4" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="w-20 h-20 rounded-full border-2 border-[#02308C] flex items-center justify-center flex-shrink-0">
+              <Icon name={component.icon} size="lg" class="text-[#02308C]" />
             </div>
-          </Card>
+            <h3 class="font-bold text-xl text-foreground">
+              {component.title}
+            </h3>
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              {component.description}
+            </p>
+          </div>
         ))}
       </div>
+
     </div>
   </section>
 

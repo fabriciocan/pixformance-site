@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# reference/research material (not part of the build)
+imagens/
+imagens-*/
+new-icons/
+new-konzept-icons/
+velocity/

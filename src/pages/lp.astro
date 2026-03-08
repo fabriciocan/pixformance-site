@@ -90,6 +90,13 @@ const clientLogos = [
     "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
   }}
 >
+  <!-- Preconnects for YouTube facade thumbnail + player -->
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+  </Fragment>
+
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -171,20 +178,38 @@ const clientLogos = [
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
-        <!-- YouTube Video -->
+        <!-- YouTube Video Facade (loads iframe only on click) -->
         <div data-scroll="slide-left">
-          <div class="relative rounded-2xl overflow-hidden shadow-xl w-full" style="padding-bottom: 56.25%;">
-            <iframe
-              src="https://www.youtube.com/embed/QHGnWb-glyE"
-              title="Pixformance Training"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              class="absolute inset-0 w-full h-full"
+          <div
+            class="yt-facade relative rounded-2xl overflow-hidden shadow-xl w-full cursor-pointer group"
+            style="padding-bottom: 56.25%;"
+            data-ytid="QHGnWb-glyE"
+            role="button"
+            aria-label="Pixformance Training Video abspielen"
+          >
+            <img
+              src="https://i.ytimg.com/vi/QHGnWb-glyE/hqdefault.jpg"
+              alt="Pixformance Training Video"
+              class="absolute inset-0 w-full h-full object-cover"
+              width="480"
+              height="360"
               loading="lazy"
-            ></iframe>
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/40 transition-colors duration-200">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
+                <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white ml-1" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
         </div>
+        <script is:inline>
+          document.querySelectorAll('.yt-facade').forEach(function(el) {
+            el.addEventListener('click', function() {
+              var id = el.dataset.ytid;
+              el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Pixformance Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>';
+            });
+          });
+        </script>
 
         <!-- Multi-Step Form -->
         <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
@@ -278,6 +303,8 @@ const clientLogos = [
                 alt={logo.replace(/Logo-|-\d+\.png|\.png/g, ' ').trim()}
                 class="h-44 w-auto max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0"
                 loading="lazy"
+                width="220"
+                height="176"
               />
             ))
           )}
@@ -453,6 +480,8 @@ const clientLogos = [
                   alt={testimonial.name}
                   class="w-14 h-14 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 transition-all duration-500"
                   loading="lazy"
+                  width="56"
+                  height="56"
                 />
                 <div>
                   <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
