@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pixformance.com',
+  site: 'https://neu.pixformance.com',
   integrations: [
     react(),
     sitemap({
