@@ -81,12 +81,12 @@ const carouselItems = [
   {
     title: 'Individuelles Training',
     text: 'Trainingsprogramme können auf den Gesundheitszustand und den Therapiebedarf jedes Patienten zugeschnitten werden.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><path d="M9 12v9"/><path d="M5.39 5.39A5 5 0 0 0 9 4a5 5 0 0 1 5 5 5 5 0 0 1-1.39 3.39"/><circle cx="17" cy="15" r="3"/><path d="M14.61 12.61A5 5 0 0 1 17 12a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-3.61-1.61"/></svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
   },
   {
     title: 'Patienten werden Kunden',
     text: 'Individuelle Trainingseinheiten sowie Maßnahmen zur Sekundärprävention können als eine zusätzliche Einnahmequelle angeboten werden.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 0 8"/><circle cx="12" cy="6" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/></svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
   },
 ];
 
@@ -415,16 +415,11 @@ const clientLogos = [
         </h2>
       </div>
 
-      <!-- Carousel Navigation buttons outside track to avoid overlap -->
-      <div class="flex items-center gap-3">
-        <button id="carousel-prev" class="shrink-0 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-left" size="md" />
-        </button>
-
-        <div class="overflow-hidden flex-1">
-          <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-in-out">
+      <div class="relative px-12 md:px-14">
+        <div class="overflow-hidden">
+          <div id="carousel-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
             {carouselItems.map((item) => (
-              <div class="carousel-slide shrink-0 w-[280px] md:w-[340px] bg-white rounded-2xl shadow-sm p-8 flex flex-col items-center text-center gap-4">
+              <div class="carousel-slide shrink-0 w-[calc(85vw-6rem)] md:w-[300px] bg-white rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center gap-4">
                 <div set:html={item.icon} />
                 <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
                 <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
@@ -433,7 +428,10 @@ const clientLogos = [
           </div>
         </div>
 
-        <button id="carousel-next" class="shrink-0 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+        <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-left" size="md" />
+        </button>
+        <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
           <Icon name="chevron-right" size="md" />
         </button>
       </div>
@@ -882,13 +880,28 @@ const clientLogos = [
       var totalSlides = slides.length;
 
       function getSlideWidth() {
-        if (!slides[0]) return 350;
-        return slides[0].offsetWidth + 24; // width + gap
+        if (!slides[0]) return 300;
+        return slides[0].offsetWidth + 16; // width + gap-4
+      }
+
+      function checkFit() {
+        var containerWidth = track.parentElement.offsetWidth;
+        var totalWidth = totalSlides * getSlideWidth() - 16; // subtract last gap
+        if (totalWidth <= containerWidth) {
+          track.style.justifyContent = 'center';
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+        } else {
+          track.style.justifyContent = '';
+          prevBtn.style.display = '';
+          nextBtn.style.display = '';
+        }
       }
 
       function updateCarousel() {
         var slideWidth = getSlideWidth();
-        var maxOffset = (totalSlides * slideWidth) - track.parentElement.offsetWidth;
+        var containerWidth = track.parentElement.offsetWidth;
+        var maxOffset = (totalSlides * slideWidth) - containerWidth;
         var offset = Math.min(currentSlide * slideWidth, maxOffset);
         track.style.transform = 'translateX(-' + Math.max(0, offset) + 'px)';
       }
@@ -902,6 +915,9 @@ const clientLogos = [
         var maxSlide = totalSlides - Math.floor(track.parentElement.offsetWidth / slideWidth);
         if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
       });
+
+      checkFit();
+      window.addEventListener('resize', function () { currentSlide = 0; track.style.transform = ''; checkFit(); });
     }
 
     // ANIMATED COUNTERS
