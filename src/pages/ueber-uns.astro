@@ -20,8 +20,9 @@ const managementBoard = [
   },
   {
     name: 'Davi Wazlawick',
-    role: 'Director',
+    role: 'Growth Director',
     image: '/images/Davi-Wazlawick-Pixformance-3.jpg',
+    imagePosition: 'top',
   },
   {
     name: 'Fran Hackett',
@@ -43,8 +44,9 @@ const team = [
   },
   {
     name: 'Davi Wazlawick',
-    role: 'Director',
+    role: 'Growth Director',
     image: '/images/Davi-Wazlawick-Pixformance-3.jpg',
+    imagePosition: 'top',
   },
   {
     name: 'Patricia Olear',
@@ -53,7 +55,7 @@ const team = [
   },
   {
     name: 'Laura Alves',
-    role: 'Team Member',
+    role: 'Erfahrene Assistenz',
     image: '/images/Laura-Alves-Pixformance.jpg',
   },
   {
@@ -208,6 +210,7 @@ const stats = [
                 src={member.image}
                 alt={member.name}
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                style={member.imagePosition ? `object-position: ${member.imagePosition}` : undefined}
                 loading="lazy"
               />
 
