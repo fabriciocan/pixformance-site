@@ -57,13 +57,37 @@ const testimonials = [
   },
 ];
 
-const carouselImages = [
-  '/images/carousel-lp/1-punkt-500.webp',
-  '/images/carousel-lp/2-punkt-500.webp',
-  '/images/carousel-lp/3-punkt-500.webp',
-  '/images/carousel-lp/4-punkt-500.webp',
-  '/images/carousel-lp/5-punkt-500.webp',
-  '/images/carousel-lp/6-punkt-km9pu4-500.webp',
+const carouselItems = [
+  {
+    title: '600+ Übungen – ein Gerät',
+    text: 'Auf der Online Plattform können individuelle Trainingspläne aus einer Sammlung von über 600 funktionellen Übungen zusammengestellt werden.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>`,
+  },
+  {
+    title: 'Zeit für das Wesentliche',
+    text: 'Der Therapeut muss nicht jede Übung persönlich vormachen und spart Zeit – was wiederum der Betreuung aller Patienten zugutekommt.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
+  {
+    title: 'Zeitgleiche Betreuung',
+    text: 'Dank der patentierten Software können mehrere Patienten gleichzeitig und ohne personellen Mehraufwand betreut werden.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 21 12 17 16"/><polyline points="7 8 3 12 7 16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>`,
+  },
+  {
+    title: 'Effiziente Verwaltung',
+    text: 'Auf der Online Plattform wird der Trainingsverlauf jedes Patienten für eine Trainingsanalyse exakt dokumentiert.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  },
+  {
+    title: 'Individuelles Training',
+    text: 'Trainingsprogramme können auf den Gesundheitszustand und den Therapiebedarf jedes Patienten zugeschnitten werden.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><path d="M9 12v9"/><path d="M5.39 5.39A5 5 0 0 0 9 4a5 5 0 0 1 5 5 5 5 0 0 1-1.39 3.39"/><circle cx="17" cy="15" r="3"/><path d="M14.61 12.61A5 5 0 0 1 17 12a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-3.61-1.61"/></svg>`,
+  },
+  {
+    title: 'Patienten werden Kunden',
+    text: 'Individuelle Trainingseinheiten sowie Maßnahmen zur Sekundärprävention können als eine zusätzliche Einnahmequelle angeboten werden.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 0 8"/><circle cx="12" cy="6" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/></svg>`,
+  },
 ];
 
 const clientLogos = [
@@ -391,27 +415,25 @@ const clientLogos = [
         </h2>
       </div>
 
-      <div class="relative">
-        <div class="carousel-wrapper overflow-hidden">
+      <!-- Carousel Navigation buttons outside track to avoid overlap -->
+      <div class="flex items-center gap-3">
+        <button id="carousel-prev" class="shrink-0 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-left" size="md" />
+        </button>
+
+        <div class="overflow-hidden flex-1">
           <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-in-out">
-            {carouselImages.map((image, index) => (
-              <div class="carousel-slide shrink-0 w-[320px] md:w-[400px]">
-                <img
-                  src={image}
-                  alt={`Pixformance Training ${index + 1}`}
-                  class="w-full h-auto rounded-2xl"
-                  loading="lazy"
-                />
+            {carouselItems.map((item) => (
+              <div class="carousel-slide shrink-0 w-[280px] md:w-[340px] bg-white rounded-2xl shadow-sm p-8 flex flex-col items-center text-center gap-4">
+                <div set:html={item.icon} />
+                <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <!-- Carousel Navigation -->
-        <button id="carousel-prev" class="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-left" size="md" />
-        </button>
-        <button id="carousel-next" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+        <button id="carousel-next" class="shrink-0 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
           <Icon name="chevron-right" size="md" />
         </button>
       </div>
