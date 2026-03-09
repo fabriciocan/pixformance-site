@@ -71,11 +71,11 @@ const departments = [
                     </a>
                   </div>
                 )}
-                <div class="flex items-center gap-2 text-sm">
-                  <Icon name="mail" size="sm" class="text-primary" />
+                <div class="flex items-center gap-2 text-sm min-w-0">
+                  <Icon name="mail" size="sm" class="text-primary shrink-0" />
                   <a
                     href={`mailto:${dept.email}`}
-                    class="hover:text-primary transition-colors"
+                    class="hover:text-primary transition-colors break-all min-w-0"
                   >
                     {dept.email}
                   </a>
