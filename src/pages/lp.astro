@@ -739,8 +739,9 @@ const clientLogos = [
     return cookies;
   }
 
-  function submitForm(formData, messageEl, formEl) {
+  function submitForm(formData, messageEl, formEl, formName) {
     var payload = {
+      form_name: formName || 'LP',
       company: formData.get('company') || '',
       first_name: formData.get('first_name') || '',
       last_name: formData.get('last_name') || '',
@@ -827,7 +828,7 @@ const clientLogos = [
     if (popupForm) {
       popupForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        submitForm(new FormData(popupForm), popupMsg, popupForm);
+        submitForm(new FormData(popupForm), popupMsg, popupForm, 'LP - Popup');
       });
     }
 
@@ -855,7 +856,7 @@ const clientLogos = [
     if (multistepForm) {
       multistepForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        submitForm(new FormData(multistepForm), multistepMsg, multistepForm);
+        submitForm(new FormData(multistepForm), multistepMsg, multistepForm, 'LP - Multi-Step');
       });
     }
 
@@ -865,7 +866,7 @@ const clientLogos = [
     if (finalForm) {
       finalForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        submitForm(new FormData(finalForm), finalMsg, finalForm);
+        submitForm(new FormData(finalForm), finalMsg, finalForm, 'LP - Abschlussformular');
       });
     }
 

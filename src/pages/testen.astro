@@ -538,6 +538,7 @@ const benefits = [
 
           var formData = new FormData(form);
           var payload = {
+            form_name: 'Testen - Beratungsanfrage',
             name: formData.get('name') || '',
             email: formData.get('email') || '',
             company: formData.get('company') || '',

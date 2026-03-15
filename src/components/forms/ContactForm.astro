@@ -180,6 +180,7 @@ const { variant = 'default' } = Astro.props;
 
         var formData = new FormData(form);
         var payload = {
+  form_name: 'Kontaktformular',
           name: formData.get('name') || '',
           email: formData.get('email') || '',
           company: formData.get('company') || '',
