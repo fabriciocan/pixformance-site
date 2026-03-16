@@ -1,0 +1,135 @@
+---
+/**
+ * JP Footer Component - Pixformance Japan
+ */
+import { cn } from '@/lib/cn';
+import { footerVariants } from './footer.variants';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+
+interface Props {
+  variant?: 'default' | 'minimal';
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+const footerClasses = cn(footerVariants({ variant }), className);
+
+const solutionsLinks = [
+  { label: '理学療法', href: '/jp/physical-therapy/' },
+  { label: 'フィットネス', href: '/jp/fitness/' },
+  { label: '企業フィットネス', href: '/jp/corporate-fitness/' },
+];
+
+const companyLinks = [
+  { label: '私たちについて', href: '/jp/about-us/' },
+  { label: '導入事例', href: '/jp/success-stories/' },
+  { label: 'よくある質問', href: '/jp/faq/' },
+  { label: 'お問い合わせ', href: '/jp/contact/' },
+];
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://www.facebook.com/pixformancesports', icon: '/images/en/if_facebook_online_social_media_734399-2.png' },
+  { label: 'Instagram', href: 'https://www.instagram.com/pixformance/', icon: '/images/en/if_instagram_online_social_media_734394-2.png' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/2980658/', icon: '/images/en/if_online_social_media_linked_in_734383-2.png' },
+  { label: 'YouTube', href: 'https://www.youtube.com/channel/UCw-sWITx6ElTie7ep57Mz2w', icon: '/images/en/if_youtube_online_social_media_734361-2.png' },
+];
+---
+
+<footer class={footerClasses}>
+  <div class="container">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {/* Company Info */}
+      <div>
+        <PixformanceLogo variant="black" size="md" class="mb-4" />
+        <p class="text-sm text-foreground-muted mb-4">
+          デジタルフィットネス機器・リハビリ機器
+        </p>
+        <div class="space-y-1 text-sm text-foreground-muted">
+          <p class="font-semibold text-foreground">Pixformance Sports GmbH</p>
+          <p>Pappelallee 78/79</p>
+          <p>10437 Berlin, Deutschland</p>
+          <p>
+            <a href="mailto:info@pixformance.com" class="hover:text-foreground transition-colors">info@pixformance.com</a>
+          </p>
+        </div>
+        {/* Social Links */}
+        <div class="flex gap-3 mt-4">
+          {socialLinks.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              class="opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <img src={social.icon} alt={social.label} class="h-6 w-6" loading="lazy" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Solutions */}
+      <div>
+        <h4 class="font-semibold mb-4">ソリューション</h4>
+        <ul class="space-y-2">
+          {solutionsLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-foreground-muted hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Company */}
+      <div>
+        <h4 class="font-semibold mb-4">企業情報</h4>
+        <ul class="space-y-2">
+          {companyLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-foreground-muted hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Language & Info */}
+      <div>
+        <h4 class="font-semibold mb-4">言語 / Language</h4>
+        <ul class="space-y-2">
+          <li>
+            <a href="/jp/" class="text-sm font-semibold text-primary">日本語 (JP)</a>
+          </li>
+          <li>
+            <a href="/en/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">English (EN)</a>
+          </li>
+          <li>
+            <a href="/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">Deutsch (DE)</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Bottom Bar */}
+    <div class="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-foreground-muted">
+        © {currentYear} Pixformance Sports GmbH. All rights reserved.
+      </p>
+      <div class="flex gap-4">
+        <a href="/en/imprint/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">特定商取引法</a>
+        <a href="/en/privacy-policy/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">プライバシーポリシー</a>
+      </div>
+    </div>
+  </div>
+</footer>

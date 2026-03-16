@@ -1,0 +1,125 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import ENContactForm from '@/components/forms/ENContactForm.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+---
+
+<ENBaseLayout
+  title="Contact - Pixformance Sports GmbH"
+  description="Get in touch with Pixformance. Contact us for product consultation, general inquiries, technical support or marketing and PR."
+  hreflangDe="https://neu.pixformance.com/kontakt/"
+>
+  <ENHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </ENHeader>
+
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Feel free to write us!</h1>
+        <p class="text-xl text-foreground-muted max-w-2xl mx-auto font-semibold">
+          Let's have a conversation and explore if our concept meets your needs.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <Card variant="elevated" padding="xl">
+            <ENContactForm />
+          </Card>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <!-- Headquarter USA -->
+          <Card variant="elevated" padding="lg">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-[#02308C]/10 flex items-center justify-center shrink-0">
+                <Icon name="map-pin" size="sm" class="text-[#02308C]" />
+              </div>
+              <div>
+                <h3 class="font-bold mb-2">Headquarter USA</h3>
+                <p class="text-sm text-foreground-muted">Pixformance USA Inc.</p>
+                <p class="text-sm text-foreground-muted">3 Windward Way</p>
+                <p class="text-sm text-foreground-muted">East Windsor, NJ 08520</p>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Headquarter Germany -->
+          <Card variant="elevated" padding="lg">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-[#02308C]/10 flex items-center justify-center shrink-0">
+                <Icon name="map-pin" size="sm" class="text-[#02308C]" />
+              </div>
+              <div>
+                <h3 class="font-bold mb-2">Headquarter Germany</h3>
+                <p class="text-sm text-foreground-muted">Pixformance Sports GmbH</p>
+                <p class="text-sm text-foreground-muted">Hauptstraße 19 – 20</p>
+                <p class="text-sm text-foreground-muted">14624 Dallgow-Döberitz</p>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Contact Departments Grid -->
+          <div class="grid grid-cols-1 gap-4">
+            <!-- Marketing & PR -->
+            <Card variant="elevated" padding="md">
+              <h4 class="font-semibold mb-2 text-sm">Marketing and PR</h4>
+              <a href="mailto:marketing@pixformance.com" class="flex items-center gap-2 text-sm text-[#02308C] hover:underline">
+                <Icon name="mail" size="sm" />
+                marketing@pixformance.com
+              </a>
+            </Card>
+
+            <!-- Product Consultation -->
+            <Card variant="elevated" padding="md">
+              <h4 class="font-semibold mb-2 text-sm">Product Consultation</h4>
+              <a href="tel:+18884204572" class="flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors mb-1">
+                <Icon name="phone" size="sm" />
+                +1 888 – 420-4572
+              </a>
+              <a href="mailto:info@pixformance.com" class="flex items-center gap-2 text-sm text-[#02308C] hover:underline">
+                <Icon name="mail" size="sm" />
+                info@pixformance.com
+              </a>
+            </Card>
+
+            <!-- General Inquiries -->
+            <Card variant="elevated" padding="md">
+              <h4 class="font-semibold mb-2 text-sm">General Inquiries</h4>
+              <a href="tel:+18884204572" class="flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors mb-1">
+                <Icon name="phone" size="sm" />
+                +1 888 – 420-4572
+              </a>
+              <a href="mailto:info@pixformance.com" class="flex items-center gap-2 text-sm text-[#02308C] hover:underline">
+                <Icon name="mail" size="sm" />
+                info@pixformance.com
+              </a>
+            </Card>
+
+            <!-- Technical Support -->
+            <Card variant="elevated" padding="md">
+              <h4 class="font-semibold mb-2 text-sm">Technical Support</h4>
+              <a href="tel:+18884204572" class="flex items-center gap-2 text-sm text-foreground-muted hover:text-foreground transition-colors mb-1">
+                <Icon name="phone" size="sm" />
+                +1 888 – 420-4572
+              </a>
+              <a href="mailto:info@pixformance.com" class="flex items-center gap-2 text-sm text-[#02308C] hover:underline">
+                <Icon name="mail" size="sm" />
+                info@pixformance.com
+              </a>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>

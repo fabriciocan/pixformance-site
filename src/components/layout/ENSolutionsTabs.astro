@@ -1,0 +1,33 @@
+---
+interface Props {
+  active: 'physical-therapy' | 'fitness' | 'corporate-fitness';
+}
+
+const { active } = Astro.props;
+
+const tabs = [
+  { id: 'physical-therapy', label: 'PHYSICAL THERAPY', href: '/en/physical-therapy/' },
+  { id: 'fitness', label: 'FITNESS', href: '/en/fitness/' },
+  { id: 'corporate-fitness', label: 'CORPORATE FITNESS', href: '/en/corporate-fitness/' },
+];
+---
+
+<nav class="bg-[#02308C] sticky top-16 z-40" aria-label="Solutions navigation">
+  <div class="container">
+    <div class="flex overflow-x-auto">
+      {tabs.map((tab) => (
+        <a
+          href={tab.href}
+          class={`px-6 py-4 text-sm font-bold whitespace-nowrap transition-colors duration-200 border-b-2 ${
+            active === tab.id
+              ? 'text-white border-[#6BDBD1] bg-white/10'
+              : 'text-white/70 border-transparent hover:text-white hover:border-white/30'
+          }`}
+          aria-current={active === tab.id ? 'page' : undefined}
+        >
+          {tab.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>

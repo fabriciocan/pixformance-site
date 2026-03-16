@@ -1,0 +1,551 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import ENSolutionsTabs from '@/components/layout/ENSolutionsTabs.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const clientLogos = [
+  { name: 'Gesundheitsrondell', src: '/images/en/Logo-Gesundheitsrondell-Reharondell.png' },
+  { name: 'Medical Park', src: '/images/en/Logo-Medical-Park.png' },
+  { name: 'Niederrheinklinik', src: '/images/en/AK_logo_Niederrhein_Klinik.png' },
+  { name: 'Charité', src: '/images/en/Logo-Charite.png' },
+  { name: 'Oxford Brookes University', src: '/images/en/pixformance-logo-oxford-brookes-university.png' },
+  { name: 'Mediclin', src: '/images/en/Pixformance-Logo-Mediclin.png' },
+  { name: 'Sauerlandklinik Hachen', src: '/images/en/SKH_Logo_4c-scaled-1.jpg' },
+  { name: 'FORTEe', src: '/images/en/fortee-eu-poject-pixformance-partner.png' },
+  { name: 'AUVA', src: '/images/en/2560px-Logo_AUVA.svg.png' },
+];
+
+const testimonials = [
+  {
+    name: 'Gabriele Buchstein',
+    role: 'Head Physiotherapist',
+    company: 'Sauerlandklinik Hachen | Neurological Special Clinic for Multiple Sclerosis, Germany',
+    quote: 'The patients are enthusiastic and very motivated, which admittedly is not often the case. Of course, we as therapists also benefit from this, as the patients perform their exercises better and more purposefully as a result. In addition, we save time, because after only 30 minutes of instruction, the patients can exercise independently under supervision.',
+    image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
+  },
+  {
+    name: 'Christoph Schneider',
+    role: 'Therapy Director',
+    company: 'Niederrhein-Klinik | Rehabilitation Clinic Korschenbroich, Germany',
+    quote: 'In search of a way to let patients become active on their own, we decided on Pixformance. The individual training offer is ideal here, as group therapy, for example, is otherwise too easy for some and too difficult for other patients. So everyone gets a completely individual workout.',
+    image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
+  },
+  {
+    name: 'Christoph Oratsch',
+    role: 'Therapy Director',
+    company: 'AUVA Accident Hospital, Klagenfurt, Austria',
+    quote: "From the patient side, there is a great deal of interest and curiosity about the Pixformance stations. Many even approach us by themselves and want a training program. We recently provided tele-supported support for a young lady after shoulder surgery using the Pixformance app. She visits our clinic once a week – the rest of the therapy she does at home. It's a really great option for patients who aren't capable of moving around too much.",
+    image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
+  },
+  {
+    name: 'Gunter Hölig',
+    role: 'Therapy Director',
+    company: 'Medical Park, Bad Rodach, Germany',
+    quote: 'We are pleased to observe that our patients enjoy the exercise training very much and persevere. The playful component of our digital Pixformance therapy equipment certainly plays a part in this – and when our patients forget about the illness for a moment and simply have fun, that is extremely valuable.',
+    image: '/images/Pixformance-Gunter-Hoelig.png',
+  },
+];
+
+const cashPayBenefits = [
+  { icon: 'zap', title: '500+ exercises – one device', text: 'Individual training plans can be compiled from a collection of over 500 functional exercises on the online platform.' },
+  { icon: 'users', title: 'Simultaneous care', text: 'Thanks to the patented software, several patients can be cared for simultaneously and without additional staffing.' },
+  { icon: 'trending-up', title: 'Patients become clients', text: 'Individual training sessions and secondary prevention measures can be offered as an additional source of revenue.' },
+  { icon: 'clipboard', title: 'Efficient administration', text: "Each patient's training history is accurately documented on the online platform for training analysis and optimization." },
+  { icon: 'settings', title: 'Individual training', text: "Exercise programs can be tailored to each patient's health condition and therapy needs." },
+  { icon: 'clock', title: 'Time for the essential', text: 'The therapist does not have to demonstrate each exercise personally and saves time, which benefits the care of all patients.' },
+];
+
+const patientBenefits = [
+  { icon: 'zap', title: '500+ Exercises, One Device', text: 'Depending on the indication, special exercises are possible in a wheelchair, with walking bars, on a daybed or on the floor. Each exercise can be tailored to the individual needs of the patient.' },
+  { icon: 'shield', title: 'More Empowerment & Self-Control', text: 'Patients are able to assess their own movement quality independently and to influence movement deviations independently.' },
+  { icon: 'clock', title: 'More Time For What Matters', text: 'The therapist does not have to personally demonstrate each exercise and saves time – which in turn benefits the care of all patients.' },
+  { icon: 'award', title: 'Innovative Equipment', text: 'An innovative and modern therapy concept with Pixformance has a positive effect on the image and perception of your facility.' },
+  { icon: 'heart', title: 'Relief For Your Therapists', text: 'Targeted and individual treatment without additional staffing and more time for the individual as well as personal care of each patient.' },
+  { icon: 'smile', title: 'More Desire For Movement', text: 'A positive therapy experience is created and patients are motivated to achieve their therapy goals with fun and motivation.' },
+  { icon: 'bar-chart', title: 'Tangible Therapy Success', text: 'The storage of the training data enables a before-and-after comparison to be made and the clinical course and treatment successes to be made tangible.' },
+];
+
+const teamMembers = [
+  { name: 'Laura Alves', role: 'Sales & Purchasing', image: '/images/en/Laura-Alves-Pixformance-1.png' },
+  { name: 'Rebecca Göhrt', role: 'Technical Support', image: '/images/en/Rebecca-Goehrt-Pixformance.png' },
+  { name: 'Patricia Olear', role: 'Marketing Support', image: '/images/en/Patricia-Olear-Pixformance.png' },
+];
+
+const studies = [
+  {
+    institution: 'Hochschule Fresenius | University of Applied Sciences',
+    topic: 'Does the use of Pixformance with the recommended homework program have a positive effect on the walking ability of a patient with MS?',
+    pdf: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Multiple-Sclerosis-MS-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+  },
+  {
+    institution: 'Hochschule Fresenius | University of Applied Sciences',
+    topic: 'Influence of a strengthening program with visual feedback on the condition of a patient with muscular dystrophy Emery triptych – a single case study',
+    pdf: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Emery-Dreifuss-Muscular-Dystrophy-Training-Medical-Study-Single-Case-Study-Walking-Ability-University-Fresenius-Frankfurt.pdf',
+  },
+  {
+    institution: 'Hochschule Fresenius | University of Applied Sciences',
+    topic: 'What effect does the use of Pixformance have on balance, walking ability and quality of life in the treatment of patients with Parkinson\'s syndrome?',
+    pdf: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Parkinson-Treatment-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+  },
+  {
+    institution: 'Hochschule Fresenius | University of Applied Sciences',
+    topic: 'Investigation of the effect of Pixformance on the upper limb in a patient after Mamma-Ca',
+    pdf: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Breast-Cancer-Mamma-Ca-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+  },
+  {
+    institution: 'German University for Prevention and Health Management',
+    topic: 'Empirical review of the training effects of a standardized training program on the example Mrs.Sporty and Pixformance',
+    pdf: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-medical-study-empirical-review-of-training-functional-effects-study-programme-mrs-sporty.pdf',
+  },
+];
+---
+
+<ENBaseLayout
+  title="Physical Therapy and Orthopedic Rehab and Sports Medicine - Pixformance Sports GmbH"
+  description="Innovative digital rehabilitation devices from Pixformance. Increase patient throughput & relieve your therapists. FDA Class 2 medical device."
+  hreflangDe="https://neu.pixformance.com/physiotherapie/"
+>
+  <ENHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </ENHeader>
+
+  <ENSolutionsTabs active="physical-therapy" />
+
+  <!-- Popup CTA -->
+  <div class="fixed bottom-8 right-8 z-50">
+    <a
+      href="https://app.monstercampaigns.com/c/ybvlequwgaulmccl90jr/?max-width=650px"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hover:scale-105 transition-transform duration-300 block"
+    >
+      <img
+        src="/images/en/image-25.png"
+        alt="Apply for trial"
+        class="h-20 md:h-28 w-auto shadow-xl rounded-full"
+        loading="lazy"
+      />
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative bg-[#02308C] text-white py-20 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img
+        src="/images/header-2.webp"
+        alt=""
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+    </div>
+    <div class="container relative">
+      <div class="max-w-3xl space-y-6">
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+          Innovative, digital rehabilitation devices
+        </h1>
+        <h2 class="text-2xl font-bold text-[#6BDBD1]">
+          Increase Patient Throughput & Relieve Your Therapists
+        </h2>
+        <p class="text-lg text-white/80 leading-relaxed">
+          No technology in the world can replace therapists. However, digitalization in physiotherapy and rehabilitation effectively relieves therapists and provides patients with even more intensive care.
+        </p>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Our mission here is to create an individual solution for therapists and their exceptional patients with the best technology for digital motion analysis. Pixformance relieves the burden of exercise instruction and thus accompanies patients on the road to recovery in a highly effective way.
+        </p>
+        <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl border border-white/20 max-w-md">
+          <img
+            src="/images/en/RX-Logo.png"
+            alt="RX Medical Device Class 2"
+            class="h-16 w-auto shrink-0"
+            loading="lazy"
+          />
+          <p class="text-sm text-white/90">Pixformance is classified as a Class 2 medical device in the USA.</p>
+        </div>
+        <div class="flex gap-4 flex-wrap">
+          <Button size="lg" href="/en/contact/" class="bg-[#6BDBD1] text-[#02308C] hover:bg-[#6BDBD1]/90">
+            Free Consultation
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/en/apply-for-trial/" class="border-white text-white hover:bg-white hover:text-[#02308C]">
+            Apply For Trial
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <section class="py-10 bg-white">
+    <div class="container">
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        {clientLogos.map((logo) => (
+          <img
+            src={logo.src}
+            alt={logo.name}
+            class="h-10 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-300 grayscale hover:grayscale-0"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-[#02308C]">
+          fully-connected rehabilitation device
+        </h2>
+        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
+          The 360° Pixformance Concept is a fully-connected digital solution consisting of a station, an online platform and an app. Our participatory therapy concept accompanies patients digitally and safely through every movement.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div data-scroll="slide-left" class="flex justify-center">
+          <img
+            src="/images/en/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil.gif"
+            alt="Pixformance Live Feedback"
+            class="max-w-sm w-full rounded-2xl shadow-xl"
+            loading="lazy"
+          />
+        </div>
+        <div class="space-y-8" data-scroll="slide-right">
+          {[
+            { title: 'Good Practice Exercise Guide', text: 'The exercise is demonstrated by a virtual therapist on-screen with optimal movement sequence. The patient sees himself on the screen while performing the exercise.' },
+            { title: 'Depth Sensor For Movement Analysis', text: 'During the exercise, a camera with built-in depth sensor scans 25 joint points of the exerciser within seconds and compares them with the optimal motion sequence.' },
+            { title: 'Feedback In Real-Time', text: 'The patient receives individualized feedback that covers individual aspects of movement execution. The feedback is highlighted visually and textually in the patient video in real-time.' },
+          ].map((feature, index) => (
+            <div class="flex gap-4" data-delay={index + 1}>
+              <div class="shrink-0 w-10 h-10 rounded-xl bg-[#02308C] flex items-center justify-center">
+                <span class="text-white font-bold text-sm">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2">{feature.title}</h3>
+                <p class="text-foreground-muted">{feature.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
+        <div data-scroll="slide-left">
+          <img
+            src="/images/en/Pixformance-Sauerland-Klinik-Hachen-Telerehabilitation-Portrait-Gabriele-Buchstein.jpg"
+            alt="Gabriele Buchstein, Head Physiotherapist, Sauerlandklinik Hachen"
+            class="rounded-2xl shadow-xl w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="space-y-4" data-scroll="slide-right">
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Success Stories</h2>
+          <p class="text-foreground-muted font-semibold">Gabriele Buchstein, Head Physiotherapist, Sauerlandklinik Hachen, Germany</p>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            With over 450,000 exercisers worldwide, the Pixformance training and therapy concept can already be found in Germany's top rehabilitation clinics, physiotherapy practices, and fitness studios. Read our success stories to discover how and why Ms. Buchstein from the "Sauerland Special Clinic for MS" and many other customers have integrated the digital movement therapy from Pixformance.
+          </p>
+          <Button href="/en/success-stories/">
+            All Success Stories
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {testimonials.map((t, index) => (
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-shadow group" data-scroll="fade-up" data-delay={Math.min(index+1,4)}>
+            <div class="flex items-start gap-4">
+              <img src={t.image} alt={t.name} class="w-14 h-14 rounded-full object-cover shrink-0" loading="lazy" />
+              <div>
+                <p class="font-bold">{t.name}</p>
+                <p class="text-sm text-foreground-muted">{t.role}</p>
+                <p class="text-sm text-[#02308C] font-semibold">{t.company}</p>
+              </div>
+            </div>
+            <p class="text-sm text-foreground-muted italic mt-4 leading-relaxed">"{t.quote}"</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule a Call -->
+  <section class="py-12 bg-[#02308C]">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-6">
+          <img
+            src="/images/en/Pixformance_Logo_round-e1542109099881.png"
+            alt="Pixformance"
+            class="h-16 w-16 rounded-full"
+            loading="lazy"
+          />
+          <div>
+            <h2 class="font-display text-2xl font-bold text-white">Schedule a call or ask us a question</h2>
+          </div>
+        </div>
+        <Button href="/en/contact/" class="bg-[#6BDBD1] text-[#02308C] hover:bg-[#6BDBD1]/90 shrink-0">
+          Write us
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cash Pay Benefits -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Economically autonomous thanks to "Cash Pay"
+        </h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          Pixformance allows therapists to build up or expand the self-pay sector and thus an additional mainstay in the second healthcare market: for more economic independence from doctors' prescribing practices.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {cashPayBenefits.map((benefit, index) => (
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
+            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4">
+              <Icon name={benefit.icon} size="sm" class="text-[#02308C]" />
+            </div>
+            <h3 class="font-bold mb-2">{benefit.title}</h3>
+            <p class="text-sm text-foreground-muted leading-relaxed">{benefit.text}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Benefits -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="text-center lg:text-left mb-10" data-scroll="fade-up">
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+              Loved by patients – proven by therapists
+            </h2>
+            <p class="text-lg text-foreground-muted">
+              Whether for inpatient stays, before or after surgery or integrated physiotherapy, the Pixformance rehabilitation device is suitable for various indications in every rehabilitation phase and for every health condition.
+            </p>
+          </div>
+          <div class="grid gap-4">
+            {patientBenefits.map((benefit, index) => (
+              <div class="flex gap-4 p-4 rounded-xl hover:bg-white transition-colors" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
+                <div class="shrink-0 w-10 h-10 rounded-xl bg-[#02308C] flex items-center justify-center">
+                  <Icon name={benefit.icon} size="sm" class="text-white" />
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">{benefit.title}</h3>
+                  <p class="text-sm text-foreground-muted">{benefit.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div data-scroll="slide-right">
+          <img
+            src="/images/en/Pixformance-Digitales-Rehageraet-Spass-beim-Training-1.png"
+            alt="Two women in front of the Pixformance Station"
+            class="rounded-2xl shadow-xl w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- References -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12" data-scroll="fade-up">References</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-shadow" data-scroll="fade-up" data-delay="1">
+          <img
+            src="https://www.pixformance.com/wp-content/uploads/2018/12/LOESUNGEN-KLINIK-BROSCHÜREN.jpg"
+            alt="Medical Park Bad Rodach"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+            loading="lazy"
+          />
+          <h3 class="font-bold text-lg mb-2">Medical Park, Bad Rodach, Germany</h3>
+          <p class="text-foreground-muted text-sm mb-4">Pixformance is already providing highly effective support to patients at the Medical Park rehabilitation clinic, Bad Rodach, on their treatment journey.</p>
+          <a
+            href="https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-Partner-Medical-Park-quality-report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#02308C] font-semibold text-sm hover:underline flex items-center gap-1"
+          >
+            Learn more <Icon name="external-link" size="sm" />
+          </a>
+        </Card>
+
+        <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-shadow" data-scroll="fade-up" data-delay="2">
+          <img
+            src="/images/en/FocusGesundheit.png"
+            alt="Focus Gesundheit"
+            class="w-full h-48 object-contain rounded-lg mb-4 bg-gray-50 p-4"
+            loading="lazy"
+          />
+          <h3 class="font-bold text-lg mb-2">Pixformance In Germany's Top Rehabilitation Clinics</h3>
+          <p class="text-foreground-muted text-sm mb-4">Pixformance – known from the FOCUS Gesundheit issue Dec./Jan. 2018/19 – has been operating in the best rehabilitation clinics in Germany for years.</p>
+          <a
+            href="https://www.pixformance.com/wp-content/uploads/2019/01/Focus-Gesundheit-2018.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#02308C] font-semibold text-sm hover:underline flex items-center gap-1"
+          >
+            Learn more <Icon name="external-link" size="sm" />
+          </a>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Studies -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12" data-scroll="fade-up">Research Studies</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {studies.map((study, index) => (
+          <a
+            href={study.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group p-6 bg-white rounded-2xl border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            data-scroll="fade-up"
+            data-delay={Math.min(index+1,5)}
+          >
+            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center mb-4">
+              <Icon name="file-text" size="sm" class="text-[#02308C]" />
+            </div>
+            <p class="text-xs font-semibold text-[#6BDBD1] mb-2">{study.institution}</p>
+            <p class="text-sm font-medium leading-relaxed group-hover:text-[#02308C] transition-colors">{study.topic}</p>
+            <div class="flex items-center gap-1 mt-3 text-xs text-[#02308C] font-semibold">
+              Download PDF <Icon name="download" size="sm" />
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Powerful Service -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Our Powerful Service</h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          We do not sell rehabilitation equipment, but an individual care offer. With our competent team, you have the right expert for motion analysis to make your daily clinic routine even more efficient.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {[
+          { title: 'Personal Consulting And Training', text: 'We give you individual advice, starting with the planning of the rooms, through the installation of the necessary equipment or the optimal therapy control. To make it as easy as possible for you to get started, you and your therapists will receive personal training on how to use the Pixformance Station.' },
+          { title: 'Hard- And Software Support', text: 'If hardware problems occur (camera, sensor, computer or screen), we will provide you with the spare parts. Also in case of software problems our support team is always there for you by phone. By the way, automatic updates for the Pixformance Station, new workouts, but also updates on the Pixformance online platform are part of our service and are available to you free of charge.' },
+          { title: 'Complete 360° Marketing Package', text: 'We support you with a marketing package tailored to your needs to enable a smooth introduction of Pixformance to your staff and patients. As our customer, you get exclusive access to our Pixformance marketing package for print and web, with free downloads and much more.' },
+          { title: 'Financing', text: 'Whether purchasing or leasing, you can structure the financing individually. We will advise and support you right from the start. Call us without obligation or write to us and find out how you can start with Pixformance already from $99 per month.' },
+          { title: 'FAQ | Frequently Asked Questions', text: 'Here you will find answers to the most frequently asked questions about our training concept.', link: '/en/faq-training-with-pixformance-station/' },
+        ].map((service, index) => (
+          <Card variant="elevated" padding="lg" data-scroll="fade-up" data-delay={Math.min(index+1,5)}>
+            <h3 class="font-bold text-lg mb-3">{service.title}</h3>
+            <p class="text-sm text-foreground-muted leading-relaxed">{service.text}</p>
+            {service.link && (
+              <a href={service.link} class="text-[#02308C] text-sm font-semibold hover:underline mt-2 inline-block">Learn more →</a>
+            )}
+          </Card>
+        ))}
+      </div>
+
+      <!-- Team Members -->
+      <div class="grid md:grid-cols-3 gap-8">
+        {teamMembers.map((member) => (
+          <div class="text-center" data-scroll="fade-up">
+            <img
+              src={member.image}
+              alt={member.name}
+              class="w-32 h-32 rounded-full object-cover mx-auto mb-4 shadow-lg"
+              loading="lazy"
+            />
+            <h3 class="font-bold">{member.name}</h3>
+            <p class="text-sm text-foreground-muted">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORTEe Research Project -->
+  <section class="py-12 bg-gray-50">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center gap-8 p-8 bg-white rounded-2xl shadow-lg" data-scroll="fade-up">
+        <img
+          src="/images/en/FORTEe-Pixformance-Partner-Round.png"
+          alt="FORTEe Pixformance Partner"
+          class="h-24 w-24 shrink-0"
+          loading="lazy"
+        />
+        <div class="flex-1">
+          <h3 class="font-bold text-xl mb-2">Pixformance is a partner in the European research project FORTEe</h3>
+          <p class="text-foreground-muted text-sm leading-relaxed">
+            Specially adapted exercise training at the Pixformance Station has already achieved positive effects in adult cancer patients in the context of a study in the past. However, these effects have not yet been clearly demonstrated in children and adolescents. This is where FORTEe comes in, promoting an exercise therapy designed to strengthen young patients for the fight against childhood cancer.
+          </p>
+        </div>
+        <a
+          href="https://www.pixformance.com/wp-content/uploads/2021/04/PM-07042021-Pixformance-FORTEe-Strong-against-childhood-cancer-EN.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0"
+        >
+          <Button variant="outline">
+            Read Press Article
+            <Icon name="external-link" size="sm" />
+          </Button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>
+
+<style>
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

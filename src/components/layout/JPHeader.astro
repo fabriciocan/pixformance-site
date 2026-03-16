@@ -1,0 +1,60 @@
+---
+/**
+ * JP Header Component - Pixformance Japan
+ * Minimal header: logo + language switcher only
+ */
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/cn';
+import { headerVariants, headerInnerVariants } from './header.variants';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+interface Props extends HTMLAttributes<'header'> {
+  position?: 'fixed' | 'sticky' | 'static';
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'solid' | 'transparent';
+  class?: string;
+}
+
+const {
+  position = 'sticky',
+  size = 'md',
+  variant = 'default',
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const hasLogoSlot = Astro.slots.has('logo');
+const headerClasses = cn(headerVariants({ position, variant }), className);
+const innerClasses = headerInnerVariants({ size });
+---
+
+<header class={headerClasses} {...attrs}>
+  <div class={innerClasses}>
+    {/* Logo */}
+    {
+      hasLogoSlot ? (
+        <a href="/jp/" class="flex items-center">
+          <slot name="logo" />
+        </a>
+      ) : (
+        <a href="/jp/" class="flex items-center gap-2">
+          <span class="font-display text-xl font-bold text-primary">Pixformance</span>
+        </a>
+      )
+    }
+
+    {/* Language Switcher */}
+    <div class="relative group ml-auto">
+      <button class="nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors">
+        <Icon name="globe" size="sm" />
+        JP
+        <Icon name="chevron-down" size="sm" />
+      </button>
+      <div class="absolute right-0 mt-1 w-32 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50">
+        <a href="/jp/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 first:rounded-t-lg">JP</a>
+        <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+        <a href="/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 last:rounded-b-lg">DE</a>
+      </div>
+    </div>
+  </div>
+</header>

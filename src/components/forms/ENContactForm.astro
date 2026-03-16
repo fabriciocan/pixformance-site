@@ -1,0 +1,217 @@
+---
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+interface Props {
+  variant?: 'default' | 'compact';
+}
+
+const { variant = 'default' } = Astro.props;
+---
+
+<form class="space-y-6" id="en-contact-form">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="en-name" class="block text-sm font-medium mb-2">
+        Name <span class="text-error">*</span>
+      </label>
+      <input
+        type="text"
+        id="en-name"
+        name="name"
+        required
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="Your name"
+      />
+    </div>
+
+    <div>
+      <label for="en-email" class="block text-sm font-medium mb-2">
+        E-Mail <span class="text-error">*</span>
+      </label>
+      <input
+        type="email"
+        id="en-email"
+        name="email"
+        required
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="your.email@example.com"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="en-company" class="block text-sm font-medium mb-2">
+        Company / Organization
+      </label>
+      <input
+        type="text"
+        id="en-company"
+        name="company"
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="Your company"
+      />
+    </div>
+
+    <div>
+      <label for="en-phone" class="block text-sm font-medium mb-2">
+        Phone
+      </label>
+      <input
+        type="tel"
+        id="en-phone"
+        name="phone"
+        class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        placeholder="+1 (___) ___-____"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="en-interest" class="block text-sm font-medium mb-2">
+      Area of Interest
+    </label>
+    <select
+      id="en-interest"
+      name="interest"
+      class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+    >
+      <option value="">Please select...</option>
+      <option value="physical-therapy">Physical Therapy</option>
+      <option value="fitness">Fitness</option>
+      <option value="corporate-fitness">Corporate Fitness</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="en-message" class="block text-sm font-medium mb-2">
+      Your Message <span class="text-error">*</span>
+    </label>
+    <textarea
+      id="en-message"
+      name="message"
+      required
+      rows="6"
+      class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+      placeholder="Tell us how we can help you..."
+    ></textarea>
+  </div>
+
+  <div class="flex items-start gap-3">
+    <input
+      type="checkbox"
+      id="en-privacy"
+      name="privacy"
+      required
+      class="mt-1 rounded border-border focus:ring-2 focus:ring-primary"
+    />
+    <label for="en-privacy" class="text-sm text-foreground-muted">
+      I have read the <a href="/en/privacy-policy/" class="text-primary hover:underline">Privacy Policy</a> and agree to it. <span class="text-error">*</span>
+    </label>
+  </div>
+
+  <div class="flex justify-start">
+    <Button size="lg" type="submit">
+      Send Request
+      <Icon name="send" size="sm" />
+    </Button>
+  </div>
+
+  <div id="en-form-message" class="hidden"></div>
+</form>
+
+<script is:inline>
+  (function () {
+    var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+
+    function getUrlParams() {
+      var params = {};
+      new URLSearchParams(window.location.search).forEach(function (value, key) {
+        params[key] = value;
+      });
+      return params;
+    }
+
+    function getCookies() {
+      var cookies = {};
+      if (!document.cookie) return cookies;
+      document.cookie.split(';').forEach(function (cookie) {
+        var idx = cookie.indexOf('=');
+        if (idx === -1) return;
+        var key = cookie.slice(0, idx).trim();
+        var value = cookie.slice(idx + 1).trim();
+        try { cookies[key] = decodeURIComponent(value); } catch (e) { cookies[key] = value; }
+      });
+      return cookies;
+    }
+
+    function showMessage(el, type, text) {
+      el.classList.remove('hidden');
+      el.className = type === 'success'
+        ? 'p-4 rounded-lg bg-green-50 text-green-700 border border-green-200'
+        : 'p-4 rounded-lg bg-red-50 text-red-700 border border-red-200';
+      el.textContent = text;
+    }
+
+    function initForm() {
+      var form = document.getElementById('en-contact-form');
+      var messageDiv = document.getElementById('en-form-message');
+      if (!form || !messageDiv) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
+
+        var formData = new FormData(form);
+        var payload = {
+          form_name: 'Contact Form EN',
+          name: formData.get('name') || '',
+          email: formData.get('email') || '',
+          company: formData.get('company') || '',
+          phone: formData.get('phone') || '',
+          interest: formData.get('interest') || '',
+          message: formData.get('message') || '',
+          privacy_accepted: formData.get('privacy') === 'on',
+          page_url: window.location.href,
+          page_path: window.location.pathname,
+          referrer: document.referrer || '',
+          submitted_at: new Date().toISOString(),
+          url_params: getUrlParams(),
+          cookies: getCookies(),
+          language: 'en',
+        };
+
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then(function (response) {
+            if (response.ok) {
+              showMessage(messageDiv, 'success', 'Thank you for your request! We will get back to you shortly.');
+              form.reset();
+              setTimeout(function () { messageDiv.classList.add('hidden'); }, 5000);
+            } else {
+              showMessage(messageDiv, 'error', 'An error occurred. Please try again or contact us directly.');
+            }
+          })
+          .catch(function () {
+            showMessage(messageDiv, 'error', 'An error occurred. Please try again or contact us directly.');
+          })
+          .finally(function () {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+          });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initForm);
+    } else {
+      initForm();
+    }
+  })();
+</script>

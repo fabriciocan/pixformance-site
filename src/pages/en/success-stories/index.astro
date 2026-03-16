@@ -1,0 +1,209 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const stories = [
+  {
+    image: '/images/en/heikeschaible.600x400.jpg',
+    category: 'Physiotherapy',
+    subtitle: 'Successfully build up a self-pay area step by step',
+    name: 'Heike Schaible from the Physiotherapy Practice "Raum für Gesundheit", Stuttgart, Germany',
+    link: '/en/project/successfully-build-up-your-physiotherapy-self-pay-area-step-by-step/',
+    external: false,
+  },
+  {
+    image: '/images/en/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich.jpg',
+    category: 'Clinic',
+    subtitle: 'Back to fit in life again: Patient activation with the help of digital therapy devices',
+    name: 'Christoph Schneider from the Niederrhein Rehab Clinic for Neurology, Oncology & Orthopedics, Korschenbroich, Germany',
+    link: '/en/project/back-to-fit-in-life-again-patient-activation-with-the-help-of-digital-therapy-devices/',
+    external: false,
+  },
+  {
+    image: '/images/en/kim-essink-city-gym-1.jpg',
+    category: 'Fitness',
+    subtitle: 'A gym investment that pays off – Pixformance as a customer magnet',
+    name: 'Kim Essink from the fitnessstudio Essink Sportcentrum, Eindhoven, Netherlands',
+    link: '/en/project/success-story-a-gym-investment-that-pays-off-pixformance-as-a-customer-magnet/',
+    external: false,
+  },
+  {
+    image: '/images/en/Pixformance-Sauerland-Klinik-Hachen-Telerehabilitation-Portrait-Gabriele-Buchstein.jpg',
+    category: 'Clinic',
+    subtitle: 'More motivated patients through digital therapy for MS',
+    name: 'Gabriele Buchstein from the Sauerlandklinik – Neurological Special Clinic for Multiple Sclerosis, Hachen, Germany',
+    link: '/en/project/more-motivated-patients-through-digital-therapy-for-ms/',
+    external: false,
+  },
+  {
+    image: '/images/en/christoph-oratsch-600x400-1.jpg',
+    category: 'Clinic',
+    subtitle: 'Quality improvement through digital training therapy',
+    name: 'Christoph Oratsch from the AUVA Accident Hospital in Klagenfurt, Austria',
+    link: '/en/project/quality-improvement-through-digital-training-therapy/',
+    external: false,
+  },
+  {
+    image: '/images/en/gesundheitspraxis-richter-und-lopez.jpg',
+    category: 'Physiotherapy',
+    subtitle: 'Opportunities in the secondary healthcare market: The self-payer sector as a sustainable mainstay',
+    name: 'Health Practice Richter & Lopez from Mönchengladbach, Germany',
+    link: '/en/project/opportunities-in-the-second-healthcare-market-the-self-pay-sector-as-a-sustainable-mainstay/',
+    external: false,
+  },
+  {
+    image: '/images/en/carina-dworak-mrssporty-wien.jpg',
+    category: 'Fitness',
+    subtitle: 'Pixformance And Mrs.Sporty – Evolution of a fitness chain through digital, functional training',
+    name: 'Carina Dworak from a Mrs.Sporty Studio in Vienna, Austria',
+    link: '/en/project/success-story-pixformance-and-mrs-sporty-evolution-of-a-fitness-chain-through-digital-functional-training/',
+    external: false,
+  },
+  {
+    image: '/images/en/helga.jpg',
+    category: 'Fitness',
+    subtitle: 'SPECIAL NEW SEATED EXERCISES: PERSONALIZED TRAINING FOR ALL AGES AND FITNESS LEVELS',
+    name: 'More Movement in a Wheelchair Thanks to Digital Support: Helga, 84 Years Old',
+    link: '/en/project/success-story-strength-training-for-seniors-in-a-seated-position-more-movement-in-wheelchairs-thanks-to-digital-support/',
+    external: false,
+  },
+  {
+    image: '/images/en/Gunter-Hoelig.jpg',
+    category: 'Clinic',
+    subtitle: 'Support in every rehabilitation phase – with intelligent sensor and robotics systems',
+    name: 'Gunter Hölig from the Medical Park Rehab Clinic for Neurology and Orthopeadics, Bad Rodach, Germany',
+    link: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-Partner-Medical-Park-quality-report.pdf',
+    external: true,
+  },
+  {
+    image: '/images/en/Swetlana-Zimmermann-Schlossphysio.png',
+    category: 'Physiotherapy',
+    subtitle: 'CARING FOR MORE PATIENTS AT THE SAME TIME WITH DIGITAL MOVEMENT THERAPY',
+    name: 'Swetlana Zimmermann from the Physiotherapy Practice "Schlossphysio", Winterthur, Switzerland',
+    link: '/en/project/serving-more-patients-at-the-same-time-with-digital-movement-therapy/',
+    external: false,
+  },
+  {
+    image: '/images/en/Volker-Sutor-Portrait.png',
+    category: 'Physiotherapy',
+    subtitle: 'Patient retention in physiotherapy: with digital functional training',
+    name: 'Volker Sutor from the Physiotherapy & Rehabilitation Centers "Gesundheitsrondell", Germany',
+    link: '/en/project/patient-retention-in-physiotherapy-with-digital-functional-training/',
+    external: false,
+  },
+];
+
+const categoryColors: Record<string, string> = {
+  Physiotherapy: 'bg-[#6BDBD1]/20 text-[#02308C]',
+  Clinic: 'bg-purple-100 text-purple-700',
+  Fitness: 'bg-green-100 text-green-700',
+};
+---
+
+<ENBaseLayout
+  title="Pixformance Success Stories - Pixformance Sports GmbH"
+  description="Read how physiotherapy practices, rehab clinics, and fitness studios worldwide use Pixformance to achieve outstanding results for their patients and members."
+  hreflangDe="https://neu.pixformance.com/erfolgsgeschichten/"
+>
+  <ENHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </ENHeader>
+
+  <!-- Hero -->
+  <section class="py-16 md:py-20 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
+    <div class="container">
+      <div class="max-w-3xl space-y-4">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-sm font-bold">
+          <Icon name="star" size="sm" />
+          Success Stories
+        </span>
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+          Success stories
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          With over 450,000 exercisers worldwide, the Pixformance training and therapy concept can already be found in Germany's top rehabilitation clinics, physical therapy practices, and fitness studios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {stories.map((story, index) => (
+          <article class="group flex flex-col rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min((index % 3) + 1, 3)}>
+            <div class="overflow-hidden aspect-[3/2]">
+              <img
+                src={story.image}
+                alt={story.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 space-y-3">
+              <span class={`self-start px-3 py-1 rounded-full text-xs font-bold ${categoryColors[story.category]}`}>
+                {story.category}
+              </span>
+              <p class="text-sm text-foreground-muted font-medium leading-snug">{story.subtitle}</p>
+              <h2 class="font-bold text-base leading-snug flex-1">{story.name}</h2>
+              <a
+                href={story.link}
+                target={story.external ? '_blank' : undefined}
+                rel={story.external ? 'noopener noreferrer' : undefined}
+                class="inline-flex items-center gap-2 text-[#02308C] font-semibold text-sm hover:gap-3 transition-all mt-auto pt-2"
+              >
+                {story.external ? 'Read PDF' : 'Read More'}
+                {story.external
+                  ? <Icon name="external-link" size="sm" />
+                  : <Icon name="arrow-right" size="sm" />
+                }
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-[#6BDBD1] to-[#02308C]">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
+          Let us advise you
+        </h2>
+        <p class="text-xl text-white/90">
+          Sometimes it is easier to answer questions in person. We are looking forward to your message!
+        </p>
+        <Button size="lg" href="/en/contact/" class="bg-white text-[#02308C] hover:bg-white/90">
+          Write us
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>
+
+<style>
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

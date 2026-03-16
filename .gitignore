@@ -3,6 +3,7 @@ dist/
 
 # generated types
 .astro/
+.english-version/
 
 # dependencies
 node_modules/
@@ -29,3 +30,4 @@ imagens-*/
 new-icons/
 new-konzept-icons/
 velocity/
+
