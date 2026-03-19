@@ -3,187 +3,311 @@ import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
 import ENHeader from '@/components/layout/ENHeader.astro';
 import ENFooter from '@/components/layout/ENFooter.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
-import Button from '@/components/ui/form/Button/Button.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
 
-const stories = [
+const physiotherapyStories = [
   {
-    image: '/images/en/heikeschaible.600x400.jpg',
-    category: 'Physiotherapy',
-    subtitle: 'Successfully build up a self-pay area step by step',
-    name: 'Heike Schaible from the Physiotherapy Practice "Raum für Gesundheit", Stuttgart, Germany',
-    link: '/en/project/successfully-build-up-your-physiotherapy-self-pay-area-step-by-step/',
-    external: false,
+    id: 'heike-schaible',
+    category: 'Building a self-pay area successfully',
+    title: 'Step by step: successfully building up a self-pay area',
+    person: 'Heike Schaible',
+    location: 'Physiotherapy Practice "Raum für Gesundheit", Stuttgart, Germany',
+    image: '/images/erfolgsgeschichten/heikeschaible.600x400.jpg',
   },
   {
-    image: '/images/en/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich.jpg',
-    category: 'Clinic',
-    subtitle: 'Back to fit in life again: Patient activation with the help of digital therapy devices',
-    name: 'Christoph Schneider from the Niederrhein Rehab Clinic for Neurology, Oncology & Orthopedics, Korschenbroich, Germany',
-    link: '/en/project/back-to-fit-in-life-again-patient-activation-with-the-help-of-digital-therapy-devices/',
-    external: false,
+    id: 'axel-richter',
+    category: 'Opportunities in the secondary healthcare market',
+    title: 'The self-pay sector as a sustainable mainstay',
+    person: 'Axel-André Richter',
+    location: 'Richter & Lopez Health Practice, Mönchengladbach, Germany',
+    image: '/images/erfolgsgeschichten/gesundheitspraxis-richter-und-lopez.jpg',
   },
   {
-    image: '/images/en/kim-essink-city-gym-1.jpg',
-    category: 'Fitness',
-    subtitle: 'A gym investment that pays off – Pixformance as a customer magnet',
-    name: 'Kim Essink from the fitnessstudio Essink Sportcentrum, Eindhoven, Netherlands',
-    link: '/en/project/success-story-a-gym-investment-that-pays-off-pixformance-as-a-customer-magnet/',
-    external: false,
+    id: 'swetlana-zimmermann',
+    category: 'Caring for more patients with digital therapy',
+    title: 'Caring for more patients at the same time with digital movement therapy',
+    person: 'Swetlana Zimmermann',
+    location: 'Schlossphysio, Winterthur, Switzerland',
+    image: '/images/erfolgsgeschichten/Swetlana-Zimmermann-Schlossphysio.png',
   },
   {
-    image: '/images/en/Pixformance-Sauerland-Klinik-Hachen-Telerehabilitation-Portrait-Gabriele-Buchstein.jpg',
-    category: 'Clinic',
-    subtitle: 'More motivated patients through digital therapy for MS',
-    name: 'Gabriele Buchstein from the Sauerlandklinik – Neurological Special Clinic for Multiple Sclerosis, Hachen, Germany',
-    link: '/en/project/more-motivated-patients-through-digital-therapy-for-ms/',
-    external: false,
-  },
-  {
-    image: '/images/en/christoph-oratsch-600x400-1.jpg',
-    category: 'Clinic',
-    subtitle: 'Quality improvement through digital training therapy',
-    name: 'Christoph Oratsch from the AUVA Accident Hospital in Klagenfurt, Austria',
-    link: '/en/project/quality-improvement-through-digital-training-therapy/',
-    external: false,
-  },
-  {
-    image: '/images/en/gesundheitspraxis-richter-und-lopez.jpg',
-    category: 'Physiotherapy',
-    subtitle: 'Opportunities in the secondary healthcare market: The self-payer sector as a sustainable mainstay',
-    name: 'Health Practice Richter & Lopez from Mönchengladbach, Germany',
-    link: '/en/project/opportunities-in-the-second-healthcare-market-the-self-pay-sector-as-a-sustainable-mainstay/',
-    external: false,
-  },
-  {
-    image: '/images/en/carina-dworak-mrssporty-wien.jpg',
-    category: 'Fitness',
-    subtitle: 'Pixformance And Mrs.Sporty – Evolution of a fitness chain through digital, functional training',
-    name: 'Carina Dworak from a Mrs.Sporty Studio in Vienna, Austria',
-    link: '/en/project/success-story-pixformance-and-mrs-sporty-evolution-of-a-fitness-chain-through-digital-functional-training/',
-    external: false,
-  },
-  {
-    image: '/images/en/helga.jpg',
-    category: 'Fitness',
-    subtitle: 'SPECIAL NEW SEATED EXERCISES: PERSONALIZED TRAINING FOR ALL AGES AND FITNESS LEVELS',
-    name: 'More Movement in a Wheelchair Thanks to Digital Support: Helga, 84 Years Old',
-    link: '/en/project/success-story-strength-training-for-seniors-in-a-seated-position-more-movement-in-wheelchairs-thanks-to-digital-support/',
-    external: false,
-  },
-  {
-    image: '/images/en/Gunter-Hoelig.jpg',
-    category: 'Clinic',
-    subtitle: 'Support in every rehabilitation phase – with intelligent sensor and robotics systems',
-    name: 'Gunter Hölig from the Medical Park Rehab Clinic for Neurology and Orthopeadics, Bad Rodach, Germany',
-    link: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-Partner-Medical-Park-quality-report.pdf',
-    external: true,
-  },
-  {
-    image: '/images/en/Swetlana-Zimmermann-Schlossphysio.png',
-    category: 'Physiotherapy',
-    subtitle: 'CARING FOR MORE PATIENTS AT THE SAME TIME WITH DIGITAL MOVEMENT THERAPY',
-    name: 'Swetlana Zimmermann from the Physiotherapy Practice "Schlossphysio", Winterthur, Switzerland',
-    link: '/en/project/serving-more-patients-at-the-same-time-with-digital-movement-therapy/',
-    external: false,
-  },
-  {
-    image: '/images/en/Volker-Sutor-Portrait.png',
-    category: 'Physiotherapy',
-    subtitle: 'Patient retention in physiotherapy: with digital functional training',
-    name: 'Volker Sutor from the Physiotherapy & Rehabilitation Centers "Gesundheitsrondell", Germany',
-    link: '/en/project/patient-retention-in-physiotherapy-with-digital-functional-training/',
-    external: false,
+    id: 'volker-sutor',
+    category: 'Patient retention through digital training',
+    title: 'Patient retention in physiotherapy with digital functional training',
+    person: 'Volker Sutor',
+    location: 'Gesundheitsrondell (Physiotherapy & Rehab Centers), Germany',
+    image: '/images/erfolgsgeschichten/Volker-Sutor-Portrait.png',
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  Physiotherapy: 'bg-[#6BDBD1]/20 text-[#02308C]',
-  Clinic: 'bg-purple-100 text-purple-700',
-  Fitness: 'bg-green-100 text-green-700',
-};
+const clinicStories = [
+  {
+    id: 'gabriele-buchstein',
+    category: 'Digital therapy for MS',
+    title: 'More motivated patients through digital therapy for MS',
+    person: 'Gabriele Buchstein',
+    location: 'Sauerland Clinic Hachen – Neurological Specialist Clinic for MS, Germany',
+    image: '/images/erfolgsgeschichten/Pixformance-Sauerland-Klinik-Hachen-Telerehabilitation-Portrait-Gabriele-Buchstein.jpg',
+  },
+  {
+    id: 'christoph-schneider',
+    category: 'Patient activation through digital therapy devices',
+    title: 'Back to fit in life again with intelligent therapy devices',
+    person: 'Christoph Schneider (Head of Therapy)',
+    location: 'Niederrhein Rehab Clinic, Korschenbroich, Germany',
+    image: '/images/erfolgsgeschichten/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich.jpg',
+  },
+  {
+    id: 'christoph-oratsch',
+    category: 'Quality improvement through digital training therapy',
+    title: 'Quality improvement through digital training therapy',
+    person: 'Christoph Oratsch',
+    location: 'AUVA Accident Hospital, Klagenfurt, Austria',
+    image: '/images/erfolgsgeschichten/christoph-oratsch-600x400-1.jpg',
+  },
+  {
+    id: 'gunter-hoelig',
+    category: 'Intelligent sensor and robotics systems',
+    title: 'Support in every rehabilitation phase',
+    person: 'Gunter Hölig',
+    location: 'Medical Park Rehab Clinic, Bad Rodach, Germany',
+    image: '/images/erfolgsgeschichten/Gunter-Hoelig.jpg',
+  },
+];
+
+const fitnessStories = [
+  {
+    id: 'kim-essink',
+    category: 'Gym investment with ROI',
+    title: 'A gym investment that pays off',
+    person: 'Kim Essink',
+    location: 'Essink Sportcentrum, Eindhoven, Netherlands',
+    image: '/images/erfolgsgeschichten/kim-essink-city-gym-1.jpg',
+  },
+  {
+    id: 'carina-dworak',
+    category: 'Evolution of a fitness chain',
+    title: 'The evolution of a fitness chain through digital, functional training',
+    person: 'Carina Dworak',
+    location: 'Mrs.Sporty Studio, Vienna, Austria',
+    image: '/images/erfolgsgeschichten/carina-dworak-mrssporty-wien.jpg',
+  },
+  {
+    id: 'helga-senioren',
+    category: 'Strength training for seniors',
+    title: 'More movement in a wheelchair thanks to digital support',
+    person: 'Helga (84 years old)',
+    location: 'Personalized training for all ages',
+    image: '/images/erfolgsgeschichten/helga.jpg',
+  },
+];
 ---
 
 <ENBaseLayout
-  title="Pixformance Success Stories - Pixformance Sports GmbH"
-  description="Read how physiotherapy practices, rehab clinics, and fitness studios worldwide use Pixformance to achieve outstanding results for their patients and members."
+  title="Success Stories – Customers report on Pixformance"
+  description="Real testimonials from physiotherapists, clinic managers and fitness club owners. 1,100+ facilities worldwide. Read how Pixformance helps them."
   hreflangDe="https://neu.pixformance.com/erfolgsgeschichten/"
 >
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </ENHeader>
 
-  <!-- Hero -->
-  <section class="py-16 md:py-20 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
     <div class="container">
-      <div class="max-w-3xl space-y-4">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-sm font-bold">
-          <Icon name="star" size="sm" />
-          Success Stories
-        </span>
-        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
-          Success stories
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Pixformance
+          <span class="text-[#02308C]"> Success Stories</span>
         </h1>
-        <p class="text-xl text-white/80 leading-relaxed">
-          With over 450,000 exercisers worldwide, the Pixformance training and therapy concept can already be found in Germany's top rehabilitation clinics, physical therapy practices, and fitness studios.
-        </p>
       </div>
     </div>
   </section>
 
-  <!-- Stories Grid -->
-  <section class="py-16 md:py-24 bg-white">
+  <!-- Physical Therapy Section -->
+  <section class="py-12 md:py-20 bg-white">
     <div class="container">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {stories.map((story, index) => (
-          <article class="group flex flex-col rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min((index % 3) + 1, 3)}>
-            <div class="overflow-hidden aspect-[3/2]">
-              <img
-                src={story.image}
-                alt={story.name}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Physical Therapy</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {physiotherapyStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#02308C]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="heart" size="sm" />
+                  Physical Therapy
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
             </div>
-            <div class="flex flex-col flex-1 p-6 space-y-3">
-              <span class={`self-start px-3 py-1 rounded-full text-xs font-bold ${categoryColors[story.category]}`}>
-                {story.category}
-              </span>
-              <p class="text-sm text-foreground-muted font-medium leading-snug">{story.subtitle}</p>
-              <h2 class="font-bold text-base leading-snug flex-1">{story.name}</h2>
-              <a
-                href={story.link}
-                target={story.external ? '_blank' : undefined}
-                rel={story.external ? 'noopener noreferrer' : undefined}
-                class="inline-flex items-center gap-2 text-[#02308C] font-semibold text-sm hover:gap-3 transition-all mt-auto pt-2"
-              >
-                {story.external ? 'Read PDF' : 'Read More'}
-                {story.external
-                  ? <Icon name="external-link" size="sm" />
-                  : <Icon name="arrow-right" size="sm" />
-                }
-              </a>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/en/success-stories/${story.id}/`} class="w-full group-hover:bg-[#02308C] transition-colors">
+                Read More
+                <Icon name="arrow-right" size="sm" />
+              </Button>
             </div>
-          </article>
+          </Card>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-[#6BDBD1] to-[#02308C]">
+  <!-- Clinic Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
-      <div class="max-w-3xl mx-auto text-center space-y-8" data-scroll="fade-up">
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
-          Let us advise you
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Clinic</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {clinicStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#02308C]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="activity" size="sm" />
+                  Clinic
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/en/success-stories/${story.id}/`} class="w-full group-hover:bg-[#02308C] transition-colors">
+                Read More
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitness Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Fitness</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {fitnessStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#6BDBD1]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="zap" size="sm" />
+                  Fitness
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#6BDBD1] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#6BDBD1] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/en/success-stories/${story.id}/`} class="w-full group-hover:bg-[#6BDBD1] group-hover:text-[#02308C] transition-colors">
+                Read More
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Write your own success story
         </h2>
-        <p class="text-xl text-white/90">
-          Sometimes it is easier to answer questions in person. We are looking forward to your message!
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Join our growing community of over 1,100 successful facilities worldwide. Contact us for a no-obligation consultation.
         </p>
-        <Button size="lg" href="/en/contact/" class="bg-white text-[#02308C] hover:bg-white/90">
-          Write us
-          <Icon name="arrow-right" size="sm" />
-        </Button>
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/en/apply-for-trial/" class="bg-black text-white hover:bg-black/80">
+            Apply for Trial
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/en/products-2/" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            Discover our Concept
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -192,13 +316,24 @@ const categoryColors: Record<string, string> = {
 </ENBaseLayout>
 
 <style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
   [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
   [data-scroll].is-visible { opacity: 1; }
   [data-scroll="fade-up"] { transform: translateY(30px); }
   [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
   [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
   [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
   [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 </style>
 
 <script>

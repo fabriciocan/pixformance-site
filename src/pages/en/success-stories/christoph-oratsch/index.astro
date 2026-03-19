@@ -1,0 +1,349 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<ENBaseLayout
+  title="Quality Improvement Through Digital Training Therapy - Christoph Oratsch - Pixformance"
+  description="AUVA Accident Hospital Klagenfurt is the first hospital in the AUVA group with a digital product in therapy. Head of Therapy Christoph Oratsch on the use of Pixformance."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Quality Improvement Through Digital Training Therapy – Christoph Oratsch",
+    "description": "AUVA Accident Hospital Klagenfurt as the first AUVA group hospital with digital training equipment in therapy. Head of Therapy Christoph Oratsch on Pixformance.",
+    "url": "https://pixformance.com/en/success-stories/christoph-oratsch",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
+>
+  <ENHeader slot="header" position="sticky" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Back to Overview
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="activity" size="sm" />
+            Clinic
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Quality improvement through digital training therapy
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            AUVA Accident Hospital Klagenfurt am Wörthersee, Austria
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Quote -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+          <p class="text-foreground italic text-base md:text-xl">
+            "Digitalization is often a topic among colleagues too, but the final step toward implementation is frequently missing. With the acquisition of Pixformance stations, we at AUVA are now the first hospital with a digital product in therapy and are taking on a pioneering role. We are naturally very proud of that."
+          </p>
+          <p class="text-sm text-foreground-muted mt-3 font-semibold">— Christoph Oratsch, Head of Therapy, AUVA Accident Hospital Klagenfurt</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/christoph-oratsch-600x400-1.jpg"
+                alt="Christoph Oratsch - Head of Therapy AUVA Accident Hospital Klagenfurt"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Christoph Oratsch</h2>
+              <p class="text-xl text-[#02308C] font-semibold">Head of Therapy, AUVA Accident Hospital Klagenfurt</p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="activity" size="md" class="text-[#02308C]" />
+                Clinic Profile
+              </h3>
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Location</p>
+                    <p class="text-sm">Klagenfurt, Austria</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Founded</p>
+                    <p class="text-sm">1953</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="heart" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Specialization</p>
+                    <p class="text-sm">Trauma surgery, orthopedics</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Patient Capacity</p>
+                    <p class="text-sm">100 beds</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">More Info</p>
+                    <a href="https://www.ukhklagenfurt.at" target="_blank" rel="noopener noreferrer" class="text-sm text-[#02308C] hover:underline">
+                      www.ukhklagenfurt.at
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Digital pioneer of the AUVA group
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              The Accident Hospital Klagenfurt am Wörthersee (UKH) belongs to the group of nine accident hospitals operated by AUVA. According to Head of Therapy Christoph Oratsch, it is a small but very modern and progressive hospital with inpatient and outpatient care options. Physiotherapy is an important pillar of the clinic and helps patients improve, restore, or maintain their movement and functional ability.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Oratsch sees the move toward digitalization not as a change, but as an additional offering and therefore as a quality improvement for therapy. Before investing, the Head of Therapy and his team conducted a detailed 6-month trial to get a clear picture of what Pixformance could offer. They ultimately decided on four Pixformance stations, placed in a group therapy room.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 1 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-2-web.jpg" alt="Pixformance training therapy at AUVA Accident Hospital Klagenfurt" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Digitally promoting patient independence
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              When a patient is admitted, it is first checked whether training therapy with Pixformance is possible – in particular whether the loading and movement requirements from the surgical side are in place. If so, an individual training program is created with a few clicks on the online platform. The first training session takes place under therapeutic supervision. Patients can then train independently at the station.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "Pixformance is a great support for us in carrying out the classic home exercise program in a more targeted way. We have better training planning, as the exercises can be individually set with repetitions, difficulty levels, duration, etc., so that patients do exactly what the therapist wants. Additionally, the guidance through the short videos on the stations helps them enormously with exercise execution."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              The exercises are varied and go far beyond classic strength training. Oratsch explains:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "When exercises are just printed out, patients often resist performing challenging exercises that are essential for therapy success – they put them off or skip them entirely."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Thanks to guidance from the virtual trainer, patients are motivated to always perform their exercises correctly and cleanly – which has a positive effect on long-term therapy success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 2 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-5-web.jpg" alt="Patient training at Pixformance station in Klagenfurt" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+        </Card>
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-7-web.jpg" alt="Therapist and patient during Pixformance training therapy" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Intensive patient care beyond the clinic stay
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Beyond on-site training in Klagenfurt, every patient is recommended the Pixformance web app – especially for outpatient care, to consolidate training therapy at home. Oratsch tells of an eleven-year-old patient whose family went through a COVID infection during therapy. For four weeks he couldn't come to the clinic – thanks to the Pixformance web app he continued training nonetheless. When he returned, clear progress was visible.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "Just recently we accompanied a young woman after shoulder surgery via tele-support using the Pixformance web app. She comes to the clinic once a week and does the rest of the therapy at home. That's a truly wonderful option for less mobile patients."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Christoph Oratsch</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Patient feedback is generally very positive – Oratsch even reports of patients who proactively request a training program.
+            </p>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Time savings and more patients with the same staffing resources
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              In addition to benefits for patients, the therapists at UKH also benefit from the digital support.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "With Pixformance we have an enormous time gain. We can more easily care for more patients, with the same staffing resources."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Christoph Oratsch</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              He also praises the high degree of individualization of Pixformance exercises: from 18 to 75 years old, from cruciate ligament injuries to shoulder injuries – the right training program can be offered for all patients.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section 3 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img src="/images/erfolgsgeschichten/Pixformance-AUVA-Unfallkrankenhaus-Klagenfurt-Trainingstherapie-4.web_.jpg" alt="Pixformance training therapy AUVA Klagenfurt" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Would you like individual advice?</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Your Contact</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+            <Button size="lg" href="/en/apply-for-trial/" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+              Contact Us <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+          <Icon name="arrow-left" size="sm" /> Back to Overview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>
+
+<style>
+  @keyframes hero-entry { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.95); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

@@ -6,6 +6,106 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const components = [
+  {
+    icon: 'monitor',
+    title: 'Pixformance Station',
+    description: 'The patented station with a 2D Full-HD camera captures 25 joint points for precise motion analysis',
+  },
+  {
+    icon: 'globe',
+    title: 'Online Platform',
+    description: 'Central management of all trainees and training programs with full data history',
+  },
+  {
+    icon: 'smartphone',
+    title: 'Mobile Web App',
+    description: 'Train anywhere — at home or on the go with the Pixformance Web App',
+  },
+];
+
+const technologies = [
+  {
+    icon: 'cpu',
+    title: 'Innovative Software',
+    color: '#02308C',
+    features: [
+      'Based on 25 joint points',
+      'Body measurement in seconds',
+      'Precise motion analysis',
+      'Patented technology',
+    ],
+  },
+  {
+    icon: 'message-square',
+    title: 'Digital Feedback',
+    color: '#6BDBD1',
+    features: [
+      'Real-time correction',
+      'Text-based feedback',
+      'Visual feedback',
+      'Personalized adjustments',
+    ],
+  },
+  {
+    icon: 'network',
+    title: 'Connectivity',
+    color: '#6BDBD1',
+    features: [
+      'Station ↔ Online Platform',
+      'Online Platform ↔ Web App',
+      'Seamless data synchronization',
+      'Centralized management',
+    ],
+  },
+];
+
+const targetGroups = [
+  {
+    svgIcon: '/images/konzept-icons/17.svg',
+    title: "Germany's Top Rehab Clinics",
+    description: 'Leading facilities trust Pixformance',
+  },
+  {
+    svgIcon: '/images/konzept-icons/18.svg',
+    title: 'Physical Therapy Practices',
+    description: 'Optimal support for therapists',
+  },
+  {
+    svgIcon: '/images/konzept-icons/20.svg',
+    title: 'Fitness Studios',
+    description: 'Modern training concepts for studios',
+  },
+  {
+    svgIcon: '/images/konzept-icons/16.svg',
+    title: 'Corporate Wellness',
+    description: 'Healthy and high-performing employees',
+  },
+];
+
+const keyFeatures = [
+  {
+    icon: 'layers',
+    title: '700+ Functional Exercises',
+    description: 'Extensive exercise library for every health condition and fitness level',
+  },
+  {
+    icon: 'monitor',
+    title: 'Virtual Personal Trainer',
+    description: 'Professional guidance through a digital trainer displayed on screen',
+  },
+  {
+    icon: 'settings',
+    title: 'Personalized Training Plans',
+    description: 'Individually tailored to fitness level and personal goals',
+  },
+  {
+    icon: 'check-circle',
+    title: 'Safe Exercise Execution',
+    description: 'Real-time correction prevents incorrect posture and injuries',
+  },
+];
 ---
 
 <ENBaseLayout
@@ -17,189 +117,274 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
     <PixformanceLogo slot="logo" />
   </ENHeader>
 
+  <!-- Floating CTA -->
+  <div class="fixed bottom-8 right-8 z-50">
+    <a
+      href="/en/contact/"
+      class="hover:scale-105 transition-transform duration-300 block"
+      aria-label="Apply for trial"
+    >
+      <img
+        src="/images/en/image-25.png"
+        alt="Apply for trial"
+        class="h-20 md:h-28 w-auto shadow-xl rounded-full"
+        loading="lazy"
+      />
+    </a>
+  </div>
+
   <!-- Hero Section -->
-  <section class="py-16 md:py-24 bg-white">
+  <section class="relative bg-white overflow-hidden">
+    <!-- Hero Banner Image -->
+    <div class="relative w-full hero-animate" style="animation-delay: 0.1s;">
+      <img
+        src="/images/Pixformance-Gruppentraining-Physiotherapie-Digitale-Rehabilitation-eHealth-Funktionelles-Training-Banner.jpg"
+        alt="Pixformance Group Training Physical Therapy Digital Rehabilitation"
+        class="w-full h-auto object-cover"
+        loading="eager"
+      />
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+    </div>
+
+    <div class="container py-12 md:py-16">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C] text-white text-sm font-bold shadow-lg">
+            <Icon name="zap" size="sm" />
+            FULLY CONNECTED TRAINING
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Digital Training Concept for Your Patients & Members
+        </h1>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          The Pixformance Station with patented software, an Online Platform and a Web App — these three components form our fully connected digital training concept. Using the best technology for digital motion analysis, we deliver highly effective functional training for every fitness level and health condition.
+        </p>
+
+        <div class="flex gap-4 flex-wrap justify-center hero-animate" style="animation-delay: 0.4s;">
+          <Button size="lg" href="/en/apply-for-trial/">
+            Apply For Trial
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/en/contact/">
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Components -->
+  <section class="py-12 md:py-20 bg-white">
     <div class="container">
-      <!-- Popup CTA -->
-      <div class="fixed bottom-8 right-8 z-50">
-        <a
-          href="https://app.monstercampaigns.com/c/ybvlequwgaulmccl90jr/?max-width=650px"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:scale-105 transition-transform duration-300 block"
-          aria-label="Apply for trial"
-        >
-          <img
-            src="/images/en/image-25.png"
-            alt="Apply for trial"
-            class="h-20 md:h-28 w-auto shadow-xl rounded-full"
-            loading="lazy"
-          />
-        </a>
+      <div class="text-center mb-10" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          The 3 Components of the System
+        </h2>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-6" data-scroll="slide-left">
-          <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
-            Functional Training devices
-          </h1>
-          <h2 class="text-2xl md:text-3xl font-bold text-[#02308C]">
-            The 360° Pixformance Concept
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            Professional physical therapy devices and fitness equipment, a patented software, a fully connected Online Platform and an App. Thanks to increased personalization, sustainable technologies and timeless design, we establish innovative training and therapy standards. The goal: to provide highly effective functional training for every fitness level with exercise instructions and live feedback from a virtual trainer.
-          </p>
-          <div class="flex gap-4 flex-wrap">
-            <Button size="lg" href="/en/apply-for-trial/">
-              Apply For Trial
-              <Icon name="arrow-right" size="sm" />
-            </Button>
-            <Button size="lg" variant="outline" href="/en/contact/">
-              Contact Us
-            </Button>
+      <div class="flex justify-center mb-12" data-scroll="fade-up">
+        <img
+          src="/images/en/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg"
+          alt="The 3 Components: Pixformance Station, Online Platform and Mobile Web App"
+          class="max-w-lg w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {components.map((component, index) => (
+          <div class="flex flex-col items-center text-center gap-4" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="w-20 h-20 rounded-full border-2 border-[#02308C] flex items-center justify-center flex-shrink-0">
+              <Icon name={component.icon} size="lg" class="text-[#02308C]" />
+            </div>
+            <h3 class="font-bold text-xl text-foreground">
+              {component.title}
+            </h3>
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              {component.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Features
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Key Features of the System
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {keyFeatures.map((feature, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#02308C] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <Icon name={feature.icon} size="lg" class="text-white" />
+            </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {feature.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Highlights -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="cpu" size="sm" />
+          Technology
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Technology Highlights
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {technologies.map((tech, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class="space-y-4">
+              <h3 class="font-display text-xl font-bold group-hover:text-[#02308C] transition-colors">
+                {tech.title}
+              </h3>
+              <ul class="space-y-3">
+                {tech.features.map((feature) => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <Icon name="check-circle" size="sm" class="text-[#86C9BC] mt-0.5 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Groups -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="users" size="sm" />
+          Target Groups
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Successfully used in
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {targetGroups.map((group, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#02308C] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <img src={group.svgIcon} alt={group.title} class="w-8 h-8 object-contain" loading="lazy" />
+            </div>
+            <h3 class="font-semibold mb-2 group-hover:text-[#02308C] transition-colors">
+              {group.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {group.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+
+      <div class="text-center" data-scroll="fade-up">
+        <div class="inline-block p-8 rounded-2xl bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 border border-[#02308C]/20">
+          <p class="text-4xl md:text-5xl font-bold text-[#02308C] mb-2">750,000+</p>
+          <p class="text-lg text-foreground-muted">Exercisers worldwide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-18 md:pb-40 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto pt-8 text-center" data-scroll="fade-up">
+        <blockquote class="text-2xl md:text-3xl font-bold text-white mb-8 leading-relaxed">
+          "With Pixformance we built a second self-pay area. The digital movement therapy inspires our patients and paid for itself quickly."
+        </blockquote>
+
+        <div class="flex items-center justify-center gap-4">
+          <div class="w-30 h-30 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <img src="/images/Heike-Schaible-round.png" class="w-30 h-30 rounded-full object-cover" loading="lazy" alt="Heike Schaible" />
+          </div>
+          <div class="text-left">
+            <p class="font-bold text-white text-lg">Heike Schaible</p>
+            <p class="text-white text-sm">Owner</p>
+            <p class="text-white text-sm">Physical Therapy Practice "Raum für Gesundheit", Stuttgart</p>
           </div>
         </div>
-
-        <div data-scroll="slide-right">
-          <img
-            src="/images/en/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg"
-            alt="Pixformance 360 Degree Concept — Online Platform, App, Digital Sports Device"
-            class="rounded-2xl shadow-xl w-full h-auto"
-            loading="lazy"
-          />
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Product Pillar 01 -->
-  <section class="py-16 md:py-24 bg-gray-50">
+  <!-- CTA -->
+  <section class="py-12 md:py-20 bg-white">
     <div class="container">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-6" data-scroll="slide-left">
-          <span class="text-7xl font-bold text-[#02308C]/10">01</span>
-          <h2 class="font-display text-4xl md:text-5xl font-bold -mt-4">
-            Pixformance Station
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            The patented Pixformance Station is a free-standing digital physical therapy and sports device developed by experts in science, technology, medicine, and fitness. With our innovative software, the station measures the body of each user in a matter of seconds based on 25 joint points. It precisely analyzes the execution of movements and provides live digital feedback — enabling particularly effective and safe rehab and functional training. With more than 350 functional exercises, the station can be used for individual and circuit training.
-          </p>
-          <Button href="/en/physical-therapy/" variant="outline">
-            Physical Therapy
-            <Icon name="arrow-right" size="sm" />
-          </Button>
-        </div>
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+          <Icon name="headphones" size="sm" />
+          Consultation
+        </span>
 
-        <div data-scroll="slide-right">
-          <img
-            src="/images/en/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png"
-            alt="Pixformance Station — Digital Functional Training Device"
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Pillar 02 -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div data-scroll="slide-left" class="order-2 lg:order-1">
-          <img
-            src="/images/en/Pixformance-Online-Platform-Functional-Training-fully-connected.jpg"
-            alt="Pixformance Online Platform — Functional Training Fully Connected"
-            class="rounded-2xl shadow-xl w-full h-auto"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="space-y-6 order-1 lg:order-2" data-scroll="slide-right">
-          <span class="text-7xl font-bold text-[#02308C]/10">02</span>
-          <h2 class="font-display text-4xl md:text-5xl font-bold -mt-4">
-            Pixformance Online Platform
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            The Pixformance Online Platform stores all the training data of trainees and patients. This offers both our business partners and their trainees the possibility to track training progress at any time and to optimize their training based on the collected data. With the Pixformance platform you will have access to the exercise catalog with more than 350 functional exercises. With this resource you can compile your own workouts and training plans with just a few clicks while precisely tracking and optimizing them.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Pillar 03 -->
-  <section class="py-16 md:py-24 bg-gray-50">
-    <div class="container">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-6" data-scroll="slide-left">
-          <span class="text-7xl font-bold text-[#02308C]/10">03</span>
-          <h2 class="font-display text-4xl md:text-5xl font-bold -mt-4">
-            Pixformance App
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            The Pixformance App offers access to workout plans, exercise progress and history, any time, any place. For those who train, we offer location-independent, 360-degree Pixformance training as well as numerous functions to improve health and fitness. Upon request, we can design an individual digital fitness world for our business partners in the form of a separate app.
-          </p>
-        </div>
-
-        <div data-scroll="slide-right">
-          <img
-            src="/images/Digital-Training-Device-eHealth-Telemedicine-Feedback-Pixformance-Station-2020-EN-mobil-web.png"
-            alt="Pixformance App"
-            class="rounded-2xl shadow-xl w-full h-auto"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Success Stories Section -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div data-scroll="slide-left">
-          <img
-            src="/images/en/heikeschaible.600x400.jpg"
-            alt="Woman with short hair and black glasses smiles at camera"
-            class="rounded-2xl shadow-xl w-full h-auto"
-            loading="lazy"
-          />
-        </div>
-        <div class="space-y-6" data-scroll="slide-right">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
-            <Icon name="star" size="sm" />
-            Success Stories
-          </span>
-          <h2 class="font-display text-4xl md:text-5xl font-bold">
-            Success stories
-          </h2>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            With over 450,000 exercisers worldwide, the Pixformance training and therapy concept can already be found in Germany's top rehabilitation clinics, physical therapy practices, and fitness studios. Read our success stories to discover how and why Ms. Schaible from the physical therapy practice "Raum für Gesundheit" and many other customers have integrated the digital movement therapy from Pixformance.
-          </p>
-          <Button href="/en/success-stories/">
-            All success stories
-            <Icon name="arrow-right" size="sm" />
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Let Us Advise You -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-[#6BDBD1] to-[#02308C]">
-    <div class="container">
-      <div class="max-w-3xl mx-auto text-center space-y-8" data-scroll="fade-up">
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
-          Let us advise you
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          We are happy to advise you!
         </h2>
-        <p class="text-xl text-white/90">
-          Sometimes it is easier to answer questions in person. We are looking forward to your message!
+
+        <p class="text-xl text-foreground-muted max-w-2xl mx-auto">
+          Sometimes questions are easier to answer in person. We look forward to hearing from you!
         </p>
-        <Button size="lg" href="/en/contact/" class="bg-white text-[#02308C] hover:bg-white/90">
-          Write us
-          <Icon name="arrow-right" size="sm" />
-        </Button>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/en/apply-for-trial/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Apply For Trial
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform" />
+          </Button>
+          <Button size="lg" variant="outline" href="/en/contact/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Contact Us
+            <Icon name="mail" size="sm" />
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -208,6 +393,14 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 </ENBaseLayout>
 
 <style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
   [data-scroll] {
     opacity: 0;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -215,10 +408,12 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
   [data-scroll].is-visible { opacity: 1; }
   [data-scroll="fade-up"] { transform: translateY(30px); }
   [data-scroll="fade-up"].is-visible { transform: translateY(0); }
-  [data-scroll="slide-left"] { transform: translateX(-40px); }
-  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
-  [data-scroll="slide-right"] { transform: translateX(40px); }
-  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
 </style>
 
 <script>

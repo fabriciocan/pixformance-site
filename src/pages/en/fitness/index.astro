@@ -92,23 +92,37 @@ const teamMembers = [
   <ENSolutionsTabs active="fitness" />
 
   <!-- Hero -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
+  <section class="relative bg-white overflow-hidden py-12 md:py-20">
     <div class="container">
-      <div class="max-w-3xl space-y-6">
-        <span class="text-sm font-bold uppercase tracking-widest text-[#6BDBD1]">FITNESS</span>
-        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
-          Personalized fitness software WITH virtual guidance
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+            <Icon name="zap" size="sm" />
+            Fitness
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Personalized training under
+          <span class="text-[#02308C]"> virtual guidance</span>
         </h1>
-        <p class="text-xl text-white/80 leading-relaxed">
-          Personalized scheduling- and functional training support under virtual guidance: We provide optimal support to you and your members on the journey to improved fitness.
+
+        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          Better training. Simpler supervision.
         </p>
-        <div class="flex gap-4 flex-wrap">
-          <Button size="lg" href="/en/apply-for-trial/" class="bg-white text-[#02308C] hover:bg-white/90">
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          Personalized, time- and support-independent training under virtual guidance: We provide optimal support to you and your members on the journey to improved fitness.
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
+          <Button size="lg" href="/en/apply-for-trial/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
             Apply For Trial
-            <Icon name="arrow-right" size="sm" />
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
-          <Button size="lg" variant="outline" href="/en/contact/" class="border-white text-white hover:bg-white hover:text-[#02308C]">
-            Contact Us
+          <Button size="lg" variant="outline" href="/en/products-2/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Our Concept
+            <Icon name="play-circle" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
       </div>
@@ -384,6 +398,11 @@ const teamMembers = [
 </ENBaseLayout>
 
 <style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
   [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
   [data-scroll].is-visible { opacity: 1; }
   [data-scroll="fade-up"] { transform: translateY(30px); }

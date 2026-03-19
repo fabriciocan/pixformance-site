@@ -10,7 +10,7 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
 const stats = [
   { value: '750,000', label: 'Exercisers / Year', icon: 'users' },
   { value: '5M', label: 'Workouts / Year', icon: 'activity' },
-  { value: '600+', label: 'Functional Exercises', icon: 'zap' },
+  { value: '700+', label: 'Functional Exercises', icon: 'zap' },
 ];
 
 const features = [
@@ -149,7 +149,7 @@ const pressLogos = [
 
 <ENBaseLayout
   title="Digital Fitness Devices From Pixformance"
-  description="Pixformance: Digital motion analysis for physical therapy, clinics, fitness & corporate wellness. 750,000+ exercisers/year. 600+ exercises. Real-time correction feedback."
+  description="Pixformance: Digital motion analysis for physical therapy, clinics, fitness & corporate wellness. 750,000+ exercisers/year. 700+ exercises. Real-time correction feedback."
   hreflangDe="https://neu.pixformance.com/"
   jsonLd={[
     {
@@ -164,7 +164,7 @@ const pressLogos = [
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "Pixformance Station",
-      "description": "Digital training device with 2D Full-HD camera and real-time motion analysis. 25 joint points, virtual personal trainer, 600+ functional exercises.",
+      "description": "Digital training device with 2D Full-HD camera and real-time motion analysis. 25 joint points, virtual personal trainer, 700+ functional exercises.",
       "brand": {"@type": "Brand", "name": "Pixformance"},
       "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH"},
       "image": "https://neu.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
@@ -195,9 +195,7 @@ const pressLogos = [
 
       <!-- Popup CTA overlay -->
       <a
-        href="https://app.monstercampaigns.com/c/ybvlequwgaulmccl90jr/?max-width=650px"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/en/contact/"
         class="absolute bottom-8 right-8 z-10 hover:scale-105 transition-transform duration-300"
         aria-label="Apply for trial"
       >
@@ -443,7 +441,7 @@ const pressLogos = [
           <img
             src={logo.src}
             alt={logo.name}
-            class="h-10 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-300 grayscale hover:grayscale-0"
+            class="h-20 md:h-28 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
             loading="lazy"
           />
         ))}

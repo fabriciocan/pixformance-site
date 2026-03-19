@@ -1,0 +1,324 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<ENBaseLayout
+  title="Caring for More Patients with Digital Movement Therapy - Schlossphysio - Pixformance"
+  description="The Schlossphysio physiotherapy practice in Winterthur, Switzerland, uses Pixformance to care for more patients simultaneously – without additional staff."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Caring for More Patients with Digital Movement Therapy – Schlossphysio",
+    "description": "Schlossphysio in Winterthur, Switzerland uses Pixformance to care for more patients simultaneously without additional staff.",
+    "url": "https://pixformance.com/en/success-stories/swetlana-zimmermann",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
+>
+  <ENHeader slot="header" position="sticky" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Back to Overview
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="heart" size="sm" />
+            Physical Therapy
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Caring for more patients at the same time with digital movement therapy
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Small practice, big progress – Schlossphysio, Winterthur, Switzerland
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <p class="text-lg text-foreground-muted leading-relaxed mb-8">
+          <strong class="text-foreground">The Schlossphysio physiotherapy practice in Winterthur, Switzerland, founded in 2020,</strong> is a small practice dedicated to manual therapy and respiratory therapy. From the very beginning, interactive training with Pixformance was integrated into the movement therapy area – with the goal of caring for more patients at the same time and creating relief in the daily practice routine.
+        </p>
+
+        <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+          <p class="text-foreground italic text-base md:text-lg">
+            "We wanted a holistic training device that can cover as many muscle groups and movement patterns as possible in sport therapy."
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/Pixformance-in-der-Schweiz.jpg"
+                alt="Pixformance training at Schlossphysio Winterthur"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Swetlana Zimmermann</h2>
+              <p class="text-xl text-[#02308C] font-semibold">Lead Physiotherapist – Schlossphysio</p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="briefcase" size="md" class="text-[#02308C]" />
+                Practice Profile
+              </h3>
+
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Location</p>
+                    <p class="text-sm">Winterthur, Switzerland</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Founded</p>
+                    <p class="text-sm">2020</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="activity" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Focus</p>
+                    <p class="text-sm">Manual therapy, respiratory therapy, interactive training</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Staff</p>
+                    <p class="text-sm">1 therapist</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">More Info</p>
+                    <a href="https://www.schlossphysio.ch" target="_blank" rel="noopener noreferrer" class="text-sm text-[#02308C] hover:underline">
+                      www.schlossphysio.ch
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            The motivation behind integrating the Pixformance training concept
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              When founding the practice, Swetlana Zimmermann was clear that she wanted to integrate a device enabling comprehensive movement therapy – covering as many muscle groups and movement patterns as possible, individually adaptable for each patient. Having already had experience with the Pixformance station, a collaboration quickly came about.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Alongside a few small pieces of equipment and a wall bars, Pixformance has been able to replace all other necessary therapy equipment in the practice and is fully central to movement therapy. Some patients at Schlossphysio also already know Pixformance from their own training at the women's fitness chain Mrs.Sporty.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Pixformance-Fitness-Digitales-Sportgeraet-Fitnessstudio-eroeffnen-eGym-voll-vernetzt.jpg"
+            alt="Pixformance digital movement therapy at Schlossphysio"
+            class="w-full h-auto max-h-[380px] object-cover object-center"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            Support and relief in sport therapy
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "With very few exceptions, all our patients use the Pixformance offering."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              When a patient arrives at Schlossphysio with their therapy prescription, the Pixformance station is introduced as movement therapy support – depending on their health status – after the first or second session. Patients then train independently under virtual guidance, which provides significant relief.
+            </p>
+
+            <p class="text-base md:text-lg">
+              The Pixformance web app has also proven itself for faster therapy success. After the first sessions it is introduced and installed – so patients can access their individual program on their smartphone at any time and perform the exercises at home too.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "Above all, the flexibility offered by the digital training concept was a decisive factor for us."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Managing Director Claas Bickeböller explains the decision for Pixformance:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "We know from experience: in movement therapy, you can explain the exercises and movements a hundred times. Yet most people have forgotten after half an hour that they need to ensure, for example, that their knee stays straight. With Pixformance, they're constantly reminded during movement therapy. So we know that patients always train safely and perform the exercises correctly."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Claas Bickeböller, Managing Director Schlossphysio</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+            The Swiss healthcare market – patient first
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              The main motivation for Schlossphysio was different from that of German practices: not the path into the self-pay sector to break free from statutory health insurance. The insurance system in Switzerland works fundamentally differently.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "In Switzerland you can get a prescription much faster, so it's not a problem to receive a new physiotherapy referral every three months for chronic conditions. This means the self-pay sector doesn't have nearly as much significance as it certainly does in Germany."
+              </p>
+              <p class="text-sm text-foreground-muted mt-2">— Claas Bickeböller</p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              In Switzerland, health insurance is inherently a private matter – basic insurance is mandatory and must be covered by the individual. Physiotherapy is among the services covered by basic insurance. The result: from the therapist's perspective, the patient is more firmly in focus – not the question of how much the insurer will pay out.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Would you like individual advice?</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Your Contact</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+            <Button size="lg" href="/en/apply-for-trial/" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+              Contact Us
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+          <Icon name="arrow-left" size="sm" />
+          Back to Overview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>
+
+<style>
+  @keyframes hero-entry { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.95); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

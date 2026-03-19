@@ -1,159 +1,542 @@
 ---
 import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
-import PixformanceLogo from '@/components/PixformanceLogo.astro';
-import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
-const partnerLogos = [
-  { name: 'ICAA', src: '/images/en/ICAA-Pixformance.png' },
-  { name: 'FSLA', src: '/images/en/FSLA-logo-pixformance.png' },
-  { name: 'GSLA', src: '/images/en/gsla-logo-pixformance.png' },
-  { name: 'Omnia Lifestyle', src: '/images/en/Omnia-Lifestyle-Ltd.png' },
-  { name: 'FORTEe', src: '/images/en/fortee-eu-poject-pixformance-partner.png' },
-  { name: 'Oxford Brookes University', src: '/images/en/pixformance-logo-oxford-brookes-university.png' },
-  { name: 'Beanieproof', src: '/images/en/beanieproof.png' },
+const stats = [
+  { value: '1100+', count: 1100, suffix: '+', label: 'Clinics & Rehab Centers', icon: 'globe' },
+  { value: '750,000+', count: 750000, suffix: '+', label: 'Exercisers / Year', icon: 'users' },
+  { value: '700+', count: 700, suffix: '+', label: 'Functional Exercises', icon: 'zap' },
 ];
 
-const features = [
+const testimonials = [
   {
-    titleMobile: 'Real-Time Feedback',
-    titleDesktop: 'Real-Time Feedback',
-    imageMobile: '/images/en/Live-Feedback-EN-mobil_Physio.jpg',
-    imageDesktop: '/images/en/Digital-Training-Device-eHealth-Telemedicine-Feedback-Pixformance-Station-2020-EN-mobil-web.png',
-    text: 'The Pixformance Station provides feedback in real-time. This feedback ensures that the exercises are performed correctly and safely – just like under the guidance of an actual therapist.',
+    name: 'Swetlana Zimmermann & Claas Bickeböller',
+    role: 'Physiotherapist & Owner',
+    company: 'Schlossphysio Winterthur, Switzerland',
+    image: '/images/swetlana-zimmermann-schlossphysio.webp',
+    quote: 'We wanted a holistic training device that could cover as many muscle groups and movement patterns as possible in sports therapy. The flexibility offered by the digital training concept was a key factor for us.',
   },
   {
-    titleMobile: 'Simple Exercise Instructions',
-    titleDesktop: 'Simple Exercise Instructions',
-    imageMobile: '/images/en/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif',
-    imageDesktop: '/images/en/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif',
-    text: 'The exerciser stands in front of the Pixformance Station, and a virtual trainer demonstrates the exercise to be performed on-screen.',
+    name: 'Gunter Hölig',
+    role: 'Head of therapy',
+    company: 'Medical Park Bad Rodach',
+    image: '/images/gunter-hoelig-pixformance.webp',
+    quote: 'If a patient can forget their illness for a moment and simply have fun, then that is also valuable.',
   },
   {
-    titleMobile: 'Precise Motion Analysis',
-    titleDesktop: 'Precise Motion Analysis',
-    imageMobile: '/images/en/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Scanpunkte-mobil-1.gif',
-    imageDesktop: '/images/en/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Scanpunkte-2.gif',
-    text: 'During exercise execution, a camera with a built-in depth sensor scans 25 joint and nine fixed points of the exerciser within seconds and analyzes the movements.',
+    name: 'Heike Schaible',
+    role: 'Owner',
+    company: 'Physiotherapy practice "Space for Health"',
+    image: '/images/heike-schaible-round.webp',
+    quote: 'With Pixformance, I want to build a second self-paying area, primarily to accommodate my employees and offer them simpler and more varied work.',
+  },
+  {
+    name: 'Volker Sutor',
+    role: 'Owner',
+    company: 'Physiotherapy centers »Reha Rondell«',
+    image: '/images/volker-sutor-pixformance.webp',
+    quote: 'Targeted health training with the virtual trainer increases the efficiency of the treatment and creates more time for the actual care of my patients.',
+  },
+  {
+    name: 'Gabriele Buchstein',
+    role: 'Head Physiotherapist',
+    company: 'Sauerland Clinic Hachen | Neurological Specialist Clinic for Multiple Sclerosis',
+    image: '/images/gabriele-buchstein-sauerlandklinik.webp',
+    quote: "The patients are enthusiastic and highly motivated, which admittedly isn't often the case. We as therapists also benefit from this, as the patients perform their exercises better and more effectively. We also save time, because after just a 30-minute instruction session, the patients can train independently under supervision.",
+  },
+  {
+    name: 'Axel-André Richter',
+    role: 'Owner',
+    company: 'Richter & Lopez health practice',
+    image: '/images/axel-andre-richter-lopez.webp',
+    quote: "I can tailor the new training program completely individually for each of our patients. From competitive athletes to grandmothers, there's something for everyone. If a therapist is unavailable, we can offer a backup and easily compensate with Pixformance.",
   },
 ];
 
-const benefitCards = [
-  { icon: 'list', title: '500+ exercises – one device', text: 'Individual training plans can be compiled from a collection of over 500 functional exercises on the online platform.' },
-  { icon: 'users', title: 'Simultaneous care', text: 'Thanks to the patented software, several patients can be cared for simultaneously and without additional staffing.' },
-  { icon: 'trending-up', title: 'Patients become clients', text: 'Individual training sessions and secondary prevention measures can be offered as an additional source of revenue.' },
-  { icon: 'clipboard', title: 'Efficient administration', text: "Each patient's training history is accurately documented on the online platform for training analysis and optimization." },
-  { icon: 'settings', title: 'Individual training', text: "Exercise programs can be tailored to each patient's health condition and therapy needs." },
-  { icon: 'clock', title: 'Time for the essential', text: 'The therapist does not have to demonstrate each exercise personally and saves time, which benefits the care of all patients.' },
+const carouselItems = [
+  {
+    title: '700+ Exercises – One Device',
+    text: 'Individual training plans can be compiled from a collection of over 700 functional exercises on the online platform.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>`,
+  },
+  {
+    title: 'Time for the Essential',
+    text: 'The therapist does not have to demonstrate each exercise personally and saves time – which benefits the care of all patients.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
+  {
+    title: 'Simultaneous Care',
+    text: 'Thanks to the patented software, several patients can be cared for simultaneously and without additional staffing.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 21 12 17 16"/><polyline points="7 8 3 12 7 16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>`,
+  },
+  {
+    title: 'Efficient Administration',
+    text: "Each patient's training history is accurately documented on the online platform for training analysis and optimization.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  },
+  {
+    title: 'Individual Training',
+    text: "Exercise programs can be tailored to each patient's health condition and therapy needs.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
+  },
+  {
+    title: 'Patients Become Clients',
+    text: 'Individual training sessions and secondary prevention measures can be offered as an additional source of revenue.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
+  },
+];
+
+const clientLogos = [
+  'Logo-Charite.png',
+  'Logo-Essink-Sportscentrum-1.png',
+  'Logo-Femme-Fit-1.png',
+  'Logo-Gesundheitsrondell-Reharondell.png',
+  'Logo-GiB-Gesundheit-in-Bewegung-1.png',
+  'Logo-Medical-Park.png',
+  'Logo-MrsSporty-Mrs-Sporty.png',
+  'Logo-Therapiezentrum-Rombach.png',
 ];
 ---
 
 <ENBaseLayout
-  title="Apply For Trial - Pixformance Sports GmbH"
-  description="Apply for a Pixformance trial. Boost efficiency and revenue with the digital functional training concept for physical therapy and fitness businesses."
+  title="Apply For Trial – Pixformance Sports GmbH"
+  description="Apply for a 60-day Pixformance trial. Boost efficiency and revenue with the digital functional training concept for physical therapy and fitness businesses."
 >
+  <!-- Preconnects for YouTube facade -->
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+  </Fragment>
+
   <!-- Simplified Landing Page Header -->
   <header class="bg-[#02308C] py-4" slot="header">
     <div class="container">
       <a href="/en/" aria-label="Pixformance Home">
         <img
-          src="/images/en/PIXFORMANCE-Logo-white.svg"
+          src="/images/logo/Pixformance-Logo_black_EN.svg"
           alt="Pixformance"
-          class="h-8 w-auto"
+          class="h-8 w-auto brightness-0 invert"
           loading="eager"
         />
       </a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
-    <div class="container">
-      <div class="max-w-3xl space-y-6">
-        <h1 class="font-display text-3xl md:text-5xl font-bold leading-tight">
-          The sports & physical therapy concept for health business owners
-        </h1>
-        <h2 class="text-2xl font-bold text-[#6BDBD1]">
-          Boost Efficiency and Revenue with Pixformance
-        </h2>
-        <ul class="space-y-3 text-lg text-white/90">
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">👩‍⚕️</span>
-            <span>Streamline Staff Efficiency and Cover Staffing Gaps</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">🚀</span>
-            <span>Boost Patient Throughput and Minimize Wait Times</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-2xl">📈</span>
-            <span>Drive Revenue Growth and Unlock Cash-Pay Opportunities</span>
-          </li>
-        </ul>
+  <!-- HERO SECTION -->
+  <section class="relative py-6 md:py-32 bg-black overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
+
+    <div class="container relative text-center max-w-4xl mx-auto">
+      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0.1s;">
+        MORE TIME. MORE REVENUE.<br />
+        <span class="text-[#6BDBD1]">MORE POSSIBILITIES.</span>
+      </h1>
+
+      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.3s;">
+        <button
+          id="hero-cta-btn"
+          class="inline-flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-[#02308C] font-bold text-xs sm:text-lg rounded-full border-2 border-red-500 hover:bg-[#6BDBD1] hover:border-[#6BDBD1] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer leading-tight text-center"
+        >
+          <span>APPLY FOR TRIAL</span>
+          <span class="hidden sm:inline">–</span>
+          <span>OFFER VALID UNTIL <span id="offer-deadline"></span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP MODAL -->
+  <div id="popup-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div id="popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 md:p-10">
+      <button id="popup-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer">
+        <Icon name="x" size="md" />
+      </button>
+
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-[#02308C] mb-6 text-center">
+        Apply for a 60-Day Trial at Your Facility
+      </h2>
+
+      <form id="popup-form" class="space-y-4">
         <div>
-          <a
-            href="#hf-form"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#02308C] font-bold rounded-xl hover:bg-white/90 transition-colors text-lg"
+          <label for="popup-company" class="block text-sm font-bold mb-1 text-gray-700">Company / Facility <span class="text-red-500">*</span></label>
+          <input type="text" id="popup-company" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="popup-firstname" class="block text-sm font-bold mb-1 text-gray-700">First Name <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-firstname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+          <div>
+            <label for="popup-lastname" class="block text-sm font-bold mb-1 text-gray-700">Last Name <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-lastname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+        </div>
+        <div>
+          <label for="popup-email" class="block text-sm font-bold mb-1 text-gray-700">Email <span class="text-red-500">*</span></label>
+          <input type="email" id="popup-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div>
+          <label for="popup-phone" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+          <input type="tel" id="popup-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="flex items-start gap-3 pt-2">
+          <input type="checkbox" id="popup-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+          <label for="popup-privacy" class="text-xs text-gray-600 leading-relaxed">
+            I have read the <a href="/en/privacy-policy/" class="text-[#02308C] hover:underline font-bold">Privacy Policy</a> and agree that Pixformance Sports GmbH may contact me by email or phone with a trial offer and product/company information. This consent can be withdrawn at any time.
+          </label>
+        </div>
+        <div id="popup-form-message" class="hidden"></div>
+        <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          REQUEST OFFER
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- VIDEO + MULTI-STEP FORM SECTION -->
+  <section class="py-16 md:py-24 bg-white" id="hf-form">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+        <!-- YouTube Video Facade -->
+        <div data-scroll="slide-left">
+          <div
+            class="yt-facade relative rounded-2xl overflow-hidden shadow-xl w-full cursor-pointer group"
+            style="padding-bottom: 56.25%;"
+            data-ytid="QHGnWb-glyE"
+            role="button"
+            aria-label="Play Pixformance Training Video"
           >
-            Apply For Trial
-            <Icon name="arrow-right" size="sm" />
-          </a>
+            <img
+              src="https://i.ytimg.com/vi/QHGnWb-glyE/hqdefault.jpg"
+              alt="Pixformance Training Video"
+              class="absolute inset-0 w-full h-full object-cover"
+              width="480"
+              height="360"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/40 transition-colors duration-200">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
+                <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white ml-1" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script is:inline>
+          document.querySelectorAll('.yt-facade').forEach(function(el) {
+            el.addEventListener('click', function() {
+              var id = el.dataset.ytid;
+              el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Pixformance Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>';
+            });
+          });
+        </script>
+
+        <!-- Multi-Step Form -->
+        <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
+          <!-- Step 1 -->
+          <div id="form-step-1">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
+              Want to learn more about our digital training concept?
+            </h3>
+            <ul class="space-y-2 md:space-y-3 mb-6 md:mb-8">
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Care for multiple patients simultaneously with the same staff</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Digital exercise guidance with real-time feedback</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Save 5–10 minutes per patient session</span>
+              </li>
+            </ul>
+            <div class="space-y-4">
+              <div>
+                <label for="step1-email" class="block text-sm font-bold mb-2 text-gray-700">Email</label>
+                <input type="email" id="step1-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" placeholder="your.email@example.com" />
+              </div>
+              <button id="step1-next" type="button" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                Continue
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="form-step-2" class="hidden">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+              Just one more step!
+            </h3>
+            <form id="multistep-form" class="space-y-4">
+              <input type="hidden" id="step2-email-hidden" name="email" />
+              <div>
+                <label for="step2-company" class="block text-sm font-bold mb-1 text-gray-700">Company / Facility <span class="text-red-500">*</span></label>
+                <input type="text" id="step2-company" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="step2-firstname" class="block text-sm font-bold mb-1 text-gray-700">First Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-firstname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div>
+                  <label for="step2-lastname" class="block text-sm font-bold mb-1 text-gray-700">Last Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-lastname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+              </div>
+              <div>
+                <label for="step2-phone" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+                <input type="tel" id="step2-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="flex items-start gap-3 pt-2">
+                <input type="checkbox" id="step2-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+                <label for="step2-privacy" class="text-xs text-gray-600 leading-relaxed">
+                  I have read the <a href="/en/privacy-policy/" class="text-[#02308C] hover:underline font-bold">Privacy Policy</a> and agree that Pixformance Sports GmbH may contact me by email or phone with a trial offer and product/company information. This consent can be withdrawn at any time.
+                </label>
+              </div>
+              <div id="multistep-form-message" class="hidden"></div>
+              <button type="submit" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                REQUEST MORE INFORMATION
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Partner Logos -->
-  <section class="py-10 bg-white border-b border-border">
+  <!-- CLIENT LOGOS BANNER -->
+  <section class="py-0 bg-gray-50">
     <div class="container">
-      <div class="flex flex-wrap items-center justify-center gap-8">
-        {partnerLogos.map((logo) => (
-          <img src={logo.src} alt={logo.name} class="h-10 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity grayscale hover:grayscale-0" loading="lazy" />
+      <div class="clients-track-wrapper overflow-hidden">
+        <div class="clients-track flex items-center gap-12">
+          {[...Array(2)].map(() =>
+            clientLogos.map((logo) => (
+              <img
+                src={`/images/clients/${logo}`}
+                alt={logo.replace(/Logo-|-\d+\.png|\.png/g, ' ').trim()}
+                class="h-[132px] md:h-44 w-auto max-w-[165px] md:max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0"
+                loading="lazy"
+                width="220"
+                height="176"
+              />
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE BLOCKS -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="space-y-16 md:space-y-24">
+
+        <!-- 1. AI Training Plans — Text Left / Image Right -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              AI-Powered Training Plans
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              The new Pixformance AI assistant creates smart training plans in seconds — adapted to patient goals, limitations, and available equipment. This saves therapists time and allows patients to train more effectively.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/ki-infoblock-500.webp" alt="AI-Powered Training Plans" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 2. Real-Time Feedback — Image Left / Text Right -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Patented Real-Time Feedback
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              The Pixformance Station provides feedback in real-time. This ensures that exercises are performed correctly and safely – just like under the guidance of an actual therapist.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patented Real-Time Feedback" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 3. Simple Exercise Instructions — Text Left / Image Right -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Simple Exercise Instructions
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              The exerciser stands in front of the Pixformance Station, while a virtual trainer demonstrates the exercise to be performed on-screen.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/pixformancestation-gif-to-webp-converter-300.webp" alt="Simple Exercise Instructions" class="w-4/5 mx-auto h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- 4. Precise Motion Analysis — Image Left / Text Right -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Precise Motion Analysis
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              During exercise execution, a camera with a built-in depth sensor scans 25 joint and nine fixed points of the exerciser within seconds and analyzes the movements.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Precise Motion Analysis" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL SECTION -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Training in Action
+        </h2>
+      </div>
+
+      <div class="relative px-12 md:px-14">
+        <div class="overflow-hidden">
+          <div id="carousel-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
+            {carouselItems.map((item) => (
+              <div class="carousel-slide shrink-0 w-[calc(85vw-6rem)] md:w-[300px] bg-white rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center gap-4">
+                <div set:html={item.icon} />
+                <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-left" size="md" />
+        </button>
+        <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-right" size="md" />
+        </button>
+      </div>
+
+      <div class="text-center mt-10 md:mt-12">
+        <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+          LEARN MORE
+          <Icon name="arrow-right" size="sm" />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="py-16 md:py-20 bg-[#02308C]">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto text-center">
+        {stats.map((stat, index) => (
+          <div class="space-y-3 p-6" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="flex justify-center mb-2">
+              <Icon name={stat.icon} size="2xl" class="text-[#6BDBD1]" />
+            </div>
+            <div
+              class="text-4xl md:text-5xl font-bold text-[#6BDBD1] stat-counter"
+              data-count={stat.count}
+              data-suffix={stat.suffix}
+              data-large={stat.count >= 10000 ? 'true' : 'false'}
+            >
+              {stat.value}
+            </div>
+            <div class="text-sm text-white/70">{stat.label}</div>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- What Is Pixformance -->
+  <!-- TESTIMONIALS SECTION -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Success Stories
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          What our customers say
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {testimonials.map((testimonial, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+            <div class="relative space-y-4">
+              <div class="flex items-center gap-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-14 h-14 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 transition-all duration-500"
+                  loading="lazy"
+                  width="56"
+                  height="56"
+                />
+                <div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
+                </div>
+              </div>
+              <p class="text-sm text-foreground-muted italic leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° CONCEPT CTA CARD -->
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container">
-      <div class="text-center mb-12">
-        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">WHAT IS PIXFORMANCE?</h2>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-6" data-scroll="slide-left">
-          <h3 class="text-xl font-bold">Introducing Our 360° Pixformance Concept, that Includes:</h3>
-          <ul class="space-y-2 text-foreground-muted">
-            <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> The Pixformance Station</li>
-            <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> Online Platform</li>
-            <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> Dedicated App</li>
-          </ul>
-          <p class="text-foreground-muted leading-relaxed">
-            Delivering real-time feedback, precise motion analysis, and personalized training plans, enhancing rehabilitation, mobility, and performance outcomes for every patient.
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center bg-white rounded-3xl shadow-xl p-5 md:p-12 overflow-hidden" data-scroll="fade-up">
+        <div class="space-y-6 text-center md:text-left">
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            The fully connected 360° Pixformance training and therapy concept is a meaningful and modern complement to relieve physiotherapists during patient care and to generate more revenue in the long term through increased care capacity or by establishing a self-pay area. Order your trial unit today and find out if the concept fits your facility!
           </p>
-          <div class="space-y-2">
-            <p class="font-bold">Key features include:</p>
-            <ul class="space-y-2 text-foreground-muted">
-              <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> Real-time Motion Feedback</li>
-              <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> 500+ functional exercises</li>
-              <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> Compact design, requiring only 65 ft²</li>
-              <li class="flex items-center gap-2"><Icon name="check" size="sm" class="text-[#6BDBD1]" /> Class 2 Certified Medical Equipment</li>
-            </ul>
+          <div class="flex justify-center md:justify-start">
+            <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+              LEARN MORE
+              <Icon name="arrow-right" size="sm" />
+            </button>
           </div>
-          <a
-            href="#hf-form"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 transition-colors"
-          >
-            Apply For Trial
-            <Icon name="arrow-right" size="sm" />
-          </a>
         </div>
-        <div data-scroll="slide-right">
+        <div>
           <img
-            src="/images/en/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet.png"
-            alt="Pixformance 360 Degree Concept — Pixformance Station, Online Platform, App"
-            class="w-full h-auto"
+            src="/images/imgs-lp/pixformance-360-grad-konzept-online-plattform-app-digitales-sportgeraet-png-to-webp-converter-500.webp"
+            alt="Pixformance 360° Concept"
+            class="w-full h-auto rounded-2xl"
             loading="lazy"
           />
         </div>
@@ -161,168 +544,62 @@ const benefitCards = [
     </div>
   </section>
 
-  <!-- Feature Cards -->
+  <!-- FINAL CONTACT FORM -->
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
-      <div class="grid md:grid-cols-3 gap-8">
-        {features.map((feature, index) => (
-          <Card variant="elevated" padding="lg" class="text-center hover:shadow-xl transition-all" data-scroll="fade-up" data-delay={index + 1}>
-            <!-- Mobile image -->
-            <img
-              src={feature.imageMobile}
-              alt={feature.titleMobile}
-              class="w-full h-48 object-cover rounded-xl mb-4 md:hidden"
-              loading="lazy"
-            />
-            <!-- Desktop image -->
-            <img
-              src={feature.imageDesktop}
-              alt={feature.titleDesktop}
-              class="hidden md:block w-full h-48 object-cover rounded-xl mb-4"
-              loading="lazy"
-            />
-            <h3 class="font-bold text-lg mb-3">{feature.titleDesktop}</h3>
-            <p class="text-sm text-foreground-muted leading-relaxed">{feature.text}</p>
-          </Card>
-        ))}
-      </div>
-      <div class="text-center mt-10" data-scroll="fade-up">
-        <a
-          href="#hf-form"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 transition-colors"
-        >
-          Apply For Trial
-          <Icon name="arrow-right" size="sm" />
-        </a>
-      </div>
-    </div>
-  </section>
+      <div class="max-w-3xl mx-auto">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-scroll="scale">
+          <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
-  <!-- Testimonials -->
-  <section class="py-16 md:py-24 bg-gray-50">
-    <div class="container">
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <Card variant="elevated" padding="lg" class="space-y-4" data-scroll="fade-up" data-delay="1">
-          <div class="flex items-start gap-4">
-            <img
-              src="/images/en/John-Pixformance-1-297x300.png"
-              alt="John Dohanic"
-              class="w-16 h-16 rounded-full object-cover shrink-0"
-              loading="lazy"
-            />
-            <div>
-              <p class="font-bold">John Dohanic, Owner</p>
-              <p class="text-sm text-[#02308C] font-semibold">APT Aquatic Performance Training, Monroe & Hamilton, NJ</p>
+          <div class="relative p-8 md:p-12">
+            <div class="text-center mb-8">
+              <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+                Want to learn more about our digital training concept?
+              </h2>
+              <p class="text-lg text-white/90">
+                We look forward to your non-binding inquiry!
+              </p>
             </div>
+
+            <form id="final-contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-company" class="block text-sm font-bold mb-2 text-white">Company / Facility <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-company" name="company" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-firstname" class="block text-sm font-bold mb-2 text-white">First Name <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-firstname" name="first_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-lastname" class="block text-sm font-bold mb-2 text-white">Last Name <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-lastname" name="last_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-email" class="block text-sm font-bold mb-2 text-white">Email Address <span class="text-[#FFED00]">*</span></label>
+                  <input type="email" id="final-email" name="email" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div>
+                <label for="final-phone" class="block text-sm font-bold mb-2 text-white">Phone Number <span class="text-[#FFED00]">*</span></label>
+                <input type="tel" id="final-phone" name="phone" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+              </div>
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="final-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-0 bg-white/95 text-[#02308C] focus:ring-4 focus:ring-white/50 shadow-lg" />
+                <label for="final-privacy" class="text-sm text-white/95 leading-relaxed">
+                  I have read the <a href="/en/privacy-policy/" class="text-[#FFED00] hover:underline font-bold">Privacy Policy</a> and agree that Pixformance Sports GmbH may contact me by email or phone with a trial offer and product/company information. This consent can be withdrawn at any time.
+                </label>
+              </div>
+              <div id="final-form-message" class="hidden"></div>
+              <div class="flex justify-center pt-6">
+                <button type="submit" class="w-full md:w-auto px-16 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg">
+                  SEND
+                </button>
+              </div>
+            </form>
           </div>
-          <p class="text-foreground-muted italic leading-relaxed text-sm">
-            "With Pix we are increasing our technology to enhance customer experience. Change needed to occur in the industry, and I'm going to keep building the change. Visual aids and proper tracking will be the future of our physical therapy company!"
-          </p>
-        </Card>
-
-        <Card variant="elevated" padding="lg" class="space-y-4" data-scroll="fade-up" data-delay="2">
-          <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-[#02308C]/10 flex items-center justify-center shrink-0">
-              <Icon name="user" size="md" class="text-[#02308C]" />
-            </div>
-            <div>
-              <p class="font-bold">Patrick Chedmail, Manual Therapy Lead</p>
-              <p class="text-sm text-[#02308C] font-semibold">Omnia Lifestyle Ltd., London, UK</p>
-            </div>
-          </div>
-          <p class="text-foreground-muted italic leading-relaxed text-sm">
-            "Pixformance does save time as to client's assistance freeing therapist time for other things. It has definitely been an asset to our practice, as it has freed up our therapists' time, allowing them to focus on providing more personalised care. Our clients truly enjoy the helpful and watchful eye of the digital PT."
-          </p>
-        </Card>
-      </div>
-      <div class="text-center mt-10" data-scroll="fade-up">
-        <a
-          href="#hf-form"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 transition-colors"
-        >
-          Apply For Trial
-          <Icon name="arrow-right" size="sm" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefit Cards -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {benefitCards.map((card, index) => (
-          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min(index + 1, 6)}>
-            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4">
-              <Icon name={card.icon} size="sm" class="text-[#02308C]" />
-            </div>
-            <h3 class="font-bold mb-2">{card.title}</h3>
-            <p class="text-sm text-foreground-muted leading-relaxed">{card.text}</p>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Form Section -->
-  <section class="py-16 md:py-24 bg-gray-50" id="hf-form">
-    <div class="container">
-      <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-10">
-          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Apply For Trial</h2>
-          <p class="text-lg text-foreground-muted">
-            Tell us about your practice or facility and we'll get back to you to schedule your trial.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-lg p-8">
-          <form class="space-y-6" id="trial-form">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="trial-name" class="block text-sm font-medium mb-2">Name <span class="text-red-500">*</span></label>
-                <input type="text" id="trial-name" name="name" required class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Your name" />
-              </div>
-              <div>
-                <label for="trial-email" class="block text-sm font-medium mb-2">E-Mail <span class="text-red-500">*</span></label>
-                <input type="email" id="trial-email" name="email" required class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="your.email@example.com" />
-              </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="trial-company" class="block text-sm font-medium mb-2">Company / Facility</label>
-                <input type="text" id="trial-company" name="company" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Your facility name" />
-              </div>
-              <div>
-                <label for="trial-phone" class="block text-sm font-medium mb-2">Phone</label>
-                <input type="tel" id="trial-phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="+1 (___) ___-____" />
-              </div>
-            </div>
-            <div>
-              <label for="trial-interest" class="block text-sm font-medium mb-2">Area of Interest</label>
-              <select id="trial-interest" name="interest" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
-                <option value="">Please select...</option>
-                <option value="physical-therapy">Physical Therapy</option>
-                <option value="fitness">Fitness</option>
-                <option value="corporate-fitness">Corporate Fitness</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="trial-message" class="block text-sm font-medium mb-2">Tell us about your facility <span class="text-red-500">*</span></label>
-              <textarea id="trial-message" name="message" required rows="5" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none" placeholder="Describe your facility, number of patients/members, and what you'd like to achieve with Pixformance..."></textarea>
-            </div>
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="trial-privacy" name="privacy" required class="mt-1 rounded border-border focus:ring-2 focus:ring-primary" />
-              <label for="trial-privacy" class="text-sm text-foreground-muted">
-                I have read the <a href="/en/privacy-policy/" class="text-[#02308C] hover:underline">Privacy Policy</a> and agree to it. <span class="text-red-500">*</span>
-              </label>
-            </div>
-            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 transition-colors text-lg">
-              Apply For Trial
-              <Icon name="arrow-right" size="sm" />
-            </button>
-            <div id="trial-form-message" class="hidden"></div>
-          </form>
         </div>
       </div>
     </div>
@@ -332,7 +609,7 @@ const benefitCards = [
   <footer class="bg-[#02308C] py-6" slot="footer">
     <div class="container">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-white/70 text-sm">
-        <span>© {new Date().getFullYear()} Pixformance USA Inc.</span>
+        <span>© {new Date().getFullYear()} Pixformance Sports GmbH. All rights reserved.</span>
         <nav class="flex gap-6">
           <a href="/en/imprint/" class="hover:text-white transition-colors">Imprint</a>
           <a href="/en/privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -343,6 +620,33 @@ const benefitCards = [
 </ENBaseLayout>
 
 <style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Clients Carousel */
+  .clients-track {
+    animation: scroll-logos 20s linear infinite;
+    width: max-content;
+  }
+
+  .clients-track-wrapper:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-logos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Scroll Animations */
   [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
   [data-scroll].is-visible { opacity: 1; }
   [data-scroll="fade-up"] { transform: translateY(30px); }
@@ -351,6 +655,8 @@ const benefitCards = [
   [data-scroll="slide-left"].is-visible { transform: translateX(0); }
   [data-scroll="slide-right"] { transform: translateX(40px); }
   [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
   [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
   [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
   [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
@@ -358,77 +664,275 @@ const benefitCards = [
   [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
   [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
 
+  /* Popup animation */
+  #popup-modal.flex { animation: popup-in 0.3s ease-out; }
+  @keyframes popup-in { from { opacity: 0; } to { opacity: 1; } }
+  #popup-modal.flex > div:last-child { animation: popup-slide 0.3s ease-out; }
+  @keyframes popup-slide {
+    from { transform: translateY(20px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
   html { scroll-behavior: smooth; }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+<script is:inline>
+(function () {
+  var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
 
-  // Trial form submission
-  (function () {
-    var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  function getOfferDeadline() {
+    var now = new Date();
+    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
+    var day = String(nextMonth.getDate()).padStart(2, '0');
+    var month = String(nextMonth.getMonth() + 1).padStart(2, '0');
+    var year = nextMonth.getFullYear();
+    return month + '/' + day + '/' + year;
+  }
 
-    function getUrlParams() {
-      var params = {};
-      new URLSearchParams(window.location.search).forEach(function (value, key) { params[key] = value; });
-      return params;
+  function getUrlParams() {
+    var params = {};
+    new URLSearchParams(window.location.search).forEach(function (v, k) { params[k] = v; });
+    return params;
+  }
+
+  function getCookies() {
+    var cookies = {};
+    if (!document.cookie) return cookies;
+    document.cookie.split(';').forEach(function (c) {
+      var i = c.indexOf('=');
+      if (i === -1) return;
+      var k = c.slice(0, i).trim();
+      var v = c.slice(i + 1).trim();
+      try { cookies[k] = decodeURIComponent(v); } catch (e) { cookies[k] = v; }
+    });
+    return cookies;
+  }
+
+  function submitForm(formData, messageEl, formEl, formName) {
+    var payload = {
+      form_name: formName || 'Apply For Trial EN',
+      company: formData.get('company') || '',
+      first_name: formData.get('first_name') || '',
+      last_name: formData.get('last_name') || '',
+      email: formData.get('email') || '',
+      phone: formData.get('phone') || '',
+      privacy_accepted: formData.get('privacy') === 'on',
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      referrer: document.referrer || '',
+      submitted_at: new Date().toISOString(),
+      url_params: getUrlParams(),
+      cookies: getCookies(),
+      language: 'en',
+      form_source: 'landing-page',
+    };
+
+    var btn = formEl.querySelector('[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) {
+        if (r.ok) {
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-4 rounded-xl bg-green-50 text-green-700 border-2 border-green-200 font-semibold text-center';
+          messageEl.textContent = 'Thank you for your inquiry! We will be in touch shortly.';
+          formEl.reset();
+          setTimeout(function () { messageEl.classList.add('hidden'); }, 5000);
+        } else {
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+          messageEl.textContent = 'An error occurred. Please try again or contact us directly.';
+        }
+      })
+      .catch(function () {
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+        messageEl.textContent = 'An error occurred. Please try again or contact us directly.';
+      })
+      .finally(function () {
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+      });
+  }
+
+  function init() {
+    // Offer deadline
+    var deadline = getOfferDeadline();
+    document.querySelectorAll('#offer-deadline').forEach(function (el) { el.textContent = deadline; });
+
+    // POPUP MODAL
+    var modal = document.getElementById('popup-modal');
+    var heroBtn = document.getElementById('hero-cta-btn');
+    var closeBtn = document.getElementById('popup-close');
+    var overlay = document.getElementById('popup-overlay');
+    var popupTriggers = document.querySelectorAll('.popup-trigger');
+
+    function openPopup() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
     }
 
-    function showMessage(el, type, text) {
-      el.classList.remove('hidden');
-      el.className = type === 'success'
-        ? 'p-4 rounded-lg bg-green-50 text-green-700 border border-green-200'
-        : 'p-4 rounded-lg bg-red-50 text-red-700 border border-red-200';
-      el.textContent = text;
+    function closePopup() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
     }
 
-    var form = document.getElementById('trial-form');
-    var messageDiv = document.getElementById('trial-form-message');
-    if (form && messageDiv) {
-      form.addEventListener('submit', function (e) {
+    if (heroBtn) heroBtn.addEventListener('click', openPopup);
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+    if (overlay) overlay.addEventListener('click', closePopup);
+    popupTriggers.forEach(function (btn) { btn.addEventListener('click', openPopup); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePopup(); });
+
+    // POPUP FORM
+    var popupForm = document.getElementById('popup-form');
+    var popupMsg = document.getElementById('popup-form-message');
+    if (popupForm) {
+      popupForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var submitBtn = form.querySelector('[type="submit"]');
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
-
-        var formData = new FormData(form);
-        var payload = {
-          form_name: 'Apply For Trial EN',
-          name: formData.get('name') || '',
-          email: formData.get('email') || '',
-          company: formData.get('company') || '',
-          phone: formData.get('phone') || '',
-          interest: formData.get('interest') || '',
-          message: formData.get('message') || '',
-          privacy_accepted: formData.get('privacy') === 'on',
-          page_url: window.location.href,
-          submitted_at: new Date().toISOString(),
-          url_params: getUrlParams(),
-          language: 'en',
-        };
-
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-          .then(function (response) {
-            if (response.ok) {
-              showMessage(messageDiv, 'success', 'Thank you for your application! We will be in touch with you shortly.');
-              form.reset();
-            } else {
-              showMessage(messageDiv, 'error', 'An error occurred. Please try again or contact us directly.');
-            }
-          })
-          .catch(function () {
-            showMessage(messageDiv, 'error', 'An error occurred. Please try again or contact us directly.');
-          })
-          .finally(function () {
-            if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
-          });
+        submitForm(new FormData(popupForm), popupMsg, popupForm, 'Apply For Trial EN - Popup');
       });
     }
-  })();
+
+    // MULTI-STEP FORM
+    var step1 = document.getElementById('form-step-1');
+    var step2 = document.getElementById('form-step-2');
+    var step1Next = document.getElementById('step1-next');
+    var step1Email = document.getElementById('step1-email');
+    var step2EmailHidden = document.getElementById('step2-email-hidden');
+
+    if (step1Next) {
+      step1Next.addEventListener('click', function () {
+        if (!step1Email.value || !step1Email.checkValidity()) {
+          step1Email.reportValidity();
+          return;
+        }
+        step2EmailHidden.value = step1Email.value;
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+      });
+    }
+
+    var multistepForm = document.getElementById('multistep-form');
+    var multistepMsg = document.getElementById('multistep-form-message');
+    if (multistepForm) {
+      multistepForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(multistepForm), multistepMsg, multistepForm, 'Apply For Trial EN - Multi-Step');
+      });
+    }
+
+    // FINAL CONTACT FORM
+    var finalForm = document.getElementById('final-contact-form');
+    var finalMsg = document.getElementById('final-form-message');
+    if (finalForm) {
+      finalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(finalForm), finalMsg, finalForm, 'Apply For Trial EN - Final Form');
+      });
+    }
+
+    // CAROUSEL
+    var track = document.getElementById('carousel-track');
+    var prevBtn = document.getElementById('carousel-prev');
+    var nextBtn = document.getElementById('carousel-next');
+    var currentSlide = 0;
+
+    if (track && prevBtn && nextBtn) {
+      var slides = track.querySelectorAll('.carousel-slide');
+      var totalSlides = slides.length;
+
+      function getSlideWidth() {
+        if (!slides[0]) return 300;
+        return slides[0].offsetWidth + 16;
+      }
+
+      function checkFit() {
+        var containerWidth = track.parentElement.offsetWidth;
+        var totalWidth = totalSlides * getSlideWidth() - 16;
+        if (totalWidth <= containerWidth) {
+          track.style.justifyContent = 'center';
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+        } else {
+          track.style.justifyContent = '';
+          prevBtn.style.display = '';
+          nextBtn.style.display = '';
+        }
+      }
+
+      function updateCarousel() {
+        var slideWidth = getSlideWidth();
+        var containerWidth = track.parentElement.offsetWidth;
+        var maxOffset = (totalSlides * slideWidth) - containerWidth;
+        var offset = Math.min(currentSlide * slideWidth, maxOffset);
+        track.style.transform = 'translateX(-' + Math.max(0, offset) + 'px)';
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (currentSlide > 0) { currentSlide--; updateCarousel(); }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        var slideWidth = getSlideWidth();
+        var maxSlide = totalSlides - Math.floor(track.parentElement.offsetWidth / slideWidth);
+        if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
+      });
+
+      checkFit();
+      window.addEventListener('resize', function () { currentSlide = 0; track.style.transform = ''; checkFit(); });
+    }
+
+    // ANIMATED COUNTERS
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.count, 10);
+          var suffix = el.dataset.suffix || '';
+          var isLarge = el.dataset.large === 'true';
+          var duration = 1800;
+          var start = performance.now();
+
+          function animate(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.floor(eased * target);
+            el.textContent = (isLarge ? current.toLocaleString('en-US') : current) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stat-counter').forEach(function (el) {
+      counterObserver.observe(el);
+    });
+
+    // SCROLL ANIMATIONS
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('[data-scroll]').forEach(function (el) {
+      scrollObserver.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>

@@ -1,10 +1,9 @@
 ---
 /**
- * EN Footer Component - Pixformance USA
+ * EN Footer Component - Pixformance
  */
 import { cn } from '@/lib/cn';
 import { footerVariants } from './footer.variants';
-import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
 interface Props {
   variant?: 'default' | 'minimal';
@@ -23,73 +22,73 @@ const solutionsLinks = [
   { label: 'Corporate Fitness', href: '/en/corporate-fitness/' },
 ];
 
-const companyLinks = [
+const legalLinks = [
   { label: 'About us', href: '/en/about-us/' },
   { label: 'Success Stories', href: '/en/success-stories/' },
-  { label: 'News', href: '/en/functional-training-and-fitness-news/' },
-  { label: 'Blog', href: '/en/blog-articles/' },
   { label: 'FAQ', href: '/en/faq-training-with-pixformance-station/' },
   { label: 'Jobs', href: '/en/jobs/' },
   { label: 'Contact', href: '/en/contact/' },
-];
-
-const recentBlogPosts = [
-  {
-    label: 'Increase Physical Therapy Sales: What Opportunities Does The Self-Pay Sector Have To Offer Now?',
-    href: '/en/increase-physical-therapy-sales-what-opportunities-does-the-self-pay-sector-have-to-offer-now/',
-  },
-  {
-    label: 'Digitization: An Opportunity For The Healthcare Industry',
-    href: '/en/digitization-an-opportunity-for-the-healthcare-industry/',
-  },
-  {
-    label: "Three Lessons Fitness Clubs Can Learn From Weight Watchers' New Business Strategy",
-    href: '/en/three-lessons-fitness-clubs-can-learn-from-weight-watchers/',
-  },
-];
-
-const socialLinks = [
-  { label: 'Facebook', href: 'https://www.facebook.com/pixformancesports', icon: '/images/en/if_facebook_online_social_media_734399-2.png' },
-  { label: 'Instagram', href: 'https://www.instagram.com/pixformance/', icon: '/images/en/if_instagram_online_social_media_734394-2.png' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/2980658/', icon: '/images/en/if_online_social_media_linked_in_734383-2.png' },
-  { label: 'YouTube', href: 'https://www.youtube.com/channel/UCw-sWITx6ElTie7ep57Mz2w', icon: '/images/en/if_youtube_online_social_media_734361-2.png' },
+  { label: 'Imprint', href: '/en/imprint/' },
+  { label: 'Privacy Policy', href: '/en/privacy-policy/' },
 ];
 ---
 
 <footer class={footerClasses}>
   <div class="container">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-      {/* Company Info */}
+    {/* Desktop: 3-col grid (logo | Solutions | Company). Mobile: stacked logo + 2-col links */}
+
+    {/* Mobile logo (hidden on desktop) */}
+    <div class="text-center mb-8 md:hidden">
+      <img
+        src="/images/logo/Pixformance-Logo_black_EN.svg"
+        alt="Pixformance"
+        class="h-[42px] mb-3 mx-auto"
+        style="width: auto;"
+        loading="lazy"
+      />
+      <p class="text-sm text-foreground-muted">Digital Fitness Devices & Therapy Equipment</p>
+    </div>
+
+    {/* Mobile: 2-col link grid (hidden on desktop) */}
+    <div class="grid grid-cols-2 gap-6 mb-8 md:hidden text-center">
       <div>
-        <PixformanceLogo variant="black" size="md" class="mb-4" />
-        <p class="text-sm text-foreground-muted mb-4">
-          Digital Fitness Devices & Therapy Equipment
-        </p>
-        <div class="space-y-1 text-sm text-foreground-muted">
-          <p class="font-semibold text-foreground">Pixformance USA Inc.</p>
-          <p>3 Windward Way</p>
-          <p>East Windsor, NJ 08520</p>
-          <p>
-            <a href="tel:+18884204572" class="hover:text-foreground transition-colors">+1 888 – 420-4572</a>
-          </p>
-          <p>
-            <a href="mailto:info@pixformance.com" class="hover:text-foreground transition-colors">info@pixformance.com</a>
-          </p>
-        </div>
-        {/* Social Links */}
-        <div class="flex gap-3 mt-4">
-          {socialLinks.map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              class="opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <img src={social.icon} alt={social.label} class="h-6 w-6" loading="lazy" />
-            </a>
+        <h4 class="font-semibold mb-4">Solutions</h4>
+        <ul class="space-y-2">
+          {solutionsLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Company</h4>
+        <ul class="space-y-2">
+          {legalLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* Desktop: 3-column layout (hidden on mobile) */}
+    <div class="hidden md:grid md:grid-cols-3 gap-12 mb-8">
+      {/* Logo + tagline */}
+      <div>
+        <img
+          src="/images/logo/Pixformance-Logo_black_EN.svg"
+          alt="Pixformance"
+          class="h-14 mb-3"
+          style="width: auto;"
+          loading="lazy"
+        />
+        <p class="text-sm text-foreground-muted">Digital Fitness Devices & Therapy Equipment</p>
       </div>
 
       {/* Solutions */}
@@ -98,10 +97,7 @@ const socialLinks = [
         <ul class="space-y-2">
           {solutionsLinks.map((link) => (
             <li>
-              <a
-                href={link.href}
-                class="text-sm text-foreground-muted hover:text-foreground transition-colors"
-              >
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
               </a>
             </li>
@@ -113,30 +109,10 @@ const socialLinks = [
       <div>
         <h4 class="font-semibold mb-4">Company</h4>
         <ul class="space-y-2">
-          {companyLinks.map((link) => (
+          {legalLinks.map((link) => (
             <li>
-              <a
-                href={link.href}
-                class="text-sm text-foreground-muted hover:text-foreground transition-colors"
-              >
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Recent Blog Posts */}
-      <div>
-        <h4 class="font-semibold mb-4">Recent Articles</h4>
-        <ul class="space-y-3">
-          {recentBlogPosts.map((post) => (
-            <li>
-              <a
-                href={post.href}
-                class="text-sm text-foreground-muted hover:text-foreground transition-colors line-clamp-3 leading-relaxed"
-              >
-                {post.label}
               </a>
             </li>
           ))}
@@ -145,14 +121,10 @@ const socialLinks = [
     </div>
 
     {/* Bottom Bar */}
-    <div class="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="border-t border-border pt-8 text-center">
       <p class="text-sm text-foreground-muted">
         © {currentYear} Pixformance Sports GmbH. All rights reserved.
       </p>
-      <div class="flex gap-4">
-        <a href="/en/imprint/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">Imprint</a>
-        <a href="/en/privacy-policy/" class="text-sm text-foreground-muted hover:text-foreground transition-colors">Privacy Policy</a>
-      </div>
     </div>
   </div>
 </footer>

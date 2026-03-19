@@ -1,0 +1,373 @@
+---
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<ENBaseLayout
+  title="A Gym Investment That Pays Off - Kim Essink - Pixformance"
+  description="Pixformance as a customer magnet at Essink Sportcentrum in Eindhoven. Insights from owner Kim Essink, personal trainer Sil Hoving, and two members."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "A Gym Investment That Pays Off – Kim Essink",
+    "description": "Pixformance as a customer magnet at Essink Sportcentrum in Eindhoven. Owner Kim Essink on ROI and member satisfaction.",
+    "url": "https://pixformance.com/en/success-stories/kim-essink",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
+>
+  <ENHeader slot="header" position="sticky" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#6BDBD1]/20 to-[#02308C]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Back to Overview
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#6BDBD1]/20 border border-[#6BDBD1]/40 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="zap" size="sm" />
+            Fitness
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            A gym investment that pays off
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Pixformance as a customer magnet at Essink Sportcentrum, Eindhoven, Netherlands
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          Special insights into the Pixformance concept – from the perspective of the owner, a personal trainer, and two members of Essink Sportcentrum in Eindhoven.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kim Essink Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/kim-essink-city-gym-1.jpg"
+                alt="Kim Essink - Owner Essink Sportcentrum Eindhoven"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <div class="order-1 lg:order-2 space-y-6" data-scroll="fade-up" data-delay="1">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6BDBD1]/20 text-xs font-bold text-[#02308C] mb-3">
+                <Icon name="user" size="sm" />
+                Owner
+              </div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-1">Kim Essink</h2>
+              <p class="text-lg text-[#02308C] font-semibold mb-6">Essink Sportcentrum, Eindhoven</p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "We consciously chose Pixformance because we also saw it as an opportunity to quickly recoup our invested capital. We discovered the Pixformance concept at FIBO – one of the world's largest fitness trade shows. It caught our attention there because it had won the innovation award. We were immediately enthusiastic."
+              </p>
+            </Card>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-base mb-4 flex items-center gap-2 text-[#02308C]">
+                <Icon name="star" size="sm" class="text-[#6BDBD1]" />
+                Kim's Highlights
+              </h3>
+              <ul class="space-y-2 text-sm text-foreground-muted">
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#6BDBD1] flex-shrink-0" />
+                  Investment easily recouped
+                </li>
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#6BDBD1] flex-shrink-0" />
+                  Pixformance ensures high member retention
+                </li>
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#6BDBD1] flex-shrink-0" />
+                  New members thanks to Pixformance
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kim Extended Quote -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-6" data-scroll="fade-up">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Member retention and return on investment</h2>
+
+        <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+          <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+            <p class="text-foreground italic text-base md:text-lg">
+              "The feedback from our customers is mainly things like: 'It offers a lot of variety' and 'The exercises are fun and challenging.' That's what our members want and need to stay motivated. The reactions are thoroughly positive. We also notice that our customers train with the Pixformance concept for a long time and don't quickly go looking for another training method."
+            </p>
+          </Card>
+
+          <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+            <p class="text-foreground italic text-base md:text-lg">
+              "With Pixformance you can see your results after training on screen. When users see that they've improved from 60% to 80%, it creates satisfaction and extra motivation. This visible progress gives them a good feeling."
+            </p>
+          </Card>
+
+          <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+            <p class="text-foreground italic text-base md:text-lg">
+              "We offer the use of the stations to our members at an additional charge. Those who want to use Pixformance pay a small extra fee per month. This way, we recouped the invested capital fairly quickly. We were also able to attract many new members thanks to Pixformance. The investment has paid off for us."
+            </p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sil Hoving Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div class="space-y-6" data-scroll="fade-up">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#02308C]/10 text-xs font-bold text-[#02308C] mb-3">
+                <Icon name="user" size="sm" />
+                Personal Trainer
+              </div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-1">Sil Hoving</h2>
+              <p class="text-lg text-[#02308C] font-semibold mb-6">Personal Trainer at Essink Sportcentrum</p>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                "I see Pixformance not as competition for trainers, but as support. It's a very efficient and intelligent way to train optimally. It's great that athletes receive both visual feedback via the screen and feedback from a trainer. When you're supported by a screen, you learn to perform movements correctly. This prevents injuries in sport."
+              </p>
+            </Card>
+
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-base mb-4 flex items-center gap-2 text-[#02308C]">
+                <Icon name="star" size="sm" class="text-[#02308C]" />
+                Sil's Highlights
+              </h3>
+              <ul class="space-y-2 text-sm text-foreground-muted">
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#02308C] flex-shrink-0" />
+                  Pixformance supports the trainer
+                </li>
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#02308C] flex-shrink-0" />
+                  Training plans can be individually customized
+                </li>
+                <li class="flex items-center gap-2">
+                  <Icon name="check" size="sm" class="text-[#02308C] flex-shrink-0" />
+                  Immediately visible whether an exercise was performed correctly
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          <div data-scroll="fade-up" data-delay="1">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/Sil-Hoving-Personal-Trainer.jpg"
+                alt="Sil Hoving - Personal Trainer Essink Sportcentrum"
+                class="w-full h-auto max-h-[380px] object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sil Extended Quote -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-6" data-scroll="fade-up">
+        <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+          <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+            <p class="text-foreground italic text-base md:text-lg">
+              "We can put together training plans for our members in various ways. If someone has a shoulder or knee injury, or wants to focus on a specific body region, we can design their training plan completely individually. This way, everyone trains optimally toward their personal goal."
+            </p>
+          </Card>
+
+          <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+            <p class="text-foreground italic text-base md:text-lg">
+              "I'm really enjoying working with Pixformance so far. I find it great to be able to guide our members so professionally while they themselves choose what and how they want to train. The fact that the exercises are always shown on screen and users can see for themselves what they're doing right or wrong is very important. You're also more focused and less distracted by other things. My experience is therefore very positive."
+            </p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Image -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img src="/images/erfolgsgeschichten/Sil-Hoving-Pixformance-Training.jpg" alt="Training with Pixformance at Essink Sportcentrum" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-8">
+          <h2 class="font-display text-3xl md:text-4xl font-bold">Essink Sportcentrum in Video</h2>
+        </div>
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <div class="relative w-full" style="padding-bottom: 56.25%;">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/h54tMPuasTs"
+              title="Pixformance at Essink Sportcentrum Eindhoven"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Members Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#6BDBD1]/20 border border-[#6BDBD1]/40 text-sm font-bold text-[#02308C] mb-4">
+            <Icon name="users" size="sm" />
+            What Members Say
+          </span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold">Enthusiastic members share their experience</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div data-scroll="fade-up">
+            <Card variant="elevated" padding="lg" class="h-full space-y-4 bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <img src="/images/erfolgsgeschichten/Essink-Mitglied-1.jpg" alt="Sylvia Beerens - Member Essink Sportcentrum" class="w-full h-56 object-cover" loading="lazy" />
+              </div>
+              <div>
+                <p class="font-bold text-lg text-foreground">Sylvia Beerens</p>
+                <p class="text-sm text-[#02308C] font-semibold mb-4">Administrative Employee</p>
+                <Card variant="elevated" padding="md" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+                  <p class="text-foreground italic text-sm md:text-base">
+                    "I've been exercising for quite a long time, but I've never liked conventional fitness. With Pixformance I found, for the first time, a concept that truly makes me happy. I notice a huge difference after such a short time. I find it great to be able to view my results after each training session. Being able to keep track of your own progress is very motivating."
+                  </p>
+                </Card>
+              </div>
+            </Card>
+          </div>
+
+          <div data-scroll="fade-up" data-delay="1">
+            <Card variant="elevated" padding="lg" class="h-full space-y-4 bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <img src="/images/erfolgsgeschichten/Essink-Mitglied-2.jpg" alt="Huub Janssen - Member Essink Sportcentrum" class="w-full h-56 object-cover" loading="lazy" />
+              </div>
+              <div>
+                <p class="font-bold text-lg text-foreground">Huub Janssen</p>
+                <p class="text-sm text-[#02308C] font-semibold mb-4">Entrepreneur</p>
+                <Card variant="elevated" padding="md" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+                  <p class="text-foreground italic text-sm md:text-base">
+                    "The great thing about Pixformance is that there's virtually always a personal trainer present. You always get feedback and are constantly shown whether you're performing an exercise correctly or not. In the past I boxed professionally for about 15 years. Since using Pixformance I notice that I can genuinely train injury-free."
+                  </p>
+                </Card>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Would you like individual advice?</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Your Contact</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+            <Button size="lg" href="/en/apply-for-trial/" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+              Contact Us <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a href="/en/success-stories/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+          <Icon name="arrow-left" size="sm" /> Back to Overview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>
+
+<style>
+  @keyframes hero-entry { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.95); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

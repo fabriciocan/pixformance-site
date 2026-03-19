@@ -1,11 +1,9 @@
 ---
 /**
  * Footer Component - Pixformance
- * Simplified footer for Pixformance website
  */
 import { cn } from '@/lib/cn';
 import { footerVariants } from './footer.variants';
-
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
 interface Props {
@@ -19,74 +17,103 @@ const currentYear = new Date().getFullYear();
 
 const footerClasses = cn(footerVariants({ variant }), className);
 
-const navigationLinks = [
+const losungenLinks = [
   { label: 'Physiotherapie', href: '/physiotherapie' },
   { label: 'Klinik', href: '/klinik' },
   { label: 'Fitness', href: '/fitness' },
-  { label: 'BGM', href: '/bgm' },
+  { label: 'Firmen Fitness', href: '/firmen-fitness' },
 ];
 
-const legalLinks = [
+const unternehmensLinks = [
+  { label: 'Über uns', href: '/ueber-uns' },
+  { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
+  { label: 'Karriere', href: '/karriere' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Kontakt', href: '/kontakt' },
   { label: 'Impressum', href: '/impressum' },
   { label: 'Datenschutz', href: '/datenschutz' },
-  { label: 'AGB', href: '/agb' },
 ];
 ---
 
 <footer class={footerClasses}>
   <div class="container">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      {/* Company Info */}
-      <div class="md:col-span-1">
-        <PixformanceLogo variant="black" size="md" class="mb-4" />
-        <p class="text-sm text-foreground-muted">
-          Digitale Fitnessgeräte & Therapiegeräte
-        </p>
-      </div>
 
-      {/* Navigation */}
-      <div class="md:col-span-1">
+    {/* Mobile logo (hidden on desktop) */}
+    <div class="text-center mb-8 md:hidden">
+      <PixformanceLogo variant="black" size="md" class="mb-3 mx-auto" />
+      <p class="text-sm text-foreground-muted">Digitale Fitnessgeräte & Therapiegeräte</p>
+    </div>
+
+    {/* Mobile: 2-col link grid (hidden on desktop) */}
+    <div class="grid grid-cols-2 gap-6 mb-8 md:hidden text-center">
+      <div>
         <h4 class="font-semibold mb-4">Lösungen</h4>
         <ul class="space-y-2">
-          {
-            navigationLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-sm text-foreground-muted hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
+          {losungenLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Unternehmen</h4>
+        <ul class="space-y-2">
+          {unternehmensLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* Desktop: 3-column layout (hidden on mobile) */}
+    <div class="hidden md:grid md:grid-cols-3 gap-12 mb-8">
+      {/* Logo + tagline */}
+      <div>
+        <PixformanceLogo variant="black" size="md" class="mb-3" />
+        <p class="text-sm text-foreground-muted">Digitale Fitnessgeräte & Therapiegeräte</p>
+      </div>
+
+      {/* Lösungen */}
+      <div>
+        <h4 class="font-semibold mb-4">Lösungen</h4>
+        <ul class="space-y-2">
+          {losungenLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Legal */}
-      <div class="md:col-span-1">
-        <h4 class="font-semibold mb-4">Rechtliches</h4>
+      {/* Unternehmen */}
+      <div>
+        <h4 class="font-semibold mb-4">Unternehmen</h4>
         <ul class="space-y-2">
-          {
-            legalLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-sm text-foreground-muted hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
+          {unternehmensLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
 
     {/* Bottom Bar */}
-    <div class="border-t border-border mt-8 pt-8 text-center">
+    <div class="border-t border-border pt-8 text-center">
       <p class="text-sm text-foreground-muted">
-        © {currentYear} Pixformance. Alle Rechte vorbehalten.
+        © {currentYear} Pixformance Sports GmbH. Alle Rechte vorbehalten.
       </p>
     </div>
   </div>
