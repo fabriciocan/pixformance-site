@@ -201,6 +201,25 @@ const buttonId = `${menuId}-button`;
         Kontakt
       </Button>
 
+      {/* Mobile Language Switcher */}
+      <div class="relative md:hidden" id="mobile-lang-switcher">
+        <button
+          type="button"
+          class="inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+          aria-expanded="false"
+          aria-label="Sprache wählen"
+        >
+          <Icon name="globe" size="sm" />
+          <span class="text-xs font-bold">DE</span>
+          <Icon name="chevron-down" size="sm" />
+        </button>
+        <div class="absolute right-0 top-full mt-1 w-28 bg-background border border-border rounded-lg shadow-lg z-50 hidden">
+          <a href="/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 rounded-t-lg">DE</a>
+          <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+          <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 rounded-b-lg">JP</a>
+        </div>
+      </div>
+
       {/* Mobile Menu Toggle */}
       <button
         type="button"
@@ -391,6 +410,28 @@ const buttonId = `${menuId}-button`;
     });
   }
 
+  // Mobile language switcher toggle
+  function initLangSwitcher() {
+    const switcher = document.getElementById('mobile-lang-switcher');
+    if (!switcher) return;
+    const btn = switcher.querySelector('button');
+    const dropdown = switcher.querySelector('div');
+    if (!btn || !dropdown) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdown.classList.contains('hidden');
+      dropdown.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', (!isOpen).toString());
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
   initMobileMenu();
-  document.addEventListener('astro:page-load', initMobileMenu);
+  initLangSwitcher();
+  document.addEventListener('astro:page-load', () => { initMobileMenu(); initLangSwitcher(); });
 </script>
