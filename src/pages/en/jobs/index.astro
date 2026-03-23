@@ -19,7 +19,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
   <!-- Hero -->
   <section class="py-16 md:py-32 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
     <div class="container">
-      <div class="max-w-3xl space-y-6">
+      <div class="max-w-3xl space-y-6 mx-auto text-center md:text-left">
         <span class="text-sm font-bold uppercase tracking-widest text-[#6BDBD1]">Jobs</span>
         <!-- Desktop headline -->
         <h1 class="hidden md:block font-display text-4xl md:text-6xl font-bold leading-tight">
@@ -51,10 +51,10 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
         <div class="rounded-2xl bg-gray-50 border border-border p-8 space-y-4" data-scroll="fade-up">
           <div class="flex items-center gap-3 mb-2">
-            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center flex-shrink-0">
               <Icon name="briefcase" size="sm" class="text-[#02308C]" />
             </div>
-            <h2 class="font-display text-2xl font-bold">Open Positions</h2>
+            <h2 class="font-display text-2xl font-bold text-left">Open Positions</h2>
           </div>
           <p class="font-bold text-lg">There are no open job positions.</p>
           <p class="text-foreground-muted">
@@ -65,7 +65,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
           </p>
         </div>
 
-        <div class="pt-4" data-scroll="fade-up">
+        <div class="pt-4 flex justify-center md:justify-start" data-scroll="fade-up">
           <Button href="/en/contact/">
             Contact Us
             <Icon name="arrow-right" size="sm" />

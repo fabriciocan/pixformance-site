@@ -221,7 +221,7 @@ const studies = [
             { title: 'Depth Sensor For Movement Analysis', text: 'During the exercise, a camera with built-in depth sensor scans 25 joint points of the exerciser within seconds and compares them with the optimal motion sequence.' },
             { title: 'Feedback In Real-Time', text: 'The patient receives individualized feedback that covers individual aspects of movement execution. The feedback is highlighted visually and textually in the patient video in real-time.' },
           ].map((feature, index) => (
-            <div class="flex gap-4" data-delay={index + 1}>
+            <div class="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4" data-delay={index + 1}>
               <div class="shrink-0 w-10 h-10 rounded-xl bg-[#02308C] flex items-center justify-center">
                 <span class="text-white font-bold text-sm">{String(index + 1).padStart(2, '0')}</span>
               </div>
@@ -254,10 +254,12 @@ const studies = [
           <p class="text-lg text-foreground-muted leading-relaxed">
             With over 450,000 exercisers worldwide, the Pixformance training and therapy concept can already be found in Germany's top rehabilitation clinics, physiotherapy practices, and fitness studios. Read our success stories to discover how and why Ms. Buchstein from the "Sauerland Special Clinic for MS" and many other customers have integrated the digital movement therapy from Pixformance.
           </p>
-          <Button href="/en/success-stories/">
-            All Success Stories
-            <Icon name="arrow-right" size="sm" />
-          </Button>
+          <div class="flex justify-center md:justify-start">
+            <Button href="/en/success-stories/">
+              All Success Stories
+              <Icon name="arrow-right" size="sm" />
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -316,7 +318,7 @@ const studies = [
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cashPayBenefits.map((benefit, index) => (
           <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
-            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4 mx-auto md:mx-0">
               <Icon name={benefit.icon} size="sm" class="text-[#02308C]" />
             </div>
             <h3 class="font-bold mb-2">{benefit.title}</h3>
@@ -340,9 +342,9 @@ const studies = [
               Whether for inpatient stays, before or after surgery or integrated physiotherapy, the Pixformance rehabilitation device is suitable for various indications in every rehabilitation phase and for every health condition.
             </p>
           </div>
-          <div class="grid gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {patientBenefits.map((benefit, index) => (
-              <div class="flex gap-4 p-4 rounded-xl hover:bg-white transition-colors" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
+              <div class="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4 p-4 rounded-xl hover:bg-white transition-colors" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
                 <div class="shrink-0 w-10 h-10 rounded-xl bg-[#02308C] flex items-center justify-center">
                   <Icon name={benefit.icon} size="sm" class="text-white" />
                 </div>
@@ -373,7 +375,7 @@ const studies = [
       <div class="grid md:grid-cols-2 gap-8">
         <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-shadow" data-scroll="fade-up" data-delay="1">
           <img
-            src="https://www.pixformance.com/wp-content/uploads/2018/12/LOESUNGEN-KLINIK-BROSCHÜREN.jpg"
+            src="/images/LOESUNGEN-KLINIK-BROSCHÜREN.jpg"
             alt="Medical Park Bad Rodach"
             class="w-full h-48 object-cover rounded-lg mb-4"
             loading="lazy"
@@ -426,7 +428,7 @@ const studies = [
             data-scroll="fade-up"
             data-delay={Math.min(index+1,5)}
           >
-            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center mb-4 mx-auto md:mx-0">
               <Icon name="file-text" size="sm" class="text-[#02308C]" />
             </div>
             <p class="text-xs font-semibold text-[#6BDBD1] mb-2">{study.institution}</p>

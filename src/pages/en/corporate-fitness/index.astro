@@ -151,7 +151,7 @@ const teamMembers = [
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {benefits.map((benefit, index) => (
           <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
-            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4 mx-auto md:mx-0">
               <Icon name={benefit.icon} size="sm" class="text-[#02308C]" />
             </div>
             <h3 class="font-bold mb-2">{benefit.title}</h3>
