@@ -525,6 +525,10 @@ const benefits = [
         return cookies;
       }
 
+      function sanitizePhone(phone) {
+        return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+      }
+
       function initTesteForm() {
         var form = document.getElementById("contact-form");
         var messageDiv = document.getElementById("form-message");
@@ -542,7 +546,7 @@ const benefits = [
             name: formData.get('name') || '',
             email: formData.get('email') || '',
             company: formData.get('company') || '',
-            phone: formData.get('phone') || '',
+            phone: sanitizePhone(formData.get('phone')),
             interest: formData.get('interest') || '',
             message: formData.get('message') || '',
             privacy_accepted: formData.get('privacy') === 'on',

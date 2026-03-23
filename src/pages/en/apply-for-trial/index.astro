@@ -708,6 +708,10 @@ const clientLogos = [
     return cookies;
   }
 
+  function sanitizePhone(phone) {
+    return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+  }
+
   function submitForm(formData, messageEl, formEl, formName) {
     var payload = {
       form_name: formName || 'Apply For Trial EN',
@@ -715,7 +719,7 @@ const clientLogos = [
       first_name: formData.get('first_name') || '',
       last_name: formData.get('last_name') || '',
       email: formData.get('email') || '',
-      phone: formData.get('phone') || '',
+      phone: sanitizePhone(formData.get('phone')),
       privacy_accepted: formData.get('privacy') === 'on',
       page_url: window.location.href,
       page_path: window.location.pathname,
