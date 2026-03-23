@@ -146,6 +146,10 @@ const { variant = 'default' } = Astro.props;
       return params;
     }
 
+    function sanitizePhone(phone) {
+      return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+    }
+
     function getCookies() {
       var cookies = {};
       if (!document.cookie) return cookies;
@@ -184,7 +188,7 @@ const { variant = 'default' } = Astro.props;
           name: formData.get('name') || '',
           email: formData.get('email') || '',
           company: formData.get('company') || '',
-          phone: formData.get('phone') || '',
+          phone: sanitizePhone(formData.get('phone')),
           interest: formData.get('interest') || '',
           message: formData.get('message') || '',
           privacy_accepted: formData.get('privacy') === 'on',
