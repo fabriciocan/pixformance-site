@@ -105,7 +105,7 @@ const buttonId = `${menuId}-button`;
       </a>
 
       {/* Lösungen Dropdown */}
-      <div class="relative group">
+      <div class="relative group" data-desktop-dropdown>
         <button
           class={cn(
             'nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
@@ -114,6 +114,7 @@ const buttonId = `${menuId}-button`;
               ? 'text-primary font-semibold'
               : 'text-foreground-muted hover:text-foreground'
           )}
+          aria-expanded="false"
         >
           Lösungen
           <Icon name="chevron-down" size="sm" />
@@ -122,6 +123,7 @@ const buttonId = `${menuId}-button`;
         {/* Dropdown Menu */}
         <div
           class="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50"
+          data-dropdown-menu
         >
           {
             losungenItems.map((item) => (
@@ -142,7 +144,7 @@ const buttonId = `${menuId}-button`;
       </div>
 
       {/* Unternehmen Dropdown */}
-      <div class="relative group">
+      <div class="relative group" data-desktop-dropdown>
         <button
           class={cn(
             'nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
@@ -151,6 +153,7 @@ const buttonId = `${menuId}-button`;
               ? 'text-primary font-semibold'
               : 'text-foreground-muted hover:text-foreground'
           )}
+          aria-expanded="false"
         >
           Unternehmen
           <Icon name="chevron-down" size="sm" />
@@ -159,6 +162,7 @@ const buttonId = `${menuId}-button`;
         {/* Dropdown Menu */}
         <div
           class="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50"
+          data-dropdown-menu
         >
           {
             unternehmensLinks.map((item) => (
@@ -180,13 +184,13 @@ const buttonId = `${menuId}-button`;
 
 
       {/* Language Switcher */}
-      <div class="relative group ml-2">
-        <button class="nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors">
+      <div class="relative group ml-2" data-desktop-dropdown>
+        <button class="nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors" aria-expanded="false">
           <Icon name="globe" size="sm" />
           DE
           <Icon name="chevron-down" size="sm" />
         </button>
-        <div class="absolute right-0 mt-1 w-32 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50">
+        <div class="absolute right-0 mt-1 w-32 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50" data-dropdown-menu>
           <a href="/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 first:rounded-t-lg">DE</a>
           <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
           <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 last:rounded-b-lg">JP</a>
@@ -431,7 +435,47 @@ const buttonId = `${menuId}-button`;
     });
   }
 
+  // Desktop dropdown toggle for touch devices (iPad etc.)
+  function initDesktopDropdowns() {
+    const dropdowns = document.querySelectorAll('[data-desktop-dropdown]');
+
+    dropdowns.forEach((container) => {
+      const btn = container.querySelector('button');
+      const menu = container.querySelector('[data-dropdown-menu]');
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('dropdown-open');
+
+        // Close all other dropdowns first
+        dropdowns.forEach((other) => {
+          const otherMenu = other.querySelector('[data-dropdown-menu]');
+          const otherBtn = other.querySelector('button');
+          if (otherMenu && otherMenu !== menu) {
+            otherMenu.classList.remove('dropdown-open');
+            otherBtn?.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        menu.classList.toggle('dropdown-open', !isOpen);
+        btn.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+    });
+
+    // Close all on outside click
+    document.addEventListener('click', () => {
+      dropdowns.forEach((container) => {
+        const menu = container.querySelector('[data-dropdown-menu]');
+        const btn = container.querySelector('button');
+        if (menu) menu.classList.remove('dropdown-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   initMobileMenu();
   initLangSwitcher();
-  document.addEventListener('astro:page-load', () => { initMobileMenu(); initLangSwitcher(); });
+  initDesktopDropdowns();
+  document.addEventListener('astro:page-load', () => { initMobileMenu(); initLangSwitcher(); initDesktopDropdowns(); });
 </script>

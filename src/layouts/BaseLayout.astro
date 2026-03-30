@@ -15,7 +15,7 @@ interface Props {
 const {
   title = 'Pixformance – Digitale Fitnessgeräte & Therapiegeräte mit Echtzeit-Feedback',
   description = 'Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 750.000+ Trainierende/Jahr. 700+ Übungen. Echtzeit-Korrekturfeedback.',
-  image = 'https://neu.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
+  image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   canonical,
   type = 'website',
   noindex = false,
@@ -28,8 +28,8 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Pixformance Sports GmbH',
-  url: 'https://neu.pixformance.com',
-  logo: 'https://neu.pixformance.com/images/pix-favicon.png',
+  url: 'https://www.pixformance.com',
+  logo: 'https://www.pixformance.com/images/pix-favicon.png',
   foundingDate: '2012',
   description:
     'Pionier in digitaler Bewegungsanalyse und Echtzeit-Feedback für Physiotherapie, Kliniken, Fitness und betriebliches Gesundheitsmanagement.',
@@ -50,10 +50,10 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Pixformance',
-  url: 'https://neu.pixformance.com',
+  url: 'https://www.pixformance.com',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://neu.pixformance.com/?s={search_term_string}',
+    target: 'https://www.pixformance.com/?s={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 };
@@ -131,6 +131,7 @@ const websiteSchema = {
     <main><slot /></main>
     <slot name="footer" />
     <ChatWidget />
+    <script is:inline src="/js/url-params.js"></script>
     <script is:inline src="/js/form-protection.js"></script>
   </body>
 </html>

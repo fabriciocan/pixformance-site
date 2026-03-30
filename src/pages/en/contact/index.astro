@@ -34,10 +34,10 @@ const benefits = [
 <ENBaseLayout
   title="Contact - Pixformance Sports GmbH"
   description="Get in touch with Pixformance. Contact us for product consultation, general inquiries, technical support or marketing and PR."
-  hreflangDe="https://neu.pixformance.com/kontakt/"
+  hreflangDe="https://www.pixformance.com/kontakt/"
 >
   <ENHeader slot="header" position="sticky">
-    <PixformanceLogo slot="logo" />
+    <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
 
   <!-- Hero Section -->
@@ -413,11 +413,10 @@ const benefits = [
           })
             .then(function (response) {
               if (response.ok) {
+                form.style.display = 'none';
                 messageDiv.classList.remove('hidden');
-                messageDiv.className = 'p-4 rounded-xl bg-[#86C9BC]/10 text-[#86C9BC] border-2 border-[#86C9BC]/20 font-semibold text-center';
-                messageDiv.textContent = 'Thank you for your request! We will get back to you shortly.';
-                form.reset();
-                setTimeout(function () { messageDiv.classList.add('hidden'); }, 5000);
+                messageDiv.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center shadow-lg';
+                messageDiv.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Thank you for your request!</h3><p class="text-gray-600">We will get back to you shortly.</p>';
               } else {
                 messageDiv.classList.remove('hidden');
                 messageDiv.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';

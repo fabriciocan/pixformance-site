@@ -105,12 +105,13 @@ const clientLogos = [
 <BaseLayout
   title="60 Tage Pixformance kostenlos testen – Jetzt starten"
   description="Jetzt 60 Tage Pixformance kostenlos testen. Digitale Bewegungsanalyse für Physiotherapie, Klinik & Fitness. Unverbindlich, mit persönlicher Beratung und Schulung."
+  noindex={true}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "60 Tage Pixformance kostenlos testen",
     "description": "Testen Sie Pixformance 60 Tage kostenlos. Digitale Bewegungsanalyse für Physiotherapie, Klinik und Fitness.",
-    "url": "https://neu.pixformance.com/lp",
+    "url": "https://www.pixformance.com/lp",
     "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
   }}
 >
@@ -131,12 +132,12 @@ const clientLogos = [
     <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
 
     <div class="container relative text-center max-w-4xl mx-auto">
-      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0.1s;">
+      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0s;">
         MEHR ZEIT. MEHR UMSATZ.<br />
         <span class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
       </h1>
 
-      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.3s;">
+      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.1s;">
         <button
           id="hero-cta-btn"
           class="inline-flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-[#02308C] font-bold text-xs sm:text-lg rounded-full border-2 border-red-500 hover:bg-[#6BDBD1] hover:border-[#6BDBD1] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer leading-tight text-center"
@@ -190,11 +191,11 @@ const clientLogos = [
             Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
           </label>
         </div>
-        <div id="popup-form-message" class="hidden"></div>
         <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
           ANGEBOT ANFORDERN
         </button>
       </form>
+      <div id="popup-form-message" class="hidden"></div>
     </div>
   </div>
 
@@ -304,11 +305,11 @@ const clientLogos = [
                   Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
                 </label>
               </div>
-              <div id="multistep-form-message" class="hidden"></div>
               <button type="submit" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
                 MEHR INFOS ANFORDERN
               </button>
             </form>
+            <div id="multistep-form-message" class="hidden"></div>
           </div>
         </div>
       </div>
@@ -594,13 +595,13 @@ const clientLogos = [
                   Ich habe die <a href="/datenschutz" class="text-[#FFED00] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten und allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
                 </label>
               </div>
-              <div id="final-form-message" class="hidden"></div>
               <div class="flex justify-center pt-6">
                 <button type="submit" class="w-full md:w-auto px-16 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg">
                   SENDEN
                 </button>
               </div>
             </form>
+            <div id="final-form-message" class="hidden"></div>
           </div>
         </div>
       </div>
@@ -613,13 +614,13 @@ const clientLogos = [
 <style>
   /* Hero Entry Animation */
   @keyframes hero-entry {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   .hero-animate {
     opacity: 0;
-    animation: hero-entry 0.8s ease-out forwards;
+    animation: hero-entry 0.3s ease-out forwards;
   }
 
   /* Clients Carousel */
@@ -640,7 +641,7 @@ const clientLogos = [
   /* Scroll Animation Styles */
   [data-scroll] {
     opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
   }
 
   [data-scroll].is-visible {
@@ -648,7 +649,7 @@ const clientLogos = [
   }
 
   [data-scroll="fade-up"] {
-    transform: translateY(30px);
+    transform: translateY(12px);
   }
 
   [data-scroll="fade-up"].is-visible {
@@ -656,7 +657,7 @@ const clientLogos = [
   }
 
   [data-scroll="slide-left"] {
-    transform: translateX(-40px);
+    transform: translateX(-15px);
   }
 
   [data-scroll="slide-left"].is-visible {
@@ -664,7 +665,7 @@ const clientLogos = [
   }
 
   [data-scroll="slide-right"] {
-    transform: translateX(40px);
+    transform: translateX(15px);
   }
 
   [data-scroll="slide-right"].is-visible {
@@ -672,19 +673,19 @@ const clientLogos = [
   }
 
   [data-scroll="scale"] {
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
 
   [data-scroll="scale"].is-visible {
     transform: scale(1);
   }
 
-  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
-  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
-  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
-  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
-  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
-  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+  [data-scroll][data-delay="1"] { transition-delay: 0.05s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.15s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.25s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.3s; }
 
   /* Popup animation */
   #popup-modal.flex {
@@ -773,11 +774,10 @@ const clientLogos = [
     })
       .then(function (r) {
         if (r.ok) {
+          formEl.style.display = 'none';
           messageEl.classList.remove('hidden');
-          messageEl.className = 'p-4 rounded-xl bg-green-50 text-green-700 border-2 border-green-200 font-semibold text-center';
-          messageEl.textContent = 'Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden.';
-          formEl.reset();
-          setTimeout(function () { messageEl.classList.add('hidden'); }, 5000);
+          messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
+          messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
         } else {
           messageEl.classList.remove('hidden');
           messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';

@@ -19,5 +19,5 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://neu.pixformance.com/sitemap.xml
-Sitemap: https://neu.pixformance.com/llms-sitemap.xml
+Sitemap: https://www.pixformance.com/sitemap.xml
+Sitemap: https://www.pixformance.com/llms-sitemap.xml
