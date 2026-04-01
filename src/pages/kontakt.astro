@@ -45,13 +45,16 @@ const benefits = [
       <div class="max-w-4xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
-            <Icon name="zap" size="sm" />
-            Unverbindliches Angebot
+            <Icon name="mail" size="sm" />
+            Kontakt
           </span>
         </div>
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Testen Sie Pixformance in Ihrer Einrichtung
+          Sprechen Sie mit uns
         </h1>
+        <p class="text-lg md:text-xl text-foreground-muted hero-animate" style="animation-delay: 0.3s;">
+          Stellen Sie Ihre Frage oder schildern Sie Ihr Anliegen – wir melden uns umgehend bei Ihnen.
+        </p>
       </div>
     </div>
   </section>
@@ -65,7 +68,7 @@ const benefits = [
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
             <div class="relative p-8 md:p-12">
-              <form class="space-y-8" id="contact-form">
+              <form class="space-y-6" id="contact-form">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="fade-up" data-delay="1">
                   <div>
                     <label for="name" class="block text-sm font-bold mb-3 text-white">
@@ -95,52 +98,20 @@ const benefits = [
                   </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="fade-up" data-delay="2">
-                  <div>
-                    <label for="company" class="block text-sm font-bold mb-3 text-white">
-                      Unternehmen / Einrichtung
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="Ihr Unternehmen"
-                    />
-                  </div>
-                  <div>
-                    <label for="phone" class="block text-sm font-bold mb-3 text-white">
-                      Telefon
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="+49 (0) ..."
-                    />
-                  </div>
+                <div data-scroll="fade-up" data-delay="2">
+                  <label for="phone" class="block text-sm font-bold mb-3 text-white">
+                    Telefon <span class="text-white/70 font-normal">(für einen Rückruf)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
+                    placeholder="+49 (0) ..."
+                  />
                 </div>
 
                 <div data-scroll="fade-up" data-delay="3">
-                  <label for="interest" class="block text-sm font-bold mb-3 text-white">
-                    Interessenbereich
-                  </label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 shadow-lg"
-                  >
-                    <option value="">Bitte wählen...</option>
-                    <option value="physiotherapie">Physiotherapie</option>
-                    <option value="klinik">Klinik</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="bgm">BGM (Betriebliches Gesundheitsmanagement)</option>
-                    <option value="other">Sonstiges</option>
-                  </select>
-                </div>
-
-                <div data-scroll="fade-up" data-delay="4">
                   <label for="message" class="block text-sm font-bold mb-3 text-white">
                     Ihre Nachricht <span class="text-[#FFED00]">*</span>
                   </label>
@@ -148,13 +119,13 @@ const benefits = [
                     id="message"
                     name="message"
                     required
-                    rows="6"
+                    rows="4"
                     class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all resize-none text-gray-900 placeholder:text-gray-400 shadow-lg"
-                    placeholder="Teilen Sie uns mit, wie wir Ihnen helfen können..."
+                    placeholder="Wie können wir Ihnen helfen?"
                   ></textarea>
                 </div>
 
-                <div class="flex items-start gap-3" data-scroll="fade-up" data-delay="5">
+                <div class="flex items-start gap-3" data-scroll="fade-up" data-delay="4">
                   <input
                     type="checkbox"
                     id="privacy"
@@ -167,13 +138,13 @@ const benefits = [
                   </label>
                 </div>
 
-                <div class="flex justify-center pt-4" data-scroll="fade-up" data-delay="6">
+                <div class="flex justify-center pt-2" data-scroll="fade-up" data-delay="5">
                   <Button
                     size="lg"
                     type="submit"
                     class="group bg-white text-[#02308C] hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold"
                   >
-                    Anfrage senden
+                    Nachricht senden
                     <Icon name="send" size="sm" class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Button>
                 </div>
@@ -380,11 +351,10 @@ const benefits = [
           var formData = new FormData(form);
           var payload = {
             form_name: 'Kontaktformular',
+            lead_quelle: 'Kontaktformular',
             name: formData.get('name') || '',
             email: formData.get('email') || '',
-            company: formData.get('company') || '',
             phone: formData.get('phone') || '',
-            interest: formData.get('interest') || '',
             message: formData.get('message') || '',
             privacy_accepted: formData.get('privacy') === 'on',
             page_url: window.location.href,
@@ -393,6 +363,7 @@ const benefits = [
             submitted_at: new Date().toISOString(),
             url_params: getUrlParams(),
             cookies: getCookies(),
+            language: 'de',
           };
 
           fetch(WEBHOOK_URL, {

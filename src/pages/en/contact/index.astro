@@ -46,13 +46,16 @@ const benefits = [
       <div class="max-w-4xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
-            <Icon name="zap" size="sm" />
-            Non-Binding Offer
+            <Icon name="mail" size="sm" />
+            Contact
           </span>
         </div>
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Test Pixformance at Your Facility
+          Get in Touch
         </h1>
+        <p class="text-lg md:text-xl text-foreground-muted hero-animate" style="animation-delay: 0.3s;">
+          Ask us anything or tell us about your needs — we'll get back to you promptly.
+        </p>
       </div>
     </div>
   </section>
@@ -68,8 +71,7 @@ const benefits = [
 
             <!-- Form Content -->
             <div class="relative p-8 md:p-12">
-              <form class="space-y-8" id="en-contact-form">
-                <!-- Name and Email Row -->
+              <form class="space-y-6" id="en-contact-form">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="fade-up" data-delay="1">
                   <div>
                     <label for="en-name" class="block text-sm font-bold mb-3 text-white">
@@ -99,55 +101,20 @@ const benefits = [
                   </div>
                 </div>
 
-                <!-- Company and Phone Row -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="fade-up" data-delay="2">
-                  <div>
-                    <label for="en-company" class="block text-sm font-bold mb-3 text-white">
-                      Company / Facility
-                    </label>
-                    <input
-                      type="text"
-                      id="en-company"
-                      name="company"
-                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="Your company"
-                    />
-                  </div>
-                  <div>
-                    <label for="en-phone" class="block text-sm font-bold mb-3 text-white">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      id="en-phone"
-                      name="phone"
-                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="+49 (0) ..."
-                    />
-                  </div>
-                </div>
-
-                <!-- Interest Area -->
-                <div data-scroll="fade-up" data-delay="3">
-                  <label for="en-interest" class="block text-sm font-bold mb-3 text-white">
-                    Area of Interest
+                <div data-scroll="fade-up" data-delay="2">
+                  <label for="en-phone" class="block text-sm font-bold mb-3 text-white">
+                    Phone <span class="text-white/70 font-normal">(for a callback)</span>
                   </label>
-                  <select
-                    id="en-interest"
-                    name="interest"
-                    class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 shadow-lg"
-                  >
-                    <option value="">Please select...</option>
-                    <option value="physical-therapy">Physical Therapy</option>
-                    <option value="clinic">Clinic / Rehab Center</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="corporate-fitness">Corporate Fitness</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <input
+                    type="tel"
+                    id="en-phone"
+                    name="phone"
+                    class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
+                    placeholder="+49 (0) ..."
+                  />
                 </div>
 
-                <!-- Message -->
-                <div data-scroll="fade-up" data-delay="4">
+                <div data-scroll="fade-up" data-delay="3">
                   <label for="en-message" class="block text-sm font-bold mb-3 text-white">
                     Your Message <span class="text-[#FFED00]">*</span>
                   </label>
@@ -155,14 +122,13 @@ const benefits = [
                     id="en-message"
                     name="message"
                     required
-                    rows="6"
+                    rows="4"
                     class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all resize-none text-gray-900 placeholder:text-gray-400 shadow-lg"
-                    placeholder="Tell us how we can help you..."
+                    placeholder="How can we help you?"
                   ></textarea>
                 </div>
 
-                <!-- Privacy Checkbox -->
-                <div class="flex items-start gap-3" data-scroll="fade-up" data-delay="5">
+                <div class="flex items-start gap-3" data-scroll="fade-up" data-delay="4">
                   <input
                     type="checkbox"
                     id="en-privacy"
@@ -175,19 +141,17 @@ const benefits = [
                   </label>
                 </div>
 
-                <!-- Submit Button -->
-                <div class="flex justify-center pt-4" data-scroll="fade-up" data-delay="6">
+                <div class="flex justify-center pt-2" data-scroll="fade-up" data-delay="5">
                   <Button
                     size="lg"
                     type="submit"
                     class="group bg-white text-[#02308C] hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold"
                   >
-                    Send Request
+                    Send Message
                     <Icon name="send" size="sm" class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Button>
                 </div>
 
-                <!-- Success/Error Message -->
                 <div id="en-form-message" class="hidden"></div>
               </form>
             </div>
@@ -390,11 +354,10 @@ const benefits = [
           var formData = new FormData(form);
           var payload = {
             form_name: 'Contact Form EN',
+            lead_quelle: 'Kontaktformular',
             name: formData.get('name') || '',
             email: formData.get('email') || '',
-            company: formData.get('company') || '',
             phone: formData.get('phone') || '',
-            interest: formData.get('interest') || '',
             message: formData.get('message') || '',
             privacy_accepted: formData.get('privacy') === 'on',
             page_url: window.location.href,
