@@ -68,29 +68,14 @@ const buttonId = `${menuId}-button`;
         </a>
       ) : (
         <a href="/" class="flex items-center gap-2">
-          <span class="font-display text-xl font-bold text-primary">
-            Pixformance
-          </span>
+          <img src="/images/logo/Pixformance-Logo_black_EN.svg" alt="Pixformance" class="h-[42px] md:h-14" style="width: auto;" fetchpriority="high" />
         </a>
       )
     }
 
     {/* Desktop Navigation */}
     <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-   <a
-        href="/testen"
-        class={cn(
-          'nav-link rounded-md px-3 py-2 text-sm font-medium',
-          'transition-colors',
-          isActive('/testen')
-            ? 'text-primary font-semibold'
-            : 'text-foreground-muted hover:text-foreground'
-        )}
-        aria-current={isActive('/testen') ? 'page' : undefined}
-      >
-         Unverbindlich testen
-      </a>
-            <a
+      <a
         href="/konzept"
         class={cn(
           'nav-link rounded-md px-3 py-2 text-sm font-medium',
@@ -183,6 +168,20 @@ const buttonId = `${menuId}-button`;
       </div>
 
 
+      <a
+        href="/kontakt"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/kontakt')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/kontakt') ? 'page' : undefined}
+      >
+        Kontakt
+      </a>
+
       {/* Language Switcher */}
       <div class="relative group ml-2" data-desktop-dropdown>
         <button class="nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors" aria-expanded="false">
@@ -193,6 +192,7 @@ const buttonId = `${menuId}-button`;
         <div class="absolute right-0 mt-1 w-32 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50" data-dropdown-menu>
           <a href="/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 first:rounded-t-lg">DE</a>
           <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+          <a href="/fr/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">FR</a>
           <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 last:rounded-b-lg">JP</a>
         </div>
       </div>
@@ -201,8 +201,16 @@ const buttonId = `${menuId}-button`;
 
     {/* Actions Area */}
     <div class="flex items-center gap-2">
-      <Button size="sm" href="/kontakt" class="hidden md:inline-flex bg-black text-white hover:bg-gray-800 border-0">
-        Kontakt
+      <a
+        href="https://new.my.pixformance.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+      >
+        Login
+      </a>
+      <Button size="sm" href="/testen" class="hidden md:inline-flex">
+        Unverbindlich testen
       </Button>
 
       {/* Mobile Language Switcher */}
@@ -220,6 +228,7 @@ const buttonId = `${menuId}-button`;
         <div class="absolute right-0 top-full mt-1 w-28 bg-background border border-border rounded-lg shadow-lg z-50 hidden">
           <a href="/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 rounded-t-lg">DE</a>
           <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+          <a href="/fr/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">FR</a>
           <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 rounded-b-lg">JP</a>
         </div>
       </div>
@@ -356,11 +365,21 @@ const buttonId = `${menuId}-button`;
       </div>
 
       {/* Footer links */}
-      <div class="border-border border-t pt-3 flex items-center justify-end">
+      <div class="border-border border-t pt-3 flex items-center justify-between">
+        <a
+          href="https://new.my.pixformance.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-foreground-muted hover:text-foreground transition-colors"
+        >
+          Login
+        </a>
         <div class="flex gap-3">
           <a href="/" class="text-sm font-bold text-primary">DE</a>
           <span class="text-foreground-muted">|</span>
           <a href="/en/" class="text-sm text-foreground-muted hover:text-foreground">EN</a>
+          <span class="text-foreground-muted">|</span>
+          <a href="/fr/" class="text-sm text-foreground-muted hover:text-foreground">FR</a>
           <span class="text-foreground-muted">|</span>
           <a href="/jp/" class="text-sm text-foreground-muted hover:text-foreground">JP</a>
         </div>

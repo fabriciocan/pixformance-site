@@ -1,0 +1,492 @@
+---
+import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
+import FRHeader from '@/components/layout/FRHeader.astro';
+import FRFooter from '@/components/layout/FRFooter.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHÉRAPIE', href: '/fr/physiotherapie/' },
+  { label: 'CLINIQUE', href: '/fr/clinique/' },
+  { label: 'FITNESS', href: '/fr/fitness/' },
+  { label: 'BGM', href: '/fr/fitness-entreprise/' },
+];
+
+const stats = [
+  { value: '750.000+', count: 750000, suffix: '+', label: 'Pratiquants / An', icon: 'users' },
+  { value: '1.100+', count: 1100, suffix: '+', label: 'Cliniques & Centres de Rééducation', icon: 'globe' },
+  { value: '700+', count: 700, suffix: '+', label: 'Exercices Fonctionnels', icon: 'zap' },
+];
+
+const benefits = [
+  {
+    icon: 'users',
+    title: 'Activation des patients',
+    description: 'Un environnement d\'entraînement digital motivant augmente la participation active des patients.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+  {
+    icon: 'heart',
+    title: 'Décharge du personnel',
+    description: 'Les thérapeutes peuvent se concentrer sur les cas complexes pendant que Pixformance prend en charge l\'entraînement standard.',
+    gradient: 'from-[#6BDBD1] to-[#02308C]',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Scalabilité',
+    description: 'Prise en charge simultanée de jusqu\'à 4 patients avec une qualité de suivi constante.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+  {
+    icon: 'file-text',
+    title: 'Documentation',
+    description: 'Enregistrement automatique de toutes les données d\'entraînement pour une documentation complète.',
+    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
+  },
+  {
+    icon: 'check-circle',
+    title: 'Observance thérapeutique',
+    description: 'Les éléments de gamification augmentent la motivation et donc l\'observance thérapeutique.',
+    gradient: 'from-[#86C9BC] to-[#02308C]',
+  },
+  {
+    icon: 'shield',
+    title: 'Assurance qualité',
+    description: 'L\'exécution standardisée des exercices grâce au feedback en temps réel garantit une qualité constante.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Gabriele Buchstein',
+    role: 'Responsable de physiothérapie',
+    company: 'Sauerlandklinik Hachen',
+    image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
+    quote: 'Les patients sont enthousiastes et très motivés. Ça ne devient pas ennuyeux, car les exercices sont très variés et on peut progresser.',
+  },
+  {
+    name: 'Christoph Schneider',
+    role: 'Responsable thérapie',
+    company: 'Niederrhein-Klinik',
+    image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
+    quote: 'À la recherche d\'un moyen d\'activer les patients tout en déchargeant le personnel, nous avons découvert Pixformance.',
+  },
+  {
+    name: 'Christoph Oratsch',
+    role: 'Responsable thérapie',
+    company: 'AUVA Unfallkrankenhaus',
+    image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
+    quote: 'Du côté des patients, il y a un grand intérêt pour les stations Pixformance. Beaucoup viennent d\'eux-mêmes et veulent un programme d\'entraînement.',
+  },
+];
+
+const features = [
+  {
+    icon: 'eye',
+    title: 'Caméra 2D Full-HD',
+    description: 'Capture 25 points articulaires en temps réel pour une analyse précise des mouvements',
+  },
+  {
+    icon: 'monitor',
+    title: 'Coach virtuel',
+    description: 'Présente les exercices sur l\'écran 43" et fournit un feedback visuel',
+  },
+  {
+    icon: 'zap',
+    title: 'Correction en temps réel',
+    description: 'Feedback immédiat sur l\'exécution des mouvements pendant l\'entraînement',
+  },
+];
+---
+
+<FRBaseLayout
+  title="Appareils de rééducation & thérapie par l'entraînement digital pour cliniques | Pixformance"
+  description="Pixformance pour les cliniques de rééducation : activation des patients, décharge des thérapeutes, documentation digitale. Plus de 1 100 cliniques font confiance à Pixformance. Testez maintenant."
+  hreflangDe="https://www.pixformance.com/klinik"
+  hreflangEn="https://www.pixformance.com/en/clinic/"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Thérapie par l'entraînement digital – Clinique & Rééducation",
+    "description": "Appareils de rééducation digitaux pour cliniques et centres de rééducation. Activation des patients, décharge des thérapeutes, suivi simultané de jusqu'à 4 patients.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Rehabilitation Technology",
+    "areaServed": ["DE", "AT", "CH", "FR"],
+    "url": "https://www.pixformance.com/fr/clinique/"
+  }]}
+>
+  <FRHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </FRHeader>
+
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/fr/clinique/" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-white overflow-hidden py-12 md:py-20">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
+            <Icon name="zap" size="sm" />
+            Appareil de sport de rééducation innovant pour cliniques et réhabilitation
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          Activez vos patients et déchargez vos thérapeutes.
+        </h1>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          La station Pixformance est un appareil de sport de rééducation innovant qui offre aux patients un entraînement sûr dans le cadre d'une thérapie par le mouvement – entièrement individualisé, selon l'indication et l'état de santé. L'appareil a été développé pour activer les patients à davantage de mouvement lors d'une thérapie de rééducation et décharger les thérapeutes dans le suivi.
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
+          <Button
+            size="lg"
+            href="/fr/essai-gratuit/"
+            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            Tester sans engagement
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/fr/concept/"
+            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            Demander un conseil
+            <Icon name="phone" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
+          </Button>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
+          {stats.map((stat, index) => (
+            <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
+              <div
+                class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter"
+                data-count={stat.count}
+                data-suffix={stat.suffix}
+                data-large={stat.count >= 10000 ? 'true' : 'false'}
+              >
+                {stat.value}
+              </div>
+              <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="layers" size="sm" />
+          Système entièrement connecté
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          La station Pixformance
+        </h2>
+        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
+          L'analyse de mouvement de pointe s'associe à l'expertise thérapeutique
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {features.map((feature, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="w-16 h-16 rounded-xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <Icon name={feature.icon} size="lg" class="text-white" />
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-[#02308C] transition-colors">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {feature.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Avantages
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Avantages pour votre clinique
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
+              <Icon name={benefit.icon} size="md" class="text-white" />
+            </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
+              {benefit.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {benefit.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="check-circle" size="sm" />
+          Témoignages
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Ce que disent nos partenaires
+        </h2>
+        <p class="text-lg text-foreground-muted mt-4">
+          Découvrez comment les cliniques révolutionnent leur thérapie avec Pixformance
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+
+            <div class="relative space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
+                </div>
+              </div>
+
+              <div class="relative">
+                <p class="text-sm text-foreground-muted italic leading-relaxed border-l-2 border-[#6BDBD1] pl-4">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Prêt pour la transformation digitale ?
+        </h2>
+
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Prenez rendez-vous dès maintenant pour un entretien conseil sans engagement et découvrez comment Pixformance peut révolutionner votre thérapie.
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button
+            size="lg"
+            href="/fr/essai-gratuit/"
+            class="bg-black text-white hover:bg-black/80"
+          >
+            Tester gratuitement
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/fr/concept/"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
+          >
+            En savoir plus
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FRFooter slot="footer" />
+</FRBaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  [data-scroll="scale"] {
+    transform: scale(0.9);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+
+  [data-scroll][data-delay="4"] {
+    transition-delay: 0.4s;
+  }
+
+  [data-scroll][data-delay="5"] {
+    transition-delay: 0.5s;
+  }
+
+  [data-scroll][data-delay="6"] {
+    transition-delay: 0.6s;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Counter animation for stats
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.count || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const isLarge = el.dataset.large === 'true';
+    const duration = 1800;
+    const start = performance.now();
+
+    function formatNumber(n: number): string {
+      if (isLarge) {
+        return n.toLocaleString('de-DE');
+      }
+      return n.toString();
+    }
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = formatNumber(current) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target as HTMLElement);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-counter').forEach((el) => {
+    counterObserver.observe(el);
+  });
+</script>

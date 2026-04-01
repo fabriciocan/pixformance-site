@@ -1,0 +1,534 @@
+---
+import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
+import FRHeader from '@/components/layout/FRHeader.astro';
+import FRFooter from '@/components/layout/FRFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHÉRAPIE', href: '/fr/physiotherapie/' },
+  { label: 'CLINIQUE', href: '/fr/clinique/' },
+  { label: 'FITNESS', href: '/fr/fitness/' },
+  { label: 'BGM', href: '/fr/fitness-entreprise/' },
+];
+
+const benefits = [
+  {
+    iconImage: '/images/1.svg',
+    title: 'Plus d\'entraînement et plus de chiffre d\'affaires',
+    description:
+      'Grâce au logiciel breveté, plusieurs pratiquants peuvent être suivis simultanément et sans charge de personnel supplémentaire (par exemple le soir).',
+  },
+  {
+    iconImage: '/images/2 (1).svg',
+    title: 'Équipement de club haut de gamme',
+    description:
+      'Une offre fitness moderne associée à une expérience d\'entraînement sur mesure pour fidéliser efficacement les membres.',
+  },
+  {
+    iconImage: '/images/3.svg',
+    title: 'Gestion efficace des membres',
+    description:
+      'Sur la plateforme en ligne, la progression d\'entraînement de chaque membre est documentée avec précision pour l\'analyse et l\'optimisation.',
+  },
+  {
+    iconImage: '/images/4.svg',
+    title: 'Accompagnement individuel',
+    description:
+      'Les programmes d\'entraînement peuvent être adaptés à l\'état de santé et à l\'âge de chaque membre en quelques secondes.',
+  },
+  {
+    iconImage: '/images/5.svg',
+    title: 'Plus de temps pour l\'essentiel',
+    description:
+      'L\'entraîneur n\'a pas besoin de montrer chaque exercice personnellement et gagne du temps – ce qui profite à la prise en charge de tous les membres.',
+  },
+  {
+    iconImage: '/images/6.svg',
+    title: '700+ exercices disponibles',
+    description:
+      'Plus de 700 exercices fonctionnels sont aussi variés et individuels que vos membres et ne s\'activent qu\'en quelques clics.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Martijn Van Der Pijl',
+    role: 'Propriétaire',
+    company: 'SlimBezig! à Veldhoven, Pays-Bas',
+    image: '/images/SlimBezig_Martijn-Van-Der-Pijl-300x298.png',
+    quote:
+      'Avec Pixformance, nous proposons un large éventail d\'exercices fonctionnels et un entraînement personnel digital avec lequel nos entraîneurs peuvent challenger les membres. De plus, les exercices peuvent également être réalisés de manière responsable sans entraîneur.',
+  },
+  {
+    name: 'Esther van der Land',
+    role: 'Propriétaire',
+    company: 'Boutique Studio FemmeFit à Naarden, Pays-Bas',
+    image: '/images/esther-van-der-land-FemmeFit-Naarden.png',
+    quote:
+      'Pixformance est synonyme de croissance de chiffre d\'affaires continue et durable, et de membres plus satisfaits qui restent.',
+  },
+  {
+    name: 'Erwin Kuglmeier',
+    role: 'Propriétaire',
+    company: 'Fitnessclub California',
+    image: '/images/Erwin-Kuglmeier-Fitness-California-Pixformance-300x300.png',
+    quote:
+      'Mes membres peuvent être guidés individuellement et motivés pour l\'entraînement avec Pixformance. J\'apprécie particulièrement la facilité de prise en main et le faible encombrement de la station !',
+  },
+  {
+    name: 'Kim Essink',
+    role: 'Propriétaire',
+    company: 'Fitnessclub Essink à Eindhoven',
+    image: '/images/Pixformance-Kim-Essink.png',
+    quote:
+      'Nous avons délibérément choisi Pixformance car nous avons reconnu l\'opportunité et étions convaincus que notre investissement serait rapidement rentabilisé.',
+  },
+  {
+    name: 'Ingeborg Modde',
+    role: 'Propriétaire',
+    company: 'Sweat Health Center à Oostburg, Pays-Bas',
+    image: '/images/Pixformance-Ingeborg-Modde.png',
+    quote:
+      'Cela s\'intègre parfaitement dans notre concept Milon. Rapide, efficace, sûr et mes membres reçoivent toujours un retour de la station. Pour nous, c\'est un choix logique et une prochaine étape vers un équipement d\'entraînement tourné vers l\'avenir.',
+  },
+  {
+    name: 'Carina Dworak',
+    role: 'Propriétaire',
+    company: 'Mrs.Sporty Club à Vienne, Autriche',
+    image: '/images/carina-dworak-mrssporty-wien-pixformance.png',
+    quote:
+      'Ce qui est formidable avec Pixformance, c\'est que les membres s\'entraînent toujours avec un entraîneur personnel et obtiennent ainsi des résultats d\'entraînement particulièrement efficaces.',
+  },
+];
+
+const memberBenefits = [
+  {
+    title: 'Sûr. Interactif. Flexible',
+    description:
+      'Les membres bénéficient de la possibilité de s\'entraîner en toute sécurité, de manière flexible et individuelle – même sans entraîneur.',
+  },
+  {
+    title: 'Plus de motivation & de plaisir',
+    description:
+      'Un entraînement supervisé virtuellement améliore l\'expérience d\'entraînement et motive à atteindre les objectifs avec plus d\'enthousiasme.',
+  },
+  {
+    title: 'Des résultats mesurables',
+    description:
+      'Les membres s\'entraînent encore plus efficacement et améliorent de manière mesurable coordination, force, endurance, condition physique et mobilité.',
+  },
+];
+---
+
+<FRBaseLayout
+  title="Appareils de fitness digital pour studios de fitness | Pixformance"
+  description="Pixformance pour studios de fitness : fidélisation des membres, augmentation du chiffre d'affaires, entraînement individuel sans charge supplémentaire. 700+ exercices fonctionnels avec retour en temps réel."
+  hreflangDe="https://www.pixformance.com/fitness"
+  hreflangEn="https://www.pixformance.com/en/fitness/"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Appareils de fitness digital – Studios de fitness",
+    "description": "Appareils d'entraînement digital pour studios de fitness et clubs de fitness. Fidélisation des membres et augmentation du chiffre d'affaires avec un entraînement individuel même sans personnel.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Fitness Technology",
+    "url": "https://www.pixformance.com/fr/fitness/"
+  }]}
+>
+  <FRHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </FRHeader>
+
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/fr/fitness/" />
+
+  <!-- Hero Section -->
+  <section class="pt-20 md:pt-20">
+    <div class="container text-center max-w-4xl">
+      <h1
+        class="font-display text-4xl md:text-6xl text-[#02308C] font-bold mb-6 hero-animate"
+        style="animation-delay: 0.1s;"
+      >
+        Entraînement personnalisé sous guidance virtuelle
+      </h1>
+      <p
+        class="text-xl text-foreground-muted hero-animate"
+        style="animation-delay: 0.2s;"
+      >
+        Entraînement personnalisé, indépendant du temps et de l'assistance,
+        sous guidance virtuelle : nous vous accompagnons, vous et vos membres,
+        de manière optimale vers une meilleure forme physique.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mieux s'entraîner - plus facilement -->
+  <section class="py-8 md:py-8 bg-background-secondary">
+    <div class="container">
+      <h2
+        class="font-display text-2xl md:text-3xl font-bold mb-12 text-center"
+        data-scroll="fade-up"
+      >
+        Mieux s'entraîner, plus facilement.
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6" data-scroll="slide-left">
+          <p class="text-lg text-foreground-muted">
+            La station Pixformance est un appareil d'entraînement digital, développé
+            par des experts en sciences, sport et fitness. L'idée :
+            la technologie la plus moderne pour un entraînement fonctionnel efficace
+            et amusant.
+          </p>
+          <p class="text-lg text-foreground-muted">
+            Une caméra intégrée à l'appareil de fitness capture 25
+            points articulaires, analyse les mouvements et fournit un retour
+            personnalisé en temps réel. L'avantage de cette correction en temps réel :
+            les pratiquants peuvent effectuer un entraînement supervisé, même sans
+            qu'un entraîneur soit présent. L'entraînement devient ainsi encore plus efficace.
+          </p>
+        </div>
+        <div data-scroll="slide-right" class="flex justify-center">
+          <img
+            src="/images/Pixformance-Fitness-Digitales-Sportgeraet-Fitnessstudio-eroeffnen-eGym-voll-vernetzt.jpg"
+            alt="Appareil d'entraînement digital"
+            class="rounded-lg shadow-2xl w-full max-w-[493px] object-contain"
+            width="493"
+            height="353"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Correction en temps réel -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Correction en temps réel
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          La station Pixformance permet un guidage continu concernant
+          la précision, le rythme et la qualité de l'exécution des exercices,
+          offrant ainsi beaucoup de sécurité pour un entraînement fonctionnel –
+          comme avec un entraîneur personnel.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="space-y-6" data-scroll="slide-left">
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M20 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+                <path d="M7 9l3 3-3 3"></path>
+                <path d="M13 12h4"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Guide d'exercices simple</h3>
+              <p class="text-foreground-muted">
+                Le pratiquant se place devant la station Pixformance et
+                l'exercice à réaliser est démontré par un entraîneur à l'écran.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                <path d="M7 12h10"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Analyse précise du mouvement</h3>
+              <p class="text-foreground-muted">
+                Pendant l'exécution de l'exercice, une caméra avec capteur de profondeur
+                intégré scanne en quelques secondes 25 points articulaires du pratiquant
+                et analyse les mouvements.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Retour en temps réel</h3>
+              <p class="text-foreground-muted">
+                La station Pixformance fournit un retour en temps réel. Cela garantit
+                que les exercices sont exécutés correctement et en toute sécurité –
+                comme sous la direction d'un vrai entraîneur.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-scroll="slide-right" class="flex justify-center">
+          <img
+            src="/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1.gif"
+            alt="Analyse d'entraînement à l'écran"
+            class="rounded-lg shadow-2xl w-20max-w-[429px] object-contain"
+            width="270"
+            height="380"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gérer plus efficacement -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
+          Gérer plus efficacement
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Pixformance transforme l'entraînement en une expérience unique pour tous
+          et offre de nombreux avantages par rapport aux solutions de circuit
+          conventionnelles et aux appareils de fitness traditionnels.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            data-scroll="fade-up"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="flex flex-col gap-4">
+              <div class="w-12 h-12 flex items-center justify-center">
+                <img
+                  src={benefit.iconImage}
+                  alt={benefit.title}
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <h3 class="font-bold text-xl">{benefit.title}</h3>
+              <p class="text-foreground-muted">{benefit.description}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients satisfaits -->
+  <section class="py-16 md:py-24 overflow-hidden relative">
+    <div class="container relative">
+      <h2
+        class="font-display text-4xl md:text-5xl font-bold text-center mb-12"
+        data-scroll="fade-up"
+      >
+        Clients satisfaits
+      </h2>
+
+      <div class="relative group">
+        <div
+          id="testimonials-carousel"
+          class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth hide-scrollbar flex-nowrap"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          {testimonials.map((testimonial, index) => (
+            <div class="w-[85vw] md:w-[400px] lg:w-[450px] shrink-0 snap-center md:snap-start">
+              <Card
+                variant="elevated"
+                padding="lg"
+                data-scroll="scale"
+                data-delay={Math.min(index + 1, 6)}
+                class="h-full"
+              >
+                <div class="flex flex-col gap-4 h-full">
+                  <div class="flex items-center gap-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      class="w-16 h-16 rounded-full object-cover"
+                      loading="lazy"
+                    />
+                    <div>
+                      <div class="font-bold">{testimonial.name}</div>
+                      <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                      <div class="text-sm text-foreground-muted">{testimonial.company}</div>
+                    </div>
+                  </div>
+                  <p class="text-foreground-muted italic text-sm grow">
+                    "{testimonial.quote}"
+                  </p>
+                </div>
+              </Card>
+            </div>
+          ))}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-center gap-4 mt-6 md:mt-8">
+          <button
+            id="testi-prev"
+            class="w-12 h-12 rounded-full border border-border bg-background flex items-center justify-center hover:bg-background-secondary transition-colors text-foreground shadow-sm group/btn"
+            aria-label="Précédent"
+          >
+            <Icon name="arrow-left" size="sm" class="group-hover/btn:-translate-x-1 transition-transform" />
+          </button>
+          <button
+            id="testi-next"
+            class="w-12 h-12 rounded-full border border-border bg-background flex items-center justify-center hover:bg-background-secondary transition-colors text-foreground shadow-sm group/btn"
+            aria-label="Suivant"
+          >
+            <Icon name="arrow-right" size="sm" class="group-hover/btn:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const carousel = document.getElementById("testimonials-carousel");
+      const prevBtn = document.getElementById("testi-prev");
+      const nextBtn = document.getElementById("testi-next");
+      if (carousel && prevBtn && nextBtn) {
+        const getScrollAmount = () => {
+          const firstItem = carousel.querySelector(":scope > div");
+          if (firstItem instanceof HTMLElement) return firstItem.offsetWidth + 24;
+          return 400;
+        };
+        prevBtn.addEventListener("click", () => { carousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" }); });
+        nextBtn.addEventListener("click", () => { carousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" }); });
+      }
+    });
+  </script>
+
+  <!-- Contact -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <Card variant="elevated" padding="lg">
+        <div class="grid md:grid-cols-5 gap-8 items-center">
+          <div class="md:col-span-2 text-center">
+            <img
+              src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+              alt="Tobias Baader"
+              class="w-48 h-48 rounded-full object-cover mx-auto mb-4"
+              loading="lazy"
+            />
+            <p class="text-sm text-foreground-muted">Votre interlocuteur</p>
+            <h3 class="font-bold text-2xl">Tobias Baader</h3>
+          </div>
+
+          <div class="md:col-span-3">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+              Vous souhaitez un conseil personnalisé ?
+            </h2>
+            <Button size="lg" href="/fr/essai-gratuit/">
+              ÉCRIVEZ-NOUS
+              <Icon name="arrow-right" size="sm" />
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </section>
+
+  <!-- Concepts d'entraînement -->
+  <section class="py-16 md:py-24">
+    <div class="container max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Concepts d'entraînement
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Nous proposons des solutions pour les défis les plus variés d'un studio de fitness.
+          Ensemble, nous élaborons avec vous un concept qui reflète vos exigences et
+          est précisément adapté à vos besoins.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- ENTRAÎNEMENT INDIVIDUEL -->
+        <Card variant="outline" padding="lg">
+          <h3 class="font-bold text-2xl mb-4 uppercase">01 Entraînement individuel</h3>
+          <p class="text-foreground-muted mb-6">
+            Avec une station Pixformance, les pratiquants peuvent effectuer un
+            entraînement personnel sur mesure.
+          </p>
+
+          <div class="space-y-4">
+            <details class="group border-b border-border pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                CONCEPTS D'ENTRAÎNEMENT
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4 space-y-4 text-foreground-muted">
+                <p class="font-semibold">
+                  En entraînement 1:1 devant la station ou en complément d'un concept d'entraînement existant.
+                </p>
+                <div>
+                  <p class="font-semibold mb-2">EN COMPLÉMENT :</p>
+                  <p>La station Pixformance, sur laquelle des exercices fonctionnels peuvent être effectués, peut être ajoutée à un circuit d'appareils existant.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">INTENSIF :</p>
+                  <p>Le pratiquant obtient un entraînement Pixformance sur mesure composé par l'entraîneur via la plateforme en ligne. L'entraîneur peut suivre et optimiser la progression d'entraînement à tout moment.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">EN PASSANT :</p>
+                  <p>La station Pixformance est installée avec un programme d'entraînement préinstallé pour proposer, par exemple, un entraînement supplémentaire en dehors des heures d'entraînement encadrées.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Prêt à transformer votre studio ?
+        </h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Contactez-nous pour une consultation sans engagement et découvrez comment Pixformance peut révolutionner votre activité.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/fr/essai-gratuit/" class="bg-black text-white hover:bg-black/80">
+            Demander un essai
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/fr/concept/" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            En savoir plus
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FRFooter slot="footer" />
+</FRBaseLayout>

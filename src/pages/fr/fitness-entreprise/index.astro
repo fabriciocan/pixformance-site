@@ -1,0 +1,427 @@
+---
+import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
+import FRHeader from '@/components/layout/FRHeader.astro';
+import FRFooter from '@/components/layout/FRFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHÉRAPIE', href: '/fr/physiotherapie/' },
+  { label: 'CLINIQUE', href: '/fr/clinique/' },
+  { label: 'FITNESS', href: '/fr/fitness/' },
+  { label: 'BGM', href: '/fr/fitness-entreprise/' },
+];
+
+const benefits = [
+  {
+    icon: '7',
+    title: 'Déductibilité fiscale',
+    description:
+      'Le fitness en entreprise bénéficie d\'un soutien fiscal. Une entreprise peut investir jusqu\'à 500 euros par employé et par an en franchise de charge salariale.',
+  },
+  {
+    icon: '10',
+    title: 'Fidélisation des employés',
+    description:
+      'En période de pénurie de main-d\'œuvre qualifiée et de fort taux de rotation dans de nombreux secteurs, une offre fitness moderne est un outil de fidélisation à long terme.',
+  },
+  {
+    icon: 't',
+    title: 'Employer Branding',
+    description:
+      'Un concept sportif innovant avec Pixformance a un impact positif non seulement sur les employés, mais aussi sur l\'attractivité de l\'employeur et donc sur les candidats potentiels.',
+  },
+  {
+    icon: 't (1)',
+    title: 'Moins d\'absences et de coûts',
+    description:
+      'Les employés physiquement actifs s\'absentent en moyenne 2 à 6 jours de moins par an. Les entreprises réduisent les coûts de maladie avec Pixformance.',
+  },
+  {
+    icon: 't (2)',
+    title: 'Plus de flexibilité et d\'entraînement',
+    description:
+      'Grâce au concept d\'entraînement Pixformance assisté par ordinateur, plusieurs employés peuvent être suivis simultanément et sans entraîneur.',
+  },
+  {
+    icon: '11',
+    title: 'Aucune administration, grand impact',
+    description:
+      'Sur la plateforme en ligne, les employés peuvent composer eux-mêmes des plans d\'entraînement individuels à partir de plus de 700 exercices fonctionnels.',
+  },
+];
+
+const performanceBenefits = [
+  {
+    icon: 'refresh-cw',
+    title: 'Moins de stress et plus de flexibilité',
+    description:
+      'Trop de réunions et peu de temps ? Les employés bénéficient de la possibilité de s\'entraîner en toute sécurité, de manière flexible et individuelle – même sans encadrement.',
+  },
+  {
+    icon: 'smile',
+    title: 'Plus d\'esprit d\'équipe, de motivation et de plaisir',
+    description:
+      'Notamment l\'entraînement en groupe augmente la motivation et le sentiment d\'appartenance, favorise la santé, la performance et la satisfaction des employés.',
+  },
+  {
+    icon: 'bar-chart',
+    title: 'Résultats mesurables',
+    description:
+      'Des entraînements sur mesure peuvent être adaptés à chaque niveau de forme physique et âge en quelques gestes et suivis à tout moment.',
+  },
+];
+---
+
+<FRBaseLayout
+  title="Gestion de la santé en entreprise (BGM) avec Pixformance"
+  description="Pixformance pour les entreprises : déductible fiscalement jusqu'à 500 €/employé. Réduction des absences, meilleure fidélisation des employés. Fitness digital pour votre bureau."
+  hreflangDe="https://www.pixformance.com/firmen-fitness"
+  hreflangEn="https://www.pixformance.com/en/corporate-fitness/"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance BGM – Gestion de la santé en entreprise",
+    "description": "Solution fitness digital pour la gestion de la santé en entreprise. Déductible fiscalement jusqu'à 500 € par employé et par an. Réduit les absences, renforce la fidélisation.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Corporate Wellness Technology",
+    "url": "https://www.pixformance.com/fr/fitness-entreprise/"
+  }]}
+>
+  <FRHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </FRHeader>
+
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/fr/fitness-entreprise/" />
+
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-background to-background-secondary">
+    <div class="container text-center max-w-4xl">
+      <p class="text-lg md:text-xl text-foreground-muted mb-4 hero-animate" style="animation-delay: 0.1s;">
+        Gestion de la santé en entreprise
+      </p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold mb-6 hero-animate" style="animation-delay: 0.2s;">
+        Nous rendons votre équipe :<br />
+        <span class="text-primary">Plus forte. Meilleure. Plus efficace.</span>
+      </h1>
+      <p class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+        Pixformance comme solution innovante pour des mesures BGM efficaces et une
+        promotion globale de la santé – individuellement pour chaque employé.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comme avec un entraîneur -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-12 text-center uppercase" data-scroll="fade-up">
+        Comme avec un entraîneur
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6" data-scroll="slide-left">
+          <p class="text-lg text-foreground-muted">
+            Pixformance révolutionne l'entraînement fonctionnel : la station Pixformance brevetée
+            mesure le corps de chaque pratiquant en quelques secondes sur la base de 25 points
+            articulaires, analyse précisément l'exécution du mouvement et fournit un retour digital
+            en temps réel – permettant ainsi un entraînement fonctionnel particulièrement efficace et sûr.
+          </p>
+          <p class="text-lg text-foreground-muted">
+            L'avantage : grâce à la correction en temps réel, vos employés peuvent effectuer
+            un entraînement supervisé – même sans qu'un entraîneur soit présent.
+            L'entraînement devient ainsi encore plus efficace.
+          </p>
+        </div>
+        <div data-scroll="slide-right">
+          <img
+            src="/images/Pixformance-225402_BGM_Pixformance_Funktionelles-Training_Milon_Virtuelles-Training_Sport-im-Buero-bearbeitet.jpg"
+            alt="Entraînement fonctionnel au bureau"
+            class="rounded-lg shadow-2xl w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entraînement personnel virtuel -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Entraînement personnel virtuel
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          La station Pixformance permet un guidage continu concernant la précision,
+          le rythme et la qualité de l'exécution des exercices, offrant ainsi beaucoup
+          de sécurité pour un entraînement fonctionnel – comme avec un entraîneur personnel.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="space-y-6" data-scroll="slide-left">
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">1</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Guide d'exercices simple</h3>
+              <p class="text-foreground-muted">
+                Le pratiquant se place devant la station Pixformance et l'exercice
+                à réaliser est démontré par un entraîneur à l'écran.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">2</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Analyse précise du mouvement</h3>
+              <p class="text-foreground-muted">
+                Pendant l'exécution, une caméra avec capteur de profondeur intégré scanne
+                en quelques secondes 25 points articulaires du pratiquant et analyse les mouvements.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">3</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Retour en temps réel</h3>
+              <p class="text-foreground-muted">
+                L'entraîneur virtuel fournit un retour en temps réel. Cela garantit que les
+                exercices sont exécutés correctement et en toute sécurité – comme sous la
+                direction d'un entraîneur.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-scroll="slide-right">
+          <img
+            src="/images/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png"
+            alt="Station Pixformance"
+            class="rounded-lg shadow-2xl w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aligné sur vos objectifs -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
+          Aligné sur vos objectifs
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Une grande partie des salariés souhaite des offres sportives de leur employeur.
+          Pixformance, en tant que concept d'entraînement fonctionnel pour le fitness
+          en entreprise, offre de nombreux avantages par rapport aux approches BGM traditionnelles.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            data-scroll="fade-up"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="flex flex-col gap-4">
+              <div class={`w-12 h-12 rounded-lg flex items-center justify-center ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
+                <img
+                  src={`/images/new-icons-bgm/${benefit.icon}.svg`}
+                  alt={benefit.title}
+                  class="w-8 h-8 object-contain"
+                  style={index % 2 === 0 ? 'filter: brightness(0) invert(1);' : ''}
+                />
+              </div>
+              <h3 class="font-bold text-xl">{benefit.title}</h3>
+              <p class="text-foreground-muted">{benefit.description}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Conseil -->
+  <section class="py-16 md:py-24" style="background-color: #4a3d91;">
+    <div class="container">
+      <Card variant="elevated" padding="lg" class="bg-white">
+        <div class="grid md:grid-cols-5 gap-8 items-center">
+          <div class="md:col-span-2 text-center">
+            <img
+              src="/images/Tobias-Baader-Beratung-2021-2.png.webp"
+              alt="Tobias Baader"
+              class="w-48 h-48 rounded-full object-cover mx-auto mb-4"
+              loading="lazy"
+            />
+            <p class="text-sm text-foreground-muted">Votre interlocuteur</p>
+            <h3 class="font-bold text-2xl">Tobias Baader</h3>
+          </div>
+
+          <div class="md:col-span-3">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+              Vous souhaitez un conseil personnalisé ?
+            </h2>
+            <Button size="lg" href="/fr/essai-gratuit/">
+              ÉCRIVEZ-NOUS
+              <Icon name="arrow-right" size="sm" />
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </section>
+
+  <!-- Concepts d'entraînement -->
+  <section class="py-16 md:py-24">
+    <div class="container max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
+          Concepts d'entraînement
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Nous proposons des solutions pour les entreprises dans les situations les plus variées.
+          Ensemble, nous élaborons avec vous un concept qui reflète vos exigences et aspirations
+          et est précisément adapté à vos besoins.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- ENTRAÎNEMENT INDIVIDUEL -->
+        <Card variant="outline" padding="lg">
+          <h3 class="font-bold text-2xl mb-4 uppercase">01 Entraînement individuel</h3>
+          <p class="text-foreground-muted mb-6">
+            Avec une station Pixformance, les employés peuvent bénéficier d'un
+            entraînement personnel sur mesure auprès d'un entraîneur virtuel.
+          </p>
+
+          <div class="space-y-4">
+            <details class="group border-b border-border pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                CONCEPTS D'ENTRAÎNEMENT
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4 space-y-4 text-foreground-muted">
+                <div>
+                  <p class="font-semibold mb-2">EN PASSANT :</p>
+                  <p>La station Pixformance est installée de manière flexible dans les locaux de bureau avec un programme d'entraînement préinstallé. Ainsi, un entraînement – sans entraîneur – en tenue de bureau est possible à tout moment.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">INTENSIF :</p>
+                  <p>Le pratiquant reçoit un entraînement Pixformance personnalisé composé par un entraîneur et est initié à l'entraînement avec Pixformance. La station est réservée par l'employé via un outil de réservation pour le créneau horaire souhaité. À intervalles réguliers, l'entraîneur vérifie les résultats sur la plateforme en ligne.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">EN COMPLÉMENT :</p>
+                  <p>La station Pixformance, en complément d'un circuit d'appareils existant, sur laquelle des exercices fonctionnels peuvent être effectués.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="group border-b border-border pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                DÉTAILS
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4 space-y-2 text-foreground-muted text-sm">
+                <p><strong>Espace nécessaire :</strong> Environ 6 m²</p>
+                <p><strong>Poids :</strong> 65 kg</p>
+                <p><strong>Caméra :</strong> 2D Full HD</p>
+                <p><strong>Ordinateur et écran :</strong> Allumable et éteignable séparément</p>
+                <p><strong>Écran tactile :</strong> Écran tactile 49 pouces, exercices standard et programmes d'entraînement sélectionnables directement par tactile</p>
+                <p><strong>Distance d'entraînement :</strong> Environ 1,60 m à 2,30 m de la station</p>
+                <p><strong>Conditions :</strong> Branchement électrique et connexion internet (Ethernet, pas de WiFi)</p>
+              </div>
+            </details>
+
+            <details class="group pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                AVANTAGES
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4">
+                <ul class="space-y-2 text-foreground-muted">
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Un point fort innovant</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Intégrable même dans de petits bureaux</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Grâce à la fonction de retour, les employés peuvent effectuer un entraînement supervisé – même sans suivi 1:1 d'un entraîneur</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </Card>
+
+        <!-- AVANTAGES POUR LES EMPLOYÉS -->
+        <div class="space-y-6">
+          <h3 class="font-bold text-2xl uppercase">Avantages pour vos employés</h3>
+          {performanceBenefits.map((benefit) => (
+            <Card variant="elevated" padding="lg">
+              <div class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center shrink-0">
+                  <Icon name={benefit.icon} size="md" class="text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p class="text-foreground-muted text-sm">{benefit.description}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Prêt pour le fitness en entreprise digital ?
+        </h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Contactez-nous pour une consultation sans engagement et découvrez comment Pixformance peut améliorer la santé de vos employés.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/fr/essai-gratuit/" class="bg-black text-white hover:bg-black/80">
+            Demander un essai
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/fr/contact/" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            Prendre contact
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FRFooter slot="footer" />
+</FRBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+</style>
