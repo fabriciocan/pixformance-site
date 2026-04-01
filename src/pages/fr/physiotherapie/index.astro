@@ -1,0 +1,658 @@
+---
+import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
+import FRHeader from '@/components/layout/FRHeader.astro';
+import FRFooter from '@/components/layout/FRFooter.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+
+const tabs = [
+  { label: 'PHYSIOTHÉRAPIE', href: '/fr/physiotherapie/' },
+  { label: 'CLINIQUE', href: '/fr/clinique/' },
+  { label: 'FITNESS', href: '/fr/fitness/' },
+  { label: 'BGM', href: '/fr/fitness-entreprise/' },
+];
+
+const benefits = [
+  {
+    icon: 'monitor',
+    title: '700+ exercices – un seul appareil',
+    description: 'Sur la plateforme en ligne, des plans d\'entraînement individuels peuvent être élaborés à partir d\'une collection de plus de 700 exercices fonctionnels.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+  {
+    icon: 'users',
+    title: 'Suivi simultané',
+    description: 'Grâce au logiciel breveté, plusieurs patients peuvent être suivis simultanément sans charge de personnel supplémentaire.',
+    gradient: 'from-[#6BDBD1] to-[#02308C]',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Les patients deviennent des clients',
+    description: 'Des séances d\'entraînement individuelles ainsi que des mesures de prévention secondaire peuvent être proposées comme source de revenus supplémentaire.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+  {
+    icon: 'table',
+    title: 'Gestion efficace',
+    description: 'Sur la plateforme en ligne, la progression d\'entraînement de chaque patient est documentée avec précision pour l\'analyse et l\'optimisation.',
+    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
+  },
+  {
+    icon: 'heart',
+    title: 'Entraînement individuel',
+    description: 'Les programmes d\'entraînement peuvent être adaptés à l\'état de santé et aux besoins thérapeutiques de chaque patient.',
+    gradient: 'from-[#86C9BC] to-[#02308C]',
+  },
+  {
+    icon: 'zap',
+    title: 'Du temps pour l\'essentiel',
+    description: 'Le thérapeute n\'a pas besoin de montrer chaque exercice personnellement et gagne du temps – ce qui profite à la prise en charge de tous les patients.',
+    gradient: 'from-[#02308C] to-[#6BDBD1]',
+  },
+];
+
+const features = [
+  {
+    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Training-mobil-1-NEW.gif',
+    title: 'Guide d\'exercices simple',
+    description: 'Le pratiquant se place devant la station Pixformance et l\'exercice à réaliser est démontré par un entraîneur virtuel à l\'écran.',
+  },
+  {
+    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Physiotherapie-Scanpunkte-2.gif',
+    title: 'Analyse précise du mouvement',
+    description: 'Une caméra avec capteur de profondeur scanne en quelques secondes 25 points articulaires et 9 points statiques du pratiquant et analyse les mouvements.',
+  },
+  {
+    image: '/images/Pixformance-Live-Feedback-Digitales-Trainingsgeraet-Bewegungsanalyse-Korrektur-Hinweis-2.gif',
+    title: 'Retour en temps réel',
+    description: 'La station Pixformance fournit un retour en temps réel. Cela garantit que les exercices sont exécutés correctement et en toute sécurité.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Heike Schaible',
+    role: 'Propriétaire',
+    company: 'Physiotherapie Praxis "Raum für Gesundheit"',
+    image: '/images/heikeschaible.600x400.jpg',
+    quote: 'Je souhaite créer une deuxième zone de paiement direct avec Pixformance et ainsi avant tout accommoder mes employés et leur offrir un travail plus accessible et plus varié.',
+  },
+  {
+    name: 'Axel-André Richter',
+    role: 'Propriétaire',
+    company: 'Gesundheitspraxis Richter & Lopez',
+    image: '/images/Axel-Andre-Richter-und-Lopez-Pixformance.png',
+    quote: 'Je peux concevoir le nouvel entraînement de manière totalement individuelle pour chacun de nos patients. Du sportif de haut niveau à la mamie, chacun y trouve son compte.',
+  },
+  {
+    name: 'Volker Sutor',
+    role: 'Propriétaire',
+    company: 'Physiotherapiezentren »Reha Rondell«',
+    image: '/images/Pixformance-Volker-Sutor-Testimonial.png',
+    quote: 'Un entraînement santé ciblé avec l\'entraîneur virtuel augmente l\'efficacité du traitement et libère plus de temps pour la prise en charge réelle de mes patients.',
+  },
+];
+---
+
+<FRBaseLayout
+  title="Thérapie par le mouvement digital pour cabinets de physiothérapie | Pixformance"
+  description="Pixformance pour les physiothérapeutes : retour automatisé, jusqu'à 4 patients simultanément, 700+ exercices. Développer une zone de paiement direct & soulager les thérapeutes."
+  hreflangDe="https://www.pixformance.com/physiotherapie"
+  hreflangEn="https://www.pixformance.com/en/physical-therapy/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance Thérapie par le mouvement digital – Physiothérapie",
+      "description": "Thérapie par le mouvement digital pour cabinets de physiothérapie. Retour automatisé, suivi de jusqu'à 4 patients simultanément, développement d'une zone de paiement direct économique.",
+      "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+      "serviceType": "Physiotherapy Technology",
+      "areaServed": ["DE", "AT", "CH", "FR"],
+      "url": "https://www.pixformance.com/fr/physiotherapie/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://www.pixformance.com/fr/physiotherapie/",
+      "inLanguage": "fr",
+      "isPartOf": {"@type": "WebSite", "url": "https://www.pixformance.com/fr/"}
+    },
+    {
+      "rel": "alternate",
+      "hreflang": "fr",
+      "href": "https://www.pixformance.com/fr/physiotherapie/"
+    }
+  ]}
+>
+  <FRHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </FRHeader>
+
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/fr/physiotherapie/" />
+
+  <!-- Hero Section -->
+  <section class="relative bg-white overflow-hidden py-12 md:py-20">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
+            <Icon name="heart" size="sm" />
+            Physiothérapie
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Thérapie par le mouvement
+          <span class="text-[#02308C]"> digital</span>
+        </h1>
+
+        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          La physiothérapie de demain : soins digitaux, mieux connectés
+        </p>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          Aucune technologie au monde ne peut remplacer les thérapeutes. La digitalisation en physiothérapie et en rééducation est cependant un moyen efficace de soulager les thérapeutes et d'accompagner les patients encore plus intensément.
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
+          <Button
+            size="lg"
+            href="/fr/essai-gratuit/"
+            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            Demander conseil
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/fr/concept/"
+            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            En savoir plus
+            <Icon name="play-circle" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="space-y-6" data-scroll="slide-left">
+          <div class="inline-block">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+              <Icon name="target" size="sm" />
+              Notre mission
+            </span>
+          </div>
+
+          <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight">
+            Responsabiliser les thérapeutes, enthousiasmer les patients
+          </h2>
+
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Notre mission est de créer – avec la meilleure technologie d'analyse du mouvement digital – une solution individuelle pour les thérapeutes et leurs patients particuliers.
+            La thérapie par le mouvement digital de Pixformance soulage les thérapeutes dans la démonstration des exercices et accompagne ainsi les patients très efficacement sur le chemin de la guérison.
+          </p>
+
+        </div>
+
+        <div class="relative" data-scroll="slide-right">
+          <img
+            src="/images/Pixformance-Physiotherapie-Digitalisierung-Digitales-Trainingsgeraet-Spass-Beim-Training.png"
+            alt="Pixformance Physiothérapie Training"
+            class="rounded-2xl shadow-xl w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Echtzeit-Korrektur Highlight -->
+  <section class="py-20 bg-[#02308C] relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute top-1/2 right-1/3 w-40 h-40 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-6" data-scroll="fade-up">
+
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1]">
+          <Icon name="zap" size="sm" />
+          Technologie live
+        </span>
+
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Correction en temps réel
+        </h2>
+
+        <p class="text-xl text-white/70 max-w-2xl mx-auto">
+          Retour précis pendant l'exécution des exercices.
+        </p>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-14" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="sparkles" size="sm" />
+          Correction en temps réel
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Comment fonctionne l'entraînement ?
+        </h2>
+        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
+          La station Pixformance permet un guidage continu en termes de précision, de rythme et d'exactitude de l'exécution des exercices.
+        </p>
+      </div>
+
+      <div class="space-y-16 md:space-y-24">
+        {features.map((feature, index) => (
+          <div
+            class={`grid md:grid-cols-2 gap-8 md:gap-12 items-center  ${index % 2 !== 0 ? 'md-reverse' : ''}`}
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <!-- Text -->
+            <div class={`space-y-4 ${index % 2 !== 0 ? 'md:order-2' : ''}`} data-scroll={index % 2 === 0 ? 'slide-left' : 'slide-right'}>
+              <span class="text-6xl md:text-7xl font-bold text-[#6BDBD1] leading-none select-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+                {feature.title}
+              </h3>
+              <p class="text-lg text-foreground-muted leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+
+            <!-- Image -->
+            <div class={`${index % 2 !== 0 ? 'md:order-1' : ''}`} data-scroll={index % 2 === 0 ? 'slide-right' : 'slide-left'}>
+              <div class="rounded-2xl overflow-hidden">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  class="w-full h-auto object-contain block"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Avantages
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Autonomie économique grâce à la zone de paiement direct
+        </h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          Pixformance offre aux thérapeutes la possibilité de développer ou d'étendre la zone de paiement direct et ainsi un pilier supplémentaire sur le deuxième marché de la santé.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
+              <Icon name={benefit.icon} size="md" class="text-white" />
+            </div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
+              {benefit.title}
+            </h3>
+            <p class="text-sm text-foreground-muted">
+              {benefit.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Individuelle Lösung Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-14 max-w-3xl mx-auto" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="layout" size="sm" />
+          Flexibilité
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Votre solution individuelle
+        </h2>
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          Avec Pixformance, vous bénéficiez d'une flexibilité maximale. Vous pouvez transformer vos patients, au-delà de l'ordonnance, en clients fidèles et payants et élever votre établissement à un tout nouveau niveau avec un équipement d'entraînement numérique et innovant.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- Card 1 Station -->
+        <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="1">
+          <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center mb-4">
+              <Icon name="monitor" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">1</div>
+            <h3 class="text-xl font-bold text-gray-900">Station</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              Avec une seule station, un entraînement individuel avec ou sans thérapeute peut être intégré dans tout concept de cabinet existant.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Pour 1 à 2 pratiquants
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Pour les cabinets de petite et moyenne taille avec espace limité
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Ne nécessite qu'environ 6 m² de surface
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 Stations — destaque -->
+        <div class="flex flex-col rounded-2xl bg-[#02308C] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden ring-2 ring-[#6BDBD1]" data-scroll="fade-up" data-delay="2">
+          <div class="px-6 pt-8 pb-6 border-b border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
+              <Icon name="users" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#6BDBD1] leading-none mb-1">2</div>
+            <h3 class="text-xl font-bold text-white">Stations</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-white/70 leading-relaxed">
+              Avec deux stations, des entraînements individuels ainsi que l'entraînement en petit groupe sont possibles.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Pour jusqu'à 4 pratiquants
+              </li>
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Pour les cabinets de taille moyenne
+              </li>
+              <li class="flex items-start gap-2 text-sm text-white/90">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Ne nécessite qu'environ 20 m² de surface
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3+ Stations -->
+        <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="3">
+          <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center mb-4">
+              <Icon name="trending-up" size="md" class="text-white" />
+            </div>
+            <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">3+</div>
+            <h3 class="text-xl font-bold text-gray-900">Stations</h3>
+          </div>
+          <div class="px-6 py-6 flex flex-col gap-3 flex-1">
+            <p class="text-sm text-foreground-muted leading-relaxed">
+              À partir de trois stations, des entraînements individuels variés ainsi que des cours en groupe comme concept d'entraînement innovant sont possibles.
+            </p>
+            <ul class="space-y-2 mt-2">
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                À partir de 5 pratiquants
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Pour les établissements de taille moyenne à grande
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+                Intégrable à partir d'environ 30 m²
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="message-circle" size="sm" />
+          Témoignages
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Ce que disent nos clients
+        </h2>
+        <p class="text-lg text-foreground-muted mt-4">
+          Avec plus de 450 000 pratiquants dans le monde, le concept d'entraînement et de thérapie Pixformance est déjà présent dans les meilleures cliniques de rééducation d'Allemagne
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+
+            <div class="relative space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
+                </div>
+              </div>
+
+              <div class="relative">
+                <Icon name="quote" size="lg" class="text-[#6BDBD1]/20 absolute -top-1 -left-1" />
+                <p class="text-sm text-foreground-muted italic leading-relaxed pl-6 relative">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Vous souhaitez un conseil personnalisé ?
+        </h2>
+
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          De nombreuses questions se résolvent plus facilement en personne. Nous nous réjouissons de votre message !
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button
+            size="lg"
+            href="/fr/essai-gratuit/"
+            class="bg-black text-white hover:bg-black/80"
+          >
+            Prendre contact
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/fr/concept/"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
+          >
+            En savoir plus sur nos solutions
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FRFooter slot="footer" />
+</FRBaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  /* Fade In Up */
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  /* Slide In Left */
+  [data-scroll="slide-left"] {
+    transform: translateX(-40px);
+  }
+
+  [data-scroll="slide-left"].is-visible {
+    transform: translateX(0);
+  }
+
+  /* Slide In Right */
+  [data-scroll="slide-right"] {
+    transform: translateX(40px);
+  }
+
+  [data-scroll="slide-right"].is-visible {
+    transform: translateX(0);
+  }
+
+  /* Scale In */
+  [data-scroll="scale"] {
+    transform: scale(0.9);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+
+  [data-scroll][data-delay="4"] {
+    transition-delay: 0.4s;
+  }
+
+  [data-scroll][data-delay="5"] {
+    transition-delay: 0.5s;
+  }
+
+  [data-scroll][data-delay="6"] {
+    transition-delay: 0.6s;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-scroll attribute
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
