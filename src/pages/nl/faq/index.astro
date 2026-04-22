@@ -1,0 +1,371 @@
+---
+import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
+import NLHeader from '@/components/layout/NLHeader.astro';
+import NLFooter from '@/components/layout/NLFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const faqs = [
+  {
+    question: "Is het Pixformance-station geschikt voor mijn vestiging?",
+    answer: `<p>Met meer dan 2,5 miljoen gebruikers wordt Pixformance al gebruikt in fitnessclubs, bedrijven, fysiotherapiepraktijken en revalidatieklinieken.</p>
+<p>Van de eerste ruimteplanning tot de installatie van de benodigde apparatuur en het behoud van een optimaal trainingsbeheer: wij stellen het fitness- en gezondheidsprogramma op dat past bij uw vestiging, afgestemd op uw wensen en eisen.</p>
+<p>Uw persoonlijke adviseur begeleidt u op uw weg naar succes en maakt Pixformance tot de ideale oplossing voor u.</p>`,
+    icon: "check-circle",
+  },
+  {
+    question: "Is het Pixformance-station ontwikkeld om een echte coach of therapeut te vervangen?",
+    answer: `<p>Absoluut niet. Pixformance concurreert niet met personal coaches of therapeuten, maar is een zeer effectieve en veilige ondersteuning voor hen. Met Pixformance bieden personal coaches en therapeuten hun leden en patiënten een efficiënte en intelligente manier om optimaal, meetbaar en bijzonder veilig te trainen.</p>
+<p>Het Pixformance-station beschikt over een virtuele coach die de oefening demonstreert. Bovendien ontvangt de gebruiker tijdens de uitvoering van de oefening realtime feedback met verbeteringstips. Hierdoor kunnen gebruikers zelfstandig en zonder menselijk toezicht trainen, zodat een personal coach of therapeut meerdere personen tegelijk kan begeleiden. Desondanks kan en mag het Pixformance-station de persoonlijke begeleiding en aandacht van een mens nooit vervangen, maar ondersteunt het coaches en therapeuten effectief in hun werk.</p>`,
+    icon: "users",
+  },
+  {
+    question: "Hoe groot is het Pixformance-station?",
+    answer: `<p>De afmetingen van het Pixformance-station zijn 128,5 cm x 76 cm x 50,0 cm.</p>
+<p><img src="/images/en/masse-pixformance-station-functional-training-fitness-physio-training-digital-ehealth-300x241.png" alt="Het Pixformance Station 2.0: 76 cm breed, 50 cm diep en 128,5 cm hoog." width="300" height="241" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px;" /></p>`,
+    icon: "maximize",
+  },
+  {
+    question: "Hoeveel ruimte is er nodig om met Pixformance te trainen?",
+    answer: `<p>De afstand tussen het apparaat en de gebruiker bedraagt circa <strong>1,60 m tot 2,30 m</strong> en <strong>1,0 m tot 1,5 m</strong> aan weerszijden.</p>
+<p><img src="/images/en/Pixformance-Station-2-0-Abmessungen-dimension-functional-training-fitness-physio-training-digital-ehealth-300x300.png" alt="De afstand van de gebruiker tot het Pixformance Station 2.0 moet 1,60 - 2,30 m bedragen. Daarnaast is aan weerszijden 1,0 tot 1,5 m ruimte vereist." width="300" height="300" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;" /></p>
+<p>Is de ruimte in uw vestiging beperkt? Wij bieden u een individuele oplossing op maat van uw behoeften.</p>`,
+    icon: "move",
+  },
+  {
+    question: "Werkt het Pixformance-station via wifi?",
+    answer: `<p>Ja – technisch gezien kan het station ook werken via een draadloze verbinding.</p>
+<p>Wij raden echter aan een bedrade LAN-verbinding te gebruiken. Een LAN-verbinding levert doorgaans de meest betrouwbare resultaten, omdat wifi gevoelig kan zijn voor schommelingen afhankelijk van de ontvangststerkte, mogelijke interferentie of netwerkbelasting.</p>
+<p>Als een directe LAN-verbinding niet haalbaar is, kan het station ook via een wifi-repeater of een mobiele router met LAN-poort in het netwerk worden geïntegreerd.</p>
+<p>Ongeacht de gekozen oplossing raden wij aan de bestaande netwerkinfrastructuur vooraf te controleren om een zo stabiel mogelijke verbinding en een optimale gebruikerservaring te garanderen. Wij helpen u graag de beste oplossing voor uw locatie te vinden.</p>`,
+    icon: "wifi",
+  },
+  {
+    question: "Aan welke lokale vereisten moet worden voldaan om het Pixformance-station te gebruiken?",
+    answer: `<p>Het station mag <strong>uitsluitend binnenshuis</strong> worden gebruikt.</p>
+<p>Uw trainingsruimte moet vlak zijn, weinig trillingen vertonen en niet reflecterend zijn.</p>
+<p>Om de camera optimaal te laten functioneren, dient u direct zonlicht en tegenlicht te vermijden.</p>`,
+    icon: "map-pin",
+  },
+  {
+    question: "Wordt er na de aankoop van het Pixformance-station hardware- en softwareondersteuning geboden?",
+    answer: `<p>Bij hardwareproblemen (camera, sensor, computer of scherm) leveren wij de benodigde vervangingsonderdelen. Ons supportteam is ook te allen tijde telefonisch bereikbaar bij softwareproblemen.</p>
+<p>Automatische updates voor het Pixformance-station, nieuwe trainingen en actualisaties van het online Pixformance-platform maken deel uit van onze service en zijn gratis beschikbaar.</p>`,
+    icon: "settings",
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer.replace(/<[^>]+>/g, '').trim(),
+    },
+  })),
+};
+---
+
+<NLBaseLayout
+  title="FAQ – Veelgestelde vragen over het Pixformance-station"
+  description="Alle antwoorden over Pixformance: geschiktheid, benodigde ruimte, netwerk, compatibiliteit met therapeuten, afmetingen en meer. Veelgestelde vragen over het Pixformance-station."
+  hreflangDe="https://www.pixformance.com/faq"
+  hreflangEn="https://www.pixformance.com/en/faq/"
+  jsonLd={[faqJsonLd]}
+>
+  <NLHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </NLHeader>
+
+  <!-- Hero Section -->
+  <section
+    class="relative bg-gradient-to-br from-[#6BDBD1]/10 to-[#86C9BC]/10 overflow-hidden py-12 md:py-16"
+  >
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+        </div>
+
+        <h1
+          class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate"
+          style="animation-delay: 0.2s;"
+        >
+          Functionele training
+          <span class="text-[#02308C]"> met Pixformance</span>
+        </h1>
+
+        <p
+          class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate"
+          style="animation-delay: 0.3s;"
+        >
+          Wat moet u weten bij functionele training
+          met het Pixformance-station?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-6">
+        {
+          faqs.map((faq, index) => (
+            <Card
+              variant="elevated"
+              padding="lg"
+              class="group hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] bg-white cursor-pointer faq-card"
+              data-scroll="fade-up"
+              data-delay={Math.min(index + 1, 6)}
+            >
+              <div class="faq-header flex items-start gap-4">
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-[#02308C] transition-colors duration-300 flex items-center justify-between">
+                    {faq.question}
+                    <Icon
+                      name="chevron-down"
+                      size="sm"
+                      class="faq-chevron text-[#02308C] transition-transform duration-300 flex-shrink-0 ml-4"
+                    />
+                  </h3>
+
+                  <div
+                    class="faq-answer overflow-hidden transition-all duration-500"
+                    style="max-height: 0;"
+                  >
+                    <div class="pt-2 space-y-3 prose prose-blue max-w-none text-foreground-muted leading-relaxed">
+                      <Fragment set:html={faq.answer} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:pb-32 relative overflow-hidden">
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"
+    >
+    </div>
+
+    <div class="container relative">
+      <div
+        class="max-w-4xl mx-auto text-center space-y-8"
+        data-scroll="fade-up"
+      >
+        <h2
+          class="font-display text-4xl md:text-6xl font-bold text-white leading-tight"
+        >
+          Wij adviseren u graag!
+        </h2>
+
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Veel vragen worden sneller beantwoord in een persoonlijk gesprek.
+          Wij kijken uit naar uw bericht!
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button
+            size="lg"
+            href="/nl/gratis-proef/"
+            class="bg-black text-white hover:bg-black/80"
+          >
+            Contact opnemen
+            <Icon name="mail" size="sm" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/nl/concept/"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
+          >
+            Meer informatie over Pixformance
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+
+        <div class="pt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-white/90">
+          <div class="flex items-center justify-center gap-3">
+            <Icon name="phone" size="md" />
+            <div class="text-left">
+              <p class="text-sm font-semibold">Telefoon</p>
+              <a
+                href="tel:+4930398056100"
+                class="hover:text-white transition-colors"
+              >
+                +49 (0)30 39 80 56 10
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-3">
+            <Icon name="mail" size="md" />
+            <div class="text-left">
+              <p class="text-sm font-semibold">E-mail</p>
+              <a
+                href="mailto:contact@pixformance.com"
+                class="hover:text-white transition-colors"
+              >
+                contact@pixformance.com
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-3">
+            <Icon name="map-pin" size="md" />
+            <div class="text-left">
+              <p class="text-sm font-semibold">Locatie</p>
+              <p>Berlijn, Duitsland</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <NLFooter slot="footer" />
+</NLBaseLayout>
+
+<style>
+  /* Hero Entry Animation */
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  /* Scroll Animation Styles */
+  [data-scroll] {
+    opacity: 0;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  /* Fade In Up */
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  /* Scale In */
+  [data-scroll="scale"] {
+    transform: scale(0.9);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger delays */
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+
+  [data-scroll][data-delay="4"] {
+    transition-delay: 0.4s;
+  }
+
+  [data-scroll][data-delay="5"] {
+    transition-delay: 0.5s;
+  }
+
+  [data-scroll][data-delay="6"] {
+    transition-delay: 0.6s;
+  }
+
+  /* FAQ Accordion Styles */
+  .faq-card {
+    position: relative;
+  }
+
+  .faq-card.active .faq-answer {
+    max-height: 1000px !important;
+  }
+
+  .faq-card.active .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-scroll attribute
+  document.querySelectorAll("[data-scroll]").forEach((el) => {
+    observer.observe(el);
+  });
+
+  // FAQ Accordion functionality
+  document.querySelectorAll(".faq-card").forEach((card) => {
+    const header = card.querySelector(".faq-header");
+
+    header?.addEventListener("click", () => {
+      const isActive = card.classList.contains("active");
+
+      // Close all other FAQs
+      document.querySelectorAll(".faq-card").forEach((otherCard) => {
+        if (otherCard !== card) {
+          otherCard.classList.remove("active");
+        }
+      });
+
+      // Toggle current FAQ
+      card.classList.toggle("active", !isActive);
+    });
+  });
+</script>

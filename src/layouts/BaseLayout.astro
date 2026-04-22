@@ -121,6 +121,46 @@ const websiteSchema = {
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-55PTFL9');</script>
     <!-- End Google Tag Manager -->
+
+
+<script is:inline>
+  (function () {
+    /**
+     * Gera um event_id único no formato compatível com o GTM:
+     * {timestamp}_{random15digits}
+     */
+    function generateEventId() {
+      return Date.now() + '_' + Math.floor(Math.random() * 1e15);
+    }
+
+    /**
+     * Inicializa o event_id e empurra para a dataLayer.
+     * Chamado no carregamento da página e em cada navegação
+     * via View Transitions (astro:page-load).
+     */
+    function initEventId() {
+      window.dataLayer = window.dataLayer || [];
+
+      // Gera um novo event_id para esta pageview
+      window.__metaEventId = generateEventId();
+
+      // Empurra para a dataLayer para o GTM/FBA Lead consumir via {{Event ID}}
+      window.dataLayer.push({
+        event: 'meta_event_id_ready',
+        event_id: window.__metaEventId,
+      });
+    }
+
+    // Inicializa imediatamente no carregamento da página
+    initEventId();
+
+    // Suporte a View Transitions do Astro:
+    // a cada navegação client-side, gera um novo event_id
+    document.addEventListener('astro:page-load', function () {
+      initEventId();
+    });
+  })();
+</script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

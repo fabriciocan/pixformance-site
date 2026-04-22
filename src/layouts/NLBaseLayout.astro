@@ -11,17 +11,19 @@ interface Props {
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   hreflangDe?: string;
+  hreflangEn?: string;
 }
 
 const {
-  title = 'Digital Fitness Devices From Pixformance',
-  description = 'Pixformance: Digital motion analysis for physical therapy, clinics, fitness & corporate wellness. 2.5M+ exercisers/year. 700+ exercises. Real-time correction feedback.',
+  title = 'Digitale Fitnessapparatuur – Pixformance',
+  description = 'Pixformance: Digitale bewegingsanalyse voor fysiotherapie, klinieken, fitness & bedrijfswelzijn. 750.000+ gebruikers/jaar. 700+ oefeningen. Real-time correctie.',
   image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   canonical,
   type = 'website',
   noindex = false,
   jsonLd,
   hreflangDe,
+  hreflangEn,
 } = Astro.props;
 
 const canonicalURL = canonical ?? Astro.url.href;
@@ -29,26 +31,25 @@ const canonicalURL = canonical ?? Astro.url.href;
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Pixformance USA Inc.',
-  url: 'https://www.pixformance.com/en/',
+  name: 'Pixformance Sports GmbH',
+  url: 'https://www.pixformance.com/nl/',
   logo: 'https://www.pixformance.com/images/pix-favicon.png',
   foundingDate: '2012',
   description:
-    'Pioneer in digital motion analysis and real-time feedback for physical therapy, clinics, fitness and corporate wellness.',
+    'Pionier in digitale bewegingsanalyse en real-time feedback voor fysiotherapie, klinieken, fitness en bedrijfswelzijn.',
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'sales',
-    telephone: '+1-888-420-4572',
+    telephone: '+49-30-39805610',
     email: 'info@pixformance.com',
-    availableLanguage: ['English', 'German'],
+    availableLanguage: ['Dutch', 'German'],
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3 Windward Way',
-    addressLocality: 'East Windsor',
-    addressRegion: 'NJ',
-    postalCode: '08520',
-    addressCountry: 'US',
+    streetAddress: 'Großbeerenstraße 2',
+    addressLocality: 'Unterhaching',
+    postalCode: '82008',
+    addressCountry: 'DE',
   },
   sameAs: [
     'https://www.linkedin.com/company/pixformance',
@@ -56,24 +57,24 @@ const organizationSchema = {
     'https://www.facebook.com/pixformancesports',
     'https://www.instagram.com/pixformance/',
   ],
-  areaServed: ['US', 'CA', 'GB', 'AU'],
+  areaServed: ['NL', 'BE'],
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Pixformance',
-  url: 'https://www.pixformance.com/en/',
+  url: 'https://www.pixformance.com/nl/',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://www.pixformance.com/en/?s={search_term_string}',
+    target: 'https://www.pixformance.com/nl/?s={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -88,8 +89,9 @@ const websiteSchema = {
     }
 
     <!-- Hreflang -->
-    <link rel="alternate" hreflang="en" href={canonicalURL} />
+    <link rel="alternate" hreflang="nl" href={canonicalURL} />
     {hreflangDe && <link rel="alternate" hreflang="de" href={hreflangDe} />}
+    {hreflangEn && <link rel="alternate" hreflang="en" href={hreflangEn} />}
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     <!-- Open Graph -->
@@ -101,7 +103,7 @@ const websiteSchema = {
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Pixformance" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="nl_NL" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -129,7 +131,7 @@ const websiteSchema = {
         : <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
-    <!-- Per-page head injections (preconnects, etc.) -->
+    <!-- Per-page head injections -->
     <slot name="head" />
 
     <!-- Google Tag Manager -->

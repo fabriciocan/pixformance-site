@@ -1,0 +1,493 @@
+---
+/**
+ * NL Header Component with Dropdown - Pixformance
+ * Navigation header for Dutch pages
+ */
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/cn';
+import { headerVariants, headerInnerVariants } from './header.variants';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+interface Props extends HTMLAttributes<'header'> {
+  position?: 'fixed' | 'sticky' | 'static';
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'solid' | 'transparent';
+  class?: string;
+}
+
+const {
+  position = 'sticky',
+  size = 'md',
+  variant = 'default',
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const hasLogoSlot = Astro.slots.has('logo');
+
+const headerClasses = cn(headerVariants({ position, variant }), className);
+const innerClasses = headerInnerVariants({ size });
+
+const solutionsItems = [
+  { label: 'Fysiotherapie', href: '/nl/fysiotherapie/' },
+  { label: 'Fitness', href: '/nl/fitness/' },
+  { label: 'Bedrijfsfitness', href: '/nl/bedrijfsfitness/' },
+];
+
+const companyLinks = [
+  { label: 'Over ons', href: '/nl/over-ons/' },
+  { label: 'Succesverhalen', href: '/nl/succesverhalen/' },
+  { label: 'FAQ', href: '/nl/faq/' },
+  { label: 'Vacatures', href: '/nl/vacatures/' },
+];
+
+function isActive(href: string): boolean {
+  if (href.startsWith('#')) return false;
+  if (href === '/nl/' || href === '/nl') return currentPath === '/nl/' || currentPath === '/nl';
+  return currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
+}
+
+const isSolutionsActive = solutionsItems.some((item) => isActive(item.href));
+const isCompanyActive = companyLinks.some((item) => isActive(item.href));
+
+const menuId = `mobile-menu-nl-${Math.random().toString(36).slice(2, 9)}`;
+const buttonId = `${menuId}-button`;
+---
+
+<header class={headerClasses} {...attrs}>
+  <div class={innerClasses}>
+    {/* Logo */}
+    {
+      hasLogoSlot ? (
+        <a href="/nl/" class="flex items-center">
+          <slot name="logo" />
+        </a>
+      ) : (
+        <a href="/nl/" class="flex items-center gap-2">
+          <img src="/images/logo/Pixformance-Logo_black_EN.svg" alt="Pixformance" class="h-[42px] md:h-14" style="width: auto;" fetchpriority="high" />
+        </a>
+      )
+    }
+
+    {/* Desktop Navigation */}
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Hoofdnavigatie">
+      <a
+        href="/nl/concept/"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/nl/concept/')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/nl/concept/') ? 'page' : undefined}
+      >
+        Concept
+      </a>
+
+      {/* Solutions Dropdown */}
+      <div class="relative group" data-desktop-dropdown>
+        <button
+          class={cn(
+            'nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
+            'transition-colors',
+            isSolutionsActive
+              ? 'text-primary font-semibold'
+              : 'text-foreground-muted hover:text-foreground'
+          )}
+          aria-expanded="false"
+        >
+          Oplossingen
+          <Icon name="chevron-down" size="sm" />
+        </button>
+
+        <div
+          class="absolute left-0 mt-1 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50"
+          data-dropdown-menu
+        >
+          {
+            solutionsItems.map((item) => (
+              <a
+                href={item.href}
+                class={cn(
+                  'block px-4 py-2 text-sm hover:bg-secondary/10 first:rounded-t-lg last:rounded-b-lg',
+                  isActive(item.href)
+                    ? 'text-primary font-semibold'
+                    : 'text-foreground-muted hover:text-foreground'
+                )}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Company Dropdown */}
+      <div class="relative group" data-desktop-dropdown>
+        <button
+          class={cn(
+            'nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
+            'transition-colors',
+            isCompanyActive
+              ? 'text-primary font-semibold'
+              : 'text-foreground-muted hover:text-foreground'
+          )}
+          aria-expanded="false"
+        >
+          Bedrijf
+          <Icon name="chevron-down" size="sm" />
+        </button>
+
+        <div
+          class="absolute left-0 mt-1 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50"
+          data-dropdown-menu
+        >
+          {
+            companyLinks.map((item) => (
+              <a
+                href={item.href}
+                class={cn(
+                  'block px-4 py-2 text-sm hover:bg-secondary/10 first:rounded-t-lg last:rounded-b-lg',
+                  isActive(item.href)
+                    ? 'text-primary font-semibold'
+                    : 'text-foreground-muted hover:text-foreground'
+                )}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a
+        href="/nl/contact/"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          isActive('/nl/contact/')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/nl/contact/') ? 'page' : undefined}
+      >
+        Contact
+      </a>
+
+      {/* Language Switcher */}
+      <div class="relative group ml-2" data-desktop-dropdown>
+        <button class="nav-link rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors" aria-expanded="false">
+          <Icon name="globe" size="sm" />
+          NL
+          <Icon name="chevron-down" size="sm" />
+        </button>
+        <div class="absolute right-0 mt-1 w-32 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border border-border rounded-lg shadow-lg z-50" data-dropdown-menu>
+          <a href="/nl/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 first:rounded-t-lg">NL</a>
+          <a href="/fr/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">FR</a>
+          <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+          <a href="/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">DE</a>
+          <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 last:rounded-b-lg">JP</a>
+        </div>
+      </div>
+    </nav>
+
+    {/* Actions Area */}
+    <div class="flex items-center gap-2">
+      <a
+        href="https://new.my.pixformance.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+      >
+        Login
+      </a>
+      <Button size="sm" href="/nl/gratis-proef/" class="hidden md:inline-flex">
+        Gratis proef aanvragen
+      </Button>
+
+      {/* Mobile Language Switcher */}
+      <div class="relative md:hidden" id="mobile-lang-switcher-nl">
+        <button
+          type="button"
+          class="inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+          aria-expanded="false"
+          aria-label="Taal selecteren"
+        >
+          <Icon name="globe" size="sm" />
+          <span class="text-xs font-bold">NL</span>
+          <Icon name="chevron-down" size="sm" />
+        </button>
+        <div class="absolute right-0 top-full mt-1 w-28 bg-background border border-border rounded-lg shadow-lg z-50 hidden">
+          <a href="/nl/" class="block px-4 py-2 text-sm text-primary font-semibold hover:bg-secondary/10 rounded-t-lg">NL</a>
+          <a href="/fr/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">FR</a>
+          <a href="/en/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">EN</a>
+          <a href="/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10">DE</a>
+          <a href="/jp/" class="block px-4 py-2 text-sm text-foreground-muted hover:text-foreground hover:bg-secondary/10 rounded-b-lg">JP</a>
+        </div>
+      </div>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        type="button"
+        id={buttonId}
+        class={cn(
+          'inline-flex items-center justify-center rounded-md p-2 md:hidden',
+          'text-foreground-muted hover:text-foreground',
+          'transition-colors'
+        )}
+        aria-expanded="false"
+        aria-controls={menuId}
+        aria-label="Menu openen"
+      >
+        <span class="menu-icon">
+          <Icon name="menu" size="md" />
+        </span>
+        <span class="close-icon hidden">
+          <Icon name="x" size="md" />
+        </span>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu */}
+  <div
+    id={menuId}
+    class="border-border bg-background hidden border-t md:hidden"
+    role="navigation"
+    aria-label="Mobiele navigatie"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-3">
+      {/* Primary CTA */}
+      <div class="mb-3">
+        <Button fullWidth href="/nl/gratis-proef/">Gratis proef aanvragen</Button>
+      </div>
+
+      {/* Main nav links */}
+      <a
+        href="/nl/concept/"
+        class={cn(
+          'mobile-nav-link flex items-center rounded-lg px-4 py-3 text-sm font-semibold border border-border mb-1',
+          'transition-colors',
+          isActive('/nl/concept/')
+            ? 'bg-[#02308C]/10 text-primary border-[#02308C]/20'
+            : 'text-foreground hover:bg-gray-50'
+        )}
+      >
+        <Icon name="layers" size="sm" class="mr-3 text-[#02308C]" />
+        Concept
+      </a>
+
+      <a
+        href="/nl/contact/"
+        class={cn(
+          'mobile-nav-link flex items-center rounded-lg px-4 py-3 text-sm font-semibold border border-border mb-3',
+          'transition-colors',
+          isActive('/nl/contact/')
+            ? 'bg-[#02308C]/10 text-primary border-[#02308C]/20'
+            : 'text-foreground hover:bg-gray-50'
+        )}
+      >
+        <Icon name="mail" size="sm" class="mr-3 text-[#02308C]" />
+        Contact
+      </a>
+
+      {/* Solutions Section - accordion */}
+      <div class="mb-2">
+        <button
+          class="accordion-toggle w-full flex items-center justify-between px-1 py-2 text-xs font-bold text-foreground-muted uppercase tracking-wider hover:text-foreground transition-colors"
+          data-target="mobile-solutions-nl"
+          aria-expanded="false"
+        >
+          <span>Oplossingen</span>
+          <Icon name="chevron-down" size="sm" class="accordion-icon transition-transform duration-200" />
+        </button>
+        <div id="mobile-solutions-nl" class="hidden mb-1">
+          <div class="bg-gray-50 rounded-xl overflow-hidden border border-border">
+            {
+              solutionsItems.map((item, i) => (
+                <a
+                  href={item.href}
+                  class={cn(
+                    'mobile-nav-link flex items-center px-4 py-3 text-sm font-medium transition-colors',
+                    i < solutionsItems.length - 1 ? 'border-b border-border' : '',
+                    isActive(item.href)
+                      ? 'bg-[#02308C]/10 text-primary font-semibold'
+                      : 'text-foreground hover:bg-white'
+                  )}
+                >
+                  <span class="w-2 h-2 rounded-full bg-[#6BDBD1] mr-3 shrink-0"></span>
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      {/* Company Section - accordion */}
+      <div class="mb-3">
+        <button
+          class="accordion-toggle w-full flex items-center justify-between px-1 py-2 text-xs font-bold text-foreground-muted uppercase tracking-wider hover:text-foreground transition-colors"
+          data-target="mobile-company-nl"
+          aria-expanded="false"
+        >
+          <span>Bedrijf</span>
+          <Icon name="chevron-down" size="sm" class="accordion-icon transition-transform duration-200" />
+        </button>
+        <div id="mobile-company-nl" class="hidden mb-1">
+          <div class="bg-gray-50 rounded-xl overflow-hidden border border-border">
+            {
+              companyLinks.map((item, i) => (
+                <a
+                  href={item.href}
+                  class={cn(
+                    'mobile-nav-link flex items-center px-4 py-3 text-sm font-medium transition-colors',
+                    i < companyLinks.length - 1 ? 'border-b border-border' : '',
+                    isActive(item.href)
+                      ? 'bg-[#02308C]/10 text-primary font-semibold'
+                      : 'text-foreground hover:bg-white'
+                  )}
+                >
+                  <span class="w-2 h-2 rounded-full bg-[#02308C] mr-3 shrink-0"></span>
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      {/* Footer links */}
+      <div class="border-border border-t pt-3 flex items-center justify-between">
+        <a
+          href="https://new.my.pixformance.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-foreground-muted hover:text-foreground transition-colors"
+        >
+          Login
+        </a>
+        <div class="flex gap-3">
+          <a href="/nl/" class="text-sm font-bold text-primary">NL</a>
+          <span class="text-foreground-muted">|</span>
+          <a href="/fr/" class="text-sm text-foreground-muted hover:text-foreground">FR</a>
+          <span class="text-foreground-muted">|</span>
+          <a href="/en/" class="text-sm text-foreground-muted hover:text-foreground">EN</a>
+          <span class="text-foreground-muted">|</span>
+          <a href="/" class="text-sm text-foreground-muted hover:text-foreground">DE</a>
+          <span class="text-foreground-muted">|</span>
+          <a href="/jp/" class="text-sm text-foreground-muted hover:text-foreground">JP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script define:vars={{ menuId, buttonId }}>
+  function initMobileMenu() {
+    const button = document.getElementById(buttonId);
+    const menu = document.getElementById(menuId);
+    const menuIcon = button?.querySelector('.menu-icon');
+    const closeIcon = button?.querySelector('.close-icon');
+
+    if (!button || !menu || !menuIcon || !closeIcon) return;
+
+    let isOpen = false;
+
+    function toggle() {
+      isOpen = !isOpen;
+      button.setAttribute('aria-expanded', isOpen.toString());
+      if (isOpen) {
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        menu.classList.remove('hidden');
+      } else {
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        menu.classList.add('hidden');
+      }
+    }
+
+    button.addEventListener('click', toggle);
+
+    menu.querySelectorAll('.accordion-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const panel = document.getElementById(targetId);
+        const icon = btn.querySelector('.accordion-icon');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', (!expanded).toString());
+        panel.classList.toggle('hidden', expanded);
+        icon.style.transform = expanded ? '' : 'rotate(180deg)';
+      });
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => { if (isOpen) toggle(); });
+    });
+  }
+
+  function initLangSwitcher() {
+    const switcher = document.getElementById('mobile-lang-switcher-nl');
+    if (!switcher) return;
+    const btn = switcher.querySelector('button');
+    const dropdown = switcher.querySelector('div');
+    if (!btn || !dropdown) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdown.classList.contains('hidden');
+      dropdown.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', (!isOpen).toString());
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function initDesktopDropdowns() {
+    const dropdowns = document.querySelectorAll('[data-desktop-dropdown]');
+
+    dropdowns.forEach((container) => {
+      const btn = container.querySelector('button');
+      const menu = container.querySelector('[data-dropdown-menu]');
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('dropdown-open');
+
+        dropdowns.forEach((other) => {
+          const otherMenu = other.querySelector('[data-dropdown-menu]');
+          const otherBtn = other.querySelector('button');
+          if (otherMenu && otherMenu !== menu) {
+            otherMenu.classList.remove('dropdown-open');
+            otherBtn?.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        menu.classList.toggle('dropdown-open', !isOpen);
+        btn.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach((container) => {
+        const menu = container.querySelector('[data-dropdown-menu]');
+        const btn = container.querySelector('button');
+        if (menu) menu.classList.remove('dropdown-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  initMobileMenu();
+  initLangSwitcher();
+  initDesktopDropdowns();
+  document.addEventListener('astro:page-load', () => { initMobileMenu(); initLangSwitcher(); initDesktopDropdowns(); });
+</script>

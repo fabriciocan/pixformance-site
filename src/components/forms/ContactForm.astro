@@ -139,6 +139,49 @@ const { variant = 'default' } = Astro.props;
   (function () {
     var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
 
+    var META_EVENT_ID = '';
+
+    function initEventId() {
+      window.dataLayer = window.dataLayer || [];
+      for (var i = window.dataLayer.length - 1; i >= 0; i--) {
+        if (window.dataLayer[i] && window.dataLayer[i].event_id) {
+          META_EVENT_ID = window.dataLayer[i].event_id;
+          return;
+        }
+      }
+      META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
+      window.dataLayer.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+    }
+
+    function sha256(value) {
+      var normalized = (value || '').toLowerCase().trim();
+      var encoded = new TextEncoder().encode(normalized);
+      return crypto.subtle.digest('SHA-256', encoded).then(function (buffer) {
+        return Array.from(new Uint8Array(buffer))
+          .map(function (b) { return b.toString(16).padStart(2, '0'); })
+          .join('');
+      });
+    }
+
+    function normalizePhone(phone) {
+      var cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+      if (cleaned && !cleaned.startsWith('+')) cleaned = '+49' + cleaned.replace(/^0/, '');
+      return cleaned;
+    }
+
+    function hashUserData(formData) {
+      var email = (formData.get('email') || '').toLowerCase().trim();
+      var phone = normalizePhone(formData.get('phone'));
+      return Promise.all([
+        email ? sha256(email) : Promise.resolve(''),
+        phone ? sha256(phone) : Promise.resolve(''),
+        Promise.resolve(''),
+        Promise.resolve(''),
+      ]).then(function (results) {
+        return { em: results[0], ph: results[1], fn: results[2], ln: results[3] };
+      });
+    }
+
     function getUrlParams() {
       var params = {};
       new URLSearchParams(window.location.search).forEach(function (value, key) {
@@ -164,6 +207,15 @@ const { variant = 'default' } = Astro.props;
       return cookies;
     }
 
+    function getFbp(cookies) { return cookies._fbp || ''; }
+
+    function getFbc(cookies) {
+      if (cookies._fbc) return cookies._fbc;
+      var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+      if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+      return '';
+    }
+
     function showMessage(el, type, text) {
       el.classList.remove('hidden');
       el.className = type === 'success'
@@ -173,6 +225,8 @@ const { variant = 'default' } = Astro.props;
     }
 
     function initForm() {
+      initEventId();
+
       var form = document.getElementById('contact-form');
       var messageDiv = document.getElementById('form-message');
       if (!form || !messageDiv) return;
@@ -184,32 +238,51 @@ const { variant = 'default' } = Astro.props;
         if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
 
         var formData = new FormData(form);
-        var payload = {
-  form_name: 'Kontaktformular',
-          name: formData.get('name') || '',
-          email: formData.get('email') || '',
-          company: formData.get('company') || '',
-          phone: sanitizePhone(formData.get('phone')),
-          interest: formData.get('interest') || '',
-          message: formData.get('message') || '',
-          privacy_accepted: formData.get('privacy') === 'on',
-          page_url: window.location.href,
-          page_path: window.location.pathname,
-          referrer: document.referrer || '',
-          submitted_at: new Date().toISOString(),
-          url_params: getUrlParams(),
-          cookies: getCookies(),
-          language: 'de',
-          version: 'DACH',
-        };
+        var cookies = getCookies();
 
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+        hashUserData(formData).then(function (hashed) {
+          window.dataLayer.push({
+            event: 'meta_user_data_ready',
+            em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
+          });
+
+          var payload = {
+            form_name: 'Kontaktformular',
+            name: formData.get('name') || '',
+            email: formData.get('email') || '',
+            company: formData.get('company') || '',
+            phone: sanitizePhone(formData.get('phone')),
+            interest: formData.get('interest') || '',
+            message: formData.get('message') || '',
+            privacy_accepted: formData.get('privacy') === 'on',
+            page_url: window.location.href,
+            page_path: window.location.pathname,
+            referrer: document.referrer || '',
+            submitted_at: new Date().toISOString(),
+            url_params: getUrlParams(),
+            cookies: cookies,
+            language: 'de',
+            version: 'DACH',
+            form_source: 'contact-page',
+            meta_event_id: META_EVENT_ID,
+            meta_fbp: getFbp(cookies),
+            meta_fbc: getFbc(cookies),
+            meta_user_agent: navigator.userAgent,
+            meta_event_source_url: window.location.href,
+            meta_em: hashed.em,
+            meta_ph: hashed.ph,
+            meta_fn: hashed.fn,
+            meta_ln: hashed.ln,
+          };
+
+          return fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
         })
           .then(function (response) {
-            if (response.ok) {
+            if (response && response.ok) {
               form.style.display = 'none';
               messageDiv.classList.remove('hidden');
               messageDiv.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';

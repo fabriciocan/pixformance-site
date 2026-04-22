@@ -463,6 +463,44 @@ const clientLogos = [
   // Form submission — webhook + redirect
   const WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
 
+  let META_EVENT_ID = '';
+
+  function initEventId() {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    const dl = (window as any).dataLayer as any[];
+    for (let i = dl.length - 1; i >= 0; i--) {
+      if (dl[i]?.event_id) { META_EVENT_ID = dl[i].event_id; return; }
+    }
+    META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
+    dl.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+  }
+
+  function sha256(value: string): Promise<string> {
+    const encoded = new TextEncoder().encode((value || '').toLowerCase().trim());
+    return crypto.subtle.digest('SHA-256', encoded).then((buffer) =>
+      Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('')
+    );
+  }
+
+  function normalizePhone(phone: string | null): string {
+    let cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+    if (cleaned && !cleaned.startsWith('+')) cleaned = '+49' + cleaned.replace(/^0/, '');
+    return cleaned;
+  }
+
+  function hashUserData(formData: FormData) {
+    const email = ((formData.get('email') as string) || '').toLowerCase().trim();
+    const phone = normalizePhone(formData.get('phone') as string | null);
+    const firstName = ((formData.get('first_name') as string) || '').toLowerCase().trim();
+    const lastName = ((formData.get('last_name') as string) || '').toLowerCase().trim();
+    return Promise.all([
+      email     ? sha256(email)     : Promise.resolve(''),
+      phone     ? sha256(phone)     : Promise.resolve(''),
+      firstName ? sha256(firstName) : Promise.resolve(''),
+      lastName  ? sha256(lastName)  : Promise.resolve(''),
+    ]).then(([em, ph, fn, ln]) => ({ em, ph, fn, ln }));
+  }
+
   function getUrlParams() {
     const params: Record<string, string> = {};
     new URLSearchParams(window.location.search).forEach((value, key) => {
@@ -484,9 +522,22 @@ const clientLogos = [
     return cookies;
   }
 
+  function getFbp(cookies: Record<string, string>): string {
+    return cookies._fbp || '';
+  }
+
+  function getFbc(cookies: Record<string, string>): string {
+    if (cookies._fbc) return cookies._fbc;
+    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+    return '';
+  }
+
   function sanitizePhone(phone: string | null): string {
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
+
+  initEventId();
 
   const downloadForm = document.getElementById('download-form') as HTMLFormElement;
   const formMessage = document.getElementById('download-form-message');
@@ -498,25 +549,44 @@ const clientLogos = [
     if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
 
     const formData = new FormData(downloadForm);
-    const payload = {
-      form_name: 'LP Physio Digitalisierung – Broschüre Download',
-      company: formData.get('company') || '',
-      first_name: formData.get('first_name') || '',
-      last_name: formData.get('last_name') || '',
-      email: formData.get('email') || '',
-      phone: sanitizePhone(formData.get('phone')),
-      privacy_accepted: formData.get('privacy') === 'on',
-      page_url: window.location.href,
-      page_path: window.location.pathname,
-      referrer: document.referrer || '',
-      submitted_at: new Date().toISOString(),
-      url_params: getUrlParams(),
-      cookies: getCookies(),
-      language: 'de',
-      version: 'DACH',
-    };
+    const cookies = getCookies();
 
     try {
+      const hashed = await hashUserData(formData);
+
+      ((window as any).dataLayer as any[]).push({
+        event: 'meta_user_data_ready',
+        em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
+      });
+
+      const payload = {
+        form_name: 'LP Physio Digitalisierung – Broschüre Download',
+        company: formData.get('company') || '',
+        first_name: formData.get('first_name') || '',
+        last_name: formData.get('last_name') || '',
+        email: formData.get('email') || '',
+        phone: sanitizePhone(formData.get('phone') as string | null),
+        privacy_accepted: formData.get('privacy') === 'on',
+        page_url: window.location.href,
+        page_path: window.location.pathname,
+        referrer: document.referrer || '',
+        submitted_at: new Date().toISOString(),
+        url_params: getUrlParams(),
+        cookies,
+        language: 'de',
+        version: 'DACH',
+        form_source: 'landing-page',
+        meta_event_id: META_EVENT_ID,
+        meta_fbp: getFbp(cookies),
+        meta_fbc: getFbc(cookies),
+        meta_user_agent: navigator.userAgent,
+        meta_event_source_url: window.location.href,
+        meta_em: hashed.em,
+        meta_ph: hashed.ph,
+        meta_fn: hashed.fn,
+        meta_ln: hashed.ln,
+      };
+
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

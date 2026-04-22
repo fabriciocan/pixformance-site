@@ -1,0 +1,426 @@
+---
+import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
+import NLHeader from '@/components/layout/NLHeader.astro';
+import NLFooter from '@/components/layout/NLFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const tabs = [
+  { label: 'FYSIOTHERAPIE', href: '/nl/fysiotherapie/' },
+  { label: 'KLINIEK', href: '/nl/kliniek/' },
+  { label: 'FITNESS', href: '/nl/fitness/' },
+  { label: 'BEDRIJFSFITNESS', href: '/nl/bedrijfsfitness/' },
+];
+
+const benefits = [
+  {
+    icon: '7',
+    title: 'Fiscale aftrekbaarheid',
+    description:
+      'Bedrijfsfitness wordt fiscaal ondersteund. Een bedrijf kan tot 500 euro per werknemer per jaar investeren zonder loonheffing.',
+  },
+  {
+    icon: '10',
+    title: 'Werknemersbinding',
+    description:
+      'In tijden van krapte op de arbeidsmarkt en een hoog verloop in veel sectoren is een modern fitnessaanbod een instrument voor langdurige werknemersbinding.',
+  },
+  {
+    icon: 't',
+    title: 'Employer Branding',
+    description:
+      'Een innovatief sportconcept met Pixformance heeft een positief effect niet alleen op werknemers, maar ook op de aantrekkelijkheid als werkgever en daarmee op potentiële kandidaten.',
+  },
+  {
+    icon: 't (1)',
+    title: 'Minder verzuim en kosten',
+    description:
+      'Lichamelijk actieve werknemers verzuimen gemiddeld 2 tot 6 dagen minder per jaar. Bedrijven verlagen de ziektekosten met Pixformance.',
+  },
+  {
+    icon: 't (2)',
+    title: 'Meer flexibiliteit en training',
+    description:
+      'Dankzij het computerondersteunde Pixformance-trainingsconcept kunnen meerdere werknemers tegelijkertijd en zonder trainer worden begeleid.',
+  },
+  {
+    icon: '11',
+    title: 'Geen administratie, groot effect',
+    description:
+      'Op het onlineplatform kunnen werknemers zelf individuele trainingsplannen samenstellen uit meer dan 700 functionele oefeningen.',
+  },
+];
+
+const performanceBenefits = [
+  {
+    icon: 'refresh-cw',
+    title: 'Minder stress en meer flexibiliteit',
+    description:
+      'Te veel vergaderingen en weinig tijd? Werknemers profiteren van de mogelijkheid om veilig, flexibel en individueel te trainen – ook zonder begeleiding.',
+  },
+  {
+    icon: 'smile',
+    title: 'Meer teamgeest, motivatie en plezier',
+    description:
+      'Met name groepstraining vergroot de motivatie en het gevoel van saamhorigheid, bevordert gezondheid, prestaties en tevredenheid van werknemers.',
+  },
+  {
+    icon: 'bar-chart',
+    title: 'Meetbare resultaten',
+    description:
+      'Trainingen op maat kunnen in enkele stappen worden aangepast aan elk fitnessniveau en elke leeftijd, en zijn op elk moment te volgen.',
+  },
+];
+---
+
+<NLBaseLayout
+  title="Bedrijfsgezondheidszorg (BGM) met Pixformance"
+  description="Pixformance voor bedrijven: fiscaal aftrekbaar tot 500 €/werknemer. Minder verzuim, betere werknemersbinding. Digitale fitness voor uw kantoor."
+  hreflangDe="https://www.pixformance.com/firmen-fitness"
+  hreflangEn="https://www.pixformance.com/en/corporate-fitness/"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance BGM – Bedrijfsgezondheidszorg",
+    "description": "Digitale fitnessoplossing voor bedrijfsgezondheidszorg. Fiscaal aftrekbaar tot 500 € per werknemer per jaar. Vermindert verzuim en versterkt werknemersbinding.",
+    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+    "serviceType": "Corporate Wellness Technology",
+    "url": "https://www.pixformance.com/nl/bedrijfsfitness/"
+  }]}
+>
+  <NLHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </NLHeader>
+
+  <!-- Breadcrumb Tabs -->
+  <BreadcrumbTabs tabs={tabs} activeTab="/nl/bedrijfsfitness/" />
+
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-background to-background-secondary">
+    <div class="container text-center max-w-4xl">
+      <p class="text-lg md:text-xl text-foreground-muted mb-4 hero-animate" style="animation-delay: 0.1s;">
+        Bedrijfsgezondheidszorg
+      </p>
+      <h1 class="font-display text-4xl md:text-6xl font-bold mb-6 hero-animate" style="animation-delay: 0.2s;">
+        Wij maken uw team :<br />
+        <span class="text-primary">Sterker. Beter. Efficiënter.</span>
+      </h1>
+      <p class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+        Pixformance als innovatieve oplossing voor effectieve BGM-maatregelen en een
+        brede gezondheidsbevordering – individueel afgestemd op elke werknemer.
+      </p>
+    </div>
+  </section>
+
+  <!-- Zoals met een trainer -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-12 text-center uppercase" data-scroll="fade-up">
+        Zoals met een trainer
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6" data-scroll="slide-left">
+          <p class="text-lg text-foreground-muted">
+            Pixformance revolutioneert functionele training: het gepatenteerde Pixformance-station
+            meet het lichaam van elke gebruiker in enkele seconden op basis van 25 gewrichtspunten,
+            analyseert de bewegingsuitvoering nauwkeurig en geeft realtime digitale feedback –
+            waardoor bijzonder effectieve en veilige functionele training mogelijk wordt.
+          </p>
+          <p class="text-lg text-foreground-muted">
+            Het voordeel: dankzij de realtime correctie kunnen uw werknemers een begeleid
+            trainingsprogramma volgen – zelfs zonder dat er een trainer aanwezig is.
+            Training wordt daardoor nog effectiever.
+          </p>
+        </div>
+        <div data-scroll="slide-right">
+          <img
+            src="/images/Pixformance-225402_BGM_Pixformance_Funktionelles-Training_Milon_Virtuelles-Training_Sport-im-Buero-bearbeitet.jpg"
+            alt="Functionele training op kantoor"
+            class="rounded-lg shadow-2xl w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Virtuele personal training -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+          Virtuele personal training
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Het Pixformance-station biedt continue begeleiding op het gebied van nauwkeurigheid,
+          ritme en kwaliteit van de oefenuitvoering, en biedt daarmee veel veiligheid bij
+          functionele training – zoals met een personal trainer.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="space-y-6" data-scroll="slide-left">
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">1</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Eenvoudige oefenbegeleiding</h3>
+              <p class="text-foreground-muted">
+                De gebruiker staat voor het Pixformance-station en de uit te voeren oefening
+                wordt gedemonstreerd door een trainer op het scherm.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">2</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Nauwkeurige bewegingsanalyse</h3>
+              <p class="text-foreground-muted">
+                Tijdens de uitvoering scant een camera met ingebouwde dieptesensor in enkele
+                seconden 25 gewrichtspunten van de gebruiker en analyseert de bewegingen.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-4xl font-bold text-primary shrink-0">3</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">Realtime feedback</h3>
+              <p class="text-foreground-muted">
+                De virtuele trainer geeft realtime feedback. Dit garandeert dat oefeningen
+                correct en veilig worden uitgevoerd – net als onder begeleiding van een trainer.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-scroll="slide-right">
+          <img
+            src="/images/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png"
+            alt="Pixformance-station"
+            class="rounded-lg shadow-2xl w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Afgestemd op uw doelen -->
+  <section class="py-16 md:py-24 bg-background-secondary">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
+          Afgestemd op uw doelen
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Een groot deel van de werknemers wenst sportaanbiedingen van hun werkgever.
+          Pixformance biedt als functioneel trainingsconcept voor bedrijfsfitness veel
+          voordelen ten opzichte van traditionele BGM-benaderingen.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            data-scroll="fade-up"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="flex flex-col gap-4">
+              <div class={`w-12 h-12 rounded-lg flex items-center justify-center ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
+                <img
+                  src={`/images/new-icons-bgm/${benefit.icon}.svg`}
+                  alt={benefit.title}
+                  class="w-8 h-8 object-contain"
+                  style={index % 2 === 0 ? 'filter: brightness(0) invert(1);' : ''}
+                />
+              </div>
+              <h3 class="font-bold text-xl">{benefit.title}</h3>
+              <p class="text-foreground-muted">{benefit.description}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Advies -->
+  <section class="py-16 md:py-24" style="background-color: #4a3d91;">
+    <div class="container">
+      <Card variant="elevated" padding="lg" class="bg-white">
+        <div class="grid md:grid-cols-5 gap-8 items-center">
+          <div class="md:col-span-2 text-center">
+            <img
+              src="/images/Tobias-Baader-Beratung-2021-2.png.webp"
+              alt="Tobias Baader"
+              class="w-48 h-48 rounded-full object-cover mx-auto mb-4"
+              loading="lazy"
+            />
+            <p class="text-sm text-foreground-muted">Uw contactpersoon</p>
+            <h3 class="font-bold text-2xl">Tobias Baader</h3>
+          </div>
+
+          <div class="md:col-span-3">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+              Wilt u persoonlijk advies?
+            </h2>
+            <Button size="lg" href="/nl/gratis-proef/">
+              SCHRIJF ONS
+              <Icon name="arrow-right" size="sm" />
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </section>
+
+  <!-- Trainingsconcepten -->
+  <section class="py-16 md:py-24">
+    <div class="container max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">
+          Trainingsconcepten
+        </h2>
+        <p class="text-xl text-foreground-muted max-w-3xl mx-auto">
+          Wij bieden oplossingen voor bedrijven in de meest uiteenlopende situaties.
+          Samen werken we een concept uit dat uw wensen en ambities weerspiegelt
+          en precies is afgestemd op uw behoeften.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- INDIVIDUELE TRAINING -->
+        <Card variant="outline" padding="lg">
+          <h3 class="font-bold text-2xl mb-4 uppercase">01 Individuele training</h3>
+          <p class="text-foreground-muted mb-6">
+            Met één Pixformance-station kunnen werknemers een op maat gemaakte
+            personal training volgen bij een virtuele trainer.
+          </p>
+
+          <div class="space-y-4">
+            <details class="group border-b border-border pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                TRAININGSCONCEPTEN
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4 space-y-4 text-foreground-muted">
+                <div>
+                  <p class="font-semibold mb-2">TUSSENDOOR:</p>
+                  <p>Het Pixformance-station wordt flexibel geplaatst in de kantoorruimte met een vooraf geïnstalleerd trainingsprogramma. Zo is training – zonder trainer – in kantoorkleding op elk gewenst moment mogelijk.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">INTENSIEF:</p>
+                  <p>De gebruiker ontvangt een persoonlijk Pixformance-trainingsprogramma samengesteld door een trainer en wordt ingeleid in het trainen met Pixformance. Het station wordt door de werknemer gereserveerd via een boekingstool voor het gewenste tijdslot. Met regelmatige tussenpozen controleert de trainer de resultaten op het onlineplatform.</p>
+                </div>
+                <div>
+                  <p class="font-semibold mb-2">ALS AANVULLING:</p>
+                  <p>Het Pixformance-station als aanvulling op een bestaand apparatencircuit, waarop functionele oefeningen kunnen worden uitgevoerd.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="group border-b border-border pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                DETAILS
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4 space-y-2 text-foreground-muted text-sm">
+                <p><strong>Benodigde ruimte:</strong> Circa 6 m²</p>
+                <p><strong>Gewicht:</strong> 65 kg</p>
+                <p><strong>Camera:</strong> 2D Full HD</p>
+                <p><strong>Computer en scherm:</strong> Afzonderlijk aan- en uitschakelbaar</p>
+                <p><strong>Touchscreen:</strong> 49 inch touchscreen, standaardoefeningen en trainingsprogramma's direct via touch te selecteren</p>
+                <p><strong>Trainingsafstand:</strong> Circa 1,60 m tot 2,30 m van het station</p>
+                <p><strong>Vereisten:</strong> Stroomaansluiting en internetverbinding (Ethernet, geen wifi)</p>
+              </div>
+            </details>
+
+            <details class="group pb-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between font-semibold text-lg py-2">
+                VOORDELEN
+                <Icon name="chevron-down" size="sm" class="transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="pt-4">
+                <ul class="space-y-2 text-foreground-muted">
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Een innovatief onderscheidend kenmerk</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Integreerbaar zelfs in kleine kantoren</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size="sm" class="text-success mt-1 shrink-0" />
+                    <span>Dankzij de feedbackfunctie kunnen werknemers een begeleid trainingsprogramma volgen – zelfs zonder 1-op-1-begeleiding van een trainer</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </Card>
+
+        <!-- VOORDELEN VOOR WERKNEMERS -->
+        <div class="space-y-6">
+          <h3 class="font-bold text-2xl uppercase">Voordelen voor uw werknemers</h3>
+          {performanceBenefits.map((benefit) => (
+            <Card variant="elevated" padding="lg">
+              <div class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center shrink-0">
+                  <Icon name={benefit.icon} size="md" class="text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p class="text-foreground-muted text-sm">{benefit.description}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Klaar voor digitale bedrijfsfitness?
+        </h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Neem contact met ons op voor een vrijblijvend adviesgesprek en ontdek hoe Pixformance de gezondheid van uw werknemers kan verbeteren.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/nl/gratis-proef/" class="bg-black text-white hover:bg-black/80">
+            Gratis proef aanvragen
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/nl/contact/" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            Contact opnemen
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <NLFooter slot="footer" />
+</NLBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+</style>

@@ -74,8 +74,7 @@ const clientLogos = [
 ];
 
 const teamMembers = [
-  { name: 'Laura Alves', role: 'Sales & Purchasing', image: '/images/en/Laura-Alves-Pixformance-1.png' },
-  { name: 'Rebecca Göhrt', role: 'Technical Support', image: '/images/en/Rebecca-Goehrt-Pixformance.png' },
+  { name: 'Laura Alves', role: 'Service & Support', image: '/images/en/Laura-Alves-Pixformance-1.png' },
   { name: 'Patricia Olear', role: 'Marketing Support', image: '/images/en/Patricia-Olear-Pixformance.png' },
 ];
 ---
@@ -134,9 +133,12 @@ const teamMembers = [
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="space-y-6" data-scroll="slide-left">
-          <h2 class="font-display text-4xl md:text-5xl font-bold">
-            Fitness software that provides Better exercise with Simpler supervision
+          <h2 class="font-display text-3xl md:text-4xl font-bold">
+            Better exercise.<br />Simpler supervision.
           </h2>
+          <p class="text-base font-medium text-[#02308C]">
+            Fitness software that guides every workout — no trainer required.
+          </p>
           <p class="text-lg text-foreground-muted leading-relaxed">
             The Pixformance station is a digital functional training device developed by experts in the fields of science, sports, and fitness. The idea: State-of-the-art technology for a functional fitness workout that is effective and fun.
           </p>
@@ -365,7 +367,7 @@ const teamMembers = [
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
       <div class="text-center mb-12" data-scroll="fade-up">
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">your easy start – our strong service</h2>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Your Easy Start – Our Strong Service</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {[
@@ -382,9 +384,9 @@ const teamMembers = [
           </Card>
         ))}
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="flex flex-wrap justify-center gap-12">
         {teamMembers.map((member) => (
-          <div class="text-center" data-scroll="fade-up">
+          <div class="text-center w-40" data-scroll="fade-up">
             <img src={member.image} alt={member.name} class="w-32 h-32 rounded-full object-cover mx-auto mb-4 shadow-lg" loading="lazy" />
             <h3 class="font-bold">{member.name}</h3>
             <p class="text-sm text-foreground-muted">{member.role}</p>

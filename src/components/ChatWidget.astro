@@ -747,8 +747,8 @@
             </svg>
         </div> -->
         <div class="chat-notification-text">
-            <p>Haben Sie Fragen? Wir helfen Ihnen gerne!</p>
-            <span>Jetzt chatten &rarr;</span>
+            <p id="chatNotifMessage">Haben Sie Fragen? Wir helfen Ihnen gerne!</p>
+            <span id="chatNotifCta">Jetzt chatten &rarr;</span>
         </div>
         <button class="chat-notification-close" id="chatNotificationClose" aria-label="Dismiss">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -775,18 +775,18 @@
         <!-- Consent Screen -->
         <div class="consent-screen" id="consentScreen">
             <div class="consent-header">
-                <h3>Datenschutz & Einwilligung</h3>
-                <p>Bitte lesen Sie die folgende Datenschutzerklärung, bevor Sie fortfahren.</p>
+                <h3 id="chatConsentTitle">Datenschutz & Einwilligung</h3>
+                <p id="chatConsentSubtitle">Bitte lesen Sie die folgende Datenschutzerklärung, bevor Sie fortfahren.</p>
             </div>
             <div class="consent-content">
-                <div class="consent-text">
+                <div class="consent-text" id="chatConsentBody">
                     Ich habe die <a href="https://www.pixformance.com/datenschutz/" target="_blank" rel="noopener noreferrer" class="consent-link">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten und allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
                 </div>
             </div>
             <div class="consent-footer">
                 <div class="chat-consent-checkbox-wrapper">
                     <input type="checkbox" id="consentCheckbox" class="chat-consent-checkbox-input">
-                    <label for="consentCheckbox" class="chat-consent-checkbox-label">
+                    <label for="consentCheckbox" class="chat-consent-checkbox-label" id="chatConsentCheckboxLabel">
                         Ich stimme den oben genannten Bedingungen zu und möchte den Chat nutzen.
                     </label>
                 </div>
@@ -828,7 +828,7 @@
                     </div>
                     <div class="message-content">
                         <div class="message-bubble">
-                            <div class="message-text">Hello! How can I help you today?</div>
+                            <div class="message-text" id="chatInitialMessage">Hello! How can I help you today?</div>
                         </div>
                         <div class="message-time" id="initialTime"></div>
                     </div>
@@ -839,7 +839,7 @@
                 <textarea
                     class="chat-input-field"
                     id="chatInputField"
-                    placeholder="Type your message..."
+                    placeholder=""
                     autocomplete="off"
                     rows="1"
                 ></textarea>
@@ -872,6 +872,97 @@
     const consentCheckbox = document.getElementById('consentCheckbox') as HTMLInputElement;
     const consentAcceptButton = document.getElementById('consentAcceptButton') as HTMLButtonElement;
     const chatContentWrapper = document.getElementById('chatContentWrapper')!;
+
+    // --- i18n ---
+    type LangKey = 'de' | 'en' | 'fr' | 'nl' | 'jp';
+    const i18n: Record<LangKey, {
+        notifMessage: string; notifCta: string;
+        consentTitle: string; consentSubtitle: string;
+        consentBody: string; consentCheckboxLabel: string; consentAcceptButton: string;
+        initialMessage: string; placeholder: string;
+        errorInvalid: string; errorNetwork: string;
+    }> = {
+        de: {
+            notifMessage: 'Haben Sie Fragen? Wir helfen Ihnen gerne!',
+            notifCta: 'Jetzt chatten →',
+            consentTitle: 'Datenschutz & Einwilligung',
+            consentSubtitle: 'Bitte lesen Sie die folgende Datenschutzerklärung, bevor Sie fortfahren.',
+            consentBody: 'Ich habe die <a href="https://www.pixformance.com/datenschutz/" target="_blank" rel="noopener noreferrer" class="consent-link">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten und allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.',
+            consentCheckboxLabel: 'Ich stimme den oben genannten Bedingungen zu und möchte den Chat nutzen.',
+            consentAcceptButton: 'Akzeptieren & Chat starten',
+            initialMessage: 'Hallo! Wie kann ich Ihnen heute helfen?',
+            placeholder: 'Ihre Nachricht...',
+            errorInvalid: 'Entschuldigung, ich habe keine gültige Antwort erhalten.',
+            errorNetwork: 'Entschuldigung, ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.',
+        },
+        en: {
+            notifMessage: 'Have a question? We\'re happy to help!',
+            notifCta: 'Chat now →',
+            consentTitle: 'Privacy & Consent',
+            consentSubtitle: 'Please read the following privacy notice before continuing.',
+            consentBody: 'I have read the <a href="https://www.pixformance.com/en/privacy-policy/" target="_blank" rel="noopener noreferrer" class="consent-link">Privacy Policy</a> and consent to Pixformance Sports GmbH contacting me by email or phone about products and company information. This consent can be withdrawn at any time.',
+            consentCheckboxLabel: 'I agree to the above terms and want to use the chat.',
+            consentAcceptButton: 'Accept & Start Chat',
+            initialMessage: 'Hello! How can I help you today?',
+            placeholder: 'Type your message...',
+            errorInvalid: 'Sorry, I didn\'t receive a valid response.',
+            errorNetwork: 'Sorry, an error occurred. Please try again.',
+        },
+        fr: {
+            notifMessage: 'Une question ? Nous sommes là pour vous aider !',
+            notifCta: 'Discuter maintenant →',
+            consentTitle: 'Confidentialité & Consentement',
+            consentSubtitle: 'Veuillez lire la déclaration de confidentialité suivante avant de continuer.',
+            consentBody: 'J\'ai lu la <a href="https://www.pixformance.com/en/privacy-policy/" target="_blank" rel="noopener noreferrer" class="consent-link">politique de confidentialité</a> et j\'accepte que Pixformance Sports GmbH me contacte par e-mail ou téléphone concernant ses produits et informations. Ce consentement peut être retiré à tout moment.',
+            consentCheckboxLabel: 'J\'accepte les conditions ci-dessus et souhaite utiliser le chat.',
+            consentAcceptButton: 'Accepter & démarrer le chat',
+            initialMessage: 'Bonjour ! Comment puis-je vous aider aujourd\'hui ?',
+            placeholder: 'Votre message...',
+            errorInvalid: 'Désolé, je n\'ai pas reçu de réponse valide.',
+            errorNetwork: 'Désolé, une erreur s\'est produite. Veuillez réessayer.',
+        },
+        nl: {
+            notifMessage: 'Heeft u een vraag? Wij helpen u graag!',
+            notifCta: 'Nu chatten →',
+            consentTitle: 'Privacy & Toestemming',
+            consentSubtitle: 'Lees de volgende privacyverklaring voordat u verdergaat.',
+            consentBody: 'Ik heb het <a href="https://www.pixformance.com/en/privacy-policy/" target="_blank" rel="noopener noreferrer" class="consent-link">privacybeleid</a> gelezen en geef toestemming aan Pixformance Sports GmbH om mij per e-mail of telefoon te contacteren over producten en bedrijfsinformatie. Deze toestemming kan te allen tijde worden ingetrokken.',
+            consentCheckboxLabel: 'Ik ga akkoord met de bovenstaande voorwaarden en wil de chat gebruiken.',
+            consentAcceptButton: 'Accepteren & chat starten',
+            initialMessage: 'Hallo! Hoe kan ik u vandaag helpen?',
+            placeholder: 'Uw bericht...',
+            errorInvalid: 'Sorry, ik heb geen geldig antwoord ontvangen.',
+            errorNetwork: 'Sorry, er is een fout opgetreden. Probeer het opnieuw.',
+        },
+        jp: {
+            notifMessage: 'ご質問はありますか？喜んでお手伝いします！',
+            notifCta: '今すぐチャット →',
+            consentTitle: 'プライバシーと同意',
+            consentSubtitle: '続ける前に、以下のプライバシーポリシーをお読みください。',
+            consentBody: '<a href="https://www.pixformance.com/en/privacy-policy/" target="_blank" rel="noopener noreferrer" class="consent-link">プライバシーポリシー</a>を読み、Pixformance Sports GmbHが製品および会社情報についてメールまたは電話で連絡することに同意します。この同意はいつでも撤回できます。',
+            consentCheckboxLabel: '上記の条件に同意し、チャットを使用したいと思います。',
+            consentAcceptButton: '同意してチャットを開始',
+            initialMessage: 'こんにちは！本日はどのようにお手伝いできますか？',
+            placeholder: 'メッセージを入力...',
+            errorInvalid: '申し訳ありませんが、有効な応答を受信しませんでした。',
+            errorNetwork: '申し訳ありませんが、エラーが発生しました。もう一度お試しください。',
+        },
+    };
+
+    const htmlLang = (document.documentElement.lang || 'de').split('-')[0] as LangKey;
+    const t = i18n[htmlLang] ?? i18n['de'];
+
+    // Apply translations to static HTML elements
+    (document.getElementById('chatNotifMessage') as HTMLElement).textContent = t.notifMessage;
+    (document.getElementById('chatNotifCta') as HTMLElement).textContent = t.notifCta;
+    (document.getElementById('chatConsentTitle') as HTMLElement).textContent = t.consentTitle;
+    (document.getElementById('chatConsentSubtitle') as HTMLElement).textContent = t.consentSubtitle;
+    (document.getElementById('chatConsentBody') as HTMLElement).innerHTML = t.consentBody;
+    (document.getElementById('chatConsentCheckboxLabel') as HTMLElement).textContent = t.consentCheckboxLabel;
+    (document.getElementById('consentAcceptButton') as HTMLElement).textContent = t.consentAcceptButton;
+    (document.getElementById('chatInitialMessage') as HTMLElement).textContent = t.initialMessage;
+    (chatInputField as HTMLTextAreaElement).placeholder = t.placeholder;
+    // --- end i18n ---
 
     let consentGiven = false;
     let originalViewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
@@ -1052,13 +1143,13 @@
             else if (typeof data.messages === 'string') { try { const p = JSON.parse(data.messages); msgs = Array.isArray(p) ? p : [data.messages]; } catch { msgs = [data.messages]; } }
             else if (data.response) msgs = [data.response];
             else if (data.message) msgs = [data.message];
-            else msgs = ["Sorry, I didn't receive a valid response."];
+            else msgs = [t.errorInvalid];
             msgs = msgs.filter((m: string) => m && m.trim());
             if (msgs.length > 0) await displayMessagesSequentially(msgs);
-            else addMessage("Sorry, I didn't receive a valid response.", false);
+            else addMessage(t.errorInvalid, false);
         } catch {
             hideTypingIndicator();
-            addMessage('Sorry, an error occurred. Please try again.', false);
+            addMessage(t.errorNetwork, false);
         } finally {
             (chatSendButton as HTMLButtonElement).disabled = false;
             chatInputField.focus();

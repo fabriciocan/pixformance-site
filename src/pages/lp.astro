@@ -7,8 +7,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
 const stats = [
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Kliniken & Rehazentren', icon: 'globe' },
-  { value: '750K +', count: 750, suffix: 'k +', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: '2.5M +', count: 2.5, suffix: 'M+', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: '1.100+', count: 1100, suffix: '+', label: 'Krankenhäuser, Rehazentren, Praxen & Fitnessstudios', icon: 'globe' },
   { value: '700+', count: 700, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
 ];
 
@@ -98,7 +98,7 @@ const clientLogos = [
   'Logo-GiB-Gesundheit-in-Bewegung-1.png',
   'Logo-Medical-Park.png',
   'Logo-MrsSporty-Mrs-Sporty.png',
-  'Logo-Therapiezentrum-Rombach.png',
+  'Logo-Therapiezentrum-Rombach.png'
 ];
 ---
 
@@ -711,7 +711,70 @@ const clientLogos = [
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
 
-  // Calculate deadline: last day of next month
+  var META_EVENT_ID = '';
+
+  function initEventId() {
+    window.dataLayer = window.dataLayer || [];
+    for (var i = window.dataLayer.length - 1; i >= 0; i--) {
+      if (window.dataLayer[i] && window.dataLayer[i].event_id) {
+        META_EVENT_ID = window.dataLayer[i].event_id;
+        return;
+      }
+    }
+    META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
+    window.dataLayer.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+  }
+
+  // SHA-256 via Web Crypto API (async)
+  // Normaliza o valor antes de hashear conforme exige o Meta:
+  // - lowercase
+  // - trim de espaços
+  // - telefone: só dígitos, sem espaços/hífens (exceto o + do código de país)
+  function sha256(value) {
+    var normalized = (value || '').toLowerCase().trim();
+    var encoded = new TextEncoder().encode(normalized);
+    return crypto.subtle.digest('SHA-256', encoded).then(function (buffer) {
+      return Array.from(new Uint8Array(buffer))
+        .map(function (b) { return b.toString(16).padStart(2, '0'); })
+        .join('');
+    });
+  }
+
+  // Normaliza telefone para o formato E.164 que o Meta espera antes do hash:
+  // remove tudo exceto dígitos e o + inicial
+  function normalizePhone(phone) {
+    var cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+    // Garante que começa com + (código de país)
+    // Se não tiver +, assume Alemanha +49 (ajusta conforme necessário)
+    if (cleaned && !cleaned.startsWith('+')) {
+      cleaned = '+49' + cleaned.replace(/^0/, '');
+    }
+    return cleaned;
+  }
+
+  // Hasha todos os campos de usuário em paralelo
+  // Retorna objeto com os hashes prontos pra dataLayer e webhook
+  function hashUserData(formData) {
+    var email = (formData.get('email') || '').toLowerCase().trim();
+    var phone = normalizePhone(formData.get('phone'));
+    var firstName = (formData.get('first_name') || '').toLowerCase().trim();
+    var lastName = (formData.get('last_name') || '').toLowerCase().trim();
+
+    return Promise.all([
+      email    ? sha256(email)     : Promise.resolve(''),
+      phone    ? sha256(phone)     : Promise.resolve(''),
+      firstName ? sha256(firstName) : Promise.resolve(''),
+      lastName  ? sha256(lastName)  : Promise.resolve(''),
+    ]).then(function (results) {
+      return {
+        em: results[0],  // email hash
+        ph: results[1],  // phone hash
+        fn: results[2],  // first name hash
+        ln: results[3],  // last name hash
+      };
+    });
+  }
+
   function getOfferDeadline() {
     var now = new Date();
     var nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
@@ -740,40 +803,81 @@ const clientLogos = [
     return cookies;
   }
 
+  function getFbp(cookies) {
+    return cookies._fbp || '';
+  }
+
+  function getFbc(cookies) {
+    if (cookies._fbc) return cookies._fbc;
+    var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+    return '';
+  }
+
   function sanitizePhone(phone) {
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
 
+  // submitForm agora é async por causa do sha256
   function submitForm(formData, messageEl, formEl, formName) {
-    var payload = {
-      form_name: formName || 'LP',
-      company: formData.get('company') || '',
-      first_name: formData.get('first_name') || '',
-      last_name: formData.get('last_name') || '',
-      email: formData.get('email') || '',
-      phone: sanitizePhone(formData.get('phone')),
-      privacy_accepted: formData.get('privacy') === 'on',
-      page_url: window.location.href,
-      page_path: window.location.pathname,
-      referrer: document.referrer || '',
-      submitted_at: new Date().toISOString(),
-      url_params: getUrlParams(),
-      cookies: getCookies(),
-      language: 'de',
-      version: 'DACH',
-      form_source: 'landing-page',
-    };
-
+    var cookies = getCookies();
     var btn = formEl.querySelector('[type="submit"]');
     if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 
-    fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+    // Hasha os dados do usuário antes de qualquer envio
+    hashUserData(formData).then(function (hashed) {
+
+      // Empurra os hashes pra dataLayer para o GTM/FBA Lead consumir
+      // A tag FBA Lead precisa ter as propriedades em, ph, fn, ln mapeadas
+      // para {{em}}, {{ph}}, {{fn}}, {{ln}} (variáveis dataLayer no GTM)
+      window.dataLayer.push({
+        event: 'meta_user_data_ready',
+        em: hashed.em,
+        ph: hashed.ph,
+        fn: hashed.fn,
+        ln: hashed.ln,
+      });
+
+      var payload = {
+        form_name: formName || 'LP',
+        company: formData.get('company') || '',
+        first_name: formData.get('first_name') || '',
+        last_name: formData.get('last_name') || '',
+        email: formData.get('email') || '',
+        phone: sanitizePhone(formData.get('phone')),
+        privacy_accepted: formData.get('privacy') === 'on',
+        page_url: window.location.href,
+        page_path: window.location.pathname,
+        referrer: document.referrer || '',
+        submitted_at: new Date().toISOString(),
+        url_params: getUrlParams(),
+        cookies: cookies,
+        language: 'de',
+        version: 'DACH',
+        form_source: 'landing-page',
+        // Meta CAPI fields
+        meta_event_id: META_EVENT_ID,
+        meta_fbp: getFbp(cookies),
+        meta_fbc: getFbc(cookies),
+        meta_user_agent: navigator.userAgent,
+        meta_event_source_url: window.location.href,
+        // Hashes SHA-256 para o n8n repassar ao CAPI (server side)
+        // O n8n já faz o hash server side, mas enviamos também do client
+        // para garantir consistência caso o server side falhe
+        meta_em: hashed.em,
+        meta_ph: hashed.ph,
+        meta_fn: hashed.fn,
+        meta_ln: hashed.ln,
+      };
+
+      return fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
     })
       .then(function (r) {
-        if (r.ok) {
+        if (r && r.ok) {
           formEl.style.display = 'none';
           messageEl.classList.remove('hidden');
           messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
@@ -795,7 +899,8 @@ const clientLogos = [
   }
 
   function init() {
-    // Set deadline text
+    initEventId();
+
     var deadline = getOfferDeadline();
     var deadlineEls = document.querySelectorAll('#offer-deadline');
     deadlineEls.forEach(function (el) { el.textContent = deadline; });
@@ -888,12 +993,12 @@ const clientLogos = [
 
       function getSlideWidth() {
         if (!slides[0]) return 300;
-        return slides[0].offsetWidth + 16; // width + gap-4
+        return slides[0].offsetWidth + 16;
       }
 
       function checkFit() {
         var containerWidth = track.parentElement.offsetWidth;
-        var totalWidth = totalSlides * getSlideWidth() - 16; // subtract last gap
+        var totalWidth = totalSlides * getSlideWidth() - 16;
         if (totalWidth <= containerWidth) {
           track.style.justifyContent = 'center';
           prevBtn.style.display = 'none';
@@ -932,9 +1037,10 @@ const clientLogos = [
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           var el = entry.target;
-          var target = parseInt(el.dataset.count, 10);
+          var target = parseFloat(el.dataset.count);
           var suffix = el.dataset.suffix || '';
           var isLarge = el.dataset.large === 'true';
+          var isDecimal = target % 1 !== 0;
           var duration = 1800;
           var start = performance.now();
 
@@ -942,8 +1048,9 @@ const clientLogos = [
             var elapsed = now - start;
             var progress = Math.min(elapsed / duration, 1);
             var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.floor(eased * target);
-            el.textContent = (isLarge ? current.toLocaleString('de-DE') : current) + suffix;
+            var current = eased * target;
+            var display = isDecimal ? current.toFixed(1).replace('.', ',') : (isLarge ? Math.floor(current).toLocaleString('de-DE') : Math.floor(current));
+            el.textContent = display + suffix;
             if (progress < 1) requestAnimationFrame(animate);
           }
 

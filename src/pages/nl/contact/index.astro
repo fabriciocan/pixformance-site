@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
-import Footer from '@/components/layout/Footer.astro';
+import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
+import NLHeader from '@/components/layout/NLHeader.astro';
+import NLFooter from '@/components/layout/NLFooter.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -10,34 +10,44 @@ import Button from '@/components/ui/form/Button/Button.astro';
 const benefits = [
   {
     icon: 'check-circle',
-    title: '60-Tage-Test',
-    description: 'Testen Sie Pixformance 60 Tage lang völlig unverbindlich',
+    title: 'Gratis proefperiode',
+    description: 'Test Pixformance 30 dagen zonder enige verplichting',
   },
   {
     icon: 'users',
-    title: 'Persönliche Beratung',
-    description: 'Unsere Experten unterstützen Sie bei der Einrichtung',
+    title: 'Persoonlijk advies',
+    description: 'Onze experts begeleiden u bij de configuratie',
   },
   {
     icon: 'settings',
-    title: 'Individuelle Anpassung',
-    description: 'Wir konfigurieren das System nach Ihren Bedürfnissen',
+    title: 'Individuele aanpassing',
+    description: 'Wij configureren het systeem volgens uw wensen',
   },
   {
     icon: 'award',
-    title: 'Schulung inklusive',
-    description: 'Umfassende Schulung für Ihr Team vor Ort',
+    title: 'Training inbegrepen',
+    description: 'Volledige training voor uw team ter plaatse',
   },
 ];
 ---
 
-<BaseLayout
-  title="Pixformance – Kontakt"
-  description="Nehmen Sie Kontakt mit Pixformance auf. Produktberatung, allgemeine Anfragen, technischer Support oder Marketing und PR."
+<NLBaseLayout
+  title="Pixformance – Contact"
+  description="Neem contact op met Pixformance. Productadvies, algemene vragen, technische ondersteuning of marketing en perscontacten."
+  hreflangDe="https://www.pixformance.com/kontakt"
+  hreflangEn="https://www.pixformance.com/en/contact/"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Pixformance – Contact",
+    "description": "Neem contact op met Pixformance voor productadvies, algemene vragen of technische ondersteuning.",
+    "url": "https://www.pixformance.com/nl/contact/",
+    "isPartOf": {"@type": "WebSite", "url": "https://www.pixformance.com/nl/"}
+  }]}
 >
-  <HeaderWithDropdown slot="header" position="sticky">
-    <PixformanceLogo slot="logo" />
-  </HeaderWithDropdown>
+  <NLHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </NLHeader>
 
   <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-4 md:py-16">
@@ -46,14 +56,14 @@ const benefits = [
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
             <Icon name="mail" size="sm" />
-            Kontakt
+            Contact
           </span>
         </div>
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Sprechen Sie mit uns
+          Neem contact met ons op
         </h1>
         <p class="text-lg md:text-xl text-foreground-muted hero-animate" style="animation-delay: 0.3s;">
-          Stellen Sie Ihre Frage oder schildern Sie Ihr Anliegen – wir melden uns umgehend bei Ihnen.
+          Stel uw vraag of beschrijf uw behoefte — we reageren zo snel mogelijk.
         </p>
       </div>
     </div>
@@ -72,7 +82,7 @@ const benefits = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-scroll="fade-up" data-delay="1">
                   <div>
                     <label for="name" class="block text-sm font-bold mb-3 text-white">
-                      Name <span class="text-[#FFED00]">*</span>
+                      Naam <span class="text-[#FFED00]">*</span>
                     </label>
                     <input
                       type="text"
@@ -80,12 +90,12 @@ const benefits = [
                       name="name"
                       required
                       class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="Ihr Name"
+                      placeholder="Uw naam"
                     />
                   </div>
                   <div>
                     <label for="email" class="block text-sm font-bold mb-3 text-white">
-                      E-Mail <span class="text-[#FFED00]">*</span>
+                      E-mail <span class="text-[#FFED00]">*</span>
                     </label>
                     <input
                       type="email"
@@ -93,27 +103,27 @@ const benefits = [
                       name="email"
                       required
                       class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="ihre.email@beispiel.de"
+                      placeholder="uw.email@voorbeeld.com"
                     />
                   </div>
                 </div>
 
                 <div data-scroll="fade-up" data-delay="2">
                   <label for="phone" class="block text-sm font-bold mb-3 text-white">
-                    Telefon <span class="text-white/70 font-normal">(für einen Rückruf)</span>
+                    Telefoon <span class="text-white/70 font-normal">(voor een terugbelverzoek)</span>
                   </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                    placeholder="+49 (0) ..."
+                    placeholder="+31 (0) ..."
                   />
                 </div>
 
                 <div data-scroll="fade-up" data-delay="3">
                   <label for="message" class="block text-sm font-bold mb-3 text-white">
-                    Ihre Nachricht <span class="text-[#FFED00]">*</span>
+                    Uw bericht <span class="text-[#FFED00]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -121,7 +131,7 @@ const benefits = [
                     required
                     rows="4"
                     class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all resize-none text-gray-900 placeholder:text-gray-400 shadow-lg"
-                    placeholder="Wie können wir Ihnen helfen?"
+                    placeholder="Hoe kunnen wij u helpen?"
                   ></textarea>
                 </div>
 
@@ -134,7 +144,7 @@ const benefits = [
                     class="mt-1 w-5 h-5 rounded border-0 bg-white/95 text-[#02308C] focus:ring-4 focus:ring-white/50 shadow-lg"
                   />
                   <label for="privacy" class="text-sm text-white/95 leading-relaxed">
-                    Ich habe die <a href="/datenschutz" class="text-[#FFED00] hover:underline font-bold">Datenschutzerklärung</a> gelesen und bin damit einverstanden. <span class="text-[#FFED00]">*</span>
+                    Ik heb het <a href="/datenschutz" class="text-[#FFED00] hover:underline font-bold">privacybeleid</a> gelezen en ga hiermee akkoord. <span class="text-[#FFED00]">*</span>
                   </label>
                 </div>
 
@@ -144,7 +154,7 @@ const benefits = [
                     type="submit"
                     class="group bg-white text-[#02308C] hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold"
                   >
-                    Nachricht senden
+                    Bericht verzenden
                     <Icon name="send" size="sm" class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Button>
                 </div>
@@ -163,10 +173,10 @@ const benefits = [
         <div class="text-center mb-12" data-scroll="fade-up">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
             <Icon name="star" size="sm" />
-            Ihre Vorteile
+            Uw voordelen
           </span>
           <h2 class="font-display text-4xl md:text-5xl font-bold">
-            Warum Pixformance testen?
+            Waarom Pixformance testen?
           </h2>
         </div>
 
@@ -210,7 +220,7 @@ const benefits = [
                 <Icon name="phone" size="lg" class="text-white" />
               </div>
               <div class="min-w-0">
-                <p class="text-sm text-foreground-muted mb-1">Telefon</p>
+                <p class="text-sm text-foreground-muted mb-1">Telefoon</p>
                 <a href="tel:+493039805610" class="font-semibold hover:text-[#02308C] transition-colors break-all">
                   +49 (0)30 39 80 56 10
                 </a>
@@ -230,7 +240,7 @@ const benefits = [
                 <Icon name="mail" size="lg" class="text-white" />
               </div>
               <div class="min-w-0">
-                <p class="text-sm text-foreground-muted mb-1">E-Mail</p>
+                <p class="text-sm text-foreground-muted mb-1">E-mail</p>
                 <a href="mailto:contact@pixformance.com" class="font-semibold hover:text-[#02308C] transition-colors break-all">
                   contact@pixformance.com
                 </a>
@@ -250,7 +260,7 @@ const benefits = [
                 <Icon name="headphones" size="lg" class="text-white" />
               </div>
               <div class="min-w-0">
-                <p class="text-sm text-foreground-muted mb-1">Produktberatung</p>
+                <p class="text-sm text-foreground-muted mb-1">Productadvies</p>
                 <a href="mailto:beratung@pixformance.com" class="font-semibold hover:text-[#02308C] transition-colors break-all">
                   beratung@pixformance.com
                 </a>
@@ -267,10 +277,10 @@ const benefits = [
         <div class="max-w-3xl mx-auto text-center" data-scroll="fade-up">
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
             <Icon name="award" size="sm" />
-            Zertifizierung
+            Certificering
           </div>
           <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
-            Ausbildungsbetrieb der DHfPG
+            DHfPG-opleidingsinstelling
           </h2>
           <p class="text-lg text-foreground-muted mb-8">
             Deutsche Hochschule für Prävention und Gesundheitsmanagement
@@ -280,15 +290,15 @@ const benefits = [
               <Icon name="award" size="xl" class="text-white" />
             </div>
             <div class="text-left">
-              <p class="font-bold text-lg">Zertifizierter Partner</p>
-              <p class="text-sm text-foreground-muted">Qualität und Exzellenz garantiert</p>
+              <p class="font-bold text-lg">Gecertificeerde partner</p>
+              <p class="text-sm text-foreground-muted">Gegarandeerde kwaliteit en excellentie</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <Footer slot="footer" />
+    <NLFooter slot="footer" />
   </section>
 
   <style>
@@ -350,7 +360,7 @@ const benefits = [
 
           var formData = new FormData(form);
           var payload = {
-            form_name: 'Kontaktformular',
+            form_name: 'Contactformulier NL',
             lead_quelle: 'Kontaktformular',
             name: formData.get('name') || '',
             email: formData.get('email') || '',
@@ -363,7 +373,7 @@ const benefits = [
             submitted_at: new Date().toISOString(),
             url_params: getUrlParams(),
             cookies: getCookies(),
-            language: 'de',
+            language: 'nl',
           };
 
           fetch(WEBHOOK_URL, {
@@ -376,17 +386,17 @@ const benefits = [
                 form.style.display = 'none';
                 messageDiv.classList.remove('hidden');
                 messageDiv.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center shadow-lg';
-                messageDiv.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+                messageDiv.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Bedankt voor uw bericht!</h3><p class="text-gray-600">We nemen zo snel mogelijk contact met u op.</p>';
               } else {
                 messageDiv.classList.remove('hidden');
                 messageDiv.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
-                messageDiv.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+                messageDiv.textContent = 'Er is een fout opgetreden. Probeer het opnieuw.';
               }
             })
             .catch(function () {
               messageDiv.classList.remove('hidden');
               messageDiv.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
-              messageDiv.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+              messageDiv.textContent = 'Er is een fout opgetreden. Probeer het opnieuw.';
             })
             .finally(function () {
               if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
@@ -411,4 +421,4 @@ const benefits = [
       observer.observe(el);
     });
   </script>
-</BaseLayout>
+</NLBaseLayout>

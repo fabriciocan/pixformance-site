@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
-import Footer from '@/components/layout/Footer.astro';
+import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
+import NLHeader from '@/components/layout/NLHeader.astro';
+import NLFooter from '@/components/layout/NLFooter.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
@@ -9,53 +9,53 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
 
 const tabs = [
-  { label: 'PHYSIOTHERAPIE', href: '/physiotherapie' },
-  { label: 'KLINIK', href: '/klinik' },
-  { label: 'FITNESS', href: '/fitness' },
-  { label: 'BGM', href: '/firmen-fitness' },
+  { label: 'FYSIOTHERAPIE', href: '/nl/fysiotherapie/' },
+  { label: 'KLINIEK', href: '/nl/kliniek/' },
+  { label: 'FITNESS', href: '/nl/fitness/' },
+  { label: 'BGM', href: '/nl/bedrijfsfitness/' },
 ];
 
 const stats = [
-  { value: '2.5M+', count: 0, suffix: '+', label: 'Trainierende / Jahr', icon: 'users' },
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Kliniken & Rehazentren', icon: 'globe' },
-  { value: '700+', count: 700, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
+  { value: '750.000+', count: 750000, suffix: '+', label: 'Gebruikers / Jaar', icon: 'users' },
+  { value: '1.100+', count: 1100, suffix: '+', label: 'Klinieken & Revalidatiecentra', icon: 'globe' },
+  { value: '700+', count: 700, suffix: '+', label: 'Functionele Oefeningen', icon: 'zap' },
 ];
 
 const benefits = [
   {
     icon: 'users',
-    title: 'Patientenaktivierung',
-    description: 'Motivierende digitale Trainingsumgebung steigert die aktive Teilnahme der Patienten.',
+    title: 'Patiëntactivering',
+    description: 'Een motiverende digitale trainingsomgeving verhoogt de actieve deelname van patiënten.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
   {
     icon: 'heart',
-    title: 'Personalentlastung',
-    description: 'Therapeuten können sich auf komplexe Fälle konzentrieren, während Pixformance das Standardtraining übernimmt.',
+    title: 'Ontlasting van het personeel',
+    description: 'Therapeuten kunnen zich concentreren op complexe gevallen terwijl Pixformance de standaardtraining overneemt.',
     gradient: 'from-[#6BDBD1] to-[#02308C]',
   },
   {
     icon: 'trending-up',
-    title: 'Skalierbarkeit',
-    description: 'Bis zu 4 Patienten gleichzeitig betreuen bei gleichbleibender Betreuungsqualität.',
+    title: 'Schaalbaarheid',
+    description: 'Gelijktijdige begeleiding van tot 4 patiënten met constante begeleidingskwaliteit.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
   {
     icon: 'file-text',
-    title: 'Dokumentation',
-    description: 'Automatische Erfassung aller Trainingsdaten für lückenlose Dokumentation.',
+    title: 'Documentatie',
+    description: 'Automatische registratie van alle trainingsgegevens voor volledige documentatie.',
     gradient: 'from-[#6BDBD1] to-[#86C9BC]',
   },
   {
     icon: 'check-circle',
-    title: 'Therapietreue',
-    description: 'Gamification-Elemente erhöhen die Motivation und damit die Therapietreue.',
+    title: 'Therapietrouw',
+    description: 'Gamification-elementen verhogen de motivatie en daarmee de therapietrouw.',
     gradient: 'from-[#86C9BC] to-[#02308C]',
   },
   {
     icon: 'shield',
-    title: 'Qualitätssicherung',
-    description: 'Standardisierte Übungsausführung durch Echtzeit-Feedback sichert gleichbleibende Qualität.',
+    title: 'Kwaliteitsborging',
+    description: 'Gestandaardiseerde oefenuitvoering dankzij realtime feedback garandeert constante kwaliteit.',
     gradient: 'from-[#02308C] to-[#6BDBD1]',
   },
 ];
@@ -63,66 +63,68 @@ const benefits = [
 const testimonials = [
   {
     name: 'Gabriele Buchstein',
-    role: 'Leitende Physiotherapeutin',
+    role: 'Hoofd fysiotherapie',
     company: 'Sauerlandklinik Hachen',
     image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
-    quote: 'Die Patienten sind begeistert und sehr motiviert. Es wird nicht langweilig, da die Übungen sehr abwechslungsreich sind und man sich steigern kann.',
+    quote: 'De patiënten zijn enthousiast en zeer gemotiveerd. Het wordt niet saai, want de oefeningen zijn zeer gevarieerd en je kunt vooruitgang boeken.',
   },
   {
     name: 'Christoph Schneider',
-    role: 'Therapieleitung',
+    role: 'Hoofd therapie',
     company: 'Niederrhein-Klinik',
     image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
-    quote: 'Auf der Suche nach einer Möglichkeit, die Patienten zu aktivieren und gleichzeitig Personal zu entlasten, sind wir auf Pixformance gestoßen.',
+    quote: 'Op zoek naar een manier om patiënten te activeren en tegelijk het personeel te ontlasten, ontdekten wij Pixformance.',
   },
   {
     name: 'Christoph Oratsch',
-    role: 'Leitung Therapie',
+    role: 'Hoofd therapie',
     company: 'AUVA Unfallkrankenhaus',
     image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
-    quote: 'Von Patientenseite kommt ein großes Interesse gegenüber der Pixformance Stationen. Viele kommen von sich aus und wollen ein Trainingsprogramm.',
+    quote: 'Van de kant van de patiënten is er grote interesse in de Pixformance stations. Velen komen uit zichzelf en willen een trainingsprogramma.',
   },
 ];
 
 const features = [
   {
     icon: 'eye',
-    title: '2D Full-HD Kamera',
-    description: 'Erfasst 25 Gelenkpunkte in Echtzeit für präzise Bewegungsanalyse',
+    title: '2D Full-HD camera',
+    description: 'Registreert 25 gewrichtspunten in realtime voor nauwkeurige bewegingsanalyse',
   },
   {
     icon: 'monitor',
-    title: 'Virtueller Trainer',
-    description: 'Zeigt Übungen am 43" Display und gibt visuelles Feedback',
+    title: 'Virtuele coach',
+    description: 'Presenteert oefeningen op het 43"-scherm en geeft visuele feedback',
   },
   {
     icon: 'zap',
-    title: 'Echtzeit-Korrektur',
-    description: 'Sofortiges Feedback zur Bewegungsausführung während des Trainings',
+    title: 'Realtime correctie',
+    description: 'Onmiddellijke feedback over de bewegingsuitvoering tijdens de training',
   },
 ];
 ---
 
-<BaseLayout
-  title="Rehageräte & digitale Trainingstherapie für Kliniken | Pixformance"
-  description="Pixformance für Rehakliniken: Patientenaktivierung, Therapeutenentlastung, digitale Dokumentation. 1.100+ Kliniken vertrauen auf Pixformance. Jetzt testen."
-  jsonLd={{
+<NLBaseLayout
+  title="Revalidatieapparatuur & digitale bewegingstherapie voor klinieken | Pixformance"
+  description="Pixformance voor revalidatieklinieken: patiëntactivering, ontlasting van therapeuten, digitale documentatie. Meer dan 1.100 klinieken vertrouwen op Pixformance. Probeer het nu."
+  hreflangDe="https://www.pixformance.com/klinik"
+  hreflangEn="https://www.pixformance.com/en/clinic/"
+  jsonLd={[{
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Pixformance Digitale Trainingstherapie – Klinik & Rehabilitation",
-    "description": "Digitale Rehageräte für Kliniken und Rehazentren. Patientenaktivierung, Therapeutenentlastung, Betreuung von bis zu 4 Patienten gleichzeitig.",
+    "name": "Pixformance Digitale Bewegingstherapie – Kliniek & Revalidatie",
+    "description": "Digitale revalidatieapparatuur voor klinieken en revalidatiecentra. Patiëntactivering, ontlasting van therapeuten, gelijktijdige begeleiding van tot 4 patiënten.",
     "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
     "serviceType": "Rehabilitation Technology",
-    "areaServed": ["DE", "AT", "CH"],
-    "url": "https://www.pixformance.com/klinik"
-  }}
+    "areaServed": ["DE", "AT", "CH", "NL"],
+    "url": "https://www.pixformance.com/nl/kliniek/"
+  }]}
 >
-  <HeaderWithDropdown slot="header" position="sticky">
-    <PixformanceLogo slot="logo" />
-  </HeaderWithDropdown>
+  <NLHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </NLHeader>
 
   <!-- Breadcrumb Tabs -->
-  <BreadcrumbTabs tabs={tabs} activeTab="/klinik" />
+  <BreadcrumbTabs tabs={tabs} activeTab="/nl/kliniek/" />
 
   <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-12 md:py-20">
@@ -131,34 +133,34 @@ const features = [
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
             <Icon name="zap" size="sm" />
-            Innovatives, Reha Sportgerät für Klinik und Rehabilitation
+            Innovatief revalidatiesportapparaat voor klinieken en revalidatie
           </span>
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
-          Aktivieren Sie Ihre Patienten und entlasten Sie Ihre Therapeuten.
+          Activeer uw patiënten en ontlast uw therapeuten.
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Die Pixformance Station ist ein innovatives Reha Sportgerät und bietet Patienten ein sicheres Training im Rahmen einer Bewegungstherapie – ganz individuell, je nach Indikation und Gesundheitszustand. Das Reha Sportgerät wurde entwickelt, um Patienten bei einer Reha-Therapie zu mehr Bewegung zu aktivieren und Therapeuten bei der Betreuung zu entlasten. 
+          De Pixformance station is een innovatief revalidatiesportapparaat dat patiënten veilige training biedt in het kader van bewegingstherapie – volledig geïndividualiseerd, op basis van indicatie en gezondheidstoestand. Het apparaat is ontwikkeld om patiënten tijdens revalidatietherapie te activeren tot meer beweging en therapeuten te ontlasten bij de begeleiding.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
           <Button
             size="lg"
-            href="/testen"
+            href="/nl/gratis-proef/"
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Jetzt unverbindlich testen
+            Vrijblijvend testen
             <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
           <Button
             size="lg"
             variant="outline"
-            href="/konzept"
+            href="/nl/concept/"
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Beratung anfragen
+            Advies aanvragen
             <Icon name="phone" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
@@ -189,13 +191,13 @@ const features = [
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="layers" size="sm" />
-          Voll vernetztes System
+          Volledig verbonden systeem
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Die Pixformance Station
+          De Pixformance station
         </h2>
         <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
-          Modernste Bewegungsanalyse verbindet sich mit therapeutischer Expertise
+          Geavanceerde bewegingsanalyse gecombineerd met therapeutische expertise
         </p>
       </div>
 
@@ -229,10 +231,10 @@ const features = [
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="star" size="sm" />
-          Vorteile
+          Voordelen
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Vorteile für Ihre Klinik
+          Voordelen voor uw kliniek
         </h2>
       </div>
 
@@ -266,13 +268,13 @@ const features = [
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="check-circle" size="sm" />
-          Erfolgsgeschichten
+          Ervaringen
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Was unsere Partner sagen
+          Wat onze partners zeggen
         </h2>
         <p class="text-lg text-foreground-muted mt-4">
-          Erfahren Sie, wie Kliniken mit Pixformance ihre Therapie revolutionieren
+          Ontdek hoe klinieken hun therapie revolutioneren met Pixformance
         </p>
       </div>
 
@@ -324,37 +326,37 @@ const features = [
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Bereit für die digitale Transformation?
+          Klaar voor de digitale transformatie?
         </h2>
 
         <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Vereinbaren Sie jetzt einen unverbindlichen Beratungstermin und erfahren Sie, wie Pixformance Ihre Therapie revolutionieren kann.
+          Maak nu een afspraak voor een vrijblijvend adviesgesprek en ontdek hoe Pixformance uw therapie kan revolutioneren.
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center pt-4">
           <Button
             size="lg"
-            href="/testen"
+            href="/nl/gratis-proef/"
             class="bg-black text-white hover:bg-black/80"
           >
-            Jetzt kostenlos testen
+            Gratis proberen
             <Icon name="arrow-right" size="sm" />
           </Button>
           <Button
             size="lg"
             variant="outline"
-            href="/konzept"
+            href="/nl/concept/"
             class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
-            Mehr erfahren
+            Meer informatie
           </Button>
         </div>
       </div>
     </div>
   </section>
 
-  <Footer slot="footer" />
-</BaseLayout>
+  <NLFooter slot="footer" />
+</NLBaseLayout>
 
 <style>
   /* Hero Entry Animation */
@@ -448,7 +450,6 @@ const features = [
   // Counter animation for stats
   function animateCounter(el: HTMLElement) {
     const target = parseInt(el.dataset.count || '0', 10);
-    if (target === 0) return;
     const suffix = el.dataset.suffix || '';
     const isLarge = el.dataset.large === 'true';
     const duration = 1800;
