@@ -1,0 +1,229 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<ITBaseLayout
+  title="Il Settore a Pagamento Diretto come Pilastro Sostenibile - Axel-André Richter - Pixformance"
+  description="Come lo Studio Sanitario Richter & Lopez a Mönchengladbach ha costruito il settore a pagamento diretto come pilastro sostenibile nel mercato sanitario secondario con Pixformance."
+  type="article"
+  hreflangEn="https://www.pixformance.com/en/success-stories/axel-richter/"
+>
+  <ITHeader slot="header" position="sticky" />
+
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/it/storie-di-successo/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Torna alla panoramica
+          </a>
+        </div>
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="heart" size="sm" />
+            Fisioterapia
+          </span>
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Opportunità nel mercato sanitario secondario
+          </h1>
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Il settore a pagamento diretto come pilastro sostenibile – Studio Sanitario Richter &amp; Lopez, Mönchengladbach, Germania
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <p class="text-lg text-foreground-muted leading-relaxed mb-8">
+          <strong class="text-foreground">Lo Studio Sanitario Richter &amp; Lopez a Mönchengladbach esiste dal 1999.</strong> Su 230 m², il fisioterapista Axel-André Richter e il collega Victor Lopez offrono ai pazienti molto più della classica fisioterapia – con un'area a pagamento diretto che li rende largamente indipendenti dall'assicurazione sanitaria obbligatoria.
+        </p>
+        <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+          <p class="text-foreground italic text-base md:text-lg">
+            "Trattiamo i pazienti ben oltre la fisioterapia convenzionale, poiché la fisioterapia comprende sia la terapia fisica che i metodi terapeutici basati sul movimento, e da tempo si estende oltre il trattamento dei 'malati'."
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img src="/images/erfolgsgeschichten/gesundheitspraxis-richter-und-lopez.jpg" alt="Studio Sanitario Richter & Lopez Mönchengladbach" class="w-full h-auto max-h-[380px] object-cover object-center" loading="lazy" />
+            </Card>
+          </div>
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-4xl font-bold mb-2">Axel-André Richter</h2>
+              <p class="text-xl text-[#02308C] font-semibold">Fisioterapista &amp; Titolare dello Studio</p>
+            </div>
+            <Card variant="elevated" padding="none" class="bg-white p-4 md:p-8">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="briefcase" size="md" class="text-[#02308C]" />
+                Profilo dello Studio
+              </h3>
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Sede</p><p class="text-sm">Mönchengladbach, NRW, Germania</p></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Fondato</p><p class="text-sm">1999</p></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="home" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Dimensioni</p><p class="text-sm">230 m²</p></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="activity" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Specializzazione</p><p class="text-sm">Fisioterapia, terapia del dolore, scienza del movimento</p></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Staff</p><p class="text-sm">3 terapisti</p></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div><p class="text-sm font-semibold text-foreground">Sito web</p><a href="https://www.richterlopez.de" target="_blank" rel="noopener noreferrer" class="text-sm text-[#02308C] hover:underline">www.richterlopez.de</a></div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Entrare con sicurezza nel settore a pagamento diretto</h2>
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">Richter &amp; Lopez ha integrato il settore a pagamento diretto nel proprio studio fin dall'inizio. Date le crescenti richieste burocratiche in sanità, volevano operare il più indipendentemente possibile dall'assicurazione sanitaria obbligatoria.</p>
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">"O le persone danno abbastanza valore alla propria salute da spendere denaro – allora offriamo loro soluzioni individuali e ci prendiamo il tempo necessario – oppure no."</p>
+            </Card>
+            <p class="text-base md:text-lg">Dal 2009 offrono anche un nuovo approccio alla terapia del dolore basato sul metodo Liebscher e Bracht. Per espandere ulteriormente l'offerta a pagamento diretto, Richter &amp; Lopez ha scelto il concept di formazione digitale di Pixformance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Pixformance come complemento ideale nel settore a pagamento diretto</h2>
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">"Nella terapia del dolore, i pazienti diventano sempre più giovani. Pixformance si inserisce bene perché si rivolge sia agli anziani che ai giovani dai 30 anni in su. Per questi pazienti non si tratta di dolori a breve termine, di un corpo da spiaggia o di benessere in sé, ma di persone che cercano un allenamento a lungo termine e salutare."</p>
+            </Card>
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">"La cosa fantastica è che posso progettare il nuovo allenamento in modo completamente individuale per ciascuno dei nostri pazienti. Dagli atleti d'élite ai pazienti anziani – c'è qualcosa di adatto per tutti."</p>
+            </Card>
+            <p class="text-base md:text-lg">Quattro postazioni Pixformance sono state integrate in una spaziosa area di allenamento – adatta sia per sessioni individuali che per corsi di gruppo.</p>
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">"Abbiamo ricevuto molti feedback positivi sull'allenamento finora. Anche quando gli atleti sono inizialmente un po' esitanti, vengono convinti dopo che ho messo insieme il programma di allenamento giusto per loro."</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Allenamento con supervisione virtuale e resilienza alla pandemia</h2>
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">La possibilità di allenamento con supervisione virtuale – anche senza supervisione 1-a-1 costante – è di grande importanza per i terapisti dello studio.</p>
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">"Se un terapista è assente, puoi offrire questo come backup e compensare facilmente con Pixformance in modo che la sessione terapeutica non debba essere annullata."</p>
+            </Card>
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">"Durante la pandemia, l'offerta tramite l'app web Pixformance era anche molto professionale. Per le persone a cui abbiamo mostrato che potevano continuare il loro allenamento a casa se necessario, la risposta è stata molto positiva."</p>
+            </Card>
+          </div>
+        </div>
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Trasformare i pazienti in clienti a lungo termine</h2>
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">Con la terapia del dolore e il concept di formazione Pixformance integrato nel 2020, Richter &amp; Lopez ha costruito un settore a pagamento diretto completo e ha rafforzato in modo sostenibile la propria posizione nel mercato sanitario secondario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Desideri una consulenza individuale?</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 py-4 md:py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Il tuo contatto</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+            <Button size="lg" href="/it/prova-gratuita/" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+              Contattaci <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a href="/it/storie-di-successo/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+          <Icon name="arrow-left" size="sm" /> Torna alla panoramica
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  @keyframes hero-entry { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.95); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

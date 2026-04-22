@@ -1,0 +1,94 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+---
+
+<ITBaseLayout
+  title="Lavori nell'Innovazione Fitness – Pixformance Sports"
+  description="Entra a far parte di Pixformance — pionieri dell'innovazione nel fitness funzionale. Siamo sempre alla ricerca di persone creative e altamente motivate con idee interessanti e stimolanti."
+  hreflangDe="https://www.pixformance.com/jobs/"
+  hreflangEn="https://www.pixformance.com/en/jobs/"
+>
+  <ITHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </ITHeader>
+
+  <!-- Hero -->
+  <section class="py-16 md:py-32 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
+    <div class="container">
+      <div class="max-w-3xl space-y-6 mx-auto text-center md:text-left">
+        <span class="text-sm font-bold uppercase tracking-widest text-[#6BDBD1]">Lavori</span>
+        <!-- Desktop headline -->
+        <h1 class="hidden md:block font-display text-4xl md:text-6xl font-bold leading-tight">
+          Cronicamente curioso di innovazione nel fitness?<br />
+          <span class="text-[#6BDBD1]">Bene, anche noi.</span>
+        </h1>
+        <!-- Mobile headline -->
+        <h1 class="md:hidden font-display text-4xl font-bold leading-tight">
+          Cronicamente curioso di fitness funzionale digitale e allenamento?<br />
+          <span class="text-[#6BDBD1]">Bene, anche noi.</span>
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          In Pixformance la diversità non è solo qualcosa di cui parliamo, è chi siamo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto space-y-8">
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          Come pionieri dell'innovazione nel fitness funzionale, siamo sempre alla ricerca di persone creative e altamente motivate con idee interessanti e stimolanti, prospettive coraggiose e curiosità inarrestabile.
+        </p>
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          Colleghiamo le esperienze uniche di ogni dipendente per modellare la nostra visione comune del futuro. La nostra cultura aziendale ruota intorno allo sviluppo professionale e personale continuo di ogni individuo, mentre cerchiamo coraggiosamente di guidare il cambiamento in questo mondo moderno.
+        </p>
+
+        <div class="rounded-2xl bg-gray-50 border border-border p-8 space-y-4" data-scroll="fade-up">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#02308C]/10 flex items-center justify-center flex-shrink-0">
+              <Icon name="briefcase" size="sm" class="text-[#02308C]" />
+            </div>
+            <h2 class="font-display text-2xl font-bold text-left">Posizioni Aperte</h2>
+          </div>
+          <p class="font-bold text-lg">Non ci sono posizioni aperte al momento.</p>
+          <p class="text-foreground-muted">
+            Puoi comunque inviarci la tua candidatura spontanea a{' '}
+            <a href="mailto:jobs@pixformance.com" class="text-[#02308C] font-semibold hover:underline">
+              jobs@pixformance.com
+            </a>.
+          </p>
+        </div>
+
+        <div class="pt-4 flex justify-center md:justify-start" data-scroll="fade-up">
+          <Button href="/it/contatto/">
+            Contattaci
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

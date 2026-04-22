@@ -1,0 +1,275 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const stats = [
+  { value: '6.000+', label: 'Installazioni nel mondo', icon: 'map-pin' },
+  { value: '2,5M+', label: 'Utenti', icon: 'users' },
+  { value: '2012', label: 'Anno di fondazione', icon: 'calendar' },
+];
+
+const team = [
+  {
+    name: 'Valerie Bures-Bönström',
+    role: 'CEO',
+    image: '/images/Valerie_Bönström_CEO_Pixformance.jpg',
+  },
+  {
+    name: 'Tobias Baader',
+    role: 'COO',
+    image: '/images/Tobias-Baader-Head-Of-Business-Development-Pixformance.jpg',
+  },
+  {
+    name: 'Davi Wazlawick',
+    role: 'Director of Growth',
+    image: '/images/Davi-Wazlawick-Pixformance-3.jpg',
+    imagePosition: 'center 88%',
+  },
+  {
+    name: 'Patricia Olear',
+    role: 'Senior Marketing Manager',
+    image: '/images/Patricia-Olear-Marketing-Manager-Pixformance.jpg.webp',
+  },
+  {
+    name: 'Laura Alves',
+    role: 'Senior Manager Service & Support',
+    image: '/images/Laura-Alves-Pixformance.jpg',
+  },
+  {
+    name: 'Sara Zender',
+    role: 'Finance Manager',
+    image: '/images/Sara-Zender-Finance-Manager-Pixformance.jpg',
+  },
+  {
+    name: 'Bita Mohammadi',
+    role: 'C++ Software Developer',
+    image: '/images/Bita-Mohammadi-Software-Developer-Pixformance.jpg',
+  },
+  {
+    name: 'Kateryna Misarenko',
+    role: 'Junior Marketing Manager',
+    image: '/images/Kateryna-Misarenko-Junior-Marketing-Manager-Pixformance.jpg.webp',
+  },
+];
+---
+
+<ITBaseLayout
+  title="Chi Siamo – Pixformance Sports GmbH"
+  description="Pixformance dal 2012: pionieri nell'analisi del movimento digitale. 6.000+ installazioni nel mondo, 2,5M+ utenti. CEO Valerie Bures-Bönström."
+  hreflangDe="https://www.pixformance.com/ueber-uns/"
+  hreflangEn="https://www.pixformance.com/en/about-us/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Chi siamo – Pixformance Sports GmbH",
+    "description": "Pixformance è stata fondata nel 2012 ed è pioniera nell'analisi del movimento digitale. Oltre 6.000 installazioni nel mondo, 2,5M+ utenti.",
+    "url": "https://www.pixformance.com/it/chi-siamo/",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "foundingDate": "2012",
+      "description": "Pioniere nell'analisi del movimento digitale e nel feedback in tempo reale per la fisioterapia, le cliniche, il fitness e il benessere aziendale."
+    }
+  }}
+>
+  <ITHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </ITHeader>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#6BDBD1]/10 to-[#86C9BC]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+            <Icon name="users" size="sm" />
+            Chi siamo
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Know-how consolidato sul mercato unito a
+          <span class="text-[#02308C]"> dinamiche da startup</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          Forza innovativa inarrestabile – e già dal 2012
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
+          {stats.map((stat, index) => (
+            <div class="group space-y-2 p-6 rounded-2xl bg-white hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate shadow-lg" style={`animation-delay: ${0.4 + index * 0.1}s;`}>
+              <div class="w-12 h-12 mx-auto rounded-xl bg-[#02308C] flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Icon name={stat.icon} size="md" class="text-white" />
+              </div>
+              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
+                {stat.value}
+              </div>
+              <div class="text-sm text-foreground-muted">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-8">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="building" size="sm" />
+            La Nostra Azienda
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+            Pionieri nell'analisi del movimento digitale
+          </h2>
+        </div>
+
+        <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+          <p>
+            <strong>Pixformance Sports GmbH è ancora al 100% un'azienda a conduzione familiare, caratterizzata da processi decisionali rapidi, alta qualità del prodotto e innovazione incessante.</strong>
+          </p>
+
+          <p>
+            La nostra fondatrice e CEO è Valerie Bures-Bönström. Madre di tre figli e informatica, è da anni una delle imprenditrici di maggior successo in Germania. Già nel 2021 è stata nominata tra le 50 donne più influenti nella scena tech tedesca da Handelsblatt. Nel 2012 ha lanciato la Pixformance Station, il primo dispositivo digitale per il functional training con analisi del movimento. <strong>Oggi la nostra stazione di allenamento digitale è già in uso con successo in oltre 6.000 strutture fitness, riabilitazione e salute e conta oltre 2,5 milioni di utenti nel mondo.</strong>
+          </p>
+
+          <p>
+            Insieme a Stefanie Graf, Valerie è anche co-fondatrice del franchising Mrs.Sporty e fondatrice della startup dietro il marchio VAHA, una soluzione fitness interattiva per la casa che ha già ricevuto un investimento a doppia cifra milionaria. Pixformance unisce così una consolidata esperienza di mercato con l'agilità vissuta da startup, distinguendosi per una tenace spinta all'innovazione, un team disposto a rischiare, processi snelli e un servizio clienti davvero personale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="users" size="sm" />
+          Il Nostro Team
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          IL NOSTRO TEAM
+        </h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto mt-4">
+          Il nostro successo si basa su anni di esperienza e sulla nostra capacità innovativa. Contiamo su un consiglio di amministrazione coraggioso, appassionato e visionario, composto da sviluppatori, designer, consulenti, esperti di marketing e di servizi finanziari.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.map((member, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-80 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 group-hover:from-[#6BDBD1]/80 transition-all duration-500"></div>
+              <img
+                src={member.image}
+                alt={member.name}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                style={member.imagePosition ? `object-position: ${member.imagePosition}` : undefined}
+                loading="lazy"
+              />
+
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <h3 class="font-bold text-xl text-white mb-1 group-hover:translate-x-2 transition-transform duration-300">
+                  {member.name}
+                </h3>
+                <p class="text-white/90 text-sm font-semibold">
+                  {member.role}
+                </p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Diventa parte della nostra storia di successo
+        </h2>
+
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Contattaci per una consulenza senza impegno e scopri come Pixformance può rivoluzionare la tua attività.
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button
+            size="lg"
+            href="/it/prova-gratuita/"
+            class="bg-black text-white hover:bg-black/80"
+          >
+            Richiedi Prova
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            href="/it/prodotti/"
+            class="border-2 border-black text-black hover:bg-black hover:text-white"
+          >
+            Il Nostro Concetto
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

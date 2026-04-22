@@ -1,0 +1,344 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const physiotherapyStories = [
+  {
+    id: 'heike-schaible',
+    category: 'Costruire con successo un\'area a pagamento diretto',
+    title: 'Passo dopo passo: costruire con successo un\'area a pagamento diretto',
+    person: 'Heike Schaible',
+    location: 'Studio di Fisioterapia "Raum für Gesundheit", Stoccarda, Germania',
+    image: '/images/erfolgsgeschichten/heikeschaible.600x400.jpg',
+  },
+  {
+    id: 'axel-richter',
+    category: 'Opportunità nel mercato sanitario secondario',
+    title: 'Il settore a pagamento diretto come pilastro sostenibile',
+    person: 'Axel-André Richter',
+    location: 'Studio Sanitario Richter & Lopez, Mönchengladbach, Germania',
+    image: '/images/erfolgsgeschichten/gesundheitspraxis-richter-und-lopez.jpg',
+  },
+  {
+    id: 'swetlana-zimmermann',
+    category: 'Assistere più pazienti con la terapia digitale',
+    title: 'Assistere più pazienti contemporaneamente con la terapia del movimento digitale',
+    person: 'Swetlana Zimmermann',
+    location: 'Schlossphysio, Winterthur, Svizzera',
+    image: '/images/erfolgsgeschichten/Swetlana-Zimmermann-Schlossphysio.png',
+  },
+  {
+    id: 'volker-sutor',
+    category: 'Fidelizzazione dei pazienti con la formazione digitale',
+    title: 'Fidelizzazione dei pazienti in fisioterapia con la formazione funzionale digitale',
+    person: 'Volker Sutor',
+    location: 'Gesundheitsrondell (Centri di Fisioterapia e Riabilitazione), Germania',
+    image: '/images/erfolgsgeschichten/Volker-Sutor-Portrait.png',
+  },
+];
+
+const clinicStories = [
+  {
+    id: 'gabriele-buchstein',
+    category: 'Terapia digitale per la SM',
+    title: 'Pazienti più motivati grazie alla terapia digitale per la SM',
+    person: 'Gabriele Buchstein',
+    location: 'Clinica Sauerland Hachen – Clinica Specialistica Neurologica per la SM, Germania',
+    image: '/images/erfolgsgeschichten/Pixformance-Sauerland-Klinik-Hachen-Telerehabilitation-Portrait-Gabriele-Buchstein.jpg',
+  },
+  {
+    id: 'christoph-schneider',
+    category: 'Attivazione dei pazienti tramite dispositivi terapeutici digitali',
+    title: 'Tornare in forma con dispositivi terapeutici intelligenti',
+    person: 'Christoph Schneider (Responsabile Terapia)',
+    location: 'Clinica Riabilitativa Niederrhein, Korschenbroich, Germania',
+    image: '/images/erfolgsgeschichten/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich.jpg',
+  },
+  {
+    id: 'christoph-oratsch',
+    category: 'Miglioramento della qualità tramite terapia di training digitale',
+    title: 'Miglioramento della qualità tramite terapia di training digitale',
+    person: 'Christoph Oratsch',
+    location: 'Ospedale Infortunistico AUVA, Klagenfurt, Austria',
+    image: '/images/erfolgsgeschichten/christoph-oratsch-600x400-1.jpg',
+  },
+  {
+    id: 'gunter-hoelig',
+    category: 'Sistemi intelligenti di sensori e robotica',
+    title: 'Supporto in ogni fase della riabilitazione',
+    person: 'Gunter Hölig',
+    location: 'Clinica Riabilitativa Medical Park, Bad Rodach, Germania',
+    image: '/images/erfolgsgeschichten/Gunter-Hoelig.jpg',
+  },
+];
+
+const fitnessStories = [
+  {
+    id: 'kim-essink',
+    category: 'Investimento in palestra con ROI',
+    title: 'Un investimento in palestra che ripaga',
+    person: 'Kim Essink',
+    location: 'Essink Sportcentrum, Eindhoven, Paesi Bassi',
+    image: '/images/erfolgsgeschichten/kim-essink-city-gym-1.jpg',
+  },
+  {
+    id: 'carina-dworak',
+    category: 'Evoluzione di una catena di fitness',
+    title: 'L\'evoluzione di una catena di fitness grazie alla formazione funzionale digitale',
+    person: 'Carina Dworak',
+    location: 'Mrs.Sporty Studio, Vienna, Austria',
+    image: '/images/erfolgsgeschichten/carina-dworak-mrssporty-wien.jpg',
+  },
+  {
+    id: 'helga-senioren',
+    category: 'Allenamento della forza per anziani',
+    title: 'Più movimento in sedia a rotelle grazie al supporto digitale',
+    person: 'Helga (84 anni)',
+    location: 'Allenamento personalizzato per tutte le età',
+    image: '/images/erfolgsgeschichten/helga.jpg',
+  },
+];
+---
+
+<ITBaseLayout
+  title="Storie di Successo – I clienti raccontano Pixformance"
+  description="Testimonianze reali di fisioterapisti, responsabili clinici e proprietari di palestre. Oltre 1.100 strutture nel mondo. Scopri come Pixformance li aiuta."
+  hreflangEn="https://www.pixformance.com/en/success-stories/"
+>
+  <ITHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </ITHeader>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Pixformance
+          <span class="text-[#02308C]"> Storie di Successo</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Physical Therapy Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Fisioterapia</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {physiotherapyStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#02308C]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="heart" size="sm" />
+                  Fisioterapia
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground text-left">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted text-left">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/it/storie-di-successo/${story.id}/`} class="w-full group-hover:bg-[#02308C] transition-colors">
+                Leggi di più
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinic Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Clinica</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {clinicStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#02308C]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="activity" size="sm" />
+                  Clinica
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground text-left">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted text-left">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/it/storie-di-successo/${story.id}/`} class="w-full group-hover:bg-[#02308C] transition-colors">
+                Leggi di più
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitness Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="flex items-center justify-center mb-8">
+          <span class="font-display text-2xl font-black uppercase tracking-[0.2em] text-[#02308C]">Fitness</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {fitnessStories.map((story, index) => (
+          <Card
+            variant="elevated"
+            padding="none"
+            class="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 group bg-white"
+            data-scroll="scale"
+            data-delay={Math.min(index + 1, 6)}
+          >
+            <div class="relative h-64 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 group-hover:from-[#6BDBD1]/90 transition-all duration-500" />
+              <img src={story.image} alt={story.person} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-bold text-[#02308C]">
+                  <Icon name="zap" size="sm" />
+                  Fitness
+                </span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p class="text-white/90 text-xs font-semibold mb-2 uppercase tracking-wide">{story.category}</p>
+                <h3 class="font-bold text-lg text-white mb-2 line-clamp-2 group-hover:translate-x-2 transition-transform duration-300">{story.title}</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <Icon name="user" size="sm" class="text-[#6BDBD1] mt-1 flex-shrink-0" />
+                  <p class="text-sm font-semibold text-foreground text-left">{story.person}</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <Icon name="map-pin" size="sm" class="text-[#6BDBD1] mt-1 flex-shrink-0" />
+                  <p class="text-sm text-foreground-muted text-left">{story.location}</p>
+                </div>
+              </div>
+              <Button variant="primary" size="sm" href={`/it/storie-di-successo/${story.id}/`} class="w-full group-hover:bg-[#6BDBD1] group-hover:text-[#02308C] transition-colors">
+                Leggi di più
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          Scrivi la tua storia di successo
+        </h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Unisciti alla nostra crescente comunità di oltre 1.100 strutture di successo nel mondo. Contattaci per una consulenza senza impegno.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" href="/it/prova-gratuita/" class="bg-black text-white hover:bg-black/80">
+            Richiedi una prova gratuita
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+          <Button size="lg" variant="outline" href="/it/prodotti/" class="border-2 border-black text-black hover:bg-black hover:text-white">
+            Scopri il nostro concetto
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

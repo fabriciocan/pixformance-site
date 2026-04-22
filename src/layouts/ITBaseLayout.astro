@@ -1,0 +1,156 @@
+---
+import '@/styles/global.css';
+import ChatWidget from '@/components/ChatWidget.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  hreflangDe?: string;
+  hreflangEn?: string;
+}
+
+const {
+  title = 'Dispositivi Fitness Digitali – Pixformance',
+  description = 'Pixformance: Analisi del movimento digitale per la fisioterapia, le cliniche, il fitness e il benessere aziendale. 2,5M+ utenti/anno. 700+ esercizi. Correzione in tempo reale.',
+  image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
+  canonical,
+  type = 'website',
+  noindex = false,
+  jsonLd,
+  hreflangDe,
+  hreflangEn,
+} = Astro.props;
+
+const canonicalURL = canonical ?? Astro.url.href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Pixformance Sports GmbH',
+  url: 'https://www.pixformance.com/it/',
+  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  foundingDate: '2012',
+  description:
+    'Pioniere nell\'analisi del movimento digitale e del feedback in tempo reale per la fisioterapia, le cliniche, il fitness e il benessere aziendale.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    telephone: '+49-30-39805610',
+    email: 'info@pixformance.com',
+    availableLanguage: ['Italian', 'German', 'English'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Großbeerenstraße 2',
+    addressLocality: 'Unterhaching',
+    postalCode: '82008',
+    addressCountry: 'DE',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/pixformance',
+    'https://www.youtube.com/@pixformance',
+    'https://www.facebook.com/pixformancesports',
+    'https://www.instagram.com/pixformance/',
+  ],
+  areaServed: ['IT', 'CH', 'AT'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Pixformance',
+  url: 'https://www.pixformance.com/it/',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://www.pixformance.com/it/?s={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    }
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="it" href={canonicalURL} />
+    {hreflangDe && <link rel="alternate" hreflang="de" href={hreflangDe} />}
+    {hreflangEn && <link rel="alternate" hreflang="en" href={hreflangEn} />}
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Pixformance" />
+    <meta property="og:locale" content="it_IT" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/png" href="/images/pix-favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#02308C" />
+
+    <!-- Sitewide JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Sitewide JSON-LD: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <!-- Per-page JSON-LD -->
+    {jsonLd && (
+      Array.isArray(jsonLd)
+        ? jsonLd.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <!-- Per-page head injections -->
+    <slot name="head" />
+
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-55PTFL9');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55PTFL9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <slot name="header" />
+    <main><slot /></main>
+    <slot name="footer" />
+    <ChatWidget />
+    <script is:inline src="/js/form-protection.js"></script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+---
+/**
+ * IT Footer Component - Pixformance
+ */
+import { cn } from '@/lib/cn';
+import { footerVariants } from './footer.variants';
+
+interface Props {
+  variant?: 'default' | 'minimal';
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+
+const footerClasses = cn(footerVariants({ variant }), className);
+
+const solutionsLinks = [
+  { label: 'Fisioterapia', href: '/it/fisioterapia/' },
+  { label: 'Fitness', href: '/it/fitness/' },
+  { label: 'Fitness Aziendale', href: '/it/fitness-aziendale/' },
+];
+
+const companyLinks = [
+  { label: 'Chi siamo', href: '/it/chi-siamo/' },
+  { label: 'Storie di successo', href: '/it/storie-di-successo/' },
+  { label: 'FAQ', href: '/it/faq/' },
+  { label: 'Lavori', href: '/it/lavori/' },
+  { label: 'Contatto', href: '/it/contatto/' },
+  { label: 'Note legali', href: '/en/imprint/' },
+  { label: 'Informativa sulla privacy', href: '/en/privacy-policy/' },
+];
+---
+
+<footer class={footerClasses}>
+  <div class="container">
+    {/* Mobile logo (hidden on desktop) */}
+    <div class="text-center mb-8 md:hidden">
+      <img
+        src="/images/logo/Pixformance-Logo_black_EN.svg"
+        alt="Pixformance"
+        class="h-[42px] mb-3 mx-auto"
+        style="width: auto;"
+        loading="lazy"
+      />
+      <p class="text-sm text-foreground-muted">Dispositivi Fitness Digitali & Attrezzature Terapeutiche</p>
+    </div>
+
+    {/* Mobile: 2-col link grid (hidden on desktop) */}
+    <div class="grid grid-cols-2 gap-6 mb-8 md:hidden text-center">
+      <div>
+        <h4 class="font-semibold mb-4">Soluzioni</h4>
+        <ul class="space-y-2">
+          {solutionsLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Azienda</h4>
+        <ul class="space-y-2">
+          {companyLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* Desktop: 3-column layout (hidden on mobile) */}
+    <div class="hidden md:grid md:grid-cols-3 gap-12 mb-8">
+      {/* Logo + tagline */}
+      <div>
+        <img
+          src="/images/logo/Pixformance-Logo_black_EN.svg"
+          alt="Pixformance"
+          class="h-14 mb-3"
+          style="width: auto;"
+          loading="lazy"
+        />
+        <p class="text-sm text-foreground-muted">Dispositivi Fitness Digitali & Attrezzature Terapeutiche</p>
+      </div>
+
+      {/* Solutions */}
+      <div>
+        <h4 class="font-semibold mb-4">Soluzioni</h4>
+        <ul class="space-y-2">
+          {solutionsLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Company */}
+      <div>
+        <h4 class="font-semibold mb-4">Azienda</h4>
+        <ul class="space-y-2">
+          {companyLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* Bottom Bar */}
+    <div class="border-t border-border pt-8 text-center">
+      <p class="text-sm text-foreground-muted">
+        © {currentYear} Pixformance Sports GmbH. Tutti i diritti riservati.
+      </p>
+    </div>
+  </div>
+</footer>

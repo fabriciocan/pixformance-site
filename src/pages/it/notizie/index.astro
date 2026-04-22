@@ -1,0 +1,309 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const articles = [
+  {
+    num: '01',
+    year: '2021',
+    title: 'Forza contro il cancro infantile',
+    text: 'Pixformance è partner del progetto di ricerca europeo FORTEe. Il progetto con il motto "Get strong to fight childhood cancer" mira a indagare l\'efficacia della terapia dell\'esercizio e delle tecnologie di salute digitale durante il trattamento del cancro in bambini e adolescenti.',
+    image: '/images/en/Pixformance-FORTEe-Stark-gegen-Kinderkrebs-Strong-against-childhood-cancer-Projektpartner-Digitalisierung-Telemedizin-Teletherapie-Ehealth.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2021/04/PM-07042021-Pixformance-FORTEe-Strong-against-childhood-cancer-EN.pdf',
+    cta: 'al comunicato stampa',
+  },
+  {
+    num: '02',
+    year: '2020',
+    title: 'Shape UP Business',
+    text: 'La rivista per gli operatori di palestre e personal trainer tratta il tema del motivo per cui il functional training in particolare beneficia del supporto digitale. In un\'intervista con Valerie Bures-Bönström, vengono evidenziati anche i vantaggi per i trainer e gli sportivi.',
+    image: '/images/en/Shape-UP-Business-Pixformance-Functional-goes-digital-Valerie-Bures-Boenstroem-web.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2020/03/ShapeUP_Business_2020_Pixformance.pdf',
+    cta: 'all\'articolo',
+  },
+  {
+    num: '03',
+    year: '2020',
+    title: 'Zeitschrift für Physiotherapeuten',
+    text: 'La rivista per fisioterapisti mostra i vantaggi dell\'uso del Concetto Pixformance in fisioterapia. Inoltre, la nuova Stazione Pixformance 2.0 viene presentata nella sezione "Prodotti brandnuovi".',
+    image: '/images/en/Pixformance-Zeitschrift-fuer-Physiotherapeuten-PT-Brandneue-Produkte-Effektive-Entlastung-web.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2020/03/pt3_2020_Brandneue-Produkte_Pixformance.pdf',
+    cta: 'all\'articolo',
+  },
+  {
+    num: '04',
+    year: '2020',
+    title: 'FITNESS MANAGEMENT',
+    text: 'Nuove attrezzature fitness per la produzione dell\'attuale stagione di Big Brother: Pixformance Sports GmbH da Berlino ha posizionato un dispositivo di allenamento funzionale digitale nella sala fitness della futuristica Glass house.',
+    image: '/images/en/Pixformance-Ausstatter-Big-Brother-SAT1-Fitnessspiegel-Reality-TV-Fitness-Management-web.jpg',
+    link: 'https://www.fitnessmanagement.de/events/big-brother-fitnessstudio/',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '05',
+    year: '2019',
+    title: 'Fitness & Gesundheit',
+    text: 'L\'esperto di fitness e capo dell\'ufficio dell\'Associazione industriale tedesca, Prof. Dr. Niels Nagel, ha parlato con la nostra CEO Valerie Bures-Bönström delle opportunità del supporto digitale in tempo reale nel settore salute e fitness. F&G, numero 07/2019.',
+    image: '/images/en/Veröffentlichung-Fitness-und-Gesundheit-Dez-2019.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2020/01/Fitness_und_Gesundheit_Ausgabe_7_19_Pixformance_DIFG.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '06',
+    year: '2018',
+    title: 'Bodylife',
+    text: 'Pixformance ha presentato al FIBO 2018 con la Pixformance Box il loro nuovo concetto in design industriale minimalista e di alta qualità, con cui combinano ambiente, stile di vita e fitness. Il nuovo concetto è una risposta alle crescenti esigenze degli appassionati di fitness, che attribuiscono sempre più importanza a una buona assistenza.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/07/bodylife.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '07',
+    year: '2018',
+    title: 'Fitness News',
+    text: 'La rivista fitness internazionale riporta di Pixformance Sports GmbH e dell\'allenamento interattivo e digitale con la Stazione Pixformance.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/07/Fitnessnews.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '08',
+    year: '2018',
+    title: 'Fitness Management International',
+    text: 'In un\'intervista con uno dei principali editori specializzati nel settore fitness e salute, la Direttrice Generale Valerie Bures-Bönström parla del concetto di successo di Pixformance.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/10/2018_fMi_138_0418_erfolgskonzepte2.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '09',
+    year: '2017/2018',
+    title: 'Rapporto di qualità Medical Park',
+    text: 'Nel rapporto di qualità della clinica riabilitativa, Pixformance viene presentata nell\'articolo "Terapia 4.0: Sempre un passo avanti" come soluzione innovativa per rendere le fasi di riabilitazione ancora più efficaci.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-Partner-Medical-Park-quality-report.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '10',
+    year: '2015',
+    title: 'Zeitschrift für Physiotherapeuten',
+    text: 'La rivista per fisioterapisti presenta l\'allenamento con feedback funzionale interattivo alle Stazioni Pixformance.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/07/Sutor.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '11',
+    year: '2015',
+    title: 'MBG Berlin Brandenburg',
+    text: 'Ancora più semplice e più efficace: allenamento a cinque stelle con lo Smart Trainer di Pixformance. Un dispositivo di allenamento digitale dall\'aspetto di uno smartphone sovradimensionato.',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/10/2015_MBG-Newsletter.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '12',
+    year: '2015',
+    title: 'Berliner Zeitung',
+    text: 'La rivista di Berlino presenta il dispositivo di allenamento digitale: La Stazione Pixformance come Fitphone!',
+    image: null,
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/10/2015_Berliner-Zeitung.pdf',
+    cta: 'All\'articolo',
+  },
+  {
+    num: '13',
+    year: '2015',
+    title: 'News & Know How',
+    text: 'È un mondo sempre più digitale — in particolare per quanto riguarda il fitness: Pixformance fornisce coaching fitness digitale.',
+    image: '/images/en/Pixformance-Newsroom-know-how.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2019/02/2015_Newsandknowhow_EN.pdf',
+    cta: 'all\'articolo',
+  },
+  {
+    num: '14',
+    year: '2014',
+    title: 'Functional fitness News',
+    text: 'Proxomed ha presentato diverse innovazioni al MEDICA 2014. Tra di esse c\'era il dispositivo di allenamento digitale di Pixformance con feedback interattivo integrato.',
+    image: '/images/en/Pixformance-Newsroom-Proxomed.jpg',
+    link: 'https://www.pixformance.com/wp-content/uploads/2018/10/2014_-Fitness-News.pdf',
+    cta: 'all\'articolo',
+  },
+];
+---
+
+<ITBaseLayout
+  title="Notizie sul Functional Training e Fitness – Pixformance Sports GmbH"
+  description="Le ultime notizie e rassegna stampa su Pixformance — functional training, salute digitale, fisioterapia e innovazione fitness."
+  hreflangDe="https://www.pixformance.com/presse/"
+  hreflangEn="https://www.pixformance.com/en/functional-training-and-fitness-news/"
+>
+  <ITHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </ITHeader>
+
+  <!-- Hero -->
+  <section class="py-16 md:py-20 bg-gradient-to-br from-[#02308C] to-[#6BDBD1] text-white">
+    <div class="container">
+      <div class="max-w-3xl space-y-4">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-sm font-bold">
+          <Icon name="newspaper" size="sm" />
+          Notizie & Stampa
+        </span>
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+          Notizie
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Notizie sul Functional Training e Fitness da Pixformance
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Download -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+        <div data-scroll="slide-left">
+          <img
+            src="https://www.pixformance.com/wp-content/uploads/2020/03/Pressemappe-EN-Pixformance-web.jpg"
+            alt="Kit Stampa Pixformance"
+            class="rounded-2xl shadow-xl w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="space-y-6" data-scroll="slide-right">
+          <h2 class="font-display text-3xl md:text-4xl font-bold uppercase">DOWNLOAD STAMPA</h2>
+          <p class="text-foreground-muted leading-relaxed">
+            Qui trovi il nostro kit stampa, i nostri loghi e altre immagini per uso editoriale libero da scaricare gratuitamente.
+          </p>
+          <p class="text-foreground-muted leading-relaxed">
+            Per ulteriori informazioni, non esitare a contattarci.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="https://www.pixformance.com/wp-content/uploads/2020/03/Pixformance-Presskit-EN-Functional-Training-Fitness-Physio-Clinic-Corporate-Fitness-1.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-5 py-3 bg-[#02308C] text-white font-semibold rounded-lg hover:bg-[#02308C]/90 transition-colors text-sm"
+            >
+              <Icon name="download" size="sm" />
+              Kit stampa (PDF)
+            </a>
+            <a
+              href="https://www.pixformance.com/wp-content/uploads/2020/03/Pixformance-Logos.zip"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-5 py-3 border border-[#02308C] text-[#02308C] font-semibold rounded-lg hover:bg-[#02308C]/5 transition-colors text-sm"
+            >
+              <Icon name="download" size="sm" />
+              Loghi (ZIP)
+            </a>
+            <a
+              href="https://www.pixformance.com/wp-content/uploads/2020/03/Pixformance-Pictures-Copyright-to-use-for-all-images-Pixformance-Sports-GmbH.zip"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-5 py-3 border border-[#02308C] text-[#02308C] font-semibold rounded-lg hover:bg-[#02308C]/5 transition-colors text-sm"
+            >
+              <Icon name="download" size="sm" />
+              Immagini (ZIP)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Articles Timeline -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="space-y-16">
+        {articles.map((article, index) => {
+          const isEven = index % 2 === 1;
+          return (
+            <article class="grid lg:grid-cols-2 gap-12 items-center" data-scroll="fade-up">
+              <div class={`space-y-4 ${isEven ? 'lg:order-2' : ''}`}>
+                <div class="flex items-center gap-4">
+                  <span class="text-6xl font-bold text-[#02308C]/10">{article.num}</span>
+                  <span class="text-sm font-bold text-foreground-muted uppercase tracking-wide">{article.year}</span>
+                </div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold -mt-2">{article.title}</h2>
+                <p class="text-foreground-muted leading-relaxed">{article.text}</p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:gap-3 transition-all"
+                >
+                  {article.cta}
+                  <Icon name="external-link" size="sm" />
+                </a>
+              </div>
+
+              <div class={isEven ? 'lg:order-1' : ''}>
+                {article.image ? (
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    class="rounded-2xl shadow-lg w-full h-auto"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="rounded-2xl bg-gradient-to-br from-[#02308C]/5 to-[#6BDBD1]/10 aspect-[4/3] flex items-center justify-center">
+                    <div class="text-center space-y-3 p-8">
+                      <Icon name="newspaper" size="lg" class="text-[#02308C]/30 mx-auto" />
+                      <p class="text-sm text-foreground-muted font-medium">{article.title}</p>
+                      <p class="text-xs text-foreground-muted">{article.year}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-[#6BDBD1] to-[#02308C]">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center space-y-8" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
+          Lasciati consigliare da noi
+        </h2>
+        <p class="text-xl text-white/90">
+          Per ulteriori informazioni, non esitare a contattarci.
+        </p>
+        <Button size="lg" href="/it/contatto/" class="bg-white text-[#02308C] hover:bg-white/90">
+          Scrivici
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

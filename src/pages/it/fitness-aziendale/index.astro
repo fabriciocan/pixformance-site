@@ -1,0 +1,424 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const benefits = [
+  { icon: 'percent', title: 'Detraibile fiscalmente', text: 'Il fitness aziendale è detraibile fiscalmente. Un\'azienda può investire fino a 600 Euro per dipendente all\'anno deducibili dalla dichiarazione dei redditi.' },
+  { icon: 'users', title: 'Fidelizzazione dei dipendenti', text: 'In tempi di carenza di personale qualificato e alto tasso di turnover in molti settori, una struttura fitness moderna può favorire la fidelizzazione a lungo termine dei dipendenti.' },
+  { icon: 'star', title: 'Employer branding', text: 'Il concetto sportivo innovativo Pixformance non solo ha un effetto positivo sui dipendenti, ma aumenta anche l\'attrattività dell\'azienda. Questo rende la tua impresa più appealing per i potenziali dipendenti.' },
+  { icon: 'trending-down', title: 'Meno assenze e costi ridotti', text: 'I dipendenti che praticano attività sportiva si assentano in media da 2 a 6 giorni lavorativi in meno all\'anno. Le aziende possono anche ridurre i costi sanitari con il functional training offerto da Pixformance.' },
+  { icon: 'clock', title: 'Maggiore flessibilità e allenamento', text: 'Il concetto di functional training computerizzato Pixformance consente di assistere più dipendenti contemporaneamente e senza un trainer.' },
+  { icon: 'settings', title: 'Nessun costo amministrativo', text: 'Sulla Piattaforma Online, i dipendenti possono compilare autonomamente i propri piani di allenamento da un catalogo di oltre 700 esercizi funzionali.' },
+];
+
+const teamMembers = [
+  { name: 'Laura Alves', role: 'Vendite & Acquisti', image: '/images/en/Laura-Alves-Pixformance-1.png' },
+  { name: 'Rebecca Göhrt', role: 'Supporto Tecnico', image: '/images/en/Rebecca-Goehrt-Pixformance.png' },
+  { name: 'Patricia Olear', role: 'Supporto Marketing', image: '/images/en/Patricia-Olear-Pixformance.png' },
+];
+---
+
+<ITBaseLayout
+  title="Fitness Aziendale e Salute in Azienda – Pixformance Sports"
+  description="Pixformance è una soluzione innovativa per la gestione efficace del fitness aziendale e la promozione olistica della salute – con allenamento individuale per ogni dipendente."
+  hreflangDe="https://www.pixformance.com/firmen-fitness/"
+  hreflangEn="https://www.pixformance.com/en/corporate-fitness/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Fitness Aziendale e Salute in Azienda – Pixformance",
+    "description": "Soluzione innovativa per il fitness aziendale con feedback in tempo reale, 700+ esercizi funzionali, senza bisogno di un trainer.",
+    "url": "https://www.pixformance.com/it/fitness-aziendale/"
+  }}
+>
+  <ITHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </ITHeader>
+
+  <!-- Solutions Tabs -->
+  <div class="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <div class="container">
+      <div class="flex gap-0 overflow-x-auto">
+        <a href="/it/fisioterapia/" class="flex items-center gap-2 px-6 py-4 text-sm font-semibold border-b-2 border-transparent text-foreground-muted hover:text-foreground transition-colors whitespace-nowrap">
+          <Icon name="heart" size="sm" />
+          Fisioterapia
+        </a>
+        <a href="/it/fitness/" class="flex items-center gap-2 px-6 py-4 text-sm font-semibold border-b-2 border-transparent text-foreground-muted hover:text-foreground transition-colors whitespace-nowrap">
+          <Icon name="activity" size="sm" />
+          Fitness
+        </a>
+        <a href="/it/fitness-aziendale/" class="flex items-center gap-2 px-6 py-4 text-sm font-semibold border-b-2 border-[#02308C] text-[#02308C] whitespace-nowrap">
+          <Icon name="briefcase" size="sm" />
+          Fitness Aziendale
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-white overflow-hidden py-12 md:py-20">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-5">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+            <Icon name="briefcase" size="sm" />
+            Fitness Aziendale
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          Rendiamo il tuo team Più forte,
+          <span class="text-[#02308C]"> Migliore e Più efficiente</span>
+        </h1>
+
+        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          Gestione della salute aziendale che funziona davvero
+        </p>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          Pixformance è una soluzione innovativa per la gestione efficace del fitness aziendale e la promozione olistica della salute – con allenamento individuale per ogni dipendente.
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
+          <Button size="lg" href="/it/prova-gratuita/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Richiedi Prova
+            <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
+          </Button>
+          <Button size="lg" variant="outline" href="/it/contatto/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Contattaci
+            <Icon name="mail" size="sm" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Just Like a Trainer -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6" data-scroll="slide-left">
+          <h2 class="font-display text-4xl md:text-5xl font-bold">
+            Come un personal trainer
+          </h2>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Pixformance ha rivoluzionato il functional training. La Stazione Pixformance brevettata misura istantaneamente il corpo di ogni esercitante in base a 25 punti articolari, analizza con precisione l'esecuzione dei movimenti e fornisce feedback digitale in tempo reale. Queste funzionalità consentono un allenamento funzionale efficace e sicuro.
+          </p>
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Il vantaggio: la correzione in tempo reale consente ai tuoi dipendenti di completare l'allenamento supervisionato – senza la presenza di un trainer. Questo rende il functional training con Pixformance ancora più efficace.
+          </p>
+        </div>
+        <div data-scroll="slide-right">
+          <img
+            src="/images/en/Pixformance-225402_BGM_Pixformance_Funktionelles-Training_Milon_Virtuelles-Training_Sport-im-Buero-bearbeitet.jpg"
+            alt="Pixformance Fitness Aziendale — Functional Training in Ufficio"
+            class="rounded-2xl shadow-xl w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Virtual Personal Training -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div data-scroll="slide-left" class="order-2 lg:order-1">
+          <img
+            src="/images/en/Pixformance-Station-2D-Funktionelles-Training-Digital-voll-vernetzt-BGM_Firmenfitness-Personal-Trainer.png"
+            alt="Stazione Pixformance — Digital Functional Training per Fitness Aziendale"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="space-y-6 order-1 lg:order-2" data-scroll="slide-right">
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Personal training virtuale</h2>
+          <p class="text-foreground-muted leading-relaxed">
+            La Stazione Pixformance fornisce una guida continua sulla precisione, il ritmo e la correttezza delle routine di esercizio dei dipendenti. Questo offre la stessa sicurezza di un allenamento funzionale supervisionato da un personal trainer.
+          </p>
+          <div class="space-y-6">
+            {[
+              { title: 'Istruzioni semplici per gli esercizi', text: 'L\'esercitante si posiziona davanti alla stazione Pixformance e l\'esercizio viene dimostrato sullo schermo da un trainer.' },
+              { title: 'Analisi precisa del movimento', text: 'Durante l\'esercizio, una telecamera con sensore di profondità integrato scansiona 25 punti articolari dell\'esercitante in pochi secondi e analizza i suoi movimenti.' },
+              { title: 'Feedback in tempo reale', text: 'Il trainer virtuale fornisce feedback in tempo reale. Questo garantisce che gli esercizi vengano eseguiti correttamente e in sicurezza, come sotto la guida di un personal trainer.' },
+            ].map((feature, i) => (
+              <div class="flex gap-4">
+                <div class="shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center">
+                  <span class="text-white font-bold text-xs">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">{feature.title}</h3>
+                  <p class="text-sm text-foreground-muted">{feature.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 uppercase">IN LINEA CON I TUOI OBIETTIVI</h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          La maggior parte dei dipendenti vorrebbe che l'azienda mettesse a disposizione strutture sportive. Pixformance, come concetto di functional training per il fitness aziendale, offre molti vantaggi rispetto agli approcci convenzionali di salute aziendale.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all hover:-translate-y-1" data-scroll="fade-up" data-delay={Math.min(index+1,6)}>
+            <div class="w-10 h-10 rounded-xl bg-[#6BDBD1]/20 flex items-center justify-center mb-4 mx-auto md:mx-0">
+              <Icon name={benefit.icon} size="sm" class="text-[#02308C]" />
+            </div>
+            <h3 class="font-bold mb-2">{benefit.title}</h3>
+            <p class="text-sm text-foreground-muted leading-relaxed">{benefit.text}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule a Call -->
+  <section class="py-12 bg-[#02308C]">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <h2 class="font-display text-2xl font-bold text-white">Prenota una chiamata o facci una domanda</h2>
+        <Button href="/it/contatto/" class="bg-[#6BDBD1] text-[#02308C] hover:bg-[#6BDBD1]/90 shrink-0">
+          Scrivici
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Concepts -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">CONCETTI DI ALLENAMENTO</h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          Offriamo soluzioni alle aziende nelle varie fasi di sviluppo. Insieme a te, elaboriamo un concetto che rispecchia le tue esigenze ed è precisamente adattato alle tue necessità.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- 01 Allenamento Individuale -->
+        <div class="space-y-6" data-scroll="fade-up" data-delay="1">
+          <img
+            src="/images/en/Pixformance-Station-Einzeltraining-Digitales-Sportgeraet-voll-vernetzt-Personal-Trainer.jpg"
+            alt="Allenamento Individuale"
+            class="w-full h-48 object-cover rounded-2xl"
+            loading="lazy"
+          />
+          <h2 class="text-2xl font-bold">01 ALLENAMENTO INDIVIDUALE</h2>
+          <p class="text-foreground-muted">Con la Stazione Pixformance, i dipendenti possono fare allenamenti funzionali personalizzati con un trainer virtuale in qualsiasi momento.</p>
+
+          <div class="space-y-3">
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Concetti di Allenamento
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <p class="mb-2"><strong>PAUSA:</strong> La Stazione Pixformance viene installata facilmente negli uffici e dispone di un programma di allenamento preinstallato. Questo significa che è possibile allenarsi – senza un trainer – anche in ufficio durante le pause di lavoro.</p>
+                <p class="mb-2"><strong>INTENSIVO:</strong> L'esercitante riceve un allenamento funzionale personalizzato da un coach ed è competentemente istruito durante gli allenamenti. La stazione viene prenotata dall'esercitante tramite uno strumento di prenotazione per la finestra temporale scelta. Il trainer controlla i risultati dell'allenamento sulla piattaforma online a intervalli regolari (circa una volta al mese) e adatta l'allenamento in base allo sviluppo desiderato determinato attraverso colloqui personali.</p>
+                <p><strong>COMPLEMENTARE:</strong> La stazione Pixformance può essere utilizzata come aggiunta agli spazi fitness e alle attrezzature esistenti.</p>
+              </div>
+            </details>
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Dettagli
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <ul class="space-y-1">
+                  <li><strong>Spazio necessario:</strong> Circa 6 m²</li>
+                  <li><strong>Peso:</strong> 65 kg</li>
+                  <li><strong>Telecamera:</strong> 2D Full HD</li>
+                  <li><strong>Computer e schermo:</strong> Possono essere accesi e spenti separatamente</li>
+                  <li><strong>Touch-Screen:</strong> Display touch da 49 pollici, esercizi standard e programmi di allenamento selezionabili direttamente tramite touch</li>
+                  <li><strong>Distanza di allenamento:</strong> Circa 160–230 cm dal trainer, 100–150 cm su ciascun lato (a seconda dell'esercizio)</li>
+                  <li><strong>Condizioni quadro:</strong> Connessione elettrica e connessione Internet (Ethernet, Wifi Router)</li>
+                  <li><strong>Attrezzatura:</strong> Molti esercizi possono essere eseguiti con attrezzi (es. manubri leggeri, palle mediche, palla ginnica, fascia elastica, bastone, ecc.). L'allenamento senza attrezzi è anch'esso possibile</li>
+                  <li><strong>Funzionalità:</strong> Ogni esercizio o programma di allenamento è assegnato a un codice QR. Forniamo un numero illimitato di codici QR per utilizzare la stazione.</li>
+                </ul>
+              </div>
+            </details>
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Vantaggi
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <ul class="space-y-1 list-disc list-inside">
+                  <li>Un concetto innovativo</li>
+                  <li>Può essere integrato anche in uffici più piccoli</li>
+                  <li>La funzione di feedback consente ai dipendenti di completare l'allenamento supervisionato – anche senza un trainer che offra supervisione 1:1</li>
+                  <li>Ogni dipendente ha la possibilità di allenarsi in qualsiasi momento con un programma preprogrammato o personale presso una stazione autonoma</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- 02 Circuit Training -->
+        <div class="space-y-6" data-scroll="fade-up" data-delay="2">
+          <img
+            src="/images/en/Pixformance-Station-Zirkeltraining-Digitales-Sportgeraet-voll-vernetzt-Personal-Trainer.jpg"
+            alt="Circuit Training"
+            class="w-full h-48 object-cover rounded-2xl"
+            loading="lazy"
+          />
+          <h2 class="text-2xl font-bold">02 CIRCUIT TRAINING</h2>
+          <p class="text-foreground-muted">Con l'installazione di 3 Stazioni Pixformance, il circuit training è possibile per piccoli gruppi come in qualsiasi club sportivo e fitness.</p>
+
+          <div class="space-y-3">
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Concetti di Allenamento
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <p class="mb-2"><strong>INTENSIVO:</strong> L'esercitante riceve un allenamento Pixformance personalizzato da un trainer ed è introdotto all'allenamento con Pixformance. La stazione viene prenotata dal dipendente tramite uno strumento di prenotazione per la finestra temporale. Il trainer controlla i risultati dell'allenamento sulla piattaforma online a intervalli regolari (circa una volta al mese) e adatta l'allenamento allo sviluppo dell'allenamento in colloqui personali.</p>
+                <p><strong>ALLENAMENTO DI GRUPPO:</strong> L'allenamento di gruppo supervisionato con sei persone e un trainer è già possibile con tre stazioni Pixformance e tre stazioni intermedie (es. materassino, stepper).</p>
+              </div>
+            </details>
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Dettagli
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <ul class="space-y-1">
+                  <li><strong>Spazio necessario:</strong> Circa 6 m², varie opzioni di disposizione possibili a seconda della situazione della stanza (es. fila, cerchio, stella)</li>
+                  <li><strong>Peso:</strong> 65 kg</li>
+                  <li><strong>Telecamera:</strong> 2D Full HD</li>
+                  <li><strong>Computer e schermo:</strong> Possono essere accesi e spenti separatamente</li>
+                  <li><strong>Touch-Screen:</strong> Display touch da 49 pollici, esercizi standard e programmi di allenamento selezionabili direttamente tramite touch</li>
+                  <li><strong>Distanza di allenamento:</strong> Circa 160–230 cm dal trainer, 100–150 cm su ciascun lato (a seconda dell'esercizio)</li>
+                  <li><strong>Condizioni quadro:</strong> Connessione elettrica e connessione Internet (Ethernet, nessun WLAN)</li>
+                  <li><strong>Attrezzatura:</strong> Molti esercizi possono essere eseguiti con attrezzi (es. manubri leggeri, palle mediche, palla ginnica, fascia elastica, bastone, ecc.). L'allenamento senza attrezzi è anch'esso possibile</li>
+                  <li><strong>Funzionalità:</strong> Ogni esercizio o programma di allenamento è assegnato a un codice QR. Forniamo un numero illimitato di codici QR per utilizzare la stazione.</li>
+                </ul>
+              </div>
+            </details>
+            <details class="border border-border rounded-xl overflow-hidden">
+              <summary class="px-4 py-3 font-semibold cursor-pointer hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
+                Vantaggi
+                <span class="text-[#02308C]">+</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-foreground-muted leading-relaxed">
+                <ul class="space-y-1 list-disc list-inside">
+                  <li>Un concetto innovativo</li>
+                  <li>Team building nell'allenamento di gruppo</li>
+                  <li>Supporto individuale e piani di allenamento su misura, anche in gruppo</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Better Corporate Fitness -->
+  <section class="py-16 md:py-24 bg-[#6BDBD1]">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white uppercase mb-4">MIGLIORE FITNESS AZIENDALE E PRESTAZIONI GRAZIE AL FUNCTIONAL TRAINING</h2>
+        <p class="text-lg text-white/80 max-w-3xl mx-auto">
+          Grazie al feedback in tempo reale, i dipendenti possono migliorare la loro coordinazione, forza, condizione fisica e mobilità in tutto il corpo con un trainer virtuale. Questi benefici offerti da Pixformance promuovono la produttività e la concentrazione dei dipendenti.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          { icon: 'shield', title: 'Meno stress, più flessibilità', text: 'Troppi meeting e poco tempo? I dipendenti beneficiano della possibilità di allenarsi in sicurezza, con flessibilità e autonomia – anche senza supervisione.' },
+          { icon: 'smile', title: 'Spirito di squadra, motivazione e divertimento', text: 'Soprattutto l\'allenamento di gruppo aumenta la motivazione e lo spirito comunitario; promuove la salute, le prestazioni e la soddisfazione dei dipendenti.' },
+          { icon: 'bar-chart', title: 'Risultati comprensibili', text: 'Gli allenamenti su misura possono essere monitorati e adattati per ogni livello di fitness ed età in pochi semplici passaggi.' },
+        ].map((card, index) => (
+          <Card variant="elevated" padding="lg" class="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-colors" data-scroll="fade-up" data-delay={index+1}>
+            <Icon name={card.icon} size="md" class="text-white mb-4" />
+            <h3 class="font-bold text-lg mb-2">{card.title}</h3>
+            <p class="text-white/80 text-sm leading-relaxed">{card.text}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Il tuo avvio facile – il nostro servizio forte</h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+          Dietro ogni prodotto forte c'è un supporto clienti ancora più vitale. Il nostro team motivato dedica ogni giorno molto cuore e anima a una consulenza onesta e a un servizio di prima classe.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {[
+          { title: 'Consulenza e formazione personale', text: 'Ti consigliamo individualmente, dalla pianificazione degli spazi, attraverso l\'installazione delle attrezzature necessarie, fino al controllo ottimale dell\'allenamento. Con un corso introduttivo Pixformance presso la tua sede, riceverai anche istruzioni complete su come funziona la Stazione Pixformance e come utilizzare la piattaforma online.' },
+          { title: 'Supporto hardware e software', text: 'In caso di problemi hardware (telecamera, sensore, computer o schermo), ti forniremo i pezzi di ricambio. Anche in caso di problemi software il nostro team di supporto è sempre disponibile telefonicamente. Gli aggiornamenti automatici per la Stazione Pixformance, i nuovi allenamenti e gli aggiornamenti della piattaforma online fanno parte del nostro servizio e sono disponibili gratuitamente.' },
+          { title: 'Pacchetto marketing 360° completo', text: 'Come nostro cliente hai accesso al tuo pacchetto marketing per stampa e web, con download gratuiti e molto altro. Con i tuoi materiali di marketing personalizzati, puoi garantire un avvio facile per la tua azienda e far conoscere ai tuoi dipendenti il nuovo concetto di allenamento che stai offrendo. Chiedici!' },
+          { title: 'Finanziamento', text: 'Sia che si tratti di acquisto o leasing, puoi strutturare il finanziamento individualmente. Ti consigliamo e supportiamo fin dall\'inizio. Chiamaci senza impegno o scrivici e scopri come puoi iniziare con Pixformance già da 99€ al mese.' },
+          { title: 'FAQ | Domande Frequenti', text: 'Qui trovi le risposte alle domande più frequenti sul nostro concetto di allenamento.', link: '/it/faq/' },
+        ].map((service, index) => (
+          <Card variant="elevated" padding="lg" data-scroll="fade-up" data-delay={Math.min(index+1,5)}>
+            <h3 class="font-bold text-lg mb-3">{service.title}</h3>
+            <p class="text-sm text-foreground-muted">{service.text}</p>
+            {service.link && <a href={service.link} class="text-[#02308C] text-sm font-semibold hover:underline mt-2 inline-block">Scopri di più →</a>}
+          </Card>
+        ))}
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {teamMembers.map((member) => (
+          <div class="text-center" data-scroll="fade-up">
+            <img src={member.image} alt={member.name} class="w-32 h-32 rounded-full object-cover mx-auto mb-4 shadow-lg" loading="lazy" />
+            <h3 class="font-bold">{member.name}</h3>
+            <p class="text-sm text-foreground-muted">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ITFooter slot="footer" />
+</ITBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

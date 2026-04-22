@@ -1,0 +1,926 @@
+---
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+
+const stats = [
+  { value: '1.100+', count: 1100, suffix: '+', label: 'Cliniche e Centri Riabilitativi', icon: 'globe' },
+  { value: '2,5M+', count: 2500000, suffix: '+', label: 'Utenti / Anno', icon: 'users' },
+  { value: '700+', count: 700, suffix: '+', label: 'Esercizi Funzionali', icon: 'zap' },
+];
+
+const testimonials = [
+  {
+    name: 'Swetlana Zimmermann & Claas Bickeböller',
+    role: 'Fisioterapista & Titolare',
+    company: 'Schlossphysio Winterthur, Svizzera',
+    image: '/images/swetlana-zimmermann-schlossphysio.webp',
+    quote: 'Volevamo un dispositivo di allenamento olistico in grado di coprire quanti più gruppi muscolari e schemi di movimento possibili nella terapia sportiva. La flessibilità offerta dal concetto di allenamento digitale è stata un fattore chiave per noi.',
+  },
+  {
+    name: 'Gunter Hölig',
+    role: 'Direttore della terapia',
+    company: 'Medical Park Bad Rodach',
+    image: '/images/gunter-hoelig-pixformance.webp',
+    quote: 'Se un paziente può dimenticare la propria malattia per un momento e semplicemente divertirsi, allora anche questo ha valore.',
+  },
+  {
+    name: 'Heike Schaible',
+    role: 'Titolare',
+    company: 'Studio di fisioterapia "Raum für Gesundheit"',
+    image: '/images/heike-schaible-round.webp',
+    quote: 'Con Pixformance voglio costruire un secondo settore self-pay, principalmente per venire incontro ai miei dipendenti e offrire loro un lavoro più semplice e vario.',
+  },
+  {
+    name: 'Volker Sutor',
+    role: 'Titolare',
+    company: 'Centri di fisioterapia »Reha Rondell«',
+    image: '/images/volker-sutor-pixformance.webp',
+    quote: 'L\'allenamento mirato per la salute con il trainer virtuale aumenta l\'efficienza del trattamento e crea più tempo per la cura effettiva dei miei pazienti.',
+  },
+  {
+    name: 'Gabriele Buchstein',
+    role: 'Responsabile Fisioterapia',
+    company: 'Sauerlandklinik Hachen | Clinica Neurologica Specializzata per la Sclerosi Multipla',
+    image: '/images/gabriele-buchstein-sauerlandklinik.webp',
+    quote: 'I pazienti sono entusiasti e molto motivati, il che sinceramente non è sempre scontato. Anche noi terapisti ne beneficiamo, poiché i pazienti eseguono i loro esercizi in modo migliore e più efficace. Risparmiamo anche tempo, perché dopo soli 30 minuti di istruzioni i pazienti possono allenarsi autonomamente sotto supervisione.',
+  },
+  {
+    name: 'Axel-André Richter',
+    role: 'Titolare',
+    company: 'Studio medico Richter & Lopez',
+    image: '/images/axel-andre-richter-lopez.webp',
+    quote: 'Posso adattare il nuovo programma di allenamento in modo completamente individuale per ognuno dei nostri pazienti. Dagli atleti agonisti alle nonne, c\'è qualcosa per tutti. Se un terapista non è disponibile, possiamo offrire un\'alternativa e compensare facilmente con Pixformance.',
+  },
+];
+
+const carouselItems = [
+  {
+    title: '700+ Esercizi – Un Solo Dispositivo',
+    text: 'Piani di allenamento individuali possono essere compilati da una raccolta di oltre 700 esercizi funzionali sulla piattaforma online.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>`,
+  },
+  {
+    title: 'Tempo per l\'Essenziale',
+    text: 'Il terapista non deve dimostrare personalmente ogni esercizio e risparmia tempo – a beneficio dell\'assistenza di tutti i pazienti.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
+  {
+    title: 'Assistenza Simultanea',
+    text: 'Grazie al software brevettato, è possibile assistere più pazienti contemporaneamente senza personale aggiuntivo.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 21 12 17 16"/><polyline points="7 8 3 12 7 16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>`,
+  },
+  {
+    title: 'Amministrazione Efficiente',
+    text: 'La cronologia degli allenamenti di ogni paziente è documentata con precisione sulla piattaforma online per l\'analisi e l\'ottimizzazione.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  },
+  {
+    title: 'Allenamento Individuale',
+    text: 'I programmi di esercizi possono essere adattati alle condizioni di salute e alle esigenze terapeutiche di ogni paziente.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
+  },
+  {
+    title: 'I Pazienti Diventano Clienti',
+    text: 'Sessioni di allenamento individuali e misure di prevenzione secondaria possono essere offerte come fonte di entrate aggiuntiva.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
+  },
+];
+
+const clientLogos = [
+  'Logo-Charite.png',
+  'Logo-Essink-Sportscentrum-1.png',
+  'Logo-Femme-Fit-1.png',
+  'Logo-Gesundheitsrondell-Reharondell.png',
+  'Logo-GiB-Gesundheit-in-Bewegung-1.png',
+  'Logo-Medical-Park.png',
+  'Logo-MrsSporty-Mrs-Sporty.png',
+  'Logo-Therapiezentrum-Rombach.png',
+];
+---
+
+<ITBaseLayout
+  title="Richiedi Prova – Pixformance Sports GmbH"
+  description="Richiedi una prova di 60 giorni con Pixformance. Aumenta l'efficienza e le entrate con il concetto di allenamento funzionale digitale per fisioterapia e fitness."
+  noindex={true}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+  </Fragment>
+
+  <!-- Simplified Landing Page Header -->
+  <header class="bg-[#02308C] py-4" slot="header">
+    <div class="container">
+      <a href="/it/" aria-label="Pixformance Home">
+        <img
+          src="/images/logo/Pixformance-Logo_black_EN.svg"
+          alt="Pixformance"
+          class="h-8 w-auto brightness-0 invert"
+          loading="eager"
+        />
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative py-6 md:py-32 bg-black overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
+
+    <div class="container relative text-center max-w-4xl mx-auto">
+      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0.1s;">
+        PIÙ TEMPO. PIÙ ENTRATE.<br />
+        <span class="text-[#6BDBD1]">PIÙ POSSIBILITÀ.</span>
+      </h1>
+
+      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.3s;">
+        <button
+          id="hero-cta-btn"
+          class="inline-flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-[#02308C] font-bold text-xs sm:text-lg rounded-full border-2 border-red-500 hover:bg-[#6BDBD1] hover:border-[#6BDBD1] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer leading-tight text-center"
+        >
+          <span>RICHIEDI PROVA</span>
+          <span class="hidden sm:inline">–</span>
+          <span>OFFERTA VALIDA FINO AL <span id="offer-deadline"></span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP MODAL -->
+  <div id="popup-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div id="popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 md:p-10">
+      <button id="popup-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer">
+        <Icon name="x" size="md" />
+      </button>
+
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-[#02308C] mb-6 text-center">
+        Richiedi una Prova di 60 giorni nella tua struttura
+      </h2>
+
+      <form id="popup-form" class="space-y-4">
+        <div>
+          <label for="popup-company" class="block text-sm font-bold mb-1 text-gray-700">Azienda / Struttura <span class="text-red-500">*</span></label>
+          <input type="text" id="popup-company" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="popup-firstname" class="block text-sm font-bold mb-1 text-gray-700">Nome <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-firstname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+          <div>
+            <label for="popup-lastname" class="block text-sm font-bold mb-1 text-gray-700">Cognome <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-lastname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+        </div>
+        <div>
+          <label for="popup-email" class="block text-sm font-bold mb-1 text-gray-700">Email <span class="text-red-500">*</span></label>
+          <input type="email" id="popup-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div>
+          <label for="popup-phone" class="block text-sm font-bold mb-1 text-gray-700">Numero di telefono <span class="text-red-500">*</span></label>
+          <input type="tel" id="popup-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        </div>
+        <div class="flex items-start gap-3 pt-2">
+          <input type="checkbox" id="popup-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+          <label for="popup-privacy" class="text-xs text-gray-600 leading-relaxed">
+            Ho letto la <a href="/en/privacy-policy/" class="text-[#02308C] hover:underline font-bold">Informativa sulla Privacy</a> e acconsento che Pixformance Sports GmbH mi contatti via email o telefono con un'offerta di prova e informazioni su prodotti e azienda. Questo consenso può essere revocato in qualsiasi momento.
+          </label>
+        </div>
+        <div id="popup-form-message" class="hidden"></div>
+        <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          RICHIEDI OFFERTA
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- VIDEO + MULTI-STEP FORM SECTION -->
+  <section class="py-16 md:py-24 bg-white" id="hf-form">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+        <!-- YouTube Video Facade -->
+        <div data-scroll="slide-left">
+          <div
+            class="yt-facade relative rounded-2xl overflow-hidden shadow-xl w-full cursor-pointer group"
+            style="padding-bottom: 56.25%;"
+            data-ytid="QHGnWb-glyE"
+            role="button"
+            aria-label="Riproduci Video di Allenamento Pixformance"
+          >
+            <img
+              src="https://i.ytimg.com/vi/QHGnWb-glyE/hqdefault.jpg"
+              alt="Video di Allenamento Pixformance"
+              class="absolute inset-0 w-full h-full object-cover"
+              width="480"
+              height="360"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/40 transition-colors duration-200">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
+                <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white ml-1" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script is:inline>
+          document.querySelectorAll('.yt-facade').forEach(function(el) {
+            el.addEventListener('click', function() {
+              var id = el.dataset.ytid;
+              el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Pixformance Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>';
+            });
+          });
+        </script>
+
+        <!-- Multi-Step Form -->
+        <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
+          <!-- Step 1 -->
+          <div id="form-step-1">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
+              Vuoi saperne di più sul nostro concetto di allenamento digitale?
+            </h3>
+            <ul class="space-y-2 md:space-y-3 mb-6 md:mb-8">
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Assisti più pazienti contemporaneamente con lo stesso personale</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Guida digitale agli esercizi con feedback in tempo reale</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Risparmia 5–10 minuti per sessione paziente</span>
+              </li>
+            </ul>
+            <div class="space-y-4">
+              <div>
+                <label for="step1-email" class="block text-sm font-bold mb-2 text-gray-700">Email</label>
+                <input type="email" id="step1-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" placeholder="tua.email@esempio.com" />
+              </div>
+              <button id="step1-next" type="button" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                Continua
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="form-step-2" class="hidden">
+            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+              Solo un altro passo!
+            </h3>
+            <form id="multistep-form" class="space-y-4">
+              <input type="hidden" id="step2-email-hidden" name="email" />
+              <div>
+                <label for="step2-company" class="block text-sm font-bold mb-1 text-gray-700">Azienda / Struttura <span class="text-red-500">*</span></label>
+                <input type="text" id="step2-company" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="step2-firstname" class="block text-sm font-bold mb-1 text-gray-700">Nome <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-firstname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div>
+                  <label for="step2-lastname" class="block text-sm font-bold mb-1 text-gray-700">Cognome <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-lastname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+              </div>
+              <div>
+                <label for="step2-phone" class="block text-sm font-bold mb-1 text-gray-700">Numero di telefono <span class="text-red-500">*</span></label>
+                <input type="tel" id="step2-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div class="flex items-start gap-3 pt-2">
+                <input type="checkbox" id="step2-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+                <label for="step2-privacy" class="text-xs text-gray-600 leading-relaxed">
+                  Ho letto la <a href="/en/privacy-policy/" class="text-[#02308C] hover:underline font-bold">Informativa sulla Privacy</a> e acconsento che Pixformance Sports GmbH mi contatti via email o telefono con un'offerta di prova e informazioni su prodotti e azienda. Questo consenso può essere revocato in qualsiasi momento.
+                </label>
+              </div>
+              <div id="multistep-form-message" class="hidden"></div>
+              <button type="submit" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                RICHIEDI ULTERIORI INFORMAZIONI
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT LOGOS BANNER -->
+  <section class="py-0 bg-gray-50">
+    <div class="container">
+      <div class="clients-track-wrapper overflow-hidden">
+        <div class="clients-track flex items-center gap-12">
+          {[...Array(2)].map(() =>
+            clientLogos.map((logo) => (
+              <img
+                src={`/images/clients/${logo}`}
+                alt={logo.replace(/Logo-|-\d+\.png|\.png/g, ' ').trim()}
+                class="h-[132px] md:h-44 w-auto max-w-[165px] md:max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0"
+                loading="lazy"
+                width="220"
+                height="176"
+              />
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE BLOCKS -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="space-y-16 md:space-y-24">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Piani di Allenamento con IA
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Il nuovo assistente AI Pixformance crea piani di allenamento intelligenti in pochi secondi — adattati agli obiettivi del paziente, alle limitazioni e alle attrezzature disponibili. Questo fa risparmiare tempo ai terapisti e consente ai pazienti di allenarsi in modo più efficace.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/ki-infoblock-500.webp" alt="Piani di Allenamento con IA" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Feedback in Tempo Reale Brevettato
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              La Stazione Pixformance fornisce feedback in tempo reale. Questo garantisce che gli esercizi vengano eseguiti correttamente e in sicurezza – proprio come sotto la guida di un terapista reale.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Feedback in Tempo Reale Brevettato" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="space-y-4" data-scroll="slide-left">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Istruzioni Semplici per gli Esercizi
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              L'esercitante si posiziona davanti alla Stazione Pixformance, mentre un trainer virtuale dimostra l'esercizio da eseguire sullo schermo.
+            </p>
+          </div>
+          <div data-scroll="slide-right">
+            <img src="/images/imgs-lp/pixformancestation-gif-to-webp-converter-300.webp" alt="Istruzioni Semplici per gli Esercizi" class="w-4/5 mx-auto h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
+          <div class="md:order-2 space-y-4" data-scroll="slide-right">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+              Analisi Precisa del Movimento
+            </h3>
+            <p class="text-lg text-foreground-muted leading-relaxed">
+              Durante l'esecuzione dell'esercizio, una telecamera con sensore di profondità integrato scansiona 25 punti articolari e nove punti fissi dell'esercitante in pochi secondi e analizza i movimenti.
+            </p>
+          </div>
+          <div class="md:order-1" data-scroll="slide-left">
+            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Analisi Precisa del Movimento" class="w-full h-auto rounded-2xl" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL SECTION -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          L'Allenamento in Azione
+        </h2>
+      </div>
+
+      <div class="relative px-12 md:px-14">
+        <div class="overflow-hidden">
+          <div id="carousel-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
+            {carouselItems.map((item) => (
+              <div class="carousel-slide shrink-0 w-[calc(85vw-6rem)] md:w-[300px] bg-white rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center gap-4">
+                <div set:html={item.icon} />
+                <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-left" size="md" />
+        </button>
+        <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+          <Icon name="chevron-right" size="md" />
+        </button>
+      </div>
+
+      <div class="text-center mt-10 md:mt-12">
+        <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+          SCOPRI DI PIÙ
+          <Icon name="arrow-right" size="sm" />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="py-16 md:py-20 bg-[#02308C]">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto text-center">
+        {stats.map((stat, index) => (
+          <div class="space-y-3 p-6" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="flex justify-center mb-2">
+              <Icon name={stat.icon} size="2xl" class="text-[#6BDBD1]" />
+            </div>
+            <div
+              class="text-4xl md:text-5xl font-bold text-[#6BDBD1] stat-counter"
+              data-count={stat.count}
+              data-suffix={stat.suffix}
+              data-large={stat.count >= 10000 ? 'true' : 'false'}
+            >
+              {stat.value}
+            </div>
+            <div class="text-sm text-white/70">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-12" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="star" size="sm" />
+          Storie di Successo
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          Cosa dicono i nostri clienti
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {testimonials.map((testimonial, index) => (
+          <Card
+            variant="elevated"
+            padding="lg"
+            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
+            data-scroll="scale"
+            data-delay={index + 1}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
+            <div class="relative space-y-4">
+              <div class="flex items-center gap-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-14 h-14 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 transition-all duration-500"
+                  loading="lazy"
+                  width="56"
+                  height="56"
+                />
+                <div>
+                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
+                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
+                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
+                </div>
+              </div>
+              <p class="text-sm text-foreground-muted italic leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° CONCEPT CTA CARD -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center bg-white rounded-3xl shadow-xl p-5 md:p-12 overflow-hidden" data-scroll="fade-up">
+        <div class="space-y-6 text-center md:text-left">
+          <p class="text-lg text-foreground-muted leading-relaxed">
+            Il concetto di allenamento e terapia Pixformance 360° completamente connesso è un complemento significativo e moderno per alleggerire i fisioterapisti durante l'assistenza ai pazienti e per generare più entrate a lungo termine attraverso una maggiore capacità di assistenza o creando un settore self-pay. Ordina oggi la tua unità di prova e scopri se il concetto si adatta alla tua struttura!
+          </p>
+          <div class="flex justify-center md:justify-start">
+            <button class="popup-trigger inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold rounded-full hover:bg-[#02308C]/90 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer">
+              SCOPRI DI PIÙ
+              <Icon name="arrow-right" size="sm" />
+            </button>
+          </div>
+        </div>
+        <div>
+          <img
+            src="/images/imgs-lp/pixformance-360-grad-konzept-online-plattform-app-digitales-sportgeraet-png-to-webp-converter-500.webp"
+            alt="Concetto Pixformance 360°"
+            class="w-full h-auto rounded-2xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CONTACT FORM -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-scroll="scale">
+          <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+          <div class="relative p-8 md:p-12">
+            <div class="text-center mb-8">
+              <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+                Vuoi saperne di più sul nostro concetto di allenamento digitale?
+              </h2>
+              <p class="text-lg text-white/90">
+                Non vediamo l'ora di ricevere la tua richiesta senza impegno!
+              </p>
+            </div>
+
+            <form id="final-contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-company" class="block text-sm font-bold mb-2 text-white">Azienda / Struttura <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-company" name="company" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-firstname" class="block text-sm font-bold mb-2 text-white">Nome <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-firstname" name="first_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="final-lastname" class="block text-sm font-bold mb-2 text-white">Cognome <span class="text-[#FFED00]">*</span></label>
+                  <input type="text" id="final-lastname" name="last_name" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+                <div>
+                  <label for="final-email" class="block text-sm font-bold mb-2 text-white">Indirizzo Email <span class="text-[#FFED00]">*</span></label>
+                  <input type="email" id="final-email" name="email" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                </div>
+              </div>
+              <div>
+                <label for="final-phone" class="block text-sm font-bold mb-2 text-white">Numero di telefono <span class="text-[#FFED00]">*</span></label>
+                <input type="tel" id="final-phone" name="phone" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+              </div>
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="final-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-0 bg-white/95 text-[#02308C] focus:ring-4 focus:ring-white/50 shadow-lg" />
+                <label for="final-privacy" class="text-sm text-white/95 leading-relaxed">
+                  Ho letto la <a href="/en/privacy-policy/" class="text-[#FFED00] hover:underline font-bold">Informativa sulla Privacy</a> e acconsento che Pixformance Sports GmbH mi contatti via email o telefono con un'offerta di prova e informazioni su prodotti e azienda. Questo consenso può essere revocato in qualsiasi momento.
+                </label>
+              </div>
+              <div id="final-form-message" class="hidden"></div>
+              <div class="flex justify-center pt-6">
+                <button type="submit" class="w-full md:w-auto px-16 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#02308C]/90 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg">
+                  INVIA
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simplified Footer -->
+  <footer class="bg-[#02308C] py-6" slot="footer">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-white/70 text-sm">
+        <span>© {new Date().getFullYear()} Pixformance Sports GmbH. Tutti i diritti riservati.</span>
+        <nav class="flex gap-6">
+          <a href="/en/imprint/" class="hover:text-white transition-colors">Note legali</a>
+          <a href="/en/privacy-policy/" class="hover:text-white transition-colors">Informativa sulla privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</ITBaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  .clients-track {
+    animation: scroll-logos 20s linear infinite;
+    width: max-content;
+  }
+
+  .clients-track-wrapper:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-logos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+
+  #popup-modal.flex { animation: popup-in 0.3s ease-out; }
+  @keyframes popup-in { from { opacity: 0; } to { opacity: 1; } }
+  #popup-modal.flex > div:last-child { animation: popup-slide 0.3s ease-out; }
+  @keyframes popup-slide {
+    from { transform: translateY(20px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  html { scroll-behavior: smooth; }
+</style>
+
+<script is:inline>
+(function () {
+  var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+
+  function getOfferDeadline() {
+    var now = new Date();
+    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
+    var day = String(nextMonth.getDate()).padStart(2, '0');
+    var month = String(nextMonth.getMonth() + 1).padStart(2, '0');
+    var year = nextMonth.getFullYear();
+    return day + '/' + month + '/' + year;
+  }
+
+  function getUrlParams() {
+    var params = {};
+    new URLSearchParams(window.location.search).forEach(function (v, k) { params[k] = v; });
+    return params;
+  }
+
+  function getCookies() {
+    var cookies = {};
+    if (!document.cookie) return cookies;
+    document.cookie.split(';').forEach(function (c) {
+      var i = c.indexOf('=');
+      if (i === -1) return;
+      var k = c.slice(0, i).trim();
+      var v = c.slice(i + 1).trim();
+      try { cookies[k] = decodeURIComponent(v); } catch (e) { cookies[k] = v; }
+    });
+    return cookies;
+  }
+
+  function sanitizePhone(phone) {
+    return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+  }
+
+  function submitForm(formData, messageEl, formEl, formName) {
+    var payload = {
+      form_name: formName || 'Prova Gratuita IT',
+      company: formData.get('company') || '',
+      first_name: formData.get('first_name') || '',
+      last_name: formData.get('last_name') || '',
+      email: formData.get('email') || '',
+      phone: sanitizePhone(formData.get('phone')),
+      privacy_accepted: formData.get('privacy') === 'on',
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      referrer: document.referrer || '',
+      submitted_at: new Date().toISOString(),
+      url_params: getUrlParams(),
+      cookies: getCookies(),
+      language: 'it',
+      version: 'IT',
+      form_source: 'landing-page',
+    };
+
+    var btn = formEl.querySelector('[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) {
+        if (r.ok) {
+          formEl.style.display = 'none';
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center shadow-lg';
+          messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Grazie per la tua richiesta!</h3><p class="text-gray-600">Ti risponderemo a breve.</p>';
+        } else {
+          messageEl.classList.remove('hidden');
+          messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+          messageEl.textContent = 'Si è verificato un errore. Riprova o contattaci direttamente.';
+        }
+      })
+      .catch(function () {
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+        messageEl.textContent = 'Si è verificato un errore. Riprova o contattaci direttamente.';
+      })
+      .finally(function () {
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+      });
+  }
+
+  function init() {
+    var deadline = getOfferDeadline();
+    document.querySelectorAll('#offer-deadline').forEach(function (el) { el.textContent = deadline; });
+
+    var modal = document.getElementById('popup-modal');
+    var heroBtn = document.getElementById('hero-cta-btn');
+    var closeBtn = document.getElementById('popup-close');
+    var overlay = document.getElementById('popup-overlay');
+    var popupTriggers = document.querySelectorAll('.popup-trigger');
+
+    function openPopup() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    if (heroBtn) heroBtn.addEventListener('click', openPopup);
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+    if (overlay) overlay.addEventListener('click', closePopup);
+    popupTriggers.forEach(function (btn) { btn.addEventListener('click', openPopup); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePopup(); });
+
+    var popupForm = document.getElementById('popup-form');
+    var popupMsg = document.getElementById('popup-form-message');
+    if (popupForm) {
+      popupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(popupForm), popupMsg, popupForm, 'Prova Gratuita IT - Popup');
+      });
+    }
+
+    var step1 = document.getElementById('form-step-1');
+    var step2 = document.getElementById('form-step-2');
+    var step1Next = document.getElementById('step1-next');
+    var step1Email = document.getElementById('step1-email');
+    var step2EmailHidden = document.getElementById('step2-email-hidden');
+
+    if (step1Next) {
+      step1Next.addEventListener('click', function () {
+        if (!step1Email.value || !step1Email.checkValidity()) {
+          step1Email.reportValidity();
+          return;
+        }
+        step2EmailHidden.value = step1Email.value;
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+      });
+    }
+
+    var multistepForm = document.getElementById('multistep-form');
+    var multistepMsg = document.getElementById('multistep-form-message');
+    if (multistepForm) {
+      multistepForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(multistepForm), multistepMsg, multistepForm, 'Prova Gratuita IT - Multi-Step');
+      });
+    }
+
+    var finalForm = document.getElementById('final-contact-form');
+    var finalMsg = document.getElementById('final-form-message');
+    if (finalForm) {
+      finalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitForm(new FormData(finalForm), finalMsg, finalForm, 'Prova Gratuita IT - Final Form');
+      });
+    }
+
+    var track = document.getElementById('carousel-track');
+    var prevBtn = document.getElementById('carousel-prev');
+    var nextBtn = document.getElementById('carousel-next');
+    var currentSlide = 0;
+
+    if (track && prevBtn && nextBtn) {
+      var slides = track.querySelectorAll('.carousel-slide');
+      var totalSlides = slides.length;
+
+      function getSlideWidth() {
+        if (!slides[0]) return 300;
+        return slides[0].offsetWidth + 16;
+      }
+
+      function checkFit() {
+        var containerWidth = track.parentElement.offsetWidth;
+        var totalWidth = totalSlides * getSlideWidth() - 16;
+        if (totalWidth <= containerWidth) {
+          track.style.justifyContent = 'center';
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+        } else {
+          track.style.justifyContent = '';
+          prevBtn.style.display = '';
+          nextBtn.style.display = '';
+        }
+      }
+
+      function updateCarousel() {
+        var slideWidth = getSlideWidth();
+        var containerWidth = track.parentElement.offsetWidth;
+        var maxOffset = (totalSlides * slideWidth) - containerWidth;
+        var offset = Math.min(currentSlide * slideWidth, maxOffset);
+        track.style.transform = 'translateX(-' + Math.max(0, offset) + 'px)';
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (currentSlide > 0) { currentSlide--; updateCarousel(); }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        var slideWidth = getSlideWidth();
+        var maxSlide = totalSlides - Math.floor(track.parentElement.offsetWidth / slideWidth);
+        if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); }
+      });
+
+      checkFit();
+      window.addEventListener('resize', function () { currentSlide = 0; track.style.transform = ''; checkFit(); });
+    }
+
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.count, 10);
+          var suffix = el.dataset.suffix || '';
+          var isLarge = el.dataset.large === 'true';
+          var duration = 1800;
+          var start = performance.now();
+
+          function animate(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.floor(eased * target);
+            el.textContent = (isLarge ? current.toLocaleString('it-IT') : current) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stat-counter').forEach(function (el) {
+      counterObserver.observe(el);
+    });
+
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('[data-scroll]').forEach(function (el) {
+      scrollObserver.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
