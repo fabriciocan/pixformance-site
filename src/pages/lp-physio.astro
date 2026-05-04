@@ -539,10 +539,12 @@ const clientLogos = [
   }
 
   function getFbc(cookies: Record<string, string>): string {
-    if (cookies._fbc) return cookies._fbc;
     const fbclid = new URLSearchParams(window.location.search).get('fbclid');
-    if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-    return '';
+    if (fbclid) {
+      const subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+      return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
+    }
+    return cookies._fbc || '';
   }
 
   function sanitizePhone(phone: string | null): string {
@@ -562,6 +564,10 @@ const clientLogos = [
 
     const formData = new FormData(downloadForm);
     const cookies = getCookies();
+    const computedFbc = getFbc(cookies);
+    const computedFbp = getFbp(cookies);
+    if (computedFbc) cookies._fbc = computedFbc;
+    if (computedFbp) cookies._fbp = computedFbp;
 
     try {
       const hashed = await hashUserData(formData);

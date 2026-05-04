@@ -808,10 +808,12 @@ const clientLogos = [
   }
 
   function getFbc(cookies) {
-    if (cookies._fbc) return cookies._fbc;
     var fbclid = new URLSearchParams(window.location.search).get('fbclid');
-    if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-    return '';
+    if (fbclid) {
+      var subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+      return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
+    }
+    return cookies._fbc || '';
   }
 
   function sanitizePhone(phone) {
@@ -821,6 +823,10 @@ const clientLogos = [
   // submitForm agora é async por causa do sha256
   function submitForm(formData, messageEl, formEl, formName) {
     var cookies = getCookies();
+    var computedFbc = getFbc(cookies);
+    var computedFbp = getFbp(cookies);
+    if (computedFbc) cookies._fbc = computedFbc;
+    if (computedFbp) cookies._fbp = computedFbp;
     var btn = formEl.querySelector('[type="submit"]');
     if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 

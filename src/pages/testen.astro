@@ -572,10 +572,12 @@ const benefits = [
       function getFbp(cookies) { return cookies._fbp || ''; }
 
       function getFbc(cookies) {
-        if (cookies._fbc) return cookies._fbc;
         var fbclid = new URLSearchParams(window.location.search).get('fbclid');
-        if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-        return '';
+        if (fbclid) {
+          var subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+          return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
+        }
+        return cookies._fbc || '';
       }
 
       function sanitizePhone(phone) {
@@ -597,6 +599,10 @@ const benefits = [
 
           var formData = new FormData(form);
           var cookies = getCookies();
+          var computedFbc = getFbc(cookies);
+          var computedFbp = getFbp(cookies);
+          if (computedFbc) cookies._fbc = computedFbc;
+          if (computedFbp) cookies._fbp = computedFbp;
 
           hashUserData(formData).then(function (hashed) {
             window.dataLayer.push({
