@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ChatWidget from '@/components/ChatWidget.astro';
+import CookieBanner from '@/components/CookieBanner.astro';
 
 interface Props {
   title?: string;
@@ -132,6 +133,37 @@ const websiteSchema = {
     <!-- Per-page head injections (preconnects, etc.) -->
     <slot name="head" />
 
+    <!-- Google Consent Mode v2 defaults — MUST run before GTM -->
+    <script is:inline>
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          wait_for_update: 500
+        });
+        try {
+          var saved = localStorage.getItem('pix_consent');
+          if (saved) {
+            var c = JSON.parse(saved);
+            if (c.ts && (Date.now() - c.ts) < 365 * 24 * 60 * 60 * 1000) {
+              gtag('consent', 'update', {
+                ad_storage: c.marketing ? 'granted' : 'denied',
+                ad_user_data: c.marketing ? 'granted' : 'denied',
+                ad_personalization: c.marketing ? 'granted' : 'denied',
+                analytics_storage: c.statistics ? 'granted' : 'denied'
+              });
+              window.__pixConsentRestored = true;
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- End Google Consent Mode v2 defaults -->
+
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -149,6 +181,7 @@ const websiteSchema = {
     <main><slot /></main>
     <slot name="footer" />
     <ChatWidget />
+    <CookieBanner lang="en" />
     <script is:inline src="/js/form-protection.js"></script>
   </body>
 </html>

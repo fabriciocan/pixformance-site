@@ -1,0 +1,51 @@
+---
+// Announcement bar — sticky below the header (top-16 mobile / top-24 desktop matches header md height)
+// Excluded on LP pages via noSitePopup prop in BaseLayout
+---
+
+<div id="site-sticky-bar" class="sticky top-16 md:top-24 z-[49] bg-red-600 text-white shadow-md">
+  <div class="flex items-center justify-center gap-1.5 sm:gap-4 px-3 py-1.5 sm:py-2.5 text-center flex-wrap">
+    <span class="inline-flex items-center gap-1.5 sm:gap-2 font-bold text-[10px] sm:text-xs tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sm:w-[14px] sm:h-[14px]">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+      60 TAGE TESTEN – ANGEBOT GÜLTIG BIS <span class="bar-deadline-el"></span>
+    </span>
+    <button
+      class="site-bar-trigger bg-white text-red-600 font-bold text-[10px] sm:text-xs px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full hover:bg-gray-100 transition-colors shrink-0 cursor-pointer"
+    >
+      MEHR ERFAHREN
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  // Deadline: last day of current month
+  var now = new Date();
+  var lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+  var deadline =
+    String(lastDay.getDate()).padStart(2, '0') + '.' +
+    String(lastDay.getMonth() + 1).padStart(2, '0') + '.' +
+    String(lastDay.getFullYear()).slice(-2);
+  document.querySelectorAll('.bar-deadline-el').forEach(function (el) {
+    el.textContent = deadline;
+  });
+
+  // Open SitePopup modal on click
+  document.querySelectorAll('.site-bar-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var modal = document.getElementById('popup-modal');
+      if (!modal) return;
+      var timedPopup = document.getElementById('timed-popup');
+      if (timedPopup) {
+        timedPopup.classList.add('hidden');
+        timedPopup.classList.remove('flex');
+      }
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+})();
+</script>

@@ -1,8 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
@@ -106,6 +103,7 @@ const clientLogos = [
   title="60 Tage Pixformance kostenlos testen – Jetzt starten"
   description="Jetzt 60 Tage Pixformance kostenlos testen. Digitale Bewegungsanalyse für Physiotherapie, Klinik & Fitness. Unverbindlich, mit persönlicher Beratung und Schulung."
   noindex={true}
+  noSitePopup={true}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -115,38 +113,77 @@ const clientLogos = [
     "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
   }}
 >
-  <!-- Preconnects for YouTube facade thumbnail + player -->
+  <!-- Preconnect for YouTube thumbnail (LCP element) and player (loaded on click) -->
   <Fragment slot="head">
-    <link rel="preconnect" href="https://i.ytimg.com" />
-    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
-    <link rel="dns-prefetch" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
   </Fragment>
 
-  <HeaderWithDropdown slot="header" position="sticky">
-    <PixformanceLogo slot="logo" />
-  </HeaderWithDropdown>
+  <!-- STICKY TOP BAR -->
+  <div id="sticky-bar" class="fixed top-0 left-0 right-0 z-40 bg-red-600 text-white shadow-lg">
+    <div class="flex items-center justify-center gap-2 sm:gap-4 px-3 py-2.5 text-center flex-wrap">
+      <span class="inline-flex items-center gap-2 font-bold text-xs sm:text-sm tracking-wide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        60 TAGE TESTEN – ANGEBOT GÜLTIG BIS <span class="sticky-deadline-el"></span>
+      </span>
+      <button class="popup-trigger bg-white text-red-600 font-bold text-xs px-4 py-1.5 rounded-full hover:bg-gray-100 transition-colors shrink-0 cursor-pointer">
+        MEHR ERFAHREN
+      </button>
+    </div>
+  </div>
+
+  <!-- TIMED POPUP (appears after 5s, once per session) -->
+  <div id="timed-popup" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4">
+    <div id="timed-popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden">
+      <button id="timed-popup-close" aria-label="Schließen" class="absolute top-3 left-3 z-10 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors cursor-pointer shadow-sm">
+        <Icon name="x" size="sm" />
+      </button>
+
+      <!-- Product photo -->
+      <div class="w-full h-48 overflow-hidden">
+        <img
+          src="/images/Pixformance-Station-Einzeltraining-Digitales-Sportgeraet-voll-vernetzt-Personal-Trainer.jpg"
+          alt="Pixformance Training"
+          class="w-full h-full object-cover object-top"
+          width="400"
+          height="192"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Teal body (matching original) -->
+      <div class="bg-[#6BDBD1] px-7 py-7 text-center">
+        <h2 class="font-display text-3xl font-bold text-white leading-tight mb-1">
+          Jetzt 60 Tage
+        </h2>
+        <p class="text-white/90 text-base underline mb-1">in Ihrem Unternehmen</p>
+        <h2 class="font-display text-3xl font-bold text-white leading-tight mb-6">
+          testen
+        </h2>
+
+        <button id="timed-popup-cta" class="w-full py-3.5 bg-white text-[#02308C] font-bold text-base rounded-xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          Unternehmen (weiter)
+        </button>
+        <button id="timed-popup-decline" class="w-full mt-3 text-sm text-white/80 hover:text-white underline transition-colors cursor-pointer py-1">
+          Privatperson (schließen)
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- HERO SECTION -->
-  <section class="relative py-6 md:py-32 bg-black overflow-hidden">
+  <section class="relative bg-black overflow-hidden" style="padding-top: clamp(4.5rem, 5vw, 5rem); padding-bottom: clamp(1.5rem, 3vw, 3rem);">
     <div class="absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
     <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
 
-    <div class="container relative text-center max-w-4xl mx-auto">
-      <h1 class="font-display text-xl sm:text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight hero-animate" style="animation-delay: 0s;">
-        MEHR ZEIT. MEHR UMSATZ.<br />
+    <div class="container relative text-center max-w-4xl mx-auto px-5">
+      <h1 class="font-display font-bold text-white leading-[1.1] hero-animate" style="font-size: clamp(2.2rem, 5vw, 3.5rem); animation-delay: 0s;">
+        MEHR ZEIT.<br />
+        MEHR UMSATZ.<br />
         <span class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
       </h1>
-
-      <div class="pt-8 md:pt-20 hero-animate" style="animation-delay: 0.1s;">
-        <button
-          id="hero-cta-btn"
-          class="inline-flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-[#02308C] font-bold text-xs sm:text-lg rounded-full border-2 border-red-500 hover:bg-[#6BDBD1] hover:border-[#6BDBD1] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer leading-tight text-center"
-        >
-          <span>60 TAGE TESTEN</span>
-          <span class="hidden sm:inline">–</span>
-          <span>ANGEBOT GÜLTIG BIS <span id="offer-deadline"></span></span>
-        </button>
-      </div>
     </div>
   </section>
 
@@ -154,7 +191,7 @@ const clientLogos = [
   <div id="popup-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
     <div id="popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 md:p-10">
-      <button id="popup-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer">
+      <button id="popup-close" aria-label="Schließen" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer">
         <Icon name="x" size="md" />
       </button>
 
@@ -163,9 +200,25 @@ const clientLogos = [
       </h2>
 
       <form id="popup-form" class="space-y-4">
-        <div>
-          <label for="popup-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
-          <input type="text" id="popup-firma" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        <div data-ab-firma>
+          <div data-ab-role="control" style="display:none">
+            <label for="popup-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
+            <input type="text" id="popup-firma" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          </div>
+          <div data-ab-role="variant" style="display:none">
+            <label for="popup-firma-select" class="block text-sm font-bold mb-1 text-gray-700">Gesundheits- oder Sporteinrichtung <span class="text-red-500">*</span></label>
+            <select id="popup-firma-select" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900 appearance-none cursor-pointer">
+              <option value="" disabled selected>Bitte auswählen ...</option>
+              <option value="Physiotherapie">Physiotherapie</option>
+              <option value="Therapie- / Rehazentrum">Therapie- / Rehazentrum</option>
+              <option value="Klinik / Krankenhaus">Klinik / Krankenhaus</option>
+              <option value="Fitness- / Gesundheitszentrum">Fitness- / Gesundheitszentrum</option>
+              <option value="Hotel / Wellness">Hotel / Wellness</option>
+              <option value="Pflegeeinrichtung">Pflegeeinrichtung</option>
+              <option value="Betriebliches Gesundheitsmanagement (BGM)">Betriebliches Gesundheitsmanagement (BGM)</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
+          </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
@@ -218,7 +271,8 @@ const clientLogos = [
               class="absolute inset-0 w-full h-full object-cover"
               width="480"
               height="360"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
             <div class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/40 transition-colors duration-200">
               <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
@@ -240,9 +294,9 @@ const clientLogos = [
         <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
           <!-- Step 1 -->
           <div id="form-step-1">
-            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
+            <h2 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
               Willst du mehr über unser digitales Trainingskonzept erfahren?
-            </h3>
+            </h2>
             <ul class="space-y-2 md:space-y-3 mb-6 md:mb-8">
               <li class="flex items-start gap-2 md:gap-3">
                 <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
@@ -276,14 +330,29 @@ const clientLogos = [
 
           <!-- Step 2 -->
           <div id="form-step-2" class="hidden">
-            <h3 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+            <h2 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
               Nur noch ein Schritt!
-            </h3>
+            </h2>
             <form id="multistep-form" class="space-y-4">
               <input type="hidden" id="step2-email-hidden" name="email" />
-              <div>
-                <label for="step2-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
-                <input type="text" id="step2-firma" name="company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              <div data-ab-firma>
+                <div data-ab-role="control" style="display:none">
+                  <label for="step2-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-firma" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div data-ab-role="variant" style="display:none">
+                  <label for="step2-firma-select" class="block text-sm font-bold mb-1 text-gray-700">Gesundheits- oder Sporteinrichtung <span class="text-red-500">*</span></label>
+                  <select id="step2-firma-select" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900 appearance-none cursor-pointer">
+                    <option value="" disabled selected>Bitte auswählen ...</option>
+                    <option value="Physiopraxis">Physiopraxis</option>
+                    <option value="Rehabilitationszentrum">Rehabilitationszentrum</option>
+                    <option value="Krankenhaus">Krankenhaus</option>
+                    <option value="Fitness- & Gesundheitsstudio">Fitness- & Gesundheitsstudio</option>
+                    <option value="Wellness- & Gesundheitszentrum">Wellness- & Gesundheitszentrum</option>
+                    <option value="Pflegeeinrichtung">Pflegeeinrichtung</option>
+                    <option value="BGM">BGM</option>
+                  </select>
+                </div>
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
@@ -346,60 +415,60 @@ const clientLogos = [
         <!-- 1. KI-gestützte Trainingspläne — Text Left / Image Right -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
           <div class="space-y-4" data-scroll="slide-left">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
               KI-gestützte Trainingspläne
-            </h3>
+            </h2>
             <p class="text-lg text-foreground-muted leading-relaxed">
               Der neue Pixformance KI-Assistent erstellt in Sekunden smarte Trainingspläne – angepasst an Patientenziele, Einschränkungen und verfügbare Ausrüstung. So sparen Therapeuten Zeit und Patienten trainieren noch gezielter.
             </p>
           </div>
           <div data-scroll="slide-right">
-            <img src="/images/imgs-lp/ki-infoblock-500.webp" alt="KI-gestützte Trainingspläne" class="w-full h-auto rounded-2xl" loading="lazy" />
+            <img src="/images/imgs-lp/ki-infoblock-500.webp" alt="KI-gestützte Trainingspläne" class="w-full h-auto rounded-2xl" loading="lazy" width="500" height="570" />
           </div>
         </div>
 
         <!-- 2. Patentiertes Feedback — Image Left / Text Right -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
           <div class="md:order-2 space-y-4" data-scroll="slide-right">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
               Patentiertes Feedback in Echtzeit
-            </h3>
+            </h2>
             <p class="text-lg text-foreground-muted leading-relaxed">
               Die Pixformance Station gibt Feedback in Echtzeit. So ist sichergestellt, dass die Übungen richtig und sicher ausgeführt werden - wie unter Anleitung eines echten Therapeuten.
             </p>
           </div>
           <div class="md:order-1" data-scroll="slide-left">
-            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patentiertes Feedback in Echtzeit" class="w-full h-auto rounded-2xl" loading="lazy" />
+            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patentiertes Feedback in Echtzeit" class="w-full h-auto rounded-2xl" loading="lazy" width="750" height="533" />
           </div>
         </div>
 
         <!-- 3. Einfache Übungsanleitung — Text Left / Image Right -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
           <div class="space-y-4" data-scroll="slide-left">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
               Einfache Übungsanleitung
-            </h3>
+            </h2>
             <p class="text-lg text-foreground-muted leading-relaxed">
               Der Trainierende positioniert sich vor der Pixformance Station, während ein virtueller Trainer die Übung auf dem Bildschirm demonstriert.
             </p>
           </div>
           <div data-scroll="slide-right">
-            <img src="/images/imgs-lp/pixformancestation-gif-to-webp-converter-300.webp" alt="Einfache Übungsanleitung" class="w-4/5 mx-auto h-auto rounded-2xl" loading="lazy" />
+            <img src="/images/imgs-lp/pixformancestation-gif-to-webp-converter-300.webp" alt="Einfache Übungsanleitung" class="w-4/5 mx-auto h-auto rounded-2xl" loading="lazy" width="300" height="375" />
           </div>
         </div>
 
         <!-- 4. Präzise Bewegungsanalyse — Image Left / Text Right -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center" data-scroll="fade-up">
           <div class="md:order-2 space-y-4" data-scroll="slide-right">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
               Präzise Bewegungsanalyse
-            </h3>
+            </h2>
             <p class="text-lg text-foreground-muted leading-relaxed">
               Während der Übungsausführung scannt eine Kamera mit eingebautem Tiefensensor sekundenschnell 25 Gelenk- und 9 statische Punkte des Trainierenden und analysiert die Bewegungen.
             </p>
           </div>
           <div class="md:order-1" data-scroll="slide-left">
-            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Präzise Bewegungsanalyse" class="w-full h-auto rounded-2xl" loading="lazy" />
+            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Präzise Bewegungsanalyse" class="w-full h-auto rounded-2xl" loading="lazy" width="750" height="938" />
           </div>
         </div>
 
@@ -429,10 +498,10 @@ const clientLogos = [
           </div>
         </div>
 
-        <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+        <button id="carousel-prev" aria-label="Vorheriger" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
           <Icon name="chevron-left" size="md" />
         </button>
-        <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
+        <button id="carousel-next" aria-label="Nächster" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
           <Icon name="chevron-right" size="md" />
         </button>
       </div>
@@ -541,6 +610,8 @@ const clientLogos = [
             alt="Pixformance 360° Konzept"
             class="w-full h-auto rounded-2xl"
             loading="lazy"
+            width="500"
+            height="500"
           />
         </div>
       </div>
@@ -566,9 +637,24 @@ const clientLogos = [
 
             <form id="final-contact-form" class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label for="final-firma" class="block text-sm font-bold mb-2 text-white">Firma <span class="text-[#FFED00]">*</span></label>
-                  <input type="text" id="final-firma" name="company" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                <div data-ab-firma>
+                  <div data-ab-role="control" style="display:none">
+                    <label for="final-firma" class="block text-sm font-bold mb-2 text-white">Firma <span class="text-[#FFED00]">*</span></label>
+                    <input type="text" id="final-firma" name="company" class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                  </div>
+                  <div data-ab-role="variant" style="display:none">
+                    <label for="final-firma-select" class="block text-sm font-bold mb-2 text-white">Gesundheits- oder Sporteinrichtung <span class="text-[#FFED00]">*</span></label>
+                    <select id="final-firma-select" name="company" class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 shadow-lg appearance-none cursor-pointer">
+                      <option value="" disabled selected>Bitte auswählen ...</option>
+                      <option value="Physiopraxis">Physiopraxis</option>
+                      <option value="Rehabilitationszentrum">Rehabilitationszentrum</option>
+                      <option value="Krankenhaus">Krankenhaus</option>
+                      <option value="Fitness- & Gesundheitsstudio">Fitness- & Gesundheitsstudio</option>
+                      <option value="Wellness- & Gesundheitszentrum">Wellness- & Gesundheitszentrum</option>
+                      <option value="Pflegeeinrichtung">Pflegeeinrichtung</option>
+                      <option value="BGM">BGM</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label for="final-vorname" class="block text-sm font-bold mb-2 text-white">Vorname <span class="text-[#FFED00]">*</span></label>
@@ -608,19 +694,18 @@ const clientLogos = [
     </div>
   </section>
 
-  <Footer slot="footer" />
+  <!-- Footer omitido intencionalmente na LP para manter o foco na conversão -->
 </BaseLayout>
 
 <style>
-  /* Hero Entry Animation */
+  /* Hero Entry Animation – text visible immediately (LCP candidate) */
   @keyframes hero-entry {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { transform: translateY(10px); }
+    to { transform: translateY(0); }
   }
 
   .hero-animate {
-    opacity: 0;
-    animation: hero-entry 0.3s ease-out forwards;
+    animation: hero-entry 0.3s ease-out;
   }
 
   /* Clients Carousel */
@@ -638,14 +723,9 @@ const clientLogos = [
     to { transform: translateX(-50%); }
   }
 
-  /* Scroll Animation Styles */
+  /* Scroll Animation Styles – opacity removed so content is visible before JS runs */
   [data-scroll] {
-    opacity: 0;
-    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-  }
-
-  [data-scroll].is-visible {
-    opacity: 1;
+    transition: transform 0.25s ease-out;
   }
 
   [data-scroll="fade-up"] {
@@ -673,7 +753,7 @@ const clientLogos = [
   }
 
   [data-scroll="scale"] {
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
 
   [data-scroll="scale"].is-visible {
@@ -687,8 +767,9 @@ const clientLogos = [
   [data-scroll][data-delay="5"] { transition-delay: 0.25s; }
   [data-scroll][data-delay="6"] { transition-delay: 0.3s; }
 
-  /* Popup animation */
-  #popup-modal.flex {
+  /* Popup animation (shared) */
+  #popup-modal.flex,
+  #timed-popup.flex {
     animation: popup-in 0.3s ease-out;
   }
 
@@ -697,7 +778,8 @@ const clientLogos = [
     to { opacity: 1; }
   }
 
-  #popup-modal.flex > div:last-child {
+  #popup-modal.flex > div:last-child,
+  #timed-popup.flex > div:last-child {
     animation: popup-slide 0.3s ease-out;
   }
 
@@ -777,10 +859,10 @@ const clientLogos = [
 
   function getOfferDeadline() {
     var now = new Date();
-    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 2, 0);
-    var day = String(nextMonth.getDate()).padStart(2, '0');
-    var month = String(nextMonth.getMonth() + 1).padStart(2, '0');
-    var year = String(nextMonth.getFullYear()).slice(-2);
+    var lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+    var day = String(lastDay.getDate()).padStart(2, '0');
+    var month = String(lastDay.getMonth() + 1).padStart(2, '0');
+    var year = String(lastDay.getFullYear()).slice(-2);
     return day + '.' + month + '.' + year;
   }
 
@@ -822,6 +904,19 @@ const clientLogos = [
 
   // submitForm agora é async por causa do sha256
   function submitForm(formData, messageEl, formEl, formName) {
+    // Secondary bot check — defense in depth alongside form-protection.js
+    var honeypotFilled = (formData.get('_fax_number') || '').length > 0 ||
+                         (formData.get('website') || '').length > 0;
+    var noInteraction = window.FormProtection && !window.FormProtection.humanInteracted;
+    if (honeypotFilled || noInteraction) {
+      // Silently fake success for bots
+      formEl.style.display = 'none';
+      messageEl.classList.remove('hidden');
+      messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
+      messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+      return;
+    }
+
     var cookies = getCookies();
     var computedFbc = getFbc(cookies);
     var computedFbp = getFbp(cookies);
@@ -904,21 +999,57 @@ const clientLogos = [
       });
   }
 
+  function initABTest() {
+    var STORAGE_KEY = 'pix_ab_firma_field';
+    // URL override for QA: ?ab=control or ?ab=variant
+    var urlOverride = new URLSearchParams(window.location.search).get('ab');
+    var stored = (urlOverride === 'control' || urlOverride === 'variant') ? urlOverride : localStorage.getItem(STORAGE_KEY);
+    var variant = stored || (Math.random() < 0.5 ? 'control' : 'variant');
+    if (!stored) localStorage.setItem(STORAGE_KEY, variant);
+
+    document.querySelectorAll('[data-ab-firma]').forEach(function (group) {
+      var controlEl = group.querySelector('[data-ab-role="control"]');
+      var variantEl = group.querySelector('[data-ab-role="variant"]');
+      var showEl = variant === 'variant' ? variantEl : controlEl;
+      var hideEl = variant === 'variant' ? controlEl : variantEl;
+
+      if (showEl) {
+        showEl.style.display = '';
+        var input = showEl.querySelector('input, select');
+        if (input) input.required = true;
+      }
+      if (hideEl) {
+        hideEl.style.display = 'none';
+        var input = hideEl.querySelector('input, select');
+        if (input) { input.required = false; input.value = ''; }
+      }
+    });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'ab_test_assigned',
+      ab_test_name: 'firma_field_lp',
+      ab_variant: variant,
+    });
+  }
+
   function init() {
     initEventId();
+    initABTest();
 
+    // Populate all deadline elements at once
     var deadline = getOfferDeadline();
-    var deadlineEls = document.querySelectorAll('#offer-deadline');
-    deadlineEls.forEach(function (el) { el.textContent = deadline; });
+    document.querySelectorAll('.sticky-deadline-el').forEach(function (el) { el.textContent = deadline; });
 
-    // POPUP MODAL
+    // LEAD CAPTURE POPUP MODAL
     var modal = document.getElementById('popup-modal');
-    var heroBtn = document.getElementById('hero-cta-btn');
     var closeBtn = document.getElementById('popup-close');
     var overlay = document.getElementById('popup-overlay');
     var popupTriggers = document.querySelectorAll('.popup-trigger');
 
     function openPopup() {
+      // Close timed popup if open
+      closeTimedPopup();
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
@@ -930,13 +1061,70 @@ const clientLogos = [
       document.body.style.overflow = '';
     }
 
-    if (heroBtn) heroBtn.addEventListener('click', openPopup);
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
     if (overlay) overlay.addEventListener('click', closePopup);
     popupTriggers.forEach(function (btn) { btn.addEventListener('click', openPopup); });
 
+    // TIMED POPUP (5s delay, once per session)
+    var timedPopup = document.getElementById('timed-popup');
+    var timedOverlay = document.getElementById('timed-popup-overlay');
+    var timedClose = document.getElementById('timed-popup-close');
+    var timedCta = document.getElementById('timed-popup-cta');
+    var timedDecline = document.getElementById('timed-popup-decline');
+
+    function openTimedPopup() {
+      timedPopup.classList.remove('hidden');
+      timedPopup.classList.add('flex');
+    }
+
+    function closeTimedPopup() {
+      if (!timedPopup) return;
+      timedPopup.classList.add('hidden');
+      timedPopup.classList.remove('flex');
+    }
+
+    if (!sessionStorage.getItem('pix_timed_popup_seen')) {
+      function startTimedPopupTimer() {
+        setTimeout(function () {
+          if (!modal.classList.contains('flex')) {
+            openTimedPopup();
+            sessionStorage.setItem('pix_timed_popup_seen', '1');
+          }
+        }, 5000);
+      }
+      // Only start timer after user has responded to the cookie banner
+      try {
+        var existingConsent = localStorage.getItem('pix_consent');
+        if (existingConsent) {
+          // Returning visitor — consent already given, start immediately
+          startTimedPopupTimer();
+        } else {
+          // Wait for user to interact with cookie banner
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push = (function (origPush) {
+            return function () {
+              origPush.apply(window.dataLayer, arguments);
+              var item = arguments[0];
+              if (item && item.event === 'pix_consent_updated') {
+                // Restore original push and start timer
+                window.dataLayer.push = origPush;
+                startTimedPopupTimer();
+              }
+            };
+          })(window.dataLayer.push);
+        }
+      } catch (e) {
+        startTimedPopupTimer();
+      }
+    }
+
+    if (timedClose) timedClose.addEventListener('click', closeTimedPopup);
+    if (timedOverlay) timedOverlay.addEventListener('click', closeTimedPopup);
+    if (timedDecline) timedDecline.addEventListener('click', closeTimedPopup);
+    if (timedCta) timedCta.addEventListener('click', function () { openPopup(); });
+
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closePopup();
+      if (e.key === 'Escape') { closePopup(); closeTimedPopup(); }
     });
 
     // POPUP FORM

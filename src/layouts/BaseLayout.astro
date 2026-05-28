@@ -1,6 +1,9 @@
 ---
 import '@/styles/global.css';
 import ChatWidget from '@/components/ChatWidget.astro';
+import CookieBanner from '@/components/CookieBanner.astro';
+import SitePopup from '@/components/SitePopup.astro';
+import StickyBar from '@/components/StickyBar.astro';
 
 interface Props {
   title?: string;
@@ -10,6 +13,7 @@ interface Props {
   type?: 'website' | 'article';
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noSitePopup?: boolean;
 }
 
 const {
@@ -20,6 +24,7 @@ const {
   type = 'website',
   noindex = false,
   jsonLd,
+  noSitePopup = false,
 } = Astro.props;
 
 const canonicalURL = canonical ?? Astro.url.href;
@@ -114,6 +119,41 @@ const websiteSchema = {
     <!-- Per-page head injections (preconnects, etc.) -->
     <slot name="head" />
 
+    <!-- Google Consent Mode v2 defaults — MUST run before GTM -->
+    <script is:inline>
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        // Set denied defaults first (before GTM fires any tags)
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          wait_for_update: 500
+        });
+        // Immediately restore saved consent so returning visitors aren't re-blocked
+        try {
+          var saved = localStorage.getItem('pix_consent');
+          if (saved) {
+            var c = JSON.parse(saved);
+            var now = Date.now();
+            // Honour consent for up to 12 months
+            if (c.ts && (now - c.ts) < 365 * 24 * 60 * 60 * 1000) {
+              gtag('consent', 'update', {
+                ad_storage: c.marketing ? 'granted' : 'denied',
+                ad_user_data: c.marketing ? 'granted' : 'denied',
+                ad_personalization: c.marketing ? 'granted' : 'denied',
+                analytics_storage: c.statistics ? 'granted' : 'denied'
+              });
+              window.__pixConsentRestored = true;
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- End Google Consent Mode v2 defaults -->
+
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -168,9 +208,12 @@ const websiteSchema = {
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot name="header" />
+    {!noSitePopup && <StickyBar />}
     <main><slot /></main>
     <slot name="footer" />
     <ChatWidget />
+    <CookieBanner />
+    {!noSitePopup && <SitePopup />}
     <script is:inline src="/js/url-params.js"></script>
     <script is:inline src="/js/form-protection.js"></script>
   </body>

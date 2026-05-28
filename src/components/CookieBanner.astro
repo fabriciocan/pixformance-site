@@ -1,0 +1,575 @@
+---
+// CookieBanner — GDPR + Google Consent Mode v2 compliant
+// Blocking modal: user must make a choice before interacting with the site.
+// Supports DE, EN, NL, FR, IT, JP.
+
+interface Props {
+  lang?: 'de' | 'en' | 'nl' | 'fr' | 'it' | 'jp';
+}
+
+const { lang = 'de' } = Astro.props;
+
+const t = {
+  de: {
+    title: 'Wir respektieren Ihre Privatsphäre',
+    body: 'Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu verbessern, Ihnen relevante Inhalte anzuzeigen und unsere Werbemaßnahmen zu optimieren. Weitere Informationen finden Sie in unserer',
+    privacy: 'Datenschutzerklärung',
+    privacyHref: '/datenschutz',
+    settings: 'Einstellungen',
+    reject: 'Ablehnen',
+    acceptAll: 'Alles akzeptieren',
+    settingsTitle: 'Cookie-Einstellungen',
+    settingsIntro: 'Wählen Sie aus, welche Cookies Sie zulassen möchten. Notwendige Cookies sind immer aktiv, da sie für die grundlegende Funktionalität der Website erforderlich sind.',
+    necessary: 'Notwendig',
+    necessaryDesc: 'Technisch erforderlich für den Betrieb der Website. Können nicht deaktiviert werden.',
+    alwaysActive: 'Immer aktiv',
+    statistics: 'Statistiken',
+    statisticsDesc: 'Helfen uns zu verstehen, wie Besucher mit der Website interagieren (Google Analytics).',
+    marketing: 'Marketing',
+    marketingDesc: 'Ermöglichen personalisierte Werbung (Google Ads, Meta/Facebook Pixel).',
+    saveSelection: 'Auswahl speichern',
+    backBtn: '← Zurück',
+  },
+  en: {
+    title: 'We respect your privacy',
+    body: 'We use cookies and similar technologies to improve our website, show you relevant content and optimise our advertising. For more information, please see our',
+    privacy: 'Privacy Policy',
+    privacyHref: '/en/privacy-policy',
+    settings: 'Settings',
+    reject: 'Reject all',
+    acceptAll: 'Accept all',
+    settingsTitle: 'Cookie Settings',
+    settingsIntro: 'Choose which cookies you want to allow. Necessary cookies are always active as they are required for the basic functionality of the website.',
+    necessary: 'Necessary',
+    necessaryDesc: 'Technically required for the operation of the website. Cannot be disabled.',
+    alwaysActive: 'Always active',
+    statistics: 'Statistics',
+    statisticsDesc: 'Help us understand how visitors interact with the website (Google Analytics).',
+    marketing: 'Marketing',
+    marketingDesc: 'Enable personalised advertising (Google Ads, Meta/Facebook Pixel).',
+    saveSelection: 'Save selection',
+    backBtn: '← Back',
+  },
+  nl: {
+    title: 'Wij respecteren uw privacy',
+    body: 'Wij gebruiken cookies en vergelijkbare technologieën om onze website te verbeteren, u relevante inhoud te tonen en onze advertenties te optimaliseren. Meer informatie vindt u in ons',
+    privacy: 'Privacybeleid',
+    privacyHref: '/nl/privacybeleid',
+    settings: 'Instellingen',
+    reject: 'Alles weigeren',
+    acceptAll: 'Alles accepteren',
+    settingsTitle: 'Cookie-instellingen',
+    settingsIntro: 'Kies welke cookies u wilt toestaan. Noodzakelijke cookies zijn altijd actief omdat ze vereist zijn voor de basisfunctionaliteit van de website.',
+    necessary: 'Noodzakelijk',
+    necessaryDesc: 'Technisch vereist voor de werking van de website. Kan niet worden uitgeschakeld.',
+    alwaysActive: 'Altijd actief',
+    statistics: 'Statistieken',
+    statisticsDesc: 'Helpen ons te begrijpen hoe bezoekers de website gebruiken (Google Analytics).',
+    marketing: 'Marketing',
+    marketingDesc: 'Maken gepersonaliseerde advertenties mogelijk (Google Ads, Meta/Facebook Pixel).',
+    saveSelection: 'Selectie opslaan',
+    backBtn: '← Terug',
+  },
+  fr: {
+    title: 'Nous respectons votre vie privée',
+    body: 'Nous utilisons des cookies et des technologies similaires pour améliorer notre site web, vous afficher des contenus pertinents et optimiser nos publicités. Pour en savoir plus, consultez notre',
+    privacy: 'Politique de confidentialité',
+    privacyHref: '/fr/politique-de-confidentialite',
+    settings: 'Paramètres',
+    reject: 'Tout refuser',
+    acceptAll: 'Tout accepter',
+    settingsTitle: 'Paramètres des cookies',
+    settingsIntro: 'Choisissez les cookies que vous souhaitez autoriser. Les cookies nécessaires sont toujours actifs car ils sont indispensables au fonctionnement de base du site.',
+    necessary: 'Nécessaires',
+    necessaryDesc: 'Techniquement requis pour le fonctionnement du site. Ne peuvent pas être désactivés.',
+    alwaysActive: 'Toujours actif',
+    statistics: 'Statistiques',
+    statisticsDesc: 'Nous aident à comprendre comment les visiteurs interagissent avec le site (Google Analytics).',
+    marketing: 'Marketing',
+    marketingDesc: 'Permettent la publicité personnalisée (Google Ads, Meta/Facebook Pixel).',
+    saveSelection: 'Enregistrer la sélection',
+    backBtn: '← Retour',
+  },
+  it: {
+    title: 'Rispettiamo la tua privacy',
+    body: 'Utilizziamo cookie e tecnologie simili per migliorare il nostro sito web, mostrarti contenuti pertinenti e ottimizzare la nostra pubblicità. Per ulteriori informazioni consulta la nostra',
+    privacy: 'Informativa sulla privacy',
+    privacyHref: '/it/informativa-sulla-privacy',
+    settings: 'Impostazioni',
+    reject: 'Rifiuta tutto',
+    acceptAll: 'Accetta tutto',
+    settingsTitle: 'Impostazioni cookie',
+    settingsIntro: 'Scegli quali cookie vuoi consentire. I cookie necessari sono sempre attivi poiché sono richiesti per la funzionalità di base del sito.',
+    necessary: 'Necessari',
+    necessaryDesc: 'Tecnicamente necessari per il funzionamento del sito. Non possono essere disabilitati.',
+    alwaysActive: 'Sempre attivo',
+    statistics: 'Statistiche',
+    statisticsDesc: 'Ci aiutano a capire come i visitatori interagiscono con il sito (Google Analytics).',
+    marketing: 'Marketing',
+    marketingDesc: 'Consentono pubblicità personalizzata (Google Ads, Meta/Facebook Pixel).',
+    saveSelection: 'Salva selezione',
+    backBtn: '← Indietro',
+  },
+  jp: {
+    title: 'プライバシーを尊重します',
+    body: '当サイトでは、ウェブサイトの改善、関連コンテンツの表示、広告の最適化のためにCookieおよび類似技術を使用しています。詳しくは',
+    privacy: 'プライバシーポリシー',
+    privacyHref: '/jp/privacy-policy',
+    settings: '設定',
+    reject: 'すべて拒否',
+    acceptAll: 'すべて受け入れる',
+    settingsTitle: 'Cookie設定',
+    settingsIntro: '許可するCookieを選択してください。必須Cookieはウェブサイトの基本機能に必要なため、常に有効です。',
+    necessary: '必須',
+    necessaryDesc: 'ウェブサイトの動作に技術的に必要です。無効にできません。',
+    alwaysActive: '常に有効',
+    statistics: '統計',
+    statisticsDesc: '訪問者がウェブサイトをどのように利用しているかを理解するのに役立ちます (Google Analytics)。',
+    marketing: 'マーケティング',
+    marketingDesc: 'パーソナライズされた広告を可能にします (Google広告、Meta/Facebookピクセル)。',
+    saveSelection: '選択を保存',
+    backBtn: '← 戻る',
+  },
+}[lang];
+---
+
+<!-- Blocking Cookie Modal -->
+<div id="pix-cookie-modal" role="dialog" aria-modal="true" aria-label={t.settingsTitle} style="display:none;">
+  <div class="pix-cm-backdrop"></div>
+  <div class="pix-cm-box">
+
+    <!-- Main view -->
+    <div id="pix-cm-main">
+      <div class="pix-cm-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#02308C"/>
+          <path d="M8 16C8 11.582 11.582 8 16 8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8z" fill="#6BDBD1" opacity=".3"/>
+          <path d="M16 11v5.5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="pix-cm-brand">Pixformance</span>
+      </div>
+      <h2 class="pix-cm-title">{t.title}</h2>
+      <p class="pix-cm-body">
+        {t.body} <a href={t.privacyHref} class="pix-cm-link" target="_blank" rel="noopener">{t.privacy}</a>.
+      </p>
+      <div class="pix-cm-actions">
+        <button id="pix-cm-reject-btn" class="pix-cb-btn pix-cb-btn--ghost" type="button">{t.reject}</button>
+        <button id="pix-cm-settings-btn" class="pix-cb-btn pix-cb-btn--outline" type="button">{t.settings}</button>
+        <button id="pix-cm-accept-btn" class="pix-cb-btn pix-cb-btn--primary" type="button">{t.acceptAll}</button>
+      </div>
+    </div>
+
+    <!-- Settings view (hidden by default) -->
+    <div id="pix-cm-settings" style="display:none;">
+      <button id="pix-cm-back-btn" class="pix-cm-back" type="button">{t.backBtn}</button>
+      <h2 class="pix-cm-title pix-cm-title--sm">{t.settingsTitle}</h2>
+      <p class="pix-cm-intro">{t.settingsIntro}</p>
+
+      <div class="pix-cm-category">
+        <div class="pix-cm-cat-row">
+          <div>
+            <span class="pix-cm-cat-name">{t.necessary}</span>
+            <span class="pix-cm-cat-desc">{t.necessaryDesc}</span>
+          </div>
+          <span class="pix-cm-always-on">{t.alwaysActive}</span>
+        </div>
+      </div>
+
+      <div class="pix-cm-category">
+        <div class="pix-cm-cat-row">
+          <div>
+            <span class="pix-cm-cat-name">{t.statistics}</span>
+            <span class="pix-cm-cat-desc">{t.statisticsDesc}</span>
+          </div>
+          <label class="pix-cm-switch" for="pix-toggle-statistics">
+            <input type="checkbox" id="pix-toggle-statistics" role="switch">
+            <span class="pix-cm-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="pix-cm-category">
+        <div class="pix-cm-cat-row">
+          <div>
+            <span class="pix-cm-cat-name">{t.marketing}</span>
+            <span class="pix-cm-cat-desc">{t.marketingDesc}</span>
+          </div>
+          <label class="pix-cm-switch" for="pix-toggle-marketing">
+            <input type="checkbox" id="pix-toggle-marketing" role="switch">
+            <span class="pix-cm-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="pix-cm-actions pix-cm-actions--settings">
+        <button id="pix-cm-save-btn" class="pix-cb-btn pix-cb-btn--primary" type="button">{t.saveSelection}</button>
+        <button id="pix-cm-accept-all-btn" class="pix-cb-btn pix-cb-btn--outline" type="button">{t.acceptAll}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* ── Overlay ────────────────────────────────────────────── */
+  #pix-cookie-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: inherit;
+  }
+  .pix-cm-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(2px);
+  }
+
+  /* ── Box ────────────────────────────────────────────────── */
+  .pix-cm-box {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem 1.75rem 1.75rem;
+  }
+
+  /* ── Logo row ───────────────────────────────────────────── */
+  .pix-cm-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+  }
+  .pix-cm-brand {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #02308C;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Title ──────────────────────────────────────────────── */
+  .pix-cm-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+  .pix-cm-title--sm {
+    font-size: 1.0625rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Body text ──────────────────────────────────────────── */
+  .pix-cm-body {
+    font-size: 0.9rem;
+    color: #4B5563;
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+  }
+  .pix-cm-intro {
+    font-size: 0.85rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+  .pix-cm-link {
+    color: #02308C;
+    text-decoration: underline;
+  }
+
+  /* ── Action row ─────────────────────────────────────────── */
+  .pix-cm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  .pix-cm-actions--settings {
+    margin-top: 1.25rem;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────── */
+  .pix-cb-btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+  .pix-cb-btn--primary {
+    background: #02308C;
+    color: #fff;
+    border-color: #02308C;
+  }
+  .pix-cb-btn--primary:hover { background: #012270; border-color: #012270; }
+  .pix-cb-btn--outline {
+    background: transparent;
+    color: #02308C;
+    border-color: #02308C;
+  }
+  .pix-cb-btn--outline:hover { background: #EEF2FF; }
+  .pix-cb-btn--ghost {
+    background: transparent;
+    color: #6B7280;
+    border-color: #D1D5DB;
+  }
+  .pix-cb-btn--ghost:hover { background: #F3F4F6; color: #374151; }
+
+  /* ── Settings panel ─────────────────────────────────────── */
+  #pix-cm-settings {
+    display: flex;
+    flex-direction: column;
+  }
+  .pix-cm-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #6B7280;
+    padding: 0;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    text-align: left;
+  }
+  .pix-cm-back:hover { color: #111827; }
+
+  /* ── Category cards ─────────────────────────────────────── */
+  .pix-cm-category {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .pix-cm-cat-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .pix-cm-cat-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.2rem;
+  }
+  .pix-cm-cat-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: #6B7280;
+    line-height: 1.5;
+  }
+  .pix-cm-always-on {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #059669;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  /* ── Toggle switch ──────────────────────────────────────── */
+  .pix-cm-switch {
+    flex-shrink: 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 0.125rem;
+  }
+  .pix-cm-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .pix-cm-slider {
+    display: block;
+    width: 44px;
+    height: 24px;
+    background: #D1D5DB;
+    border-radius: 12px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .pix-cm-slider::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .pix-cm-switch input:checked + .pix-cm-slider { background: #02308C; }
+  .pix-cm-switch input:checked + .pix-cm-slider::after { transform: translateX(20px); }
+  .pix-cm-switch input:focus-visible + .pix-cm-slider {
+    outline: 2px solid #02308C;
+    outline-offset: 2px;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 480px) {
+    .pix-cm-box { padding: 1.5rem 1.25rem 1.25rem; }
+    .pix-cm-actions { flex-direction: column; }
+    .pix-cb-btn { text-align: center; }
+  }
+
+  /* ── Body scroll lock when modal is open ────────────────── */
+  body.pix-modal-open { overflow: hidden; }
+</style>
+
+<script is:inline>
+(function () {
+  var STORAGE_KEY = 'pix_consent';
+  var EXPIRY_MS = 365 * 24 * 60 * 60 * 1000;
+
+  function gtag() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(arguments);
+  }
+
+  function loadConsent() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var c = JSON.parse(raw);
+      if (!c.ts || (Date.now() - c.ts) >= EXPIRY_MS) {
+        localStorage.removeItem(STORAGE_KEY);
+        return null;
+      }
+      return c;
+    } catch (e) { return null; }
+  }
+
+  function saveConsent(statistics, marketing) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        statistics: !!statistics,
+        marketing: !!marketing,
+        ts: Date.now()
+      }));
+    } catch (e) {}
+  }
+
+  function applyConsent(statistics, marketing) {
+    gtag('consent', 'update', {
+      analytics_storage: statistics ? 'granted' : 'denied',
+      ad_storage: marketing ? 'granted' : 'denied',
+      ad_user_data: marketing ? 'granted' : 'denied',
+      ad_personalization: marketing ? 'granted' : 'denied'
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'pix_consent_updated' });
+  }
+
+  function hideModal() {
+    var m = document.getElementById('pix-cookie-modal');
+    if (m) m.style.display = 'none';
+    document.body.classList.remove('pix-modal-open');
+  }
+
+  function showModal() {
+    var m = document.getElementById('pix-cookie-modal');
+    if (m) m.style.display = 'flex';
+    document.body.classList.add('pix-modal-open');
+    // always start on main view
+    var main = document.getElementById('pix-cm-main');
+    var settings = document.getElementById('pix-cm-settings');
+    if (main) main.style.display = '';
+    if (settings) settings.style.display = 'none';
+  }
+
+  function showSettingsPanel() {
+    var main = document.getElementById('pix-cm-main');
+    var settings = document.getElementById('pix-cm-settings');
+    if (main) main.style.display = 'none';
+    if (settings) settings.style.display = '';
+    var statEl = document.getElementById('pix-toggle-statistics');
+    var mktEl = document.getElementById('pix-toggle-marketing');
+    var c = loadConsent();
+    if (statEl) statEl.checked = c ? !!c.statistics : false;
+    if (mktEl) mktEl.checked = c ? !!c.marketing : false;
+  }
+
+  function decide(statistics, marketing) {
+    saveConsent(statistics, marketing);
+    applyConsent(statistics, marketing);
+    hideModal();
+  }
+
+  function acceptAll() { decide(true, true); }
+  function rejectAll()  { decide(false, false); }
+
+  function saveSelection() {
+    var s = document.getElementById('pix-toggle-statistics');
+    var m = document.getElementById('pix-toggle-marketing');
+    decide(s ? s.checked : false, m ? m.checked : false);
+  }
+
+  function init() {
+    // Consent already restored in <head> — skip modal
+    if (window.__pixConsentRestored) return;
+    var saved = loadConsent();
+    if (saved) { applyConsent(saved.statistics, saved.marketing); return; }
+    // No consent yet — show blocking modal
+    showModal();
+  }
+
+  function wireButtons() {
+    var acceptBtn    = document.getElementById('pix-cm-accept-btn');
+    var rejectBtn    = document.getElementById('pix-cm-reject-btn');
+    var settingsBtn  = document.getElementById('pix-cm-settings-btn');
+    var backBtn      = document.getElementById('pix-cm-back-btn');
+    var saveBtn      = document.getElementById('pix-cm-save-btn');
+    var acceptAllBtn = document.getElementById('pix-cm-accept-all-btn');
+
+    if (acceptBtn)    acceptBtn.addEventListener('click', acceptAll);
+    if (rejectBtn)    rejectBtn.addEventListener('click', rejectAll);
+    if (settingsBtn)  settingsBtn.addEventListener('click', showSettingsPanel);
+    if (backBtn)      backBtn.addEventListener('click', function () {
+      var main = document.getElementById('pix-cm-main');
+      var settings = document.getElementById('pix-cm-settings');
+      if (main) main.style.display = '';
+      if (settings) settings.style.display = 'none';
+    });
+    if (saveBtn)      saveBtn.addEventListener('click', saveSelection);
+    if (acceptAllBtn) acceptAllBtn.addEventListener('click', acceptAll);
+    // Backdrop click intentionally does nothing — user must choose
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { wireButtons(); init(); });
+  } else {
+    wireButtons();
+    init();
+  }
+
+  document.addEventListener('astro:page-load', function () { wireButtons(); init(); });
+
+  // Allow pages to re-open settings (e.g. from Datenschutz page)
+  window.pixCookieSettings = function () {
+    showModal();
+    showSettingsPanel();
+  };
+})();
+</script>

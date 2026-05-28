@@ -1,0 +1,468 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+
+const products = [
+  {
+    id: 'poster',
+    name: 'Poster',
+    badge: '5 Motive',
+    startingPrice: 'ab 16,84€',
+    priceNote: 'pro Stück',
+    description: 'DIN A4 bis DIN A0 hoch, 170 g/m² Bilderdruck matt, 4/4-farbig Euroskala. Personalisierbar mit Ihrem Logo, Ihrer Adresse und Öffnungszeiten.',
+    images: [
+      { src: '/images/brandstore/poster/Poster_M1.webp', label: 'Motiv 1' },
+      { src: '/images/brandstore/poster/Poster_M2.webp', label: 'Motiv 2' },
+      { src: '/images/brandstore/poster/Poster_M3.webp', label: 'Motiv 3' },
+      { src: '/images/brandstore/poster/Poster_M4.webp', label: 'Motiv 4' },
+      { src: '/images/brandstore/poster/Poster_M5.webp', label: 'Motiv 5' },
+    ],
+    imgLayout: 'portrait',
+    reverse: false,
+  },
+  {
+    id: 'flyer',
+    name: 'Flyer',
+    badge: '2 Motive',
+    startingPrice: 'ab 29,81€',
+    priceNote: 'pro 25 Stück',
+    description: 'Falzflyer A4 auf DIN Lang, 135g glänzend, Wickelfalz. Personalisierbar mit Ihrem Logo, Ihrer Adresse und Öffnungszeiten.',
+    images: [
+      { src: '/images/brandstore/flyer/Flyer_M1_v2.webp', label: 'Motiv 1' },
+      { src: '/images/brandstore/flyer/Flyer_M2_v2.webp', label: 'Motiv 2' },
+    ],
+    imgLayout: 'portrait',
+    reverse: true,
+  },
+  {
+    id: 'rollup',
+    name: 'Roll-Up',
+    badge: '3 Motive',
+    startingPrice: 'ab 63,06€',
+    priceNote: 'pro Stück',
+    description: '85 × 210 cm, Solvent Smooth Roll-Up, 195g 4/4-farbig Euroskala. Personalisierbar mit Ihrem Logo, Ihrer Adresse und Öffnungszeiten.',
+    images: [
+      { src: '/images/brandstore/rollup/Roll-up_M1_v3.webp', label: 'Motiv 1' },
+      { src: '/images/brandstore/rollup/Roll-up_M2_v3.webp', label: 'Motiv 2' },
+      { src: '/images/brandstore/rollup/Roll-up_M3_v3.webp', label: 'Motiv 3' },
+    ],
+    imgLayout: 'tall',
+    reverse: false,
+  },
+  {
+    id: 'gutschein',
+    name: 'Gutschein',
+    badge: '3 Motive',
+    startingPrice: 'ab 21,15€',
+    priceNote: 'pro 25 Stück',
+    description: 'DIN A7, 300 g/m² Bilderdruck matt, 4/4-farbig Euroskala. Personalisierbar mit Ihrem Logo, Ihrer Adresse und Öffnungszeiten.',
+    images: [
+      { src: '/images/brandstore/gutschein/Gutschein_M1.webp', label: 'Motiv 1' },
+      { src: '/images/brandstore/gutschein/Gutschein_M2.webp', label: 'Motiv 2' },
+      { src: '/images/brandstore/gutschein/Gutschein_M3.webp', label: 'Motiv 3' },
+    ],
+    imgLayout: 'landscape',
+    reverse: true,
+  },
+  {
+    id: 'bonuskarte',
+    name: 'Bonuskarte',
+    badge: '1 Motiv',
+    startingPrice: 'ab 13,68€',
+    priceNote: 'pro 100 Stück',
+    description: 'DIN A7, 300 g/m² Bilderdruck matt, 4/4-farbig Euroskala. Personalisierbar mit Ihrem Logo, Ihrer Adresse und Öffnungszeiten.',
+    images: [
+      { src: '/images/brandstore/bonuskarte/Bonuscard.webp', label: 'Motiv 1' },
+    ],
+    imgLayout: 'landscape',
+    reverse: false,
+  },
+];
+
+const pricingData = {
+  flyer: {
+    headers: ['Staffel', 'Preis'],
+    rows: [
+      ['25', '29,81€'], ['50', '33,80€'], ['100', '44,42€'], ['250', '60,66€'],
+      ['500', '66,73€'], ['1000', '67,61€'], ['2500', '123,34€'], ['5000', '182,14€'],
+    ],
+  },
+  poster: {
+    headers: ['Format', 'Stückpreis'],
+    rows: [['A4', '16,84€'], ['A3', '16,87€'], ['A2', '17,42€'], ['A1', '21,15€'], ['A0', '25,68€']],
+  },
+  rollup: {
+    headers: ['Format', 'Stückpreis'],
+    rows: [['85 × 210 cm', '63,06€']],
+  },
+  gutschein: {
+    headers: ['Staffel', 'Preis'],
+    rows: [
+      ['25', '21,15€'], ['50', '21,65€'], ['100', '23,09€'], ['250', '27,39€'],
+      ['500', '27,69€'], ['1000', '63,65€'], ['2500', '79,81€'], ['5000', '112,80€'],
+    ],
+  },
+  bonuskarte: {
+    headers: ['Staffel', 'Preis'],
+    rows: [
+      ['100', '13,68€'], ['250', '18,23€'], ['500', '23,00€'],
+      ['1000', '25,54€'], ['2500', '33,25€'], ['5000', '42,98€'],
+    ],
+  },
+};
+
+const pricingTabs = [
+  { id: 'flyer', label: 'Flyer' },
+  { id: 'poster', label: 'Poster' },
+  { id: 'rollup', label: 'Roll-Up' },
+  { id: 'gutschein', label: 'Gutschein' },
+  { id: 'bonuskarte', label: 'Bonuskarte' },
+];
+---
+
+<BaseLayout
+  title="Brandstore – Pixformance Sports GmbH"
+  description="Exklusiver Zugang für unsere Business-Partner: Marketing-Paket für Print + Web und vieles mehr. ✓ Kostenlose Downloads ✓ Bilder & Videos"
+  noindex={true}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- ─── HERO ─── -->
+  <section class="relative bg-[#02308C] overflow-hidden py-20 md:py-32">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-[#6BDBD1] rounded-full blur-3xl opacity-10 -translate-y-1/2 translate-x-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#6BDBD1] rounded-full blur-3xl opacity-10 translate-y-1/2 -translate-x-1/2"></div>
+    </div>
+    <div class="container relative z-10 text-center">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1] mb-6">
+        Exklusiv für Business-Partner
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-wide">
+        Willkommen im<br />
+        <span class="text-[#6BDBD1]">Pixformance Brandstore</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-white/80 font-medium">
+        Exklusives Marketing Material für Ihr Unternehmen
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTS HEADER + NAV ─── -->
+  <div id="printprodukte" class="bg-gray-50 border-b border-gray-200">
+    <!-- Intro text -->
+    <div class="container py-12">
+      <div class="max-w-3xl mx-auto text-center space-y-5">
+        <h2 class="text-3xl md:text-4xl font-black text-[#02308C]">Printprodukte</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Sie sind unser Business-Partner und haben Pixformance bereits in Verwendung?
+          <strong class="text-[#02308C]"> Dann sichern Sie sich jetzt hier Ihr 360°-Marketing-Paket für Print und Web.</strong>
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          <strong>Machen Sie auf Ihr digitales Trainingsangebot aufmerksam:</strong> Nutzen Sie unsere kostenlosen Bilder und Grafiken oder bestellen Sie Printprodukte zu Sonderkonditionen – personalisierbar mit Ihrem Logo, Ihren Öffnungszeiten und Ihrer Adresse.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+          <a
+            href="https://drive.google.com/drive/folders/1xZdjpwKIqVG5k0JnsgAvH_lBT2u9mdKv?usp=sharing"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-[#6BDBD1] text-[#02308C] font-bold text-sm hover:bg-[#02308C] hover:text-white transition-all duration-200 shadow-md"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Kostenlose Bilder
+          </a>
+          <a
+            href="#preise"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border-2 border-[#02308C] text-[#02308C] font-bold text-sm hover:bg-[#02308C] hover:text-white transition-all duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Preise & Bestellen
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Sticky product nav -->
+    <div class="sticky top-0 z-40 bg-gray-50 border-t border-gray-200 shadow-sm">
+    <div class="container">
+      <nav class="flex items-center gap-1 overflow-x-auto py-3 scrollbar-hide" aria-label="Produkte">
+        {products.map((p) => (
+          <a
+            href={`#${p.id}`}
+            class="product-nav-link shrink-0 px-4 py-2 rounded-full text-sm font-bold text-gray-600 hover:bg-[#02308C] hover:text-white transition-all duration-200 whitespace-nowrap"
+            data-product={p.id}
+          >
+            {p.name}
+          </a>
+        ))}
+        <a
+          href="#preise"
+          class="shrink-0 ml-auto px-4 py-2 rounded-full text-sm font-bold text-[#02308C] border border-[#02308C] hover:bg-[#02308C] hover:text-white transition-all duration-200 whitespace-nowrap"
+        >
+          Preise & Bestellen
+        </a>
+      </nav>
+    </div>
+    </div><!-- /sticky nav -->
+  </div><!-- /#printprodukte -->
+
+  <!-- ─── PRODUCT SECTIONS ─── -->
+  {products.map((product, idx) => (
+    <section
+      id={product.id}
+      class={`py-16 md:py-24 scroll-mt-16 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+    >
+      <div class="container">
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${product.reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
+
+          <!-- Info Side -->
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#6BDBD1]/20 text-[#02308C] text-xs font-bold uppercase tracking-wider">
+                {product.badge}
+              </span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-[#02308C]">{product.name}</h2>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold text-gray-900">{product.startingPrice}</span>
+              <span class="text-gray-500 text-sm">{product.priceNote}</span>
+            </div>
+            <p class="text-gray-600 leading-relaxed text-lg">{product.description}</p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a
+                href="#bestellformular"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C] text-white font-bold text-sm hover:bg-[#6BDBD1] hover:text-[#02308C] transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13l-1.5-6" />
+                </svg>
+                Jetzt bestellen
+              </a>
+              <a
+                href="#preise"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gray-200 text-gray-700 font-bold text-sm hover:border-[#02308C] hover:text-[#02308C] transition-all duration-200"
+              >
+                Preisliste ansehen
+              </a>
+            </div>
+          </div>
+
+          <!-- Gallery Side -->
+          <div class="gallery-wrapper" data-gallery={product.id}>
+            <!-- Main image -->
+            <div class={`gallery-main relative rounded-2xl overflow-hidden shadow-xl bg-gray-100 w-full ${product.id === 'rollup' ? 'ring-1 ring-gray-200 shadow-[inset_0_8px_16px_-4px_rgba(0,0,0,0.12)]' : ''}`}>
+              {product.images.map((img, i) => (
+                <img
+                  src={img.src}
+                  alt={`${product.name} – ${img.label}`}
+                  loading={idx === 0 && i === 0 ? 'eager' : 'lazy'}
+                  class={`gallery-img w-full h-auto object-contain transition-opacity duration-300 ${i === 0 ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'}`}
+                  data-index={i}
+                />
+              ))}
+            </div>
+
+            <!-- Thumbnails — only if more than 1 image -->
+            {product.images.length > 1 && (
+              <div class="gallery-thumbs flex flex-wrap gap-2 mt-4 justify-center">
+                {product.images.map((img, i) => (
+                  <button
+                    class={`gallery-thumb px-4 py-2 rounded-full text-xs font-bold border-2 transition-all duration-200 cursor-pointer ${i === 0 ? 'border-[#02308C] bg-[#02308C] text-white' : 'border-gray-200 bg-white text-gray-600 hover:border-[#02308C] hover:text-[#02308C]'}`}
+                    data-index={i}
+                    aria-label={`${img.label} anzeigen`}
+                  >
+                    {img.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ─── PRICING ─── -->
+  <section id="preise" class="py-16 bg-[#02308C] scroll-mt-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-black text-white mb-2">Preisübersicht</h2>
+          <p class="text-white/70">Alle Preise verstehen sich zzgl. MwSt. *Personalisierung: 20€ pro Bestellung</p>
+        </div>
+
+        <!-- Tab nav -->
+        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+          {pricingTabs.map((tab, i) => (
+            <button
+              class={`pricing-tab px-5 py-2 rounded-full font-bold text-sm transition-all duration-200 ${i === 0 ? 'bg-white text-[#02308C]' : 'bg-white/10 text-white hover:bg-white hover:text-[#02308C]'}`}
+              data-tab={tab.id}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <!-- Tab panels -->
+        {pricingTabs.map((tab, i) => {
+          const data = pricingData[tab.id as keyof typeof pricingData];
+          return (
+            <div class={`pricing-panel ${i === 0 ? '' : 'hidden'}`} data-panel={tab.id}>
+              <div class="bg-white rounded-2xl overflow-hidden shadow-xl overflow-x-auto">
+                <table class="w-full border-collapse text-sm">
+                  <thead>
+                    <tr>
+                      {data.headers.map((h) => (
+                        <th class="bg-[#6BDBD1] text-[#02308C] font-bold px-5 py-4 text-left">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.rows.map((row, ri) => (
+                      <tr class={`border-t border-gray-100 ${ri % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-[#6BDBD1]/10 transition-colors`}>
+                        {row.map((cell, ci) => (
+                          <td class={`px-5 py-3 ${ci === 0 ? 'font-bold text-[#02308C]' : 'text-gray-700'}`}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ORDER FORM ─── -->
+  <section id="bestellformular" class="py-16 bg-white scroll-mt-16">
+    <div class="container">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-black text-[#02308C]">Bestellformular</h2>
+        <p class="text-gray-500 mt-2">Füllen Sie das Formular aus, um Ihre Bestellung aufzugeben.</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+        <iframe
+          frameborder="0"
+          style="height:1000px;width:100%;border:none;"
+          src="https://forms.zohopublic.eu/droemmler/form/DEBrandstoreBestellformularNEU/formperma/FDNbDwWtf2refF5ilveONaBkRjInHi3Z3neVfn-lKqY"
+          title="Bestellformular"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTNER ─── -->
+  <section class="py-12 bg-gray-50 border-t border-gray-100">
+    <div class="container">
+      <div class="flex flex-col items-center gap-4">
+        <a
+          href="https://www.druckhaus-quickprint.de/"
+          target="_blank" rel="noopener noreferrer"
+          class="block hover:opacity-80 transition-opacity duration-200"
+        >
+          <img
+            src="/images/logo-drucktastisch-oberhavel.png"
+            alt="Logo Drucktastisch Oberhavel"
+            class="h-16 w-auto object-contain"
+            loading="lazy"
+          />
+        </a>
+        <p class="text-gray-500 text-sm text-center">Mit freundlicher Unterstützung von Drucktastisch Oberhavel GmbH</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* hide scrollbar on nav */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* gallery image positioning */
+  .gallery-main { position: relative; }
+  .gallery-img.opacity-0 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .gallery-img.opacity-100 { position: relative; }
+</style>
+
+<script is:inline>
+(function () {
+  /* ── Gallery ── */
+  document.querySelectorAll('.gallery-wrapper').forEach(function (wrapper) {
+    var imgs = wrapper.querySelectorAll('.gallery-img');
+    var thumbs = wrapper.querySelectorAll('.gallery-thumb');
+    var current = 0;
+
+    function goTo(idx) {
+      if (idx === current) return;
+      imgs[current].classList.remove('opacity-100', 'relative');
+      imgs[current].classList.add('opacity-0', 'absolute');
+      thumbs[current] && thumbs[current].classList.remove('border-[#02308C]', 'bg-[#02308C]', 'text-white');
+      thumbs[current] && thumbs[current].classList.add('border-gray-200', 'bg-white', 'text-gray-600');
+
+      current = idx;
+      imgs[current].classList.remove('opacity-0', 'absolute');
+      imgs[current].classList.add('opacity-100', 'relative');
+      thumbs[current] && thumbs[current].classList.remove('border-gray-200', 'bg-white', 'text-gray-600');
+      thumbs[current] && thumbs[current].classList.add('border-[#02308C]', 'bg-[#02308C]', 'text-white');
+    }
+
+    thumbs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        goTo(parseInt(btn.getAttribute('data-index'), 10));
+      });
+    });
+  });
+
+  /* ── Pricing tabs ── */
+  var pricingBtns = document.querySelectorAll('.pricing-tab');
+  var pricingPanels = document.querySelectorAll('.pricing-panel');
+
+  pricingBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = btn.getAttribute('data-tab');
+
+      pricingBtns.forEach(function (b) {
+        b.classList.remove('bg-white', 'text-[#02308C]');
+        b.classList.add('bg-white/10', 'text-white');
+      });
+      btn.classList.remove('bg-white/10', 'text-white');
+      btn.classList.add('bg-white', 'text-[#02308C]');
+
+      pricingPanels.forEach(function (p) {
+        p.classList.toggle('hidden', p.getAttribute('data-panel') !== target);
+      });
+    });
+  });
+
+  /* ── Active nav highlight on scroll ── */
+  var navLinks = document.querySelectorAll('.product-nav-link');
+  var sections = Array.from(navLinks).map(function (l) {
+    return document.getElementById(l.getAttribute('data-product'));
+  }).filter(Boolean);
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function (l) {
+          var active = l.getAttribute('data-product') === entry.target.id;
+          l.classList.toggle('bg-[#02308C]', active);
+          l.classList.toggle('text-white', active);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { observer.observe(s); });
+})();
+</script>

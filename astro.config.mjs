@@ -11,6 +11,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.pixformance.com',
+  redirects: {
+    '/de/brandstore': '/brandstore',
+  },
   integrations: [
     react(),
     sitemap({

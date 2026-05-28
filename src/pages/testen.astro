@@ -87,7 +87,7 @@ const benefits = [
             <!-- Form Content -->
             <div class="relative p-8 md:p-12">
               <form class="space-y-8" id="contact-form">
-                <!-- Name and Email Row -->
+                <!-- Vorname and Nachname Row -->
                 <div
                   class="grid grid-cols-1 md:grid-cols-2 gap-6"
                   data-scroll="fade-up"
@@ -95,21 +95,45 @@ const benefits = [
                 >
                   <div>
                     <label
-                      for="name"
+                      for="vorname"
                       class="block text-sm font-bold mb-3 text-white"
                     >
-                      Name <span class="text-[#FFED00]">*</span>
+                      Vorname <span class="text-[#FFED00]">*</span>
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
+                      id="vorname"
+                      name="first_name"
                       required
                       class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="Ihr Name"
+                      placeholder="Ihr Vorname"
                     />
                   </div>
 
+                  <div>
+                    <label
+                      for="nachname"
+                      class="block text-sm font-bold mb-3 text-white"
+                    >
+                      Nachname <span class="text-[#FFED00]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="nachname"
+                      name="last_name"
+                      required
+                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
+                      placeholder="Ihr Nachname"
+                    />
+                  </div>
+                </div>
+
+                <!-- Email and Company Row -->
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  data-scroll="fade-up"
+                  data-delay="2"
+                >
                   <div>
                     <label
                       for="email"
@@ -126,14 +150,7 @@ const benefits = [
                       placeholder="ihre.email@beispiel.de"
                     />
                   </div>
-                </div>
 
-                <!-- Company and Phone Row -->
-                <div
-                  class="grid grid-cols-1 md:grid-cols-2 gap-6"
-                  data-scroll="fade-up"
-                  data-delay="2"
-                >
                   <div>
                     <label
                       for="company"
@@ -149,7 +166,14 @@ const benefits = [
                       placeholder="Ihr Unternehmen"
                     />
                   </div>
+                </div>
 
+                <!-- Phone Row -->
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  data-scroll="fade-up"
+                  data-delay="3"
+                >
                   <div>
                     <label
                       for="phone"
@@ -168,7 +192,7 @@ const benefits = [
                 </div>
 
                 <!-- Interest Area -->
-                <div data-scroll="fade-up" data-delay="3">
+                <div data-scroll="fade-up" data-delay="4">
                   <label
                     for="interest"
                     class="block text-sm font-bold mb-3 text-white"
@@ -192,7 +216,7 @@ const benefits = [
                 </div>
 
                 <!-- Message -->
-                <div data-scroll="fade-up" data-delay="4">
+                <div data-scroll="fade-up" data-delay="5">
                   <label
                     for="message"
                     class="block text-sm font-bold mb-3 text-white"
@@ -213,7 +237,7 @@ const benefits = [
                 <div
                   class="flex items-start gap-3"
                   data-scroll="fade-up"
-                  data-delay="5"
+                  data-delay="6"
                 >
                   <input
                     type="checkbox"
@@ -240,7 +264,7 @@ const benefits = [
                 <div
                   class="flex justify-center pt-4"
                   data-scroll="fade-up"
-                  data-delay="6"
+                  data-delay="7"
                 >
                   <Button
                     size="lg"
@@ -501,6 +525,10 @@ const benefits = [
     [data-scroll][data-delay="6"] {
       transition-delay: 0.6s;
     }
+
+    [data-scroll][data-delay="7"] {
+      transition-delay: 0.7s;
+    }
   </style>
 
   <script is:inline>
@@ -540,11 +568,13 @@ const benefits = [
       function hashUserData(formData) {
         var email = (formData.get('email') || '').toLowerCase().trim();
         var phone = normalizePhone(formData.get('phone'));
+        var vorname = (formData.get('first_name') || '').toLowerCase().trim();
+        var nachname = (formData.get('last_name') || '').toLowerCase().trim();
         return Promise.all([
           email ? sha256(email) : Promise.resolve(''),
           phone ? sha256(phone) : Promise.resolve(''),
-          Promise.resolve(''),
-          Promise.resolve(''),
+          vorname ? sha256(vorname) : Promise.resolve(''),
+          nachname ? sha256(nachname) : Promise.resolve(''),
         ]).then(function (results) {
           return { em: results[0], ph: results[1], fn: results[2], ln: results[3] };
         });
@@ -612,7 +642,8 @@ const benefits = [
 
             var payload = {
               form_name: 'Testen - Beratungsanfrage',
-              name: formData.get('name') || '',
+              first_name: formData.get('first_name') || '',
+              last_name: formData.get('last_name') || '',
               email: formData.get('email') || '',
               company: formData.get('company') || '',
               phone: sanitizePhone(formData.get('phone')),
