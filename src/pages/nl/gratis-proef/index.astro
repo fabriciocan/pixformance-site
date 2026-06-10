@@ -391,6 +391,10 @@ const benefits = [
           if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
 
           var formData = new FormData(form);
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'meta_user_data_ready' });
+
           var payload = {
             form_name: 'Gratis proef NL - Adviesaanvraag',
             name: formData.get('name') || '',

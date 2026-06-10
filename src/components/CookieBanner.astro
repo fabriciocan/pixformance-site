@@ -11,8 +11,8 @@ const { lang = 'de' } = Astro.props;
 
 const t = {
   de: {
-    title: 'Wir respektieren Ihre Privatsphäre',
-    body: 'Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu verbessern, Ihnen relevante Inhalte anzuzeigen und unsere Werbemaßnahmen zu optimieren. Weitere Informationen finden Sie in unserer',
+    title: 'Ihr Erlebnis verbessern',
+    body: 'Wir verwenden Cookies, um Ihnen eine bessere Nutzererfahrung zu bieten, relevante Inhalte anzuzeigen und unsere Dienste kontinuierlich zu verbessern. Weitere Informationen finden Sie in unserer',
     privacy: 'Datenschutzerklärung',
     privacyHref: '/datenschutz',
     settings: 'Einstellungen',
@@ -31,8 +31,8 @@ const t = {
     backBtn: '← Zurück',
   },
   en: {
-    title: 'We respect your privacy',
-    body: 'We use cookies and similar technologies to improve our website, show you relevant content and optimise our advertising. For more information, please see our',
+    title: 'Improve your experience',
+    body: 'We use cookies to provide you with a better experience, show you relevant content and continuously improve our services. For more information, please see our',
     privacy: 'Privacy Policy',
     privacyHref: '/en/privacy-policy',
     settings: 'Settings',
@@ -51,8 +51,8 @@ const t = {
     backBtn: '← Back',
   },
   nl: {
-    title: 'Wij respecteren uw privacy',
-    body: 'Wij gebruiken cookies en vergelijkbare technologieën om onze website te verbeteren, u relevante inhoud te tonen en onze advertenties te optimaliseren. Meer informatie vindt u in ons',
+    title: 'Verbeter uw ervaring',
+    body: 'Wij gebruiken cookies om u een betere ervaring te bieden, relevante inhoud te tonen en onze diensten continu te verbeteren. Meer informatie vindt u in ons',
     privacy: 'Privacybeleid',
     privacyHref: '/nl/privacybeleid',
     settings: 'Instellingen',
@@ -71,8 +71,8 @@ const t = {
     backBtn: '← Terug',
   },
   fr: {
-    title: 'Nous respectons votre vie privée',
-    body: 'Nous utilisons des cookies et des technologies similaires pour améliorer notre site web, vous afficher des contenus pertinents et optimiser nos publicités. Pour en savoir plus, consultez notre',
+    title: 'Améliorez votre expérience',
+    body: 'Nous utilisons des cookies pour vous offrir une meilleure expérience, afficher des contenus pertinents et améliorer continuellement nos services. Pour en savoir plus, consultez notre',
     privacy: 'Politique de confidentialité',
     privacyHref: '/fr/politique-de-confidentialite',
     settings: 'Paramètres',
@@ -91,8 +91,8 @@ const t = {
     backBtn: '← Retour',
   },
   it: {
-    title: 'Rispettiamo la tua privacy',
-    body: 'Utilizziamo cookie e tecnologie simili per migliorare il nostro sito web, mostrarti contenuti pertinenti e ottimizzare la nostra pubblicità. Per ulteriori informazioni consulta la nostra',
+    title: 'Migliora la tua esperienza',
+    body: 'Utilizziamo cookie per offrirti una migliore esperienza, mostrarti contenuti pertinenti e migliorare continuamente i nostri servizi. Per ulteriori informazioni consulta la nostra',
     privacy: 'Informativa sulla privacy',
     privacyHref: '/it/informativa-sulla-privacy',
     settings: 'Impostazioni',
@@ -111,8 +111,8 @@ const t = {
     backBtn: '← Indietro',
   },
   jp: {
-    title: 'プライバシーを尊重します',
-    body: '当サイトでは、ウェブサイトの改善、関連コンテンツの表示、広告の最適化のためにCookieおよび類似技術を使用しています。詳しくは',
+    title: 'より良い体験を提供します',
+    body: '当サイトでは、より良いユーザー体験の提供、関連コンテンツの表示、サービスの継続的な改善のためにCookieを使用しています。詳しくは',
     privacy: 'プライバシーポリシー',
     privacyHref: '/jp/privacy-policy',
     settings: '設定',
@@ -153,9 +153,12 @@ const t = {
         {t.body} <a href={t.privacyHref} class="pix-cm-link" target="_blank" rel="noopener">{t.privacy}</a>.
       </p>
       <div class="pix-cm-actions">
-        <button id="pix-cm-reject-btn" class="pix-cb-btn pix-cb-btn--ghost" type="button">{t.reject}</button>
-        <button id="pix-cm-settings-btn" class="pix-cb-btn pix-cb-btn--outline" type="button">{t.settings}</button>
-        <button id="pix-cm-accept-btn" class="pix-cb-btn pix-cb-btn--primary" type="button">{t.acceptAll}</button>
+        <button id="pix-cm-accept-btn" class="pix-cb-btn pix-cb-btn--primary pix-cb-btn--full" type="button">{t.acceptAll}</button>
+        <div class="pix-cm-sub-actions">
+          <button id="pix-cm-settings-btn" class="pix-cm-text-link" type="button">{t.settings}</button>
+          <span class="pix-cm-divider" aria-hidden="true">·</span>
+          <button id="pix-cm-reject-btn" class="pix-cm-text-link" type="button">{t.reject}</button>
+        </div>
       </div>
     </div>
 
@@ -290,13 +293,39 @@ const t = {
   /* ── Action row ─────────────────────────────────────────── */
   .pix-cm-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 0.75rem;
   }
   .pix-cm-actions--settings {
     margin-top: 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
+  .pix-cm-sub-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .pix-cm-divider {
+    color: #D1D5DB;
+    font-size: 0.875rem;
+  }
+  .pix-cm-text-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #6B7280;
+    font-family: inherit;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .pix-cm-text-link:hover { color: #374151; }
 
   /* ── Buttons ────────────────────────────────────────────── */
   .pix-cb-btn {
@@ -310,6 +339,11 @@ const t = {
     white-space: nowrap;
     font-family: inherit;
     line-height: 1.4;
+  }
+  .pix-cb-btn--full {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
   }
   .pix-cb-btn--primary {
     background: #02308C;
@@ -430,7 +464,6 @@ const t = {
   /* ── Responsive ─────────────────────────────────────────── */
   @media (max-width: 480px) {
     .pix-cm-box { padding: 1.5rem 1.25rem 1.25rem; }
-    .pix-cm-actions { flex-direction: column; }
     .pix-cb-btn { text-align: center; }
   }
 

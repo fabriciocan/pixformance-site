@@ -171,6 +171,10 @@ const { variant = 'default' } = Astro.props;
         if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
 
         var formData = new FormData(form);
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'meta_user_data_ready' });
+
         var payload = {
           form_name: 'Contact Form EN',
           name: formData.get('name') || '',

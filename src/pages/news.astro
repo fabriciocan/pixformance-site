@@ -1,0 +1,263 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const pressItems = [
+  {
+    year: '2021',
+    outlet: 'Podcast – Mehr Erfolg im Business',
+    title: 'Im Gespräch mit Andreas Buhr',
+    description: 'Pixformance-Gründerin Valerie Bures-Bönström berichtet von der Gründung ihrer drei Unternehmen und ihrer unermüdlichen Motivation, immer weiter zu machen.',
+    type: 'podcast',
+  },
+  {
+    year: '2021',
+    outlet: 'FORBES',
+    title: 'FORBES Cover – Health & Wealth',
+    description: 'Pixformance Gründerin Valerie Bures-Bönström ist das FORBES-Cover der Februar-Ausgabe 2021 „Health & Wealth". Sie gibt exklusive Einblicke in die Ideen hinter Pixformance und VAHA.',
+    type: 'magazine',
+  },
+  {
+    year: '2021',
+    outlet: 'Frankfurter Allgemeine Zeitung',
+    title: 'FAZ – Der erfolgreiche Lebensweg',
+    description: 'Ein spannender Artikel in der Frankfurter Allgemeine Zeitung über den erfolgreichen Lebensweg von Valerie Bures-Bönström, Hintergründe über die Gründung ihrer drei Unternehmen und die hilfreiche prominente Unterstützung.',
+    type: 'newspaper',
+  },
+  {
+    year: '2021',
+    outlet: 'Freie Universität Berlin',
+    title: 'Interview mit der FU Berlin',
+    description: 'Im Gespräch mit ihrer ehemaligen Universität berichtet Valerie Bures-Bönström von ihrem erfolgreichen Einstieg ins Unternehmertum.',
+    type: 'interview',
+  },
+  {
+    year: '2021',
+    outlet: 'Shape UP Business',
+    title: 'Digitales Trainingskonzept für Fitnessstudios',
+    description: 'Das Magazin für Fitnessstudiobetreiber und Personal Trainer stellt das voll vernetzte, digitale Trainingskonzept von Pixformance vor und zeigt auf, wie das Konzept auch während der Pandemie für ein sicheres Training sorgt.',
+    type: 'magazine',
+  },
+  {
+    year: '2021',
+    outlet: 'FORTEe Forschungsprojekt',
+    title: 'Stark gegen Kinderkrebs',
+    description: 'Pixformance ist Partner des Europäischen Forschungsprojekts FORTEe. Ziel des Projekts ist die Entwicklung von personalisierten Sporttherapien und innovativen Medizin- und Gesundheitstechnologien in der Kinderonkologie.',
+    type: 'research',
+  },
+  {
+    year: '2020',
+    outlet: 'Zeitschrift für Physiotherapeuten',
+    title: 'Pixformance in der Physiotherapie',
+    description: 'Die Fachzeitschrift zeigt die Vorteile beim Einsatz des Pixformance Konzepts in der Physiotherapie. Zudem wird die neue Pixformance Station 2.0 vorgestellt.',
+    type: 'magazine',
+  },
+  {
+    year: '2020',
+    outlet: 'Fitness Management',
+    title: 'Big Brother Staffel – Pixformance im Glashaus',
+    description: 'Neuer Fitnessausstatter für die Produktion der aktuellen Big Brother Staffel: Die Pixformance Sports GmbH aus Berlin hat ein digitales funktionelles Trainingsgerät im Fitnessraum des Glashauses platziert.',
+    type: 'tv',
+  },
+  {
+    year: '2019',
+    outlet: 'Fitness & Gesundheit',
+    title: 'Chancen der digitalen Echtzeit-Betreuung',
+    description: 'Der Fitness-Experte und Leiter der Geschäftsstelle des Deutschen Industrieverbandes, Prof. Dr. Niels Nagel, sprach mit unserer CEO Valerie Bures-Bönström über die Chancen der digitalen Echtzeit-Betreuung im gesundheitsorientierten Fitnesstraining.',
+    type: 'magazine',
+  },
+  {
+    year: '2019',
+    outlet: 'Der neue RUF Süderelbe',
+    title: 'Physiotherapie Laun – Pixformance Partner',
+    description: 'In der Therapie kann es trotz der Vielzahl an unterstützenden Hilfsmitteln schwierig sein, Patienten zur Aktivität zu motivieren. Physiotherapie-Praxis Laun hat Pixformance erfolgreich in ihr Therapiekonzept integriert.',
+    type: 'newspaper',
+  },
+  {
+    year: '2019',
+    outlet: 'BILANZ – Das deutsche Wirtschaftsmagazin',
+    title: 'Ein Tag mit Valerie Bures-Bönström',
+    description: 'Im Interview mit BILANZ gibt Valerie Bures-Bönström, CEO der Pixformance Sports GmbH, einen exklusiven Einblick in ihren Alltag.',
+    type: 'magazine',
+  },
+  {
+    year: '2018/2019',
+    outlet: 'Focus Gesundheit',
+    title: 'Reha-Kliniken profitieren von digitaler Therapie',
+    description: 'Pixformance Stationen werden neben Fitnessstudios mittlerweile auch immer mehr in den führenden Reha-Kliniken Deutschlands eingesetzt. Die FOCUS Gesundheit berichtet, wie Reha-Kliniken von computergestützter Therapie profitieren können.',
+    type: 'magazine',
+  },
+  {
+    year: '2018/2019',
+    outlet: 'Rhön-Campus Bad Neustadt',
+    title: 'Pixformance als Teil der digitalen Erlebniswelt',
+    description: 'Die Pixformance Station wird Teil einer interaktiven digitalen Erlebniswelt am Campus Bad Neustadt. Die RHÖN-KLINIKUM AG sieht Digitalisierung als Schlüssel, um Personalmangel in ländlichen Gegenden entgegenzuwirken.',
+    type: 'clinic',
+  },
+  {
+    year: '2018',
+    outlet: 'Bodylife',
+    title: 'Pixformance Box – Neues Konzept auf der FIBO 2018',
+    description: 'Pixformance präsentierte auf der FIBO 2018 mit der Pixformance Box ihr neues Konzept im minimalistischen und hochwertigen Industrial Design.',
+    type: 'trade-fair',
+  },
+  {
+    year: '2018',
+    outlet: 'Medical Park Qualitätsbericht',
+    title: 'Therapie 4.0: Immer einen Schritt weiter',
+    description: 'Im Qualitätsbericht der Reha-Klinik wird Pixformance im Zuge des Artikels „Therapie 4.0: Immer einen Schritt weiter" als innovative Lösung vorgestellt.',
+    type: 'clinic',
+  },
+  {
+    year: '2015',
+    outlet: 'Zeitschrift für Physiotherapeuten',
+    title: 'Interaktives funktionelles Feedback-Training',
+    description: 'Die Fachzeitschrift für Physiotherapeuten stellt das interaktive, funktionelle Feedback-Training an den Pixformance Stationen vor.',
+    type: 'magazine',
+  },
+];
+
+const typeIcons: Record<string, string> = {
+  podcast: 'mic',
+  magazine: 'book-open',
+  newspaper: 'file-text',
+  interview: 'message-circle',
+  research: 'award',
+  tv: 'tv',
+  clinic: 'activity',
+  'trade-fair': 'star',
+};
+---
+
+<BaseLayout
+  title="News & Presse – Pixformance in den Medien"
+  description="Presseartikel, Interviews, Podcasts und Medienberichte über Pixformance – dem führenden digitalen Funktionstrainingsgerät mit Echtzeit-Feedback."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "News & Presse – Pixformance",
+    "description": "Presseartikel, Interviews und Medienberichte über Pixformance.",
+    "url": "https://pixformance.com/news",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH"}
+  }}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-20">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.1s;">
+          <Icon name="file-text" size="sm" />
+          Presse &amp; News
+        </span>
+
+        <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
+          News &amp; Presse
+        </h1>
+
+        <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.3s;">
+          Pixformance in Medien, Fachzeitschriften und Podcasts – lesen Sie, was Experten und Journalisten über uns berichten
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Items -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-5xl mx-auto">
+        <div class="space-y-6">
+          {pressItems.map((item, i) => (
+            <div data-scroll="fade-up" data-delay={String(i % 3 + 1)}>
+              <Card variant="elevated" padding="none" class="overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                  <div class="flex-shrink-0 flex items-center justify-center md:w-24 bg-[#02308C]/5 p-6 md:p-4">
+                    <div class="text-center">
+                      <Icon name={typeIcons[item.type] || 'file-text'} size="lg" class="text-[#02308C] mx-auto" />
+                      <p class="text-xs font-bold text-[#02308C] mt-1 whitespace-nowrap">{item.year}</p>
+                    </div>
+                  </div>
+                  <div class="p-6 space-y-2 flex-1">
+                    <p class="text-xs font-bold text-[#6BDBD1] uppercase tracking-widest">{item.outlet}</p>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-foreground">{item.title}</h3>
+                    <p class="text-sm text-foreground-muted leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Contact -->
+  <section class="py-12 md:py-16 bg-gray-50">
+    <div class="container">
+      <div class="max-w-3xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white text-center">
+          <Icon name="mail" size="lg" class="text-[#02308C] mx-auto mb-4" />
+          <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">Pressekontakt</h2>
+          <p class="text-foreground-muted mb-6">
+            Auf Anfrage lassen wir Ihnen gerne unsere aktuelle Pressemappe sowie unsere Logos und sonstiges Bildmaterial zur freien redaktionellen Verwendung zukommen.
+          </p>
+          <div class="space-y-1 text-foreground">
+            <p class="font-bold">Chantal Freyer</p>
+            <p class="text-foreground-muted">PR &amp; Content Manager</p>
+            <a href="mailto:presse@pixformance.com" class="text-[#02308C] hover:text-[#6BDBD1] font-semibold transition-colors">
+              presse@pixformance.com
+            </a>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 md:py-16 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-3xl mx-auto text-center" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">Pixformance selbst erleben?</h2>
+          <p class="text-foreground-muted mb-6">Testen Sie Pixformance unverbindlich in Ihrer Einrichtung.</p>
+          <Button size="lg" href="/testen" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+            Jetzt unverbindlich testen <Icon name="arrow-right" size="sm" />
+          </Button>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.05s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.15s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

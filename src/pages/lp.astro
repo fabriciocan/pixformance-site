@@ -907,8 +907,7 @@ const clientLogos = [
     // Secondary bot check — defense in depth alongside form-protection.js
     var honeypotFilled = (formData.get('_fax_number') || '').length > 0 ||
                          (formData.get('website') || '').length > 0;
-    var noInteraction = window.FormProtection && !window.FormProtection.humanInteracted;
-    if (honeypotFilled || noInteraction) {
+    if (honeypotFilled) {
       // Silently fake success for bots
       formEl.style.display = 'none';
       messageEl.classList.remove('hidden');

@@ -1,0 +1,249 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Patienten (digital) aktivieren! Wie Rehakliniken Anreize zur Bewegungsaktivierung schaffen – Pixformance"
+  description="Warum Krankenhäuser und Reha-Einrichtungen ihren Versorgungsansatz mit digitaler Bewegungstherapie und Bewegungsaktivierung zukünftig überdenken müssen."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Patienten (digital) aktivieren! Wie Rehakliniken einen Anreiz zur Bewegungsaktivierung schaffen können",
+    "description": "Warum Krankenhäuser und Reha-Einrichtungen ihren Versorgungsansatz mit digitaler Bewegungstherapie und Bewegungsaktivierung zukünftig überdenken müssen.",
+    "url": "https://pixformance.com/rehaklinik-patienten-digital-aktivieren-bewegungsaktivierung",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-20">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/klinik" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Klinik-Seite
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="activity" size="sm" />
+            Klinik &amp; Rehabilitation
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Patienten (digital) aktivieren!
+          </h1>
+
+          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Wie Rehakliniken einen Anreiz zur Bewegungsaktivierung schaffen können
+          </p>
+
+          <p class="text-lg text-foreground-muted italic hero-animate" style="animation-delay: 0.5s;">
+            Warum Krankenhäuser und Reha-Einrichtungen ihren Versorgungsansatz mit digitaler Bewegungstherapie zukünftig überdenken müssen
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <!-- Main Content -->
+          <div class="lg:col-span-2 space-y-8">
+
+            <div class="space-y-6 text-base md:text-lg text-foreground-muted leading-relaxed" data-scroll="fade-up">
+              <p>
+                In den nächsten 15 Jahren werden Krankenhäuser immer mehr dazu gezwungen, ihren Versorgungsansatz zu überdenken und grundlegend zu verändern. Zu diesem Ergebnis kommt eine aktuelle Studie von McKinsey &amp; Company. Die zunehmende Transparenz, die es Patienten zukünftig immer einfacher ermöglichen wird, Kosten vs. Behandlungsergebnisse zu vergleichen, erhöht den Druck auf die Kliniken. Klar ist: in der künftigen Versorgungswelt rückt der Patient und dessen Bewegungsaktivierung in den Mittelpunkt.
+              </p>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Die Zukunft: Prädiktive, präventive, personalisierte und partizipative Medizin
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <img
+                  src="/images/blog/blog-bewegungsaktivierung-pixformance-rehabilitation-bewegungsanalyse-patienten-aktivieren-physiotherapie.jpg"
+                  alt="Physiotherapeutin trainiert mit einer älteren Patientin zur Bewegungsaktivierung"
+                  class="w-full h-auto rounded-xl mb-6"
+                  loading="lazy"
+                />
+                <p>
+                  Mit diesem Thema beschäftigt sich auch die „Life Sciences &amp; Health Care Predictions 2025" Studie des Beratungsunternehmens Deloitte. Demnach werden Diagnosen und Behandlungsentscheidungen von Kliniken zukünftig auf „einer prädiktiven, präventiven, personalisierten und partizipativen Medizin basieren". Dieser patientenzentrierte Ansatz verspricht viele Chancen – von Produktivitäts- und Kostensteigerungen bis hin zu einer effizienteren Bedarfsprognose und Bewegungsaktivierung.
+                </p>
+              </div>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Ist eine moderne Rehabilitation ohne digitale Bewegungstherapien noch denkbar?
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <p>
+                  Obwohl Deutschland bei der Digitalisierung im Gesundheitswesen im Vergleich zu anderen Ländern noch immer teilweise zurückliegt, wächst das Interesse an digitalen Gesundheitsangeboten. Und im Klinikalltag haben digitale Angebote zur Bewegungsaktivierung in den Bereichen Rehabilitation und Physiotherapie einiges zu bieten. Denn genau hier eröffnen innovative Technologien effizientere und Patienten-aktivierende Behandlungswege.
+                </p>
+                <p>
+                  KI unterstützte Softwarelösungen zur digitalen Bewegungstherapie werden heutzutage schon in einigen der Top Reha-Kliniken Deutschlands eingesetzt. Unter anderem bereits in den Bereichen der Onkologie, Ergotherapie, Orthopädie oder Neurologie (Multiple Sklerose, Parkinson).
+                </p>
+              </div>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Ob ambulant oder stationär: Effektive und innovative Möglichkeiten zur Unterstützung
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <p>
+                  Reha-Einrichtungen können vor allem auch bei stationären Aufenthalten von der digitalen Bewegungstherapie profitieren. Denn diese verspricht Unterstützung bei der zukünftig immer wichtiger werdenden Patientenzentrierung und Bewegungsaktivierung. Durch diesen patientenzentrierten Ansatz entstehen ganz neue Möglichkeiten der Personalisierung und der Individualisierung.
+                </p>
+                <p>
+                  Bei der Bewegungstherapie mit dem digitalen Trainingskonzept von Pixformance lassen sich auch ganz spezielle Übungen für die jeweilige Indikation des Patienten einstellen. Dies können Übungen im Rollstuhl, mit Gehbarren oder einem einfachen Stuhl sein. Auch Übungen auf einer Liege oder auf dem Boden sind möglich. Jede Übung kann individuell in Bezug auf Dauer und Wiederholungsanzahl auf das Bedürfnis der Patienten abgestimmt werden.
+                </p>
+              </div>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Digitale partizipative Therapie: für mehr Verantwortung im Genesungsprozess
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <p>
+                  Der zunehmend wichtiger werdende partizipative Therapiegedanke lenkt die eigene Aufmerksamkeit der Patienten auf zentrale Aspekte der Bewegungsausführung. Dabei werden sie beispielsweise mit Pixformance bei der Bewegungsaktivierung engmaschig unterstützt durch die Anleitung eines virtuellen Therapeuten. Dieser macht die Übung zum einen vor und gibt zum anderen Korrekturen und Feedback zur Übungsausführung.
+                </p>
+
+                <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C] my-6">
+                  <p class="text-foreground font-semibold text-base">
+                    Patienten können so nicht nur entscheiden, wann und wie oft sie ein Training starten. Darüber hinaus können sie auch ihre eigenen Stärken und Schwächen bei einer Übungsausführung unmittelbar erkennen und eigenständig beeinflussen.
+                  </p>
+                </Card>
+
+                <p>
+                  Dieses Feedback kann ohne die computergestützte Therapie von einem einzelnen Therapeuten in der klinischen Routine oft nicht gewährleistet werden. Auf diese Weise wird die eigene Handlungsfähigkeit – selbstverständlich je nach Gesundheitszustand der Patienten – im Genesungsprozess aufgegriffen.
+                </p>
+              </div>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Keine Technik der Welt kann einen Therapeuten ersetzen
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <p>
+                  Natürlich kann keine Technik der Welt einen Therapeuten ersetzen. Aber sie bietet eine sinnvolle und zeitgemäße Ergänzung, um Therapeuten bei der Betreuung im Praxisalltag zu entlasten. Darüber hinaus kann sie Patienten eine sichere und motivierende Therapieerfahrung bieten, die zu einer langfristigen Bewegungsaktivierung führt.
+                </p>
+                <p>
+                  Es ist daher zwingend notwendig, dass die Patienten schrittweise zum selbstkontrollierten digitalen Trainieren herangeführt und durchgehend vom Therapeuten auch persönlich begleitet werden.
+                </p>
+              </div>
+            </div>
+
+            <div data-scroll="fade-up">
+              <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+                Digitale Bewegungstherapie: Mehr Service. Mehr Behandlung. Mehr Zeit für das Wesentliche.
+              </h2>
+              <div class="space-y-4 text-base md:text-lg text-foreground-muted leading-relaxed">
+                <img
+                  src="/images/blog/blog-bewegungsaktivierung-pixformance-rehabilitation-bewegungsanalyse-patienten-aktivieren-physiotherapie-7.jpg"
+                  alt="Arzt neben älterer Patientin im Rollstuhl – beide lächeln"
+                  class="w-full h-auto rounded-xl mb-6"
+                  loading="lazy"
+                />
+                <p>
+                  Computergestützte Bewegungsanalysen können dazu dienen, Therapeuten im Praxisalltag zu entlasten und ihre Arbeit vor allem bei Patienten mit chronischen Erkrankungen zu erleichtern. Solche technologischen KI-unterstützten Lösungen können zudem alle individuellen Trainingsprogramme für jeden Patienten auf der Online Plattform speichern. Durch die digitale Aufzeichnung des Trainingsverlaufs ist es außerdem möglich, einen Vorher-Nachher-Vergleich vorzunehmen.
+                </p>
+
+                <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1] my-6">
+                  <p class="text-foreground font-semibold text-base">
+                    Laut McKinsey &amp; Company werden diejenigen Krankenhäuser am erfolgreichsten agieren, die effiziente Technologien bei der Versorgung gezielt einsetzen. Die digitale Bewegungstherapie von Pixformance setzt genau hier an.
+                  </p>
+                </Card>
+
+                <p>
+                  Die Behandlungsqualität steigt – und damit auch die Zufriedenheit der Patienten. Reha-Kliniken können und sollten jetzt die Chance nutzen, ihre Patienten (digital) zu aktivieren und somit neue Anreize zur Bewegungsaktivierung schaffen.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 sticky top-24">
+              <h3 class="font-bold text-lg mb-4 text-[#02308C]">Themen in diesem Artikel</h3>
+              <ul class="space-y-2 text-sm text-foreground-muted">
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Bewegungsaktivierung</li>
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Patientenzentrierung</li>
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Digitale Rehabilitation</li>
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Partizipative Therapie</li>
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Therapeutenentlastung</li>
+                <li class="flex items-center gap-2"><Icon name="check-circle" size="sm" class="text-[#6BDBD1] flex-shrink-0" /> Klinik der Zukunft</li>
+              </ul>
+            </Card>
+
+            <Card variant="elevated" padding="lg" class="bg-white text-center">
+              <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-24 h-24 rounded-full object-cover mx-auto mb-3" loading="lazy" />
+              <p class="font-bold text-foreground">Tobias Baader</p>
+              <p class="text-sm text-foreground-muted mb-4">Ihr Ansprechpartner</p>
+              <Button size="sm" href="/testen" class="w-full bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+                Beratung anfragen
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-16 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-3xl mx-auto text-center" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">Patienten in Ihrer Klinik digital aktivieren?</h2>
+          <p class="text-foreground-muted mb-6">Entdecken Sie, wie Pixformance Rehakliniken bei der Bewegungsaktivierung und Patientenzentrierung unterstützt.</p>
+          <Button size="lg" href="/testen" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+            Jetzt unverbindlich testen <Icon name="arrow-right" size="sm" />
+          </Button>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

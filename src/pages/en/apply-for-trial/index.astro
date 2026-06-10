@@ -713,6 +713,9 @@ const clientLogos = [
   }
 
   function submitForm(formData, messageEl, formEl, formName) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'meta_user_data_ready' });
+
     var payload = {
       form_name: formName || 'Apply For Trial EN',
       company: formData.get('company') || '',
