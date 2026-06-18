@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import partytown from '@astrojs/partytown';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -14,14 +15,23 @@ export default defineConfig({
   redirects: {
     '/de/brandstore': '/brandstore',
   },
+  build: {
+    // Inline all CSS into <style> tags — eliminates render-blocking stylesheet requests
+    // and breaks the critical path chain: /lp → Icon.css → font.woff2
+    inlineStylesheets: 'always',
+  },
   integrations: [
     react(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
     sitemap({
       filter: (page) =>
         !page.includes('/datenschutz') &&
         !page.includes('/impressum') &&
         !page.includes('/agb') &&
-        !/\/lp($|\/)/.test(page) &&
         !page.includes('/lp-physio') &&
         !page.includes('-danke'),
       changefreq: 'weekly',

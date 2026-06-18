@@ -4,6 +4,7 @@ import ChatWidget from '@/components/ChatWidget.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 import SitePopup from '@/components/SitePopup.astro';
 import StickyBar from '@/components/StickyBar.astro';
+import montserratFontUrl from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
 
 interface Props {
   title?: string;
@@ -96,6 +97,9 @@ const websiteSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
+    <!-- Preload critical font to eliminate CLS from FOUT and break CSS→font critical chain -->
+    <link rel="preload" href={montserratFontUrl} as="font" type="font/woff2" crossorigin />
+
     <!-- Favicon & Manifest -->
     <link rel="icon" type="image/png" href="/images/pix-favicon.png" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -120,7 +124,7 @@ const websiteSchema = {
     <slot name="head" />
 
     <!-- Google Consent Mode v2 defaults — MUST run before GTM -->
-    <script is:inline>
+    <script is:inline data-cfasync="false">
       (function () {
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
@@ -154,12 +158,11 @@ const websiteSchema = {
     </script>
     <!-- End Google Consent Mode v2 defaults -->
 
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-55PTFL9');</script>
+    <!-- Google Tag Manager — runs in Web Worker via Partytown (reduces main-thread TBT) -->
+    <script is:inline data-cfasync="false">
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    <script data-cfasync="false" type="text/partytown" src="https://www.googletagmanager.com/gtm.js?id=GTM-55PTFL9"></script>
     <!-- End Google Tag Manager -->
 
 

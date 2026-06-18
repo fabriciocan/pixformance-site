@@ -102,7 +102,7 @@ const clientLogos = [
 <BaseLayout
   title="60 Tage Pixformance kostenlos testen – Jetzt starten"
   description="Jetzt 60 Tage Pixformance kostenlos testen. Digitale Bewegungsanalyse für Physiotherapie, Klinik & Fitness. Unverbindlich, mit persönlicher Beratung und Schulung."
-  noindex={true}
+  noindex={false}
   noSitePopup={true}
   jsonLd={{
     "@context": "https://schema.org",
@@ -117,6 +117,8 @@ const clientLogos = [
   <Fragment slot="head">
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+    <!-- Preload LCP image to eliminate 190ms resource load delay -->
+    <link rel="preload" href="https://i.ytimg.com/vi/QHGnWb-glyE/hqdefault.jpg" as="image" fetchpriority="high" />
   </Fragment>
 
   <!-- STICKY TOP BAR -->
@@ -398,7 +400,8 @@ const clientLogos = [
                 class="h-[132px] md:h-44 w-auto max-w-[165px] md:max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0"
                 loading="lazy"
                 width="220"
-                height="176"
+                height="220"
+                sizes="(max-width: 768px) 165px, 220px"
               />
             ))
           )}
@@ -438,7 +441,7 @@ const clientLogos = [
             </p>
           </div>
           <div class="md:order-1" data-scroll="slide-left">
-            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patentiertes Feedback in Echtzeit" class="w-full h-auto rounded-2xl" loading="lazy" width="750" height="533" />
+            <img src="/images/imgs-lp/pixformance-live-feedback-digitales-trainingsgeraet-bewegungsanalyse-korrektur-hinweis-2-gif-to-webp-converter-750.webp" alt="Patentiertes Feedback in Echtzeit" class="w-full h-auto rounded-2xl" loading="lazy" width="552" height="392" sizes="(max-width: 768px) 100vw, 552px" />
           </div>
         </div>
 
@@ -468,7 +471,7 @@ const clientLogos = [
             </p>
           </div>
           <div class="md:order-1" data-scroll="slide-left">
-            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Präzise Bewegungsanalyse" class="w-full h-auto rounded-2xl" loading="lazy" width="750" height="938" />
+            <img src="/images/imgs-lp/pra-zise-bewegungsanalzse-750.webp" alt="Präzise Bewegungsanalyse" class="w-full h-auto rounded-2xl" loading="lazy" width="552" height="690" sizes="(max-width: 768px) 100vw, 552px" />
           </div>
         </div>
 

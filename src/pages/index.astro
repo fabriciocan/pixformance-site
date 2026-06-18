@@ -46,42 +46,42 @@ const testimonials = [
     role: 'Leitende Physiotherapeutin',
     company: 'Sauerlandklinik Hachen',
     quote: 'Die Patienten sind begeistert und sehr motiviert. Davon profitieren auch wir als Therapeuten, da die Patienten dadurch besser und zielgerichteter ihre Übungen ausführen.',
-    image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
+    image: '/images/testimonials/gabriele-buchstein.webp',
   },
   {
     name: 'Christoph Schneider',
     role: 'Therapieleitung',
     company: 'Niederrhein-Klinik',
     quote: 'Auf der Suche nach einer Möglichkeit, die Patienten selbstständig aktiv werden zu lassen, haben wir uns für Pixformance entschieden.',
-    image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
+    image: '/images/testimonials/christoph-schneider.webp',
   },
   {
     name: 'Heike Schaible',
     role: 'Inhaberin',
     company: 'Physiotherapie Praxis',
     quote: 'Ich will mit Pixformance einen zweiten Selbstzahlerbereich aufbauen und damit vor allem meinen Mitarbeitenden eine einfachere und abwechslungsreichere Arbeit bieten.',
-    image: '/images/heikeschaible.600x400.jpg',
+    image: '/images/testimonials/heike-schaible.webp',
   },
   {
     name: 'Erwin Kuglmeier',
     role: 'Inhaber',
     company: 'Fitnessclub California',
     quote: 'Meine Mitglieder können mit Pixformance individuell angeleitet und für das Training motiviert werden. Das Handling ist sehr einfach!',
-    image: '/images/Erwin-Kuglmeier-Fitness-California-Pixformance-300x300.png',
+    image: '/images/testimonials/erwin-kuglmeier.webp',
   },
   {
     name: 'Kim Essink',
     role: 'Inhaberin',
     company: 'Fitnessclub Essink',
     quote: 'Wir haben uns bewusst für Pixformance entschieden, weil wir uns sicher waren, dass sich unser Investment schnell auszahlen würde.',
-    image: '/images/Pixformance-Kim-Essink.png',
+    image: '/images/testimonials/kim-essink.webp',
   },
   {
     name: 'Christoph Oratsch',
     role: 'Leitung Therapie',
     company: 'AUVA Unfallkrankenhaus',
     quote: 'Von Patientenseite kommt ein großes Interesse gegenüber der Pixformance Stationen. Viele kommen von sich aus und wollen ein Trainingsprogramm.',
-    image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
+    image: '/images/testimonials/christoph-oratsch.webp',
   },
 ];
 
@@ -157,6 +157,12 @@ const partners = [
     }
   ]}
 >
+  <Fragment slot="head">
+    <!-- Preload LCP hero image to eliminate resource load delay -->
+    <link rel="preload" href="/images/header-2-1350.webp" as="image" fetchpriority="high" media="(min-width: 769px)" />
+    <link rel="preload" href="/images/hero-mobile.webp" as="image" fetchpriority="high" media="(max-width: 768px)" />
+  </Fragment>
+
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -167,12 +173,16 @@ const partners = [
     <!-- Hero Image -->
     <div class="relative w-full hero-animate" style="animation-delay: 0.1s;">
       <picture>
-        <source media="(max-width: 768px)" srcset="/images/hero-mobile.webp">
+        <source media="(max-width: 768px)" srcset="/images/hero-mobile.webp" type="image/webp">
+        <source media="(min-width: 769px)" srcset="/images/header-2-1350.webp" type="image/webp">
         <img
-          src="/images/header-2.webp"
+          src="/images/header-2-1350.webp"
           alt="Pixformance digitale Fitnessgeräte"
           class="w-full object-cover h-auto md:h-170"
           loading="eager"
+          fetchpriority="high"
+          width="1350"
+          height="895"
         />
       </picture>
       <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
@@ -186,22 +196,23 @@ const partners = [
           <div class="clients-track-wrapper overflow-hidden">
             <div class="clients-track flex items-center">
               {[...Array(2)].map(() => [
-                'Logo-Charite.png',
-                'Logo-Essink-Sportscentrum-1.png',
-                'Logo-Femme-Fit-1.png',
-                'Logo-Gesundheitsrondell-Reharondell.png',
-                'Logo-GiB-Gesundheit-in-Bewegung-1.png',
-                'Logo-Medical-Park.png',
-                'Logo-MrsSporty-Mrs-Sporty.png',
-                'Logo-Therapiezentrum-Rombach.png',
-                'AMT_LOGO.png'
-                
+                { file: 'Logo-Charite.png',                    label: 'Charité' },
+                { file: 'Logo-Essink-Sportscentrum-1.png',     label: 'Essink Sportscentrum' },
+                { file: 'Logo-Femme-Fit-1.png',                label: 'Femme Fit' },
+                { file: 'Logo-Gesundheitsrondell-Reharondell.png', label: 'Gesundheitsrondell Reharondell' },
+                { file: 'Logo-GiB-Gesundheit-in-Bewegung-1.png', label: 'GiB Gesundheit in Bewegung' },
+                { file: 'Logo-Medical-Park.png',               label: 'Medical Park' },
+                { file: 'Logo-MrsSporty-Mrs-Sporty.png',       label: 'Mrs. Sporty' },
+                { file: 'Logo-Therapiezentrum-Rombach.png',    label: 'Therapiezentrum Rombach' },
+                { file: 'AMT_LOGO.webp',                       label: 'AMT' },
               ].map((logo) => (
                 <img
-                  src={`/images/clients/${logo}`}
-                  alt={logo.replace(/Logo-|-\d+\.png|\.png/g, ' ').trim()}
+                  src={`/images/clients/${logo.file}`}
+                  alt={logo.label}
                   class="h-44 w-auto max-w-[220px] object-contain opacity-90 hover:opacity-100 transition-all duration-300 shrink-0 mr-12"
-                  loading="eager"
+                  loading="lazy"
+                  width="220"
+                  height="176"
                 />
               )))}
             </div>
@@ -315,6 +326,8 @@ const partners = [
             alt="Pixformance Station"
             class="rounded-2xl shadow-xl w-full h-auto"
             loading="lazy"
+            width="800"
+            height="555"
           />
         </div>
       </div>
@@ -338,6 +351,8 @@ const partners = [
             alt="Pixformance Echtzeit-Feedback"
             class="w-full max-w-lg h-auto object-contain"
             loading="lazy"
+            width="512"
+            height="398"
           />
         </div>
 
@@ -393,6 +408,8 @@ const partners = [
                     alt={testimonial.name}
                     class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
                     loading="lazy"
+                    width="64"
+                    height="64"
                   />
                 </div>
                 <div>
@@ -449,6 +466,8 @@ const partners = [
                 class={`w-full h-full group-hover:scale-110 transition-transform duration-700 ${solution.objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                 style={`object-position: ${solution.objectPosition}`}
                 loading="lazy"
+                width="300"
+                height="320"
               />
 
 <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
