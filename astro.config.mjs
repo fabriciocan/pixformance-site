@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-import partytown from '@astrojs/partytown';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -22,11 +21,6 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }),
     sitemap({
       filter: (page) =>
         !page.includes('/datenschutz') &&
