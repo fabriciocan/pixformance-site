@@ -905,8 +905,7 @@ const clientLogos = [
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
 
-  // submitForm agora é async por causa do sha256
-  function submitForm(formData, messageEl, formEl, formName) {
+  async function submitForm(formData, messageEl, formEl, formName) {
     // Secondary bot check — defense in depth alongside form-protection.js
     var honeypotFilled = (formData.get('_fax_number') || '').length > 0 ||
                          (formData.get('website') || '').length > 0;
@@ -927,12 +926,13 @@ const clientLogos = [
     var btn = formEl.querySelector('[type="submit"]');
     if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 
-    // Hasha os dados do usuário antes de qualquer envio
-    hashUserData(formData).then(function (hashed) {
+    var hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch (err) {}
 
-      // Empurra os hashes pra dataLayer para o GTM/FBA Lead consumir
-      // A tag FBA Lead precisa ter as propriedades em, ph, fn, ln mapeadas
-      // para {{em}}, {{ph}}, {{fn}}, {{ln}} (variáveis dataLayer no GTM)
+    var pixConsent = null;
+    try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+    if (pixConsent && pixConsent.marketing) {
+      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'meta_user_data_ready',
         em: hashed.em,
@@ -940,7 +940,9 @@ const clientLogos = [
         fn: hashed.fn,
         ln: hashed.ln,
       });
+    }
 
+    try {
       var payload = {
         form_name: formName || 'LP',
         company: formData.get('company') || '',
@@ -958,47 +960,40 @@ const clientLogos = [
         language: 'de',
         version: 'DACH',
         form_source: 'landing-page',
-        // Meta CAPI fields
         meta_event_id: META_EVENT_ID,
         meta_fbp: getFbp(cookies),
         meta_fbc: getFbc(cookies),
         meta_user_agent: navigator.userAgent,
         meta_event_source_url: window.location.href,
-        // Hashes SHA-256 para o n8n repassar ao CAPI (server side)
-        // O n8n já faz o hash server side, mas enviamos também do client
-        // para garantir consistência caso o server side falhe
         meta_em: hashed.em,
         meta_ph: hashed.ph,
         meta_fn: hashed.fn,
         meta_ln: hashed.ln,
       };
 
-      return fetch(WEBHOOK_URL, {
+      var r = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-    })
-      .then(function (r) {
-        if (r && r.ok) {
-          formEl.style.display = 'none';
-          messageEl.classList.remove('hidden');
-          messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
-          messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
-        } else {
-          messageEl.classList.remove('hidden');
-          messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
-          messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
-        }
-      })
-      .catch(function () {
+
+      if (r && r.ok) {
+        formEl.style.display = 'none';
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
+        messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+      } else {
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
         messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
-      })
-      .finally(function () {
-        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
-      });
+      }
+    } catch {
+      messageEl.classList.remove('hidden');
+      messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+      messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+    } finally {
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    }
   }
 
   function initABTest() {

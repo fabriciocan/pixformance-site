@@ -558,14 +558,19 @@ const clientLogos = [
     if (computedFbc) cookies._fbc = computedFbc;
     if (computedFbp) cookies._fbp = computedFbp;
 
-    try {
-      const hashed = await hashUserData(formData);
+    let hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch {}
 
+    let pixConsent: any = null;
+    try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+    if (pixConsent && pixConsent.marketing) {
       ((window as any).dataLayer as any[]).push({
         event: 'meta_user_data_ready',
         em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
       });
+    }
 
+    try {
       const payload = {
         form_name: 'LP Physio Digitalisierung – Broschüre Download',
         company: formData.get('company') || '',

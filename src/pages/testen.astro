@@ -621,7 +621,7 @@ const benefits = [
         var messageDiv = document.getElementById("form-message");
         if (!form || !messageDiv) return;
 
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
           var submitBtn = form.querySelector('[type="submit"]');
@@ -634,12 +634,20 @@ const benefits = [
           if (computedFbc) cookies._fbc = computedFbc;
           if (computedFbp) cookies._fbp = computedFbp;
 
-          hashUserData(formData).then(function (hashed) {
+          var hashed = { em: '', ph: '', fn: '', ln: '' };
+          try { hashed = await hashUserData(formData); } catch (err) {}
+
+          var pixConsent = null;
+          try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+          if (pixConsent && pixConsent.marketing) {
+            window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
               event: 'meta_user_data_ready',
               em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
             });
+          }
 
+          try {
             var payload = {
               form_name: 'Testen - Beratungsanfrage',
               first_name: formData.get('first_name') || '',
@@ -670,32 +678,29 @@ const benefits = [
               meta_ln: hashed.ln,
             };
 
-            return fetch(WEBHOOK_URL, {
+            var response = await fetch(WEBHOOK_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),
             });
-          })
-            .then(function (response) {
-              if (response && response.ok) {
-                form.style.display = 'none';
-                messageDiv.classList.remove("hidden");
-                messageDiv.className = "p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center shadow-lg";
-                messageDiv.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
-              } else {
-                messageDiv.classList.remove("hidden");
-                messageDiv.className = "p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center";
-                messageDiv.textContent = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
-              }
-            })
-            .catch(function () {
+
+            if (response && response.ok) {
+              form.style.display = 'none';
+              messageDiv.classList.remove("hidden");
+              messageDiv.className = "p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center shadow-lg";
+              messageDiv.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+            } else {
               messageDiv.classList.remove("hidden");
               messageDiv.className = "p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center";
               messageDiv.textContent = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
-            })
-            .finally(function () {
-              if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
-            });
+            }
+          } catch {
+            messageDiv.classList.remove("hidden");
+            messageDiv.className = "p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center";
+            messageDiv.textContent = "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+          } finally {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+          }
         });
       }
 

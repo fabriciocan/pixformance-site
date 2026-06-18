@@ -196,7 +196,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
 
-  function submitForm(formData, messageEl, formEl, formName) {
+  async function submitForm(formData, messageEl, formEl, formName) {
     var cookies     = getCookies();
     var computedFbc = getFbc(cookies);
     var computedFbp = getFbp(cookies);
@@ -205,10 +205,17 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     var btn = formEl.querySelector('[type="submit"]');
     if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 
-    hashUserData(formData).then(function (hashed) {
+    var hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch (err) {}
+
+    var pixConsent = null;
+    try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+    if (pixConsent && pixConsent.marketing) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'meta_user_data_ready', em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln });
+    }
 
+    try {
       var META_EVENT_ID = '';
       for (var i = window.dataLayer.length - 1; i >= 0; i--) {
         if (window.dataLayer[i] && window.dataLayer[i].event_id) {
@@ -245,13 +252,12 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         meta_ln:              hashed.ln,
       };
 
-      return fetch(WEBHOOK_URL, {
+      var r = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-    })
-    .then(function (r) {
+
       if (r && r.ok) {
         formEl.style.display = 'none';
         messageEl.classList.remove('hidden');
@@ -262,15 +268,13 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
         messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
       }
-    })
-    .catch(function () {
+    } catch {
       messageEl.classList.remove('hidden');
       messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
       messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
-    })
-    .finally(function () {
+    } finally {
       if (btn) { btn.disabled = false; btn.style.opacity = ''; }
-    });
+    }
   }
 
   function initABTest() {
