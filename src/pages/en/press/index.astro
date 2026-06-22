@@ -8,61 +8,92 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 ---
 
 <ENBaseLayout
-  title="Pixformance in the Trade Press — pt Magazine, Clinics & Media"
-  description="Pixformance featured in pt – Zeitschrift für Physiotherapeuten and leading specialist media: digital movement therapy, 25-joint-point analysis, FDA Class 2. Press coverage & expert articles."
+  title="Pixformance in the Trade Press — Peer-reviewed Studies & pt Magazine"
+  description="Pixformance Station (FDA Class 2 medical device): published in JMIR and BMC Cancer, EU research project FORTEe (Horizon 2020), clinically validated — Charité Berlin, University Medical Centre Mainz, Oxford Brookes University."
   hreflangDe="https://www.pixformance.com/presse/"
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Pixformance Press Coverage & Expert Articles",
-    "description": "Pixformance featured in specialist publications: pt – Zeitschrift für Physiotherapeuten and other media report on the Pixformance Station digital movement therapy system.",
+    "name": "Pixformance Press Coverage & Scientific Publications",
+    "description": "Peer-reviewed studies, EU research projects and specialist publications documenting the clinical efficacy of the Pixformance Station (FDA Class 2 medical device) in physiotherapy, geriatrics and oncology.",
     "itemListElement": [
       {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "NewsArticle",
-          "headline": "Mehr Zeit für Patienten, weniger Stress im Praxisalltag",
-          "datePublished": "2026-01",
-          "publisher": {
-            "@type": "Organization",
-            "name": "pt – Zeitschrift für Physiotherapeuten",
-            "url": "https://physiotherapeuten.de"
-          },
-          "url": "https://physiotherapeuten.de/news/2026/01/pixformance-mehr-zeit-fuer-patienten-weniger-stress-im-praxisalltag/",
-          "about": {
-            "@type": "MedicalDevice",
-            "name": "Pixformance Station",
-            "description": "Digital movement therapy system with 25-joint-point analysis"
-          }
+          "@type": "ScholarlyArticle",
+          "name": "Get strong to fight childhood cancer (FORTEe): Rationale and design of a randomized controlled exercise trial",
+          "description": "Randomised controlled trial (RCT) on digital exercise therapy in childhood cancer. Pixformance as technology partner. 15 partner institutions from 8 countries. EU Horizon 2020.",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12330123/",
+          "datePublished": "2025-08-07",
+          "publisher": { "@type": "Organization", "name": "BMC Cancer" },
+          "author": [
+            { "@type": "Person", "name": "Marie Astrid Neu" },
+            { "@type": "Person", "name": "Tobias Baader" },
+            { "@type": "Person", "name": "Joerg Faber" }
+          ],
+          "about": { "@type": "Organization", "name": "Pixformance Sports GmbH" }
         }
       },
       {
         "@type": "ListItem",
         "position": 2,
         "item": {
+          "@type": "ScholarlyArticle",
+          "name": "Use of a Technology-Based Fall Prevention Program With Visual Feedback in Early Geriatric Rehabilitation",
+          "description": "Feasibility study with 30 geriatric patients. Pixformance Station 3x/week for 20 minutes. Primary endpoint feasibility achieved. Secondary endpoints: Berg Balance Scale, Timed Up and Go Test, Barthel Index.",
+          "url": "https://formative.jmir.org/2025/1/e66692",
+          "datePublished": "2025-02-11",
+          "publisher": { "@type": "Organization", "name": "JMIR Formative Research" },
+          "about": { "@type": "Organization", "name": "Pixformance Sports GmbH" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "ScholarlyArticle",
+          "name": "Pixformance — Report zur Nutzung im (außer)klinischen Umfeld",
+          "description": "Clinical usage report on the Pixformance Station by physiotherapists and therapy directors in Germany and Austria. Use in orthopaedics, neurology and oncology.",
+          "url": "https://www.researchgate.net/publication/373196981",
+          "datePublished": "2023-08-18",
+          "publisher": { "@type": "Organization", "name": "ResearchGate" },
+          "about": { "@type": "Organization", "name": "Pixformance Sports GmbH" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "NewsArticle",
+          "headline": "Mehr Zeit für Patienten, weniger Stress im Praxisalltag",
+          "datePublished": "2026-01-01",
+          "publisher": { "@type": "Organization", "name": "pt – Zeitschrift für Physiotherapeuten", "url": "https://physiotherapeuten.de" },
+          "url": "https://physiotherapeuten.de/news/2026/01/pixformance-mehr-zeit-fuer-patienten-weniger-stress-im-praxisalltag/",
+          "about": { "@type": "MedicalDevice", "name": "Pixformance Station", "description": "Digital movement therapy system with 25-joint-point analysis" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
           "@type": "NewsArticle",
           "headline": "Kontaktlose Physiotherapie? Wie digitale Bewegungsanalyse die Physiotherapie und Rehabilitation revolutioniert",
           "datePublished": "2021-07-07",
-          "publisher": {
-            "@type": "Organization",
-            "name": "pt – Zeitschrift für Physiotherapeuten",
-            "url": "https://physiotherapeuten.de"
-          },
+          "publisher": { "@type": "Organization", "name": "pt – Zeitschrift für Physiotherapeuten", "url": "https://physiotherapeuten.de" },
           "url": "https://physiotherapeuten.de/news/2021/07/kontaktlose-physiotherapie-wie-digitale-bewegungsanalyse-die-physiotherapie-und-rehabilitation-revolutioniert/",
-          "about": {
-            "@type": "MedicalDevice",
-            "name": "Pixformance Station",
-            "description": "Digital movement therapy system for physiotherapy and rehabilitation"
-          }
+          "about": { "@type": "MedicalDevice", "name": "Pixformance Station", "description": "Digital movement therapy system for physiotherapy and rehabilitation" }
         }
       }
     ]
   }}
 >
   <Fragment slot="head">
-    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/presse/" />
-    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/press/" />
+    <link rel="alternate" hreflang="de"        href="https://www.pixformance.com/presse/" />
+    <link rel="alternate" hreflang="en"        href="https://www.pixformance.com/en/press/" />
+    <link rel="alternate" hreflang="fr"        href="https://www.pixformance.com/fr/presse/" />
+    <link rel="alternate" hreflang="nl"        href="https://www.pixformance.com/nl/pers/" />
+    <link rel="alternate" hreflang="it"        href="https://www.pixformance.com/it/stampa/" />
     <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/press/" />
   </Fragment>
 
@@ -88,6 +119,87 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
           The Pixformance Station — the digital movement therapy system with patented 2D Full-HD camera and 25-joint-point real-time analysis — is regularly featured in leading specialist publications for physiotherapy, rehabilitation, and health management. As an FDA Class 2 medical device, clinically validated at Charité Berlin and Oxford Brookes University, Pixformance is a recognised standard in digital movement therapy.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scientific Publications -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5">
+    <div class="container max-w-4xl">
+      <div class="mb-10" data-scroll="fade-up">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-1 h-10 bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-full"></div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold">Scientific Publications</h2>
+        </div>
+        <p class="text-lg text-foreground-muted leading-relaxed pl-5">
+          The Pixformance Station is the subject of peer-reviewed studies in international specialist journals and EU research projects. Clinically validated in geriatrics, oncology and neurology.
+        </p>
+      </div>
+      <div class="space-y-6">
+
+        <!-- BMC Cancer 2025 -->
+        <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
+          <div class="pl-4">
+            <div class="flex items-center gap-3 mb-3 flex-wrap">
+              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">August 2025</span>
+              <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Peer-reviewed · BMC Cancer</span>
+            </div>
+            <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
+              FORTEe — Randomized Controlled Trial: Exercise Therapy in Childhood Cancer
+            </h3>
+            <p class="text-foreground-muted leading-relaxed mb-4">
+              EU Horizon 2020 project. 15 partner institutions from 8 countries, led by University Medical Centre Mainz. Pixformance (Tobias Baader) as technology partner for digital exercise therapy in children and adolescents undergoing oncological treatment. In collaboration with Oxford Brookes University.
+            </p>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12330123/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
+              Read study (PubMed / BMC Cancer)
+              <Icon name="external-link" size="sm" />
+            </a>
+          </div>
+        </article>
+
+        <!-- JMIR 2025 -->
+        <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
+          <div class="pl-4">
+            <div class="flex items-center gap-3 mb-3 flex-wrap">
+              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">February 2025</span>
+              <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Peer-reviewed · JMIR Formative Research</span>
+            </div>
+            <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
+              Technology-Based Fall Prevention Program in Early Geriatric Rehabilitation
+            </h3>
+            <p class="text-foreground-muted leading-relaxed mb-4">
+              Feasibility study with 30 geriatric patients (March–June 2024). The Pixformance Station was used 3× per week for 20 minutes. Primary endpoint feasibility achieved (≥80% attendance at 6 sessions over 2 weeks). Secondary endpoints: Berg Balance Scale, Timed Up and Go Test, Functional Independence Measure, Barthel Index.
+            </p>
+            <a href="https://formative.jmir.org/2025/1/e66692" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
+              Read study (JMIR Formative Research)
+              <Icon name="external-link" size="sm" />
+            </a>
+          </div>
+        </article>
+
+        <!-- ResearchGate 2023 -->
+        <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#6BDBD1] to-[#86C9BC] rounded-l-2xl"></div>
+          <div class="pl-4">
+            <div class="flex items-center gap-3 mb-3 flex-wrap">
+              <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide" style="color: #02308C; background: rgba(107,219,209,0.3); border: 1px solid rgba(107,219,209,0.5);">August 2023</span>
+              <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Clinical Report · ResearchGate</span>
+            </div>
+            <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
+              Pixformance — Clinical Usage Report Germany &amp; Austria
+            </h3>
+            <p class="text-foreground-muted leading-relaxed mb-4">
+              Clinical usage report on the Pixformance Station by physiotherapists and therapy directors in Germany and Austria. Use in orthopaedics, neurology and oncology. Reports cover patient groups, practical experience, acceptance by specialist staff, and use in acute rehabilitation and self-directed training.
+            </p>
+            <a href="https://www.researchgate.net/publication/373196981" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
+              Read report (ResearchGate)
+              <Icon name="external-link" size="sm" />
+            </a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>

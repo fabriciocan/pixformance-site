@@ -1,15 +1,16 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
-import Footer from '@/components/layout/Footer.astro';
+import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
+import FRHeader from '@/components/layout/FRHeader.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 ---
 
-<BaseLayout
-  title="Pixformance in der Fachpresse — Peer-reviewed Studien & PT Magazin"
-  description="Pixformance Station (FDA Klasse 2 Medizinprodukt): Studien in JMIR und BMC Cancer, EU-Forschungsprojekt FORTEe (Horizont 2020), klinisch validiert — Charité Berlin, Universitätsmedizin Mainz, Oxford Brookes University."
+<FRBaseLayout
+  title="Pixformance dans la presse spécialisée — Études scientifiques & Publications"
+  description="Pixformance Station (dispositif médical FDA Classe 2) : études publiées dans JMIR et BMC Cancer, projet de recherche européen FORTEe (Horizon 2020), validé cliniquement — Charité Berlin, Université de Médecine de Mayence, Oxford Brookes University."
+  hreflangDe="https://www.pixformance.com/presse/"
+  hreflangEn="https://www.pixformance.com/en/press/"
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -67,11 +68,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
           "@type": "NewsArticle",
           "headline": "Mehr Zeit für Patienten, weniger Stress im Praxisalltag",
           "datePublished": "2026-01-01",
-          "publisher": {
-            "@type": "Organization",
-            "name": "pt – Zeitschrift für Physiotherapeuten",
-            "url": "https://physiotherapeuten.de"
-          },
+          "publisher": { "@type": "Organization", "name": "pt – Zeitschrift für Physiotherapeuten", "url": "https://physiotherapeuten.de" },
           "url": "https://physiotherapeuten.de/news/2026/01/pixformance-mehr-zeit-fuer-patienten-weniger-stress-im-praxisalltag/",
           "about": { "@type": "MedicalDevice", "name": "Pixformance Station", "description": "Digitales Bewegungstherapiesystem mit 25-Gelenkpunkt-Analyse" }
         }
@@ -83,11 +80,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
           "@type": "NewsArticle",
           "headline": "Kontaktlose Physiotherapie? Wie digitale Bewegungsanalyse die Physiotherapie und Rehabilitation revolutioniert",
           "datePublished": "2021-07-07",
-          "publisher": {
-            "@type": "Organization",
-            "name": "pt – Zeitschrift für Physiotherapeuten",
-            "url": "https://physiotherapeuten.de"
-          },
+          "publisher": { "@type": "Organization", "name": "pt – Zeitschrift für Physiotherapeuten", "url": "https://physiotherapeuten.de" },
           "url": "https://physiotherapeuten.de/news/2021/07/kontaktlose-physiotherapie-wie-digitale-bewegungsanalyse-die-physiotherapie-und-rehabilitation-revolutioniert/",
           "about": { "@type": "MedicalDevice", "name": "Pixformance Station", "description": "Digitales Bewegungstherapiesystem für Physiotherapie und Rehabilitation" }
         }
@@ -104,9 +97,9 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/press/" />
   </Fragment>
 
-  <HeaderWithDropdown slot="header" position="sticky">
-    <PixformanceLogo slot="logo" />
-  </HeaderWithDropdown>
+  <FRHeader slot="header" position="sticky">
+    <PixformanceLogo slot="logo" variant="en" />
+  </FRHeader>
 
   <!-- Hero -->
   <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-20">
@@ -115,93 +108,88 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
             <Icon name="file-text" size="sm" />
-            Fachpresse
+            Presse spécialisée
           </span>
         </div>
-
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Pixformance in der <span class="text-[#02308C]">Fachpresse</span>
+          Pixformance dans la <span class="text-[#02308C]">Presse Spécialisée</span>
         </h1>
-
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          Die Pixformance Station — das digitale Bewegungstherapiesystem mit patentierter 2D Full-HD Kamera und 25-Gelenkpunkt-Echtzeit-Analyse — wird regelmässig in führenden Fachpublikationen für Physiotherapie, Rehabilitation und Gesundheitsmanagement vorgestellt. Als FDA Klasse 2 Medizinprodukt, klinisch validiert an der Charité Berlin und der Oxford Brookes University, ist Pixformance anerkannter Standard in der digitalen Bewegungstherapie.
+          La Pixformance Station — le système de thérapie par le mouvement digital avec caméra 2D Full-HD brevetée et analyse en temps réel de 25 points articulaires — est régulièrement présentée dans les principales publications spécialisées en physiothérapie, réhabilitation et gestion de la santé. En tant que dispositif médical FDA Classe 2, validé cliniquement à la Charité Berlin et à l'Université Oxford Brookes, Pixformance est une référence reconnue en thérapie du mouvement digital.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Wissenschaftliche Publikationen -->
+  <!-- Publications Scientifiques -->
   <section class="py-12 md:py-20 bg-[#02308C]/5">
     <div class="container max-w-4xl">
       <div class="mb-10" data-scroll="fade-up">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-1 h-10 bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-full"></div>
-          <h2 class="font-display text-3xl md:text-4xl font-bold">Wissenschaftliche Publikationen</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-bold">Publications Scientifiques</h2>
         </div>
         <p class="text-lg text-foreground-muted leading-relaxed pl-5">
-          Die Pixformance Station ist Gegenstand peer-reviewter Studien in internationalen Fachzeitschriften und EU-Forschungsprojekten. Klinisch validiert in Geriatrie, Onkologie und Neurologie.
+          La Pixformance Station fait l'objet d'études évaluées par des pairs dans des revues spécialisées internationales et des projets de recherche européens. Validée cliniquement en gériatrie, oncologie et neurologie.
         </p>
       </div>
       <div class="space-y-6">
 
-        <!-- BMC Cancer 2025 -->
         <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
           <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
           <div class="pl-4">
             <div class="flex items-center gap-3 mb-3 flex-wrap">
-              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">August 2025</span>
+              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">Août 2025</span>
               <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Peer-reviewed · BMC Cancer</span>
             </div>
             <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
-              FORTEe — Randomisierte kontrollierte Studie: Bewegungstherapie bei Kinderkrebs
+              FORTEe — Essai contrôlé randomisé : thérapie par l'exercice dans le cancer pédiatrique
             </h3>
             <p class="text-foreground-muted leading-relaxed mb-4">
-              EU Horizont 2020 Projekt. 15 Partnerinstitutionen aus 8 Ländern unter Leitung der Universitätsmedizin Mainz. Pixformance (Tobias Baader) als Technologiepartner für digitale Bewegungstherapie bei Kindern und Jugendlichen in der onkologischen Behandlung. Kooperation mit Oxford Brookes University.
+              Projet EU Horizon 2020. 15 institutions partenaires dans 8 pays, sous la direction du Centre Médical Universitaire de Mayence. Pixformance (Tobias Baader) comme partenaire technologique pour la thérapie par le mouvement digital chez les enfants et adolescents en traitement oncologique. En collaboration avec l'Université Oxford Brookes.
             </p>
             <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12330123/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
-              Studie lesen (PubMed / BMC Cancer)
+              Lire l'étude (PubMed / BMC Cancer)
               <Icon name="external-link" size="sm" />
             </a>
           </div>
         </article>
 
-        <!-- JMIR 2025 -->
         <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
           <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
           <div class="pl-4">
             <div class="flex items-center gap-3 mb-3 flex-wrap">
-              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">Februar 2025</span>
+              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">Février 2025</span>
               <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Peer-reviewed · JMIR Formative Research</span>
             </div>
             <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
-              Digitales Sturzpräventionsprogramm in der Geriatrischen Frührehabilitation
+              Programme digital de prévention des chutes en rééducation gériatrique précoce
             </h3>
             <p class="text-foreground-muted leading-relaxed mb-4">
-              Machbarkeitsstudie mit 30 geriatrischen Patienten (März–Juni 2024). Die Pixformance Station wurde 3x wöchentlich für 20 Minuten eingesetzt. Primärendpunkt Machbarkeit erreicht (≥80% Teilnahme an 6 Trainings in 2 Wochen). Sekundärendpunkte: Berg Balance Scale, Timed Up and Go Test, Functional Independence Measure, Barthel Index.
+              Étude de faisabilité avec 30 patients gériatriques (mars–juin 2024). La Pixformance Station a été utilisée 3 fois par semaine pendant 20 minutes. Critère principal de faisabilité atteint (≥80% de participation à 6 séances en 2 semaines). Critères secondaires : Berg Balance Scale, Timed Up and Go Test, Mesure de l'indépendance fonctionnelle, Indice de Barthel.
             </p>
             <a href="https://formative.jmir.org/2025/1/e66692" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
-              Studie lesen (JMIR Formative Research)
+              Lire l'étude (JMIR Formative Research)
               <Icon name="external-link" size="sm" />
             </a>
           </div>
         </article>
 
-        <!-- ResearchGate 2023 -->
         <article class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
           <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#6BDBD1] to-[#86C9BC] rounded-l-2xl"></div>
           <div class="pl-4">
             <div class="flex items-center gap-3 mb-3 flex-wrap">
-              <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide" style="color: #02308C; background: rgba(107,219,209,0.3); border: 1px solid rgba(107,219,209,0.5);">August 2023</span>
-              <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Klinischer Report · ResearchGate</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide" style="color: #02308C; background: rgba(107,219,209,0.3); border: 1px solid rgba(107,219,209,0.5);">Août 2023</span>
+              <span class="text-xs font-bold text-[#02308C] bg-[#02308C]/10 px-3 py-1 rounded-full uppercase tracking-wide">Rapport clinique · ResearchGate</span>
             </div>
             <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
-              Pixformance — Nutzungsbericht im klinischen und außerklinischen Umfeld (DE &amp; AT)
+              Pixformance — Rapport d'utilisation clinique Allemagne &amp; Autriche
             </h3>
             <p class="text-foreground-muted leading-relaxed mb-4">
-              Praxisbericht zur Nutzung der Pixformance Station durch Physiotherapeuten und Therapieleiter in Deutschland und Österreich. Einsatz in Orthopädie, Neurologie und Onkologie. Berichtet werden Patientengruppen, Praxiserfahrungen, Akzeptanz durch Fachpersonal sowie Einsatz in akuter Rehabilitation und Eigentraining.
+              Rapport d'utilisation de la Pixformance Station par des physiothérapeutes et responsables de thérapie en Allemagne et en Autriche. Utilisation en orthopédie, neurologie et oncologie. Rapporte les groupes de patients, les expériences pratiques, l'acceptation par le personnel spécialisé et l'utilisation en rééducation aiguë et en entraînement autonome.
             </p>
             <a href="https://www.researchgate.net/publication/373196981" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
-              Bericht lesen (ResearchGate)
+              Lire le rapport (ResearchGate)
               <Icon name="external-link" size="sm" />
             </a>
           </div>
@@ -211,71 +199,57 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     </div>
   </section>
 
-  <!-- PT Magazin Section -->
+  <!-- pt – Revue pour Physiothérapeutes -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container max-w-4xl">
-
       <div class="mb-10" data-scroll="fade-up">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-1 h-10 bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-full"></div>
-          <h2 class="font-display text-3xl md:text-4xl font-bold">
-            pt – Zeitschrift für Physiotherapeuten
-          </h2>
+          <h2 class="font-display text-3xl md:text-4xl font-bold">pt – Revue pour Physiothérapeutes</h2>
         </div>
         <p class="text-lg text-foreground-muted leading-relaxed pl-5">
-          Die pt – Zeitschrift für Physiotherapeuten ist die traditionsreichste deutschsprachige Fachzeitschrift für Physiotherapie. Pixformance wird seit 2021 regelmässig in der pt vorgestellt.
+          La pt – Zeitschrift für Physiotherapeuten est la revue spécialisée germanophone la plus ancienne en physiothérapie. Pixformance y est présentée régulièrement depuis 2021. Les articles sont publiés en allemand.
         </p>
       </div>
-
       <div class="space-y-6">
 
-        <!-- Artikel Januar 2026 -->
         <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
           <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
           <div class="pl-4">
             <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">Januar 2026</span>
+              <span class="text-xs font-bold text-white bg-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide">Janvier 2026</span>
               <span class="text-xs text-foreground-muted font-medium">pt – Zeitschrift für Physiotherapeuten</span>
             </div>
             <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
-              Mehr Zeit für Patienten, weniger Stress im Praxisalltag
+              Plus de temps pour les patients, moins de stress au quotidien
             </h3>
+            <p class="text-foreground-muted leading-relaxed mb-1 italic text-sm">Titre original (DE) : « Mehr Zeit für Patienten, weniger Stress im Praxisalltag »</p>
             <p class="text-foreground-muted leading-relaxed mb-4">
-              Pixformance unterstützt Physiotherapiepraxen, Reha-Zentren und Kliniken mit seinem 360°-Konzept für digitale Bewegungstherapie, das Training strukturiert, Patienten sicher begleitet und Therapeuten gezielt entlastet.
+              Pixformance soutient les cabinets de physiothérapie, les centres de rééducation et les cliniques avec son concept 360° de thérapie par le mouvement digital, qui structure l'entraînement, accompagne les patients en toute sécurité et soulage spécifiquement les thérapeutes.
             </p>
-            <a
-              href="https://physiotherapeuten.de/news/2026/01/pixformance-mehr-zeit-fuer-patienten-weniger-stress-im-praxisalltag/"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline"
-            >
-              Artikel lesen
+            <a href="https://physiotherapeuten.de/news/2026/01/pixformance-mehr-zeit-fuer-patienten-weniger-stress-im-praxisalltag/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
+              Lire l'article (DE)
               <Icon name="external-link" size="sm" />
             </a>
           </div>
         </article>
 
-        <!-- Artikel Juli 2021 -->
         <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up">
           <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
           <div class="pl-4">
             <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs font-bold text-white bg-[#6BDBD1]/80 text-[#02308C] px-3 py-1 rounded-full uppercase tracking-wide" style="color: #02308C; background: rgba(107,219,209,0.3); border: 1px solid rgba(107,219,209,0.5);">Juli 2021</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide" style="color: #02308C; background: rgba(107,219,209,0.3); border: 1px solid rgba(107,219,209,0.5);">Juillet 2021</span>
               <span class="text-xs text-foreground-muted font-medium">pt – Zeitschrift für Physiotherapeuten</span>
             </div>
             <h3 class="font-display text-xl md:text-2xl font-bold mb-3 group-hover:text-[#02308C] transition-colors duration-300">
-              Kontaktlose Physiotherapie? Wie digitale Bewegungsanalyse die Physiotherapie und Rehabilitation revolutioniert
+              Physiothérapie sans contact ? Comment l'analyse digitale du mouvement révolutionne la physiothérapie et la rééducation
             </h3>
+            <p class="text-foreground-muted leading-relaxed mb-1 italic text-sm">Titre original (DE) : « Kontaktlose Physiotherapie? Wie digitale Bewegungsanalyse die Physiotherapie und Rehabilitation revolutioniert »</p>
             <p class="text-foreground-muted leading-relaxed mb-4">
-              Eins der aktuell erfolgreichsten Konzepte für digitale Bewegungsanalyse ist Pixformance. Ob Rehaklinik oder Physiotherapie, das Berliner Unternehmen unterstützt Trainierende namhafter Einrichtungen, wie zum Beispiel die Charité Berlin. Durch die digitale Echtzeit-Korrektur können Patienten ein betreutes Training absolvieren — auch ohne 1-zu-1-Betreuung durch einen Therapeuten.
+              L'un des concepts actuellement les plus efficaces pour l'analyse digitale du mouvement est Pixformance. Grâce à la correction digitale en temps réel, les patients peuvent effectuer un entraînement encadré — même sans supervision individuelle d'un thérapeute.
             </p>
-            <a
-              href="https://physiotherapeuten.de/news/2021/07/kontaktlose-physiotherapie-wie-digitale-bewegungsanalyse-die-physiotherapie-und-rehabilitation-revolutioniert/"
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline"
-            >
-              Artikel lesen
+            <a href="https://physiotherapeuten.de/news/2021/07/kontaktlose-physiotherapie-wie-digitale-bewegungsanalyse-die-physiotherapie-und-rehabilitation-revolutioniert/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#02308C] font-semibold hover:underline">
+              Lire l'article (DE)
               <Icon name="external-link" size="sm" />
             </a>
           </div>
@@ -285,46 +259,20 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     </div>
   </section>
 
-  <!-- Pixformance auf einen Blick -->
+  <!-- Pixformance en un coup d'œil -->
   <section class="py-12 md:py-16 bg-[#02308C]/5">
     <div class="container max-w-4xl">
       <div data-scroll="fade-up">
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-8 text-[#02308C]">
-          Pixformance auf einen Blick
-        </h2>
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-8 text-[#02308C]">Pixformance en un coup d'œil</h2>
         <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">FDA Klasse 2 zertifiziertes Medizinprodukt</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">Klinisch validiert: Charité Berlin &amp; Oxford Brookes University</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">EU-Forschungspartner: FORTEe-Projekt</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">25 Gelenkpunkte Echtzeit-Analyse via 2D Full-HD Kamera</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">700+ funktionelle Übungen auf der Online Plattform</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">6.000+ Installationen in Physiotherapiepraxen, Rehakliniken und Fitnessstudios weltweit</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">2,5 Millionen Trainierende pro Jahr</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" />
-            <span class="text-foreground-muted">Klinische Studien: Hochschule Fresenius (MS, Parkinson, Muskeldystrophie, Brustkrebsnachsorge)</span>
-          </li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">Dispositif médical certifié FDA Classe 2</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">Validé cliniquement : Charité Berlin &amp; Oxford Brookes University</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">Partenaire de recherche européen : projet FORTEe</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">Analyse en temps réel de 25 points articulaires via caméra 2D Full-HD</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">700+ exercices fonctionnels sur la plateforme en ligne</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">6 000+ installations dans des cabinets de physiothérapie, cliniques de rééducation et studios de fitness dans le monde</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">2,5 millions de pratiquants par an</span></li>
+          <li class="flex items-start gap-3"><Icon name="check-circle" size="sm" class="text-[#02308C] mt-1 shrink-0" /><span class="text-foreground-muted">Études cliniques : Hochschule Fresenius (SEP, Parkinson, dystrophie musculaire, suivi cancer du sein)</span></li>
         </ul>
       </div>
     </div>
@@ -335,15 +283,15 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     <div class="container max-w-4xl">
       <div class="flex flex-col sm:flex-row gap-4" data-scroll="fade-up">
         <Button href="/testen" size="lg">
-          Pixformance unverbindlich testen
+          Tester sans engagement
           <Icon name="arrow-right" size="sm" />
         </Button>
         <Button href="/kontakt" size="lg" variant="outline">
-          Presseanfragen &amp; Kontakt
+          Demandes presse &amp; Contact
           <Icon name="mail" size="sm" />
         </Button>
       </div>
     </div>
   </section>
 
-</BaseLayout>
+</FRBaseLayout>
