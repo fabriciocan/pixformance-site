@@ -16,42 +16,12 @@ const tabs = [
 ];
 
 const benefits = [
-  {
-    icon: 'monitor',
-    title: '700+ oefeningen – één apparaat',
-    description: 'Op het online platform kunnen individuele trainingsplannen worden samengesteld uit een collectie van meer dan 700 functionele oefeningen.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
-  {
-    icon: 'users',
-    title: 'Gelijktijdige begeleiding',
-    description: 'Dankzij de gepatenteerde software kunnen meerdere patiënten tegelijkertijd worden begeleid zonder extra personeelsinzet.',
-    gradient: 'from-[#6BDBD1] to-[#02308C]',
-  },
-  {
-    icon: 'trending-up',
-    title: 'Patiënten worden klanten',
-    description: 'Individuele trainingssessies en secundaire preventiemaatregelen kunnen worden aangeboden als extra inkomstenbron.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
-  {
-    icon: 'table',
-    title: 'Efficiënt beheer',
-    description: 'Op het online platform wordt de trainingsvoortgang van elke patiënt nauwkeurig gedocumenteerd voor analyse en optimalisatie.',
-    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
-  },
-  {
-    icon: 'heart',
-    title: 'Individuele training',
-    description: 'Trainingsprogramma\'s kunnen worden afgestemd op de gezondheidstoestand en therapeutische behoeften van elke patiënt.',
-    gradient: 'from-[#86C9BC] to-[#02308C]',
-  },
-  {
-    icon: 'zap',
-    title: 'Tijd voor het wezenlijke',
-    description: 'De therapeut hoeft niet elke oefening persoonlijk voor te doen en wint daarmee tijd – wat ten goede komt aan de begeleiding van alle patiënten.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
+  { icon: 'monitor', title: '700+ oefeningen – één apparaat', description: 'Op het online platform kunnen individuele trainingsplannen worden samengesteld uit een collectie van meer dan 700 functionele oefeningen.' },
+  { icon: 'users', title: 'Gelijktijdige begeleiding', description: 'Dankzij de gepatenteerde software kunnen meerdere patiënten tegelijkertijd worden begeleid zonder extra personeelsinzet.' },
+  { icon: 'trending-up', title: 'Patiënten worden klanten', description: 'Individuele trainingssessies en secundaire preventiemaatregelen kunnen worden aangeboden als extra inkomstenbron.' },
+  { icon: 'table', title: 'Efficiënt beheer', description: 'Op het online platform wordt de trainingsvoortgang van elke patiënt nauwkeurig gedocumenteerd voor analyse en optimalisatie.' },
+  { icon: 'heart', title: 'Individuele training', description: 'Trainingsprogramma\'s kunnen worden afgestemd op de gezondheidstoestand en therapeutische behoeften van elke patiënt.' },
+  { icon: 'zap', title: 'Tijd voor het wezenlijke', description: 'De therapeut hoeft niet elke oefening persoonlijk voor te doen en wint daarmee tijd – wat ten goede komt aan de begeleiding van alle patiënten.' },
 ];
 
 const features = [
@@ -95,35 +65,130 @@ const testimonials = [
     quote: 'Gerichte gezondheidsbeweging met de virtuele trainer verhoogt de behandelingseffectiviteit en geeft meer tijd voor de daadwerkelijke begeleiding van mijn patiënten.',
   },
 ];
+
+const clinicalTestimonials = [
+  {
+    quote: 'De patiënten zijn enthousiast en zeer gemotiveerd, wat eerlijk gezegd niet altijd het geval is. Wij als therapeuten profiteren er natuurlijk ook van, want de patiënten voeren hun oefeningen daardoor beter en doelgerichter uit. Bovendien besparen we tijd, want na slechts 30 minuten instructie kunnen de patiënten zelfstandig onder toezicht trainen.',
+    name: 'Gabriele Buchstein',
+    role: 'Hoofd Fysiotherapie',
+    company: 'Sauerlandklinik Hachen – Neurologische Specialistkliniek voor MS',
+  },
+  {
+    quote: 'Op zoek naar een manier om patiënten zelfstandig actief te laten worden, kozen wij voor Pixformance. Het individuele trainingsaanbod is hier ideaal, omdat groepstherapie voor sommige patiënten te gemakkelijk en voor andere te moeilijk is. Zo krijgt iedereen een volledig individuele training.',
+    name: 'Christoph Schneider',
+    role: 'Therapeutisch Directeur',
+    company: 'Niederrhein-Klinik, Revalidatiekliniek Korschenbroich',
+  },
+  {
+    quote: 'Van de kant van de patiënten is er grote interesse en nieuwsgierigheid naar de Pixformance-stations. Velen komen spontaan naar ons toe en willen een trainingsprogramma. We hebben onlangs een jonge vrouw na een schouderoperatie op afstand begeleid. Ze komt één keer per week naar de kliniek — de rest van de therapie doet ze thuis. Dat is echt een geweldige optie.',
+    name: 'Christoph Oratsch',
+    role: 'Hoofd Therapie',
+    company: 'AUVA Ziekenhuis Klagenfurt, Oostenrijk',
+  },
+  {
+    quote: 'We zijn blij te zien dat onze patiënten de bewegingstraining erg waarderen en volhouden. De speelse component van onze digitale Pixformance therapieapparatuur speelt daarin zeker een rol — en als onze patiënten even de ziekte vergeten en gewoon plezier hebben, is dat uiterst waardevol.',
+    name: 'Gunter Hölig',
+    role: 'Therapeutisch Directeur',
+    company: 'Medical Park Bad Rodach',
+  },
+];
+
+const clientLogos = [
+  { name: 'Charité Berlin', src: '/images/en/Logo-Charite.png' },
+  { name: 'Medical Park', src: '/images/en/Logo-Medical-Park.png' },
+  { name: 'Niederrhein-Klinik', src: '/images/en/AK_logo_Niederrhein_Klinik.png' },
+  { name: 'Sauerlandklinik Hachen', src: '/images/en/SKH_Logo_4c-scaled-1.jpg' },
+  { name: 'AUVA', src: '/images/en/2560px-Logo_AUVA.svg.png' },
+  { name: 'Mediclin', src: '/images/en/Pixformance-Logo-Mediclin.png' },
+  { name: 'Oxford Brookes University', src: '/images/en/pixformance-logo-oxford-brookes-university.png' },
+];
+
+const faqItems = [
+  {
+    question: 'Wat is het Pixformance-station en hoe werkt het in de fysiotherapie?',
+    answer: 'De 2D Full-HD camera met geïntegreerde dieptesensor analyseert in realtime 25 gewrichtspunten. Een virtuele therapeut demonstreert de correcte oefenreeks op het scherm terwijl de patiënt de oefening uitvoert. Het systeem detecteert direct bewegingsafwijkingen en geeft visuele feedback (pijlen, cirkels) en tekstfeedback rechtstreeks op het scherm. Na elke oefening kwantificeert de Pixformance Score de bewegingskwaliteit objectief. Alle gegevens worden opgeslagen op het online platform.',
+  },
+  {
+    question: 'Voor welke indicaties is Pixformance geschikt?',
+    answer: 'Multiple sclerose, Parkinson-syndroom, postoperatieve revalidatie (heup, knie, schouder, wervelkolom), neurologische revalidatie, kankernazorg, geriatrische balans- en valpreventietraining en algemene functionele bewegingstherapie. Oefeningen kunnen worden aangepast voor patiënten in een rolstoel, met een looprek, op een behandeltafel of op de vloer.',
+  },
+  {
+    question: 'Hoeveel patiënten kunnen tegelijkertijd trainen met Pixformance?',
+    answer: 'Dankzij de gepatenteerde software kunnen meerdere patiënten tegelijkertijd op meerdere stations trainen, zonder extra personeel. Elke patiënt scant zijn persoonlijke QR-code en start automatisch zijn individuele therapieprogramma.',
+  },
+  {
+    question: 'Vervangt Pixformance fysiotherapeuten?',
+    answer: 'Nee. Pixformance ondersteunt en ontlast therapeuten — het vervangt ze niet. Het systeem neemt de oefenbegeleiding, realtime correctie en documentatie automatisch over. Na slechts 30 minuten instructie kunnen patiënten zelfstandig onder toezicht trainen.',
+  },
+  {
+    question: 'Kan Pixformance worden gebruikt voor telerevalidatie en thuistraining?',
+    answer: 'Ja. De Pixformance Web App stelt patiënten in staat om thuis toegang te krijgen tot hun programma\'s. Het AUVA Ziekenhuis Klagenfurt gebruikt dit hybride model: patiënten komen één keer per week naar de kliniek en doen de rest van de therapie thuis.',
+  },
+  {
+    question: 'Welke klinische studies bestaan er over Pixformance?',
+    answer: 'De Hochschule Fresenius heeft meerdere studies uitgevoerd: effect op het loopvermogen bij MS-patiënten, balans en kwaliteit van leven bij Parkinson, spierdystrofie (Emery-Dreifuss) en borstkankernazorg. Pixformance is EU-onderzoekspartner in het FORTEe-project voor bewegingstherapie voor kinderen met kanker. Het systeem wordt klinisch ingezet in de Charité Berlijn, Medical Park, AUVA en de Oxford Brookes University.',
+  },
+  {
+    question: 'Is Pixformance een gecertificeerd medisch hulpmiddel?',
+    answer: 'Ja. Pixformance is in de VS goedgekeurd als Klasse 2 medisch hulpmiddel (RX) door de FDA. Het apparaat voldoet aan de EMC-richtlijn 2004/108/EG en wordt sinds 2012 gefabriceerd onder strenge kwaliteits- en veiligheidscontroles.',
+  },
+  {
+    question: 'Hoe helpt Pixformance bij het opbouwen van een privébetalingszone?',
+    answer: 'Pixformance stelt praktijken in staat om technologie-ondersteunde training buiten het receptmodel aan te bieden en zo een tweede inkomstenbron op te bouwen. Meerdere praktijkeigenaren melden een snelle terugverdientijd. Financiering mogelijk vanaf 99 €/maand.',
+  },
+];
 ---
 
 <NLBaseLayout
-  title="Digitale bewegingstherapie voor fysiotherapiepraktijken | Pixformance"
-  description="Pixformance voor fysiotherapeuten: geautomatiseerde feedback, tot 4 patiënten tegelijk, 700+ oefeningen. Privébetalingszone uitbouwen & therapeuten ontlasten."
-  hreflangDe="https://www.pixformance.com/physiotherapie"
+  title="Digitaal bewegingstherapiesysteem voor fysiotherapiepraktijken en revalidatieklinieken | Pixformance"
+  description="Pixformance is het digitale revalidatiesysteem voor fysiotherapeuten: realtime analyse van 25 gewrichtspunten, 700+ oefeningen, 6.000+ installaties wereldwijd. FDA Klasse 2 medisch hulpmiddel."
+  hreflangDe="https://www.pixformance.com/physiotherapie/"
   hreflangEn="https://www.pixformance.com/en/physical-therapy/"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Pixformance Digitale bewegingstherapie – Fysiotherapie",
-      "description": "Digitale bewegingstherapie voor fysiotherapiepraktijken. Geautomatiseerde feedback, begeleiding van tot 4 patiënten tegelijk, uitbouwen van een rendabele privébetalingszone.",
-      "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+      "description": "Digitale bewegingstherapie voor fysiotherapiepraktijken. Geautomatiseerde feedback, begeleiding van meerdere patiënten tegelijk, uitbouwen van een rendabele privébetalingszone.",
+      "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com"},
       "serviceType": "Physiotherapy Technology",
       "areaServed": ["DE", "AT", "CH", "NL"],
       "url": "https://www.pixformance.com/nl/fysiotherapie/"
     },
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "url": "https://www.pixformance.com/nl/fysiotherapie/",
-      "inLanguage": "nl",
-      "isPartOf": {"@type": "WebSite", "url": "https://www.pixformance.com/nl/"}
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "Volledig verbonden digitaal revalidatiesysteem bestaande uit de Pixformance Station, een online platform en een web-app. De station gebruikt een 2D Full-HD camera met geïntegreerde dieptesensor voor realtime analyse van 25 gewrichtspunten.",
+      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
+      "legalStatus": "FDA Klasse 2 medisch hulpmiddel",
+      "relevantSpecialty": ["Fysiotherapie", "Revalidatie", "Neurologie", "Orthopedie", "Sportgeneeskunde"]
     },
     {
-      "rel": "alternate",
-      "hreflang": "nl",
-      "href": "https://www.pixformance.com/nl/fysiotherapie/"
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat is het Pixformance-station en hoe werkt het in de fysiotherapie?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De 2D Full-HD camera met geïntegreerde dieptesensor analyseert in realtime 25 gewrichtspunten. Een virtuele therapeut demonstreert de correcte oefenreeks op het scherm terwijl de patiënt de oefening uitvoert. Het systeem detecteert direct bewegingsafwijkingen en geeft visuele feedback en tekstfeedback rechtstreeks op het scherm." }
+        },
+        {
+          "@type": "Question",
+          "name": "Voor welke indicaties is Pixformance geschikt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multiple sclerose, Parkinson-syndroom, postoperatieve revalidatie (heup, knie, schouder, wervelkolom), neurologische revalidatie, kankernazorg, geriatrische balans- en valpreventietraining. Oefeningen kunnen worden aangepast voor patiënten in een rolstoel, met een looprek, op een behandeltafel of op de vloer." }
+        },
+        {
+          "@type": "Question",
+          "name": "Vervangt Pixformance fysiotherapeuten?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nee. Pixformance ondersteunt en ontlast therapeuten — het vervangt ze niet. Het systeem neemt de oefenbegeleiding, realtime correctie en documentatie automatisch over. Na slechts 30 minuten instructie kunnen patiënten zelfstandig onder toezicht trainen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Pixformance een gecertificeerd medisch hulpmiddel?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Pixformance is in de VS goedgekeurd als Klasse 2 medisch hulpmiddel (RX) door de FDA. Het apparaat voldoet aan de EMC-richtlijn 2004/108/EG en wordt sinds 2012 gefabriceerd onder strenge kwaliteits- en veiligheidscontroles." }
+        }
+      ]
     }
   ]}
 >
@@ -131,7 +196,6 @@ const testimonials = [
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
 
-  <!-- Breadcrumb Tabs -->
   <BreadcrumbTabs tabs={tabs} activeTab="/nl/fysiotherapie/" />
 
   <!-- Hero Section -->
@@ -146,8 +210,9 @@ const testimonials = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digitale
-          <span class="text-[#02308C]"> bewegingstherapie</span>
+          Het digitale therapiesysteem dat<br class="hidden md:block" />
+          uw therapeuten ontlast —
+          <span class="text-[#02308C]"> maar niet vervangt</span>
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
@@ -158,25 +223,34 @@ const testimonials = [
           Geen enkele technologie ter wereld kan therapeuten vervangen. Digitalisering in fysiotherapie en revalidatie is echter een effectief middel om therapeuten te ontlasten en patiënten nog intensiever te begeleiden.
         </p>
 
+        <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.45s;">
+          Pixformance is een volledig verbonden digitaal bewegingstherapiesysteem dat wordt gebruikt in meer dan 6.000 fysiotherapiepraktijken, revalidatieklinieken en ziekenhuizen wereldwijd. Het Pixformance-station analyseert met een 2D Full-HD camera met geïntegreerde dieptesensor in realtime 25 gewrichtspunten en geeft onmiddellijke correctiefeedback. Als FDA Klasse 2 medisch hulpmiddel wordt Pixformance ingezet in de Charité Berlijn, Medical Park, AUVA Klagenfurt en de Oxford Brookes University — en is het al continu klinisch in gebruik sinds 2012.
+        </p>
+
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
-          <Button
-            size="lg"
-            href="/nl/gratis-proef/"
-            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
+          <Button size="lg" href="/nl/gratis-proef/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
             Advies aanvragen
             <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            href="/nl/concept/"
-            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
+          <Button size="lg" variant="outline" href="/nl/concept/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
             Meer informatie
             <Icon name="play-circle" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Logos -->
+  <section class="py-8 md:py-12 bg-gray-50 border-y border-gray-100">
+    <div class="container">
+      <p class="text-center text-sm font-semibold text-foreground-muted uppercase tracking-widest mb-8" data-scroll="fade-up">
+        Vertrouwd door toonaangevende klinieken en ziekenhuizen
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12" data-scroll="fade-up">
+        {clientLogos.map((logo) => (
+          <img src={logo.src} alt={logo.name} class="h-8 md:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" />
+        ))}
       </div>
     </div>
   </section>
@@ -186,60 +260,36 @@ const testimonials = [
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
         <div class="space-y-6" data-scroll="slide-left">
-          <div class="inline-block">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
-              <Icon name="target" size="sm" />
-              Onze missie
-            </span>
-          </div>
-
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C]">
+            <Icon name="target" size="sm" />
+            Onze missie
+          </span>
           <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight">
             Therapeuten versterken, patiënten enthousiasmeren
           </h2>
-
           <p class="text-lg text-foreground-muted leading-relaxed">
-            Onze missie is – met de beste digitale bewegingsanalysetechnologie – een individuele oplossing te creëren voor therapeuten en hun bijzondere patiënten.
-            De digitale bewegingstherapie van Pixformance ontlast therapeuten bij het demonstreren van oefeningen en begeleidt patiënten zo zeer effectief op hun weg naar herstel.
+            Onze missie is – met de beste digitale bewegingsanalysetechnologie – een individuele oplossing te creëren voor therapeuten en hun bijzondere patiënten. De digitale bewegingstherapie van Pixformance ontlast therapeuten bij het demonstreren van oefeningen en begeleidt patiënten zo zeer effectief op hun weg naar herstel.
           </p>
-
         </div>
-
         <div class="relative" data-scroll="slide-right">
-          <img
-            src="/images/Pixformance-Physiotherapie-Digitalisierung-Digitales-Trainingsgeraet-Spass-Beim-Training.png"
-            alt="Pixformance Fysiotherapie Training"
-            class="rounded-2xl shadow-xl w-full h-auto"
-            loading="lazy"
-          />
+          <img src="/images/Pixformance-Physiotherapie-Digitalisierung-Digitales-Trainingsgeraet-Spass-Beim-Training.png" alt="Pixformance Fysiotherapie Training" class="rounded-2xl shadow-xl w-full h-auto" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Echtzeit-Korrektur Highlight -->
+  <!-- Realtime correctie Highlight -->
   <section class="py-20 bg-[#02308C] relative overflow-hidden">
-    <!-- Decorative background elements -->
     <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
     <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
-    <div class="absolute top-1/2 right-1/3 w-40 h-40 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
-
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-6" data-scroll="fade-up">
-
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1]">
           <Icon name="zap" size="sm" />
           Live technologie
         </span>
-
-        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Realtime correctie
-        </h2>
-
-        <p class="text-xl text-white/70 max-w-2xl mx-auto">
-          Nauwkeurige feedback tijdens de uitvoering van oefeningen.
-        </p>
-
-
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">Realtime correctie</h2>
+        <p class="text-xl text-white/70 max-w-2xl mx-auto">Nauwkeurige feedback tijdens de uitvoering van oefeningen.</p>
       </div>
     </div>
   </section>
@@ -252,47 +302,81 @@ const testimonials = [
           <Icon name="sparkles" size="sm" />
           Realtime correctie
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Hoe werkt de training?
-        </h2>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">Hoe werkt de training?</h2>
         <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
           Het Pixformance-station biedt doorlopende sturing op nauwkeurigheid, tempo en correcte uitvoering van oefeningen.
         </p>
       </div>
-
       <div class="space-y-16 md:space-y-24">
         {features.map((feature, index) => (
-          <div
-            class={`grid md:grid-cols-2 gap-8 md:gap-12 items-center  ${index % 2 !== 0 ? 'md-reverse' : ''}`}
-            data-scroll="fade-up"
-            data-delay={index + 1}
-          >
-            <!-- Text -->
+          <div class={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${index % 2 !== 0 ? 'md-reverse' : ''}`} data-scroll="fade-up" data-delay={index + 1}>
             <div class={`space-y-4 ${index % 2 !== 0 ? 'md:order-2' : ''}`} data-scroll={index % 2 === 0 ? 'slide-left' : 'slide-right'}>
-              <span class="text-6xl md:text-7xl font-bold text-[#6BDBD1] leading-none select-none">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
-                {feature.title}
-              </h3>
-              <p class="text-lg text-foreground-muted leading-relaxed">
-                {feature.description}
-              </p>
+              <span class="text-6xl md:text-7xl font-bold text-[#6BDBD1] leading-none select-none">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900">{feature.title}</h3>
+              <p class="text-lg text-foreground-muted leading-relaxed">{feature.description}</p>
             </div>
-
-            <!-- Image -->
             <div class={`${index % 2 !== 0 ? 'md:order-1' : ''}`} data-scroll={index % 2 === 0 ? 'slide-right' : 'slide-left'}>
               <div class="rounded-2xl overflow-hidden">
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  class="w-full h-auto object-contain block"
-                  loading="lazy"
-                />
+                <img src={feature.image} alt={feature.title} class="w-full h-auto object-contain block" loading="lazy" />
               </div>
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Indicaties Section -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5 border-y border-[#02308C]/10">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="activity" size="sm" />
+            Klinische toepassing
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Indicaties en klinische toepassingsgebieden</h2>
+          <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+            Pixformance is geschikt voor een breed spectrum aan fysiotherapeutische en revalidatie-indicaties. Oefeningen kunnen worden aangepast voor patiënten in een rolstoel, met een looprek, op een behandeltafel of op de vloer.
+          </p>
+        </div>
+        <ul class="grid md:grid-cols-2 gap-5 text-base text-gray-800 leading-relaxed">
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="brain" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Neurologische revalidatie</strong>
+              Multiple sclerose, Parkinson-syndroom, nazorg na beroerte, balans- en coördinatieproblemen
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="bone" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Orthopedische revalidatie</strong>
+              Postoperatieve zorg (heup, knie, schouder, wervelkolom), rugpijntherapie, functionele krachtopbouw na blessures
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="heart" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Oncologische revalidatie</strong>
+              Kankernazorg (volwassenen en kinderen via FORTEe), nazorg na borstkanker
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="users" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Geriatrische revalidatie</strong>
+              Valpreventie, balanstraining, functionele zelfstandigheid voor ouderen
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 md:col-span-2">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="trending-up" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Secundaire preventie & privébetalingsprogramma's</strong>
+              Nazorg na revalidatie, blessurepreventie, privébetalingstrainingsprogramma's
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -305,39 +389,26 @@ const testimonials = [
           <Icon name="star" size="sm" />
           Voordelen
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Economische zelfstandigheid dankzij de privébetalingszone
-        </h2>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Economische zelfstandigheid dankzij de privébetalingszone</h2>
         <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
           Pixformance biedt therapeuten de mogelijkheid om de privébetalingszone uit te bouwen of uit te breiden en zo een extra pijler op de tweede gezondheidsmarkt te creëren.
         </p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {benefits.map((benefit, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="fade-up"
-            data-delay={index + 1}
-          >
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white" data-scroll="fade-up" data-delay={index + 1}>
             <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
               <Icon name={benefit.icon} size="md" class="text-white" />
             </div>
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
-              {benefit.title}
-            </h3>
-            <p class="text-sm text-foreground-muted">
-              {benefit.description}
-            </p>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">{benefit.title}</h3>
+            <p class="text-sm text-foreground-muted">{benefit.description}</p>
           </Card>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Individuelle Lösung Section -->
+  <!-- Individuele oplossing Section -->
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
       <div class="text-center mb-14 max-w-3xl mx-auto" data-scroll="fade-up">
@@ -345,106 +416,57 @@ const testimonials = [
           <Icon name="layout" size="sm" />
           Flexibiliteit
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Uw individuele oplossing
-        </h2>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Uw individuele oplossing</h2>
         <p class="text-lg text-foreground-muted leading-relaxed">
           Met Pixformance profiteert u van maximale flexibiliteit. U kunt uw patiënten, buiten het recept om, omzetten in loyale betalende klanten en uw praktijk naar een geheel nieuw niveau tillen met innovatieve digitale trainingsapparatuur.
         </p>
       </div>
-
       <div class="grid md:grid-cols-3 gap-6 items-stretch">
-
-        <!-- Card 1 Station -->
         <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="1">
           <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
-            <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center mb-4">
-              <Icon name="monitor" size="md" class="text-white" />
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-[#02308C] flex items-center justify-center mb-4"><Icon name="monitor" size="md" class="text-white" /></div>
             <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">1</div>
             <h3 class="text-xl font-bold text-gray-900">Station</h3>
           </div>
           <div class="px-6 py-6 flex flex-col gap-3 flex-1">
-            <p class="text-sm text-foreground-muted leading-relaxed">
-              Met één station kan individuele training met of zonder therapeut worden geïntegreerd in elk bestaand praktijkconcept.
-            </p>
+            <p class="text-sm text-foreground-muted leading-relaxed">Met één station kan individuele training met of zonder therapeut worden geïntegreerd in elk bestaand praktijkconcept.</p>
             <ul class="space-y-2 mt-2">
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Voor 1 tot 2 gebruikers
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Voor kleine en middelgrote praktijken met beperkte ruimte
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Vereist slechts ca. 6 m² vloeroppervlak
-              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Voor 1 tot 2 gebruikers</li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Voor kleine en middelgrote praktijken</li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Vereist slechts ca. 6 m²</li>
             </ul>
           </div>
         </div>
-
-        <!-- Card 2 Stations — destaque -->
         <div class="flex flex-col rounded-2xl bg-[#02308C] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden ring-2 ring-[#6BDBD1]" data-scroll="fade-up" data-delay="2">
           <div class="px-6 pt-8 pb-6 border-b border-white/10">
-            <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
-              <Icon name="users" size="md" class="text-white" />
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4"><Icon name="users" size="md" class="text-white" /></div>
             <div class="text-5xl font-bold text-[#6BDBD1] leading-none mb-1">2</div>
             <h3 class="text-xl font-bold text-white">Stations</h3>
           </div>
           <div class="px-6 py-6 flex flex-col gap-3 flex-1">
-            <p class="text-sm text-white/70 leading-relaxed">
-              Met twee stations zijn zowel individuele training als training in kleine groepen mogelijk.
-            </p>
+            <p class="text-sm text-white/70 leading-relaxed">Met twee stations zijn zowel individuele training als training in kleine groepen mogelijk.</p>
             <ul class="space-y-2 mt-2">
-              <li class="flex items-start gap-2 text-sm text-white/90">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Voor tot 4 gebruikers
-              </li>
-              <li class="flex items-start gap-2 text-sm text-white/90">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Voor middelgrote praktijken
-              </li>
-              <li class="flex items-start gap-2 text-sm text-white/90">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Vereist slechts ca. 20 m² vloeroppervlak
-              </li>
+              <li class="flex items-start gap-2 text-sm text-white/90"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Voor tot 4 gebruikers</li>
+              <li class="flex items-start gap-2 text-sm text-white/90"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Voor middelgrote praktijken</li>
+              <li class="flex items-start gap-2 text-sm text-white/90"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Vereist slechts ca. 20 m²</li>
             </ul>
           </div>
         </div>
-
-        <!-- Card 3+ Stations -->
         <div class="flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden" data-scroll="fade-up" data-delay="3">
           <div class="bg-gray-50 px-6 pt-8 pb-6 border-b border-gray-100">
-            <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center mb-4">
-              <Icon name="trending-up" size="md" class="text-white" />
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-[#6BDBD1] flex items-center justify-center mb-4"><Icon name="trending-up" size="md" class="text-white" /></div>
             <div class="text-5xl font-bold text-[#02308C] leading-none mb-1">3+</div>
             <h3 class="text-xl font-bold text-gray-900">Stations</h3>
           </div>
           <div class="px-6 py-6 flex flex-col gap-3 flex-1">
-            <p class="text-sm text-foreground-muted leading-relaxed">
-              Vanaf drie stations zijn gevarieerde individuele trainingen en groepslessen als innovatief trainingsconcept mogelijk.
-            </p>
+            <p class="text-sm text-foreground-muted leading-relaxed">Vanaf drie stations zijn gevarieerde individuele trainingen en groepslessen als innovatief trainingsconcept mogelijk.</p>
             <ul class="space-y-2 mt-2">
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Vanaf 5 gebruikers
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Voor middelgrote tot grote praktijken
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
-                Integreerbaar vanaf ca. 30 m²
-              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Vanaf 5 gebruikers</li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Voor middelgrote tot grote praktijken</li>
+              <li class="flex items-start gap-2 text-sm text-gray-700"><Icon name="check" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />Integreerbaar vanaf ca. 30 m²</li>
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -457,35 +479,21 @@ const testimonials = [
           <Icon name="message-circle" size="sm" />
           Ervaringen
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Wat onze klanten zeggen
-        </h2>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">Wat onze klanten zeggen</h2>
         <p class="text-lg text-foreground-muted mt-4">
-          Met meer dan 450.000 gebruikers wereldwijd is het Pixformance trainings- en therapieconcept al aanwezig in de beste revalidatieklinieken van Duitsland
+          Met meer dan 2,5 miljoen gebruikers wereldwijd is het Pixformance-concept al aanwezig in de beste revalidatieklinieken van Duitsland
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
         {testimonials.map((testimonial, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
-            data-scroll="scale"
-            data-delay={index + 1}
-          >
+          <Card variant="elevated" padding="lg" class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden" data-scroll="scale" data-delay={index + 1}>
             <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
-
             <div class="relative space-y-4">
               <div class="flex items-center gap-3">
                 <div class="relative">
                   <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-                    loading="lazy"
-                  />
+                  <img src={testimonial.image} alt={testimonial.name} class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500" loading="lazy" />
                 </div>
                 <div>
                   <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
@@ -493,16 +501,107 @@ const testimonials = [
                   <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
                 </div>
               </div>
-
               <div class="relative">
                 <Icon name="quote" size="lg" class="text-[#6BDBD1]/20 absolute -top-1 -left-1" />
-                <p class="text-sm text-foreground-muted italic leading-relaxed pl-6 relative">
-                  "{testimonial.quote}"
-                </p>
+                <p class="text-sm text-foreground-muted italic leading-relaxed pl-6 relative">"{testimonial.quote}"</p>
               </div>
             </div>
           </Card>
         ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6" data-scroll="fade-up">
+        {clinicalTestimonials.map((t, index) => (
+          <blockquote class="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
+            <Icon name="quote" size="lg" class="text-[#6BDBD1]/30 absolute top-4 right-4" />
+            <p class="text-sm md:text-base text-gray-700 italic leading-relaxed mb-5 pl-4 relative">„{t.quote}"</p>
+            <footer class="pl-4">
+              <cite class="not-italic">
+                <span class="font-bold text-gray-900 block group-hover:text-[#02308C] transition-colors">{t.name}</span>
+                <span class="text-sm text-foreground-muted">{t.role}, <span class="text-[#02308C] font-medium">{t.company}</span></span>
+              </cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Klinische Studies Section -->
+  <section class="py-12 md:py-20 bg-[#02308C] relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="container relative" data-scroll="fade-up">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1] mb-6">
+            <Icon name="file-text" size="sm" />
+            Wetenschap & Bewijs
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Klinische studies & Bewijs</h2>
+          <p class="text-lg text-white/70 max-w-2xl mx-auto">
+            Pixformance werd als interventiemiddel gebruikt in meerdere klinische studies aan de Hochschule Fresenius:
+          </p>
+        </div>
+        <ul class="space-y-3 mb-10">
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base"><strong class="text-white">Multiple sclerose</strong> — Effect op het loopvermogen</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base"><strong class="text-white">Parkinson-syndroom</strong> — Balans, loopvermogen, kwaliteit van leven</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base"><strong class="text-white">Spierdystrofie Emery-Dreifuss</strong> — Enkelvoudige casestudy</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base"><strong class="text-white">Borstkankernazorg</strong> — Functie van de bovenste extremiteit</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="globe" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base"><strong class="text-white">EU-onderzoeksproject FORTEe</strong> — Bewegingstherapie voor kinderen met kanker</span>
+          </li>
+        </ul>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/downloads/Studienergebnisse_Wissenschaftlich-nachgewiesene-positive-Effekte-mit-Pixformance_2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#6BDBD1] text-[#02308C] font-bold text-sm hover:bg-white transition-colors duration-200">
+            <Icon name="download" size="sm" />
+            Alle studieresultaten downloaden (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="help-circle" size="sm" />
+            FAQ
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Veelgestelde vragen</h2>
+        </div>
+        <div class="space-y-3" data-scroll="fade-up">
+          {faqItems.map((item, index) => (
+            <details class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200" data-delay={index + 1}>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-[#02308C] transition-colors duration-200 select-none">
+                <span>{item.question}</span>
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#02308C]/10 flex items-center justify-center group-open:bg-[#02308C] transition-colors duration-200">
+                  <Icon name="chevron-down" size="sm" class="text-[#02308C] group-open:text-white group-open:rotate-180 transition-all duration-200" />
+                </span>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-base text-gray-700 leading-relaxed border-t border-gray-200 pt-4">{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -510,32 +609,16 @@ const testimonials = [
   <!-- CTA Section -->
   <section class="py-12 md:py-20 relative overflow-hidden">
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
-
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
-        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Wilt u persoonlijk advies?
-        </h2>
-
-        <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Veel vragen lossen zich gemakkelijker op in een persoonlijk gesprek. We kijken uit naar uw bericht!
-        </p>
-
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">Wilt u persoonlijk advies?</h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">Veel vragen lossen zich gemakkelijker op in een persoonlijk gesprek. We kijken uit naar uw bericht!</p>
         <div class="flex flex-wrap gap-4 justify-center pt-4">
-          <Button
-            size="lg"
-            href="/nl/gratis-proef/"
-            class="bg-black text-white hover:bg-black/80"
-          >
+          <Button size="lg" href="/nl/gratis-proef/" class="bg-black text-white hover:bg-black/80">
             Contact opnemen
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            href="/nl/concept/"
-            class="border-2 border-black text-black hover:bg-black hover:text-white"
-          >
+          <Button size="lg" variant="outline" href="/nl/concept/" class="border-2 border-black text-black hover:bg-black hover:text-white">
             Meer informatie over onze oplossingen
           </Button>
         </div>
@@ -547,112 +630,37 @@ const testimonials = [
 </NLBaseLayout>
 
 <style>
-  /* Hero Entry Animation */
   @keyframes hero-entry {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
-  .hero-animate {
-    opacity: 0;
-    animation: hero-entry 0.8s ease-out forwards;
-  }
-
-  /* Scroll Animation Styles */
-  [data-scroll] {
-    opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  [data-scroll].is-visible {
-    opacity: 1;
-  }
-
-  /* Fade In Up */
-  [data-scroll="fade-up"] {
-    transform: translateY(30px);
-  }
-
-  [data-scroll="fade-up"].is-visible {
-    transform: translateY(0);
-  }
-
-  /* Slide In Left */
-  [data-scroll="slide-left"] {
-    transform: translateX(-40px);
-  }
-
-  [data-scroll="slide-left"].is-visible {
-    transform: translateX(0);
-  }
-
-  /* Slide In Right */
-  [data-scroll="slide-right"] {
-    transform: translateX(40px);
-  }
-
-  [data-scroll="slide-right"].is-visible {
-    transform: translateX(0);
-  }
-
-  /* Scale In */
-  [data-scroll="scale"] {
-    transform: scale(0.9);
-  }
-
-  [data-scroll="scale"].is-visible {
-    transform: scale(1);
-  }
-
-  /* Stagger delays */
-  [data-scroll][data-delay="1"] {
-    transition-delay: 0.1s;
-  }
-
-  [data-scroll][data-delay="2"] {
-    transition-delay: 0.2s;
-  }
-
-  [data-scroll][data-delay="3"] {
-    transition-delay: 0.3s;
-  }
-
-  [data-scroll][data-delay="4"] {
-    transition-delay: 0.4s;
-  }
-
-  [data-scroll][data-delay="5"] {
-    transition-delay: 0.5s;
-  }
-
-  [data-scroll][data-delay="6"] {
-    transition-delay: 0.6s;
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="slide-left"] { transform: translateX(-40px); }
+  [data-scroll="slide-left"].is-visible { transform: translateX(0); }
+  [data-scroll="slide-right"] { transform: translateX(40px); }
+  [data-scroll="slide-right"].is-visible { transform: translateX(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+  [data-scroll][data-delay="4"] { transition-delay: 0.4s; }
+  [data-scroll][data-delay="5"] { transition-delay: 0.5s; }
+  [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+  details > div { animation: faq-open 0.2s ease-out; }
+  @keyframes faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, observerOptions);
-
-  // Observe all elements with data-scroll attribute
-  document.querySelectorAll('[data-scroll]').forEach((el) => {
-    observer.observe(el);
-  });
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
 </script>

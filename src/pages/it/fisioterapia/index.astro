@@ -104,17 +104,47 @@ const studies = [
 ---
 
 <ITBaseLayout
-  title="Fisioterapia e Riabilitazione Digitale – Pixformance Sports GmbH"
-  description="Dispositivi di riabilitazione digitale innovativi Pixformance. Aumenta il numero di pazienti e alleggerisci i tuoi terapisti. Dispositivo medico Classe 2 FDA."
+  title="Dispositivo Digitale di Terapia del Movimento per Studi di Fisioterapia e Cliniche | Pixformance"
+  description="Pixformance: sistema di riabilitazione digitale per fisioterapisti. Analisi in tempo reale di 25 punti articolari, 700+ esercizi, 6.000+ installazioni in tutto il mondo. Dispositivo medico FDA Classe 2."
   hreflangDe="https://www.pixformance.com/physiotherapie/"
   hreflangEn="https://www.pixformance.com/en/physical-therapy/"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Fisioterapia e Riabilitazione Digitale – Pixformance",
-    "description": "Dispositivi di riabilitazione digitale innovativi per fisioterapia e cliniche. Feedback in tempo reale, 700+ esercizi, più di 2,5M utenti.",
-    "url": "https://www.pixformance.com/it/fisioterapia/"
-  }}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Stazione Pixformance",
+      "description": "Sistema di riabilitazione digitale completamente connesso con una telecamera 2D Full HD con sensore di profondità integrato per l'analisi in tempo reale di 25 punti articolari, fornendo feedback correttivo istantaneo durante l'esercizio.",
+      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
+      "legalStatus": "Dispositivo Medico FDA Classe 2",
+      "relevantSpecialty": ["Fisioterapia", "Riabilitazione", "Neurologia", "Ortopedia", "Medicina Sportiva"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è la Stazione Pixformance e come funziona in fisioterapia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "La telecamera 2D Full HD con sensore di profondità integrato analizza in tempo reale 25 punti articolari. Un terapista virtuale dimostra la sequenza di esercizio corretta sullo schermo mentre il paziente esegue l'esercizio. Il sistema rileva istantaneamente le deviazioni del movimento e fornisce feedback visivo e testuale direttamente sullo schermo." }
+        },
+        {
+          "@type": "Question",
+          "name": "Per quali indicazioni è adatto Pixformance?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sclerosi multipla, sindrome di Parkinson, riabilitazione postoperatoria (anca, ginocchio, spalla, colonna vertebrale), riabilitazione neurologica, follow-up oncologico, allenamento geriatrico per l'equilibrio e la prevenzione delle cadute. Gli esercizi possono essere adattati per pazienti in sedia a rotelle, con deambulatori, su lettino o sul pavimento." }
+        },
+        {
+          "@type": "Question",
+          "name": "Pixformance sostituisce i fisioterapisti?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Pixformance supporta e alleggerisce i terapisti — non li sostituisce. Il sistema gestisce automaticamente la guida degli esercizi, la correzione in tempo reale e la documentazione. Dopo soli 30 minuti di istruzioni, i pazienti possono esercitarsi autonomamente sotto supervisione." }
+        },
+        {
+          "@type": "Question",
+          "name": "Pixformance è un dispositivo medico certificato?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Pixformance è approvato negli USA come dispositivo medico di Classe 2 (RX) dalla FDA. Il dispositivo è conforme alla Direttiva EMC 2004/108/CE ed è prodotto dal 2012 secondo rigorosi controlli di qualità e sicurezza." }
+        }
+      ]
+    }
+  ]}
 >
   <ITHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
@@ -162,6 +192,10 @@ const studies = [
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
           Nessuna tecnologia al mondo può sostituire i terapisti. Tuttavia, la digitalizzazione in fisioterapia e riabilitazione alleggerisce efficacemente i terapisti e offre ai pazienti un'assistenza ancora più intensiva.
+        </p>
+
+        <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.43s;">
+          Pixformance è un sistema di terapia del movimento completamente connesso, utilizzato in oltre 6.000 studi fisioterapici, cliniche riabilitative e ospedali in tutto il mondo. La stazione Pixformance analizza in tempo reale 25 punti articolari tramite una telecamera 2D Full HD con sensore di profondità integrato, fornendo feedback correttivo istantaneo. Come dispositivo medico Classe 2 FDA, Pixformance è utilizzato alla Charité di Berlino, al Medical Park, all'AUVA Klagenfurt e all'Oxford Brookes University — ed è in uso clinico continuo dal 2012.
         </p>
 
         <div class="flex items-center justify-center gap-4 p-4 bg-[#02308C]/5 rounded-xl border border-[#02308C]/10 max-w-md mx-auto hero-animate" style="animation-delay: 0.45s;">
@@ -242,6 +276,61 @@ const studies = [
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Indicazioni Section -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5 border-y border-[#02308C]/10">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="activity" size="sm" />
+            Applicazione Clinica
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Indicazioni e Aree di Applicazione Clinica</h2>
+          <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+            Pixformance è adatto a un ampio spettro di indicazioni fisioterapeutiche e riabilitative. Gli esercizi possono essere adattati per pazienti in sedia a rotelle, con deambulatori, su lettino o sul pavimento.
+          </p>
+        </div>
+        <ul class="grid md:grid-cols-2 gap-5 text-base text-gray-800 leading-relaxed">
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="brain" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Riabilitazione Neurologica</strong>
+              Sclerosi multipla, sindrome di Parkinson, follow-up ictus, disturbi dell'equilibrio e della coordinazione
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="bone" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Riabilitazione Ortopedica</strong>
+              Cura postoperatoria (anca, ginocchio, spalla, colonna), terapia del dolore alla schiena, rafforzamento funzionale dopo infortuni
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="heart" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Riabilitazione Oncologica</strong>
+              Follow-up oncologico (adulti e bambini via FORTEe), follow-up post-cancro al seno
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="users" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Riabilitazione Geriatrica</strong>
+              Prevenzione delle cadute, allenamento dell'equilibrio, autonomia funzionale per gli anziani
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 md:col-span-2">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="trending-up" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Prevenzione Secondaria & Programmi Cash Pay</strong>
+              Follow-up post-riabilitazione, prevenzione degli infortuni, programmi di allenamento self-pay
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -448,6 +537,45 @@ const studies = [
             </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="help-circle" size="sm" />
+            FAQ
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Domande Frequenti</h2>
+        </div>
+        <div class="space-y-3" data-scroll="fade-up">
+          {[
+            { q: 'Cos\'è la Stazione Pixformance e come funziona in fisioterapia?', a: 'La telecamera 2D Full HD con sensore di profondità integrato analizza in tempo reale 25 punti articolari. Un terapista virtuale dimostra la sequenza di esercizio corretta sullo schermo mentre il paziente esegue l\'esercizio. Il sistema rileva istantaneamente le deviazioni del movimento e fornisce feedback visivo (frecce, cerchi) e testuale direttamente sullo schermo. Dopo ogni esercizio, il Pixformance Score quantifica oggettivamente la qualità del movimento.' },
+            { q: 'Per quali indicazioni è adatto Pixformance?', a: 'Sclerosi multipla, sindrome di Parkinson, riabilitazione postoperatoria (anca, ginocchio, spalla, colonna vertebrale), riabilitazione neurologica, follow-up oncologico, allenamento geriatrico per l\'equilibrio e la prevenzione delle cadute. Gli esercizi possono essere adattati per pazienti in sedia a rotelle, con deambulatori, su lettino o sul pavimento.' },
+            { q: 'Quanti pazienti possono allenarsi contemporaneamente con Pixformance?', a: 'Grazie al software brevettato, più pazienti possono allenarsi contemporaneamente su più stazioni senza personale aggiuntivo. Ogni paziente scansiona il proprio QR code personale e avvia automaticamente il proprio programma terapeutico individuale.' },
+            { q: 'Pixformance sostituisce i fisioterapisti?', a: 'No. Pixformance supporta e alleggerisce i terapisti — non li sostituisce. Il sistema gestisce automaticamente la guida degli esercizi, la correzione in tempo reale e la documentazione. Dopo soli 30 minuti di istruzioni, i pazienti possono esercitarsi autonomamente sotto supervisione.' },
+            { q: 'Pixformance può essere usato per la teleriabilitazione e l\'allenamento domiciliare?', a: 'Sì. La Pixformance Web App consente ai pazienti di accedere ai propri programmi da casa. L\'Ospedale Infortuni AUVA di Klagenfurt utilizza questo modello ibrido: i pazienti vengono in clinica una volta alla settimana e svolgono il resto della terapia a casa.' },
+            { q: 'Quali studi clinici esistono su Pixformance?', a: 'L\'Hochschule Fresenius ha condotto diversi studi: effetto sulla capacità di camminata nei pazienti con SM, equilibrio e qualità della vita nel Parkinson, distrofia muscolare (Emery-Dreifuss) e follow-up del cancro al seno. Pixformance è partner di ricerca europeo nel progetto FORTEe per la terapia motoria per bambini con cancro. Il sistema è in uso clinico alla Charité Berlin, Medical Park, AUVA e Oxford Brookes University.' },
+            { q: 'Pixformance è un dispositivo medico certificato?', a: 'Sì. Pixformance è approvato negli USA come dispositivo medico di Classe 2 (RX) dalla FDA. Il dispositivo è conforme alla Direttiva EMC 2004/108/CE ed è prodotto dal 2012 secondo rigorosi controlli di qualità e sicurezza.' },
+            { q: 'Come aiuta Pixformance a costruire un\'area di pagamento diretto?', a: 'Pixformance consente agli studi di offrire allenamento assistito da tecnologia al di fuori del modello prescrittivo, creando una seconda fonte di entrate. Diversi proprietari di studi riportano un rapido ritorno sull\'investimento. Finanziamento disponibile da 99 €/mese.' },
+          ].map((item, index) => (
+            <details class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-[#02308C] transition-colors duration-200 select-none">
+                <span>{item.q}</span>
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#02308C]/10 flex items-center justify-center group-open:bg-[#02308C] transition-colors duration-200">
+                  <Icon name="chevron-down" size="sm" class="text-[#02308C] group-open:text-white group-open:rotate-180 transition-all duration-200" />
+                </span>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-base text-gray-700 leading-relaxed border-t border-gray-200 pt-4">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>

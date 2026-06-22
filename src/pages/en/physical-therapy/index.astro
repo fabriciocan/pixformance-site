@@ -105,9 +105,46 @@ const studies = [
 ---
 
 <ENBaseLayout
-  title="Physical Therapy and Orthopedic Rehab and Sports Medicine - Pixformance Sports GmbH"
-  description="Innovative digital rehabilitation devices from Pixformance. Increase patient throughput & relieve your therapists. FDA Class 2 medical device."
+  title="Digital Physical Therapy & Rehabilitation Device for Clinics | Pixformance"
+  description="Pixformance: digital rehabilitation system for physiotherapists. Real-time analysis of 25 joint points, 700+ exercises, 6,000+ installations worldwide. FDA Class 2 medical device."
   hreflangDe="https://www.pixformance.com/physiotherapie/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "Fully-connected digital rehabilitation system with a 2D Full-HD camera with integrated depth sensor for real-time analysis of 25 joint points, providing instant corrective feedback during exercise.",
+      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
+      "legalStatus": "FDA Class 2 Medical Device",
+      "relevantSpecialty": ["Physical Therapy", "Rehabilitation", "Neurology", "Orthopedics", "Sports Medicine"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Pixformance Station and how does it work in physical therapy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The 2D Full-HD camera with integrated depth sensor analyzes 25 joint points in real-time. A virtual therapist demonstrates the correct exercise sequence on screen while the patient performs the exercise. The system instantly detects movement deviations and provides visual feedback (arrows, circles) as well as textual feedback on screen. After each exercise, the Pixformance Score objectively quantifies movement quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "For which indications is Pixformance suitable?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multiple sclerosis, Parkinson's syndrome, post-operative rehabilitation (hip, knee, shoulder, spine), neurological rehabilitation, cancer aftercare, geriatric balance and fall prevention training, and general functional movement therapy. Exercises can be adapted for patients in wheelchairs, with walking bars, on a treatment table, or on the floor." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Pixformance replace physiotherapists?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Pixformance supports and relieves therapists — it does not replace them. The system handles exercise guidance, real-time correction, and documentation automatically. After just 30 minutes of instruction, patients can exercise independently under supervision." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Pixformance a certified medical device?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012." }
+        }
+      ]
+    }
+  ]}
 >
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
@@ -152,6 +189,10 @@ const studies = [
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
           No technology in the world can replace therapists. However, digitalization in physiotherapy and rehabilitation effectively relieves therapists and provides patients with even more intensive care.
+        </p>
+
+        <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.43s;">
+          Pixformance is a fully-connected digital movement therapy system used in over 6,000 physiotherapy practices, rehabilitation clinics and hospitals worldwide. The Pixformance Station analyzes 25 joint points in real-time using a 2D Full-HD camera with integrated depth sensor, providing instant corrective feedback. As an FDA Class 2 medical device, Pixformance is deployed at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University — and has been in continuous clinical use since 2012.
         </p>
 
         <div class="flex items-center justify-center gap-4 p-4 bg-[#02308C]/5 rounded-xl border border-[#02308C]/10 max-w-md mx-auto hero-animate" style="animation-delay: 0.45s;">
@@ -232,6 +273,61 @@ const studies = [
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Indications Section -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5 border-y border-[#02308C]/10">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="activity" size="sm" />
+            Clinical Application
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Indications & Clinical Application Areas</h2>
+          <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+            Pixformance is suitable for a broad spectrum of physiotherapy and rehabilitation indications. Exercises can be adapted for patients in wheelchairs, with walking bars, on a treatment table, or on the floor.
+          </p>
+        </div>
+        <ul class="grid md:grid-cols-2 gap-5 text-base text-gray-800 leading-relaxed">
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="brain" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Neurological Rehabilitation</strong>
+              Multiple sclerosis, Parkinson's syndrome, post-stroke care, balance and coordination disorders
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="bone" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Orthopedic Rehabilitation</strong>
+              Post-operative care (hip, knee, shoulder, spine), back pain therapy, functional strengthening after injuries
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="heart" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Oncological Rehabilitation</strong>
+              Cancer aftercare (adults and children via FORTEe), post-breast cancer care
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="users" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Geriatric Rehabilitation</strong>
+              Fall prevention, balance training, functional independence for older adults
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 md:col-span-2">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="trending-up" size="sm" class="text-white" /></span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Secondary Prevention & Cash Pay Programs</strong>
+              Post-rehabilitation follow-up, injury prevention, self-pay training programs
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -438,6 +534,45 @@ const studies = [
             </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="help-circle" size="sm" />
+            FAQ
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-3" data-scroll="fade-up">
+          {[
+            { q: 'What is the Pixformance Station and how does it work in physical therapy?', a: 'The 2D Full-HD camera with integrated depth sensor analyzes 25 joint points in real-time. A virtual therapist demonstrates the correct exercise sequence on screen while the patient performs the exercise. The system instantly detects movement deviations and provides visual feedback (arrows, circles) as well as textual feedback directly on screen. After each exercise, the Pixformance Score objectively quantifies movement quality. All data is stored on the online platform.' },
+            { q: 'For which indications is Pixformance suitable?', a: 'Multiple sclerosis, Parkinson\'s syndrome, post-operative rehabilitation (hip, knee, shoulder, spine), neurological rehabilitation, cancer aftercare, geriatric balance and fall prevention training, and general functional movement therapy. Exercises can be adapted for patients in wheelchairs, with walking bars, on a treatment table, or on the floor.' },
+            { q: 'How many patients can train simultaneously with Pixformance?', a: 'Thanks to the patented software, multiple patients can train at multiple stations simultaneously without additional staffing. Each patient scans their personal QR code and automatically starts their individual therapy program.' },
+            { q: 'Does Pixformance replace physiotherapists?', a: 'No. Pixformance supports and relieves therapists — it does not replace them. The system handles exercise guidance, real-time correction, and documentation automatically. After just 30 minutes of instruction, patients can exercise independently under supervision.' },
+            { q: 'Can Pixformance be used for telerehabilitation and home training?', a: 'Yes. The Pixformance Web App allows patients to access their programs at home. The AUVA Accident Hospital Klagenfurt uses this hybrid model: patients come to the clinic once a week and complete the rest of their therapy at home.' },
+            { q: 'What clinical studies exist for Pixformance?', a: 'Hochschule Fresenius has conducted multiple studies: effect on walking ability in MS patients, balance and quality of life in Parkinson\'s, muscular dystrophy (Emery-Dreifuss), and breast cancer aftercare. Pixformance is an EU research partner in the FORTEe project for exercise therapy for children with cancer. The system is in clinical use at Charité Berlin, Medical Park, AUVA, and Oxford Brookes University.' },
+            { q: 'Is Pixformance a certified medical device?', a: 'Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012.' },
+            { q: 'How does Pixformance help build a cash pay / self-pay area?', a: 'Pixformance enables practices to offer technology-assisted training outside the prescription model, creating a second revenue stream. Multiple practice owners report rapid return on investment. Financing available from $99/month.' },
+          ].map((item, index) => (
+            <details class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-[#02308C] transition-colors duration-200 select-none">
+                <span>{item.q}</span>
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#02308C]/10 flex items-center justify-center group-open:bg-[#02308C] transition-colors duration-200">
+                  <Icon name="chevron-down" size="sm" class="text-[#02308C] group-open:text-white group-open:rotate-180 transition-all duration-200" />
+                </span>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-base text-gray-700 leading-relaxed border-t border-gray-200 pt-4">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>
