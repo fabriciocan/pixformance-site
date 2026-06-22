@@ -95,21 +95,174 @@ const testimonials = [
     quote: 'Ein gezieltes Gesundheitstraining mit dem virtuellen Trainer erhöht die Effizienz der Behandlung und schafft mehr Zeit für die eigentliche Betreuung meiner Patienten.',
   },
 ];
+
+const clinicalTestimonials = [
+  {
+    quote: 'Die Patienten sind begeistert und hochmotiviert, was zugegebenermaßen nicht oft der Fall ist. Natürlich profitieren auch wir als Therapeuten davon, denn die Patienten führen ihre Übungen dadurch besser und zielgerichteter aus. Außerdem sparen wir Zeit, denn nach nur 30 Minuten Einweisung können die Patienten selbstständig unter Aufsicht trainieren.',
+    name: 'Gabriele Buchstein',
+    role: 'Leiterin Physiotherapie',
+    company: 'Sauerlandklinik Hachen – Neurologische Fachklinik für MS',
+  },
+  {
+    quote: 'Auf der Suche nach einer Möglichkeit, die Patienten selbstständig aktiv werden zu lassen, haben wir uns für Pixformance entschieden. Das individuelle Trainingsangebot ist hier ideal, da Gruppentherapie für manche Patienten zu leicht und für andere zu schwer ist. So bekommt jeder ein komplett individuelles Training.',
+    name: 'Christoph Schneider',
+    role: 'Therapieleiter',
+    company: 'Niederrhein-Klinik, Rehaklinik Korschenbroich',
+  },
+  {
+    quote: 'Von Patientenseite kommt ein großes Interesse an den Pixformance Stationen. Viele kommen von sich aus und wollen ein Trainingsprogramm. Wir haben kürzlich eine junge Frau nach Schulteroperation tele-gestützt begleitet. Sie kommt einmal pro Woche in die Klinik — den Rest der Therapie macht sie zu Hause. Das ist eine wirklich tolle Option.',
+    name: 'Christoph Oratsch',
+    role: 'Leitung Therapie',
+    company: 'AUVA Unfallkrankenhaus Klagenfurt',
+  },
+  {
+    quote: 'Wir freuen uns zu beobachten, dass unsere Patienten das Bewegungstraining sehr genießen und durchhalten. Die spielerische Komponente spielt dabei sicher eine Rolle — und wenn unsere Patienten die Krankheit für einen Moment vergessen und einfach Spaß haben, ist das äußerst wertvoll.',
+    name: 'Gunter Hölig',
+    role: 'Therapieleiter',
+    company: 'Medical Park Bad Rodach',
+  },
+];
+
+const clientLogos = [
+  { name: 'Charité Berlin', src: '/images/en/Logo-Charite.png' },
+  { name: 'Medical Park', src: '/images/en/Logo-Medical-Park.png' },
+  { name: 'Niederrhein-Klinik', src: '/images/en/AK_logo_Niederrhein_Klinik.png' },
+  { name: 'Sauerlandklinik Hachen', src: '/images/en/SKH_Logo_4c-scaled-1.jpg' },
+  { name: 'AUVA Unfallkrankenhaus', src: '/images/en/2560px-Logo_AUVA.svg.png' },
+  { name: 'Mediclin', src: '/images/en/Pixformance-Logo-Mediclin.png' },
+  { name: 'Oxford Brookes University', src: '/images/en/pixformance-logo-oxford-brookes-university.png' },
+];
+
+const faqItems = [
+  {
+    question: 'Was ist die Pixformance Station und wie funktioniert sie in der Physiotherapie?',
+    answer: 'Die 2D Full-HD Kamera mit integriertem Tiefensensor analysiert in Echtzeit 25 Gelenkpunkte. Ein virtueller Therapeut demonstriert die korrekte Übungsausführung auf dem Bildschirm, während der Patient die Übung ausführt. Das System erkennt Bewegungsabweichungen sofort und gibt visuelles Feedback (Pfeile, Kreise) sowie textliches Feedback direkt auf dem Bildschirm aus. Nach jeder Übung quantifiziert der Pixformance Score die Bewegungsqualität objektiv. Alle Daten werden auf der Online Plattform gespeichert.',
+  },
+  {
+    question: 'Für welche Indikationen ist Pixformance geeignet?',
+    answer: 'Multiple Sklerose, Parkinson-Syndrom, postoperative Rehabilitation (Hüfte, Knie, Schulter, Wirbelsäule), neurologische Rehabilitation, Krebsnachsorge, geriatrisches Gleichgewichts- und Sturzpräventionstraining sowie allgemeine funktionelle Bewegungstherapie. Übungen können für Patienten im Rollstuhl, mit Gehbarren, auf der Liege oder auf dem Boden angepasst werden.',
+  },
+  {
+    question: 'Wie viele Patienten können gleichzeitig mit Pixformance trainieren?',
+    answer: 'Dank der patentierten Software können mehrere Patienten gleichzeitig an mehreren Stationen trainieren, ohne zusätzlichen Personalaufwand. Jeder Patient scannt seinen persönlichen QR-Code und startet automatisch sein individuelles Therapieprogramm.',
+  },
+  {
+    question: 'Ersetzt Pixformance Physiotherapeuten?',
+    answer: 'Nein. Pixformance unterstützt Therapeuten und entlastet sie — es ersetzt sie nicht. Das System übernimmt Übungsanleitung, Echtzeit-Korrektur und Dokumentation automatisch. Nach nur 30 Minuten Einweisung können Patienten selbstständig unter Aufsicht trainieren.',
+  },
+  {
+    question: 'Kann Pixformance für Telerehabilitation und Heimtraining genutzt werden?',
+    answer: 'Ja. Die Pixformance Web App ermöglicht Patienten den Zugriff auf ihre Programme zu Hause. Das AUVA Unfallkrankenhaus Klagenfurt nutzt dieses hybride Modell: Patienten kommen einmal pro Woche in die Klinik und absolvieren den Rest der Therapie zu Hause.',
+  },
+  {
+    question: 'Welche klinischen Studien gibt es zu Pixformance?',
+    answer: 'Die Hochschule Fresenius hat mehrere Studien durchgeführt: Wirkung auf die Gehfähigkeit bei MS-Patienten, Gleichgewicht und Lebensqualität bei Parkinson, Muskeldystrophie (Emery-Dreifuss) und Brustkrebsnachsorge. Pixformance ist EU-Forschungspartner im FORTEe-Projekt zur Bewegungstherapie für krebskranke Kinder. Das System ist in der Charité Berlin, Medical Park, AUVA und der Oxford Brookes University im klinischen Einsatz.',
+  },
+  {
+    question: 'Ist Pixformance ein zertifiziertes Medizinprodukt?',
+    answer: 'Ja. Pixformance ist in den USA als Klasse-2-Medizinprodukt (RX) von der FDA zugelassen. Das Gerät erfüllt die EMV-Richtlinie 2004/108/EG und wird seit 2012 unter strengen Qualitäts- und Sicherheitskontrollen gefertigt.',
+  },
+  {
+    question: 'Wie hilft Pixformance beim Aufbau eines Selbstzahlerbereichs?',
+    answer: 'Pixformance ermöglicht Praxen, technologiegestütztes Training außerhalb des Rezeptmodells anzubieten und damit eine zweite Einnahmequelle aufzubauen. Mehrere Praxisinhaber berichten von schneller Amortisation. Finanzierung ab 99 €/Monat möglich.',
+  },
+];
 ---
 
 <BaseLayout
-  title="Digitale Bewegungstherapie für Physiotherapiepraxen | Pixformance"
-  description="Pixformance für Physiotherapeuten: Automatisiertes Feedback, bis zu 4 Patienten gleichzeitig, 700+ Übungen. Selbstzahlerbereich aufbauen & Therapeuten entlasten."
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Digitale Bewegungstherapie – Physiotherapie",
-    "description": "Digitale Bewegungstherapie für Physiotherapiepraxen. Automatisiertes Feedback, Betreuung von bis zu 4 Patienten gleichzeitig, Aufbau eines wirtschaftlichen Selbstzahlerbereichs.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Physiotherapy Technology",
-    "areaServed": ["DE", "AT", "CH"],
-    "url": "https://www.pixformance.com/physiotherapie"
-  }}
+  title="Digitale Bewegungstherapie für Physiotherapiepraxen & Rehakliniken | Pixformance"
+  description="Pixformance ist das digitale Rehabilitationssystem für Physiotherapeuten: Echtzeit-Analyse von 25 Gelenkpunkten, 700+ Übungen auf der Online Plattform, 6.000+ Installationen weltweit. FDA Klasse 2 Medizinprodukt."
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance Digitale Bewegungstherapie – Physiotherapie",
+      "description": "Digitale Bewegungstherapie für Physiotherapiepraxen. Automatisiertes Feedback, Betreuung von bis zu 4 Patienten gleichzeitig, Aufbau eines wirtschaftlichen Selbstzahlerbereichs.",
+      "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com"},
+      "serviceType": "Physiotherapy Technology",
+      "areaServed": ["DE", "AT", "CH"],
+      "url": "https://www.pixformance.com/physiotherapie/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "Vollvernetztes digitales Rehabilitationssystem bestehend aus der Pixformance Station, einer Online Plattform und einer Web App. Die Station nutzt eine 2D Full-HD Kamera mit integriertem Tiefensensor zur Echtzeit-Analyse von 25 Gelenkpunkten und gibt Patienten sofortiges Korrekturfeedback bei der Übungsausführung.",
+      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
+      "legalStatus": "FDA Klasse 2 Medizinprodukt",
+      "relevantSpecialty": ["Physiotherapie", "Rehabilitation", "Neurologie", "Orthopädie", "Sportmedizin"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist die Pixformance Station und wie funktioniert sie in der Physiotherapie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die 2D Full-HD Kamera mit integriertem Tiefensensor analysiert in Echtzeit 25 Gelenkpunkte. Ein virtueller Therapeut demonstriert die korrekte Übungsausführung auf dem Bildschirm, während der Patient die Übung ausführt. Das System erkennt Bewegungsabweichungen sofort und gibt visuelles Feedback (Pfeile, Kreise) sowie textliches Feedback direkt auf dem Bildschirm aus. Nach jeder Übung quantifiziert der Pixformance Score die Bewegungsqualität objektiv. Alle Daten werden auf der Online Plattform gespeichert."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für welche Indikationen ist Pixformance geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiple Sklerose, Parkinson-Syndrom, postoperative Rehabilitation (Hüfte, Knie, Schulter, Wirbelsäule), neurologische Rehabilitation, Krebsnachsorge, geriatrisches Gleichgewichts- und Sturzpräventionstraining sowie allgemeine funktionelle Bewegungstherapie. Übungen können für Patienten im Rollstuhl, mit Gehbarren, auf der Liege oder auf dem Boden angepasst werden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viele Patienten können gleichzeitig mit Pixformance trainieren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dank der patentierten Software können mehrere Patienten gleichzeitig an mehreren Stationen trainieren, ohne zusätzlichen Personalaufwand. Jeder Patient scannt seinen persönlichen QR-Code und startet automatisch sein individuelles Therapieprogramm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ersetzt Pixformance Physiotherapeuten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Pixformance unterstützt Therapeuten und entlastet sie — es ersetzt sie nicht. Das System übernimmt Übungsanleitung, Echtzeit-Korrektur und Dokumentation automatisch. Nach nur 30 Minuten Einweisung können Patienten selbstständig unter Aufsicht trainieren."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann Pixformance für Telerehabilitation und Heimtraining genutzt werden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Die Pixformance Web App ermöglicht Patienten den Zugriff auf ihre Programme zu Hause. Das AUVA Unfallkrankenhaus Klagenfurt nutzt dieses hybride Modell: Patienten kommen einmal pro Woche in die Klinik und absolvieren den Rest der Therapie zu Hause."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche klinischen Studien gibt es zu Pixformance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Hochschule Fresenius hat mehrere Studien durchgeführt: Wirkung auf die Gehfähigkeit bei MS-Patienten, Gleichgewicht und Lebensqualität bei Parkinson, Muskeldystrophie (Emery-Dreifuss) und Brustkrebsnachsorge. Pixformance ist EU-Forschungspartner im FORTEe-Projekt zur Bewegungstherapie für krebskranke Kinder. Das System ist in der Charité Berlin, Medical Park, AUVA und der Oxford Brookes University im klinischen Einsatz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist Pixformance ein zertifiziertes Medizinprodukt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Pixformance ist in den USA als Klasse-2-Medizinprodukt (RX) von der FDA zugelassen. Das Gerät erfüllt die EMV-Richtlinie 2004/108/EG und wird seit 2012 unter strengen Qualitäts- und Sicherheitskontrollen gefertigt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie hilft Pixformance beim Aufbau eines Selbstzahlerbereichs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pixformance ermöglicht Praxen, technologiegestütztes Training außerhalb des Rezeptmodells anzubieten und damit eine zweite Einnahmequelle aufzubauen. Mehrere Praxisinhaber berichten von schneller Amortisation. Finanzierung ab 99 €/Monat möglich."
+          }
+        }
+      ]
+    }
+  ]}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
@@ -130,8 +283,9 @@ const testimonials = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digitale 
-          <span class="text-[#02308C]"> Bewegungstherapie</span>
+          Das digitale Therapiesystem,<br class="hidden md:block" />
+          das Ihre Therapeuten entlastet —
+          <span class="text-[#02308C]"> nicht ersetzt</span>
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
@@ -140,6 +294,10 @@ const testimonials = [
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
           Keine Technik der Welt kann Therapeuten ersetzen. Die Digitalisierung in der Physiotherapie und Rehabilitation ist jedoch ein effektiver Weg, Therapeuten zu entlasten und Patienten noch intensiver zu betreuen.
+        </p>
+
+        <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.45s;">
+          Pixformance ist ein vollvernetztes digitales Bewegungstherapiesystem, das in über 6.000 Physiotherapiepraxen, Rehakliniken und Krankenhäusern weltweit eingesetzt wird. Die Pixformance Station analysiert mit einer 2D Full-HD Kamera mit integriertem Tiefensensor in Echtzeit 25 Gelenkpunkte des Patienten und liefert sofortiges Korrekturfeedback. Als FDA Klasse 2 Medizinprodukt ist Pixformance in der Charité Berlin, Medical Park, AUVA Klagenfurt und der Oxford Brookes University im Einsatz — und wird seit 2012 kontinuierlich klinisch genutzt.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
@@ -165,6 +323,25 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Partner Logos Section -->
+  <section class="py-8 md:py-12 bg-gray-50 border-y border-gray-100">
+    <div class="container">
+      <p class="text-center text-sm font-semibold text-foreground-muted uppercase tracking-widest mb-8" data-scroll="fade-up">
+        Vertraut von führenden Kliniken und Krankenhäusern
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12" data-scroll="fade-up">
+        {clientLogos.map((logo) => (
+          <img
+            src={logo.src}
+            alt={logo.name}
+            class="h-8 md:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Mission Section -->
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
@@ -183,7 +360,7 @@ const testimonials = [
 
           <p class="text-lg text-foreground-muted leading-relaxed">
             Unsere Mission ist es – mit der besten Technologie für digitale Bewegungsanalyse – eine individuelle Lösung für Therapeuten und deren ganz spezielle Patienten zu kreieren.
-            Die digitale Bewegungstherapie von Pixformance entlastet bei der Übungsanleitung und begleitet Patienten somit höchst effektiv auf dem Genesungsweg.
+            Die digitale Bewegungstherapie von Pixformance entlastet bei der Übungsanleitung und begleitet Patienten somit höchst effektiv auf dem Genesungsweg.
           </p>
 
         </div>
@@ -228,7 +405,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features Section (3 Schritte — unverändert) -->
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
       <div class="text-center mb-14" data-scroll="fade-up">
@@ -281,7 +458,75 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Benefits Section -->
+  <!-- Indications Section (NEU) -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5 border-y border-[#02308C]/10">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="activity" size="sm" />
+            Klinische Anwendung
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+            Indikationen und klinische Anwendungsbereiche
+          </h2>
+          <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
+            Pixformance eignet sich für ein breites Spektrum physiotherapeutischer und rehabilitativer Indikationen. Übungen können für Patienten im Rollstuhl, mit Gehbarren, auf der Liege oder auf dem Boden angepasst werden.
+          </p>
+        </div>
+
+        <ul class="grid md:grid-cols-2 gap-5 text-base text-gray-800 leading-relaxed">
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center">
+              <Icon name="brain" size="sm" class="text-white" />
+            </span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Neurologische Rehabilitation</strong>
+              Multiple Sklerose, Parkinson-Syndrom, Schlaganfallnachsorge, Gleichgewichts- und Koordinationsstörungen
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center">
+              <Icon name="bone" size="sm" class="text-white" />
+            </span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Orthopädische Rehabilitation</strong>
+              Postoperative Versorgung (Hüfte, Knie, Schulter, Wirbelsäule), Rückenschmerztherapie, funktioneller Kraftaufbau nach Verletzungen
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center">
+              <Icon name="heart" size="sm" class="text-white" />
+            </span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Onkologische Rehabilitation</strong>
+              Krebsnachsorge (Erwachsene und Kinder via FORTEe), Nachsorge nach Mammakarzinom
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center">
+              <Icon name="users" size="sm" class="text-white" />
+            </span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Geriatrische Rehabilitation</strong>
+              Sturzprävention, Gleichgewichtstraining, funktionelle Selbstständigkeit für ältere Erwachsene
+            </div>
+          </li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 md:col-span-2">
+            <span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center">
+              <Icon name="trending-up" size="sm" class="text-white" />
+            </span>
+            <div>
+              <strong class="block text-gray-900 mb-1">Sekundärprävention & Selbstzahlerprogramme</strong>
+              Nachsorge nach Rehabilitation, Verletzungsprävention, Selbstzahler-Trainingsangebote
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section (unverändert) -->
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
@@ -321,7 +566,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Individuelle Lösung Section -->
+  <!-- Individuelle Lösung Section (unverändert) -->
   <section class="py-16 md:py-24 bg-white">
     <div class="container">
       <div class="text-center mb-14 max-w-3xl mx-auto" data-scroll="fade-up">
@@ -433,7 +678,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials Section (originale 3 + 4 neue klinische) -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
@@ -449,7 +694,8 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Originale 3 Testimonials -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
         {testimonials.map((testimonial, index) => (
           <Card
             variant="elevated"
@@ -488,10 +734,150 @@ const testimonials = [
           </Card>
         ))}
       </div>
+
+      <!-- 4 neue klinische Testimonials mit semantischem Markup -->
+      <div class="grid md:grid-cols-2 gap-6" data-scroll="fade-up">
+        {clinicalTestimonials.map((t, index) => (
+          <blockquote
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
+            <Icon name="quote" size="lg" class="text-[#6BDBD1]/30 absolute top-4 right-4" />
+            <p class="text-sm md:text-base text-gray-700 italic leading-relaxed mb-5 pl-4 relative">
+              „{t.quote}"
+            </p>
+            <footer class="pl-4">
+              <cite class="not-italic">
+                <span class="font-bold text-gray-900 block group-hover:text-[#02308C] transition-colors">{t.name}</span>
+                <span class="text-sm text-foreground-muted">{t.role}, <span class="text-[#02308C] font-medium">{t.company}</span></span>
+              </cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Klinische Studien Section (NEU) -->
+  <section class="py-12 md:py-20 bg-[#02308C] relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
+
+    <div class="container relative" data-scroll="fade-up">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1] mb-6">
+            <Icon name="file-text" size="sm" />
+            Wissenschaft & Evidenz
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            Klinische Studien & Evidenz
+          </h2>
+          <p class="text-lg text-white/70 max-w-2xl mx-auto">
+            Pixformance wurde in mehreren klinischen Studien an der Hochschule Fresenius als Interventionsgerät eingesetzt:
+          </p>
+        </div>
+
+        <ul class="space-y-3 mb-10">
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base">
+              <strong class="text-white">Multiple Sklerose</strong> — Wirkung auf die Gehfähigkeit
+            </span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base">
+              <strong class="text-white">Parkinson-Syndrom</strong> — Gleichgewicht, Gehfähigkeit, Lebensqualität
+            </span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base">
+              <strong class="text-white">Muskeldystrophie Emery-Dreifuss</strong> — Einzelfallstudie
+            </span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base">
+              <strong class="text-white">Brustkrebsnachsorge</strong> — Funktion der oberen Extremität
+            </span>
+          </li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200">
+            <Icon name="globe" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" />
+            <span class="text-white/90 text-sm md:text-base">
+              <strong class="text-white">FORTEe EU-Forschungsprojekt</strong> — Bewegungstherapie für krebskranke Kinder und Jugendliche
+            </span>
+          </li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/downloads/Studienergebnisse_Wissenschaftlich-nachgewiesene-positive-Effekte-mit-Pixformance_2024.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#6BDBD1] text-[#02308C] font-bold text-sm hover:bg-white transition-colors duration-200"
+          >
+            <Icon name="download" size="sm" />
+            Alle Studienergebnisse herunterladen (PDF)
+          </a>
+          <a
+            href="/studienergebnisse"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-colors duration-200"
+          >
+            Mehr über die Studien
+            <Icon name="arrow-right" size="sm" />
+          </a>
+        </div>
+
+        <p class="text-center text-white/50 text-sm mt-8">
+          Pixformance ist in der Charité Berlin und der Oxford Brookes University im klinischen Einsatz und wurde im FOCUS Gesundheit (Dez./Jan. 2018/19) unter Deutschlands Top-Rehakliniken vorgestellt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (NEU) -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+            <Icon name="help-circle" size="sm" />
+            FAQ
+          </span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold">
+            Häufig gestellte Fragen
+          </h2>
+        </div>
+
+        <div class="space-y-3" data-scroll="fade-up">
+          {faqItems.map((item, index) => (
+            <details
+              class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200"
+              data-delay={index + 1}
+            >
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-[#02308C] transition-colors duration-200 select-none">
+                <span>{item.question}</span>
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#02308C]/10 flex items-center justify-center group-open:bg-[#02308C] transition-colors duration-200">
+                  <Icon name="chevron-down" size="sm" class="text-[#02308C] group-open:text-white group-open:rotate-180 transition-all duration-200" />
+                </span>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-base text-gray-700 leading-relaxed border-t border-gray-200 pt-4">
+                  {item.answer}
+                </p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section (unverändert) -->
   <section class="py-12 md:py-20 relative overflow-hidden">
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
 
@@ -617,6 +1003,16 @@ const testimonials = [
 
   [data-scroll][data-delay="6"] {
     transition-delay: 0.6s;
+  }
+
+  /* FAQ details animation */
+  details > div {
+    animation: faq-open 0.2s ease-out;
+  }
+
+  @keyframes faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 
