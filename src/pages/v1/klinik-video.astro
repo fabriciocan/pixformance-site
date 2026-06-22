@@ -1,0 +1,204 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  noindex={true}
+  title="Pixformance für Physiotherapiepraxen und Rehakliniken – Das digitale Trainingssystem im Einsatz"
+  description="Sehen Sie, wie Pixformance in Physiotherapiepraxen und Rehakliniken eingesetzt wird – digitale Bewegungstherapie mit Echtzeit-Feedback und über 700 funktionellen Übungen."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Pixformance für Physiotherapiepraxen und Rehakliniken",
+    "description": "Pixformance im Einsatz in Physiotherapiepraxen und Rehakliniken – digitale Bewegungstherapie mit Echtzeit-Korrekturfeedback.",
+    "thumbnailUrl": "https://img.youtube.com/vi/svcjowJSeu4/maxresdefault.jpg",
+    "embedUrl": "https://www.youtube.com/embed/svcjowJSeu4",
+    "url": "https://pixformance.com/klinik-video",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH"}
+  }}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto text-center space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a href="/klinik" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors">
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Klinik-Seite
+          </a>
+        </div>
+
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+          <Icon name="play" size="sm" />
+          Video
+        </span>
+
+        <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+          Pixformance für Physiotherapiepraxen und Rehakliniken
+        </h1>
+
+        <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          Sehen Sie, wie digitale Bewegungstherapie mit Echtzeit-Feedback den Klinik- und Praxisalltag transformiert
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="py-12 md:py-16 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <div class="relative w-full" style="padding-top: 56.25%;">
+            <iframe
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/svcjowJSeu4?rel=0&modestbranding=1"
+              title="Pixformance für Physiotherapiepraxen und Rehakliniken"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Points -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-12 text-center" data-scroll="fade-up">
+          Was Pixformance für Ihre Einrichtung leistet
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div data-scroll="fade-up" data-delay="1">
+            <Card variant="elevated" padding="lg" class="h-full border-t-4 border-[#02308C] text-center">
+              <div class="w-16 h-16 rounded-full bg-[#02308C]/10 flex items-center justify-center mx-auto mb-4">
+                <Icon name="zap" size="lg" class="text-[#02308C]" />
+              </div>
+              <h3 class="font-bold text-sm mb-3 text-[#02308C]">Echtzeit-Korrekturfeedback</h3>
+              <p class="text-foreground-muted text-sm">
+                Die KI-gestützte Bewegungsanalyse gibt Patienten sofortiges visuelles und textliches Feedback zur Übungsausführung – ohne ständige 1-zu-1-Betreuung durch den Therapeuten.
+              </p>
+            </Card>
+          </div>
+
+          <div data-scroll="fade-up" data-delay="2">
+            <Card variant="elevated" padding="lg" class="h-full border-t-4 border-[#6BDBD1] text-center">
+              <div class="w-16 h-16 rounded-full bg-[#6BDBD1]/20 flex items-center justify-center mx-auto mb-4">
+                <Icon name="users" size="lg" class="text-[#02308C]" />
+              </div>
+              <h3 class="font-bold text-sm mb-3 text-[#02308C]">Therapeutenentlastung</h3>
+              <p class="text-foreground-muted text-sm">
+                Mehr Patienten betreuen, ohne personellen Mehraufwand. Therapeuten können sich auf das Wesentliche konzentrieren, während Pixformance das Training begleitet.
+              </p>
+            </Card>
+          </div>
+
+          <div data-scroll="fade-up" data-delay="3">
+            <Card variant="elevated" padding="lg" class="h-full border-t-4 border-[#02308C] text-center">
+              <div class="w-16 h-16 rounded-full bg-[#02308C]/10 flex items-center justify-center mx-auto mb-4">
+                <Icon name="trending-up" size="lg" class="text-[#02308C]" />
+              </div>
+              <h3 class="font-bold text-sm mb-3 text-[#02308C]">Messbare Ergebnisse</h3>
+              <p class="text-foreground-muted text-sm">
+                Alle Trainingsdaten werden digital erfasst. Therapeuten und Patienten sehen den Fortschritt im Vorher-Nachher-Vergleich – für eine motivierende und evidenzbasierte Therapie.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-10 md:py-14 bg-white border-y border-gray-100">
+    <div class="container">
+      <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center" data-scroll="fade-up">
+        <div>
+          <p class="text-4xl font-bold text-[#02308C]">2.5M+</p>
+          <p class="text-sm text-foreground-muted mt-1">Trainierende / Jahr</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-[#02308C]">1.100+</p>
+          <p class="text-sm text-foreground-muted mt-1">Kliniken &amp; Rehazentren</p>
+        </div>
+
+        <div>
+          <p class="text-4xl font-bold text-[#02308C]">6.000+</p>
+          <p class="text-sm text-foreground-muted mt-1">Installationen weltweit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 py-4 md:py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp" alt="Tobias Baader" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" href="/testen" class="bg-[#02308C] hover:bg-[#6BDBD1] text-white">
+                Schreiben Sie uns <Icon name="mail" size="sm" />
+              </Button>
+              <Button size="lg" href="/klinik" variant="outline" class="border-[#02308C] text-[#02308C] hover:bg-[#02308C]/10">
+                Zur Klinik-Seite <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; }
+  [data-scroll][data-delay="2"] { transition-delay: 0.2s; }
+  [data-scroll][data-delay="3"] { transition-delay: 0.3s; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
+</script>

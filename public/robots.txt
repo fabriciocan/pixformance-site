@@ -3,6 +3,7 @@ Allow: /
 Disallow: /datenschutz
 Disallow: /impressum
 Disallow: /agb
+Disallow: /v1/
 
 User-agent: GPTBot
 Allow: /
