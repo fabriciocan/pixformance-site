@@ -11,17 +11,17 @@ const components = [
   {
     icon: 'monitor',
     title: 'Pixformance Station',
-    description: 'The patented station with a 2D Full-HD camera captures 25 joint points for precise motion analysis',
+    description: 'The Pixformance Station is an FDA Class 2 certified medical device with a patented 2D Full-HD camera. It analyses 25 joint points of each patient in real time and delivers immediate text and visual corrective feedback. A virtual therapist guides the patient through the session — without requiring constant therapist presence.',
   },
   {
     icon: 'globe',
     title: 'Online Platform',
-    description: 'Central management of all trainees and training programs with full data history',
+    description: 'The Pixformance Online Platform enables therapists and trainers to create individual training programmes from over 700 functional exercises. Patient management, therapy documentation and progress tracking are all handled centrally and fully digitally.',
   },
   {
     icon: 'smartphone',
     title: 'Mobile Web App',
-    description: 'Train anywhere — at home or on the go with the Pixformance Web App',
+    description: 'The Pixformance Web App gives patients access to their individual programmes at home or on the go. Therapists can seamlessly continue care between appointments — telerehabilitation without extra effort.',
   },
 ];
 
@@ -59,18 +59,30 @@ const technologies = [
       'Centralized management',
     ],
   },
+  {
+    icon: 'shield',
+    title: 'Clinical Validation & Certification',
+    color: '#02308C',
+    features: [
+      'FDA Class 2 Medical Device (USA)',
+      'Clinically validated: Charité Berlin',
+      'Clinically validated: Oxford Brookes University',
+      'EU research partner: FORTEe project',
+      'Studies: Fresenius University (MS, Parkinson, breast cancer aftercare)',
+    ],
+  },
 ];
 
 const targetGroups = [
   {
     svgIcon: '/images/konzept-icons/17.svg',
     title: "Germany's Top Rehab Clinics",
-    description: 'Leading facilities trust Pixformance',
+    description: 'Sauerlandklinik Hachen, Niederrhein-Klinik, Medical Park, AUVA Klagenfurt, Mediclin',
   },
   {
     svgIcon: '/images/konzept-icons/18.svg',
     title: 'Physical Therapy Practices',
-    description: 'Optimal support for therapists',
+    description: '6,000+ practices worldwide. Independent patient exercise without continuous therapist involvement.',
   },
   {
     svgIcon: '/images/konzept-icons/20.svg',
@@ -109,10 +121,62 @@ const keyFeatures = [
 ---
 
 <ENBaseLayout
-  title="Functional Training Devices from Pixformance"
-  description="The 360° Pixformance Concept — Professional physical therapy devices and fitness equipment, patented software, a fully connected Online Platform and an App."
+  title="The Pixformance 360° Concept — Station, Online Platform & Web App | Digital Movement Therapy System"
+  description="The Pixformance 360° Concept: Pixformance Station (FDA Class 2 medical device, 2D Full-HD camera, 25 joint points real-time analysis), Online Platform (700+ functional exercises, patient management) and Web App (telerehabilitation). Clinically validated at Charité Berlin and Oxford Brookes University."
   hreflangDe="https://www.pixformance.com/konzept/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Class 2 certified digital movement therapy device with patented 2D Full-HD camera. Analyses 25 joint points of each patient in real time and delivers immediate text and visual corrective feedback. Part of the Pixformance 360° Concept for physiotherapy, rehabilitation and fitness.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "FDA — Food and Drug Administration"
+      },
+      "regulatoryStatus": "FDA Class 2 Medical Device",
+      "medicalSpecialty": [
+        "Physical Therapy",
+        "Rehabilitation",
+        "Neurology",
+        "Orthopaedics",
+        "Sports Medicine",
+        "Movement Therapy"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixformance 360° Concept",
+      "description": "Fully connected digital movement therapy system consisting of three components: (1) Pixformance Station — hardware with 2D Full-HD camera, real-time analysis of 25 joint points, virtual trainer and immediate corrective feedback; (2) Pixformance Online Platform — 700+ functional exercises, individual patient programmes, therapy documentation and progress tracking; (3) Pixformance Web App — home training and telerehabilitation for patients between appointments.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "featureList": [
+        "2D Full-HD camera with 25-joint-point analysis",
+        "Real-time corrective feedback",
+        "700+ functional exercises",
+        "Individual patient programmes",
+        "Telerehabilitation via Web App",
+        "Seamless data synchronisation",
+        "FDA Class 2 certified"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/concept/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/concept/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/prodotti/" />
+  </Fragment>
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
@@ -156,11 +220,11 @@ const keyFeatures = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digital Training Concept for Your Patients & Members
+          The Pixformance 360° Concept: Three Components — One Fully Connected Movement Therapy System
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          The Pixformance Station with patented software, an Online Platform and a Web App — these three components form our fully connected digital training concept. Using the best technology for digital motion analysis, we deliver highly effective functional training for every fitness level and health condition.
+          The Pixformance 360° Concept is a fully connected digital movement therapy system comprising three components: the Pixformance Station (FDA Class 2 medical device with real-time motion analysis of 25 joint points), the Online Platform (700+ functional exercises, individual patient programmes, therapy documentation) and the Web App (telerehabilitation and home training). Clinically validated at Charité Berlin and Oxford Brookes University — deployed in leading rehab clinics including Medical Park, AUVA Klagenfurt and Sauerlandklinik Hachen.
         </p>
 
         <div class="flex gap-4 flex-wrap justify-center hero-animate" style="animation-delay: 0.4s;">
@@ -262,7 +326,7 @@ const keyFeatures = [
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {technologies.map((tech, index) => (
           <Card
             variant="elevated"

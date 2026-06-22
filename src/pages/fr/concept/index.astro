@@ -11,19 +11,19 @@ const components = [
   {
     icon: 'monitor',
     title: 'Station Pixformance',
-    description: 'La station brevetée avec caméra 2D Full-HD capture 25 points articulaires',
+    description: 'La Station Pixformance est un dispositif médical certifié FDA Classe 2 avec une caméra 2D Full-HD brevetée. Elle analyse en temps réel 25 points articulaires de chaque patient et fournit un retour correctif textuel et visuel immédiat. Un thérapeute virtuel guide le patient tout au long de la séance — sans présence permanente du thérapeute.',
     image: '/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   },
   {
     icon: 'globe',
     title: 'Plateforme en ligne',
-    description: 'Gestion centralisée de tous les pratiquants et programmes d\'entraînement',
+    description: 'La Plateforme en ligne Pixformance permet aux thérapeutes et entraîneurs de créer des programmes d\'entraînement individuels à partir de plus de 700 exercices fonctionnels. La gestion des patients, la documentation thérapeutique et le suivi des progrès sont centralisés et entièrement numériques.',
     image: '/images/Pixformance-Online-Platform-Functional-Training-fully-connected.jpg',
   },
   {
     icon: 'smartphone',
     title: 'Application Web Mobile',
-    description: 'Entraînez-vous partout – à la maison ou en déplacement avec l\'application web Pixformance',
+    description: 'L\'application Web Pixformance permet aux patients d\'accéder à leurs programmes individuels à domicile ou en déplacement. Les thérapeutes peuvent ainsi assurer un suivi continu entre les rendez-vous — téléréhabilitation sans effort supplémentaire.',
     image: '/images/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg',
   },
 ];
@@ -62,18 +62,30 @@ const technologies = [
       'Gestion centralisée',
     ],
   },
+  {
+    icon: 'shield',
+    title: 'Validation clinique & certification',
+    color: '#02308C',
+    features: [
+      'Dispositif médical FDA Classe 2 (USA)',
+      'Validé cliniquement : Charité Berlin',
+      'Validé cliniquement : Oxford Brookes University',
+      'Partenaire de recherche EU : projet FORTEe',
+      'Études : Université Fresenius (SEP, Parkinson, cancérologie du sein)',
+    ],
+  },
 ];
 
 const targetGroups = [
   {
     svgIcon: '/images/konzept-icons/17.svg',
     title: 'Meilleures cliniques de rééducation d\'Allemagne',
-    description: 'Les établissements leaders font confiance à Pixformance',
+    description: 'Sauerlandklinik Hachen, Niederrhein-Klinik, Medical Park, AUVA Klagenfurt, Mediclin',
   },
   {
     svgIcon: '/images/konzept-icons/18.svg',
     title: 'Cabinets de physiothérapie',
-    description: 'Soutien optimal pour les thérapeutes',
+    description: '6 000+ cabinets dans le monde. Exercice autonome des patients sans présence permanente du thérapeute.',
   },
   {
     svgIcon: '/images/konzept-icons/20.svg',
@@ -112,21 +124,62 @@ const keyFeatures = [
 ---
 
 <FRBaseLayout
-  title="Concept d'entraînement digital – Station, Plateforme & Application | Pixformance"
-  description="Le concept Pixformance : caméra 2D Full-HD, 25 points articulaires, 700+ exercices fonctionnels, entraîneur personnel virtuel. Système entièrement connecté pour la physiothérapie & le fitness."
-  hreflangDe="https://www.pixformance.com/konzept"
+  title="Le Concept Pixformance 360° — Station, Plateforme en ligne & Application Web | Système de thérapie du mouvement digital"
+  description="Le Concept Pixformance 360° : Station Pixformance (dispositif médical FDA Classe 2, caméra 2D Full-HD, analyse en temps réel de 25 points articulaires), Plateforme en ligne (700+ exercices fonctionnels, gestion des patients) et Application Web (téléréhabilitation). Validé cliniquement à la Charité Berlin et à l'Université Oxford Brookes."
+  hreflangDe="https://www.pixformance.com/konzept/"
   hreflangEn="https://www.pixformance.com/en/products-2/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Station Pixformance",
-    "description": "Appareil d'entraînement digital avec caméra 2D Full-HD brevetée pour l'analyse du mouvement en temps réel. 25 points articulaires, entraîneur personnel virtuel, 700+ exercices fonctionnels.",
-    "brand": {"@type": "Brand", "name": "Pixformance"},
-    "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "image": "https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
-    "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR"}
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Station Pixformance",
+      "description": "Dispositif de thérapie du mouvement digital certifié FDA Classe 2 avec caméra 2D Full-HD brevetée. Analyse en temps réel 25 points articulaires et fournit un retour correctif immédiat. Composant du Concept Pixformance 360° pour la kinésithérapie, la rééducation et le fitness.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "FDA — Food and Drug Administration"
+      },
+      "regulatoryStatus": "Dispositif médical FDA Classe 2",
+      "medicalSpecialty": [
+        "Kinésithérapie",
+        "Rééducation",
+        "Neurologie",
+        "Orthopédie",
+        "Médecine du sport",
+        "Thérapie du mouvement"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Concept Pixformance 360°",
+      "description": "Système de thérapie du mouvement digital entièrement connecté comprenant trois composantes : (1) Station Pixformance — matériel avec caméra 2D Full-HD, analyse en temps réel de 25 points articulaires, thérapeute virtuel et retour correctif immédiat ; (2) Plateforme en ligne Pixformance — 700+ exercices fonctionnels, programmes patients individuels, documentation thérapeutique et suivi des progrès ; (3) Application Web Pixformance — entraînement à domicile et téléréhabilitation pour les patients entre les séances.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "featureList": [
+        "Caméra 2D Full-HD avec analyse de 25 points articulaires",
+        "Retour correctif en temps réel",
+        "700+ exercices fonctionnels",
+        "Programmes patients individuels",
+        "Téléréhabilitation via l'Application Web",
+        "Synchronisation des données transparente",
+        "Certifié FDA Classe 2"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/concept/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/prodotti/" />
+  </Fragment>
   <FRHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </FRHeader>
@@ -155,15 +208,11 @@ const keyFeatures = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Concept d'entraînement digital pour vos patients & membres
+          Le Concept Pixformance 360° : Trois composantes — un système de thérapie du mouvement entièrement connecté
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          La station Pixformance avec logiciel breveté, une plateforme en ligne et une
-          application web – ces composants constituent notre concept d'entraînement digital
-          entièrement connecté. Avec la meilleure technologie d'analyse du mouvement digital,
-          nous proposons un entraînement fonctionnel hautement efficace pour tous les niveaux
-          de forme physique et états de santé.
+          Le Concept Pixformance 360° est un système de thérapie du mouvement digital entièrement connecté composé de trois éléments : la Station Pixformance (dispositif médical FDA Classe 2 avec analyse du mouvement en temps réel sur 25 points articulaires), la Plateforme en ligne (700+ exercices fonctionnels, programmes patients individuels, documentation thérapeutique) et l'Application Web (téléréhabilitation et entraînement à domicile). Validé cliniquement à la Charité Berlin et à l'Université Oxford Brookes — déployé dans les meilleures cliniques de rééducation dont Medical Park, AUVA Klagenfurt et Sauerlandklinik Hachen.
         </p>
       </div>
     </div>
@@ -260,7 +309,7 @@ const keyFeatures = [
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {technologies.map((tech, index) => (
           <Card
             variant="elevated"

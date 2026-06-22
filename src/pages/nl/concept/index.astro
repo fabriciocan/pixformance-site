@@ -11,19 +11,19 @@ const components = [
   {
     icon: 'monitor',
     title: 'Pixformance Station',
-    description: 'Het gepatenteerde station met 2D Full-HD camera registreert 25 gewrichtspunten',
+    description: 'De Pixformance Station is een FDA Klasse 2 gecertificeerd medisch hulpmiddel met een gepatenteerde 2D Full-HD camera. Het analyseert in realtime 25 gewrichtspunten van elke patiënt en geeft onmiddellijk tekstuele en visuele correctiefeedback. Een virtuele therapeut begeleidt de patiënt door de sessie — zonder permanente aanwezigheid van de therapeut.',
     image: '/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   },
   {
     icon: 'globe',
     title: 'Online platform',
-    description: 'Centraal beheer van alle gebruikers en trainingsprogramma\'s',
+    description: 'Het Pixformance Online Platform stelt therapeuten en trainers in staat individuele trainingsprogramma\'s samen te stellen uit meer dan 700 functionele oefeningen. Patiëntenbeheer, therapiedocumentatie en voortgangsregistratie verlopen centraal en volledig digitaal.',
     image: '/images/Pixformance-Online-Platform-Functional-Training-fully-connected.jpg',
   },
   {
     icon: 'smartphone',
     title: 'Mobiele webapplicatie',
-    description: 'Train overal – thuis of onderweg met de Pixformance webapplicatie',
+    description: 'De Pixformance Web App geeft patiënten toegang tot hun individuele programma\'s thuis of onderweg. Therapeuten kunnen de begeleiding tussen afspraken naadloos voortzetten — telerevalidatie zonder extra inspanning.',
     image: '/images/Pixformance-360-Grad-Konzept-Online-Plattform-App-Digitales-Sportgeraet-1.jpg',
   },
 ];
@@ -62,18 +62,30 @@ const technologies = [
       'Centraal beheer',
     ],
   },
+  {
+    icon: 'shield',
+    title: 'Klinische validatie & certificering',
+    color: '#02308C',
+    features: [
+      'FDA Klasse 2 medisch hulpmiddel (VS)',
+      'Klinisch gevalideerd: Charité Berlijn',
+      'Klinisch gevalideerd: Oxford Brookes University',
+      'EU-onderzoekspartner: FORTEe-project',
+      'Studies: Hogeschool Fresenius (MS, Parkinson, borstkankernazorg)',
+    ],
+  },
 ];
 
 const targetGroups = [
   {
     svgIcon: '/images/konzept-icons/17.svg',
     title: 'Beste revalidatieklinieken van Duitsland',
-    description: 'Toonaangevende instellingen vertrouwen op Pixformance',
+    description: 'Sauerlandklinik Hachen, Niederrhein-Klinik, Medical Park, AUVA Klagenfurt, Mediclin',
   },
   {
     svgIcon: '/images/konzept-icons/18.svg',
     title: 'Fysiotherapiepraktijken',
-    description: 'Optimale ondersteuning voor therapeuten',
+    description: '6.000+ praktijken wereldwijd. Zelfstandig patiëntenoefenen zonder permanente therapeuteninzet.',
   },
   {
     svgIcon: '/images/konzept-icons/20.svg',
@@ -112,22 +124,62 @@ const keyFeatures = [
 ---
 
 <NLBaseLayout
-  title="Digitaal trainingsconcept – Station, Platform & Applicatie | Pixformance"
-  description="Het Pixformance concept: 2D Full-HD camera, 25 gewrichtspunten, 700+ functionele oefeningen, virtuele personal trainer. Volledig verbonden systeem voor fysiotherapie & fitness."
-  hreflangDe="https://www.pixformance.com/konzept"
+  title="Het Pixformance 360° Concept — Station, Online Platform & Web App | Digitaal bewegingstherapiesysteem"
+  description="Het Pixformance 360° Concept: Pixformance Station (FDA Klasse 2 medisch hulpmiddel, 2D Full-HD camera, 25 gewrichtspunten realtimeanalyse), Online Platform (700+ functionele oefeningen, patiëntenbeheer) en Web App (telerevalidatie). Klinisch gevalideerd aan de Charité Berlijn en Oxford Brookes University."
+  hreflangDe="https://www.pixformance.com/konzept/"
   hreflangEn="https://www.pixformance.com/en/products-2/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Pixformance Station",
-    "description": "Digitaal trainingsapparaat met gepatenteerde 2D Full-HD camera voor realtime bewegingsanalyse. 25 gewrichtspunten, virtuele personal trainer, 700+ functionele oefeningen.",
-    "brand": {"@type": "Brand", "name": "Pixformance"},
-    "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "image": "https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
-    "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR"},
-    "url": "https://www.pixformance.com/nl/concept/"
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Klasse 2 gecertificeerd digitaal bewegingstherapieapparaat met gepatenteerde 2D Full-HD camera. Analyseert in realtime 25 gewrichtspunten en geeft onmiddellijke correctiefeedback. Onderdeel van het Pixformance 360° Concept voor fysiotherapie, revalidatie en fitness.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "FDA — Food and Drug Administration"
+      },
+      "regulatoryStatus": "FDA Klasse 2 medisch hulpmiddel",
+      "medicalSpecialty": [
+        "Fysiotherapie",
+        "Revalidatie",
+        "Neurologie",
+        "Orthopedie",
+        "Sportgeneeskunde",
+        "Bewegingstherapie"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixformance 360° Concept",
+      "description": "Volledig verbonden digitaal bewegingstherapiesysteem bestaande uit drie componenten: (1) Pixformance Station — hardware met 2D Full-HD camera, realtimeanalyse van 25 gewrichtspunten, virtuele therapeut en onmiddellijke correctiefeedback; (2) Pixformance Online Platform — 700+ functionele oefeningen, individuele patiëntenprogramma's, therapiedocumentatie en voortgangsregistratie; (3) Pixformance Web App — thuistraining en telerevalidatie voor patiënten tussen afspraken.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "featureList": [
+        "2D Full-HD camera met 25-gewrichtspuntenanalyse",
+        "Realtime correctiefeedback",
+        "700+ functionele oefeningen",
+        "Individuele patiëntenprogramma's",
+        "Telerevalidatie via Web App",
+        "Naadloze gegevenssynchronisatie",
+        "FDA Klasse 2 gecertificeerd"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/concept/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/prodotti/" />
+  </Fragment>
   <NLHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
@@ -156,14 +208,11 @@ const keyFeatures = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Digitaal trainingsconcept voor uw patiënten & leden
+          Het Pixformance 360° Concept: Drie componenten — één volledig verbonden bewegingstherapiesysteem
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          De Pixformance station met gepatenteerde software, een online platform en een
-          webapplicatie – deze componenten vormen ons volledig verbonden digitaal trainingsconcept.
-          Met de beste digitale bewegingsanalysetechnologie bieden wij hoogeffectieve functionele
-          training voor alle fitnessniveaus en gezondheidstoestanden.
+          Het Pixformance 360° Concept is een volledig verbonden digitaal bewegingstherapiesysteem bestaande uit drie componenten: de Pixformance Station (FDA Klasse 2 medisch hulpmiddel met realtimebewegsanalyse van 25 gewrichtspunten), het Online Platform (700+ functionele oefeningen, individuele patiëntenprogramma's, therapiedocumentatie) en de Web App (telerevalidatie en thuistraining). Klinisch gevalideerd aan de Charité Berlijn en Oxford Brookes University — ingezet in toonaangevende revalidatieklinieken zoals Medical Park, AUVA Klagenfurt en Sauerlandklinik Hachen.
         </p>
       </div>
     </div>
@@ -260,7 +309,7 @@ const keyFeatures = [
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {technologies.map((tech, index) => (
           <Card
             variant="elevated"

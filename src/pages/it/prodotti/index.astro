@@ -11,17 +11,17 @@ const components = [
   {
     icon: 'monitor',
     title: 'Stazione Pixformance',
-    description: 'La stazione brevettata con telecamera 2D Full-HD cattura 25 punti articolari per un\'analisi precisa del movimento',
+    description: 'La Stazione Pixformance è un dispositivo medico certificato FDA Classe 2 con telecamera 2D Full-HD brevettata. Analizza in tempo reale 25 punti articolari di ogni paziente e fornisce un feedback correttivo testuale e visivo immediato. Un terapista virtuale guida il paziente durante la sessione — senza la presenza costante del terapista.',
   },
   {
     icon: 'globe',
     title: 'Piattaforma Online',
-    description: 'Gestione centralizzata di tutti gli utenti e dei programmi di allenamento con storico completo dei dati',
+    description: 'La Piattaforma Online Pixformance consente a terapisti e trainer di creare programmi di allenamento individuali da oltre 700 esercizi funzionali. La gestione dei pazienti, la documentazione terapeutica e il monitoraggio dei progressi avvengono in modo centralizzato e completamente digitale.',
   },
   {
     icon: 'smartphone',
     title: 'App Web Mobile',
-    description: 'Allenati ovunque — a casa o in viaggio con la Web App Pixformance',
+    description: 'La Web App Pixformance consente ai pazienti di accedere ai propri programmi individuali a casa o in viaggio. I terapisti possono così continuare la presa in carico senza interruzioni tra gli appuntamenti — teleriabilitazione senza sforzo aggiuntivo.',
   },
 ];
 
@@ -59,18 +59,30 @@ const technologies = [
       'Gestione centralizzata',
     ],
   },
+  {
+    icon: 'shield',
+    title: 'Validazione clinica & certificazione',
+    color: '#02308C',
+    features: [
+      'Dispositivo medico FDA Classe 2 (USA)',
+      'Validato clinicamente: Charité Berlino',
+      'Validato clinicamente: Oxford Brookes University',
+      'Partner di ricerca UE: progetto FORTEe',
+      'Studi: Università Fresenius (SM, Parkinson, oncologia del seno)',
+    ],
+  },
 ];
 
 const targetGroups = [
   {
     svgIcon: '/images/konzept-icons/17.svg',
     title: 'Le Migliori Cliniche Riabilitative',
-    description: 'Le strutture leader si fidano di Pixformance',
+    description: 'Sauerlandklinik Hachen, Niederrhein-Klinik, Medical Park, AUVA Klagenfurt, Mediclin',
   },
   {
     svgIcon: '/images/konzept-icons/18.svg',
     title: 'Studi di Fisioterapia',
-    description: 'Supporto ottimale per i terapisti',
+    description: '6.000+ studi nel mondo. Esercizio autonomo dei pazienti senza la presenza continuativa del terapista.',
   },
   {
     svgIcon: '/images/konzept-icons/20.svg',
@@ -109,18 +121,62 @@ const keyFeatures = [
 ---
 
 <ITBaseLayout
-  title="Dispositivi di Functional Training Pixformance – Il Concetto 360°"
-  description="Il Concetto Pixformance 360° — Dispositivi professionali per fisioterapia e fitness, software brevettato, Piattaforma Online completamente connessa e App."
+  title="Il Concetto Pixformance 360° — Stazione, Piattaforma Online & Web App | Sistema di terapia del movimento digitale"
+  description="Il Concetto Pixformance 360°: Stazione Pixformance (dispositivo medico FDA Classe 2, telecamera 2D Full-HD, analisi in tempo reale di 25 punti articolari), Piattaforma Online (700+ esercizi funzionali, gestione pazienti) e Web App (teleriabilitazione). Validato clinicamente alla Charité Berlino e all'Università Oxford Brookes."
   hreflangDe="https://www.pixformance.com/konzept/"
   hreflangEn="https://www.pixformance.com/en/products-2/"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Dispositivi di Functional Training Pixformance – Il Concetto 360°",
-    "description": "Il Concetto Pixformance 360° comprende stazione, piattaforma online e app per un allenamento funzionale completamente connesso.",
-    "url": "https://www.pixformance.com/it/prodotti/"
-  }}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Stazione Pixformance",
+      "description": "Dispositivo di terapia del movimento digitale certificato FDA Classe 2 con telecamera 2D Full-HD brevettata. Analizza in tempo reale 25 punti articolari e fornisce feedback correttivo immediato. Componente del Concetto Pixformance 360° per fisioterapia, riabilitazione e fitness.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "FDA — Food and Drug Administration"
+      },
+      "regulatoryStatus": "Dispositivo medico FDA Classe 2",
+      "medicalSpecialty": [
+        "Fisioterapia",
+        "Riabilitazione",
+        "Neurologia",
+        "Ortopedia",
+        "Medicina dello sport",
+        "Terapia del movimento"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Concetto Pixformance 360°",
+      "description": "Sistema di terapia del movimento digitale completamente connesso composto da tre componenti: (1) Stazione Pixformance — hardware con telecamera 2D Full-HD, analisi in tempo reale di 25 punti articolari, terapista virtuale e feedback correttivo immediato; (2) Piattaforma Online Pixformance — 700+ esercizi funzionali, programmi pazienti individuali, documentazione terapeutica e monitoraggio dei progressi; (3) Web App Pixformance — allenamento a domicilio e teleriabilitazione per i pazienti tra gli appuntamenti.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "featureList": [
+        "Telecamera 2D Full-HD con analisi di 25 punti articolari",
+        "Feedback correttivo in tempo reale",
+        "700+ esercizi funzionali",
+        "Programmi pazienti individuali",
+        "Teleriabilitazione via Web App",
+        "Sincronizzazione dati senza interruzioni",
+        "Certificato FDA Classe 2"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/concept/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/concept/" />
+  </Fragment>
   <ITHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ITHeader>
@@ -147,11 +203,11 @@ const keyFeatures = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Concetto di Allenamento Digitale per i Tuoi Pazienti e Membri
+          Il Concetto Pixformance 360°: Tre componenti — un sistema di terapia del movimento completamente connesso
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.3s;">
-          La Stazione Pixformance con software brevettato, una Piattaforma Online e una Web App — questi tre componenti formano il nostro concetto di allenamento digitale completamente connesso. Utilizzando la migliore tecnologia per l'analisi digitale del movimento, offriamo un functional training altamente efficace per ogni livello di fitness e condizione di salute.
+          Il Concetto Pixformance 360° è un sistema di terapia del movimento digitale completamente connesso composto da tre componenti: la Stazione Pixformance (dispositivo medico FDA Classe 2 con analisi del movimento in tempo reale su 25 punti articolari), la Piattaforma Online (700+ esercizi funzionali, programmi pazienti individuali, documentazione terapeutica) e la Web App (teleriabilitazione e allenamento a domicilio). Validato clinicamente alla Charité Berlino e all'Università Oxford Brookes — impiegato nelle principali cliniche riabilitative tra cui Medical Park, AUVA Klagenfurt e Sauerlandklinik Hachen.
         </p>
 
         <div class="flex gap-4 flex-wrap justify-center hero-animate" style="animation-delay: 0.4s;">
@@ -253,7 +309,7 @@ const keyFeatures = [
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {technologies.map((tech, index) => (
           <Card
             variant="elevated"
