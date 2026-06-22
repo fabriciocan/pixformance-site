@@ -125,19 +125,43 @@ const memberBenefits = [
 ---
 
 <BaseLayout
-  title="Digitale Fitnessgeräte für Fitnessstudios | Pixformance"
-  description="Pixformance für Fitnessstudios: Mitgliederbindung steigern, Umsatz erhöhen, individuelles Training ohne Mehraufwand. 700+ funktionelle Übungen mit Echtzeit-Feedback."
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Digitale Fitnessgeräte – Fitnessstudios",
-    "description": "Digitale Trainingsgeräte für Fitnessstudios und Fitnessclubs. Mitgliederbindung und Umsatz steigern mit individuellem Training auch ohne Personal.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Fitness Technology",
-    "areaServed": ["DE", "AT", "CH", "NL"],
-    "url": "https://www.pixformance.com/fitness"
-  }}
+  title="Pixformance für Fitnessstudios — Digitales Bewegungsanalyse-System mit Echtzeit-Feedback"
+  description="Pixformance für Fitnessstudios: 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit. 700+ funktionelle Übungen. Virtueller Personal Trainer. Mitgliederbindung steigern, Umsatz erhöhen — eingesetzt in 6.000+ Studios weltweit."
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance für Fitnessstudios",
+      "description": "Digitales Bewegungsanalyse-System für Fitnessstudios. Die Pixformance Station mit 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit und liefert personalisiertes Feedback. 700+ funktionelle Übungen. Virtueller Personal Trainer. Steigerung der Mitgliederbindung und Erschließung neuer Umsatzquellen.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "serviceType": "Digitales Fitnesssystem",
+      "areaServed": ["DE","AT","CH","NL","FR","IT"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Klasse 2 zertifiziertes digitales Bewegungstherapiegerät — eingesetzt in Fitnessstudios für funktionelles Training mit Echtzeit-Bewegungsanalyse von 25 Gelenkpunkten.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH"
+      },
+      "regulatoryStatus": "FDA Klasse 2 Medizinprodukt"
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/fitness/" />
+    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/fitness/" />
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/fitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/fitness/" />
+  </Fragment>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -152,15 +176,13 @@ const memberBenefits = [
         class="font-display text-4xl md:text-6xl text-[#02308C] font-bold mb-6 hero-animate"
         style="animation-delay: 0.1s;"
       >
-        Personalisiertes Training unter virtueller Anleitung
+        Digitale Bewegungsanalyse für Fitnessstudios: Pixformance
       </h1>
       <p
         class="text-xl text-foreground-muted hero-animate"
         style="animation-delay: 0.2s;"
       >
-        Personalisiertes, zeit- und unterstützungsunabhängiges Training unter
-        virtueller Anleitung: Wir unterstützen Sie und Ihre Mitglieder optimal
-        auf dem Weg zu besserer Fitness.
+        Pixformance ist ein vollvernetztes digitales Bewegungssystem, das in über 6.000 Fitnessstudios, Physiotherapiepraxen und Rehakliniken weltweit eingesetzt wird. Die Pixformance Station — als FDA Klasse 2 Medizinprodukt entwickelt — analysiert mit einer patentierten 2D Full-HD Kamera in Echtzeit 25 Gelenkpunkte jedes Mitglieds und liefert sofortiges, personalisiertes Korrekturfeedback. Das Ergebnis: Effektives, sicheres Training ohne permanente Traineranwesenheit — und neue Umsatzquellen für Ihr Fitnessstudio.
       </p>
     </div>
   </section>

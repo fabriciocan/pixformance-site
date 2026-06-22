@@ -138,37 +138,58 @@ const fitnessStories = [
 ---
 
 <FRBaseLayout
-  title="Témoignages – Les clients parlent de Pixformance"
-  description="Vrais témoignages de physiothérapeutes, responsables de cliniques et propriétaires de clubs de fitness. Plus de 1 100 établissements. Lisez comment Pixformance les aide."
-  hreflangDe="https://www.pixformance.com/erfolgsgeschichten"
+  title="Témoignages — Cliniques, Physiothérapeutes & Studios de Fitness témoignent de Pixformance"
+  description="Études de cas réels en rééducation, physiothérapie et fitness. Plus de 6 000 installations dans le monde. Station Pixformance — dispositif médical FDA Classe 2, validé cliniquement."
+  hreflangDe="https://www.pixformance.com/erfolgsgeschichten/"
   hreflangEn="https://www.pixformance.com/en/success-stories/"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Témoignages Pixformance",
-      "description": "Témoignages de clients de la physiothérapie, des cliniques, des studios de fitness et de la gestion de la santé en entreprise sur leur succès avec Pixformance.",
+      "name": "Pixformance Success Stories — Clinical and Fitness Case Studies",
+      "description": "Real-world case studies from physiotherapy practices, rehabilitation clinics, and fitness centres using the Pixformance Station (FDA Class 2 medical device). 6,000+ installations worldwide.",
       "url": "https://www.pixformance.com/fr/temoignages/",
-      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/fr/" }
+      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com" }
     },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Témoignages Pixformance",
+      "name": "Pixformance Clinical and Fitness Success Stories",
+      "description": "Case studies from physiotherapy, rehabilitation clinics, fitness studios, and corporate health management using the Pixformance digital motion therapy system.",
       "url": "https://www.pixformance.com/fr/temoignages/",
       "numberOfItems": 15,
       "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Rehabilitation Clinic Medical Park Loipl — Digital Motion Therapy in Neurological Rehabilitation",
+          "description": "Hannah G., patient at Medical Park Loipl, reports on motivation and recovery progress using the Pixformance Station during inpatient rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/hannah-loipl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Niederrhein Reha-Klinik Korschenbroich — Patient Activation Through Digital Therapy Devices",
+          "description": "Christoph Schneider, therapy director, describes how the Pixformance Station activates patients and improves therapeutic outcomes in post-acute rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/christoph-schneider/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sauerlandklinik Hachen — Digital Therapy for Multiple Sclerosis",
+          "description": "Gabriele Buchstein reports on increased patient motivation and measurable improvement in MS patients using Pixformance at the Sauerlandklinik neurological specialist clinic.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/gabriele-buchstein/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Physiotherapie Praxis Steglitz Berlin — Digital Therapy for Parkinson's Patients",
+          "description": "Ilona Hildebrandt uses the Pixformance Station to provide better oversight of disease progression and personalised movement therapy for Parkinson's patients.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/ilona-hildebrandt/"
+        },
         ...physiotherapieStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": i + 1,
-          "name": s.title,
-          "description": `${s.person} – ${s.location}`,
-          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
-          "image": `https://www.pixformance.com${s.image}`
-        })),
-        ...klinikStories.map((s, i) => ({
-          "@type": "ListItem",
-          "position": physiotherapieStories.length + i + 1,
+          "position": 5 + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -176,7 +197,7 @@ const fitnessStories = [
         })),
         ...fitnessStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": physiotherapieStories.length + klinikStories.length + i + 1,
+          "position": 5 + physiotherapieStories.length + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -186,6 +207,10 @@ const fitnessStories = [
     }
   ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/succesverhalen/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/storie-di-successo/" />
+  </Fragment>
   <FRHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </FRHeader>
@@ -206,6 +231,10 @@ const fitnessStories = [
           Pixformance
           <span class="text-[#02308C]"> Témoignages</span>
         </h1>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          Plus de 6 000 installations dans des cliniques de rééducation, des cabinets de physiothérapie et des studios de fitness dans le monde entier. La station Pixformance — un dispositif médical FDA Classe 2 — analyse 25 points articulaires en temps réel et fournit un retour sur le mouvement validé cliniquement. Découvrez comment les thérapeutes, les directeurs de cliniques et les experts en fitness transforment la prise en charge de leurs patients grâce à la thérapie du mouvement digitale.
+        </p>
       </div>
     </div>
   </section>

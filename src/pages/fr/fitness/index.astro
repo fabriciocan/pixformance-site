@@ -125,20 +125,41 @@ const memberBenefits = [
 ---
 
 <FRBaseLayout
-  title="Appareils de fitness digital pour studios de fitness | Pixformance"
-  description="Pixformance pour studios de fitness : fidélisation des membres, augmentation du chiffre d'affaires, entraînement individuel sans charge supplémentaire. 700+ exercices fonctionnels avec retour en temps réel."
-  hreflangDe="https://www.pixformance.com/fitness"
+  title="Pixformance pour studios de fitness — Système d'analyse du mouvement digital avec retour en temps réel"
+  description="Pixformance pour studios de fitness : caméra 2D Full-HD analyse 25 points articulaires en temps réel. 700+ exercices fonctionnels. Entraîneur personnel virtuel. Fidélisation des membres, augmentation du chiffre d'affaires — utilisé dans 6 000+ studios dans le monde."
+  hreflangDe="https://www.pixformance.com/fitness/"
   hreflangEn="https://www.pixformance.com/en/fitness/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Appareils de fitness digital – Studios de fitness",
-    "description": "Appareils d'entraînement digital pour studios de fitness et clubs de fitness. Fidélisation des membres et augmentation du chiffre d'affaires avec un entraînement individuel même sans personnel.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Fitness Technology",
-    "url": "https://www.pixformance.com/fr/fitness/"
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance pour studios de fitness",
+      "description": "Système d'analyse du mouvement digital pour studios de fitness. La Station Pixformance avec caméra 2D Full-HD analyse 25 points articulaires en temps réel et fournit un retour personnalisé. 700+ exercices fonctionnels. Entraîneur personnel virtuel. Fidélisation des membres et nouvelles sources de revenus.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "serviceType": "Système de fitness digital",
+      "areaServed": ["DE","AT","CH","NL","FR","IT"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Class 2 certified digital movement therapy device — used in fitness studios for functional training with real-time motion analysis of 25 joint points.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH"
+      },
+      "regulatoryStatus": "FDA Class 2 Medical Device"
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/fitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness/" />
+  </Fragment>
   <FRHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </FRHeader>
@@ -153,15 +174,13 @@ const memberBenefits = [
         class="font-display text-4xl md:text-6xl text-[#02308C] font-bold mb-6 hero-animate"
         style="animation-delay: 0.1s;"
       >
-        Entraînement personnalisé sous guidance virtuelle
+        Analyse du mouvement digital pour studios de fitness : Pixformance
       </h1>
       <p
         class="text-xl text-foreground-muted hero-animate"
         style="animation-delay: 0.2s;"
       >
-        Entraînement personnalisé, indépendant du temps et de l'assistance,
-        sous guidance virtuelle : nous vous accompagnons, vous et vos membres,
-        de manière optimale vers une meilleure forme physique.
+        Pixformance est un système de mouvement digital entièrement connecté utilisé dans plus de 6 000 studios de fitness, cabinets de kinésithérapie et cliniques de rééducation dans le monde. La Station Pixformance — développée comme dispositif médical FDA Classe 2 — analyse avec une caméra 2D Full-HD brevetée en temps réel 25 points articulaires de chaque membre et fournit un retour correctif immédiat et personnalisé. Le résultat : un entraînement efficace et sûr sans présence permanente du coach — et de nouvelles sources de revenus pour votre studio.
       </p>
     </div>
   </section>

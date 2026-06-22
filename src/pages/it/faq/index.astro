@@ -72,12 +72,53 @@ const faqSchema = {
 ---
 
 <ITBaseLayout
-  title="FAQ – Domande Frequenti su Pixformance"
-  description="Domande frequenti sulla Stazione Pixformance — dimensioni, requisiti di spazio, WiFi, supporto e altro ancora."
+  title="FAQ — Domande frequenti sulla Stazione Pixformance | Sistema di terapia del movimento digitale"
+  description="Domande frequenti sulla Stazione Pixformance: dispositivo medico FDA Classe 2, analisi in tempo reale di 25 punti articolari, 700+ esercizi funzionali. Per studi di fisioterapia, cliniche riabilitative e centri fitness."
   hreflangDe="https://www.pixformance.com/faq/"
   hreflangEn="https://www.pixformance.com/en/faq-training-with-pixformance-station/"
-  jsonLd={faqSchema}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Pixformance Station?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Pixformance Station is an FDA Class 2 certified digital movement therapy device with a patented 2D Full-HD camera. It analyses 25 joint points of each patient in real time and delivers immediate corrective feedback. Used in physiotherapy practices, rehab clinics and fitness studios worldwide. Clinically validated at Charité Berlin and Oxford Brookes University."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Pixformance Station a medical device?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Pixformance Station is approved as an FDA Class 2 medical device in the United States and has been clinically validated at Charité Berlin and Oxford Brookes University."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "For which medical indications is Pixformance suitable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pixformance is clinically used for orthopaedics, neurological rehabilitation (multiple sclerosis, Parkinson's, muscular dystrophy), oncological rehabilitation (breast cancer aftercare), cardiovascular rehabilitation and movement therapy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "In which facilities is Pixformance clinically used?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pixformance is used at Charité Berlin, Medical Park, AUVA Klagenfurt, Sauerlandklinik Hachen, Niederrhein-Klinik, Mediclin and over 6,000 other physiotherapy practices and rehab clinics worldwide."
+        }
+      }
+    ]
+  }}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/faq/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/faq/" />
+  </Fragment>
   <ITHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ITHeader>
@@ -92,7 +133,7 @@ const faqSchema = {
             FAQ
           </span>
           <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">
-            FAQ — Functional training con la Stazione Pixformance
+            Domande Frequenti sulla Stazione Pixformance — il sistema di terapia del movimento digitale
           </h1>
           <p class="text-xl text-foreground-muted">
             Cosa devo considerare quando acquisto una Stazione Pixformance?
@@ -101,6 +142,22 @@ const faqSchema = {
 
         <!-- FAQ Accordion -->
         <div class="space-y-4" id="faq-container">
+          <details class="group border border-border rounded-2xl overflow-hidden p-6 bg-white">
+            <summary class="font-semibold text-lg cursor-pointer list-none flex items-center justify-between">
+              Cos'è la Stazione Pixformance?
+              <span class="text-[#02308C] text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+            </summary>
+            <p class="mt-4 text-foreground-muted leading-relaxed">La Stazione Pixformance è un dispositivo di terapia del movimento digitale certificato FDA Classe 2 con telecamera 2D Full-HD brevettata. Analizza in tempo reale 25 punti articolari di ogni paziente e fornisce feedback correttivo immediato. Utilizzata in studi di fisioterapia, cliniche riabilitative e centri fitness nel mondo. Validata clinicamente alla Charité Berlino e all'Università Oxford Brookes.</p>
+          </details>
+
+          <details class="group border border-border rounded-2xl overflow-hidden p-6 bg-white">
+            <summary class="font-semibold text-lg cursor-pointer list-none flex items-center justify-between">
+              Per quali indicazioni mediche è adatta Pixformance?
+              <span class="text-[#02308C] text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+            </summary>
+            <p class="mt-4 text-foreground-muted leading-relaxed">Pixformance è utilizzata clinicamente per: ortopedia e traumatologia, riabilitazione neurologica (sclerosi multipla, morbo di Parkinson, distrofia muscolare), riabilitazione oncologica (follow-up per cancro al seno), riabilitazione cardiovascolare e terapia del movimento. Studi clinici dell'Università Fresenius ne dimostrano l'efficacia.</p>
+          </details>
+
           {faqs.map((faq, index) => (
             <div class="border border-border rounded-2xl overflow-hidden faq-item" data-scroll="fade-up" data-delay={Math.min(index + 1, 6)}>
               <button

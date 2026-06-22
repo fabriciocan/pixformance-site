@@ -75,10 +75,87 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="FAQ – Häufige Fragen zur Pixformance Station"
-  description="Alle Antworten zu Pixformance: Eignung, Platzbedarf, Netzwerk, Trainer-Kompatibilität, Maße und mehr. Häufig gestellte Fragen zur Pixformance Station."
-  jsonLd={faqJsonLd}
+  title="FAQ — Häufige Fragen zur Pixformance Station | Digitales Bewegungstherapiesystem"
+  description="Häufig gestellte Fragen zur Pixformance Station: FDA Klasse 2 Medizinprodukt, 25 Gelenkpunkte Echtzeit-Analyse, 700+ funktionelle Übungen. Für Physiotherapiepraxen, Rehakliniken und Fitnessstudios."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist die Pixformance Station?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Pixformance Station ist ein FDA Klasse 2 zertifiziertes digitales Bewegungstherapiegerät mit patentierter 2D Full-HD Kamera. Sie analysiert in Echtzeit 25 Gelenkpunkte jedes Patienten oder Trainierenden und liefert sofortiges textliches und visuelles Korrekturfeedback. Sie wird in Physiotherapiepraxen, Rehakliniken und Fitnessstudios eingesetzt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist die Pixformance Station ein Medizinprodukt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Die Pixformance Station ist als FDA Klasse 2 Medizinprodukt in den USA zugelassen und wurde klinisch validiert an der Charité Berlin und der Oxford Brookes University."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist die Pixformance Station für meine Einrichtung geeignet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mit über 2,5 Millionen Trainierenden wird Pixformance bereits in Fitnessclubs, Unternehmen, Physiotherapiepraxen und Rehakliniken eingesetzt. Von der ersten Planung über Installation bis zur Trainingssteuerung: Wir erstellen das richtige Programm für Ihre Einrichtung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ersetzt die Pixformance Station einen echten Trainer oder Therapeuten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Pixformance steht nicht im Wettbewerb mit Personal Trainern oder Therapeuten, sondern unterstützt sie. Die Station ermöglicht eigenständiges Training mit Echtzeit-Feedback, sodass ein Therapeut mehrere Patienten gleichzeitig betreuen kann. Die persönliche Betreuung kann und soll nicht ersetzt werden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie groß ist die Pixformance Station?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Maße der Pixformance Station sind 128,5 cm x 76 cm x 50,0 cm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie viel Platz wird für das Training benötigt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Abstand vom Gerät beträgt ca. 1,60 m bis 2,30 m zum Trainierenden und 1,0 m bis 1,5 m zu jeder Seite."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Für welche medizinischen Indikationen eignet sich Pixformance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pixformance wird klinisch eingesetzt bei Orthopädie und Traumatologie, neurologischer Rehabilitation (Multiple Sklerose, Parkinson, Muskeldystrophie), onkologischer Rehabilitation (Brustkrebsnachsorge), Herzkreislaufrehabilitation, allgemeiner Bewegungstherapie und präventivem Gesundheitsmanagement. Klinische Studien der Hochschule Fresenius belegen die Wirksamkeit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "In welchen Einrichtungen wird Pixformance klinisch eingesetzt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pixformance wird eingesetzt in der Charité Berlin, Medical Park, AUVA Klagenfurt (Unfallkrankenhaus), Sauerlandklinik Hachen, Niederrhein-Klinik, Mediclin und über 6.000 weiteren Physiotherapiepraxen und Rehakliniken weltweit."
+        }
+      }
+    ]
+  }}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/faq/" />
+    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/faq-training-with-pixformance-station/" />
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/faq/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/faq/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/faq/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/faq-training-with-pixformance-station/" />
+  </Fragment>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -96,8 +173,7 @@ const faqJsonLd = {
           class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate"
           style="animation-delay: 0.2s;"
         >
-          Funktionelles Training
-          <span class="text-[#02308C]"> mit Pixformance</span>
+          Häufige Fragen zur Pixformance Station — dem digitalen Bewegungstherapiesystem
         </h1>
 
         <p
@@ -115,6 +191,23 @@ const faqJsonLd = {
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="max-w-4xl mx-auto space-y-6">
+        <!-- Clinical FAQs -->
+        <details class="group bg-white rounded-2xl shadow-lg p-6 open:shadow-xl transition-all duration-300">
+          <summary class="font-bold text-lg md:text-xl text-foreground cursor-pointer list-none flex items-center justify-between">
+            Was ist die Pixformance Station?
+            <span class="text-[#02308C] text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+          </summary>
+          <p class="mt-4 text-foreground-muted leading-relaxed">Die Pixformance Station ist ein FDA Klasse 2 zertifiziertes digitales Bewegungstherapiegerät mit patentierter 2D Full-HD Kamera. Sie analysiert in Echtzeit 25 Gelenkpunkte jedes Patienten und liefert sofortiges Korrekturfeedback. Eingesetzt in Physiotherapiepraxen, Rehakliniken und Fitnessstudios weltweit. Klinisch validiert an der Charité Berlin und Oxford Brookes University.</p>
+        </details>
+
+        <details class="group bg-white rounded-2xl shadow-lg p-6 open:shadow-xl transition-all duration-300">
+          <summary class="font-bold text-lg md:text-xl text-foreground cursor-pointer list-none flex items-center justify-between">
+            Für welche medizinischen Indikationen eignet sich Pixformance?
+            <span class="text-[#02308C] text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+          </summary>
+          <p class="mt-4 text-foreground-muted leading-relaxed">Pixformance wird klinisch eingesetzt bei: Orthopädie und Traumatologie, neurologischer Rehabilitation (Multiple Sklerose, Parkinson, Muskeldystrophie), onkologischer Rehabilitation (Brustkrebsnachsorge), Herzkreislaufrehabilitation und Bewegungstherapie. Klinische Studien der Hochschule Fresenius belegen die Wirksamkeit.</p>
+        </details>
+
         {
           faqs.map((faq, index) => (
             <Card

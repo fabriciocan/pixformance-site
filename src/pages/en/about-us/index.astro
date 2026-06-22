@@ -59,23 +59,57 @@ const team = [
 ---
 
 <ENBaseLayout
-  title="Relentless Innovative Strength – And That Already Since 2012"
-  description="Pixformance since 2012: Pioneer in digital motion analysis. 6,000+ installations worldwide, 2.5M+ exercisers. CEO Valerie Bures-Bönström."
+  title="Pixformance Sports GmbH — Pioneer in Digital Movement Therapy Since 2012 | About Us"
+  description="Pixformance Sports GmbH: Founded in 2012 by CEO Valerie Bures-Bönström. FDA Class 2 medical device. EU research partner FORTEe. Clinically validated: Charité Berlin, Oxford Brookes University. 6,000+ installations, 2.5M+ exercisers/year."
   hreflangDe="https://www.pixformance.com/ueber-uns/"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About Pixformance Sports GmbH",
-    "description": "Pixformance was founded in 2012 and is a pioneer in digital motion analysis. Over 6,000 installations worldwide, 2.5M+ exercisers.",
-    "url": "https://www.pixformance.com/en/about-us/",
-    "mainEntity": {
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Pixformance Sports GmbH",
+      "url": "https://www.pixformance.com",
       "foundingDate": "2012",
-      "description": "Pioneer in digital motion analysis and real-time feedback for physical therapy, clinics, fitness and corporate wellness."
+      "description": "Pixformance Sports GmbH is the pioneer in digital motion analysis and real-time feedback for physiotherapy, rehabilitation and fitness. Founded in 2012 by CEO Valerie Bures-Bönström. Developer of the FDA Class 2 certified Pixformance Station. EU research partner in the FORTEe project. Clinically validated at Charité Berlin and Oxford Brookes University.",
+      "founder": {
+        "@type": "Person",
+        "name": "Valerie Bures-Bönström",
+        "jobTitle": "CEO"
+      },
+      "numberOfEmployees": {"@type": "QuantitativeValue", "value": 20},
+      "areaServed": ["DE","AT","CH","NL","FR","IT","US"],
+      "award": [
+        "FDA Class 2 Medical Device",
+        "EU Research Partner FORTEe Project",
+        "Clinical Validation Charité Berlin",
+        "Clinical Validation Oxford Brookes University"
+      ],
+      "knowsAbout": [
+        "Digital Motion Analysis",
+        "Physical Therapy",
+        "Rehabilitation",
+        "Functional Training",
+        "Telerehabilitation",
+        "Real-time Feedback"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Valerie Bures-Bönström",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH"
+      },
+      "description": "CEO and co-founder of Pixformance Sports GmbH. Has led the company since its founding in 2012 and developed Pixformance into the market leader in digital movement therapy in the DACH region."
     }
-  }}
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/a-propos/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/over-ons/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/chi-siamo/" />
+  </Fragment>
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
@@ -92,8 +126,7 @@ const team = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Established market know-how meets
-          <span class="text-[#02308C]"> start-up dynamics</span>
+          Pixformance Sports GmbH: Pioneer in Digital Movement Therapy Since 2012
         </h1>
 
         <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
@@ -134,7 +167,7 @@ const team = [
 
         <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
           <p>
-            <strong>Pixformance Sports GmbH is still a 100% owner-managed company characterized by short coördination paths, high product quality, and tireless innovation.</strong>
+            Pixformance Sports GmbH was founded in 2012 and is the pioneer in digital motion analysis and real-time feedback for physiotherapy, rehab clinics and fitness. Under the leadership of CEO <span class="font-bold text-[#02308C]">Valerie Bures-Bönström</span>, the company developed the Pixformance Station as an FDA Class 2 certified medical device — clinically validated at Charité Berlin and Oxford Brookes University, and active as an EU research partner in the FORTEe project. With over 6,000 installations in physical therapy practices, rehab clinics and fitness studios worldwide and 2.5 million exercisers per year, Pixformance sets new standards in digital movement therapy.
           </p>
 
           <p>
@@ -145,6 +178,20 @@ const team = [
             Together with Stefanie Graf, Valerie is also co-founder of the franchise company Mrs.Sporty and founder of the start-up behind the VAHA brand, an interactive fitness solution for the home, which has already received an investment in the double-digit millions. Thus, Pixformance combines long-standing market expertise with lived start-up agility, distinguished by a tenacious drive for innovation, a team willing to take risks, shortened processes, and a truly personal customer service.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Credentials Section -->
+  <section class="py-12 md:py-16 bg-[#02308C]/5">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-[#02308C]">
+          Clinical Validation &amp; Regulatory Certification
+        </h2>
+        <p class="text-lg text-foreground-muted leading-relaxed">
+          The Pixformance Station is approved as an FDA Class 2 medical device in the United States. The system has been clinically validated through studies at Charité Berlin (neurology, orthopaedics) and Oxford Brookes University (sports medicine, rehabilitation). Pixformance is an EU research partner in the FORTEe project for digital rehabilitation in Europe. Clinical studies by Fresenius University of Applied Sciences demonstrate efficacy for multiple sclerosis, Parkinson's disease, muscular dystrophy and breast cancer aftercare.
+        </p>
       </div>
     </div>
   </section>

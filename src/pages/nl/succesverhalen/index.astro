@@ -138,37 +138,58 @@ const fitnessStories = [
 ---
 
 <NLBaseLayout
-  title="Succesverhalen – Klanten vertellen over Pixformance"
-  description="Echte ervaringen van fysiotherapeuten, kliniekmanagers en fitness-clubeigenaren. Meer dan 1.100 vestigingen. Lees hoe Pixformance hen helpt."
-  hreflangDe="https://www.pixformance.com/erfolgsgeschichten"
+  title="Succesverhalen — Klinieken, Fysiotherapeuten & Fitnesscentra vertellen over Pixformance"
+  description="Echte casestudies uit revalidatie, fysiotherapie en fitness. Meer dan 6.000 installaties wereldwijd. Pixformance Station — FDA Klasse 2 medisch hulpmiddel, klinisch gevalideerd."
+  hreflangDe="https://www.pixformance.com/erfolgsgeschichten/"
   hreflangEn="https://www.pixformance.com/en/success-stories/"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Pixformance Succesverhalen",
-      "description": "Ervaringen van klanten uit fysiotherapie, klinieken, fitnessstudio's en bedrijfsgezondheidszorg over hun succes met Pixformance.",
+      "name": "Pixformance Success Stories — Clinical and Fitness Case Studies",
+      "description": "Real-world case studies from physiotherapy practices, rehabilitation clinics, and fitness centres using the Pixformance Station (FDA Class 2 medical device). 6,000+ installations worldwide.",
       "url": "https://www.pixformance.com/nl/succesverhalen/",
-      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/nl/" }
+      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com" }
     },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Pixformance Succesverhalen",
+      "name": "Pixformance Clinical and Fitness Success Stories",
+      "description": "Case studies from physiotherapy, rehabilitation clinics, fitness studios, and corporate health management using the Pixformance digital motion therapy system.",
       "url": "https://www.pixformance.com/nl/succesverhalen/",
       "numberOfItems": 15,
       "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Rehabilitation Clinic Medical Park Loipl — Digital Motion Therapy in Neurological Rehabilitation",
+          "description": "Hannah G., patient at Medical Park Loipl, reports on motivation and recovery progress using the Pixformance Station during inpatient rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/hannah-loipl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Niederrhein Reha-Klinik Korschenbroich — Patient Activation Through Digital Therapy Devices",
+          "description": "Christoph Schneider, therapy director, describes how the Pixformance Station activates patients and improves therapeutic outcomes in post-acute rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/christoph-schneider/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sauerlandklinik Hachen — Digital Therapy for Multiple Sclerosis",
+          "description": "Gabriele Buchstein reports on increased patient motivation and measurable improvement in MS patients using Pixformance at the Sauerlandklinik neurological specialist clinic.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/gabriele-buchstein/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Physiotherapie Praxis Steglitz Berlin — Digital Therapy for Parkinson's Patients",
+          "description": "Ilona Hildebrandt uses the Pixformance Station to provide better oversight of disease progression and personalised movement therapy for Parkinson's patients.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/ilona-hildebrandt/"
+        },
         ...physiotherapieStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": i + 1,
-          "name": s.title,
-          "description": `${s.person} – ${s.location}`,
-          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
-          "image": `https://www.pixformance.com${s.image}`
-        })),
-        ...klinikStories.map((s, i) => ({
-          "@type": "ListItem",
-          "position": physiotherapieStories.length + i + 1,
+          "position": 5 + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -176,7 +197,7 @@ const fitnessStories = [
         })),
         ...fitnessStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": physiotherapieStories.length + klinikStories.length + i + 1,
+          "position": 5 + physiotherapieStories.length + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -186,6 +207,10 @@ const fitnessStories = [
     }
   ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/temoignages/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/storie-di-successo/" />
+  </Fragment>
   <NLHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
@@ -206,6 +231,10 @@ const fitnessStories = [
           Pixformance
           <span class="text-[#02308C]"> Succesverhalen</span>
         </h1>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          Meer dan 6.000 installaties in revalidatieklinieken, fysiotherapiepraktijken en fitnesscentra wereldwijd. Het Pixformance Station — een FDA Klasse 2 medisch hulpmiddel — analyseert 25 gewrichtspunten in realtime en geeft klinisch gevalideerde bewegingsfeedback. Lees hoe therapeuten, kliniekedirecteuren en fitnessexperts hun patiënten en leden transformeren met digitale bewegingstherapie.
+        </p>
       </div>
     </div>
   </section>

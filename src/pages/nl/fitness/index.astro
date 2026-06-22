@@ -125,20 +125,41 @@ const memberBenefits = [
 ---
 
 <NLBaseLayout
-  title="Digitale fitnessapparatuur voor fitnesscentra | Pixformance"
-  description="Pixformance voor fitnesscentra: ledenbinding, omzetverhoging, individuele training zonder extra belasting. 700+ functionele oefeningen met realtime feedback."
-  hreflangDe="https://www.pixformance.com/fitness"
+  title="Pixformance voor fitnesscentra — Digitaal bewegingsanalysesysteem met realtime feedback"
+  description="Pixformance voor fitnesscentra: 2D Full-HD camera analyseert 25 gewrichtspunten in realtime. 700+ functionele oefeningen. Virtuele personal trainer. Ledenbinding verbeteren, omzet verhogen — gebruikt in 6.000+ centra wereldwijd."
+  hreflangDe="https://www.pixformance.com/fitness/"
   hreflangEn="https://www.pixformance.com/en/fitness/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Digitale fitnessapparatuur – Fitnesscentra",
-    "description": "Digitale trainingsapparatuur voor fitnesscentra en fitnessclubs. Ledenbinding en omzetverhoging met individuele training ook zonder personeel.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Fitness Technology",
-    "url": "https://www.pixformance.com/nl/fitness/"
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance voor fitnesscentra",
+      "description": "Digitaal bewegingsanalysesysteem voor fitnesscentra. De Pixformance Station met 2D Full-HD camera analyseert 25 gewrichtspunten in realtime en geeft gepersonaliseerde feedback. 700+ functionele oefeningen. Virtuele personal trainer. Verbetering van ledenbinding en nieuwe inkomstenbronnen.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "serviceType": "Digitaal fitnesssysteem",
+      "areaServed": ["DE","AT","CH","NL","FR","IT"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Class 2 certified digital movement therapy device — used in fitness studios for functional training with real-time motion analysis of 25 joint points.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH"
+      },
+      "regulatoryStatus": "FDA Class 2 Medical Device"
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness/" />
+  </Fragment>
   <NLHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
@@ -153,15 +174,13 @@ const memberBenefits = [
         class="font-display text-4xl md:text-6xl text-[#02308C] font-bold mb-6 hero-animate"
         style="animation-delay: 0.1s;"
       >
-        Gepersonaliseerde training onder virtuele begeleiding
+        Digitale bewegingsanalyse voor fitnesscentra: Pixformance
       </h1>
       <p
         class="text-xl text-foreground-muted hero-animate"
         style="animation-delay: 0.2s;"
       >
-        Gepersonaliseerde training, onafhankelijk van tijd en begeleiding,
-        onder virtuele sturing: wij begeleiden u en uw leden optimaal
-        naar een betere fysieke conditie.
+        Pixformance is een volledig verbonden digitaal bewegingssysteem dat wordt gebruikt in meer dan 6.000 fitnesscentra, fysiotherapiepraktijken en revalidatieklinieken wereldwijd. De Pixformance Station — ontwikkeld als FDA Klasse 2 medisch hulpmiddel — analyseert met een gepatenteerde 2D Full-HD camera in realtime 25 gewrichtspunten van elk lid en geeft onmiddellijke, gepersonaliseerde correctiefeedback. Het resultaat: effectieve, veilige training zonder permanente aanwezigheid van een trainer — en nieuwe inkomstenbronnen voor uw fitnesscentrum.
       </p>
     </div>
   </section>

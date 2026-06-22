@@ -153,36 +153,56 @@ const stats = [
 ---
 
 <BaseLayout
-  title="Erfolgsgeschichten – Kunden berichten über Pixformance"
-  description="Echte Erfahrungsberichte von Physiotherapeuten, Klinikleiterinnen und Fitnessclub-Inhabern. 1.100+ Einrichtungen. Lesen Sie, wie Pixformance ihnen hilft."
+  title="Erfolgsgeschichten — Kliniken, Physiotherapeuten & Fitnessstudios berichten über Pixformance"
+  description="Echte Erfahrungsberichte aus Rehabilitation, Physiotherapie und Fitnessstudios. 6.000+ Installationen weltweit. Pixformance Station — FDA Klasse 2 Medizinprodukt, klinisch validiert."
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Pixformance Erfolgsgeschichten",
-      "description": "Erfahrungsberichte von Kunden aus Physiotherapie, Kliniken, Fitnessstudios und BGM über ihren Erfolg mit Pixformance.",
+      "name": "Pixformance Success Stories — Clinical and Fitness Case Studies",
+      "description": "Real-world case studies from physiotherapy practices, rehabilitation clinics, and fitness centres using the Pixformance Station (FDA Class 2 medical device). 6,000+ installations worldwide.",
       "url": "https://www.pixformance.com/erfolgsgeschichten/",
       "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com" }
     },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Pixformance Erfolgsgeschichten",
-      "description": "Erfahrungsberichte von Kunden aus Physiotherapie, Kliniken, Fitnessstudios und BGM.",
+      "name": "Pixformance Clinical and Fitness Success Stories",
+      "description": "Case studies from physiotherapy, rehabilitation clinics, fitness studios, and corporate health management using the Pixformance digital motion therapy system.",
       "url": "https://www.pixformance.com/erfolgsgeschichten/",
       "numberOfItems": 15,
       "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Rehabilitation Clinic Medical Park Loipl — Digital Motion Therapy in Neurological Rehabilitation",
+          "description": "Hannah G., patient at Medical Park Loipl, reports on motivation and recovery progress using the Pixformance Station during inpatient rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/hannah-loipl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Niederrhein Reha-Klinik Korschenbroich — Patient Activation Through Digital Therapy Devices",
+          "description": "Christoph Schneider, therapy director, describes how the Pixformance Station activates patients and improves therapeutic outcomes in post-acute rehabilitation.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/christoph-schneider/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sauerlandklinik Hachen — Digital Therapy for Multiple Sclerosis",
+          "description": "Gabriele Buchstein reports on increased patient motivation and measurable improvement in MS patients using Pixformance at the Sauerlandklinik neurological specialist clinic.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/gabriele-buchstein/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Physiotherapie Praxis Steglitz Berlin — Digital Therapy for Parkinson's Patients",
+          "description": "Ilona Hildebrandt uses the Pixformance Station to provide better oversight of disease progression and personalised movement therapy for Parkinson's patients.",
+          "url": "https://www.pixformance.com/erfolgsgeschichten/ilona-hildebrandt/"
+        },
         ...physiotherapieStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": i + 1,
-          "name": s.title,
-          "description": `${s.person} – ${s.location}`,
-          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
-          "image": `https://www.pixformance.com${s.image}`
-        })),
-        ...klinikStories.map((s, i) => ({
-          "@type": "ListItem",
-          "position": physiotherapieStories.length + i + 1,
+          "position": 5 + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -190,7 +210,7 @@ const stats = [
         })),
         ...fitnessStories.map((s, i) => ({
           "@type": "ListItem",
-          "position": physiotherapieStories.length + klinikStories.length + i + 1,
+          "position": 5 + physiotherapieStories.length + i,
           "name": s.title,
           "description": `${s.person} – ${s.location}`,
           "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
@@ -200,6 +220,14 @@ const stats = [
     }
   ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/erfolgsgeschichten/" />
+    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/success-stories/" />
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/temoignages/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/succesverhalen/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/storie-di-successo/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/success-stories/" />
+  </Fragment>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -221,7 +249,11 @@ const stats = [
           <span class="text-[#02308C]"> Erfolgsgeschichten</span>
         </h1>
 
-        <!-- Stats 
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+          Über 6.000 Installationen in Rehabilitationskliniken, Physiotherapiepraxen und Fitnessstudios weltweit. Die Pixformance Station — ein FDA Klasse 2 Medizinprodukt — analysiert 25 Gelenkpunkte in Echtzeit und liefert klinisch validiertes Bewegungsfeedback. Lesen Sie, wie Therapeuten, Klinikleiter und Fitnessexperten ihre Patienten und Mitglieder mit digitaler Bewegungstherapie versorgen.
+        </p>
+
+        <!-- Stats
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-6 rounded-2xl bg-white hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate shadow-lg" style={`animation-delay: ${0.4 + index * 0.1}s;`}>

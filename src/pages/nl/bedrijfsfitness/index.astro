@@ -77,20 +77,28 @@ const performanceBenefits = [
 ---
 
 <NLBaseLayout
-  title="Bedrijfsgezondheidszorg (BGM) met Pixformance"
-  description="Pixformance voor bedrijven: fiscaal aftrekbaar tot 500 €/werknemer. Minder verzuim, betere werknemersbinding. Digitale fitness voor uw kantoor."
-  hreflangDe="https://www.pixformance.com/firmen-fitness"
+  title="Bedrijfsgezondheidszorg met Pixformance — Digitaal bewegingssysteem voor bedrijven"
+  description="Pixformance BGM: digitaal bewegingsanalysesysteem voor bedrijven. Analyse van 25 gewrichtspunten in realtime. Fiscaal aftrekbaar tot 600€/werknemer. FDA Klasse 2 medisch hulpmiddel."
+  hreflangDe="https://www.pixformance.com/firmen-fitness/"
   hreflangEn="https://www.pixformance.com/en/corporate-fitness/"
-  jsonLd={[{
+  jsonLd={{
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Pixformance BGM – Bedrijfsgezondheidszorg",
-    "description": "Digitale fitnessoplossing voor bedrijfsgezondheidszorg. Fiscaal aftrekbaar tot 500 € per werknemer per jaar. Vermindert verzuim en versterkt werknemersbinding.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Corporate Wellness Technology",
-    "url": "https://www.pixformance.com/nl/bedrijfsfitness/"
-  }]}
+    "name": "Pixformance Corporate Health Management",
+    "description": "Digital motion analysis system for corporate health management. The Pixformance Station analyses 25 joint points in real time and enables independent, safe functional training in the workplace — without continuous trainer presence. Tax-deductible up to 600€ per employee/year. Reduces absenteeism and strengthens employee retention.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "url": "https://www.pixformance.com"
+    },
+    "serviceType": "Corporate Health Management",
+    "areaServed": ["DE","AT","CH"]
+  }}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness-entreprise/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness-aziendale/" />
+  </Fragment>
   <NLHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
@@ -108,6 +116,12 @@ const performanceBenefits = [
         Wij maken uw team :<br />
         <span class="text-primary">Sterker. Beter. Efficiënter.</span>
       </h1>
+      <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4 hero-animate" style="animation-delay: 0.25s;">
+        Het digitale bewegingsanalysesysteem voor uw bedrijfsgezondheidszorg
+      </h2>
+      <p class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate" style="animation-delay: 0.28s;">
+        Het Pixformance Station is een FDA Klasse 2 medisch hulpmiddel dat 25 gewrichtspunten in realtime analyseert en zelfstandige, evidence-based functionele training direct op de werkplek mogelijk maakt — zonder constante aanwezigheid van een trainer. Klinisch gevalideerd en inzetbaar in bedrijfsfitnesszones, ergonomieprogramma's en bedrijfsgezondheidszorg. Fiscaal aftrekbaar tot 600 € per werknemer/jaar; gedocumenteerde vermindering van verzuim met 2 tot 6 werkdagen per jaar.
+      </p>
       <p class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
         Pixformance als innovatieve oplossing voor effectieve BGM-maatregelen en een
         brede gezondheidsbevordering – individueel afgestemd op elke werknemer.

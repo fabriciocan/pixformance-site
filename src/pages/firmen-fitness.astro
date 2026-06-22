@@ -77,19 +77,30 @@ const performanceBenefits = [
 ---
 
 <BaseLayout
-  title="Betriebliches Gesundheitsmanagement (BGM) mit Pixformance"
-  description="Pixformance für Unternehmen: Steuerlich absetzbar bis 500 €/MA. Reduzierte Fehlzeiten, stärkere Mitarbeiterbindung. Digitales Fitness für Ihr Büro."
+  title="Betriebliches Gesundheitsmanagement mit Pixformance — Digitales Bewegungssystem für Unternehmen"
+  description="Pixformance BGM: Digitales Bewegungsanalyse-System für Unternehmen. 25 Gelenkpunkte Echtzeit-Analyse. Steuerlich absetzbar bis 500€/MA. Reduzierte Fehlzeiten, stärkere Mitarbeiterbindung. FDA Klasse 2 Medizinprodukt."
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Pixformance BGM – Betriebliches Gesundheitsmanagement",
-    "description": "Digitale Fitness-Lösung für betriebliches Gesundheitsmanagement. Steuerlich absetzbar bis 500 € pro Mitarbeiter und Jahr. Reduziert Fehlzeiten, stärkt Mitarbeiterbindung.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Corporate Wellness Technology",
-    "areaServed": ["DE", "AT", "CH"],
-    "url": "https://www.pixformance.com/firmen-fitness"
+    "name": "Pixformance Betriebliches Gesundheitsmanagement",
+    "description": "Digitales Bewegungsanalyse-System für betriebliches Gesundheitsmanagement. Die Pixformance Station analysiert 25 Gelenkpunkte in Echtzeit und ermöglicht eigenständiges, sicheres Functional Training im Unternehmen — ohne permanente Traineranwesenheit. Steuerlich absetzbar bis 600€ pro Mitarbeiter/Jahr. Reduziert Fehlzeiten und stärkt Mitarbeiterbindung.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "url": "https://www.pixformance.com"
+    },
+    "serviceType": "Betriebliches Gesundheitsmanagement",
+    "areaServed": ["DE","AT","CH"]
   }}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/firmen-fitness/" />
+    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/corporate-fitness/" />
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness-entreprise/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/bedrijfsfitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness-aziendale/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/corporate-fitness/" />
+  </Fragment>
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
@@ -115,12 +126,14 @@ const performanceBenefits = [
         Wir machen Ihr Team:<br />
         <span class="text-primary">Stärker. Besser. effizienter.</span>
       </h1>
+      <h2 class="font-display text-2xl md:text-3xl font-bold mb-4 hero-animate" style="animation-delay: 0.25s;">
+        Das digitale Bewegungsanalyse-System für Ihr betriebliches Gesundheitsmanagement
+      </h2>
       <p
         class="text-xl text-foreground-muted max-w-3xl mx-auto hero-animate"
         style="animation-delay: 0.3s;"
       >
-        Pixformance als innovative Lösung für effiziente BGM-Maßnahmen und eine
-        ganzheitliche Gesundheitsförderung – individuell für jeden Mitarbeiter.
+        Pixformance ist ein vollvernetztes digitales Bewegungssystem, das im betrieblichen Gesundheitsmanagement eingesetzt wird. Die Pixformance Station — als FDA Klasse 2 Medizinprodukt entwickelt — analysiert 25 Gelenkpunkte in Echtzeit und ermöglicht eigenständiges, sicheres Functional Training im Unternehmen. Ohne permanente Traineranwesenheit. Steuerlich absetzbar. Messbar wirksam bei der Reduktion von Fehlzeiten und Muskel-Skelett-Erkrankungen.
       </p>
     </div>
   </section>

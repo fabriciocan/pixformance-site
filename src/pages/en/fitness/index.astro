@@ -80,10 +80,41 @@ const teamMembers = [
 ---
 
 <ENBaseLayout
-  title="Innovative, digital sports devices for your gym"
-  description="Pixformance fitness software for gyms. Personalized scheduling and functional training support under virtual guidance. Increase revenue and member retention."
+  title="Pixformance for Fitness Studios — Digital Motion Analysis System with Real-Time Feedback"
+  description="Pixformance for fitness studios: 2D Full-HD camera analyses 25 joint points in real time. 700+ functional exercises. Virtual personal trainer. Increase member retention, boost revenue — used in 6,000+ studios worldwide."
   hreflangDe="https://www.pixformance.com/fitness/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance for Fitness Studios",
+      "description": "Digital motion analysis system for fitness studios. The Pixformance Station with 2D Full-HD camera analyses 25 joint points in real time and delivers personalised feedback. 700+ functional exercises. Virtual personal trainer. Increase member retention and open new revenue streams.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "serviceType": "Digital Fitness System",
+      "areaServed": ["DE","AT","CH","NL","FR","IT"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Class 2 certified digital movement therapy device — used in fitness studios for functional training with real-time motion analysis of 25 joint points.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH"
+      },
+      "regulatoryStatus": "FDA Class 2 Medical Device"
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/fitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness/" />
+  </Fragment>
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
@@ -102,8 +133,7 @@ const teamMembers = [
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.2s;">
-          Personalized training under
-          <span class="text-[#02308C]"> virtual guidance</span>
+          Digital Motion Analysis for Fitness Studios: Pixformance
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
@@ -111,7 +141,7 @@ const teamMembers = [
         </p>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Personalized, time- and support-independent training under virtual guidance: We provide optimal support to you and your members on the journey to improved fitness.
+          Pixformance is a fully connected digital movement system used in over 6,000 fitness studios, physical therapy practices and rehab clinics worldwide. The Pixformance Station — developed as an FDA Class 2 medical device — uses a patented 2D Full-HD camera to analyse 25 joint points of each member in real time and delivers immediate, personalised corrective feedback. The result: effective, safe training without continuous trainer presence — and new revenue streams for your fitness studio.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">

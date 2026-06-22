@@ -25,10 +25,28 @@ const teamMembers = [
 ---
 
 <ENBaseLayout
-  title="Corporate Health and Fitness - Pixformance Sports"
-  description="Pixformance is an innovative solution for effective corporate fitness management and holistic health promotion – with individual training for each employee."
+  title="Corporate Health Management with Pixformance — Digital Movement System for Companies"
+  description="Pixformance corporate wellness: digital motion analysis system for companies. 25 joint points real-time analysis. Tax-deductible up to 500€/employee. Reduced absenteeism, stronger employee retention. FDA Class 2 medical device."
   hreflangDe="https://www.pixformance.com/firmen-fitness/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pixformance Corporate Health Management",
+    "description": "Digital motion analysis system for corporate health management. The Pixformance Station analyses 25 joint points in real time and enables independent, safe functional training in the workplace — without continuous trainer presence. Tax-deductible up to 600€ per employee/year. Reduces absenteeism and strengthens employee retention.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "url": "https://www.pixformance.com"
+    },
+    "serviceType": "Corporate Health Management",
+    "areaServed": ["DE","AT","CH"]
+  }}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/fitness-entreprise/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/bedrijfsfitness/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/fitness-aziendale/" />
+  </Fragment>
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
@@ -51,8 +69,12 @@ const teamMembers = [
           <span class="text-[#02308C]"> Better & More efficient</span>
         </h1>
 
-        <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
-          Corporate health management that actually works
+        <h2 class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
+          The Digital Motion Analysis System for Your Corporate Health Management
+        </h2>
+
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.35s;">
+          The Pixformance Station is an FDA Class 2 medical device that analyses 25 joint points in real time and enables independent, evidence-based functional training directly in the workplace — without continuous trainer presence. Clinically validated and deployable across corporate fitness areas, ergonomics programmes, and occupational health management. Tax-deductible up to 600€ per employee/year; documented reduction in absenteeism by 2–6 working days per year.
         </p>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
