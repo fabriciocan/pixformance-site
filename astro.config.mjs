@@ -13,8 +13,6 @@ export default defineConfig({
   site: 'https://www.pixformance.com',
   redirects: {
     '/de/brandstore': '/brandstore',
-    '/presse': '/ueber-uns',
-    '/en/press': '/en/about-us',
   },
   build: {
     // Inline all CSS into <style> tags — eliminates render-blocking stylesheet requests
