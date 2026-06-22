@@ -34,6 +34,20 @@ const benefits = [
 <BaseLayout
   title="Pixformance – Kontakt"
   description="Nehmen Sie Kontakt mit Pixformance auf. Produktberatung, allgemeine Anfragen, technischer Support oder Marketing und PR."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Kontakt – Pixformance Sports GmbH",
+    "description": "Nehmen Sie Kontakt mit Pixformance auf. Produktberatung, allgemeine Anfragen, technischer Support oder Marketing und PR.",
+    "url": "https://www.pixformance.com/kontakt/",
+    "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com" },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Pixformance Sports GmbH",
+      "email": "contact@pixformance.com",
+      "url": "https://www.pixformance.com"
+    }
+  }}
 >
   <HeaderWithDropdown slot="header" position="sticky">
     <PixformanceLogo slot="logo" />

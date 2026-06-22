@@ -17,7 +17,7 @@ interface Props {
 
 const {
   title = 'Digitale Fitnessapparatuur – Pixformance',
-  description = 'Pixformance: Digitale bewegingsanalyse voor fysiotherapie, klinieken, fitness & bedrijfswelzijn. 750.000+ gebruikers/jaar. 700+ oefeningen. Real-time correctie.',
+  description = 'Pixformance: Digitale bewegingsanalyse voor fysiotherapie, klinieken, fitness & bedrijfswelzijn. 2,5M+ gebruikers/jaar. 700+ oefeningen. Real-time correctie.',
   image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   canonical,
   type = 'website',
@@ -34,7 +34,12 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Pixformance Sports GmbH',
   url: 'https://www.pixformance.com/nl/',
-  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.pixformance.com/images/pix-favicon.png',
+    width: 1024,
+    height: 1024,
+  },
   foundingDate: '2012',
   description:
     'Pionier in digitale bewegingsanalyse en real-time feedback voor fysiotherapie, klinieken, fitness en bedrijfswelzijn.',

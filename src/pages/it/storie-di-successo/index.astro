@@ -109,6 +109,49 @@ const fitnessStories = [
   title="Storie di Successo – I clienti raccontano Pixformance"
   description="Testimonianze reali di fisioterapisti, responsabili clinici e proprietari di palestre. Oltre 1.100 strutture nel mondo. Scopri come Pixformance li aiuta."
   hreflangEn="https://www.pixformance.com/en/success-stories/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Pixformance Storie di Successo",
+      "description": "Testimonianze di clienti da fisioterapia, cliniche, fitness e benessere aziendale sul loro successo con Pixformance.",
+      "url": "https://www.pixformance.com/it/storie-di-successo/",
+      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/it/" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Pixformance Storie di Successo",
+      "url": "https://www.pixformance.com/it/storie-di-successo/",
+      "numberOfItems": 11,
+      "itemListElement": [
+        ...physiotherapyStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...clinicStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapyStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...fitnessStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapyStories.length + clinicStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        }))
+      ]
+    }
+  ]}
 >
   <ITHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />

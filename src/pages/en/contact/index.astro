@@ -35,6 +35,21 @@ const benefits = [
   title="Contact - Pixformance Sports GmbH"
   description="Get in touch with Pixformance. Contact us for product consultation, general inquiries, technical support or marketing and PR."
   hreflangDe="https://www.pixformance.com/kontakt/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact – Pixformance Sports GmbH",
+    "description": "Get in touch with Pixformance. Contact us for product consultation, general inquiries, technical support or marketing and PR.",
+    "url": "https://www.pixformance.com/en/contact/",
+    "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/en/" },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Pixformance USA Inc.",
+      "email": "info@pixformance.com",
+      "telephone": "+1-888-420-4572",
+      "url": "https://www.pixformance.com/en/"
+    }
+  }}
 >
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />

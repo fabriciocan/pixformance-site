@@ -109,6 +109,49 @@ const fitnessStories = [
   title="Success Stories – Customers report on Pixformance"
   description="Real testimonials from physiotherapists, clinic managers and fitness club owners. 1,100+ facilities worldwide. Read how Pixformance helps them."
   hreflangDe="https://www.pixformance.com/erfolgsgeschichten/"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Pixformance Success Stories",
+      "description": "Testimonials from physical therapy, clinic, fitness and corporate wellness customers about their success with Pixformance.",
+      "url": "https://www.pixformance.com/en/success-stories/",
+      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/en/" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Pixformance Success Stories",
+      "url": "https://www.pixformance.com/en/success-stories/",
+      "numberOfItems": 11,
+      "itemListElement": [
+        ...physiotherapyStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...clinicStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapyStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...fitnessStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapyStories.length + clinicStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        }))
+      ]
+    }
+  ]}
 >
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />

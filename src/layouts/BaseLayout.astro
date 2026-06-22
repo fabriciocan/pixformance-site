@@ -19,7 +19,7 @@ interface Props {
 
 const {
   title = 'Pixformance – Digitale Fitnessgeräte & Therapiegeräte mit Echtzeit-Feedback',
-  description = 'Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 750.000+ Trainierende/Jahr. 700+ Übungen. Echtzeit-Korrekturfeedback.',
+  description = 'Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 2.5M+ Trainierende/Jahr. 700+ Übungen. Echtzeit-Korrekturfeedback.',
   image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   canonical,
   type = 'website',
@@ -35,7 +35,12 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Pixformance Sports GmbH',
   url: 'https://www.pixformance.com',
-  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.pixformance.com/images/pix-favicon.png',
+    width: 1024,
+    height: 1024,
+  },
   foundingDate: '2012',
   description:
     'Pionier in digitaler Bewegungsanalyse und Echtzeit-Feedback für Physiotherapie, Kliniken, Fitness und betriebliches Gesundheitsmanagement.',

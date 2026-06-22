@@ -34,7 +34,12 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Pixformance Sports GmbH',
   url: 'https://www.pixformance.com/it/',
-  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.pixformance.com/images/pix-favicon.png',
+    width: 1024,
+    height: 1024,
+  },
   foundingDate: '2012',
   description:
     'Pioniere nell\'analisi del movimento digitale e del feedback in tempo reale per la fisioterapia, le cliniche, il fitness e il benessere aziendale.',

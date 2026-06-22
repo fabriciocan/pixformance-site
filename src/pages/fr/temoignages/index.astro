@@ -142,14 +142,49 @@ const fitnessStories = [
   description="Vrais témoignages de physiothérapeutes, responsables de cliniques et propriétaires de clubs de fitness. Plus de 1 100 établissements. Lisez comment Pixformance les aide."
   hreflangDe="https://www.pixformance.com/erfolgsgeschichten"
   hreflangEn="https://www.pixformance.com/en/success-stories/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Témoignages Pixformance",
-    "description": "Témoignages de clients de la physiothérapie, des cliniques, des studios de fitness et de la gestion de la santé en entreprise sur leur succès avec Pixformance.",
-    "url": "https://www.pixformance.com/fr/temoignages/",
-    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Témoignages Pixformance",
+      "description": "Témoignages de clients de la physiothérapie, des cliniques, des studios de fitness et de la gestion de la santé en entreprise sur leur succès avec Pixformance.",
+      "url": "https://www.pixformance.com/fr/temoignages/",
+      "isPartOf": { "@type": "WebSite", "url": "https://www.pixformance.com/fr/" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Témoignages Pixformance",
+      "url": "https://www.pixformance.com/fr/temoignages/",
+      "numberOfItems": 15,
+      "itemListElement": [
+        ...physiotherapieStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...klinikStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapieStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        })),
+        ...fitnessStories.map((s, i) => ({
+          "@type": "ListItem",
+          "position": physiotherapieStories.length + klinikStories.length + i + 1,
+          "name": s.title,
+          "description": `${s.person} – ${s.location}`,
+          "url": `https://www.pixformance.com/erfolgsgeschichten/${s.id}/`,
+          "image": `https://www.pixformance.com${s.image}`
+        }))
+      ]
+    }
+  ]}
 >
   <FRHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />

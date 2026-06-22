@@ -32,7 +32,12 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Pixformance USA Inc.',
   url: 'https://www.pixformance.com/en/',
-  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.pixformance.com/images/pix-favicon.png',
+    width: 1024,
+    height: 1024,
+  },
   foundingDate: '2012',
   description:
     'Pioneer in digital motion analysis and real-time feedback for physical therapy, clinics, fitness and corporate wellness.',

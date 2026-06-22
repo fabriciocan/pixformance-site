@@ -17,7 +17,7 @@ interface Props {
 
 const {
   title = 'Appareils de Fitness Digital – Pixformance',
-  description = 'Pixformance : Analyse du mouvement digital pour la physiothérapie, les cliniques, le fitness & le bien-être en entreprise. 750 000+ pratiquants/an. 700+ exercices. Correction en temps réel.',
+  description = 'Pixformance : Analyse du mouvement digital pour la physiothérapie, les cliniques, le fitness & le bien-être en entreprise. 2,5M+ pratiquants/an. 700+ exercices. Correction en temps réel.',
   image = 'https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg',
   canonical,
   type = 'website',
@@ -34,7 +34,12 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Pixformance Sports GmbH',
   url: 'https://www.pixformance.com/fr/',
-  logo: 'https://www.pixformance.com/images/pix-favicon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.pixformance.com/images/pix-favicon.png',
+    width: 1024,
+    height: 1024,
+  },
   foundingDate: '2012',
   description:
     'Pionnier de l\'analyse du mouvement digital et du retour en temps réel pour la physiothérapie, les cliniques, le fitness et le bien-être en entreprise.',
