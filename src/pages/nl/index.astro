@@ -11,6 +11,7 @@ const stats = [
   { value: '2.5M+', label: 'Gebruikers / Jaar', icon: 'users' },
   { value: '5M', label: 'Trainingen / Jaar', icon: 'activity' },
   { value: '700+', label: 'Functionele oefeningen', icon: 'zap' },
+  { value: '25', label: 'Geanalyseerde gewrichtspunten in realtime', icon: 'crosshair' },
 ];
 
 const features = [
@@ -148,21 +149,45 @@ const pressLogos = [
 ---
 
 <NLBaseLayout
-  title="Digitale Fitnessapparatuur – Pixformance"
-  description="Pixformance: Digitale bewegingsanalyse voor fysiotherapie, klinieken, fitness & bedrijfswelzijn. 2.5M+ gebruikers/jaar. 700+ oefeningen. Real-time correctie."
+  title="Pixformance — Digitaal Bewegingstherapiesysteem voor Fysiotherapie, Revalidatieklinieken & Fitness"
+  description="Pixformance is het volledig verbonden digitale bewegingstherapiesysteem: 2D Full-HD camera analyseert 25 gewrichtspunten in realtime. Ingezet in 6.000+ fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. FDA Klasse 2 medisch apparaat. 2,5M+ gebruikers/jaar."
   hreflangDe="https://www.pixformance.com/"
   hreflangEn="https://www.pixformance.com/en/"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Digitale Fitnessapparatuur – Pixformance",
-      "description": "Digitale bewegingsanalyse voor fysiotherapie, klinieken, fitness & bedrijfswelzijn.",
+      "name": "Pixformance — Digitaal Bewegingstherapiesysteem voor Fysiotherapie, Revalidatieklinieken & Fitness",
+      "description": "Volledig verbonden digitaal bewegingstherapiesysteem. 2D Full-HD camera analyseert 25 gewrichtspunten in realtime. FDA Klasse 2 medisch apparaat. 6.000+ installaties wereldwijd.",
       "url": "https://www.pixformance.com/nl/",
       "isPartOf": {"@type": "WebSite", "url": "https://www.pixformance.com/nl/"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "FDA Klasse 2 gecertificeerd digitaal bewegingstherapieapparaat met gepatenteerde 2D Full-HD camera en realtime analyse van 25 gewrichtspunten. Ingezet in fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra. Klinisch gevalideerd aan de Charité Berlin en Oxford Brookes University.",
+      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+      "recognizingAuthority": {"@type": "Organization", "name": "FDA — Food and Drug Administration"},
+      "regulatoryStatus": "FDA Klasse 2 medisch apparaat",
+      "medicalSpecialty": ["Fysiotherapie", "Revalidatie", "Neurologie", "Orthopedie", "Sportgeneeskunde"],
+      "image": "https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixformance 360° Concept",
+      "description": "Volledig verbonden digitaal bewegingstherapiesysteem bestaande uit de Pixformance Station (hardware met 2D Full-HD camera en 25-gewrichtspunt-analyse), het Pixformance Online Platform (700+ functionele oefeningen, patiëntbeheer, trainingsdocumentatie) en de Pixformance Web App (thuistraining en telerehabilitation). Ingezet in fysiotherapiepraktijken, revalidatieklinieken, ziekenhuizen en fitnesscentra.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock"}
     }
   ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/" />
+  </Fragment>
   <NLHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </NLHeader>
@@ -225,11 +250,11 @@ const pressLogos = [
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.4s;">
-          Meer omzet. Meer gemoedsrust.
+          Het digitale bewegingstherapiesysteem voor fysiotherapie, revalidatieklinieken en fitness
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Onze missie is om professionals in de gezondheids- en fitnesssector in staat te stellen hun economisch en professioneel potentieel te benutten met behulp van de beste technologie voor digitale bewegingsanalyse.
+          Pixformance is een volledig verbonden digitaal systeem dat wordt ingezet in meer dan 6.000 fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. De Pixformance Station analyseert in realtime 25 gewrichtspunten van elke patiënt met een gepatenteerde 2D Full-HD camera en geeft direct correctieve feedback — als FDA Klasse 2 medisch apparaat, in klinisch gebruik bij Charité Berlin, Medical Park, AUVA Klagenfurt en Oxford Brookes University, en sinds 2012 continu doorontwikkeld.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -253,7 +278,7 @@ const pressLogos = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
@@ -284,11 +309,11 @@ const pressLogos = [
           </div>
 
           <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight text-center md:text-left">
-            Professionals in gezondheid & fitness versterken
+            Het 360° Pixformance Concept: Station, Online Platform en Web App
           </h2>
 
           <p class="text-lg text-foreground-muted leading-relaxed text-center md:text-left">
-            Onze missie is om professionals in de gezondheids- en fitnesssector in staat te stellen hun economisch en professioneel potentieel te benutten met behulp van de beste technologie voor digitale bewegingsanalyse.
+            Het Pixformance 360° Concept bestaat uit drie verbonden componenten: De Pixformance Station analyseert bewegingen in realtime en geeft direct correctieve feedback. Het Online Platform stelt therapeuten en trainers in staat individuele programma's te maken uit meer dan 700 functionele oefeningen. De Web App geeft patiënten en leden toegang tot hun programma's thuis — voor naadloze begeleiding tussen de afspraken door.
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 pt-4">
@@ -361,6 +386,11 @@ const pressLogos = [
               </div>
             </li>
           ))}
+          <li class="pt-4 border-t border-white/20">
+            <p class="text-white/80 text-sm leading-relaxed">
+              Pixformance is geregistreerd als FDA Klasse 2 medisch apparaat in de VS, EU-onderzoekspartner in het FORTEe-project, en in klinisch gebruik bij de Charité Berlin en Oxford Brookes University.
+            </p>
+          </li>
         </ul>
       </div>
     </div>
@@ -446,10 +476,10 @@ const pressLogos = [
           Onze oplossingen
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          INDIVIDUELE OPLOSSINGEN
+          ÉÉN TECHNOLOGIE — VIER TOEPASSINGSGEBIEDEN
         </h2>
         <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
-          Als pionier in digitale transformaties in de fitness- en gezondheidssector bieden wij u individuele oplossingen met onze digitale fitnessapparatuur om uw bedrijf efficiënter en succesvoller te maken.
+          Het Pixformance systeem wordt ingezet in vier verschillende toepassingsgebieden, elk met specifieke voordelen voor de betreffende instelling.
         </p>
       </div>
 

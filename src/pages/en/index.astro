@@ -11,6 +11,7 @@ const stats = [
   { value: '2.5M+', label: 'Exercisers / Year', icon: 'users' },
   { value: '6,000+', label: 'Installations Worldwide', icon: 'activity' },
   { value: '700+', label: 'Functional Exercises', icon: 'zap' },
+  { value: '25', label: 'Joint Points Analysed in Real Time', icon: 'crosshair' },
 ];
 
 const features = [
@@ -148,31 +149,45 @@ const pressLogos = [
 ---
 
 <ENBaseLayout
-  title="Digital Fitness Devices From Pixformance"
-  description="Pixformance: Digital motion analysis for physical therapy, clinics, fitness & corporate wellness. 2.5M+ exercisers/year. 700+ exercises. Real-time correction feedback."
+  title="Pixformance — Digital Movement Therapy System for Physical Therapy, Rehab Clinics & Fitness"
+  description="Pixformance is the fully connected digital movement therapy system: 2D Full-HD camera analyses 25 joint points in real time. Used in 6,000+ physiotherapy practices, rehab clinics and fitness studios worldwide. FDA Class 2 medical device. 2.5M+ exercisers/year."
   hreflangDe="https://www.pixformance.com/"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Digital Fitness Devices From Pixformance",
-      "description": "Digital motion analysis for physical therapy, clinics, fitness & corporate wellness. 2.5M+ exercisers/year.",
+      "name": "Pixformance — Digital Movement Therapy System for Physical Therapy, Rehab Clinics & Fitness",
+      "description": "Fully connected digital movement therapy system. 2D Full-HD camera analyses 25 joint points in real time. FDA Class 2 medical device. 6,000+ installations worldwide.",
       "url": "https://www.pixformance.com/en/",
       "isPartOf": {"@type": "WebSite", "url": "https://www.pixformance.com/en/"}
     },
     {
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "MedicalDevice",
       "name": "Pixformance Station",
-      "description": "Digital training device with 2D Full-HD camera and real-time motion analysis. 25 joint points, virtual personal trainer, 700+ functional exercises.",
-      "brand": {"@type": "Brand", "name": "Pixformance"},
-      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH"},
-      "image": "https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
-      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "USD"},
-      "category": "Fitness Equipment"
+      "description": "FDA Class 2 certified digital movement therapy device with patented 2D Full-HD camera and real-time analysis of 25 joint points. Used in physiotherapy practices, rehab clinics and fitness studios. Clinically validated at Charité Berlin and Oxford Brookes University.",
+      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+      "recognizingAuthority": {"@type": "Organization", "name": "FDA — Food and Drug Administration"},
+      "regulatoryStatus": "FDA Class 2 Medical Device",
+      "medicalSpecialty": ["Physical Therapy", "Rehabilitation", "Neurology", "Orthopaedics", "Sports Medicine"],
+      "image": "https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixformance 360° Concept",
+      "description": "Fully connected digital movement therapy system comprising the Pixformance Station (hardware with 2D Full-HD camera and 25-joint-point analysis), the Pixformance Online Platform (700+ functional exercises, patient management, training documentation) and the Pixformance Web App (home training and telerehabilitation). Used in physiotherapy practices, rehab clinics, hospitals and fitness studios.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock"}
     }
   ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/" />
+  </Fragment>
   <ENHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </ENHeader>
@@ -235,11 +250,11 @@ const pressLogos = [
         </h1>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.4s;">
-          More Turnover. More relief.
+          The digital movement therapy system for physical therapy, rehab clinics and fitness
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Our mission is to empower medical health and fitness professionals to unlock their economic and professional potential through the best technology for digital motion analysis.
+          Pixformance is a fully connected digital system used in over 6,000 physiotherapy practices, rehab clinics and fitness studios worldwide. The Pixformance Station analyses 25 joint points of each patient in real time using a patented 2D Full-HD camera, delivering instant corrective feedback — as an FDA Class 2 medical device, in clinical use at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University, continuously developed since 2012.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -263,7 +278,7 @@ const pressLogos = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
@@ -294,11 +309,11 @@ const pressLogos = [
           </div>
 
           <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight text-center md:text-left">
-            Empowering health & fitness professionals
+            The 360° Pixformance Concept: Station, Online Platform and Web App
           </h2>
 
           <p class="text-lg text-foreground-muted leading-relaxed text-center md:text-left">
-            Our mission is to empower medical health and fitness professionals to unlock their economic and professional potential through the best technology for digital motion analysis.
+            The Pixformance 360° Concept consists of three connected components: The Pixformance Station analyses movements in real time and delivers instant corrective feedback. The Online Platform enables therapists and trainers to create individual programmes from over 700 functional exercises. The Web App gives patients and members access to their programmes at home — for seamless care between appointments.
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 pt-4">
@@ -373,6 +388,11 @@ const pressLogos = [
               </div>
             </li>
           ))}
+          <li class="pt-4 border-t border-white/20">
+            <p class="text-white/80 text-sm leading-relaxed">
+              Pixformance is registered as an FDA Class 2 medical device in the USA, EU research partner in the FORTEe project, and in clinical use at Charité Berlin and Oxford Brookes University.
+            </p>
+          </li>
         </ul>
       </div>
     </div>
@@ -458,10 +478,10 @@ const pressLogos = [
           Our Solutions
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          INDIVIDUAL SOLUTIONS
+          ONE TECHNOLOGY — FOUR APPLICATION AREAS
         </h2>
         <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
-          As a pioneer in designing digital business transformations in the fitness and health industry, we offer you individual solutions with our digital fitness devices to make your business more efficient and successful.
+          The Pixformance system is used across four distinct areas, each with specific benefits for the respective facility.
         </p>
       </div>
 
