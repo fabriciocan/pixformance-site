@@ -16,167 +16,207 @@ const tabs = [
 ];
 
 const stats = [
-  { value: '2.5M+', count: 2500000, suffix: '+', label: 'Pratiquants / An', icon: 'users' },
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Cliniques & Centres de Rééducation', icon: 'globe' },
+  { value: '2,5M+', count: 0, suffix: '+', label: 'Pratiquants / An', icon: 'users' },
+  { value: '1 100+', count: 1100, suffix: '+', label: 'Cliniques & Centres de Rééducation', icon: 'globe' },
   { value: '700+', count: 700, suffix: '+', label: 'Exercices Fonctionnels', icon: 'zap' },
-];
-
-const benefits = [
-  {
-    icon: 'users',
-    title: 'Activation des patients',
-    description: 'Un environnement d\'entraînement digital motivant augmente la participation active des patients.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
-  {
-    icon: 'heart',
-    title: 'Décharge du personnel',
-    description: 'Les thérapeutes peuvent se concentrer sur les cas complexes pendant que Pixformance prend en charge l\'entraînement standard.',
-    gradient: 'from-[#6BDBD1] to-[#02308C]',
-  },
-  {
-    icon: 'trending-up',
-    title: 'Scalabilité',
-    description: 'Prise en charge simultanée de jusqu\'à 4 patients avec une qualité de suivi constante.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
-  {
-    icon: 'file-text',
-    title: 'Documentation',
-    description: 'Enregistrement automatique de toutes les données d\'entraînement pour une documentation complète.',
-    gradient: 'from-[#6BDBD1] to-[#86C9BC]',
-  },
-  {
-    icon: 'check-circle',
-    title: 'Observance thérapeutique',
-    description: 'Les éléments de gamification augmentent la motivation et donc l\'observance thérapeutique.',
-    gradient: 'from-[#86C9BC] to-[#02308C]',
-  },
-  {
-    icon: 'shield',
-    title: 'Assurance qualité',
-    description: 'L\'exécution standardisée des exercices grâce au feedback en temps réel garantit une qualité constante.',
-    gradient: 'from-[#02308C] to-[#6BDBD1]',
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Gabriele Buchstein',
-    role: 'Responsable de physiothérapie',
-    company: 'Sauerlandklinik Hachen',
-    image: '/images/Gabriele-Buchstein-Leitung-Physiotherapie-Sauerlandklinik-Hachen.png',
-    quote: 'Les patients sont enthousiastes et très motivés. Ça ne devient pas ennuyeux, car les exercices sont très variés et on peut progresser.',
-  },
-  {
-    name: 'Christoph Schneider',
-    role: 'Responsable thérapie',
-    company: 'Niederrhein-Klinik',
-    image: '/images/Christoph-Schneider-Therapieleiter-Niederrheinklinik-Reha-Klinik-Korschenbroich-Pixformance.png',
-    quote: 'À la recherche d\'un moyen d\'activer les patients tout en déchargeant le personnel, nous avons découvert Pixformance.',
-  },
-  {
-    name: 'Christoph Oratsch',
-    role: 'Responsable thérapie',
-    company: 'AUVA Unfallkrankenhaus',
-    image: '/images/Christoph-Oratsch-AUVA-Klagenfurt-1.png',
-    quote: 'Du côté des patients, il y a un grand intérêt pour les stations Pixformance. Beaucoup viennent d\'eux-mêmes et veulent un programme d\'entraînement.',
-  },
 ];
 
 const features = [
   {
     icon: 'eye',
     title: 'Caméra 2D Full-HD',
-    description: 'Capture 25 points articulaires en temps réel pour une analyse précise des mouvements',
+    description: 'Capture 25 points articulaires en temps réel pour une analyse précise des mouvements — sans capteurs ni dispositifs portés par le patient.',
   },
   {
     icon: 'monitor',
     title: 'Coach virtuel',
-    description: 'Présente les exercices sur l\'écran 43" et fournit un feedback visuel',
+    description: 'Démontre les exercices sur l\'écran 43" et fournit un retour visuel immédiat — les patients s\'entraînent de manière autonome sous surveillance.',
   },
   {
     icon: 'zap',
     title: 'Correction en temps réel',
-    description: 'Feedback immédiat sur l\'exécution des mouvements pendant l\'entraînement',
+    description: 'Un retour correctif immédiat pendant l\'exécution des exercices garantit qualité et sécurité pour chaque patient.',
+  },
+];
+
+const benefits = [
+  {
+    icon: 'users',
+    title: 'Activation des patients',
+    description: 'Un environnement d\'entraînement digital motivant avec des éléments de gamification augmente mesurably la participation active des patients et leur observance thérapeutique.',
+  },
+  {
+    icon: 'heart',
+    title: 'Décharge du personnel',
+    description: 'Les thérapeutes supervisent plusieurs patients simultanément et se concentrent sur la thérapie manuelle et les cas complexes — Pixformance prend en charge l\'entraînement standard.',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Évolutivité',
+    description: 'Jusqu\'à 4 patients simultanément sur plusieurs stations — avec un logiciel breveté sans personnel supplémentaire, avec une qualité de suivi constante.',
+  },
+  {
+    icon: 'file-text',
+    title: 'Documentation automatique',
+    description: 'L\'exécution des exercices, le score Pixformance et les progrès sont enregistrés automatiquement sur la plateforme en ligne — sans saisie manuelle, historique complet pour les organismes payeurs.',
+  },
+  {
+    icon: 'check-circle',
+    title: 'Observance thérapeutique',
+    description: 'Les éléments de gamification et le retour immédiat augmentent la motivation intrinsèque — les patients maintiennent les programmes plus longtemps et exécutent les exercices plus précisément.',
+  },
+  {
+    icon: 'shield',
+    title: 'Assurance qualité',
+    description: 'L\'exécution standardisée des exercices grâce au retour correctif en temps réel garantit une qualité de traitement constante — indépendamment du niveau de dotation en personnel.',
+  },
+];
+
+const clinicalTestimonials = [
+  {
+    quote: 'Les patients sont enthousiastes et très motivés, ce qui n\'est certes pas souvent le cas. Bien sûr, nous en profitons également en tant que thérapeutes, car les patients exécutent ainsi leurs exercices de manière plus ciblée. De plus, nous gagnons du temps, car après seulement 30 minutes d\'initiation, les patients peuvent s\'entraîner de manière autonome sous surveillance.',
+    name: 'Gabriele Buchstein',
+    role: 'Responsable physiothérapie',
+    company: 'Sauerlandklinik Hachen – Clinique spécialisée en neurologie pour la SEP',
+  },
+  {
+    quote: 'À la recherche d\'un moyen de permettre aux patients de devenir actifs de manière autonome, nous avons choisi Pixformance. L\'offre d\'entraînement individuel est idéale ici, car la thérapie de groupe est trop facile pour certains patients et trop difficile pour d\'autres. Ainsi, chacun bénéficie d\'un entraînement entièrement personnalisé.',
+    name: 'Christoph Schneider',
+    role: 'Responsable thérapie',
+    company: 'Niederrhein-Klinik Korschenbroich',
+  },
+  {
+    quote: 'Du côté des patients, il y a un grand intérêt pour les stations Pixformance. Beaucoup viennent d\'eux-mêmes et souhaitent un programme d\'entraînement. Nous avons récemment accompagné par télésupport une jeune femme après une opération de l\'épaule. Elle vient une fois par semaine à la clinique — le reste de sa thérapie, elle le fait à la maison. C\'est vraiment une très bonne option.',
+    name: 'Christoph Oratsch',
+    role: 'Responsable thérapie',
+    company: 'Hôpital traumatologique AUVA Klagenfurt',
+  },
+  {
+    quote: 'Nous sommes heureux d\'observer que nos patients apprécient vraiment l\'entraînement sportif et y adhèrent. La composante ludique joue certainement un rôle — et quand nos patients oublient un moment leur maladie et s\'amusent simplement, c\'est extrêmement précieux.',
+    name: 'Gunter Hölig',
+    role: 'Responsable thérapie',
+    company: 'Medical Park Bad Rodach',
+  },
+];
+
+const clientLogos = [
+  { name: 'Charité Berlin', src: '/images/en/Logo-Charite.png' },
+  { name: 'Medical Park', src: '/images/en/Logo-Medical-Park.png' },
+  { name: 'Niederrhein-Klinik', src: '/images/en/AK_logo_Niederrhein_Klinik.png' },
+  { name: 'Sauerlandklinik Hachen', src: '/images/en/SKH_Logo_4c-scaled-1.jpg' },
+  { name: 'AUVA Unfallkrankenhaus', src: '/images/en/2560px-Logo_AUVA.svg.png' },
+  { name: 'Mediclin', src: '/images/en/Pixformance-Logo-Mediclin.png' },
+  { name: 'Oxford Brookes University', src: '/images/en/pixformance-logo-oxford-brookes-university.png' },
+  { name: 'FORTEe EU-Projet', src: '/images/en/fortee-eu-poject-pixformance-partner.png' },
+];
+
+const faqItems = [
+  {
+    question: 'Comment Pixformance peut-il rendre les opérations thérapeutiques d\'une clinique de rééducation plus efficaces ?',
+    answer: 'Plusieurs patients peuvent s\'entraîner simultanément aux stations Pixformance sans présence continue du thérapeute. Chaque patient scanne son QR code et démarre automatiquement son programme individuel. Les thérapeutes supervisent plusieurs patients à la fois et peuvent se concentrer sur la thérapie manuelle et les cas complexes. La documentation automatique de toutes les données d\'entraînement sur la plateforme en ligne remplace les enregistrements manuels.',
+  },
+  {
+    question: 'Pour quelles indications et phases de rééducation Pixformance est-il adapté ?',
+    answer: 'Pixformance convient à toutes les phases de rééducation : rééducation neurologique (SEP, Parkinson, AVC), rééducation orthopédique (hanche, genou, épaule, colonne vertébrale post-opératoire), rééducation oncologique (adultes et enfants via FORTEe), rééducation gériatrique (prévention des chutes, équilibre), rééducation cardiaque (sous supervision médicale) et activation générale des patients hospitalisés. Les exercices peuvent être adaptés pour les patients en fauteuil roulant, avec déambulateur ou sur la table de traitement.',
+  },
+  {
+    question: 'Combien de patients peuvent être pris en charge simultanément avec Pixformance ?',
+    answer: 'Avec le logiciel breveté, jusqu\'à 4 patients peuvent s\'entraîner simultanément sur plusieurs stations sans qu\'un thérapeute soit présent à chaque station. Un thérapeute peut superviser l\'ensemble de la zone pendant que tous les patients reçoivent des instructions individuelles.',
+  },
+  {
+    question: 'Comment fonctionne la documentation de l\'entraînement pour la clinique ?',
+    answer: 'Toutes les données d\'entraînement sont automatiquement enregistrées sur la plateforme en ligne Pixformance : exécution des exercices, répétitions, score Pixformance par session, progression sur la période de traitement. Les thérapeutes ont accès à tout moment à l\'historique complet d\'entraînement de chaque patient. Cela facilite les rapports cliniques, l\'assurance qualité et la documentation pour les organismes payeurs.',
+  },
+  {
+    question: 'Pixformance convient-il à la rééducation en hospitalisation et en ambulatoire ?',
+    answer: 'Oui. Pixformance est utilisé tant en rééducation hospitalière qu\'ambulatoire. Pour les patients hospitalisés, la station permet plusieurs séances d\'entraînement quotidiennes sans intervention du thérapeute. Pour les patients ambulatoires, l\'application web Pixformance permet la poursuite du programme thérapeutique à domicile entre les rendez-vous cliniques — un modèle hybride activement utilisé par l\'hôpital traumatologique AUVA de Klagenfurt.',
+  },
+  {
+    question: 'Quelles études cliniques et références existent pour Pixformance ?',
+    answer: 'La Hochschule Fresenius a mené des études cliniques avec Pixformance sur la SEP, la maladie de Parkinson, la dystrophie musculaire et les soins post-cancer du sein. Pixformance est partenaire de recherche européen dans le projet FORTEe pour la thérapie par le mouvement chez les enfants atteints de cancer. Le système est en usage clinique à la Charité Berlin, Medical Park Bad Rodach, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA Klagenfurt, Mediclin et Oxford Brookes University.',
+  },
+  {
+    question: 'Pixformance est-il un dispositif médical certifié ?',
+    answer: 'Oui. Pixformance est approuvé aux États-Unis comme dispositif médical de classe 2 (RX) par la FDA. L\'appareil est conforme à la directive CEM 2004/108/CE et est fabriqué sous des contrôles stricts de qualité et de sécurité depuis 2012. Les patients porteurs de stimulateurs cardiaques ou souffrant de pathologies cardiovasculaires graves doivent consulter un médecin avant l\'entraînement.',
+  },
+  {
+    question: 'Quel est le coût de Pixformance pour une clinique et quels modes de financement sont disponibles ?',
+    answer: 'Pixformance est disponible à l\'achat ou en location. Des conditions individuelles sont possibles pour les cliniques selon le nombre de stations et la taille de l\'établissement. Contactez notre équipe pour un devis sans engagement. Une consultation personnalisée incluant la planification des locaux, l\'installation et la formation des thérapeutes est incluse dans le service.',
   },
 ];
 ---
 
 <FRBaseLayout
-  title="Appareils de rééducation & thérapie par l'entraînement digital pour cliniques | Pixformance"
-  description="Pixformance pour les cliniques de rééducation : activation des patients, décharge des thérapeutes, documentation digitale. Plus de 1 100 cliniques font confiance à Pixformance. Testez maintenant."
-  hreflangDe="https://www.pixformance.com/klinik"
+  title="Rééducation digitale pour cliniques de réhabilitation & hôpitaux | Pixformance"
+  description="Pixformance est le système de rééducation digital pour cliniques : jusqu'à 4 patients simultanément, documentation automatique, analyse de 25 points articulaires en temps réel. Plus de 1 100 cliniques font confiance à Pixformance. Dispositif médical FDA Classe 2."
+  hreflangDe="https://www.pixformance.com/klinik/"
   hreflangEn="https://www.pixformance.com/en/clinic/"
-  jsonLd={[{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Thérapie par l'entraînement digital – Clinique & Rééducation",
-    "description": "Appareils de rééducation digitaux pour cliniques et centres de rééducation. Activation des patients, décharge des thérapeutes, suivi simultané de jusqu'à 4 patients.",
-    "provider": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
-    "serviceType": "Rehabilitation Technology",
-    "areaServed": ["DE", "AT", "CH", "FR"],
-    "url": "https://www.pixformance.com/fr/clinique/"
-  }]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalDevice",
+      "name": "Pixformance Station",
+      "description": "Système de rééducation digital pour cliniques de réhabilitation et hôpitaux. Caméra 2D Full-HD avec capteur de profondeur analysant 25 points articulaires en temps réel. Jusqu'à 4 patients peuvent s'entraîner simultanément sur plusieurs stations. Documentation automatique sur la plateforme en ligne. Dispositif médical FDA Classe 2.",
+      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
+      "legalStatus": "Dispositif médical FDA Classe 2",
+      "relevantSpecialty": ["Rééducation", "Neurologie", "Orthopédie", "Oncologie", "Gériatrie", "Médecine du sport"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Comment Pixformance peut-il rendre les opérations thérapeutiques d'une clinique de rééducation plus efficaces ?", "acceptedAnswer": { "@type": "Answer", "text": "Plusieurs patients peuvent s'entraîner simultanément aux stations Pixformance sans présence continue du thérapeute. Chaque patient scanne son QR code et démarre automatiquement son programme individuel. Les thérapeutes supervisent plusieurs patients à la fois et peuvent se concentrer sur la thérapie manuelle et les cas complexes. La documentation automatique de toutes les données d'entraînement sur la plateforme en ligne remplace les enregistrements manuels." } },
+        { "@type": "Question", "name": "Pour quelles indications et phases de rééducation Pixformance est-il adapté ?", "acceptedAnswer": { "@type": "Answer", "text": "Pixformance convient à toutes les phases de rééducation : rééducation neurologique (SEP, Parkinson, AVC), rééducation orthopédique (hanche, genou, épaule, colonne vertébrale post-opératoire), rééducation oncologique (adultes et enfants via FORTEe), rééducation gériatrique (prévention des chutes, équilibre), rééducation cardiaque (sous supervision médicale) et activation générale des patients hospitalisés." } },
+        { "@type": "Question", "name": "Combien de patients peuvent être pris en charge simultanément avec Pixformance ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec le logiciel breveté, jusqu'à 4 patients peuvent s'entraîner simultanément sur plusieurs stations sans qu'un thérapeute soit présent à chaque station. Un thérapeute peut superviser l'ensemble de la zone pendant que tous les patients reçoivent des instructions individuelles." } },
+        { "@type": "Question", "name": "Comment fonctionne la documentation de l'entraînement pour la clinique ?", "acceptedAnswer": { "@type": "Answer", "text": "Toutes les données d'entraînement sont automatiquement enregistrées sur la plateforme en ligne Pixformance : exécution des exercices, répétitions, score Pixformance par session, progression sur la période de traitement. Les thérapeutes ont accès à tout moment à l'historique complet d'entraînement de chaque patient." } },
+        { "@type": "Question", "name": "Pixformance convient-il à la rééducation en hospitalisation et en ambulatoire ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Pixformance est utilisé tant en rééducation hospitalière qu'ambulatoire. Pour les patients ambulatoires, l'application web Pixformance permet la poursuite du programme thérapeutique à domicile — un modèle hybride activement utilisé par l'hôpital traumatologique AUVA de Klagenfurt." } },
+        { "@type": "Question", "name": "Quelles études cliniques et références existent pour Pixformance ?", "acceptedAnswer": { "@type": "Answer", "text": "La Hochschule Fresenius a mené des études cliniques avec Pixformance sur la SEP, la maladie de Parkinson, la dystrophie musculaire et les soins post-cancer du sein. Pixformance est partenaire de recherche européen dans le projet FORTEe. Le système est en usage clinique à la Charité Berlin, Medical Park, AUVA Klagenfurt et Oxford Brookes University." } },
+        { "@type": "Question", "name": "Pixformance est-il un dispositif médical certifié ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Pixformance est approuvé aux États-Unis comme dispositif médical de classe 2 (RX) par la FDA. L'appareil est conforme à la directive CEM 2004/108/CE et est fabriqué sous des contrôles stricts de qualité et de sécurité depuis 2012." } },
+        { "@type": "Question", "name": "Quel est le coût de Pixformance pour une clinique et quels modes de financement sont disponibles ?", "acceptedAnswer": { "@type": "Answer", "text": "Pixformance est disponible à l'achat ou en location. Des conditions individuelles sont possibles pour les cliniques selon le nombre de stations et la taille de l'établissement. Contactez notre équipe pour un devis sans engagement." } }
+      ]
+    }
+  ]}
 >
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/kliniek/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/clinica/" />
+  </Fragment>
+
   <FRHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
   </FRHeader>
 
-  <!-- Breadcrumb Tabs -->
   <BreadcrumbTabs tabs={tabs} activeTab="/fr/clinique/" />
 
-  <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-12 md:py-20">
     <div class="container">
       <div class="max-w-5xl mx-auto text-center space-y-5">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
             <Icon name="zap" size="sm" />
-            Appareil de sport de rééducation innovant pour cliniques et réhabilitation
+            Dispositif médical FDA Classe 2 · Plus de 1 100 cliniques dans le monde
           </span>
         </div>
-
         <h1 class="font-display text-4xl md:text-6xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
-          Activez vos patients et déchargez vos thérapeutes.
+          Une rééducation digitale qui rend votre clinique plus efficace — sans compromettre la qualité des soins
         </h1>
-
-        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          La station Pixformance est un appareil de sport de rééducation innovant qui offre aux patients un entraînement sûr dans le cadre d'une thérapie par le mouvement – entièrement individualisé, selon l'indication et l'état de santé. L'appareil a été développé pour activer les patients à davantage de mouvement lors d'une thérapie de rééducation et décharger les thérapeutes dans le suivi.
+        <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.4s;">
+          Pixformance est le système de thérapie par le mouvement digital pour les cliniques de rééducation et les hôpitaux : dans plus de 1 100 cliniques et centres de rééducation dans le monde, la station Pixformance soulage les thérapeutes, active les patients et documente automatiquement l'évolution de la thérapie. Avec une caméra 2D Full-HD, la station analyse en temps réel 25 points articulaires de chaque patient et fournit un retour correctif immédiat — en tant que dispositif médical FDA Classe 2 en usage clinique à la Charité Berlin, Medical Park, AUVA et Oxford Brookes University.
         </p>
-
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
-          <Button
-            size="lg"
-            href="/fr/essai-gratuit/"
-            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Tester sans engagement
+          <Button size="lg" href="/fr/essai-gratuit/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            Demander un conseil gratuit
             <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            href="/fr/concept/"
-            class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Demander un conseil
-            <Icon name="phone" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
+          <Button size="lg" variant="outline" href="/fr/concept/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
+            En savoir plus
+            <Icon name="play-circle" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
-
-        <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
-              <div
-                class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter"
-                data-count={stat.count}
-                data-suffix={stat.suffix}
-                data-large={stat.count >= 10000 ? 'true' : 'false'}
-              >
-                {stat.value}
-              </div>
+              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter" data-count={stat.count} data-suffix={stat.suffix} data-large={stat.count >= 10000 ? 'true' : 'false'}>{stat.value}</div>
               <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
             </div>
           ))}
@@ -185,171 +225,152 @@ const features = [
     </div>
   </section>
 
-  <!-- Features Grid -->
-  <section class="py-12 md:py-20 bg-gray-50">
+  <section class="py-8 md:py-12 bg-gray-50 border-y border-gray-100">
     <div class="container">
-      <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="layers" size="sm" />
-          Système entièrement connecté
-        </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold">
-          La station Pixformance
-        </h2>
-        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
-          L'analyse de mouvement de pointe s'associe à l'expertise thérapeutique
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        {features.map((feature, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="scale"
-            data-delay={index + 1}
-          >
-            <div class="w-16 h-16 rounded-xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-              <Icon name={feature.icon} size="lg" class="text-white" />
-            </div>
-            <h3 class="font-bold text-xl mb-2 group-hover:text-[#02308C] transition-colors">
-              {feature.title}
-            </h3>
-            <p class="text-sm text-foreground-muted">
-              {feature.description}
-            </p>
-          </Card>
+      <p class="text-center text-sm font-semibold text-foreground-muted uppercase tracking-widest mb-8" data-scroll="fade-up">Fait confiance par les principales cliniques et hôpitaux</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12" data-scroll="fade-up">
+        {clientLogos.map((logo) => (
+          <img src={logo.src} alt={logo.name} class="h-8 md:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" />
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Benefits Section -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="star" size="sm" />
-          Avantages
-        </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Avantages pour votre clinique
-        </h2>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6"><Icon name="layers" size="sm" />Système entièrement connecté</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">La station Pixformance</h2>
+        <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">L'analyse de mouvement de pointe associée à l'expertise thérapeutique — pour une rééducation qui profite à vos patients et soulage votre équipe.</p>
       </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {benefits.map((benefit, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white"
-            data-scroll="fade-up"
-            data-delay={index + 1}
-          >
-            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}>
-              <Icon name={benefit.icon} size="md" class="text-white" />
-            </div>
-            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">
-              {benefit.title}
-            </h3>
-            <p class="text-sm text-foreground-muted">
-              {benefit.description}
-            </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        {features.map((feature, index) => (
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white" data-scroll="scale" data-delay={index + 1}>
+            <div class="w-16 h-16 rounded-xl bg-[#02308C] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"><Icon name={feature.icon} size="lg" class="text-white" /></div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-[#02308C] transition-colors">{feature.title}</h3>
+            <p class="text-sm text-foreground-muted">{feature.description}</p>
           </Card>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <section class="py-12 md:py-20 bg-[#02308C]/5 border-y border-[#02308C]/10">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6"><Icon name="activity" size="sm" />Application clinique</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Indications et phases de rééducation</h2>
+          <p class="text-lg text-foreground-muted max-w-3xl mx-auto">Pixformance convient à toutes les phases de rééducation en hospitalisation et en ambulatoire. Les exercices peuvent être adaptés pour les patients en fauteuil roulant, avec déambulateur, sur la table de traitement ou au sol.</p>
+        </div>
+        <ul class="grid md:grid-cols-2 gap-5 text-base text-gray-800 leading-relaxed">
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="brain" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Rééducation neurologique</strong>Sclérose en plaques, syndrome de Parkinson, soins post-AVC, troubles de l'équilibre et de la coordination</div></li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="bone" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Rééducation orthopédique</strong>Soins post-opératoires (hanche, genou, épaule, colonne vertébrale), thérapie des douleurs dorsales, rééducation après fracture</div></li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="heart" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Rééducation oncologique</strong>Soins post-cancer pour adultes et enfants (via projet EU FORTEe), suivi post-cancer du sein</div></li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="users" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Rééducation gériatrique</strong>Prévention des chutes, entraînement de l'équilibre, maintien de l'autonomie fonctionnelle</div></li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#02308C] flex items-center justify-center"><Icon name="trending-up" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Rééducation cardiaque</strong>Entraînement fonctionnel supervisé sous accompagnement médical</div></li>
+          <li class="flex gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300"><span class="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[#6BDBD1] flex items-center justify-center"><Icon name="zap" size="sm" class="text-white" /></span><div><strong class="block text-gray-900 mb-1">Activation des patients hospitalisés</strong>Plusieurs séances quotidiennes sans présence permanente du thérapeute — les patients démarrent de manière autonome via QR code</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="py-12 md:py-20 bg-gray-50">
     <div class="container">
       <div class="text-center mb-8" data-scroll="fade-up">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
-          <Icon name="check-circle" size="sm" />
-          Témoignages
-        </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Ce que disent nos partenaires
-        </h2>
-        <p class="text-lg text-foreground-muted mt-4">
-          Découvrez comment les cliniques révolutionnent leur thérapie avec Pixformance
-        </p>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6"><Icon name="star" size="sm" />Avantages</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Avantages pour votre clinique</h2>
+        <p class="text-lg text-foreground-muted max-w-3xl mx-auto">De l'activation des patients à la documentation complète — Pixformance soutient simultanément les opérations de la clinique et la qualité des soins.</p>
       </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial, index) => (
-          <Card
-            variant="elevated"
-            padding="lg"
-            class="bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden"
-            data-scroll="scale"
-            data-delay={index + 1}
-          >
-            <div class="absolute inset-0 bg-gradient-to-br from-[#02308C]/0 to-[#6BDBD1]/0 group-hover:from-[#02308C]/5 group-hover:to-[#6BDBD1]/5 transition-all duration-500"></div>
-
-            <div class="relative space-y-4">
-              <div class="flex items-center gap-3">
-                <div class="relative">
-                  <div class="absolute inset-0 bg-[#02308C] rounded-full blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    class="relative w-16 h-16 rounded-full object-cover ring-2 ring-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <div class="font-bold group-hover:text-[#02308C] transition-colors duration-300">{testimonial.name}</div>
-                  <div class="text-sm text-foreground-muted">{testimonial.role}</div>
-                  <div class="text-sm text-[#02308C] font-semibold">{testimonial.company}</div>
-                </div>
-              </div>
-
-              <div class="relative">
-                <p class="text-sm text-foreground-muted italic leading-relaxed border-l-2 border-[#6BDBD1] pl-4">
-                  "{testimonial.quote}"
-                </p>
-              </div>
-            </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit, index) => (
+          <Card variant="elevated" padding="lg" class="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group bg-white" data-scroll="fade-up" data-delay={index + 1}>
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${index % 2 === 0 ? 'bg-[#02308C]' : 'bg-[#6BDBD1]'}`}><Icon name={benefit.icon} size="md" class="text-white" /></div>
+            <h3 class="font-bold text-lg mb-2 group-hover:text-[#02308C] transition-colors">{benefit.title}</h3>
+            <p class="text-sm text-foreground-muted">{benefit.description}</p>
           </Card>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-8" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6"><Icon name="message-circle" size="sm" />Témoignages</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">Ce que disent nos partenaires cliniques</h2>
+        <p class="text-lg text-foreground-muted mt-4">Expériences du quotidien clinique — de responsables thérapie et directeurs de clinique utilisant Pixformance au quotidien</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6" data-scroll="fade-up">
+        {clinicalTestimonials.map((t, index) => (
+          <blockquote class="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" data-scroll="fade-up" data-delay={index + 1}>
+            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#02308C] to-[#6BDBD1] rounded-l-2xl"></div>
+            <Icon name="quote" size="lg" class="text-[#6BDBD1]/30 absolute top-4 right-4" />
+            <p class="text-sm md:text-base text-gray-700 italic leading-relaxed mb-5 pl-4 relative">«&nbsp;{t.quote}&nbsp;»</p>
+            <footer class="pl-4"><cite class="not-italic"><span class="font-bold text-gray-900 block group-hover:text-[#02308C] transition-colors">{t.name}</span><span class="text-sm text-foreground-muted">{t.role}, <span class="text-[#02308C] font-medium">{t.company}</span></span></cite></footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-[#02308C] relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 pointer-events-none"></div>
+    <div class="container relative" data-scroll="fade-up">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold text-[#6BDBD1] mb-6"><Icon name="file-text" size="sm" />Science & Évidence</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Études cliniques & évidence scientifique</h2>
+          <p class="text-lg text-white/70 max-w-2xl mx-auto">Pixformance a été utilisé comme dispositif d'intervention dans plusieurs études cliniques à la Hochschule Fresenius :</p>
+        </div>
+        <ul class="space-y-3 mb-10">
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200"><Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" /><span class="text-white/90 text-sm md:text-base"><strong class="text-white">Sclérose en plaques</strong> — Effet sur la capacité de marche</span></li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200"><Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" /><span class="text-white/90 text-sm md:text-base"><strong class="text-white">Syndrome de Parkinson</strong> — Équilibre, capacité de marche, qualité de vie</span></li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200"><Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" /><span class="text-white/90 text-sm md:text-base"><strong class="text-white">Dystrophie musculaire d'Emery-Dreifuss</strong> — Étude de cas unique</span></li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200"><Icon name="file-text" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" /><span class="text-white/90 text-sm md:text-base"><strong class="text-white">Soins post-cancer du sein</strong> — Fonction du membre supérieur</span></li>
+          <li class="flex items-start gap-4 bg-white/10 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/15 transition-colors duration-200"><Icon name="globe" size="sm" class="text-[#6BDBD1] mt-0.5 flex-shrink-0" /><span class="text-white/90 text-sm md:text-base"><strong class="text-white">Projet de recherche européen FORTEe</strong> — Thérapie par le mouvement pour les enfants et adolescents atteints de cancer</span></li>
+        </ul>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/downloads/Studienergebnisse_Wissenschaftlich-nachgewiesene-positive-Effekte-mit-Pixformance_2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#6BDBD1] text-[#02308C] font-bold text-sm hover:bg-white transition-colors duration-200"><Icon name="download" size="sm" />Télécharger toutes les études (PDF)</a>
+          <a href="/studienergebnisse" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-colors duration-200">En savoir plus sur les études<Icon name="arrow-right" size="sm" /></a>
+        </div>
+        <p class="text-center text-white/50 text-sm mt-8">Pixformance est en usage clinique à la Charité Berlin et à l'Oxford Brookes University et a été présenté dans FOCUS Gesundheit (déc./jan. 2018/19) parmi les meilleures cliniques de rééducation d'Allemagne.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-scroll="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6"><Icon name="help-circle" size="sm" />FAQ</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold">Questions fréquemment posées</h2>
+        </div>
+        <div class="space-y-3" data-scroll="fade-up">
+          {faqItems.map((item, index) => (
+            <details class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200" data-delay={index + 1}>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-[#02308C] transition-colors duration-200 select-none">
+                <span>{item.question}</span>
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#02308C]/10 flex items-center justify-center group-open:bg-[#02308C] transition-colors duration-200"><Icon name="chevron-down" size="sm" class="text-[#02308C] group-open:text-white group-open:rotate-180 transition-all duration-200" /></span>
+              </summary>
+              <div class="px-6 pb-5"><p class="text-base text-gray-700 leading-relaxed border-t border-gray-200 pt-4">{item.answer}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="py-12 md:py-20 relative overflow-hidden">
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
-
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
-        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Prêt pour la transformation digitale ?
-        </h2>
-
-        <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Prenez rendez-vous dès maintenant pour un entretien conseil sans engagement et découvrez comment Pixformance peut révolutionner votre thérapie.
-        </p>
-
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">Prêt pour la transformation digitale de votre clinique ?</h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">Prenez rendez-vous pour un entretien conseil sans engagement. Nous vous montrons comment Pixformance fonctionne dans votre établissement — avec planification des locaux, installation et formation des thérapeutes.</p>
         <div class="flex flex-wrap gap-4 justify-center pt-4">
-          <Button
-            size="lg"
-            href="/fr/essai-gratuit/"
-            class="bg-black text-white hover:bg-black/80"
-          >
-            Tester gratuitement
-            <Icon name="arrow-right" size="sm" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            href="/fr/concept/"
-            class="border-2 border-black text-black hover:bg-black hover:text-white"
-          >
-            En savoir plus
-          </Button>
+          <Button size="lg" href="/fr/essai-gratuit/" class="bg-black text-white hover:bg-black/80">Prendre contact<Icon name="arrow-right" size="sm" /></Button>
+          <Button size="lg" variant="outline" href="/fr/concept/" class="border-2 border-black text-black hover:bg-black hover:text-white">En savoir plus</Button>
         </div>
       </div>
     </div>
@@ -359,134 +380,27 @@ const features = [
 </FRBaseLayout>
 
 <style>
-  /* Hero Entry Animation */
-  @keyframes hero-entry {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-animate {
-    opacity: 0;
-    animation: hero-entry 0.8s ease-out forwards;
-  }
-
-  /* Scroll Animation Styles */
-  [data-scroll] {
-    opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  [data-scroll].is-visible {
-    opacity: 1;
-  }
-
-  [data-scroll="fade-up"] {
-    transform: translateY(30px);
-  }
-
-  [data-scroll="fade-up"].is-visible {
-    transform: translateY(0);
-  }
-
-  [data-scroll="scale"] {
-    transform: scale(0.9);
-  }
-
-  [data-scroll="scale"].is-visible {
-    transform: scale(1);
-  }
-
-  /* Stagger delays */
-  [data-scroll][data-delay="1"] {
-    transition-delay: 0.1s;
-  }
-
-  [data-scroll][data-delay="2"] {
-    transition-delay: 0.2s;
-  }
-
-  [data-scroll][data-delay="3"] {
-    transition-delay: 0.3s;
-  }
-
-  [data-scroll][data-delay="4"] {
-    transition-delay: 0.4s;
-  }
-
-  [data-scroll][data-delay="5"] {
-    transition-delay: 0.5s;
-  }
-
-  [data-scroll][data-delay="6"] {
-    transition-delay: 0.6s;
-  }
+  @keyframes hero-entry { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-animate { opacity: 0; animation: hero-entry 0.8s ease-out forwards; }
+  [data-scroll] { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  [data-scroll].is-visible { opacity: 1; }
+  [data-scroll="fade-up"] { transform: translateY(30px); }
+  [data-scroll="fade-up"].is-visible { transform: translateY(0); }
+  [data-scroll="scale"] { transform: scale(0.9); }
+  [data-scroll="scale"].is-visible { transform: scale(1); }
+  [data-scroll][data-delay="1"] { transition-delay: 0.1s; } [data-scroll][data-delay="2"] { transition-delay: 0.2s; } [data-scroll][data-delay="3"] { transition-delay: 0.3s; } [data-scroll][data-delay="4"] { transition-delay: 0.4s; } [data-scroll][data-delay="5"] { transition-delay: 0.5s; } [data-scroll][data-delay="6"] { transition-delay: 0.6s; }
+  details > div { animation: faq-open 0.2s ease-out; }
+  @keyframes faq-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 </style>
-
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('[data-scroll]').forEach((el) => {
-    observer.observe(el);
-  });
-
-  // Counter animation for stats
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('[data-scroll]').forEach((el) => observer.observe(el));
   function animateCounter(el: HTMLElement) {
-    const target = parseInt(el.dataset.count || '0', 10);
-    const suffix = el.dataset.suffix || '';
-    const isLarge = el.dataset.large === 'true';
-    const duration = 1800;
-    const start = performance.now();
-
-    function formatNumber(n: number): string {
-      if (isLarge) {
-        return n.toLocaleString('de-DE');
-      }
-      return n.toString();
-    }
-
-    function tick(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      el.textContent = formatNumber(current) + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    }
-
+    const target = parseInt(el.dataset.count || '0', 10); if (target === 0) return;
+    const suffix = el.dataset.suffix || ''; const duration = 1800; const start = performance.now();
+    function tick(now: number) { const p = Math.min((now - start) / duration, 1); el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target) + suffix; if (p < 1) requestAnimationFrame(tick); }
     requestAnimationFrame(tick);
   }
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target as HTMLElement);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.stat-counter').forEach((el) => {
-    counterObserver.observe(el);
-  });
+  const cObs = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) { animateCounter(e.target as HTMLElement); cObs.unobserve(e.target); } }); }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-counter').forEach((el) => cObs.observe(el));
 </script>

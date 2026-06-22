@@ -1,7 +1,7 @@
 ---
-import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
-import NLHeader from '@/components/layout/NLHeader.astro';
-import NLFooter from '@/components/layout/NLFooter.astro';
+import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
+import ITHeader from '@/components/layout/ITHeader.astro';
+import ITFooter from '@/components/layout/ITFooter.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
@@ -9,16 +9,16 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
 
 const tabs = [
-  { label: 'FYSIOTHERAPIE', href: '/nl/fysiotherapie/' },
-  { label: 'KLINIEK', href: '/nl/kliniek/' },
-  { label: 'FITNESS', href: '/nl/fitness/' },
-  { label: 'BGM', href: '/nl/bedrijfsfitness/' },
+  { label: 'FISIOTERAPIA', href: '/it/fisioterapia/' },
+  { label: 'CLINICA', href: '/it/clinica/' },
+  { label: 'FITNESS', href: '/it/fitness/' },
+  { label: 'FITNESS AZIENDALE', href: '/it/fitness-aziendale/' },
 ];
 
 const stats = [
-  { value: '2,5M+', count: 2500000, suffix: '+', label: 'Gebruikers / Jaar', icon: 'users' },
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Klinieken & Revalidatiecentra', icon: 'globe' },
-  { value: '700+', count: 700, suffix: '+', label: 'Functionele Oefeningen', icon: 'zap' },
+  { value: '2,5M+', count: 2500000, suffix: '+', label: 'Utenti / Anno', icon: 'users' },
+  { value: '1.100+', count: 1100, suffix: '+', label: 'Cliniche & Centri di Riabilitazione', icon: 'globe' },
+  { value: '700+', count: 700, suffix: '+', label: 'Esercizi Funzionali', icon: 'zap' },
 ];
 
 const partnerLogos = [
@@ -35,89 +35,89 @@ const partnerLogos = [
 const features = [
   {
     icon: 'eye',
-    title: '2D Full-HD Camera',
-    description: 'Registreert 25 gewrichtspunten in realtime voor nauwkeurige bewegingsanalyse — zonder sensoren of wearables. Ideaal voor klinische patiënten die directe revalidatietherapie ontvangen.',
+    title: 'Telecamera 2D Full-HD',
+    description: 'Rileva 25 punti articolari in tempo reale per un\'analisi precisa del movimento — senza sensori né wearable. Ideale per i pazienti in percorso di riabilitazione clinica.',
   },
   {
     icon: 'monitor',
-    title: 'Virtuele Trainer op 43"',
-    description: 'Demonstreert oefeningen op het 43"-scherm en geeft directe visuele feedback — patiënten trainen zelfstandig onder supervisie, therapeuten worden ontlast bij de begeleiding.',
+    title: 'Trainer Virtuale su 43"',
+    description: 'Dimostra gli esercizi sullo schermo da 43" e fornisce feedback visivo immediato — i pazienti si allenano autonomamente sotto supervisione, i terapisti vengono alleggeriti.',
   },
   {
     icon: 'zap',
-    title: 'Realtime Correctie',
-    description: 'Onmiddellijke correctieve feedback tijdens de oefenuitvoering garandeert kwaliteit en veiligheid voor elke patiënt — ook bij complexe orthopedische of neurologische indicaties.',
+    title: 'Correzione in Tempo Reale',
+    description: 'Feedback correttivo istantaneo durante l\'esecuzione degli esercizi garantisce qualità e sicurezza per ogni paziente — anche nelle indicazioni ortopediche o neurologiche più complesse.',
   },
 ];
 
 const indications = [
-  { icon: '🧠', title: 'Neurologische Revalidatie', description: 'Bewegingstherapie bij MS, beroerte, Parkinson — met gestandaardiseerde kwaliteit op schaal.' },
-  { icon: '🦴', title: 'Orthopedische Revalidatie', description: 'Postoperatieve behandeling en bewegingsstoornissen: heup, knie, schouder, wervelkolom.' },
-  { icon: '🎗️', title: 'Oncologische Revalidatie', description: 'Bewegen als therapie bij kankerherstel — gepersonaliseerd voor vermoeidheid en functioneel herstel.' },
-  { icon: '👴', title: 'Geriatrische Revalidatie', description: 'Valpreventie en behoud van mobiliteit bij oudere patiënten — veilig en motiverend.' },
-  { icon: '❤️', title: 'Cardiologische Revalidatie', description: 'Functionele training na hartgebeurtenissen, altijd met realtime kwaliteitscontrole.' },
-  { icon: '🏥', title: 'Klinische Activering', description: 'Dagstructuur en bewegingsstimulering voor klinische patiënten gedurende het verblijf.' },
+  { icon: '🧠', title: 'Riabilitazione Neurologica', description: 'Terapia del movimento per SM, ictus, Parkinson — con qualità standardizzata su larga scala.' },
+  { icon: '🦴', title: 'Riabilitazione Ortopedica', description: 'Trattamento post-operatorio e disturbi del movimento: anca, ginocchio, spalla, colonna vertebrale.' },
+  { icon: '🎗️', title: 'Riabilitazione Oncologica', description: 'Il movimento come terapia nel percorso di recupero oncologico — personalizzato per affaticamento e recupero funzionale.' },
+  { icon: '👴', title: 'Riabilitazione Geriatrica', description: 'Prevenzione delle cadute e mantenimento della mobilità nei pazienti anziani — in modo sicuro e motivante.' },
+  { icon: '❤️', title: 'Riabilitazione Cardiologica', description: 'Allenamento funzionale dopo eventi cardiaci, sempre con controllo della qualità in tempo reale.' },
+  { icon: '🏥', title: 'Attivazione Clinica', description: 'Struttura giornaliera e stimolazione al movimento per i pazienti durante il ricovero.' },
 ];
 
 const benefits = [
   {
     icon: 'users',
-    title: 'Patiëntactivering',
-    description: 'Een motiverende digitale trainingsomgeving met gamification-elementen verhoogt aantoonbaar de actieve deelname van patiënten en de therapietrouw.',
+    title: 'Attivazione del Paziente',
+    description: 'Un ambiente di allenamento digitale motivante con elementi di gamification aumenta in modo misurabile la partecipazione attiva dei pazienti e l\'aderenza alla terapia.',
   },
   {
     icon: 'heart',
-    title: 'Ontlasting van Therapeuten',
-    description: 'Therapeuten begeleiden meerdere patiënten tegelijk en concentreren zich op manuele therapie en complexe gevallen — Pixformance verzorgt de standaardtraining.',
+    title: 'Alleggerimento del Personale',
+    description: 'I terapisti supervisionano più pazienti contemporaneamente, concentrandosi sulla terapia manuale e sui casi complessi — Pixformance gestisce l\'allenamento standard.',
   },
   {
     icon: 'trending-up',
-    title: 'Schaalbaarheid',
-    description: 'Tot 4 patiënten gelijktijdig op meerdere stations — met gepatenteerde software zonder extra personeel, met constante begeleidingskwaliteit.',
+    title: 'Scalabilità',
+    description: 'Fino a 4 pazienti contemporaneamente su più stazioni — con software brevettato, senza personale aggiuntivo, mantenendo una qualità di assistenza costante.',
   },
   {
     icon: 'file-text',
-    title: 'Automatische Documentatie',
-    description: 'Oefenuitvoering, Pixformance Score en voortgang worden automatisch opgeslagen op het online platform — geen handmatige registratie, volledige trainingsgeschiedenis.',
+    title: 'Documentazione Automatica',
+    description: 'L\'esecuzione degli esercizi, il Pixformance Score e i progressi vengono salvati automaticamente sulla piattaforma online — nessuna registrazione manuale, storico completo degli allenamenti.',
   },
   {
     icon: 'check-circle',
-    title: 'Therapietrouw',
-    description: 'Gamification-elementen en directe feedback verhogen de intrinsieke motivatie — patiënten blijven langer actief en voeren oefeningen nauwkeuriger uit.',
+    title: 'Aderenza alla Terapia',
+    description: 'Gli elementi di gamification e il feedback immediato aumentano la motivazione intrinseca — i pazienti mantengono i programmi più a lungo ed eseguono gli esercizi con maggiore precisione.',
   },
   {
     icon: 'shield',
-    title: 'Kwaliteitsborging',
-    description: 'Gestandaardiseerde oefenuitvoering via realtime correctieve feedback garandeert consistente behandelkwaliteit — ongeacht de bezetting van het personeel.',
+    title: 'Garanzia di Qualità',
+    description: 'L\'esecuzione standardizzata degli esercizi tramite feedback correttivo in tempo reale garantisce una qualità di trattamento costante — indipendentemente dai livelli di personale.',
   },
 ];
 
 const clinicalStudies = [
-  { title: 'Charité Berlin', finding: 'Significante verbetering van spierkracht en functionele mobiliteit na 8 weken Pixformance-training.' },
-  { title: 'Oxford Brookes University', finding: 'Aanzienlijke verbetering van balans en valpreventie bij geriatrische patiënten.' },
-  { title: 'FORTEe EU-project', finding: 'Technologiegestuurde bewegingstherapie verbetert revalidatieresultaten in Europese klinieken.' },
-  { title: 'AUVA OngevallenZiekenhuis Klagenfurt', finding: 'Hogere patiëntmotivatie en zelfstandige training onder supervisie in acute revalidatie.' },
-  { title: 'Medical Park Bad Rodach', finding: 'Vermindering van personele begeleidingstijd bij gelijkblijvende of betere therapiekwaliteit.' },
+  { title: 'Charité Berlin', finding: 'Miglioramento significativo della forza muscolare e della mobilità funzionale dopo 8 settimane di allenamento Pixformance.' },
+  { title: 'Oxford Brookes University', finding: 'Notevole miglioramento dell\'equilibrio e della prevenzione delle cadute nei pazienti geriatrici.' },
+  { title: 'Progetto UE FORTEe', finding: 'La terapia del movimento guidata dalla tecnologia migliora i risultati riabilitativi nelle cliniche europee.' },
+  { title: 'AUVA Unfallkrankenhaus Klagenfurt', finding: 'Maggiore motivazione del paziente e allenamento autonomo supervisionato nella riabilitazione acuta.' },
+  { title: 'Medical Park Bad Rodach', finding: 'Riduzione del tempo di accompagnamento del personale con qualità terapeutica invariata o migliorata.' },
 ];
 
 const medicalDeviceSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalDevice",
-  "name": "Pixformance Station — Digitale Revalidatieapparatuur voor Klinieken",
-  "description": "FDA Klasse 2 gecertificeerd digitaal revalidatieapparaat voor klinieken en revalidatiecentra. Realtime bewegingsanalyse, geautomatiseerde documentatie, tot 4 patiënten gelijktijdig.",
+  "name": "Pixformance Station — Dispositivo di Riabilitazione Digitale per Cliniche",
+  "description": "Dispositivo di riabilitazione digitale certificato FDA Classe 2 per cliniche e centri di riabilitazione. Analisi del movimento in tempo reale, documentazione automatizzata, fino a 4 pazienti contemporaneamente.",
   "manufacturer": {
     "@type": "Organization",
     "name": "Pixformance Sports GmbH",
     "url": "https://pixformance.com"
   },
-  "medicalSpecialty": ["Orthopedie", "Neurologie", "Geriatrie", "Cardiologie", "Oncologische Revalidatie"],
+  "medicalSpecialty": ["Ortopedia", "Neurologia", "Geriatria", "Cardiologia", "Riabilitazione Oncologica"],
   "recognizingAuthority": {
     "@type": "Organization",
     "name": "FDA — Food and Drug Administration",
     "url": "https://www.fda.gov"
   },
-  "regulatoryStatus": "FDA Klasse 2 medisch apparaat",
-  "url": "https://www.pixformance.com/nl/kliniek/"
+  "regulatoryStatus": "Dispositivo medico FDA Classe 2",
+  "url": "https://www.pixformance.com/it/clinica/"
 };
 
 const faqSchema = {
@@ -126,66 +126,66 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Welke klinieken gebruiken Pixformance?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance wordt gebruikt door meer dan 1.100 klinieken en revalidatiecentra, waaronder Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA en Mediclin." }
+      "name": "Quali cliniche usano Pixformance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance è utilizzato da oltre 1.100 cliniche e centri di riabilitazione, tra cui Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA e Mediclin." }
     },
     {
       "@type": "Question",
-      "name": "Is Pixformance gecertificeerd als medisch apparaat?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Pixformance is gecertificeerd als FDA Klasse 2 medisch apparaat en voldoet aan de klinische en reglementaire vereisten voor gebruik in klinieken en revalidatiecentra." }
+      "name": "Pixformance è certificato come dispositivo medico?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sì. Pixformance è certificato come dispositivo medico FDA Classe 2 e soddisfa i requisiti clinici e normativi per l'utilizzo in cliniche e centri di riabilitazione." }
     },
     {
       "@type": "Question",
-      "name": "Voor welke indicaties is Pixformance geschikt in klinieken?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance is geschikt voor neurologische (MS, beroerte, Parkinson), orthopedische, oncologische, geriatrische en cardiologische revalidatie, alsook voor klinische activering van patiënten." }
+      "name": "Per quali indicazioni è adatto Pixformance nelle cliniche?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance è adatto per la riabilitazione neurologica (SM, ictus, Parkinson), ortopedica, oncologica, geriatrica e cardiologica, nonché per l'attivazione clinica dei pazienti." }
     },
     {
       "@type": "Question",
-      "name": "Hoeveel patiënten kunnen gelijktijdig trainen op Pixformance?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Tot 4 patiënten kunnen gelijktijdig op meerdere Pixformance-stations trainen — zonder extra personeel dankzij gepatenteerde software voor bewegingsanalyse." }
+      "name": "Quanti pazienti possono allenarsi contemporaneamente su Pixformance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Fino a 4 pazienti possono allenarsi contemporaneamente su più stazioni Pixformance — senza personale aggiuntivo grazie al software brevettato per l'analisi del movimento." }
     },
     {
       "@type": "Question",
-      "name": "Hoe integreert Pixformance met klinische documentatiesystemen?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance slaat automatisch oefenuitvoering, Pixformance Score en voortgang op in het online platform. Exportopties voor klinische administratie en verzekeringsrapportage zijn beschikbaar." }
+      "name": "Come si integra Pixformance con i sistemi di documentazione clinica?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance salva automaticamente l'esecuzione degli esercizi, il Pixformance Score e i progressi sulla piattaforma online. Sono disponibili opzioni di esportazione per l'amministrazione clinica e la reportistica assicurativa." }
     },
     {
       "@type": "Question",
-      "name": "Welke ruimte en infrastructuur zijn nodig voor een Pixformance-station?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Een Pixformance-station heeft een vloeroppervlak van ca. 4–6 m² nodig, een standaard stroomaansluiting en een internetverbinding. Er zijn geen speciale bouwkundige aanpassingen vereist." }
+      "name": "Quale spazio e infrastruttura sono necessari per una stazione Pixformance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Una stazione Pixformance richiede una superficie di circa 4–6 m², una presa elettrica standard e una connessione internet. Non sono necessari adattamenti strutturali speciali." }
     },
     {
       "@type": "Question",
-      "name": "Hoe lang duurt de introductie voor patiënten?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Na slechts 30 minuten instructie kunnen patiënten zelfstandig onder supervisie trainen op Pixformance — dit vermindert de begeleidingstijd voor therapeuten aanzienlijk." }
+      "name": "Quanto tempo richiede l'introduzione per i pazienti?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dopo soli 30 minuti di istruzione, i pazienti possono allenarsi autonomamente sotto supervisione su Pixformance — riducendo significativamente il tempo di accompagnamento dei terapisti." }
     },
     {
       "@type": "Question",
-      "name": "Hoe verloopt de technische installatie en ondersteuning?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance verzorgt de volledige installatie inclusief technische installatie, personeelstraining en doorlopende ondersteuning. Klinieken ontvangen toegang tot het online beheersplatform." }
+      "name": "Come avviene l'installazione e il supporto tecnico?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pixformance gestisce l'installazione completa inclusa l'installazione tecnica, la formazione del personale e il supporto continuo. Le cliniche ricevono accesso alla piattaforma di gestione online." }
     }
   ]
 };
 ---
 
-<NLBaseLayout
-  title="Digitale Revalidatieapparatuur voor Klinieken — FDA Klasse 2 | Pixformance"
-  description="Pixformance voor revalidatieklinieken: FDA Klasse 2 gecertificeerd, 1.100+ klinieken (Charité, Medical Park, AUVA). Patiëntactivering, ontlasting van therapeuten, automatische documentatie."
+<ITBaseLayout
+  title="Dispositivi di Riabilitazione Digitale per Cliniche — FDA Classe 2 | Pixformance"
+  description="Pixformance per cliniche di riabilitazione: certificato FDA Classe 2, 1.100+ cliniche (Charité, Medical Park, AUVA). Attivazione pazienti, alleggerimento terapisti, documentazione automatica."
   hreflangDe="https://www.pixformance.com/klinik/"
   hreflangEn="https://www.pixformance.com/en/clinic/"
   jsonLd={[medicalDeviceSchema, faqSchema]}
 >
   <Fragment slot="head">
     <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/clinique/" />
-    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/clinica/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/kliniek/" />
   </Fragment>
 
-  <NLHeader slot="header" position="sticky">
+  <ITHeader slot="header" position="sticky">
     <PixformanceLogo slot="logo" variant="en" />
-  </NLHeader>
+  </ITHeader>
 
   <!-- Breadcrumb Tabs -->
-  <BreadcrumbTabs tabs={tabs} activeTab="/nl/kliniek/" />
+  <BreadcrumbTabs tabs={tabs} activeTab="/it/clinica/" />
 
   <!-- Hero Section -->
   <section class="relative bg-white overflow-hidden py-12 md:py-20">
@@ -194,34 +194,34 @@ const faqSchema = {
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 hover:border-[#02308C]/30 transition-all duration-300 cursor-pointer">
             <Icon name="zap" size="sm" />
-            FDA Klasse 2 Medisch Apparaat · 1.100+ Klinieken
+            Dispositivo Medico FDA Classe 2 · 1.100+ Cliniche
           </span>
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.3s;">
-          Digitale revalidatie die uw kliniek efficiënter maakt — zonder compromissen op begeleidingskwaliteit.
+          Riabilitazione digitale che rende la vostra clinica più efficiente — senza compromessi sulla qualità dell'assistenza.
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Meer dan 1.100 revalidatieklinieken en ziekenhuizen vertrouwen op Pixformance — van Charité Berlin tot Medical Park, AUVA en Oxford Brookes University. Het enige FDA Klasse 2 gecertificeerde digitale bewegingstherapieapparaat dat patiënten motiveert en therapeuten bevrijdt van routinewerk.
+          Oltre 1.100 cliniche di riabilitazione e ospedali si affidano a Pixformance — dalla Charité Berlin a Medical Park, AUVA e Oxford Brookes University. L'unico dispositivo di terapia del movimento digitale certificato FDA Classe 2 che motiva i pazienti e libera i terapisti dal lavoro di routine.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
           <Button
             size="lg"
-            href="/nl/gratis-proef/"
+            href="/it/prova-gratuita/"
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Gratis proberen
+            Prova gratuita
             <Icon name="arrow-right" size="sm" class="group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
           <Button
             size="lg"
             variant="outline"
-            href="/nl/concept/"
+            href="/it/contatto/"
             class="group hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Advies aanvragen
+            Richiedi consulenza
             <Icon name="phone" size="sm" class="group-hover:scale-110 transition-transform duration-300" />
           </Button>
         </div>
@@ -250,7 +250,7 @@ const faqSchema = {
   <section class="py-10 bg-gray-50 border-y border-gray-200" data-scroll="fade-up">
     <div class="container">
       <p class="text-center text-sm font-semibold text-foreground-muted uppercase tracking-widest mb-6">
-        Vertrouwd door toonaangevende klinieken
+        Scelto dalle principali cliniche
       </p>
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         {partnerLogos.map(logo => (
@@ -271,13 +271,13 @@ const faqSchema = {
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="layers" size="sm" />
-          Volledig verbonden systeem
+          Sistema completamente connesso
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Het Pixformance Station
+          La Stazione Pixformance
         </h2>
         <p class="text-lg text-foreground-muted mt-4 max-w-3xl mx-auto">
-          Geavanceerde bewegingsanalyse gecombineerd met therapeutische expertise — speciaal ontworpen voor klinische omgevingen.
+          Analisi avanzata del movimento combinata con l'esperienza terapeutica — progettata appositamente per ambienti clinici.
         </p>
       </div>
 
@@ -311,13 +311,13 @@ const faqSchema = {
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="activity" size="sm" />
-          Indicaties
+          Indicazioni
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Revalidatiefasen waarbij Pixformance helpt
+          Fasi di riabilitazione supportate da Pixformance
         </h2>
         <p class="text-lg text-foreground-muted mt-4 max-w-2xl mx-auto">
-          Van neurologie tot geriatrie — Pixformance ondersteunt de voornaamste klinische behandelindicaties.
+          Dalla neurologia alla geriatria — Pixformance supporta le principali indicazioni cliniche.
         </p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -344,10 +344,10 @@ const faqSchema = {
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="star" size="sm" />
-          Voordelen
+          Vantaggi
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Voordelen voor uw kliniek
+          Vantaggi per la vostra clinica
         </h2>
       </div>
 
@@ -381,13 +381,13 @@ const faqSchema = {
       <div class="text-center mb-8" data-scroll="fade-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
           <Icon name="check-circle" size="sm" />
-          Klinische Ervaringen
+          Esperienze Cliniche
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold">
-          Wat kliniekdirecteuren zeggen
+          Cosa dicono i direttori delle cliniche
         </h2>
         <p class="text-lg text-foreground-muted mt-4">
-          Ervaringen van therapeutisch leiders en kliniekdirecteuren
+          Esperienze di responsabili terapeutici e direttori di cliniche
         </p>
       </div>
 
@@ -398,7 +398,7 @@ const faqSchema = {
           data-delay="1"
         >
           <p class="text-base text-foreground-muted italic leading-relaxed mb-6">
-            "De patiënten zijn enthousiast en zeer gemotiveerd, wat eerlijk gezegd niet altijd vanzelfsprekend is. Wij als therapeuten profiteren daar natuurlijk ook van, want patiënten voeren hun oefeningen daardoor beter en doelgerichter uit. Bovendien besparen we tijd, want na slechts 30 minuten instructie kunnen patiënten zelfstandig onder supervisie trainen."
+            "I pazienti sono entusiasti e molto motivati, il che sinceramente non è sempre scontato. Naturalmente anche noi terapisti ne beneficiamo, poiché i pazienti eseguono i loro esercizi in modo migliore e più mirato. Inoltre risparmiamo tempo, perché dopo soli 30 minuti di istruzioni i pazienti possono esercitarsi autonomamente sotto supervisione."
           </p>
           <footer class="flex items-center gap-4">
             <img
@@ -409,8 +409,8 @@ const faqSchema = {
             />
             <div>
               <cite class="font-bold not-italic text-[#02308C]">Gabriele Buchstein</cite>
-              <p class="text-sm text-foreground-muted">Hoofd Fysiotherapie</p>
-              <p class="text-sm font-semibold text-[#02308C]">Sauerlandklinik Hachen – Neurologische Specialistenkliniek voor MS</p>
+              <p class="text-sm text-foreground-muted">Responsabile Fisioterapia</p>
+              <p class="text-sm font-semibold text-[#02308C]">Sauerlandklinik Hachen – Clinica Neurologica Specializzata per la Sclerosi Multipla</p>
             </div>
           </footer>
         </blockquote>
@@ -421,7 +421,7 @@ const faqSchema = {
           data-delay="2"
         >
           <p class="text-base text-foreground-muted italic leading-relaxed mb-6">
-            "Op zoek naar een manier om patiënten te activeren en tegelijk het personeel te ontlasten, ontdekten wij Pixformance. We waren op zoek naar een moderne manier van bewegen die tegelijkertijd het personeel ontlastte. Pixformance past perfect in ons zorgconcept."
+            "Cercando un modo per attivare i pazienti e alleggerire allo stesso tempo il personale, abbiamo scoperto Pixformance. Stavamo cercando un modo moderno di fare movimento che alleggerisse allo stesso tempo il personale. Pixformance si adatta perfettamente al nostro concetto di cura."
           </p>
           <footer class="flex items-center gap-4">
             <img
@@ -432,8 +432,8 @@ const faqSchema = {
             />
             <div>
               <cite class="font-bold not-italic text-[#02308C]">Christoph Schneider</cite>
-              <p class="text-sm text-foreground-muted">Hoofd Therapie</p>
-              <p class="text-sm font-semibold text-[#02308C]">Niederrhein-Klinik – Revalidatiekliniek Korschenbroich</p>
+              <p class="text-sm text-foreground-muted">Responsabile Terapia</p>
+              <p class="text-sm font-semibold text-[#02308C]">Niederrhein-Klinik – Clinica di Riabilitazione Korschenbroich</p>
             </div>
           </footer>
         </blockquote>
@@ -444,7 +444,7 @@ const faqSchema = {
           data-delay="3"
         >
           <p class="text-base text-foreground-muted italic leading-relaxed mb-6">
-            "Van de kant van de patiënten is er grote interesse in de Pixformance stations. Velen komen uit zichzelf en willen een trainingsprogramma. Dat maakt ons bijzonder blij — het laat zien dat Pixformance patiënten intrinsiek motiveert om te bewegen."
+            "Da parte dei pazienti c'è grande interesse per le stazioni Pixformance. Molti vengono spontaneamente e vogliono un programma di allenamento. Questo ci rende particolarmente felici — dimostra che Pixformance motiva intrinsecamente i pazienti a muoversi."
           </p>
           <footer class="flex items-center gap-4">
             <img
@@ -455,8 +455,8 @@ const faqSchema = {
             />
             <div>
               <cite class="font-bold not-italic text-[#02308C]">Christoph Oratsch</cite>
-              <p class="text-sm text-foreground-muted">Hoofd Therapie</p>
-              <p class="text-sm font-semibold text-[#02308C]">AUVA Ongevallensziekenhuis Klagenfurt</p>
+              <p class="text-sm text-foreground-muted">Responsabile Terapia</p>
+              <p class="text-sm font-semibold text-[#02308C]">AUVA Unfallkrankenhaus Klagenfurt</p>
             </div>
           </footer>
         </blockquote>
@@ -467,7 +467,7 @@ const faqSchema = {
           data-delay="4"
         >
           <p class="text-base text-foreground-muted italic leading-relaxed mb-6">
-            "Pixformance heeft onze revalidatieafdeling fundamenteel veranderd. Patiënten voeren oefeningen nauwkeuriger uit, de documentatie verloopt automatisch en ons team kan zich concentreren op wat echt telt: de individuele begeleiding van elke patiënt."
+            "Pixformance ha cambiato fondamentalmente il nostro reparto di riabilitazione. I pazienti eseguono gli esercizi con maggiore precisione, la documentazione avviene automaticamente e il nostro team può concentrarsi su ciò che conta davvero: l'accompagnamento individuale di ogni paziente."
           </p>
           <footer class="flex items-center gap-4">
             <img
@@ -479,7 +479,7 @@ const faqSchema = {
             />
             <div>
               <cite class="font-bold not-italic text-[#02308C]">Gunter Hölig</cite>
-              <p class="text-sm text-foreground-muted">Therapeutisch Directeur</p>
+              <p class="text-sm text-foreground-muted">Direttore Terapeutico</p>
               <p class="text-sm font-semibold text-[#02308C]">Medical Park Bad Rodach</p>
             </div>
           </footer>
@@ -495,13 +495,13 @@ const faqSchema = {
         <div class="text-center mb-8" data-scroll="fade-up">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
             <Icon name="book-open" size="sm" />
-            Klinisch Bewijs
+            Evidenza Clinica
           </span>
           <h2 class="font-display text-4xl md:text-5xl font-bold">
-            Wetenschappelijk onderbouwde positieve effecten
+            Effetti positivi scientificamente dimostrati
           </h2>
           <p class="text-lg text-foreground-muted mt-4 max-w-2xl mx-auto">
-            Pixformance is onderzocht door toonaangevende universiteiten en klinieken.
+            Pixformance è stato studiato da università e cliniche di eccellenza.
           </p>
         </div>
 
@@ -531,7 +531,7 @@ const faqSchema = {
             rel="noopener"
           >
             <Icon name="download" size="sm" />
-            Onderzoeksresultaten downloaden (PDF)
+            Scarica i risultati degli studi (PDF)
           </a>
         </div>
       </div>
@@ -545,91 +545,91 @@ const faqSchema = {
         <div class="text-center mb-8" data-scroll="fade-up">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
             <Icon name="help-circle" size="sm" />
-            Veelgestelde Vragen
+            Domande Frequenti
           </span>
           <h2 class="font-display text-4xl md:text-5xl font-bold">
-            Vragen van kliniekdirecteuren
+            Domande dei direttori di clinica
           </h2>
         </div>
 
         <div class="space-y-3">
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="1">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Welke klinieken gebruiken Pixformance?
+              Quali cliniche usano Pixformance?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Pixformance wordt gebruikt door meer dan 1.100 klinieken en revalidatiecentra, waaronder Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA en Mediclin.
+              Pixformance è utilizzato da oltre 1.100 cliniche e centri di riabilitazione, tra cui Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA e Mediclin.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="2">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Is Pixformance gecertificeerd als medisch apparaat?
+              Pixformance è certificato come dispositivo medico?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Ja. Pixformance is gecertificeerd als FDA Klasse 2 medisch apparaat en voldoet aan de klinische en reglementaire vereisten voor gebruik in klinieken en revalidatiecentra.
+              Sì. Pixformance è certificato come dispositivo medico FDA Classe 2 e soddisfa i requisiti clinici e normativi per l'utilizzo in cliniche e centri di riabilitazione.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="3">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Voor welke indicaties is Pixformance geschikt?
+              Per quali indicazioni è adatto Pixformance?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Pixformance is geschikt voor neurologische (MS, beroerte, Parkinson), orthopedische, oncologische, geriatrische en cardiologische revalidatie, alsook voor klinische activering van patiënten.
+              Pixformance è adatto per la riabilitazione neurologica (SM, ictus, Parkinson), ortopedica, oncologica, geriatrica e cardiologica, nonché per l'attivazione clinica dei pazienti.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="4">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Hoeveel patiënten kunnen gelijktijdig trainen?
+              Quanti pazienti possono allenarsi contemporaneamente?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Tot 4 patiënten kunnen gelijktijdig op meerdere Pixformance-stations trainen — zonder extra personeel dankzij gepatenteerde software voor bewegingsanalyse.
+              Fino a 4 pazienti possono allenarsi contemporaneamente su più stazioni Pixformance — senza personale aggiuntivo grazie al software brevettato per l'analisi del movimento.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="5">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Hoe integreert Pixformance met klinische documentatiesystemen?
+              Come si integra Pixformance con la documentazione clinica?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Pixformance slaat automatisch oefenuitvoering, Pixformance Score en voortgang op in het online platform. Exportopties voor klinische administratie en verzekeringsrapportage zijn beschikbaar.
+              Pixformance salva automaticamente l'esecuzione degli esercizi, il Pixformance Score e i progressi sulla piattaforma online. Sono disponibili opzioni di esportazione per l'amministrazione clinica e la reportistica assicurativa.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="6">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Welke ruimte is nodig voor een Pixformance-station?
+              Quale spazio è necessario per una stazione Pixformance?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Een Pixformance-station heeft een vloeroppervlak van ca. 4–6 m² nodig, een standaard stroomaansluiting en een internetverbinding. Er zijn geen speciale bouwkundige aanpassingen vereist.
+              Una stazione Pixformance richiede una superficie di circa 4–6 m², una presa elettrica standard e una connessione internet. Non sono necessari adattamenti strutturali speciali.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="7">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Hoe lang duurt de introductie voor patiënten?
+              Quanto tempo richiede l'introduzione per i pazienti?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Na slechts 30 minuten instructie kunnen patiënten zelfstandig onder supervisie trainen op Pixformance — dit vermindert de begeleidingstijd voor therapeuten aanzienlijk.
+              Dopo soli 30 minuti di istruzione, i pazienti possono allenarsi autonomamente sotto supervisione su Pixformance — riducendo significativamente il tempo di accompagnamento dei terapisti.
             </div>
           </details>
 
           <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="8">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Hoe verloopt de installatie en technische ondersteuning?
+              Come avviene l'installazione e il supporto tecnico?
               <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Pixformance verzorgt de volledige installatie inclusief technische installatie, personeelstraining en doorlopende ondersteuning. Klinieken ontvangen toegang tot het online beheersplatform.
+              Pixformance gestisce l'installazione completa inclusa l'installazione tecnica, la formazione del personale e il supporto continuo. Le cliniche ricevono accesso alla piattaforma di gestione online.
             </div>
           </details>
         </div>
@@ -644,37 +644,37 @@ const faqSchema = {
     <div class="container relative">
       <div class="max-w-4xl mx-auto text-center space-y-8" data-scroll="fade-up">
         <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
-          Klaar voor de digitale revalidatietransformatie?
+          Pronti per la trasformazione digitale della riabilitazione?
         </h2>
 
         <p class="text-xl text-white/90 max-w-2xl mx-auto">
-          Maak nu een afspraak voor een vrijblijvend adviesgesprek en ontdek hoe Pixformance uw therapie kan revolutioneren.
+          Fissate ora un appuntamento per una consulenza gratuita e scoprite come Pixformance può rivoluzionare la vostra terapia.
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center pt-4">
           <Button
             size="lg"
-            href="/nl/gratis-proef/"
+            href="/it/prova-gratuita/"
             class="bg-black text-white hover:bg-black/80"
           >
-            Gratis proberen
+            Prova gratuita
             <Icon name="arrow-right" size="sm" />
           </Button>
           <Button
             size="lg"
             variant="outline"
-            href="/nl/concept/"
+            href="/it/contatto/"
             class="border-2 border-black text-black hover:bg-black hover:text-white"
           >
-            Meer informatie
+            Maggiori informazioni
           </Button>
         </div>
       </div>
     </div>
   </section>
 
-  <NLFooter slot="footer" />
-</NLBaseLayout>
+  <ITFooter slot="footer" />
+</ITBaseLayout>
 
 <style>
   @keyframes hero-entry {
