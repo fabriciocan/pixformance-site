@@ -11,6 +11,7 @@ const stats = [
   { value: '2.5M+', label: 'Trainierende / Jahr', icon: 'users' },
   { value: '6.000+', label: 'Installationen weltweit', icon: 'activity' },
   { value: '700+', label: 'Funktionelle Übungen', icon: 'zap' },
+  { value: '25', label: 'Analysierte Gelenkpunkte in Echtzeit', icon: 'crosshair' },
 ];
 
 const features = [
@@ -132,28 +133,37 @@ const partners = [
 ---
 
 <BaseLayout
-  title="Pixformance – Digitale Fitnessgeräte & Therapiegeräte mit Echtzeit-Feedback"
-  description="Pixformance: Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 2.5M+ Trainierende/Jahr. 700+ Übungen. Echtzeit-Korrekturfeedback."
+  title="Pixformance — Digitales Bewegungstherapiesystem für Physiotherapie, Rehakliniken & Fitness"
+  description="Pixformance ist das vollvernetzte digitale Bewegungstherapiesystem: 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit. Eingesetzt in 6.000+ Physiotherapiepraxen, Rehakliniken und Fitnessstudios weltweit. FDA Klasse 2 Medizinprodukt. 2.5M+ Trainierende/Jahr."
   image="https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Pixformance – Digitale Fitnessgeräte & Therapiegeräte",
-      "description": "Digitale Bewegungsanalyse für Physiotherapie, Kliniken, Fitness & BGM. 2.5M+ Trainierende/Jahr. 700+ Übungen.",
+      "name": "Pixformance — Digitales Bewegungstherapiesystem für Physiotherapie, Rehakliniken & Fitness",
+      "description": "Vollvernetztes digitales Bewegungstherapiesystem. 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit. FDA Klasse 2 Medizinprodukt. 6.000+ Installationen weltweit.",
       "url": "https://pixformance.com",
       "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
     },
     {
       "@context": "https://schema.org",
-      "@type": "Product",
+      "@type": "MedicalDevice",
       "name": "Pixformance Station",
-      "description": "Digitales Trainingsgerät mit 2D Full-HD Kamera und Echtzeit-Bewegungsanalyse. 25 Gelenkpunkte, virtueller Personal Trainer, 700+ funktionelle Übungen.",
-      "brand": {"@type": "Brand", "name": "Pixformance"},
-      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH"},
-      "image": "https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg",
-      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR"},
-      "category": "Fitness Equipment"
+      "description": "FDA Klasse 2 zertifiziertes digitales Bewegungstherapiegerät mit patentierter 2D Full-HD Kamera und Echtzeit-Analyse von 25 Gelenkpunkten. Eingesetzt in Physiotherapiepraxen, Rehakliniken und Fitnessstudios. Klinisch validiert an der Charité Berlin und Oxford Brookes University.",
+      "manufacturer": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://pixformance.com"},
+      "recognizingAuthority": {"@type": "Organization", "name": "FDA — Food and Drug Administration"},
+      "regulatoryStatus": "FDA Klasse 2 Medizinprodukt",
+      "medicalSpecialty": ["Physiotherapie", "Rehabilitation", "Neurologie", "Orthopädie", "Sportmedizin"],
+      "image": "https://pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixformance 360° Konzept",
+      "description": "Vollvernetztes digitales Bewegungstherapiesystem bestehend aus der Pixformance Station (Hardware mit 2D Full-HD Kamera und 25-Gelenkpunkt-Analyse), der Pixformance Online Plattform (700+ funktionelle Übungen, Patientenverwaltung, Trainingsdokumentation) und der Pixformance Web App (Heimtraining und Telerehabilitation). Eingesetzt in Physiotherapiepraxen, Rehakliniken, Krankenhäusern und Fitnessstudios.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {"@type": "Offer", "availability": "https://schema.org/InStock"}
     }
   ]}
 >
@@ -161,6 +171,12 @@ const partners = [
     <!-- Preload LCP hero image to eliminate resource load delay -->
     <link rel="preload" href="/images/header-2-1350.webp" as="image" fetchpriority="high" media="(min-width: 769px)" />
     <link rel="preload" href="/images/hero-mobile.webp" as="image" fetchpriority="high" media="(max-width: 768px)" />
+    <link rel="alternate" hreflang="de" href="https://www.pixformance.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.pixformance.com/en/" />
+    <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/" />
+    <link rel="alternate" hreflang="nl" href="https://www.pixformance.com/nl/" />
+    <link rel="alternate" hreflang="it" href="https://www.pixformance.com/it/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.pixformance.com/en/" />
   </Fragment>
 
   <HeaderWithDropdown slot="header" position="sticky">
@@ -227,11 +243,11 @@ const partners = [
         </p>
 
         <p class="text-2xl md:text-3xl font-bold text-[#02308C] hero-animate" style="animation-delay: 0.4s;">
-          Mehr Umsatz. Mehr Entlastung.
+          Das digitale Bewegungstherapiesystem für Physiotherapie, Rehakliniken und Fitness
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Unsere Mission ist es, durch die beste Technologie für digitale Bewegungsanalyse, Gesundheits- und Fitnessexperten zu befähigen, ihr wirtschaftliches und professionelles Potential zu verwirklichen.
+          Pixformance ist ein vollvernetztes digitales System, das in über 6.000 Physiotherapiepraxen, Rehakliniken und Fitnessstudios weltweit eingesetzt wird. Die Pixformance Station analysiert mit einer patentierten 2D Full-HD Kamera in Echtzeit 25 Gelenkpunkte jedes Patienten und liefert sofortiges Korrekturfeedback — als FDA Klasse 2 Medizinprodukt, im klinischen Einsatz in der Charité Berlin, Medical Park, AUVA Klagenfurt und Oxford Brookes University, und seit 2012 kontinuierlich weiterentwickelt.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -255,7 +271,7 @@ const partners = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
@@ -288,13 +304,11 @@ const partners = [
           </div>
 
           <h2 class="font-display text-2xl md:text-4xl lg:text-5xl font-bold leading-tight break-words hyphens-auto text-center md:text-left">
-            Gesundheits- und Fitnessexperten befähigen
+            Das 360° Pixformance Konzept: Station, Online Plattform und Web App
           </h2>
 
           <p class="text-lg text-foreground-muted leading-relaxed text-center md:text-left">
-            Unsere Mission ist es, durch die beste Technologie für digitale Bewegungsanalyse,
-            Gesundheits- und Fitnessexperten zu befähigen, ihr wirtschaftliches und professionelles
-            Potential zu verwirklichen.
+            Das Pixformance 360° Konzept besteht aus drei vernetzten Komponenten: Die Pixformance Station analysiert Bewegungen in Echtzeit und gibt sofortiges Korrekturfeedback. Die Online Plattform ermöglicht Therapeuten und Trainern die Erstellung individueller Programme aus über 700 funktionellen Übungen. Die Web App ermöglicht Patienten und Mitgliedern den Zugriff auf ihre Programme zu Hause — für lückenlose Betreuung zwischen den Terminen.
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 pt-4">
@@ -370,6 +384,11 @@ const partners = [
               </div>
             </li>
           ))}
+          <li class="pt-4 border-t border-white/20">
+            <p class="text-white/80 text-sm leading-relaxed">
+              Pixformance ist als FDA Klasse 2 Medizinprodukt in den USA zugelassen, EU-Forschungspartner im FORTEe-Projekt und in der Charité Berlin sowie der Oxford Brookes University im klinischen Einsatz.
+            </p>
+          </li>
         </ul>
       </div>
     </div>
@@ -441,11 +460,10 @@ const partners = [
           Unsere Lösungen
         </span>
         <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-          Individuelle Lösungen
+          Eine Technologie — vier Anwendungsbereiche
         </h2>
         <p class="text-lg text-foreground-muted max-w-3xl mx-auto">
-          Als Pionier in der Gestaltung digitaler Business Transformationen bieten wir Ihnen
-          individuelle Lösungen für maximalen Erfolg.
+          Das Pixformance System wird in vier verschiedenen Bereichen eingesetzt, jeweils mit spezifischen Vorteilen für die jeweilige Einrichtung.
         </p>
       </div>
 
