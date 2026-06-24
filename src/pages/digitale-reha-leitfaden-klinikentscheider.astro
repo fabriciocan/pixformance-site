@@ -1,0 +1,529 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Digitale Reha: Leitfaden für Klinikentscheider – Beschaffung, Integration und ROI',
+  description:
+    'Praxisleitfaden für Klinikleitungen, Chefärzte und Einkauf: Wie digitale Bewegungstherapie (CE-Medizinprodukt MDR EU 2017/745) beschafft, integriert und wirtschaftlich betrieben wird. Mit Checkliste, ROI-Rechnung und Erfahrungswerten aus 1.100+ Kliniken.',
+  author: {
+    '@type': 'Organization',
+    name: 'Pixformance Sports GmbH',
+    url: 'https://www.pixformance.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Pixformance Sports GmbH',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.pixformance.com/img/logos/pixformance-logo-1024x1024.png',
+    },
+  },
+  datePublished: '2026-01-01',
+  dateModified: '2026-06-24',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider',
+  },
+  about: [
+    { '@type': 'Thing', name: 'Digitale Rehabilitation' },
+    { '@type': 'Thing', name: 'Bewegungstherapie' },
+    { '@type': 'Thing', name: 'Medizinprodukt CE MDR EU 2017/745' },
+    { '@type': 'Thing', name: 'Telerehabilitation' },
+  ],
+  keywords:
+    'digitale Reha, Klinikentscheider, Bewegungstherapie Beschaffung, CE Medizinprodukt Klinik, Telerehabilitation, ROI Rehabilitation, Pixformance Klinik',
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Wie Kliniken digitale Bewegungstherapie beschaffen und integrieren',
+  description:
+    'Schritt-für-Schritt-Anleitung für Kliniken zur Einführung eines CE-zertifizierten digitalen Bewegungstherapiesystems: von der Bedarfsanalyse über die Beschaffung bis zum Regelbetrieb.',
+  totalTime: 'P3M',
+  supply: [
+    { '@type': 'HowToSupply', name: 'Pixformance Station (CE-Medizinprodukt MDR EU 2017/745)' },
+    { '@type': 'HowToSupply', name: 'Internetzugang (min. 10 Mbit/s)' },
+    { '@type': 'HowToSupply', name: 'Stellfläche 4 m² pro Station' },
+    { '@type': 'HowToSupply', name: 'Steckdose 230 V' },
+  ],
+  step: [
+    {
+      '@type': 'HowToStep',
+      name: '1. Bedarfsanalyse & Zieldefinition',
+      text: 'Definieren Sie Patientengruppen (Ortho, Neuro, Onko), Stationsanzahl und KPIs (Durchsatz, Therapietreue). Pixformance-Berater erstellen einen kostenfreien Nutzungsplan.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-1',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '2. Beschaffung & Vergabe',
+      text: 'Europaweit ausschreibungsfrei bis €221.000 (UVgO). Leasing ab 99 €/Monat möglich. Lieferzeit 4–6 Wochen nach Auftragserteilung.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-2',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '3. Installation & technische Integration',
+      text: 'Aufstellung ohne Bauleistung: Plug-and-Play, 230 V, WLAN oder LAN. Integration in bestehende KIS/Dokumentationssysteme via PDF-Export und API möglich.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-3',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '4. Therapeutenschulung',
+      text: 'Zertifiziertes Online-Training (2h) + Live-Einweisung vor Ort. Keine Tagesausfälle erforderlich. Schulungsunterlagen in DE verfügbar.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-4',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '5. Pilotphase & Evaluation',
+      text: '30–60 Tage Pilotphase mit Tracking von Patientenzufriedenheit, Durchsatz und Therapeutenaufwand. Pixformance stellt Auswertungsvorlagen bereit.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-5',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '6. Regelbetrieb & Skalierung',
+      text: 'Im Regelbetrieb trainieren 4 Patienten gleichzeitig pro Station, unabhängig. Skalierung durch zusätzliche Stationen oder Telerehabilitation-Modul für Heimtraining.',
+      url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-6',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Ist Pixformance ein zugelassenes Medizinprodukt für Kliniken?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Die Pixformance Station ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das System ist klinisch validiert in Studien der Hochschule Fresenius und der Charité Berlin und wird in über 1.100 Kliniken und Rehazentren eingesetzt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Welche Infrastruktur ist für den Betrieb in einer Klinik nötig?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Pixformance Station benötigt ca. 4 m² Stellfläche, einen 230-V-Anschluss und einen stabilen Internetzugang (min. 10 Mbit/s). Es sind keine Umbaumaßnahmen erforderlich. Das System ist Plug-and-Play und betriebsbereit in unter 2 Stunden.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wie erfolgt die Abrechnung in der Klinik – über Kassenleistungen oder Selbstzahler?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pixformance-Einheiten können als KGG/KGM-Ziffern in der Physiotherapie abgerechnet werden. Zusätzlich ist ein Selbstzahlermodell für nicht kassenfinanzierte Einheiten möglich, z. B. im Bereich Prävention oder Reha-Sport. Die genaue Abrechnung hängt von Ihrer Kassenzulassung ab.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wie lange dauert die Implementierung von der Bestellung bis zum Regelbetrieb?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Erfahrungsgemäß dauert der Prozess von Bestellung bis Regelbetrieb 6–10 Wochen: 4–6 Wochen Lieferzeit + 1 Woche Installation und Schulung + 2–4 Wochen Pilotphase. Kliniken mit Vorerfahrung berichten von einem reibungslosen Start innerhalb von 4 Wochen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kann Pixformance für Telerehabilitation (Heimtraining) eingesetzt werden?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Das hybride Modell kombiniert klinisches Training (1×/Woche in der Einrichtung) mit Heimtraining (bis 6×/Woche) über die Pixformance Web App. Therapeuten überwachen die Compliance und passen Trainingspläne digital an. Das Hybridmodell ist bereits in der AUVA Klagenfurt und weiteren Rehazentren im Einsatz.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Digitale Reha: Leitfaden für Klinikentscheider | Pixformance"
+  description="Praxisleitfaden für Chefärzte und Klinikleitung: Wie digitale Bewegungstherapie (CE-Medizinprodukt) beschafft, integriert und wirtschaftlich betrieben wird. Checkliste, ROI-Rechnung, Erfahrungen aus 1.100+ Kliniken."
+  jsonLd={[articleSchema, howToSchema, faqSchema]}
+>
+  <HeaderWithDropdown />
+
+  <!-- Hero -->
+  <section class="bg-[#02308C] text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-[#6BDBD1] text-sm font-semibold uppercase tracking-widest mb-4">
+        Leitfaden für Klinikentscheider
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Digitale Reha: Wie Kliniken digitale Bewegungstherapie erfolgreich einführen
+      </h1>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl">
+        Von der Bedarfsanalyse über Beschaffung und Integration bis zum Regelbetrieb – ein
+        strukturierter Leitfaden für Chefärzte, Klinikleitungen und Einkauf.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <span class="bg-white/10 rounded-full px-4 py-1">CE-Medizinprodukt MDR EU 2017/745</span>
+        <span class="bg-white/10 rounded-full px-4 py-1">1.100+ Kliniken & Rehazentren</span>
+        <span class="bg-white/10 rounded-full px-4 py-1">Klinisch validiert</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro / Kontext -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-3xl mx-auto prose prose-lg">
+      <h2 class="text-3xl font-bold text-[#02308C] mb-6">
+        Warum digitale Bewegungstherapie für Kliniken relevant ist
+      </h2>
+      <p>
+        Rehabilitationskliniken, Krankenhäuser und Rehazentren stehen vor einer strukturellen
+        Herausforderung: Der Fachkräftemangel im therapeutischen Bereich wächst, während
+        Patientenvolumen und Dokumentationsaufwand steigen. Gleichzeitig verlangen Kostenträger
+        nachweisbare Therapieergebnisse und Effizienzgewinne.
+      </p>
+      <p>
+        Digitale Bewegungstherapiesysteme wie die Pixformance Station bieten eine klinisch
+        validierte Antwort: Patienten trainieren bis zu 6 Mal täglich selbstständig – gesteuert
+        und überwacht durch ein CE-zertifiziertes Medizinprodukt (MDR-konform EU 2017/745).
+        Therapeuten werden entlastet und können ihre Kapazitäten dort einsetzen, wo menschliche
+        Expertise tatsächlich gefordert ist.
+      </p>
+      <p>
+        Dieser Leitfaden richtet sich an Entscheider, die konkret planen: Chefärzte,
+        Klinikleitungen, Einkauf und Qualitätsmanagement. Er fasst die wesentlichen
+        Beschaffungs-, Integrations- und Betriebsfragen zusammen – basierend auf Erfahrungen
+        aus über 1.100 Kliniken und Rehazentren.
+      </p>
+    </div>
+  </section>
+
+  <!-- Schritt-für-Schritt-Leitfaden -->
+  <section class="py-16 px-4 bg-gray-50" id="schritt-1">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-[#02308C] mb-10 text-center">
+        Einführung in 6 Schritten
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Schritt 1 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-1">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">1</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Bedarfsanalyse & Zieldefinition</h3>
+              <p class="text-gray-700 mb-4">
+                Der Einstieg beginnt mit der Frage: Für welche Patientengruppen soll das System
+                primär eingesetzt werden? Orthopädie, Neurologie, Onkologie und Prävention haben
+                unterschiedliche Anforderungen an Übungsprogramme und Dokumentation.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                <li>Definieren Sie KPIs: Patientendurchsatz, Therapietreue, Therapeutenstunden</li>
+                <li>Legen Sie die Anzahl der benötigten Stationen fest (Faustregel: 1 Station je 32 Einheiten/Tag)</li>
+                <li>Klären Sie Stellflächen: min. 4 m² pro Station, empfohlen 6–8 m²</li>
+                <li>Pixformance-Berater erstellen auf Anfrage einen kostenfreien Raumplan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 2 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-2">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">2</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Beschaffung & Vergabe</h3>
+              <p class="text-gray-700 mb-4">
+                Die Beschaffung eines Pixformance-Systems ist für öffentliche Kliniken und
+                Krankenhäuser in der Regel ohne formales Vergabeverfahren möglich:
+              </p>
+              <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-2">Schwellenwerte DE (UVgO)</p>
+                  <p class="text-gray-700">Direktauftrag bis €50.000 netto, Verhandlungsvergabe bis €221.000 netto. Einzelstationen liegen regelmäßig unter diesen Grenzen.</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-2">Finanzierungsmodelle</p>
+                  <p class="text-gray-700">Kauf (Einmalbetrag), Leasing ab 99 €/Monat oder Mietmodell. Förderprogramme (Digitalisierung Krankenhaus, KfW) auf Anfrage prüfbar.</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-2">Lieferzeit</p>
+                  <p class="text-gray-700">4–6 Wochen nach Auftragserteilung. Lieferung frei Haus inkl. Aufstellung durch zertifizierte Techniker.</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-2">Zertifizierung & Compliance</p>
+                  <p class="text-gray-700">CE-Medizinprodukt (MDR EU 2017/745). Vollständige technische Dokumentation und Konformitätserklärung werden mitgeliefert.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 3 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-3">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">3</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Installation & technische Integration</h3>
+              <p class="text-gray-700 mb-4">
+                Die Station ist als Plug-and-Play-System konzipiert. Es sind keine Bauleistungen,
+                Wandmontagen oder IT-Spezialsoftware erforderlich.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                <li>Anschluss: 230 V Schutzkontaktsteckdose, Leistungsaufnahme &lt;200 W</li>
+                <li>Netzwerk: WLAN (WPA2) oder LAN (RJ45), min. 10 Mbit/s symmetrisch</li>
+                <li>Datenschutz: DSGVO-konformer Cloud-Betrieb auf deutschen Servern</li>
+                <li>Dokumentation: Therapiedaten exportierbar als PDF und CSV</li>
+                <li>KIS-Integration: API-Anbindung auf Anfrage verfügbar</li>
+              </ul>
+              <p class="text-gray-700 mt-4 text-sm">
+                Betriebsbereit typischerweise in unter 2 Stunden nach Lieferung.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 4 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-4">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">4</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Therapeutenschulung</h3>
+              <p class="text-gray-700 mb-4">
+                Das therapeutische Team benötigt keine technischen Vorkenntnisse. Die Schulung
+                umfasst zwei Module:
+              </p>
+              <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div class="bg-teal-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-1">Online-Zertifizierung</p>
+                  <p class="text-gray-700">~2 Stunden, asynchron absolvierbar. Enthält Bedienung, Patientenanlage, Programmauswahl und Dokumentation.</p>
+                </div>
+                <div class="bg-teal-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-1">Live-Einweisung vor Ort</p>
+                  <p class="text-gray-700">Halbtägig durch zertifizierten Pixformance-Trainer. Praxisteil mit eigenem Patientenfall. Keine Stationsschließung erforderlich.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 5 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-5">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">5</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Pilotphase & Evaluation</h3>
+              <p class="text-gray-700 mb-4">
+                Eine strukturierte Pilotphase von 30–60 Tagen ermöglicht die fundierte
+                Entscheidungsgrundlage für den Rollout.
+              </p>
+              <p class="text-gray-700 text-sm mb-3">Empfohlene Messwerte in der Pilotphase:</p>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                {[
+                  'Patientendurchsatz / Woche',
+                  'Therapieeinheiten / Station / Tag',
+                  'Patientenzufriedenheit (NRS)',
+                  'Therapeutenstunden eingespart',
+                ].map((m) => (
+                  <div class="bg-gray-50 rounded-lg p-3 text-center text-gray-700 text-xs font-medium">
+                    {m}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 6 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-[#6BDBD1]" id="schritt-6">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#02308C] text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shrink-0">6</div>
+            <div>
+              <h3 class="text-xl font-bold text-[#02308C] mb-3">Regelbetrieb & Skalierung</h3>
+              <p class="text-gray-700 mb-4">
+                Im Regelbetrieb ermöglicht jede Station den gleichzeitigen, selbstständigen Betrieb
+                für 4 Patienten – ohne durchgehende therapeutische Betreuung. Bei 8 Betriebsstunden
+                täglich ergibt das bis zu 32 Einheiten pro Station pro Tag.
+              </p>
+              <div class="bg-[#02308C] text-white rounded-xl p-5 text-sm mb-4">
+                <p class="font-semibold mb-2 text-[#6BDBD1]">Kapazitätsrechnung (1 Station)</p>
+                <p>1 Station × 4 Patienten × 8h/Tag × 45-min-Einheiten = <strong>32 Einheiten/Tag</strong></p>
+                <p class="mt-1 text-blue-200 text-xs">Quelle: Erfahrungswerte aus dem Klinikbetrieb</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Skalierung durch weitere Stationen oder Aktivierung des Telerehabilitation-Moduls
+                (bis 6× Heimtraining/Woche via Web App). Beides ohne neue Hardware-Infrastruktur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI-Rechnung -->
+  <section class="py-16 px-4 bg-[#02308C] text-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-10 text-center">Wirtschaftlichkeit: Typischer ROI im Klinikbetrieb</h2>
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white/10 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-[#6BDBD1] mb-2">32+</p>
+          <p class="text-blue-100 text-sm">Therapieeinheiten/Tag<br/>pro Station</p>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-[#6BDBD1] mb-2">4×</p>
+          <p class="text-blue-100 text-sm">Patienten gleichzeitig<br/>pro Therapeut</p>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 text-center">
+          <p class="text-4xl font-bold text-[#6BDBD1] mb-2">ab 99 €</p>
+          <p class="text-blue-100 text-sm">Monatlich (Leasing)<br/>pro Station</p>
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-2xl p-8">
+        <h3 class="text-xl font-semibold text-[#6BDBD1] mb-4">Beispielrechnung Physio-Klinik (1 Station)</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span class="text-blue-200">Einheiten/Monat (20 Arbeitstage × 32)</span>
+            <span class="font-semibold">640 Einheiten</span>
+          </div>
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span class="text-blue-200">Ø Erlös/Einheit (GKV KGG/KGM + Selbstzahler-Mix)</span>
+            <span class="font-semibold">~15–25 €</span>
+          </div>
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span class="text-blue-200">Monatlicher Rohertrag (konservativ, 15 €)</span>
+            <span class="font-semibold text-[#6BDBD1]">~9.600 €</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-blue-200">Kosten Station (Leasing ab)</span>
+            <span class="font-semibold">ab 99 €/Monat</span>
+          </div>
+        </div>
+        <p class="text-xs text-blue-300 mt-4">Kalkulatorische Übersicht. Tatsächliche Erlöse variieren je nach Kassenzulassung, Fachgebiet und Auslastung. Individuelle Wirtschaftlichkeitsberechnung auf Anfrage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Klinische Validierung -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-[#02308C] mb-8 text-center">Klinische Evidenz & Referenzen</h2>
+      <p class="text-gray-600 text-center max-w-2xl mx-auto mb-10">
+        Pixformance ist nicht nur CE-zertifiziert – das System ist in klinischen Studien validiert
+        und in Leitkliniken im Einsatz.
+      </p>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold text-[#02308C] mb-4">Peer-reviewte Studien</h3>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>BMC Cancer:</strong> Bewegungstherapie bei onkologischen Patienten – signifikante Verbesserung von Ausdauer und Lebensqualität</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Hochschule Fresenius:</strong> Studien zu MS, Parkinson, Muskeldystrophie und Brustkrebs-Nachsorge</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>FORTEe (Horizon 2020, €6,3 Mio.):</strong> EU-Forschungsprojekt zur Bewegungstherapie bei krebskranken Kindern</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Oxford Brookes University:</strong> Klinische Validierung und laufende Studienpartnerschaft</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-[#02308C] mb-4">Referenzeinrichtungen (Auswahl)</h3>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Charité Berlin</strong> – Universitätsmedizin, Neurologie & Rehabilitation</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>AUVA Klagenfurt</strong> – Unfallchirurgische Rehabilitation, Hybridmodell</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Medical Park Bad Rodach</strong> – Orthopädische Rehabilitation</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Sauerlandklinik Hachen</strong> – Rehabilitationsklinik</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[#6BDBD1] font-bold mt-0.5">▸</span>
+              <span><strong>Niederrhein-Klinik / MediClin</strong> – Neurologische Rehabilitation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <a href="/studienergebnisse" class="text-[#02308C] font-semibold underline underline-offset-2 hover:text-[#6BDBD1] transition-colors">
+          Alle Studienergebnisse ansehen →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-[#02308C] mb-10 text-center">
+        Häufige Fragen von Klinikentscheidern
+      </h2>
+      <div class="space-y-4">
+        {[
+          {
+            q: 'Ist Pixformance ein zugelassenes Medizinprodukt für Kliniken?',
+            a: 'Ja. Die Pixformance Station ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das System ist klinisch validiert und wird in über 1.100 Kliniken und Rehazentren eingesetzt.',
+          },
+          {
+            q: 'Welche Infrastruktur ist für den Betrieb in einer Klinik nötig?',
+            a: 'Ca. 4 m² Stellfläche, eine 230-V-Steckdose und stabiles Internet (min. 10 Mbit/s). Keine Bauleistungen, keine IT-Sonderprojekte. Betriebsbereit in unter 2 Stunden.',
+          },
+          {
+            q: 'Wie erfolgt die Abrechnung – Kassenleistungen oder Selbstzahler?',
+            a: 'Pixformance-Einheiten können als KGG/KGM-Ziffern abgerechnet werden. Ergänzend ist ein Selbstzahlermodell für nicht-kassenfinanzierte Einheiten (Prävention, Reha-Sport) möglich. Die genaue Abrechnung hängt von Ihrer Kassenzulassung ab.',
+          },
+          {
+            q: 'Wie lange dauert die Implementierung bis zum Regelbetrieb?',
+            a: '6–10 Wochen: 4–6 Wochen Lieferzeit, 1 Woche Installation und Schulung, 2–4 Wochen Pilotphase. Kliniken mit Vorerfahrung starten oft innerhalb von 4 Wochen.',
+          },
+          {
+            q: 'Kann Pixformance für Telerehabilitation eingesetzt werden?',
+            a: 'Ja. Das hybride Modell kombiniert klinisches Training (1×/Woche) mit Heimtraining (bis 6×/Woche) über die Pixformance Web App. Bereits im Einsatz u. a. in der AUVA Klagenfurt.',
+          },
+        ].map((faq) => (
+          <details class="bg-white rounded-xl p-6 shadow-sm group">
+            <summary class="font-semibold text-[#02308C] cursor-pointer list-none flex justify-between items-start gap-4">
+              <span>{faq.q}</span>
+              <span class="text-[#6BDBD1] text-xl mt-0.5 shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="text-gray-700 text-sm mt-4 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-3xl font-bold text-[#02308C] mb-4">Bereit für den nächsten Schritt?</h2>
+      <p class="text-gray-600 mb-8">
+        Unser Klinik-Team begleitet Sie von der Bedarfsanalyse bis zum Regelbetrieb.
+        Kostenlose Erstberatung, individueller Raumplan, Wirtschaftlichkeitsrechnung.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/klinik" variant="primary">Zur Klinik-Seite</Button>
+        <Button href="/testen" variant="secondary">Beratung anfragen</Button>
+      </div>
+      <p class="text-gray-400 text-xs mt-6">
+        CE-Medizinprodukt · MDR EU 2017/745 · Seit 2012 · 1.100+ Kliniken & Rehazentren
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

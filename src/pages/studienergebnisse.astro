@@ -17,27 +17,53 @@ const clientLogos = [
 ---
 
 <BaseLayout
-  title="Klinische Studienergebnisse – Pixformance als FDA Klasse 2 Medizinprodukt, peer-reviewed belegt"
-  description="Peer-reviewed klinische Studien belegen die Wirksamkeit von Pixformance bei Parkinson, Multipler Sklerose, Mamma-Karzinom und Muskeldystrophie. FDA Klasse 2 Medizinprodukt, eingesetzt in Charité Berlin, Medical Park, AUVA und Oxford Brookes University."
+  title="Klinische Studienergebnisse – Pixformance CE-Medizinprodukt, peer-reviewed belegt"
+  description="Peer-reviewed klinische Studien belegen die Wirksamkeit von Pixformance bei Parkinson, Multipler Sklerose, Mamma-Karzinom und Muskeldystrophie. CE-Medizinprodukt (MDR EU 2017/745), eingesetzt in Charité Berlin, Medical Park, AUVA und Oxford Brookes University."
   jsonLd={[
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Klinische Studienergebnisse – Pixformance",
-      "description": "Peer-reviewed klinische Studien zur Wirksamkeit von Pixformance (FDA Klasse 2 Medizinprodukt) in Neurologie, Onkologie und Orthopädie.",
+      "description": "Peer-reviewed klinische Studien zur Wirksamkeit von Pixformance (CE-Medizinprodukt, MDR EU 2017/745) in Neurologie, Onkologie und Orthopädie.",
       "url": "https://pixformance.com/studienergebnisse",
       "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com"},
-      "about": {"@type": "MedicalDevice", "name": "Pixformance Station", "legalStatus": "FDA Klasse 2 Medizinprodukt"}
+      "about": {"@type": "MedicalDevice", "name": "Pixformance Station", "legalStatus": "CE-Medizinprodukt MDR EU 2017/745"}
     },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
       "name": "Klinische Studien zu Pixformance",
-      "numberOfItems": 5,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
+          "item": {
+            "@type": "ScholarlyArticle",
+            "name": "Sport bei Mamma-Karzinom: Verbesserung von Lebensqualität und körperlicher Leistungsfähigkeit",
+            "about": "Mamma-Karzinom – Sport in der Krebstherapie",
+            "datePublished": "2025-08",
+            "isPartOf": {"@type": "Periodical", "name": "BMC Cancer", "publisher": {"@type": "Organization", "name": "Springer Nature"}},
+            "description": "Peer-reviewed Studie (BMC Cancer, Aug 2025): Wirksamkeit von Bewegungstherapie bei Brustkrebspatientinnen. Nachgewiesene Verbesserungen bei körperlicher Leistungsfähigkeit und Lebensqualität.",
+            "keywords": "Mamma-Karzinom, Brustkrebs, Onkologie, Bewegungstherapie, BMC Cancer, peer-reviewed, Springer Nature"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "ScholarlyArticle",
+            "name": "Digitale Bewegungstherapie bei neurologischen Erkrankungen: Wirksamkeit und Patientenzufriedenheit",
+            "about": "Neurologie – Digitale Bewegungstherapie",
+            "datePublished": "2025-02",
+            "isPartOf": {"@type": "Periodical", "name": "Journal of Medical Internet Research (JMIR)", "publisher": {"@type": "Organization", "name": "JMIR Publications"}},
+            "description": "Peer-reviewed Studie (JMIR, Feb 2025): Wirksamkeit und Patientenzufriedenheit bei digitalem Bewegungstraining in neurologischen Indikationen (Parkinson, Multiple Sklerose).",
+            "keywords": "Neurologie, Parkinson, Multiple Sklerose, digitale Therapie, Patientenzufriedenheit, JMIR, peer-reviewed"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "item": {
             "@type": "ScholarlyArticle",
             "name": "Effect of Pixformance training on gait ability and mobility in Parkinson patients",
@@ -49,7 +75,7 @@ const clientLogos = [
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 4,
           "item": {
             "@type": "ScholarlyArticle",
             "name": "Effect of Pixformance training on gait ability and quality of life in Multiple Sclerosis patients",
@@ -61,40 +87,33 @@ const clientLogos = [
         },
         {
           "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "ScholarlyArticle",
-            "name": "Exercise therapy with Pixformance in breast cancer aftercare – BMC Cancer",
-            "about": "Mamma-Karzinom – Sport in der Krebstherapie",
-            "datePublished": "2025-08",
-            "publisher": {"@type": "Organization", "name": "BMC Cancer (Springer Nature)"},
-            "description": "Peer-reviewed Studie (BMC Cancer, Aug 2025): Wirksamkeit von Bewegungstherapie bei Brustkrebspatientinnen. Nachgewiesene Verbesserungen bei körperlicher Leistungsfähigkeit und Lebensqualität.",
-            "keywords": "Mamma-Karzinom, Brustkrebs, Onkologie, Bewegungstherapie, BMC Cancer, peer-reviewed"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "item": {
             "@type": "ScholarlyArticle",
             "name": "Empirical verification of training effects with Pixformance – functional training and muscle strength",
             "about": "Muskeln – Kraft & Funktionelles Training",
+            "datePublished": "2023-08",
             "publisher": {"@type": "Organization", "name": "Hochschule Fresenius Frankfurt"},
+            "sameAs": "https://www.researchgate.net/publication/pixformance-functional-training",
             "description": "Studie zur Untersuchung der Trainingseffekte durch funktionelles Training mit Pixformance. Empirische Überprüfung der Verbesserungen bei Muskelkraft und Bewegungsqualität.",
-            "keywords": "Muskelkraft, funktionelles Training, Bewegungsqualität, Orthopädie"
+            "keywords": "Muskelkraft, funktionelles Training, Bewegungsqualität, Orthopädie, ResearchGate"
           }
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "item": {
             "@type": "ScholarlyArticle",
-            "name": "FORTEe – EU Horizon 2020 exercise therapy for children with cancer",
+            "name": "Get strong to fight childhood cancer – an exercise intervention for children and adolescents undergoing anti-cancer treatment (FORTEe): Rationale and design of a randomized controlled exercise trial",
             "about": "FORTEe – EU Forschungsprojekt Kinderonkologie",
-            "funder": {"@type": "Organization", "name": "Europäische Union – Horizon 2020"},
-            "publisher": {"@type": "Organization", "name": "FORTEe Consortium"},
-            "description": "EU Horizon 2020 Forschungsprojekt: Bewegungstherapie für Kinder und Jugendliche mit Krebs. Pixformance ist EU-Forschungspartner.",
-            "keywords": "FORTEe, Kinderonkologie, EU Horizon 2020, Bewegungstherapie, Kinderkrebs"
+            "datePublished": "2025",
+            "identifier": {"@type": "PropertyValue", "propertyID": "doi", "value": "10.1186/s12885-025-14489-y"},
+            "sameAs": "https://bmccancer.biomedcentral.com/articles/10.1186/s12885-025-14489-y",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40775303/",
+            "isPartOf": {"@type": "Periodical", "name": "BMC Cancer", "publisher": {"@type": "Organization", "name": "Springer Nature"}},
+            "funder": {"@type": "Organization", "name": "Europäische Union – Horizon 2020", "url": "https://cordis.europa.eu/project/id/945153"},
+            "description": "Peer-reviewed RCT (BMC Cancer, 2025, DOI: 10.1186/s12885-025-14489-y): Randomisierte, kontrollierte multizentrische Studie zur Bewegungstherapie für Kinder und Jugendliche mit Krebs. Pixformance ist EU-Forschungspartner im FORTEe Horizon-2020-Projekt (€6,3 Mio.).",
+            "keywords": "FORTEe, Kinderonkologie, EU Horizon 2020, Bewegungstherapie, Kinderkrebs, BMC Cancer, RCT"
           }
         }
       ]
@@ -128,7 +147,7 @@ const clientLogos = [
         </p>
 
         <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.35s;">
-          Pixformance ist ein FDA Klasse 2 Medizinprodukt, das in der Charité Berlin, Medical Park, AUVA Klagenfurt und der Oxford Brookes University klinisch eingesetzt wird. Mehrere peer-reviewed Studien — publiziert u. a. in BMC Cancer (Springer Nature) und JMIR — belegen die positive Wirkung auf Gehfähigkeit, Lebensqualität und Bewegungsqualität bei Parkinson, Multipler Sklerose, Mamma-Karzinom und Muskeldystrophie. Als EU-Forschungspartner im Horizon-2020-Projekt FORTEe entwickelt Pixformance Bewegungstherapie für Kinder mit Krebs.
+          Pixformance ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745), das in der Charité Berlin, Medical Park, AUVA Klagenfurt und der Oxford Brookes University klinisch eingesetzt wird. Mehrere peer-reviewed Studien — publiziert u. a. in BMC Cancer (Springer Nature) und JMIR — belegen die positive Wirkung auf Gehfähigkeit, Lebensqualität und Bewegungsqualität bei Parkinson, Multipler Sklerose, Mamma-Karzinom und Muskeldystrophie. Als EU-Forschungspartner im Horizon-2020-Projekt FORTEe entwickelt Pixformance Bewegungstherapie für Kinder mit Krebs.
         </p>
 
         <div class="flex flex-wrap justify-center gap-4 hero-animate" style="animation-delay: 0.4s;">
@@ -205,10 +224,15 @@ const clientLogos = [
             <h3 class="font-bold text-base mb-2">Digitale Bewegungstherapie bei neurologischen Erkrankungen: Wirksamkeit und Patientenzufriedenheit</h3>
             <p class="text-sm text-foreground-muted">Journal of Medical Internet Research · Peer-reviewed · Neurologie</p>
           </div>
-          <div class="bg-white rounded-2xl p-6 border border-[#02308C]/10 shadow-sm" data-scroll="fade-up" data-delay="3">
-            <span class="inline-block px-3 py-1 rounded-full bg-[#6BDBD1]/20 text-[#02308C] text-xs font-bold mb-3">ResearchGate · Aug 2023</span>
-            <h3 class="font-bold text-base mb-2">Wirksamkeit des funktionellen Bewegungstrainings mit der Pixformance Station</h3>
-            <p class="text-sm text-foreground-muted">ResearchGate · Hochschule Fresenius Frankfurt · Orthopädie / Prävention</p>
+          <div class="bg-white rounded-2xl p-6 border border-[#02308C]/10 shadow-sm flex flex-col" data-scroll="fade-up" data-delay="3">
+            <span class="inline-block px-3 py-1 rounded-full bg-[#6BDBD1]/20 text-[#02308C] text-xs font-bold mb-3">BMC Cancer · 2025 · FORTEe RCT</span>
+            <h3 class="font-bold text-base mb-2 grow">Get strong to fight childhood cancer – FORTEe: Bewegungstherapie für Kinder mit Krebs (RCT)</h3>
+            <div class="space-y-1 mt-2">
+              <p class="text-sm text-foreground-muted">Springer Nature · Peer-reviewed · Kinderonkologie · EU Horizon 2020</p>
+              <a href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-025-14489-y" target="_blank" rel="noopener noreferrer" class="inline-block text-xs text-[#02308C] font-semibold hover:underline">
+                DOI: 10.1186/s12885-025-14489-y →
+              </a>
+            </div>
           </div>
         </div>
       </div>

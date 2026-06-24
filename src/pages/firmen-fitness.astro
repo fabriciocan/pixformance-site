@@ -79,19 +79,75 @@ const performanceBenefits = [
 <BaseLayout
   title="Betriebliches Gesundheitsmanagement mit Pixformance — Digitales Bewegungssystem für Unternehmen"
   description="Pixformance BGM: Digitales Bewegungsanalyse-System für Unternehmen. 25 Gelenkpunkte Echtzeit-Analyse. Steuerlich absetzbar. Reduzierte Fehlzeiten, stärkere Mitarbeiterbindung."
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pixformance Betriebliches Gesundheitsmanagement",
-    "description": "Digitales Bewegungsanalyse-System für betriebliches Gesundheitsmanagement. Die Pixformance Station analysiert 25 Gelenkpunkte in Echtzeit und ermöglicht eigenständiges, sicheres Functional Training im Unternehmen — ohne permanente Traineranwesenheit. Steuerlich absetzbar. Reduziert Fehlzeiten und stärkt Mitarbeiterbindung.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Pixformance Sports GmbH",
-      "url": "https://www.pixformance.com"
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pixformance Betriebliches Gesundheitsmanagement",
+      "description": "Digitales Bewegungsanalyse-System für betriebliches Gesundheitsmanagement. Die Pixformance Station analysiert 25 Gelenkpunkte in Echtzeit und ermöglicht eigenständiges, sicheres Functional Training im Unternehmen — ohne permanente Traineranwesenheit. Steuerlich absetzbar. Reduziert Fehlzeiten und stärkt Mitarbeiterbindung.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pixformance Sports GmbH",
+        "url": "https://www.pixformance.com"
+      },
+      "serviceType": "Betriebliches Gesundheitsmanagement",
+      "areaServed": ["DE","AT","CH"]
     },
-    "serviceType": "Betriebliches Gesundheitsmanagement",
-    "areaServed": ["DE","AT","CH"]
-  }}
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert Pixformance im betrieblichen Gesundheitsmanagement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Pixformance Station wird in den Büroräumen oder im Fitnessbereich des Unternehmens aufgestellt. Mitarbeiter stellen sich vor die Station, scannen ihren QR-Code und starten automatisch ihr persönliches Trainingsprogramm. Ein virtueller Trainer zeigt jede Übung auf dem Display vor und gibt sofortiges Korrekturfeedback. Kein dauerhafter Trainer erforderlich — das System übernimmt Anleitung, Korrektur und Dokumentation. Training ist in Bürokleidung zwischendurch oder als strukturiertes Programm möglich."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist Pixformance steuerlich absetzbar für Unternehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Firmenfitness wird steuerlich unterstützt. Bis zu 500 Euro kann ein Unternehmen pro Mitarbeiter und pro Jahr lohnsteuerfrei für Gesundheitsmaßnahmen investieren (§ 3 Nr. 34 EStG). Pixformance qualifiziert als Maßnahme zur Gesundheitsförderung im Betrieb. Sprechen Sie dazu mit Ihrem Steuerberater."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Können Mitarbeiter ohne Trainer mit Pixformance trainieren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja — das ist ein zentraler Vorteil von Pixformance im BGM-Kontext. Mitarbeiter können eigenständig trainieren, da das System vollautomatisch anleitet und Bewegungen in Echtzeit korrigiert. Nach einer kurzen Einweisung (ca. 30 Minuten) können Mitarbeiter selbstständig trainieren. Das ermöglicht flexibles Training — auch außerhalb der Kernarbeitszeiten, ohne Personalkosten für einen Trainer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viel Platz braucht eine Pixformance Station im Büro oder Unternehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eine Pixformance Station benötigt ca. 6 m² Grundfläche, einen Stromanschluss und einen Internetanschluss (Ethernet bevorzugt). Das Gerät wiegt 65 kg und kann flexibel aufgestellt werden — im Büroflur, in einem separaten Fitnessraum oder in einer Kantine. Der Trainingsabstand zur Station beträgt ca. 1,60 m bis 2,30 m."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie reduziert Pixformance Fehlzeiten im Unternehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sportlich aktive Mitarbeiter fehlen durchschnittlich 2–6 Tage weniger pro Jahr. Pixformance ermöglicht regelmäßiges funktionelles Training direkt im Unternehmen — ohne Anfahrt zu einem externen Studio. Das senkt Hemmschwellen, erhöht Trainingskontinuität und wirkt präventiv gegen Rücken-, Schulter- und Gelenkbeschwerden — die häufigsten Ursachen für krankheitsbedingte Fehlzeiten in deutschen Unternehmen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie wird der Trainingserfolg der Mitarbeiter dokumentiert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alle Trainingsdaten werden automatisch auf der Pixformance Online Plattform gespeichert: Übungsausführung, Pixformance Score pro Session, Trainingsfrequenz und Fortschritt über Zeit. HR- oder BGM-Verantwortliche haben Zugriff auf aggregierte Auswertungen zur Nutzung und Wirksamkeit des Programms — ohne Einsicht in persönliche Gesundheitsdaten einzelner Mitarbeiter."
+          }
+        }
+      ]
+    }
+  ]}
 >
   <Fragment slot="head">
     <link rel="alternate" hreflang="de" href="https://www.pixformance.com/firmen-fitness/" />
