@@ -1,0 +1,178 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout
+  title="Ihr Download steht bereit | Pixformance"
+  description="Vielen Dank – Ihr Pixformance-Dokument steht zum Download bereit."
+  jsonLd={null}
+>
+  <header class="bg-white border-b border-gray-100 py-4 px-6">
+    <a href="/">
+      <PixformanceLogo variant="black" size="md" />
+    </a>
+  </header>
+
+  <main class="min-h-screen bg-gray-50 py-16 px-4">
+    <div class="max-w-lg mx-auto text-center">
+
+      <!-- Success icon -->
+      <div class="w-16 h-16 rounded-full bg-[#6BDBD1]/20 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-[#02308C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Vielen Dank!</h1>
+      <p class="text-gray-500 mb-8">Ihr Dokument steht sofort zum Download bereit.</p>
+
+      <!-- Download card — populated by JS -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8">
+        <div class="w-12 h-12 rounded-xl bg-[#02308C]/10 flex items-center justify-center mx-auto mb-4 text-2xl">
+          📄
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#6BDBD1] mb-1" id="doc-label">Ihr Dokument</p>
+        <p class="font-bold text-lg text-gray-900 mb-1" id="doc-title">Wird geladen…</p>
+        <p class="text-sm text-gray-500 mb-6" id="doc-desc"></p>
+
+        <a
+          id="download-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#021d54] transition-colors duration-200 text-base"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          PDF herunterladen
+        </a>
+
+        <p class="text-xs text-gray-400 mt-4">
+          Falls der Download nicht startet,
+          <a id="download-link-text" href="#" target="_blank" rel="noopener noreferrer" class="text-[#02308C] hover:underline">klicken Sie hier</a>.
+        </p>
+      </div>
+
+      <!-- Next steps -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 text-left space-y-4">
+        <p class="font-semibold text-gray-700 text-sm">Nächste Schritte</p>
+        <div class="flex gap-3 items-start">
+          <span class="text-[#6BDBD1] font-bold text-lg mt-0.5">▸</span>
+          <div>
+            <p class="text-sm font-semibold text-gray-800">Kostenlose Beratung anfragen</p>
+            <p class="text-xs text-gray-500">Unser Team beantwortet Ihre Fragen persönlich – unverbindlich.</p>
+            <a href="/testen" class="text-xs text-[#02308C] font-semibold hover:underline mt-1 inline-block">Beratung anfragen →</a>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="text-[#6BDBD1] font-bold text-lg mt-0.5">▸</span>
+          <div>
+            <p class="text-sm font-semibold text-gray-800">Alle Studienergebnisse ansehen</p>
+            <p class="text-xs text-gray-500">Peer-reviewed Evidenz für Physiotherapie, Klinik und Prävention.</p>
+            <a href="/studienergebnisse" class="text-xs text-[#02308C] font-semibold hover:underline mt-1 inline-block">Studien ansehen →</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-gray-400 mt-8">
+        © Pixformance Sports GmbH · CE-Medizinprodukt MDR EU 2017/745
+      </p>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  const DOCS: Record<string, { title: string; label: string; desc: string; file: string }> = {
+    'studienergebnisse': {
+      label: 'Studienergebnisse 2024',
+      title: 'Wissenschaftlich nachgewiesene positive Effekte mit Pixformance',
+      desc: 'Klinische Studien zu Parkinson, MS, Onkologie und funktionellem Training.',
+      file: '/downloads/Studienergebnisse_Wissenschaftlich-nachgewiesene-positive-Effekte-mit-Pixformance_2024.pdf',
+    },
+    'digitalisierung-physiotherapie': {
+      label: 'Whitepaper',
+      title: 'Digitalisierung in der Physiotherapie',
+      desc: 'Wie digitale Betreuungsmöglichkeiten die Physiotherapie revolutionieren.',
+      file: '/Pixformance_Digitalisierung-in-der-Physiotherapie.pdf',
+    },
+    'smarte-loesung-physiotherapie': {
+      label: 'Produktbroschüre',
+      title: 'Die smarte Lösung für moderne Physiotherapiepraxen',
+      desc: 'Übersicht über das Pixformance-Konzept für Physiotherapiepraxen.',
+      file: '/Pixformance_Die-smarte-Loesung-fuer-moderne-Physiotherapiepraxen.pdf',
+    },
+    'sales-brochure-dach-2026': {
+      label: 'Verkaufsbroschüre 2026',
+      title: 'DACH Benefits & Sales Brochure 2026',
+      desc: 'Kompakte Übersicht der Pixformance-Vorteile für den DACH-Markt.',
+      file: '/DACH_Benefits-Sales_Short-Brochure2026_A5 (1).pdf',
+    },
+    'studie-ms': {
+      label: 'Klinische Studie',
+      title: 'Multiple Sklerose – Gehfähigkeit & Beweglichkeit',
+      desc: 'Hochschule Fresenius Frankfurt: Wirksamkeit von Pixformance bei MS-Patienten.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Multiple-Sclerosis-MS-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-parkinson': {
+      label: 'Klinische Studie',
+      title: 'Parkinson – Gehfähigkeit & Behandlung',
+      desc: 'Hochschule Fresenius Frankfurt: Wirksamkeit von Pixformance bei Parkinson-Patienten.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Parkinson-Treatment-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-brustkrebs': {
+      label: 'Klinische Studie',
+      title: 'Mamma-Karzinom – Sport in der Krebstherapie',
+      desc: 'Hochschule Fresenius Frankfurt: Bewegungstherapie bei Brustkrebspatientinnen.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Breast-Cancer-Mamma-Ca-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-muskeldystrophie': {
+      label: 'Klinische Studie',
+      title: 'Muskeldystrophie – Emery-Dreifuss',
+      desc: 'Hochschule Fresenius Frankfurt: Einzelfallstudie zur Gehfähigkeit bei Muskeldystrophie.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Emery-Dreifuss-Muscular-Dystrophy-Training-Medical-Study-Single-Case-Study-Walking-Ability-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-mrs-sporty': {
+      label: 'Klinische Studie',
+      title: 'Empirische Überprüfung der Trainingseffekte – Mrs.Sporty',
+      desc: 'Wirksamkeit von funktionellem Training und Muskelkraft mit Pixformance.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-medical-study-empirical-review-of-training-functional-effects-study-programme-mrs-sporty.pdf',
+    },
+  };
+
+  const DEFAULT_DOC = 'studienergebnisse';
+
+  const docKey = (() => {
+    const param = new URLSearchParams(window.location.search).get('doc') || '';
+    return DOCS[param] ? param : DEFAULT_DOC;
+  })();
+
+  const doc = DOCS[docKey];
+
+  // Populate UI
+  const labelEl  = document.getElementById('doc-label');
+  const titleEl  = document.getElementById('doc-title');
+  const descEl   = document.getElementById('doc-desc');
+  const btn      = document.getElementById('download-btn') as HTMLAnchorElement;
+  const linkText = document.getElementById('download-link-text') as HTMLAnchorElement;
+
+  if (labelEl)  labelEl.textContent  = doc.label;
+  if (titleEl)  titleEl.textContent  = doc.title;
+  if (descEl)   descEl.textContent   = doc.desc;
+  if (btn)      btn.href             = doc.file;
+  if (linkText) linkText.href        = doc.file;
+
+  document.title = `${doc.title} – Download bereit | Pixformance`;
+
+  // Auto-trigger download after short delay
+  setTimeout(() => {
+    const a = document.createElement('a');
+    a.href = doc.file;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }, 800);
+</script>

@@ -1,0 +1,351 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout
+  title="Ressourcen-Download | Pixformance"
+  description="Laden Sie kostenlose Fachdokumente von Pixformance herunter: Studienergebnisse, Whitepaper und Praxisleitfäden für Physiotherapie, Klinik und Fitness."
+  jsonLd={null}
+>
+  <header class="bg-white border-b border-gray-100 py-4 px-6">
+    <a href="/">
+      <PixformanceLogo variant="black" size="md" />
+    </a>
+  </header>
+
+  <main class="min-h-screen bg-gray-50 py-12 px-4">
+    <div class="max-w-lg mx-auto">
+
+      <!-- Document info card — populated by JS -->
+      <div class="bg-[#02308C] text-white rounded-2xl p-6 mb-6 flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 mt-0.5 text-lg">
+          📄
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#6BDBD1] mb-1" id="doc-label">Kostenloses Dokument</p>
+          <p class="font-bold text-lg leading-tight" id="doc-title">Wird geladen…</p>
+          <p class="text-sm text-blue-200 mt-1" id="doc-desc"></p>
+        </div>
+      </div>
+
+      <!-- Form card -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+        <h1 class="text-xl font-bold text-gray-900 mb-1">Jetzt kostenlos herunterladen</h1>
+        <p class="text-sm text-gray-500 mb-6">Bitte füllen Sie das Formular aus – der Download-Link erscheint sofort danach.</p>
+
+        <form id="download-form" class="space-y-4" novalidate>
+
+          <div>
+            <label for="dl-firma" class="block text-sm font-bold mb-1 text-gray-700">
+              Einrichtung / Unternehmen <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text" id="dl-firma" name="company" required
+              placeholder="z.B. Physiopraxis Muster"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="dl-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
+              <input
+                type="text" id="dl-vorname" name="first_name" required
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+              />
+            </div>
+            <div>
+              <label for="dl-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
+              <input
+                type="text" id="dl-nachname" name="last_name" required
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="dl-email" class="block text-sm font-bold mb-1 text-gray-700">E-Mail <span class="text-red-500">*</span></label>
+            <input
+              type="email" id="dl-email" name="email" required
+              placeholder="ihre.email@beispiel.de"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+            />
+          </div>
+
+          <div>
+            <label for="dl-telefon" class="block text-sm font-bold mb-1 text-gray-700">Telefon <span class="text-red-500">*</span></label>
+            <input
+              type="tel" id="dl-telefon" name="phone" required
+              placeholder="+49"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+            />
+          </div>
+
+          <div class="flex gap-3 items-start pt-1">
+            <input
+              type="checkbox" id="dl-privacy" name="privacy" required
+              class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30 shrink-0"
+            />
+            <label for="dl-privacy" class="text-xs text-gray-500 leading-relaxed">
+              Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold" target="_blank">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mich bezüglich meiner Anfrage kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+            </label>
+          </div>
+
+          <div id="download-form-message" class="hidden"></div>
+
+          <button
+            type="submit"
+            class="w-full py-4 bg-[#02308C] text-white font-bold text-base rounded-xl hover:bg-[#021d54] hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            Jetzt herunterladen →
+          </button>
+
+          <p class="text-center text-xs text-gray-400">Kostenlos & unverbindlich</p>
+        </form>
+      </div>
+
+      <p class="text-center text-xs text-gray-400 mt-6">
+        © Pixformance Sports GmbH · CE-Medizinprodukt MDR EU 2017/745
+      </p>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  // Document map: doc key → { title, label, desc, file }
+  const DOCS: Record<string, { title: string; label: string; desc: string; file: string }> = {
+    'studienergebnisse': {
+      label: 'Studienergebnisse 2024',
+      title: 'Wissenschaftlich nachgewiesene positive Effekte mit Pixformance',
+      desc: 'Klinische Studien zu Parkinson, MS, Onkologie und funktionellem Training.',
+      file: '/downloads/Studienergebnisse_Wissenschaftlich-nachgewiesene-positive-Effekte-mit-Pixformance_2024.pdf',
+    },
+    'digitalisierung-physiotherapie': {
+      label: 'Whitepaper',
+      title: 'Digitalisierung in der Physiotherapie',
+      desc: 'Wie digitale Betreuungsmöglichkeiten die Physiotherapie revolutionieren.',
+      file: '/Pixformance_Digitalisierung-in-der-Physiotherapie.pdf',
+    },
+    'smarte-loesung-physiotherapie': {
+      label: 'Produktbroschüre',
+      title: 'Die smarte Lösung für moderne Physiotherapiepraxen',
+      desc: 'Übersicht über das Pixformance-Konzept für Physiotherapiepraxen.',
+      file: '/Pixformance_Die-smarte-Loesung-fuer-moderne-Physiotherapiepraxen.pdf',
+    },
+    'sales-brochure-dach-2026': {
+      label: 'Verkaufsbroschüre 2026',
+      title: 'DACH Benefits & Sales Brochure 2026',
+      desc: 'Kompakte Übersicht der Pixformance-Vorteile für den DACH-Markt.',
+      file: '/DACH_Benefits-Sales_Short-Brochure2026_A5 (1).pdf',
+    },
+    'studie-ms': {
+      label: 'Klinische Studie',
+      title: 'Multiple Sklerose – Gehfähigkeit & Beweglichkeit',
+      desc: 'Hochschule Fresenius Frankfurt: Wirksamkeit von Pixformance bei MS-Patienten.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Multiple-Sclerosis-MS-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-parkinson': {
+      label: 'Klinische Studie',
+      title: 'Parkinson – Gehfähigkeit & Behandlung',
+      desc: 'Hochschule Fresenius Frankfurt: Wirksamkeit von Pixformance bei Parkinson-Patienten.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Parkinson-Treatment-Walking-Ability-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-brustkrebs': {
+      label: 'Klinische Studie',
+      title: 'Mamma-Karzinom – Sport in der Krebstherapie',
+      desc: 'Hochschule Fresenius Frankfurt: Bewegungstherapie bei Brustkrebspatientinnen.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Breast-Cancer-Mamma-Ca-Training-Medical-Study-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-muskeldystrophie': {
+      label: 'Klinische Studie',
+      title: 'Muskeldystrophie – Emery-Dreifuss',
+      desc: 'Hochschule Fresenius Frankfurt: Einzelfallstudie zur Gehfähigkeit bei Muskeldystrophie.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/01/Pixformance-Emery-Dreifuss-Muscular-Dystrophy-Training-Medical-Study-Single-Case-Study-Walking-Ability-University-Fresenius-Frankfurt.pdf',
+    },
+    'studie-mrs-sporty': {
+      label: 'Klinische Studie',
+      title: 'Empirische Überprüfung der Trainingseffekte – Mrs.Sporty',
+      desc: 'Wirksamkeit von funktionellem Training und Muskelkraft mit Pixformance.',
+      file: 'https://www.pixformance.com/wp-content/uploads/2019/02/Pixformance-medical-study-empirical-review-of-training-functional-effects-study-programme-mrs-sporty.pdf',
+    },
+  };
+
+  const DEFAULT_DOC = 'studienergebnisse';
+
+  function getDocKey(): string {
+    const param = new URLSearchParams(window.location.search).get('doc') || '';
+    return DOCS[param] ? param : DEFAULT_DOC;
+  }
+
+  const docKey = getDocKey();
+  const doc = DOCS[docKey];
+
+  // Populate UI
+  const labelEl = document.getElementById('doc-label');
+  const titleEl = document.getElementById('doc-title');
+  const descEl  = document.getElementById('doc-desc');
+  if (labelEl) labelEl.textContent = doc.label;
+  if (titleEl) titleEl.textContent = doc.title;
+  if (descEl)  descEl.textContent  = doc.desc;
+  document.title = `${doc.title} – Download | Pixformance`;
+
+  // ── Webhook helpers (same as existing LPs) ──────────────────────────────────
+
+  const WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  let META_EVENT_ID = '';
+
+  function initEventId() {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    const dl = (window as any).dataLayer as any[];
+    for (let i = dl.length - 1; i >= 0; i--) {
+      if (dl[i]?.event_id) { META_EVENT_ID = dl[i].event_id; return; }
+    }
+    META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
+    dl.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+  }
+
+  function sha256(value: string): Promise<string> {
+    const encoded = new TextEncoder().encode((value || '').toLowerCase().trim());
+    return crypto.subtle.digest('SHA-256', encoded).then((buffer) =>
+      Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('')
+    );
+  }
+
+  function normalizePhone(phone: string | null): string {
+    let cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+    if (cleaned && !cleaned.startsWith('+')) cleaned = '+49' + cleaned.replace(/^0/, '');
+    return cleaned;
+  }
+
+  function hashUserData(formData: FormData) {
+    const email     = ((formData.get('email')      as string) || '').toLowerCase().trim();
+    const phone     = normalizePhone(formData.get('phone') as string | null);
+    const firstName = ((formData.get('first_name') as string) || '').toLowerCase().trim();
+    const lastName  = ((formData.get('last_name')  as string) || '').toLowerCase().trim();
+    return Promise.all([
+      email     ? sha256(email)     : Promise.resolve(''),
+      phone     ? sha256(phone)     : Promise.resolve(''),
+      firstName ? sha256(firstName) : Promise.resolve(''),
+      lastName  ? sha256(lastName)  : Promise.resolve(''),
+    ]).then(([em, ph, fn, ln]) => ({ em, ph, fn, ln }));
+  }
+
+  function getUrlParams() {
+    const params: Record<string, string> = {};
+    new URLSearchParams(window.location.search).forEach((value, key) => { params[key] = value; });
+    return params;
+  }
+
+  function getCookies() {
+    const cookies: Record<string, string> = {};
+    if (!document.cookie) return cookies;
+    document.cookie.split(';').forEach((cookie) => {
+      const idx = cookie.indexOf('=');
+      if (idx === -1) return;
+      const key   = cookie.slice(0, idx).trim();
+      const value = cookie.slice(idx + 1).trim();
+      try { cookies[key] = decodeURIComponent(value); } catch { cookies[key] = value; }
+    });
+    return cookies;
+  }
+
+  function getFbp(cookies: Record<string, string>): string { return cookies._fbp || ''; }
+
+  function getFbc(cookies: Record<string, string>): string {
+    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) {
+      const subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+      return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
+    }
+    return cookies._fbc || '';
+  }
+
+  function sanitizePhone(phone: string | null): string {
+    return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+  }
+
+  initEventId();
+
+  // ── Form submission ──────────────────────────────────────────────────────────
+
+  const downloadForm    = document.getElementById('download-form') as HTMLFormElement;
+  const formMessage     = document.getElementById('download-form-message');
+
+  downloadForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = downloadForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; submitBtn.textContent = 'Wird verarbeitet…'; }
+
+    const formData       = new FormData(downloadForm);
+    const cookies        = getCookies();
+    const computedFbc    = getFbc(cookies);
+    const computedFbp    = getFbp(cookies);
+    if (computedFbc) cookies._fbc = computedFbc;
+    if (computedFbp) cookies._fbp = computedFbp;
+
+    let hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch {}
+
+    let pixConsent: any = null;
+    try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+    if (pixConsent && pixConsent.marketing) {
+      ((window as any).dataLayer as any[]).push({
+        event: 'meta_user_data_ready',
+        em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
+      });
+    }
+
+    try {
+      const payload = {
+        form_name:            `Ressourcen-Download – ${doc.title}`,
+        document_requested:   docKey,
+        document_title:       doc.title,
+        company:              formData.get('company')    || '',
+        first_name:           formData.get('first_name') || '',
+        last_name:            formData.get('last_name')  || '',
+        email:                formData.get('email')      || '',
+        phone:                sanitizePhone(formData.get('phone') as string | null),
+        privacy_accepted:     formData.get('privacy') === 'on',
+        page_url:             window.location.href,
+        page_path:            window.location.pathname,
+        referrer:             document.referrer || '',
+        submitted_at:         new Date().toISOString(),
+        url_params:           getUrlParams(),
+        cookies,
+        language:             'de',
+        version:              'DACH',
+        form_source:          'ressourcen-download',
+        meta_event_id:        META_EVENT_ID,
+        meta_fbp:             getFbp(cookies),
+        meta_fbc:             getFbc(cookies),
+        meta_user_agent:      navigator.userAgent,
+        meta_event_source_url: window.location.href,
+        meta_em:              hashed.em,
+        meta_ph:              hashed.ph,
+        meta_fn:              hashed.fn,
+        meta_ln:              hashed.ln,
+      };
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        window.location.href = `/ressourcen-download-danke?doc=${encodeURIComponent(docKey)}`;
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      if (formMessage) {
+        formMessage.className = 'text-center text-red-700 bg-red-50 border border-red-200 rounded-xl p-4';
+        formMessage.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns an contact@pixformance.com.';
+        formMessage.classList.remove('hidden');
+      }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; submitBtn.textContent = 'Jetzt herunterladen →'; }
+    }
+  });
+</script>
