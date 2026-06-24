@@ -62,7 +62,7 @@ const howToSchema = {
     {
       '@type': 'HowToStep',
       name: '2. Beschaffung & Vergabe',
-      text: 'Europaweit ausschreibungsfrei bis €221.000 (UVgO). Leasing ab 99 €/Monat möglich. Lieferzeit 4–6 Wochen nach Auftragserteilung.',
+      text: 'CE-Medizinprodukt (MDR EU 2017/745). Verschiedene Finanzierungsmodelle verfügbar. Sprechen Sie uns für ein individuelles Angebot an.',
       url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-2',
     },
     {
@@ -125,7 +125,7 @@ const faqSchema = {
       name: 'Wie lange dauert die Implementierung von der Bestellung bis zum Regelbetrieb?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Erfahrungsgemäß dauert der Prozess von Bestellung bis Regelbetrieb 6–10 Wochen: 4–6 Wochen Lieferzeit + 1 Woche Installation und Schulung + 2–4 Wochen Pilotphase. Kliniken mit Vorerfahrung berichten von einem reibungslosen Start innerhalb von 4 Wochen.',
+        text: 'Bitte sprechen Sie uns direkt an – unsere Berater geben Ihnen genaue Angaben zu Lieferzeit und Implementierung für Ihre Einrichtung.',
       },
     },
     {
@@ -232,25 +232,16 @@ const faqSchema = {
             <div>
               <h3 class="text-xl font-bold text-[#02308C] mb-3">Beschaffung & Vergabe</h3>
               <p class="text-gray-700 mb-4">
-                Die Beschaffung eines Pixformance-Systems ist für öffentliche Kliniken und
-                Krankenhäuser in der Regel ohne formales Vergabeverfahren möglich:
+                Für Informationen zur Beschaffung und zu verfügbaren Finanzierungsmodellen sprechen Sie bitte unsere Berater an:
               </p>
-              <div class="grid md:grid-cols-2 gap-4 text-sm">
-                <div class="bg-blue-50 rounded-lg p-4">
-                  <p class="font-semibold text-[#02308C] mb-2">Schwellenwerte DE (UVgO)</p>
-                  <p class="text-gray-700">Direktauftrag bis €50.000 netto, Verhandlungsvergabe bis €221.000 netto. Einzelstationen liegen regelmäßig unter diesen Grenzen.</p>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4">
-                  <p class="font-semibold text-[#02308C] mb-2">Finanzierungsmodelle</p>
-                  <p class="text-gray-700">Kauf (Einmalbetrag), Leasing ab 99 €/Monat oder Mietmodell. Förderprogramme (Digitalisierung Krankenhaus, KfW) auf Anfrage prüfbar.</p>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4">
-                  <p class="font-semibold text-[#02308C] mb-2">Lieferzeit</p>
-                  <p class="text-gray-700">4–6 Wochen nach Auftragserteilung. Lieferung frei Haus inkl. Aufstellung durch zertifizierte Techniker.</p>
-                </div>
+              <div class="grid md:grid-cols-1 gap-4 text-sm">
                 <div class="bg-blue-50 rounded-lg p-4">
                   <p class="font-semibold text-[#02308C] mb-2">Zertifizierung & Compliance</p>
                   <p class="text-gray-700">CE-Medizinprodukt (MDR EU 2017/745). Vollständige technische Dokumentation und Konformitätserklärung werden mitgeliefert.</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <p class="font-semibold text-[#02308C] mb-2">Finanzierung & Beschaffung</p>
+                  <p class="text-gray-700">Verschiedene Finanzierungsmodelle verfügbar. Sprechen Sie uns für ein individuelles Angebot und Informationen zur Beschaffung an.</p>
                 </div>
               </div>
             </div>
@@ -372,32 +363,13 @@ const faqSchema = {
           <p class="text-4xl font-bold text-[#6BDBD1] mb-2">4×</p>
           <p class="text-blue-100 text-sm">Patienten gleichzeitig<br/>pro Therapeut</p>
         </div>
-        <div class="bg-white/10 rounded-2xl p-6 text-center">
-          <p class="text-4xl font-bold text-[#6BDBD1] mb-2">ab 99 €</p>
-          <p class="text-blue-100 text-sm">Monatlich (Leasing)<br/>pro Station</p>
-        </div>
       </div>
-      <div class="bg-white/10 rounded-2xl p-8">
-        <h3 class="text-xl font-semibold text-[#6BDBD1] mb-4">Beispielrechnung Physio-Klinik (1 Station)</h3>
-        <div class="space-y-3 text-sm">
-          <div class="flex justify-between border-b border-white/20 pb-2">
-            <span class="text-blue-200">Einheiten/Monat (20 Arbeitstage × 32)</span>
-            <span class="font-semibold">640 Einheiten</span>
-          </div>
-          <div class="flex justify-between border-b border-white/20 pb-2">
-            <span class="text-blue-200">Ø Erlös/Einheit (GKV KGG/KGM + Selbstzahler-Mix)</span>
-            <span class="font-semibold">~15–25 €</span>
-          </div>
-          <div class="flex justify-between border-b border-white/20 pb-2">
-            <span class="text-blue-200">Monatlicher Rohertrag (konservativ, 15 €)</span>
-            <span class="font-semibold text-[#6BDBD1]">~9.600 €</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-blue-200">Kosten Station (Leasing ab)</span>
-            <span class="font-semibold">ab 99 €/Monat</span>
-          </div>
-        </div>
-        <p class="text-xs text-blue-300 mt-4">Kalkulatorische Übersicht. Tatsächliche Erlöse variieren je nach Kassenzulassung, Fachgebiet und Auslastung. Individuelle Wirtschaftlichkeitsberechnung auf Anfrage.</p>
+      <div class="bg-white/10 rounded-2xl p-8 text-center">
+        <p class="text-blue-100 leading-relaxed">Für eine individuelle Wirtschaftlichkeitsberechnung für Ihre Einrichtung sprechen Sie bitte unsere Berater an.</p>
+        <a href="/testen" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#6BDBD1] text-[#02308C] font-bold rounded-full hover:bg-white transition-colors duration-300">
+          Beratungsgespräch vereinbaren
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -488,7 +460,7 @@ const faqSchema = {
           },
           {
             q: 'Wie lange dauert die Implementierung bis zum Regelbetrieb?',
-            a: '6–10 Wochen: 4–6 Wochen Lieferzeit, 1 Woche Installation und Schulung, 2–4 Wochen Pilotphase. Kliniken mit Vorerfahrung starten oft innerhalb von 4 Wochen.',
+            a: 'Bitte sprechen Sie uns direkt an – unsere Berater geben Ihnen genaue Angaben zu Lieferzeit und Implementierung für Ihre Einrichtung.',
           },
           {
             q: 'Kann Pixformance für Telerehabilitation eingesetzt werden?',
