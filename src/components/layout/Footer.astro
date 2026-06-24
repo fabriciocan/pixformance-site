@@ -27,12 +27,18 @@ const losungenLinks = [
 const unternehmensLinks = [
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
+  { label: 'Studienergebnisse', href: '/studienergebnisse' },
   { label: 'Karriere', href: '/karriere' },
   { label: 'Presse', href: '/presse' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Kontakt', href: '/kontakt' },
   { label: 'Impressum', href: '/impressum' },
   { label: 'Datenschutz', href: '/datenschutz' },
+];
+
+const ressourcenLinks = [
+  { label: 'Studienergebnisse', href: '/studienergebnisse' },
+  { label: 'Leitfaden Klinikentscheider', href: '/digitale-reha-leitfaden-klinikentscheider' },
 ];
 ---
 
@@ -73,8 +79,8 @@ const unternehmensLinks = [
       </div>
     </div>
 
-    {/* Desktop: 3-column layout (hidden on mobile) */}
-    <div class="hidden md:grid md:grid-cols-3 gap-12 mb-8">
+    {/* Desktop: 4-column layout (hidden on mobile) */}
+    <div class="hidden md:grid md:grid-cols-4 gap-10 mb-8">
       {/* Logo + tagline */}
       <div>
         <PixformanceLogo variant="black" size="md" class="mb-3" />
@@ -100,6 +106,20 @@ const unternehmensLinks = [
         <h3 class="font-semibold mb-4">Unternehmen</h3>
         <ul class="space-y-2">
           {unternehmensLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Ressourcen */}
+      <div>
+        <h3 class="font-semibold mb-4">Ressourcen</h3>
+        <ul class="space-y-2">
+          {ressourcenLinks.map((link) => (
             <li>
               <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
