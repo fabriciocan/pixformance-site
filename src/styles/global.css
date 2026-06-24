@@ -64,6 +64,10 @@ h6 {
   font-family: var(--font-display);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 /* ---------------------------------------------------------------------------
