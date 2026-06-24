@@ -681,21 +681,7 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Ergebniszahlen -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10" data-scroll="fade-up">
-          {[
-            { value: '4×', label: 'mehr Patienten gleichzeitig pro Therapeut' },
-            { value: '6×', label: 'öfter Heimtraining via Web App möglich' },
-            { value: '2012', label: 'im Einsatz – über 1.100 Einrichtungen' },
-          ].map((s) => (
-            <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
-              <p class="text-3xl font-bold text-[#02308C] mb-1">{s.value}</p>
-              <p class="text-xs text-gray-500 leading-tight">{s.label}</p>
-            </div>
-          ))}
-        </div>
-
-        <div class="text-center" data-scroll="fade-up">
+        <div class="text-center mt-10" data-scroll="fade-up">
           <p class="text-gray-500 text-sm mb-4">
             Pixformance ist ein CE-gekennzeichnetes Medizinprodukt (MDR EU 2017/745) –
             klinisch validiert in Studien der Hochschule Fresenius und im Einsatz in der Charité Berlin.
@@ -1025,7 +1011,7 @@ const faqItems = [
     <div class="container">
       <div class="max-w-5xl mx-auto">
         <p class="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Zertifizierungen & Qualität</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div class="space-y-2 p-4">
             <div class="w-12 h-12 mx-auto rounded-full bg-[#02308C]/10 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1046,13 +1032,6 @@ const faqItems = [
             </div>
             <p class="font-bold text-sm text-gray-900">FORTEe EU-Projekt</p>
             <p class="text-xs text-gray-500">EU Research Partner</p>
-          </div>
-          <div class="space-y-2 p-4">
-            <div class="w-12 h-12 mx-auto rounded-full bg-[#02308C]/10 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
-            </div>
-            <p class="font-bold text-sm text-gray-900">Peer-reviewed</p>
-            <p class="text-xs text-gray-500">BMC Cancer · Hochschule Fresenius</p>
           </div>
         </div>
       </div>
