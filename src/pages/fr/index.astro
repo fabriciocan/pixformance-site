@@ -8,10 +8,11 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
 const stats = [
-  { value: '2.5M+', label: 'Pratiquants / An', icon: 'users' },
-  { value: '5M', label: 'Entraînements / An', icon: 'activity' },
+  { value: '2,5M+', label: 'Pratiquants / An', icon: 'users' },
+  { value: '6M+', label: 'Entraînements / An', icon: 'activity' },
   { value: '700+', label: 'Exercices fonctionnels', icon: 'zap' },
   { value: '25', label: 'Points articulaires analysés en temps réel', icon: 'crosshair' },
+  { value: '16', label: "Pays d'utilisation", icon: 'globe' },
 ];
 
 const features = [
@@ -149,7 +150,7 @@ const pressLogos = [
 
 <FRBaseLayout
   title="Pixformance — Système de Thérapie du Mouvement Digital pour la Kinésithérapie, les Cliniques de Rééducation & le Fitness"
-  description="Pixformance est le système complet de thérapie du mouvement digital : caméra 2D Full-HD analyse 25 points articulaires en temps réel. Utilisé dans 6.000+ cabinets de kinésithérapie, cliniques de rééducation et salles de sport. Dispositif médical dispositif médical CE (MDR UE 2017/745). 2.5M+ pratiquants/an."
+  description="Pixformance est le système complet de thérapie du mouvement digital : caméra 2D Full-HD analyse 25 points articulaires en temps réel. 6.000+ installations dans des cabinets de kinésithérapie, cliniques de rééducation et salles de sport. Dispositif médical dispositif médical CE (MDR UE 2017/745). 2,5M+ pratiquants/an."
   hreflangDe="https://www.pixformance.com/"
   hreflangEn="https://www.pixformance.com/en/"
   jsonLd={[
@@ -253,7 +254,7 @@ const pressLogos = [
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Pixformance est un système digital entièrement connecté utilisé dans plus de 6.000 cabinets de kinésithérapie, cliniques de rééducation et salles de sport dans le monde. La Station Pixformance analyse en temps réel 25 points articulaires de chaque patient grâce à une caméra 2D Full-HD brevetée, fournissant un retour correctif instantané — en tant que dispositif médical dispositif médical CE (MDR UE 2017/745), en usage clinique à la Charité Berlin, Medical Park, AUVA Klagenfurt et Oxford Brookes University, développé en continu depuis 2012.
+          Pixformance est un système digital entièrement connecté avec plus de 6.000 installations dans des cabinets de kinésithérapie, cliniques de rééducation et salles de sport dans le monde. La Station Pixformance analyse en temps réel 25 points articulaires de chaque patient grâce à une caméra 2D Full-HD brevetée, fournissant un retour correctif instantané — en tant que dispositif médical dispositif médical CE (MDR UE 2017/745), en usage clinique à la Charité Berlin, Medical Park, AUVA Klagenfurt et Oxford Brookes University, développé en continu depuis 2012.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -277,7 +278,7 @@ const pressLogos = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
