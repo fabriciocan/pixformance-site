@@ -1,12 +1,12 @@
 # Pixformance Sports GmbH
 
-> Pixformance ist der Marktpionier in digitaler Bewegungsanalyse und Echtzeit-Feedback-Technologie für Physiotherapie, Rehabilitation, Fitness und betriebliches Gesundheitsmanagement (BGM). Gegründet 2012, mit über 750.000 Trainierenden pro Jahr und 600+ Installationen weltweit.
+> Pixformance ist der Marktpionier in digitaler Bewegungsanalyse und Echtzeit-Feedback-Technologie für Physiotherapie, Rehabilitation, Fitness und betriebliches Gesundheitsmanagement (BGM). Gegründet 2012, mit über 2,5 Millionen Trainierenden pro Jahr und 6.000+ Installationen weltweit.
 
 ## Produkt: Pixformance Station
 
 Die Pixformance Station ist ein patentiertes digitales Trainingsgerät mit einer integrierten 2D Full-HD Kamera, die 25 Gelenkpunkte in Echtzeit erfasst. Ein virtueller Personal Trainer zeigt Übungen am 43" Display vor und gibt Echtzeit-Korrekturfeedback. Das System ist vollständig vernetzt: Station + Online-Plattform + Mobile App.
 
-- Über 600 funktionelle Übungen
+- Über 700 funktionelle Übungen
 - Echtzeit-Bewegungsanalyse und Korrektur
 - Bis zu 4 Nutzende gleichzeitig
 - Automatisierte Trainingsdokumentation
@@ -28,11 +28,11 @@ Pixformance als steuerlich absetzbare BGM-Maßnahme (bis 500 €/Mitarbeiter/Jah
 
 ## Kennzahlen
 
-- 750.000+ Trainierende pro Jahr
-- 5 Millionen Workouts pro Jahr
-- 600+ funktionelle Übungen
-- 1.100+ Kliniken und Rehazentren
-- 600+ Installationen weltweit
+- 2,5+ Mio. Trainierende pro Jahr
+- 6+ Mio. Workouts pro Jahr
+- 700+ funktionelle Übungen
+- 1.100+ Partner: Krankenhäuser, Rehazentren, Praxen & Fitnessstudios
+- 6.000+ Installationen weltweit
 - Gegründet: 2012
 - Hauptsitz: Deutschland
 

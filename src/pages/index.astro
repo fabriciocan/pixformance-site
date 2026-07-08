@@ -8,9 +8,10 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
 const stats = [
-  { value: '2.5M+', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: '2,5M+', label: 'Trainierende / Jahr', icon: 'users' },
   { value: '6.000+', label: 'Installationen weltweit', icon: 'activity' },
   { value: '700+', label: 'Funktionelle Übungen', icon: 'zap' },
+  { value: '16', label: 'Länder im Einsatz', icon: 'globe' },
 ];
 
 const features = [
@@ -133,7 +134,7 @@ const partners = [
 
 <BaseLayout
   title="Pixformance — Digitales Bewegungstherapiesystem für Physiotherapie, Rehakliniken & Fitness"
-  description="Pixformance ist das vollvernetzte digitale Bewegungstherapiesystem für Physiotherapiepraxen, Rehakliniken und Fitnessstudios: 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit. Weltweit in 6.000+ Einrichtungen im Einsatz."
+  description="Pixformance ist das vollvernetzte digitale Bewegungstherapiesystem für Physiotherapiepraxen, Rehakliniken und Fitnessstudios: 2D Full-HD Kamera analysiert 25 Gelenkpunkte in Echtzeit. Weltweit mit 6.000+ Installationen im Einsatz."
   image="https://www.pixformance.com/images/Pixformance-Station-Konzept-voll-vernetzt-Digitales-Trainingsgeraet-Funktionelles-Training-eGym.jpg"
   jsonLd={[
     {
@@ -275,7 +276,7 @@ const partners = [
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 pt-8 max-w-4xl mx-auto">
         {stats.map((stat, index) => (
           <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate text-center" style={`animation-delay: ${1.1 + index * 0.1}s;`}>
             <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
