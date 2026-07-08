@@ -8,10 +8,11 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
 const stats = [
-  { value: '2.5M+', label: 'Gebruikers / Jaar', icon: 'users' },
-  { value: '5M', label: 'Trainingen / Jaar', icon: 'activity' },
+  { value: '2,5M+', label: 'Gebruikers / Jaar', icon: 'users' },
+  { value: '6M+', label: 'Trainingen / Jaar', icon: 'activity' },
   { value: '700+', label: 'Functionele oefeningen', icon: 'zap' },
   { value: '25', label: 'Geanalyseerde gewrichtspunten in realtime', icon: 'crosshair' },
+  { value: '16', label: 'Landen in gebruik', icon: 'globe' },
 ];
 
 const features = [
@@ -149,7 +150,7 @@ const pressLogos = [
 
 <NLBaseLayout
   title="Pixformance — Digitaal Bewegingstherapiesysteem voor Fysiotherapie, Revalidatieklinieken & Fitness"
-  description="Pixformance is het volledig verbonden digitale bewegingstherapiesysteem: 2D Full-HD camera analyseert 25 gewrichtspunten in realtime. Ingezet in 6.000+ fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat. 2,5M+ gebruikers/jaar."
+  description="Pixformance is het volledig verbonden digitale bewegingstherapiesysteem: 2D Full-HD camera analyseert 25 gewrichtspunten in realtime. 6.000+ installaties in fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat. 2,5M+ gebruikers/jaar."
   hreflangDe="https://www.pixformance.com/"
   hreflangEn="https://www.pixformance.com/en/"
   jsonLd={[
@@ -253,7 +254,7 @@ const pressLogos = [
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Pixformance is een volledig verbonden digitaal systeem dat wordt ingezet in meer dan 6.000 fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. De Pixformance Station analyseert in realtime 25 gewrichtspunten van elke patiënt met een gepatenteerde 2D Full-HD camera en geeft direct correctieve feedback — als CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat, in klinisch gebruik bij Charité Berlin, Medical Park, AUVA Klagenfurt en Oxford Brookes University, en sinds 2012 continu doorontwikkeld.
+          Pixformance is een volledig verbonden digitaal systeem met meer dan 6.000 installaties in fysiotherapiepraktijken, revalidatieklinieken en fitnesscentra wereldwijd. De Pixformance Station analyseert in realtime 25 gewrichtspunten van elke patiënt met een gepatenteerde 2D Full-HD camera en geeft direct correctieve feedback — als CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat, in klinisch gebruik bij Charité Berlin, Medical Park, AUVA Klagenfurt en Oxford Brookes University, en sinds 2012 continu doorontwikkeld.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -277,7 +278,7 @@ const pressLogos = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
