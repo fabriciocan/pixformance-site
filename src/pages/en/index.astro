@@ -12,6 +12,7 @@ const stats = [
   { value: '6,000+', label: 'Installations Worldwide', icon: 'activity' },
   { value: '700+', label: 'Functional Exercises', icon: 'zap' },
   { value: '25', label: 'Joint Points Analysed in Real Time', icon: 'crosshair' },
+  { value: '16', label: 'Countries in Use', icon: 'globe' },
 ];
 
 const features = [
@@ -149,7 +150,7 @@ const pressLogos = [
 
 <ENBaseLayout
   title="Pixformance — Digital Movement Therapy System for Physical Therapy, Rehab Clinics & Fitness"
-  description="Pixformance is the fully connected digital movement therapy system: 2D Full-HD camera analyses 25 joint points in real time. Used in 6,000+ physiotherapy practices, rehab clinics and fitness studios worldwide. FDA Class 2 medical device. 2.5M+ exercisers/year."
+  description="Pixformance is the fully connected digital movement therapy system: 2D Full-HD camera analyses 25 joint points in real time. 6,000+ installations in physiotherapy practices, rehab clinics and fitness studios worldwide. FDA Class 2 medical device. 2.5M+ exercisers/year."
   hreflangDe="https://www.pixformance.com/"
   jsonLd={[
     {
@@ -253,7 +254,7 @@ const pressLogos = [
         </p>
 
         <p class="text-sm md:text-base text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.5s;">
-          Pixformance is a fully connected digital system used in over 6,000 physiotherapy practices, rehab clinics and fitness studios worldwide. The Pixformance Station analyses 25 joint points of each patient in real time using a patented 2D Full-HD camera, delivering instant corrective feedback — as an FDA Class 2 medical device, in clinical use at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University, continuously developed since 2012.
+          Pixformance is a fully connected digital system with over 6,000 installations in physiotherapy practices, rehab clinics and fitness studios worldwide. The Pixformance Station analyses 25 joint points of each patient in real time using a patented 2D Full-HD camera, delivering instant corrective feedback — as an FDA Class 2 medical device, in clinical use at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University, continuously developed since 2012.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.6s;">
@@ -277,7 +278,7 @@ const pressLogos = [
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.7 + index * 0.1}s;`}>
               <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300">
