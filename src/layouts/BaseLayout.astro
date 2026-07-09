@@ -1,4 +1,5 @@
 ---
+import { orgSchema } from '@/data/jsonld';
 import '@/styles/global.css';
 import ChatWidget from '@/components/ChatWidget.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
@@ -30,59 +31,7 @@ const {
 
 const canonicalURL = canonical ?? Astro.url.href;
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Pixformance Sports GmbH',
-  legalName: 'Pixformance Sports GmbH',
-  url: 'https://www.pixformance.com',
-  logo: {
-    '@type': 'ImageObject',
-    url: 'https://www.pixformance.com/images/pix-favicon.png',
-    width: 1024,
-    height: 1024,
-  },
-  foundingDate: '2012',
-  description:
-    'Pionier in digitaler Bewegungsanalyse und Echtzeit-Feedback für Physiotherapie, Kliniken, Fitness und betriebliches Gesundheitsmanagement.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Hauptstraße 19–20',
-    addressLocality: 'Dallgow-Döberitz',
-    postalCode: '14624',
-    addressCountry: 'DE',
-  },
-  telephone: '+493039805610',
-  email: 'contact@pixformance.com',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'sales',
-    email: 'contact@pixformance.com',
-    telephone: '+493039805610',
-    availableLanguage: ['German', 'English'],
-  },
-  knowsAbout: [
-    'Digitale Bewegungstherapie',
-    'Rehabilitation',
-    'Physiotherapie',
-    'Funktionelles Training',
-    'Betriebliches Gesundheitsmanagement',
-    'Echtzeit-Bewegungsanalyse',
-    'Telerehabilitation',
-    'Patientenaktivierung',
-  ],
-  hasCredential: [
-    'CE-Kennzeichnung Medizinprodukt',
-    'MDR-konform EU 2017/745',
-    'EMV-Richtlinie 2004/108/EG',
-  ],
-  award: 'FORTEe EU Research Partner',
-  sameAs: [
-    'https://www.linkedin.com/company/pixformance',
-    'https://www.youtube.com/@pixformance',
-  ],
-  areaServed: ['DE', 'AT', 'CH', 'NL', 'FR', 'IT'],
-};
+const organizationSchema = orgSchema('de');
 
 const websiteSchema = {
   '@context': 'https://schema.org',
