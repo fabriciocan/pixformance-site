@@ -159,10 +159,6 @@ const faqItems = [
     answer: 'Die Hochschule Fresenius hat mehrere Studien durchgeführt: Wirkung auf die Gehfähigkeit bei MS-Patienten, Gleichgewicht und Lebensqualität bei Parkinson, Muskeldystrophie (Emery-Dreifuss) und Brustkrebsnachsorge. Pixformance ist EU-Forschungspartner im FORTEe-Projekt zur Bewegungstherapie für krebskranke Kinder. Das System ist in der Charité Berlin, Medical Park, AUVA und der Oxford Brookes University im klinischen Einsatz.',
   },
   {
-    question: 'Ist Pixformance ein zertifiziertes Medizinprodukt?',
-    answer: 'Ja. Pixformance ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das Gerät wird seit 2012 unter strengen Qualitäts- und Sicherheitsstandards gefertigt.',
-  },
-  {
     question: 'Wie hilft Pixformance beim Aufbau eines Selbstzahlerbereichs?',
     answer: 'Pixformance ermöglicht Praxen, technologiegestütztes Training außerhalb des Rezeptmodells anzubieten und damit eine zweite Einnahmequelle aufzubauen. Finanzierung möglich – sprechen Sie uns für individuelle Konditionen an.',
   },
@@ -172,7 +168,7 @@ const faqItems = [
 <BaseLayout
   noindex={true}
   title="Digitale Bewegungstherapie für Physiotherapiepraxen & Rehakliniken | Pixformance"
-  description="Pixformance ist das digitale Rehabilitationssystem für Physiotherapeuten: Echtzeit-Analyse von 25 Gelenkpunkten, 700+ Übungen auf der Online-Plattform, 6.000+ Installationen weltweit. CE-Medizinprodukt (MDR EU 2017/745)."
+  description="Pixformance ist das digitale Rehabilitationssystem für Physiotherapeuten: Echtzeit-Analyse von 25 Gelenkpunkten, 700+ Übungen auf der Online-Plattform, 6.000+ Installationen weltweit."
   jsonLd={[
     {
       "@context": "https://schema.org",
@@ -183,15 +179,6 @@ const faqItems = [
       "serviceType": "Physiotherapy Technology",
       "areaServed": ["DE", "AT", "CH"],
       "url": "https://www.pixformance.com/physiotherapie/"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalDevice",
-      "name": "Pixformance Station",
-      "description": "Vollvernetztes digitales Rehabilitationssystem bestehend aus der Pixformance Station, einer Online-Plattform und einer Web App. Die Station nutzt eine 2D Full-HD Kamera mit integriertem Tiefensensor zur Echtzeit-Analyse von 25 Gelenkpunkten und gibt Patienten sofortiges Korrekturfeedback bei der Übungsausführung.",
-      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
-      "legalStatus": "CE-Medizinprodukt (MDR EU 2017/745)",
-      "relevantSpecialty": ["Physiotherapie", "Rehabilitation", "Neurologie", "Orthopädie", "Sportmedizin"]
     },
     {
       "@context": "https://schema.org",
@@ -247,14 +234,6 @@ const faqItems = [
         },
         {
           "@type": "Question",
-          "name": "Ist Pixformance ein zertifiziertes Medizinprodukt?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja. Pixformance ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das Gerät wird seit 2012 unter strengen Qualitäts- und Sicherheitsstandards gefertigt."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Wie hilft Pixformance beim Aufbau eines Selbstzahlerbereichs?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -298,7 +277,7 @@ const faqItems = [
         </p>
 
         <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.45s;">
-          Pixformance ist ein vollvernetztes digitales Bewegungstherapiesystem, das mit über 6.000 Installationen in Physiotherapiepraxen, Rehakliniken und Krankenhäusern weltweit eingesetzt wird. Die Pixformance Station analysiert mit einer 2D Full-HD Kamera mit integriertem Tiefensensor in Echtzeit 25 Gelenkpunkte des Patienten und liefert sofortiges Korrekturfeedback. Als CE-Medizinprodukt (MDR EU 2017/745) ist Pixformance in der Charité Berlin, Medical Park, AUVA Klagenfurt und der Oxford Brookes University im Einsatz — und wird seit 2012 kontinuierlich klinisch genutzt.
+          Pixformance ist ein vollvernetztes digitales Bewegungstherapiesystem, das mit über 6.000 Installationen in Physiotherapiepraxen, Rehakliniken und Krankenhäusern weltweit eingesetzt wird. Die Pixformance Station analysiert mit einer 2D Full-HD Kamera mit integriertem Tiefensensor in Echtzeit 25 Gelenkpunkte des Patienten und liefert sofortiges Korrekturfeedback. Pixformance ist in der Charité Berlin, Medical Park, AUVA Klagenfurt und der Oxford Brookes University im Einsatz — und wird seit 2012 kontinuierlich klinisch genutzt.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
