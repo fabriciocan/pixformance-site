@@ -103,26 +103,6 @@ const clinicalStudies = [
   { title: 'Medical Park Bad Rodach', finding: 'Vermindering van personele begeleidingstijd bij gelijkblijvende of betere therapiekwaliteit.' },
 ];
 
-const medicalDeviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "MedicalDevice",
-  "name": "Pixformance Station — Digitale Revalidatieapparatuur voor Klinieken",
-  "description": "CE-Medizinprodukt (MDR EU 2017/745) gecertificeerd digitaal revalidatieapparaat voor klinieken en revalidatiecentra. Realtime bewegingsanalyse, geautomatiseerde documentatie, tot 4 patiënten gelijktijdig.",
-  "manufacturer": {
-    "@type": "Organization",
-    "name": "Pixformance Sports GmbH",
-    "url": "https://pixformance.com"
-  },
-  "medicalSpecialty": ["Orthopedie", "Neurologie", "Geriatrie", "Cardiologie", "Oncologische Revalidatie"],
-  "recognizingAuthority": {
-    "@type": "Organization",
-    "name": "CE-Kennzeichnung — MDR EU 2017/745",
-    "url": "https://www.fda.gov"
-  },
-  "regulatoryStatus": "CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat",
-  "url": "https://www.pixformance.com/nl/kliniek/"
-};
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -131,11 +111,6 @@ const faqSchema = {
       "@type": "Question",
       "name": "Welke klinieken gebruiken Pixformance?",
       "acceptedAnswer": { "@type": "Answer", "text": "Pixformance wordt gebruikt door meer dan 1.100 partnerinstellingen — waarvan meer dan 150 klinieken en revalidatiecentra — waaronder Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA en Mediclin." }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Pixformance gecertificeerd als medisch apparaat?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Pixformance is gecertificeerd als CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat en voldoet aan de klinische en reglementaire vereisten voor gebruik in klinieken en revalidatiecentra." }
     },
     {
       "@type": "Question",
@@ -172,11 +147,11 @@ const faqSchema = {
 ---
 
 <NLBaseLayout
-  title="Digitale Revalidatieapparatuur voor Klinieken — CE-Medizinprodukt (MDR EU 2017/745) | Pixformance"
-  description="Pixformance voor revalidatieklinieken: CE-Medizinprodukt (MDR EU 2017/745) gecertificeerd, 1.100+ partnerinstellingen, waarvan 150+ klinieken (Charité, Medical Park, AUVA). Patiëntactivering, ontlasting van therapeuten, automatische documentatie."
+  title="Digitale Revalidatieapparatuur voor Klinieken | Pixformance"
+  description="Pixformance voor revalidatieklinieken: 1.100+ partnerinstellingen, waarvan 150+ klinieken (Charité, Medical Park, AUVA). Patiëntactivering, ontlasting van therapeuten, automatische documentatie."
   hreflangDe="https://www.pixformance.com/klinik/"
   hreflangEn="https://www.pixformance.com/en/clinic/"
-  jsonLd={[medicalDeviceSchema, faqSchema]}
+  jsonLd={[faqSchema]}
 >
   <Fragment slot="head">
     <link rel="alternate" hreflang="fr" href="https://www.pixformance.com/fr/clinique/" />
@@ -200,7 +175,7 @@ const faqSchema = {
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Meer dan 1.100 partnerinstellingen — waarvan meer dan 150 revalidatieklinieken en ziekenhuizen — vertrouwen op Pixformance — van Charité Berlin tot Medical Park, AUVA en Oxford Brookes University. Het enige CE-Medizinprodukt (MDR EU 2017/745) gecertificeerde digitale bewegingstherapieapparaat dat patiënten motiveert en therapeuten bevrijdt van routinewerk.
+          Meer dan 1.100 partnerinstellingen — waarvan meer dan 150 revalidatieklinieken en ziekenhuizen — vertrouwen op Pixformance — van Charité Berlin tot Medical Park, AUVA en Oxford Brookes University. Het digitale bewegingstherapieapparaat dat patiënten motiveert en therapeuten bevrijdt van routinewerk.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
@@ -557,16 +532,6 @@ const faqSchema = {
             </summary>
             <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
               Pixformance wordt gebruikt door meer dan 1.100 partnerinstellingen — waarvan meer dan 150 klinieken en revalidatiecentra — waaronder Charité Berlin, Medical Park, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA en Mediclin.
-            </div>
-          </details>
-
-          <details class="bg-white rounded-xl overflow-hidden shadow-sm group" data-scroll="fade-up" data-delay="2">
-            <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#02308C] hover:bg-[#02308C]/5 transition-colors list-none">
-              Is Pixformance gecertificeerd als medisch apparaat?
-              <Icon name="chevron-down" size="sm" class="flex-shrink-0 group-open:rotate-180 transition-transform duration-300" />
-            </summary>
-            <div class="px-5 pb-5 text-sm text-foreground-muted leading-relaxed">
-              Ja. Pixformance is gecertificeerd als CE-Medizinprodukt (MDR EU 2017/745) medisch apparaat en voldoet aan de klinische en reglementaire vereisten voor gebruik in klinieken en revalidatiecentra.
             </div>
           </details>
 
