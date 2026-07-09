@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Avatar from '@/components/ui/data-display/Avatar/Avatar.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -19,7 +20,7 @@ const {
   company,
   quote,
   image,
-  stats = [{ label: 'Trainierende pro Jahr', value: '2,5M+' }],
+  stats = [{ label: 'Trainierende pro Jahr', value: DISPLAY.de.users }],
 } = Astro.props;
 ---
 

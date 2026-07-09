@@ -1,12 +1,15 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
+const S = DISPLAY.en;
+
 const stats = [
-  { value: '1,100+', count: 1100, suffix: '+', label: 'Partner Facilities', icon: 'globe' },
-  { value: '2.5M+', count: 2500000, suffix: '+', label: 'Exercisers / Year', icon: 'users' },
-  { value: '700+', count: 700, suffix: '+', label: 'Functional Exercises', icon: 'zap' },
+  { value: S.partners, count: 1100, suffix: '+', label: 'Partner Facilities', icon: 'globe' },
+  { value: S.users, count: 2500000, suffix: '+', label: 'Exercisers / Year', icon: 'users' },
+  { value: S.exercises, count: 700, suffix: '+', label: 'Functional Exercises', icon: 'zap' },
 ];
 
 const testimonials = [

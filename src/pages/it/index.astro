@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
 import ITHeader from '@/components/layout/ITHeader.astro';
 import ITFooter from '@/components/layout/ITFooter.astro';
@@ -7,12 +8,14 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
+const S = DISPLAY.it;
+
 const stats = [
-  { value: '2,5M+', label: 'Utenti / Anno', icon: 'users' },
-  { value: '6.000+', label: 'Installazioni nel mondo', icon: 'activity' },
-  { value: '700+', label: 'Esercizi Funzionali', icon: 'zap' },
+  { value: S.users, label: 'Utenti / Anno', icon: 'users' },
+  { value: S.installations, label: 'Installazioni nel mondo', icon: 'activity' },
+  { value: S.exercises, label: 'Esercizi Funzionali', icon: 'zap' },
   { value: '25', label: 'Punti articolari analizzati in tempo reale', icon: 'crosshair' },
-  { value: '16', label: 'Paesi di utilizzo', icon: 'globe' },
+  { value: S.countries, label: 'Paesi di utilizzo', icon: 'globe' },
 ];
 
 const features = [

@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
 import ENHeader from '@/components/layout/ENHeader.astro';
 import ENFooter from '@/components/layout/ENFooter.astro';
@@ -7,12 +8,14 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
+const S = DISPLAY.en;
+
 const stats = [
-  { value: '2.5M+', label: 'Exercisers / Year', icon: 'users' },
-  { value: '6,000+', label: 'Installations Worldwide', icon: 'activity' },
-  { value: '700+', label: 'Functional Exercises', icon: 'zap' },
+  { value: S.users, label: 'Exercisers / Year', icon: 'users' },
+  { value: S.installations, label: 'Installations Worldwide', icon: 'activity' },
+  { value: S.exercises, label: 'Functional Exercises', icon: 'zap' },
   { value: '25', label: 'Joint Points Analysed in Real Time', icon: 'crosshair' },
-  { value: '16', label: 'Countries in Use', icon: 'globe' },
+  { value: S.countries, label: 'Countries in Use', icon: 'globe' },
 ];
 
 const features = [

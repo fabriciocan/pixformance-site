@@ -1,12 +1,15 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
+const S = DISPLAY.de;
+
 const stats = [
-  { value: '2,5M+', count: 2.5, suffix: 'M+', label: 'Trainierende / Jahr', icon: 'users' },
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Krankenhäuser, Rehazentren, Praxen & Fitnessstudios', icon: 'globe' },
-  { value: '700+', count: 700, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
+  { value: S.users, count: 2.5, suffix: 'M+', label: 'Trainierende / Jahr', icon: 'users' },
+  { value: S.partners, count: 1100, suffix: '+', label: 'Krankenhäuser, Rehazentren, Praxen & Fitnessstudios', icon: 'globe' },
+  { value: S.exercises, count: 700, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
 ];
 
 const testimonials = [

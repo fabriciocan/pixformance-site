@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
 import NLHeader from '@/components/layout/NLHeader.astro';
 import NLFooter from '@/components/layout/NLFooter.astro';
@@ -7,9 +8,11 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 
+const S = DISPLAY.nl;
+
 const stats = [
-  { value: '6.000+', label: 'Installaties wereldwijd', icon: 'map-pin' },
-  { value: '2,5M+', label: 'Gebruikers / Jaar', icon: 'users' },
+  { value: S.installations, label: 'Installaties wereldwijd', icon: 'map-pin' },
+  { value: S.users, label: 'Gebruikers / Jaar', icon: 'users' },
   { value: '2012', label: 'Opgericht', icon: 'calendar' },
 ];
 

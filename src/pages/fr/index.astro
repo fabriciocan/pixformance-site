@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import FRBaseLayout from '@/layouts/FRBaseLayout.astro';
 import FRHeader from '@/components/layout/FRHeader.astro';
 import FRFooter from '@/components/layout/FRFooter.astro';
@@ -7,12 +8,14 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
+const S = DISPLAY.fr;
+
 const stats = [
-  { value: '2,5M+', label: 'Pratiquants / An', icon: 'users' },
-  { value: '6M+', label: 'Entraînements / An', icon: 'activity' },
-  { value: '700+', label: 'Exercices fonctionnels', icon: 'zap' },
+  { value: S.users, label: 'Pratiquants / An', icon: 'users' },
+  { value: S.workouts, label: 'Entraînements / An', icon: 'activity' },
+  { value: S.exercises, label: 'Exercices fonctionnels', icon: 'zap' },
   { value: '25', label: 'Points articulaires analysés en temps réel', icon: 'crosshair' },
-  { value: '16', label: "Pays d'utilisation", icon: 'globe' },
+  { value: S.countries, label: "Pays d'utilisation", icon: 'globe' },
 ];
 
 const features = [

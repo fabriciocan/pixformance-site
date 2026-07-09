@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import NLBaseLayout from '@/layouts/NLBaseLayout.astro';
 import NLHeader from '@/components/layout/NLHeader.astro';
 import NLFooter from '@/components/layout/NLFooter.astro';
@@ -7,12 +8,14 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
+const S = DISPLAY.nl;
+
 const stats = [
-  { value: '2,5M+', label: 'Gebruikers / Jaar', icon: 'users' },
-  { value: '6M+', label: 'Trainingen / Jaar', icon: 'activity' },
-  { value: '700+', label: 'Functionele oefeningen', icon: 'zap' },
+  { value: S.users, label: 'Gebruikers / Jaar', icon: 'users' },
+  { value: S.workouts, label: 'Trainingen / Jaar', icon: 'activity' },
+  { value: S.exercises, label: 'Functionele oefeningen', icon: 'zap' },
   { value: '25', label: 'Geanalyseerde gewrichtspunten in realtime', icon: 'crosshair' },
-  { value: '16', label: 'Landen in gebruik', icon: 'globe' },
+  { value: S.countries, label: 'Landen in gebruik', icon: 'globe' },
 ];
 
 const features = [

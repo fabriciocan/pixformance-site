@@ -1,4 +1,5 @@
 ---
+import { DISPLAY } from '@/data/stats';
 import ITBaseLayout from '@/layouts/ITBaseLayout.astro';
 import ITHeader from '@/components/layout/ITHeader.astro';
 import ITFooter from '@/components/layout/ITFooter.astro';
@@ -8,6 +9,8 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
 import BreadcrumbTabs from '@/components/ui/navigation/BreadcrumbTabs.astro';
 
+const S = DISPLAY.it;
+
 const tabs = [
   { label: 'FISIOTERAPIA', href: '/it/fisioterapia/' },
   { label: 'CLINICA', href: '/it/clinica/' },
@@ -16,9 +19,9 @@ const tabs = [
 ];
 
 const stats = [
-  { value: '2,5M+', count: 2500000, suffix: '+', label: 'Utenti / Anno', icon: 'users' },
-  { value: '1.100+', count: 1100, suffix: '+', label: 'Strutture partner', icon: 'globe' },
-  { value: '700+', count: 700, suffix: '+', label: 'Esercizi Funzionali', icon: 'zap' },
+  { value: S.users, count: 2500000, suffix: '+', label: 'Utenti / Anno', icon: 'users' },
+  { value: S.partners, count: 1100, suffix: '+', label: 'Strutture partner', icon: 'globe' },
+  { value: S.exercises, count: 700, suffix: '+', label: 'Esercizi Funzionali', icon: 'zap' },
 ];
 
 const partnerLogos = [
