@@ -120,7 +120,7 @@ const faqItems = [
   },
   {
     question: 'For which indications and rehabilitation phases is Pixformance suitable?',
-    answer: 'Pixformance is suitable for all rehabilitation phases: neurological rehab (MS, Parkinson\'s, stroke), orthopaedic rehab (hip, knee, shoulder, spinal post-op), oncological rehab (adults and children via FORTEe), geriatric rehab (fall prevention, balance), cardiac rehab (under medical supervision) and general activation of inpatients. Exercises can be adapted for patients in wheelchairs, with walking frames, or on a treatment table.',
+    answer: 'Pixformance is suitable for all rehabilitation phases: neurological rehab (MS, Parkinson\'s, stroke), orthopaedic rehab (hip, knee, shoulder, spinal post-op), oncological rehab (adults and children via FORTEe), geriatric rehab (fall prevention, balance), cardiac rehab (under medical supervision) and general activation of inpatients. Exercises can be adapted for patients in wheelchairs, with walking frames, or on a treatment table. Patients with pacemakers or serious cardiovascular conditions should consult a physician before training.',
   },
   {
     question: 'How many patients can be treated simultaneously with Pixformance?',
@@ -139,10 +139,6 @@ const faqItems = [
     answer: 'Hochschule Fresenius has conducted clinical studies with Pixformance on MS, Parkinson\'s, muscular dystrophy and breast cancer aftercare. Pixformance is an EU research partner in the FORTEe project for exercise therapy in children with cancer. The system is in clinical use at Charité Berlin, Medical Park Bad Rodach, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA Klagenfurt, Mediclin and Oxford Brookes University.',
   },
   {
-    question: 'Is Pixformance a certified medical device?',
-    answer: 'Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012. Patients with pacemakers or serious cardiovascular conditions should consult a physician before training.',
-  },
-  {
     question: 'What does Pixformance cost for a clinic and what financing options are available?',
     answer: 'Pixformance is available for purchase or lease. Individual terms are available for clinics depending on the number of stations and facility size. Contact our team for a no-obligation quote. Personal consultation including room planning, installation and therapist training is included in the service.',
   },
@@ -151,18 +147,9 @@ const faqItems = [
 
 <ENBaseLayout
   title="Digital Rehabilitation for Rehab Clinics & Hospitals | Pixformance"
-  description="Pixformance is the digital rehab system for clinics: up to 4 patients simultaneously, automatic documentation, 25-joint-point analysis in real time. 1,100+ partner facilities — including over 150 rehab clinics — trust Pixformance. FDA Class 2 Medical Device."
+  description="Pixformance is the digital rehab system for clinics: up to 4 patients simultaneously, automatic documentation, 25-joint-point analysis in real time. 1,100+ partner facilities — including over 150 rehab clinics — trust Pixformance."
   hreflangDe="https://www.pixformance.com/klinik/"
   jsonLd={[
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalDevice",
-      "name": "Pixformance Station",
-      "description": "Digital rehabilitation system for rehab clinics and hospitals. 2D Full-HD camera with depth sensor analyses 25 joint points in real time. Up to 4 patients can train simultaneously at multiple stations. Automatic training documentation on the online platform. FDA Class 2 Medical Device.",
-      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
-      "legalStatus": "FDA Class 2 Medical Device",
-      "relevantSpecialty": ["Rehabilitation", "Neurology", "Orthopaedics", "Oncology", "Geriatrics", "Sports Medicine"]
-    },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -175,7 +162,7 @@ const faqItems = [
         {
           "@type": "Question",
           "name": "For which indications and rehabilitation phases is Pixformance suitable?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pixformance is suitable for all rehabilitation phases: neurological rehab (MS, Parkinson's, stroke), orthopaedic rehab (hip, knee, shoulder, spinal post-op), oncological rehab (adults and children via FORTEe), geriatric rehab (fall prevention, balance), cardiac rehab (under medical supervision) and general activation of inpatients. Exercises can be adapted for patients in wheelchairs, with walking frames, or on a treatment table." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Pixformance is suitable for all rehabilitation phases: neurological rehab (MS, Parkinson's, stroke), orthopaedic rehab (hip, knee, shoulder, spinal post-op), oncological rehab (adults and children via FORTEe), geriatric rehab (fall prevention, balance), cardiac rehab (under medical supervision) and general activation of inpatients. Exercises can be adapted for patients in wheelchairs, with walking frames, or on a treatment table. Patients with pacemakers or serious cardiovascular conditions should consult a physician before training." }
         },
         {
           "@type": "Question",
@@ -196,11 +183,6 @@ const faqItems = [
           "@type": "Question",
           "name": "What clinical studies and references exist for Pixformance?",
           "acceptedAnswer": { "@type": "Answer", "text": "Hochschule Fresenius has conducted clinical studies with Pixformance on MS, Parkinson's, muscular dystrophy and breast cancer aftercare. Pixformance is an EU research partner in the FORTEe project for exercise therapy in children with cancer. The system is in clinical use at Charité Berlin, Medical Park Bad Rodach, Niederrhein-Klinik, Sauerlandklinik Hachen, AUVA Klagenfurt, Mediclin and Oxford Brookes University." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Pixformance a certified medical device?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012. Patients with pacemakers or serious cardiovascular conditions should consult a physician before training." }
         },
         {
           "@type": "Question",
@@ -232,7 +214,7 @@ const faqItems = [
         </h1>
 
         <p class="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.4s;">
-          Pixformance is the digital movement therapy system for rehabilitation clinics and hospitals: in over 1,100 partner facilities worldwide — including over 150 clinics and rehabilitation centres — the Pixformance Station relieves therapists, activates patients and documents therapy progress automatically. With a 2D Full-HD camera, the station analyses 25 joint points in real time and provides instant corrective feedback — as an FDA Class 2 Medical Device in clinical use at Charité Berlin, Medical Park, AUVA and Oxford Brookes University.
+          Pixformance is the digital movement therapy system for rehabilitation clinics and hospitals: in over 1,100 partner facilities worldwide — including over 150 clinics and rehabilitation centres — the Pixformance Station relieves therapists, activates patients and documents therapy progress automatically. With a 2D Full-HD camera, the station analyses 25 joint points in real time and provides instant corrective feedback — in clinical use at Charité Berlin, Medical Park, AUVA and Oxford Brookes University.
         </p>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">

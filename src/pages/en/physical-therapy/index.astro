@@ -106,18 +106,9 @@ const studies = [
 
 <ENBaseLayout
   title="Digital Physical Therapy & Rehabilitation Device for Clinics | Pixformance"
-  description="Pixformance: digital rehabilitation system for physiotherapists. Real-time analysis of 25 joint points, 700+ exercises, 6,000+ installations worldwide. FDA Class 2 medical device."
+  description="Pixformance: digital rehabilitation system for physiotherapists. Real-time analysis of 25 joint points, 700+ exercises, 6,000+ installations worldwide."
   hreflangDe="https://www.pixformance.com/physiotherapie/"
   jsonLd={[
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalDevice",
-      "name": "Pixformance Station",
-      "description": "Fully-connected digital rehabilitation system with a 2D Full-HD camera with integrated depth sensor for real-time analysis of 25 joint points, providing instant corrective feedback during exercise.",
-      "manufacturer": { "@type": "Organization", "name": "Pixformance Sports GmbH", "url": "https://www.pixformance.com" },
-      "legalStatus": "FDA Class 2 Medical Device",
-      "relevantSpecialty": ["Physical Therapy", "Rehabilitation", "Neurology", "Orthopedics", "Sports Medicine"]
-    },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -136,11 +127,6 @@ const studies = [
           "@type": "Question",
           "name": "Does Pixformance replace physiotherapists?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. Pixformance supports and relieves therapists — it does not replace them. The system handles exercise guidance, real-time correction, and documentation automatically. After just 30 minutes of instruction, patients can exercise independently under supervision." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Pixformance a certified medical device?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012." }
         }
       ]
     }
@@ -192,18 +178,8 @@ const studies = [
         </p>
 
         <p class="text-base md:text-lg text-foreground-muted leading-relaxed max-w-4xl mx-auto hero-animate" style="animation-delay: 0.43s;">
-          Pixformance is a fully-connected digital movement therapy system with over 6,000 installations in physiotherapy practices, rehabilitation clinics and hospitals worldwide. The Pixformance Station analyzes 25 joint points in real-time using a 2D Full-HD camera with integrated depth sensor, providing instant corrective feedback. As an FDA Class 2 medical device, Pixformance is deployed at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University — and has been in continuous clinical use since 2012.
+          Pixformance is a fully-connected digital movement therapy system with over 6,000 installations in physiotherapy practices, rehabilitation clinics and hospitals worldwide. The Pixformance Station analyzes 25 joint points in real-time using a 2D Full-HD camera with integrated depth sensor, providing instant corrective feedback. Pixformance is deployed at Charité Berlin, Medical Park, AUVA Klagenfurt and Oxford Brookes University — and has been in continuous clinical use since 2012.
         </p>
-
-        <div class="flex items-center justify-center gap-4 p-4 bg-[#02308C]/5 rounded-xl border border-[#02308C]/10 max-w-md mx-auto hero-animate" style="animation-delay: 0.45s;">
-          <img
-            src="/images/en/RX-Logo.png"
-            alt="RX Medical Device Class 2"
-            class="h-14 w-auto shrink-0"
-            loading="lazy"
-          />
-          <p class="text-sm text-foreground-muted">Pixformance is classified as a Class 2 medical device in the USA.</p>
-        </div>
 
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2 hero-animate" style="animation-delay: 0.5s;">
           <Button size="lg" href="/en/apply-for-trial/" class="group hover:shadow-lg hover:scale-105 transition-all duration-300">
@@ -557,7 +533,6 @@ const studies = [
             { q: 'Does Pixformance replace physiotherapists?', a: 'No. Pixformance supports and relieves therapists — it does not replace them. The system handles exercise guidance, real-time correction, and documentation automatically. After just 30 minutes of instruction, patients can exercise independently under supervision.' },
             { q: 'Can Pixformance be used for telerehabilitation and home training?', a: 'Yes. The Pixformance Web App allows patients to access their programs at home. The AUVA Accident Hospital Klagenfurt uses this hybrid model: patients come to the clinic once a week and complete the rest of their therapy at home.' },
             { q: 'What clinical studies exist for Pixformance?', a: 'Hochschule Fresenius has conducted multiple studies: effect on walking ability in MS patients, balance and quality of life in Parkinson\'s, muscular dystrophy (Emery-Dreifuss), and breast cancer aftercare. Pixformance is an EU research partner in the FORTEe project for exercise therapy for children with cancer. The system is in clinical use at Charité Berlin, Medical Park, AUVA, and Oxford Brookes University.' },
-            { q: 'Is Pixformance a certified medical device?', a: 'Yes. Pixformance is approved in the USA as a Class 2 medical device (RX) by the FDA. The device complies with the EMC Directive 2004/108/EC and has been manufactured under strict quality and safety controls since 2012.' },
             { q: 'How does Pixformance help build a cash pay / self-pay area?', a: 'Pixformance enables practices to offer technology-assisted training outside the prescription model, creating a second revenue stream. Multiple practice owners report rapid return on investment. Financing available from $99/month.' },
           ].map((item, index) => (
             <details class="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:border-[#02308C]/30 transition-colors duration-200">
