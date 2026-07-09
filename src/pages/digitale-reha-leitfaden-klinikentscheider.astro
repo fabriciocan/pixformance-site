@@ -9,7 +9,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Digitale Reha: Leitfaden für Klinikentscheider – Beschaffung, Integration und ROI',
   description:
-    'Praxisleitfaden für Klinikleitungen, Chefärzte und Einkauf: Wie digitale Bewegungstherapie (CE-Medizinprodukt MDR EU 2017/745) beschafft, integriert und wirtschaftlich betrieben wird. Mit Checkliste, ROI-Rechnung und Erfahrungswerten aus 1.100+ Partnereinrichtungen.',
+    'Praxisleitfaden für Klinikleitungen, Chefärzte und Einkauf: Wie digitale Bewegungstherapie beschafft, integriert und wirtschaftlich betrieben wird. Mit Checkliste, ROI-Rechnung und Erfahrungswerten aus 1.100+ Partnereinrichtungen.',
   author: {
     '@type': 'Organization',
     name: 'Pixformance Sports GmbH',
@@ -32,11 +32,10 @@ const articleSchema = {
   about: [
     { '@type': 'Thing', name: 'Digitale Rehabilitation' },
     { '@type': 'Thing', name: 'Bewegungstherapie' },
-    { '@type': 'Thing', name: 'Medizinprodukt CE MDR EU 2017/745' },
     { '@type': 'Thing', name: 'Telerehabilitation' },
   ],
   keywords:
-    'digitale Reha, Klinikentscheider, Bewegungstherapie Beschaffung, CE Medizinprodukt Klinik, Telerehabilitation, ROI Rehabilitation, Pixformance Klinik',
+    'digitale Reha, Klinikentscheider, Bewegungstherapie Beschaffung, Telerehabilitation, ROI Rehabilitation, Pixformance Klinik',
 };
 
 const howToSchema = {
@@ -44,10 +43,10 @@ const howToSchema = {
   '@type': 'HowTo',
   name: 'Wie Kliniken digitale Bewegungstherapie beschaffen und integrieren',
   description:
-    'Schritt-für-Schritt-Anleitung für Kliniken zur Einführung eines CE-zertifizierten digitalen Bewegungstherapiesystems: von der Bedarfsanalyse über die Beschaffung bis zum Regelbetrieb.',
+    'Schritt-für-Schritt-Anleitung für Kliniken zur Einführung eines digitalen Bewegungstherapiesystems: von der Bedarfsanalyse über die Beschaffung bis zum Regelbetrieb.',
   totalTime: 'P3M',
   supply: [
-    { '@type': 'HowToSupply', name: 'Pixformance Station (CE-Medizinprodukt MDR EU 2017/745)' },
+    { '@type': 'HowToSupply', name: 'Pixformance Station' },
     { '@type': 'HowToSupply', name: 'Internetzugang (min. 10 Mbit/s)' },
     { '@type': 'HowToSupply', name: 'Stellfläche 4 m² pro Station' },
     { '@type': 'HowToSupply', name: 'Steckdose 230 V' },
@@ -62,7 +61,7 @@ const howToSchema = {
     {
       '@type': 'HowToStep',
       name: '2. Beschaffung & Vergabe',
-      text: 'CE-Medizinprodukt (MDR EU 2017/745). Verschiedene Finanzierungsmodelle verfügbar. Sprechen Sie uns für ein individuelles Angebot an.',
+      text: 'Verschiedene Finanzierungsmodelle verfügbar. Sprechen Sie uns für ein individuelles Angebot an.',
       url: 'https://www.pixformance.com/digitale-reha-leitfaden-klinikentscheider#schritt-2',
     },
     {
@@ -96,14 +95,6 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Ist Pixformance ein zugelassenes Medizinprodukt für Kliniken?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ja. Die Pixformance Station ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das System ist klinisch validiert in Studien der Hochschule Fresenius und der Charité Berlin und wird in über 1.100 Partnereinrichtungen — darunter über 150 Kliniken und Rehazentren — eingesetzt.',
-      },
-    },
     {
       '@type': 'Question',
       name: 'Welche Infrastruktur ist für den Betrieb in einer Klinik nötig?',
@@ -142,7 +133,7 @@ const faqSchema = {
 
 <BaseLayout
   title="Digitale Reha: Leitfaden für Klinikentscheider | Pixformance"
-  description="Praxisleitfaden für Chefärzte und Klinikleitung: Wie digitale Bewegungstherapie (CE-Medizinprodukt) beschafft, integriert und wirtschaftlich betrieben wird. Checkliste, ROI-Rechnung, Erfahrungen aus 1.100+ Partnereinrichtungen."
+  description="Praxisleitfaden für Chefärzte und Klinikleitung: Wie digitale Bewegungstherapie beschafft, integriert und wirtschaftlich betrieben wird. Checkliste, ROI-Rechnung, Erfahrungen aus 1.100+ Partnereinrichtungen."
   jsonLd={[articleSchema, howToSchema, faqSchema]}
 >
   <HeaderWithDropdown />
@@ -161,7 +152,6 @@ const faqSchema = {
         strukturierter Leitfaden für Chefärzte, Klinikleitungen und Einkauf.
       </p>
       <div class="flex flex-wrap gap-3 text-sm">
-        <span class="bg-white/10 rounded-full px-4 py-1">CE-Medizinprodukt MDR EU 2017/745</span>
         <span class="bg-white/10 rounded-full px-4 py-1">1.100+ Partnereinrichtungen</span>
         <span class="bg-white/10 rounded-full px-4 py-1">Klinisch validiert</span>
       </div>
@@ -183,7 +173,7 @@ const faqSchema = {
       <p>
         Digitale Bewegungstherapiesysteme wie die Pixformance Station bieten eine klinisch
         validierte Antwort: Patienten trainieren bis zu 6 Mal täglich selbstständig – gesteuert
-        und überwacht durch ein CE-zertifiziertes Medizinprodukt (MDR-konform EU 2017/745).
+        und überwacht.
         Therapeuten werden entlastet und können ihre Kapazitäten dort einsetzen, wo menschliche
         Expertise tatsächlich gefordert ist.
       </p>
@@ -237,7 +227,7 @@ const faqSchema = {
               <div class="grid md:grid-cols-1 gap-4 text-sm">
                 <div class="bg-blue-50 rounded-lg p-4">
                   <p class="font-semibold text-[#02308C] mb-2">Zertifizierung & Compliance</p>
-                  <p class="text-gray-700">CE-Medizinprodukt (MDR EU 2017/745). Vollständige technische Dokumentation und Konformitätserklärung werden mitgeliefert.</p>
+                  <p class="text-gray-700">Vollständige technische Dokumentation und Konformitätserklärung werden mitgeliefert.</p>
                 </div>
                 <div class="bg-blue-50 rounded-lg p-4">
                   <p class="font-semibold text-[#02308C] mb-2">Finanzierung & Beschaffung</p>
@@ -383,7 +373,7 @@ const faqSchema = {
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl font-bold text-[#02308C] mb-8 text-center">Klinische Evidenz & Referenzen</h2>
       <p class="text-gray-600 text-center max-w-2xl mx-auto mb-10">
-        Pixformance ist nicht nur CE-zertifiziert – das System ist in klinischen Studien validiert
+        Das System ist in klinischen Studien validiert
         und in Leitkliniken im Einsatz.
       </p>
       <div class="grid md:grid-cols-2 gap-8">
@@ -451,10 +441,6 @@ const faqSchema = {
       <div class="space-y-4">
         {[
           {
-            q: 'Ist Pixformance ein zugelassenes Medizinprodukt für Kliniken?',
-            a: 'Ja. Die Pixformance Station ist ein CE-gekennzeichnetes Medizinprodukt (MDR-konform EU 2017/745) und erfüllt die EMV-Richtlinie 2004/108/EG. Das System ist klinisch validiert und wird in über 1.100 Partnereinrichtungen — darunter über 150 Kliniken und Rehazentren — eingesetzt.',
-          },
-          {
             q: 'Welche Infrastruktur ist für den Betrieb in einer Klinik nötig?',
             a: 'Ca. 4 m² Stellfläche, eine 230-V-Steckdose und stabiles Internet (min. 10 Mbit/s). Keine Bauleistungen, keine IT-Sonderprojekte. Betriebsbereit in unter 2 Stunden.',
           },
@@ -496,7 +482,7 @@ const faqSchema = {
         <Button href="/testen" variant="secondary">Beratung anfragen</Button>
       </div>
       <p class="text-gray-400 text-xs mt-6">
-        CE-Medizinprodukt · MDR EU 2017/745 · Seit 2012 · 1.100+ Partnereinrichtungen
+        Seit 2012 · 1.100+ Partnereinrichtungen
       </p>
     </div>
   </section>
