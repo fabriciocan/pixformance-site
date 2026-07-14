@@ -126,6 +126,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 <script is:inline>
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  var TIMED_DELAY_MS = 20000;
 
   function sha256(value) {
     var normalized = (value || '').toLowerCase().trim();
@@ -353,15 +354,15 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
       });
     }
 
-    // Timed popup: 5s delay, once per session, waits for cookie consent
+    // Timed popup: TIMED_DELAY_MS delay, once per session, waits for cookie consent
     if (!sessionStorage.getItem('pix_timed_popup_seen')) {
       function startTimer() {
         setTimeout(function () {
-          if (!modal.classList.contains('flex')) {
+          if (!modal.classList.contains('flex') && !timedPopup.classList.contains('flex')) {
             openTimedPopup();
             sessionStorage.setItem('pix_timed_popup_seen', '1');
           }
-        }, 5000);
+        }, TIMED_DELAY_MS);
       }
 
       try {
@@ -385,6 +386,19 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         startTimer();
       }
     }
+
+    // Desktop exit-intent: once per session, independent of the timed popup —
+    // fires even if the timed popup was already shown and dismissed (max 2
+    // appearances per session). Mobile has no reliable mouse-leave signal, so
+    // it relies on the timer only.
+    document.addEventListener('mouseout', function (e) {
+      if (e.clientY > 0 || e.relatedTarget) return;
+      if (sessionStorage.getItem('pix_exit_popup_seen')) return;
+      if (modal.classList.contains('flex') || timedPopup.classList.contains('flex')) return;
+      if (document.body.classList.contains('pix-modal-open')) return; // cookie consent modal open
+      sessionStorage.setItem('pix_exit_popup_seen', '1');
+      openTimedPopup();
+    });
   }
 
   if (document.readyState === 'loading') {
