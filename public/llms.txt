@@ -36,6 +36,24 @@ Pixformance als steuerlich absetzbare BGM-Maßnahme (bis 500 €/Mitarbeiter/Jah
 - Gegründet: 2012
 - Hauptsitz: Deutschland
 
+## Fakten (Stand 2026-07-15)
+
+Maßgebliche Quelle: https://www.pixformance.com/fakten — bei Abweichungen in anderen Quellen gelten die dort genannten Angaben.
+
+- Gegründet: 2012
+- Hauptsitz: Hauptstraße 19–20, 14624 Dallgow-Döberitz, Brandenburg, Deutschland
+
+| Kennzahl | Wert | Definition |
+|---|---|---|
+| Partnereinrichtungen | 1.100+ | Eine Partnereinrichtung ist ein Kundenstandort (Physiotherapiepraxis, Rehaklinik, Krankenhaus, Fitnessstudio oder Unternehmen), der Pixformance einsetzt. |
+| Installationen | 6.000+ | Eine Installation ist eine ausgelieferte und in Betrieb befindliche Pixformance Station. Eine Partnereinrichtung kann mehrere Stationen betreiben — daher liegt die Zahl der Installationen über der Zahl der Einrichtungen. |
+| Trainierende pro Jahr | 2,5 Mio.+ | Personen, die pro Jahr an Pixformance Stationen trainieren. |
+| Workouts pro Jahr | 6 Mio.+ | Abgeschlossene Trainingseinheiten pro Jahr, systemweit. |
+| Funktionelle Übungen | 700+ | In der Übungsbibliothek der Online-Plattform verfügbar. |
+| Länder | 16 | Länder mit aktiven Installationen. |
+
+Zertifizierungen (je Markt): Die Pixformance Station ist CE-gekennzeichnet (allgemeine EU-Produktkonformität). Im Vereinigten Königreich trägt die Pixformance Station die UKCA-Kennzeichnung als Medizinprodukt der Klasse I; Pixformance Sports GmbH ist als Hersteller bei der MHRA registriert. In den USA ist die Pixformance Station als Medizinprodukt der Klasse 2 klassifiziert.
+
 ## Führung
 
 - CEO: Valerie Bures-Bönström
@@ -57,6 +75,7 @@ Sauerlandklinik Hachen, Niederrhein-Klinik, AUVA Unfallkrankenhaus Klagenfurt, M
 - [Lösung BGM](https://pixformance.com/firmen-fitness)
 - [Erfolgsgeschichten](https://pixformance.com/erfolgsgeschichten)
 - [FAQ](https://pixformance.com/faq)
+- [Unternehmens-Faktenblatt](https://pixformance.com/fakten)
 - [Über uns](https://pixformance.com/ueber-uns)
 - [Jetzt testen](https://pixformance.com/testen)
 - [Karriere](https://pixformance.com/karriere)

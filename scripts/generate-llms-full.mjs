@@ -7,7 +7,7 @@ import { join } from 'node:path';
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const SITE = 'https://www.pixformance.com';
 
-const KEY_PAGES = ['konzept', 'physiotherapie', 'klinik', 'fitness', 'firmen-fitness', 'faq'];
+const KEY_PAGES = ['fakten', 'konzept', 'physiotherapie', 'klinik', 'fitness', 'firmen-fitness', 'faq'];
 const caseStudies = readdirSync(join(DIST, 'erfolgsgeschichten'), { withFileTypes: true })
   .filter((e) => e.isDirectory())
   .map((e) => `erfolgsgeschichten/${e.name}`)
