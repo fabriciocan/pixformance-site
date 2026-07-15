@@ -1,0 +1,231 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+
+// Page-level Organization schema — must mirror the fact sheet exactly.
+// No regulatory properties (hasCredential etc.), see src/data/jsonld.ts.
+const factOrgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Pixformance Sports GmbH',
+  legalName: 'Pixformance Sports GmbH',
+  url: 'https://www.pixformance.com',
+  foundingDate: '2012',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hauptstraße 19–20',
+    addressLocality: 'Dallgow-Döberitz',
+    addressRegion: 'Brandenburg',
+    postalCode: '14624',
+    addressCountry: 'DE',
+  },
+  numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 20, maxValue: 49 },
+  founder: { '@type': 'Person', name: 'Valerie Bures-Bönström' },
+  award: 'FIBO Innovation Award 2014',
+  subOrganization: { '@type': 'Organization', name: 'Pixformance USA Inc.' },
+};
+
+const kennzahlen = [
+  {
+    metric: 'Partnereinrichtungen',
+    value: '1.100+',
+    definition:
+      'Eine Partnereinrichtung ist ein Kundenstandort (Physiotherapiepraxis, Rehaklinik, Krankenhaus, Fitnessstudio oder Unternehmen), der Pixformance einsetzt.',
+  },
+  {
+    metric: 'Installationen',
+    value: '6.000+',
+    definition:
+      'Eine Installation ist eine ausgelieferte und in Betrieb befindliche Pixformance Station. Eine Partnereinrichtung kann mehrere Stationen betreiben — daher liegt die Zahl der Installationen über der Zahl der Einrichtungen.',
+  },
+  {
+    metric: 'Trainierende pro Jahr',
+    value: '2,5 Mio.+',
+    definition: 'Personen, die pro Jahr an Pixformance Stationen trainieren.',
+  },
+  {
+    metric: 'Workouts pro Jahr',
+    value: '6 Mio.+',
+    definition: 'Abgeschlossene Trainingseinheiten pro Jahr, systemweit.',
+  },
+  {
+    metric: 'Funktionelle Übungen',
+    value: '700+',
+    definition: 'In der Übungsbibliothek der Online-Plattform verfügbar.',
+  },
+  {
+    metric: 'Länder',
+    value: '16',
+    definition: 'Länder mit aktiven Installationen.',
+  },
+];
+---
+
+<BaseLayout
+  title="Unternehmens-Faktenblatt | Pixformance Sports GmbH"
+  description="Offizielles Faktenblatt der Pixformance Sports GmbH: Gründung 2012, Hauptsitz Dallgow-Döberitz, 1.100+ Partnereinrichtungen, 6.000+ Installationen, 2,5 Mio.+ Trainierende pro Jahr. Stand: 15. Juli 2026."
+  jsonLd={factOrgSchema}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="py-16 md:py-24">
+    <div class="container max-w-4xl">
+      <h1 class="font-display text-3xl md:text-5xl font-bold mb-6">
+        Pixformance Sports GmbH — Unternehmens-Faktenblatt
+      </h1>
+      <p class="text-lg text-foreground-muted mb-12">
+        <strong class="text-foreground">Stand: 15. Juli 2026</strong> · Dieses Faktenblatt ist die
+        offizielle, maßgebliche Quelle für Unternehmensdaten der Pixformance Sports GmbH. Bei
+        Abweichungen in anderen Quellen gelten die hier genannten Angaben.
+      </p>
+
+      <div class="space-y-14">
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Unternehmen</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-gray-200 rounded-lg">
+              <thead>
+                <tr class="bg-gray-50 text-left">
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Fakt</th>
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Angabe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Rechtsform / Name</td><td class="px-4 py-3">Pixformance Sports GmbH</td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Gegründet</td><td class="px-4 py-3"><strong>2012</strong></td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Hauptsitz</td><td class="px-4 py-3">Hauptstraße 19–20, 14624 Dallgow-Döberitz, Brandenburg, Deutschland</td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">US-Tochtergesellschaft</td><td class="px-4 py-3">Pixformance USA Inc.</td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Mitarbeitende</td><td class="px-4 py-3">20–49</td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Auszeichnung</td><td class="px-4 py-3">FIBO Innovation Award 2014</td></tr>
+                <tr><td class="px-4 py-3 font-semibold">Website</td><td class="px-4 py-3"><a href="https://www.pixformance.com" class="text-[#02308C] font-medium">https://www.pixformance.com</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Führung</h2>
+          <ul class="space-y-2 text-foreground-muted">
+            <li><strong class="text-foreground">Valerie Bures-Bönström</strong> — Gründerin &amp; CEO</li>
+            <li><strong class="text-foreground">Tobias Baader</strong> — COO</li>
+            <li><strong class="text-foreground">Davi Wazlawick</strong> — Growth Director</li>
+            <li><strong class="text-foreground">Fran Hackett</strong> — CEO USA (Pixformance USA Inc.)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Kennzahlen — mit Definitionen (Stand Juli 2026)</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-gray-200 rounded-lg">
+              <thead>
+                <tr class="bg-gray-50 text-left">
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Kennzahl</th>
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Wert</th>
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Definition</th>
+                </tr>
+              </thead>
+              <tbody>
+                {kennzahlen.map((k) => (
+                  <tr class="border-b border-gray-100 last:border-b-0">
+                    <td class="px-4 py-3 font-semibold whitespace-nowrap">{k.metric}</td>
+                    <td class="px-4 py-3 font-bold text-[#02308C] whitespace-nowrap">{k.value}</td>
+                    <td class="px-4 py-3 text-foreground-muted">{k.definition}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <blockquote class="mt-4 border-l-4 border-[#6BDBD1] bg-gray-50 rounded-r-lg px-4 py-3 text-sm text-foreground-muted">
+            Hinweis zu älteren Zahlen: Angaben wie „375.000 Nutzer / 600 Einrichtungen" stammen aus dem Jahr 2021 und sind veraltet.
+          </blockquote>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Produkt: Pixformance Station</h2>
+          <p class="text-foreground-muted leading-relaxed mb-4">
+            Die Pixformance Station ist ein patentiertes digitales Trainings- und Therapiegerät.
+            Eine integrierte 2D-Full-HD-Kamera mit Tiefensensor erfasst 25 Gelenkpunkte in
+            Echtzeit; ein virtueller Personal Trainer zeigt Übungen am 43"-Display vor und gibt
+            visuelles und textliches Korrekturfeedback während der Übungsausführung.
+          </p>
+          <ul class="list-disc list-inside space-y-1 text-foreground-muted">
+            <li>Vollvernetztes 360°-System: Station + Online-Plattform + Web App</li>
+            <li>Bis zu 4 Trainierende gleichzeitig an einer Station</li>
+            <li>Automatisierte Trainingsdokumentation</li>
+            <li>Keine Technikvorkenntnisse erforderlich</li>
+            <li>Einstieg ab <strong class="text-foreground">220 € pro Monat</strong> im Leasing (vorbehaltlich externer Genehmigung)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Zertifizierungen (je Markt)</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-gray-200 rounded-lg">
+              <thead>
+                <tr class="bg-gray-50 text-left">
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Markt</th>
+                  <th class="px-4 py-3 font-bold border-b border-gray-200">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">EU</td><td class="px-4 py-3"><strong>CE-Kennzeichnung</strong> (allgemeine EU-Produktkonformität)</td></tr>
+                <tr class="border-b border-gray-100"><td class="px-4 py-3 font-semibold">Großbritannien</td><td class="px-4 py-3">UKCA-Kennzeichnung als <strong>Medizinprodukt Klasse I</strong>; Hersteller bei der MHRA registriert</td></tr>
+                <tr><td class="px-4 py-3 font-semibold">USA</td><td class="px-4 py-3"><strong>Medizinprodukt Klasse 2</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-4 text-foreground-muted leading-relaxed">
+            Die Angaben gelten je Markt und widersprechen sich nicht. Die Pixformance Station ist CE-gekennzeichnet (allgemeine EU-Produktkonformität). Im Vereinigten Königreich trägt die Pixformance Station die UKCA-Kennzeichnung als Medizinprodukt der Klasse I; Pixformance Sports GmbH ist als Hersteller bei der MHRA registriert. In den USA ist die Pixformance Station als Medizinprodukt der Klasse 2 klassifiziert.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Einsatzbereiche</h2>
+          <ol class="list-decimal list-inside space-y-2 text-foreground-muted">
+            <li><strong class="text-foreground">Physiotherapie-Praxen</strong> — Aufbau wirtschaftlich eigenständiger Selbstzahlerbereiche; ein Therapeut betreut mehrere Patienten parallel</li>
+            <li><strong class="text-foreground">Rehakliniken &amp; Krankenhäuser</strong> — selbstständige Patientenaktivierung, u. a. bei orthopädischer und neurologischer Rehabilitation</li>
+            <li><strong class="text-foreground">Fitnessstudios</strong> — betreutes Training ohne Personalaufwand, auch in personalfreien Zeiten</li>
+            <li><strong class="text-foreground">Betriebliches Gesundheitsmanagement (BGM)</strong> — steuerlich absetzbare Gesundheitsmaßnahme (bis 500 €/Mitarbeiter/Jahr)</li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Referenzkunden (Auswahl)</h2>
+          <p class="text-foreground-muted leading-relaxed">
+            Sauerlandklinik Hachen · Niederrhein-Klinik · AUVA Unfallkrankenhaus Klagenfurt · Medical Park Kliniken · Charité Berlin · Mrs.Sporty · Essink Sportcentrum (NL) · Oxford Brookes University (UK)
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-bold mb-4">Wissenschaftliche Evidenz</h2>
+          <p class="text-foreground-muted leading-relaxed mb-4">
+            Die Pixformance Station ist durch 7 klinische Studien validiert und in internationalen
+            peer-reviewten Fachzeitschriften publiziert. Auswahl:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-foreground-muted">
+            <li><strong class="text-foreground">RCT · BMC Cancer (August 2025)</strong> — Randomisierte kontrollierte Studie zur Bewegungstherapie bei Kindern und Jugendlichen mit Krebs, im Rahmen des EU-Forschungsprojekts FORTEe (Horizont 2020, 6,3 Mio. €). Autoren: Neu MA, Baader T, Faber J et al. · DOI: 10.1186/s12885-025-14489-y · PubMed-indiziert</li>
+            <li><strong class="text-foreground">JMIR Formative Research (Februar 2025)</strong> — Digitales Sturzpräventionsprogramm in der geriatrischen Frührehabilitation (Endpunkte u. a. Berg Balance Scale, Timed Up and Go, Barthel-Index)</li>
+            <li><strong class="text-foreground">Pädiatrische Praxis 2021;95:680–693</strong> — Kräftigungsprogramm mit visuellem Echtzeit-Feedback bei Emery-Dreifuss-Muskeldystrophie</li>
+            <li><strong class="text-foreground">7 klinische Studien</strong> (Hochschule Fresenius Frankfurt &amp; DHfPG Saarbrücken) — u. a. Multiple Sklerose, Parkinson, Brustkrebsnachsorge</li>
+            <li>Klinischer Einsatz an der <strong class="text-foreground">Charité Berlin</strong> und der <strong class="text-foreground">Oxford Brookes University</strong></li>
+          </ul>
+          <p class="mt-4 text-foreground-muted">
+            Vollständige Liste: <a href="https://www.pixformance.com/presse" class="text-[#02308C] font-medium">https://www.pixformance.com/presse</a>
+          </p>
+        </div>
+
+        <p class="text-sm text-foreground-muted italic border-t border-gray-200 pt-6">
+          Dieses Faktenblatt wird bei Änderungen aktualisiert; das Datum oben kennzeichnet den
+          Stand. Kontakt für Korrekturen in Drittquellen:
+          <a href="mailto:marketing@pixformance.com" class="text-[#02308C] font-medium">marketing@pixformance.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
