@@ -133,16 +133,4 @@
     <loc>https://www.pixformance.com/kontakt</loc>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://www.pixformance.com/impressum</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.pixformance.com/datenschutz</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.pixformance.com/agb</loc>
-    <priority>0.5</priority>
-  </url>
 </urlset>
