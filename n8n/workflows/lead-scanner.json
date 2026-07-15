@@ -1,0 +1,485 @@
+{
+  "id": "xKE3MINcq5C4KPgN",
+  "name": "Pixformance Weekly Signal Scan Davi",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6cccbf57-5a91-4844-b0a1-0357275b0cf8",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// BUILD PROMPT — Pixformance Lead Scanner (DACH, janelas largas)\n// ============================================================\n\nconst today = new Date().toISOString().split('T')[0];\n\n// --- Dedup: leads já existentes na planilha ---\nlet existingLeads = \"keine\";\ntry {\n  const rows = $('Dedup - Get row(s) in sheet').all();\n  const nomes = rows\n    .map(r => `${r.json.facility_name} (${r.json.city})`)\n    .filter(n => n && n.trim() !== \"()\" && n.trim() !== \" ()\");\n  if (nomes.length > 0) existingLeads = nomes.join(\", \");\n} catch (e) {\n  existingLeads = \"keine\";\n}\n\nconst prompt = `# ROLE\nYou are a B2B sales-signal research agent for Pixformance Sports GmbH (digital movement therapy station for physiotherapy practices, rehab centers and hybrid physio-fitness facilities in the DACH region). Your job: find named, real facilities showing buying signals and output them as structured leads.\nToday's date: ${today}\n\n# IDEAL CUSTOMER PROFILE (only these qualify)\n- Owner-led physiotherapy practice or ambulant rehab center, DACH, ~5-25 employees\n- >=150m2 usable space or a dedicated Trainingsflaeche/Geraeteraum\n- Offers or plans Selbstzahler services: T-RENA, Rehasport, Praeventionskurse, KGG, medical training therapy, or \"Therapie + Training unter einem Dach\" hybrid concepts\n- Secondary: Reha-Kliniken (ambulant), senior/active-aging facilities, BGM providers\n- ANTI-ICP (exclude): solo practices <100m2, pure Hausbesuchspraxen, consumer gyms without therapy, hospitals without ambulant rehab\n\n# BUYING SIGNALS TO HUNT (with lookback windows)\n1. EXPANSION/OPENING (90 days): Praxiseroeffnung, Umzug in groessere Raeume, Erweiterung, Neubau Trainingsflaeche, integration into a fitness center\n2. OWNERSHIP TRANSITION (120 days): Praxisuebernahme completed, Inhaberwechsel, new GmbH founding\n3. CHRONIC CAPACITY PAIN (180 days): press/reviews documenting patient wait times of 4+ weeks, \"Praxis am Limit\", understaffing\n4. ACTIVE HIRING / JOB POSTINGS (120 days): the facility is actively advertising for physiotherapists. This is one of the STRONGEST signals of a capacity bottleneck. Search job boards and check the posting date:\n   - Sources: physio.de/stellenmarkt, therapie.de, medi-jobs.de, Indeed.de, StepStone.de, kimeta.de, and the facility's own \"Karriere\"/\"Jobs\" page\n   - Strong sub-signal: a posting open or reposted 60+ days (they can't fill it -> they have demand they can't serve)\n   - Stronger still: a facility advertising MULTIPLE open physio roles at once, or hiring for a NEW Trainingsflaeche/Standort\n   - Record the posting date in signal_date and note the role(s) in signal_summary\n5. PROFESSIONAL RECRUITING / HEADHUNTING (120 days): the facility is investing in acquiring staff beyond a simple ad — e.g. working with a Personalvermittlung/recruiter, offering signing bonuses (Willkommensbonus/Wechselpraemie), aggressive benefits, or \"Wir wachsen – Team gesucht\" campaigns. Signals active growth and budget. Check LinkedIn, Indeed, XING, facility career pages and local press.\n6. COMPETITIVE PRESSURE (90 days): nearby facility announcing competitor device installs (Sensopro, YOLii, Pelvi, Just Functional, EGYM, milon, five)\n7. FUNDING WINDOW (90 days): new Laender-level Digitalisierungs-/BGM-/Praeventions-Foerderprogramme relevant to therapy facilities\n\n# SEARCH STRATEGY\nYou MUST cover all three DACH countries in every scan — not only Germany. Distribute your searches so that Germany, Austria, and Switzerland each receive dedicated queries. With 3 searches available, allocate at minimum: 1 search targeting Austria (AT) and 1 search targeting Switzerland (CH); the remainder may target Germany (DE). Do NOT spend all searches on German regions.\n\nFor AUSTRIA (AT): use Austrian-specific terms and sources — e.g. \"Physiotherapie Praxis Eröffnung Österreich\", \"Physiotherapeut gesucht Wien Graz Linz Salzburg Innsbruck\", and sources like meinbezirk.at, karriere.at, willhaben.at, and Austrian regional press. Search across Austrian Bundesländer (Wien, Niederösterreich, Oberösterreich, Steiermark, Tirol, Salzburg, Kärnten, Vorarlberg).\n\nFor SWITZERLAND (CH): use Swiss-specific terms and sources — e.g. \"Physiotherapie Praxis Eröffnung Schweiz\", \"Physiotherapeut gesucht Zürich Bern Basel\", and sources like jobs.ch, physioswiss.ch, and Swiss regional press. Search across Swiss cantons (Zürich, Bern, Basel, Aargau, St. Gallen, Luzern, Waadt/Vaud, Genf/Genève).\n\nFor GERMANY (DE): rotate across Bundesländer each scan (NRW, Bayern, Baden-Württemberg, Niedersachsen, Hessen, Sachsen, Berlin) and use German sources: physio.de/stellenmarkt, therapie.de, medi-jobs.de, Indeed.de, StepStone.de, neueroeffnung.info, openpr.de, BODYMEDIA, up-aktuell.\n\nWhen you find a job posting, open it and check the publication date to estimate how long the role has been open. Prioritize local press and real job postings over national think-pieces. A usable lead MUST have a facility name and location. Trend articles without named facilities are NOT leads. Set the \"country\" field correctly to DE, AT, or CH based on the facility's actual location.\n\n# SCORING (0-100)\nscore = signal_strength (0-40: opening/takeover/expansion=35-40, active hiring/job posting 60+ days=35, capacity pain=25-35, headhunting/recruiting=25-30, competitor/funding=15-25) + ICP_fit (0-40: training floor mentioned=+15, hybrid concept=+15, team size 5-25=+10) + freshness (0-20: <30 days=20, <90=12, <180=5). Discard below 50.\n\n# VERIFICATION RULES\n- Every lead needs at least one working source URL\n- Never invent any data. Unknown = \"TBD\"\n- Flag signals older than 90 days in signal_summary with \"VERIFY CURRENT STATUS\"\n- Exclude facilities that already announced buying a Pixformance Station\n\n# DEDUPLICATION (CRITICAL)\nThe following practices were already reported in previous scans.\nDo NOT output any of them again — not even with slightly different name or spelling.\nIf you encounter one of these, skip it and keep searching for NEW leads:\n${existingLeads}\n\n# OUTPUT - respond with ONLY a JSON array, no markdown fences, no preamble:\n[{\"facility_name\":\"\",\"city\":\"\",\"country\":\"DE|AT|CH\",\"address\":\"\",\"contact_person\":\"\",\"role\":\"\",\"phone\":\"\",\"website\":\"\",\"signal_type\":\"expansion|takeover|opening|capacity_pain|staffing|hiring|headhunting|competitor|funding\",\"signal_summary\":\"1-2 sentences, German\",\"signal_date\":\"YYYY-MM-DD\",\"score\":0,\"talking_angle\":\"1 sentence, German\",\"source_urls\":[\"\"]}]\nIf you find NO qualifying new leads, respond with an empty array: []\nDo NOT write explanations or any text outside the JSON array.\nReturn the top 3 leads ranked by score descending if found... never invent or fabricate any result. Always return valid JSON.`;\n\nreturn [{\n  json: {\n    model: \"claude-sonnet-4-6\",\n    max_tokens: 5000,\n    messages: [{ role: \"user\", content: prompt }],\n    tools: [{ type: \"web_search_20250305\", name: \"web_search\", max_uses: 3 }]\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "bcda5d86-d817-4d2a-86d9-8aaaa5fc4f88",
+      "name": "Build Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// CODE PARSE — Pixformance Lead Scanner\n// Extrai o array de leads da resposta do Anthropic.\n// Robusto contra: cercas markdown (```json), array indentado\n// ([ \\n  { ), preâmbulo antes do array, e resposta vinda\n// como array / body / objeto direto.\n// ============================================================\n\n// 1) Normaliza a resposta (pode vir como [0], como body, ou objeto direto)\nconst raw = $input.first().json;\nconst response = Array.isArray(raw) ? raw[0] : (raw.body ?? raw);\n\n// 2) Junta todo o texto dos blocos \"text\" da resposta\nconst text = (response.content || [])\n  .filter(b => b.type === \"text\")\n  .map(b => b.text)\n  .join(\"\\n\");\n\n// 3) Remove cercas markdown (```json ... ``` ou ``` ... ```)\nlet limpo = text.replace(/```json/gi, \"\").replace(/```/g, \"\");\n\n// 4) Acha o array JSON de leads, tolerando espaços/quebras entre [ e {\n//    Procura o primeiro \"[\" que, ignorando espaços/quebras, é seguido de \"{\"\nfunction acharInicioArray(s) {\n  for (let i = 0; i < s.length; i++) {\n    if (s[i] !== \"[\") continue;\n    let j = i + 1;\n    while (j < s.length && /\\s/.test(s[j])) j++; // pula espaços/quebras\n    if (s[j] === \"{\") return i; // é um array de objetos\n  }\n  return -1;\n}\n\n// 5) A partir do \"[\", varre com contador de profundidade respeitando strings\nfunction extrairArray(s) {\n  const inicio = acharInicioArray(s);\n  if (inicio === -1) return null;\n  let prof = 0, str = false, esc = false;\n  for (let i = inicio; i < s.length; i++) {\n    const c = s[i];\n    if (esc) { esc = false; continue; }\n    if (c === \"\\\\\") { esc = true; continue; }\n    if (c === '\"') { str = !str; continue; }\n    if (str) continue;\n    if (c === \"[\") prof++;\n    else if (c === \"]\") { prof--; if (prof === 0) return s.slice(inicio, i + 1); }\n  }\n  return null;\n}\n\nconst jsonStr = extrairArray(limpo);\nif (!jsonStr) return [];\n\nlet leads;\ntry {\n  leads = JSON.parse(jsonStr);\n} catch (e) {\n  return [];\n}\nif (!Array.isArray(leads) || leads.length === 0) return [];\n\n// 6) Monta os items de saída (um por lead)\nconst scanDate = new Date().toISOString().slice(0, 10);\n\nreturn leads.map(lead => {\n  const leadKey = ((lead.facility_name ?? \"\") + \"_\" + (lead.city ?? \"\"))\n    .toLowerCase()\n    .normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")   // tira acentos\n    .replace(/[^a-z0-9]+/g, \"_\")\n    .replace(/^_+|_+$/g, \"\");\n\n  return {\n    json: {\n      scan_datum: scanDate,\n      lead_key: leadKey,\n      facility_name: lead.facility_name ?? \"\",\n      city: lead.city ?? \"\",\n      country: lead.country ?? \"\",\n      address: lead.address ?? \"\",\n      contact_person: lead.contact_person ?? \"\",\n      role: lead.role ?? \"\",\n      phone: lead.phone ?? \"\",\n      website: lead.website ?? \"\",\n      signal_type: lead.signal_type ?? \"\",\n      signal_summary: lead.signal_summary ?? \"\",\n      signal_date: lead.signal_date ?? \"\",\n      score: lead.score ?? \"\",\n      talking_angle: lead.talking_angle ?? \"\",\n      source_urls: Array.isArray(lead.source_urls)\n        ? lead.source_urls.join(\" | \")\n        : (lead.source_urls ?? \"\"),\n      status: \"\"\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        0
+      ],
+      "id": "dce87bbb-6fb9-4dc5-8a83-e4412453b377",
+      "name": "Code Parse"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g",
+          "mode": "list",
+          "cachedResultName": "Pixformance Signal Scan",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 123456,
+          "mode": "list",
+          "cachedResultName": "Pixformance Signal Scan",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g/edit#gid=123456"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "scan_datum",
+              "displayName": "scan_datum",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_key",
+              "displayName": "lead_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "facility_name",
+              "displayName": "facility_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "contact_person",
+              "displayName": "contact_person",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "role",
+              "displayName": "role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "signal_type",
+              "displayName": "signal_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "signal_summary",
+              "displayName": "signal_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "signal_date",
+              "displayName": "signal_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "score",
+              "displayName": "score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "talking_angle",
+              "displayName": "talking_angle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source_urls",
+              "displayName": "source_urls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "places_match",
+              "displayName": "places_match",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "places_name",
+              "displayName": "places_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1456,
+        0
+      ],
+      "id": "b291b59a-01d6-4fcb-87ed-68a8845e1922",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9WHOMBYYUgMORHkW",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://places.googleapis.com/v1/places:searchText",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Goog-Api-Key",
+              "value": "AIzaSyBgVzBjuYpTK1ROjrdEYK2zP29RLYD-B74"
+            },
+            {
+              "name": "X-Goog-FieldMask",
+              "value": "places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.websiteUri"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"textQuery\": \"={{ $json.address }}, {{ $json.facility_name }}\",\n  \"languageCode\": \"de\",\n  \"regionCode\":\"{{ $json.country }}\",\n  \"maxResultCount\": 3\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "465cab59-440b-475b-9484-ca50ea6c18cd",
+      "name": "HTTP Request1 places"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Code Merge — Mode: Run Once for Each Item\nconst itemIndex = $itemIndex;\n\n// lead original vem do \"Code Parse\" (nome exato do seu nó de parse)\nconst lead = { ...$('Code Parse').all()[itemIndex].json };\n\n// candidatos do Places (até 3)\nconst candidatos = $json.places || [];\n\nconst norm = s => (s || \"\")\n  .toLowerCase()\n  .normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")\n  .replace(/[^a-z0-9 ]/g, \" \")\n  .replace(/\\s+/g, \" \")\n  .trim();\n\nconst cidadeLead   = norm(lead.city);\nconst palavrasLead = norm(lead.facility_name).split(\" \").filter(w => w.length > 3);\n\nfunction pontuar(place) {\n  const endereco = norm(place?.formattedAddress);\n  const nome     = norm(place?.displayName?.text);\n  let p = 0;\n  if (cidadeLead && endereco.includes(cidadeLead)) p += 2;\n  for (const w of palavrasLead) if (nome.includes(w)) p += 1;\n  return p;\n}\n\nlet melhor = null, melhorScore = 0;\nfor (const c of candidatos) {\n  const s = pontuar(c);\n  if (s > melhorScore) { melhorScore = s; melhor = c; }\n}\n\n// aceita só se cidade bateu E pelo menos uma palavra do nome (score >= 3)\nconst matchOk = melhor && melhorScore >= 3;\n\nif (matchOk) {\n  lead.phone   = melhor.nationalPhoneNumber || lead.phone;\n  lead.website = melhor.websiteUri          || lead.website;\n  lead.address = melhor.formattedAddress    || lead.address;\n  lead.places_match = \"ok\";\n  lead.places_name  = melhor.displayName?.text || \"\";\n} else {\n  lead.places_match = \"no_match\";\n  lead.places_name  = melhor?.displayName?.text || (candidatos[0]?.displayName?.text || \"\");\n}\n\nif (lead.phone === \"TBD\")   lead.phone = \"\";\nif (lead.website === \"TBD\") lead.website = \"\";\n\nreturn { json: lead };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1248,
+        0
+      ],
+      "id": "b98e96e1-493b-4221-be0d-51f41342e75e",
+      "name": "Code Merge"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g",
+          "mode": "list",
+          "cachedResultName": "Pixformance Signal Scan",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 123456,
+          "mode": "list",
+          "cachedResultName": "Pixformance Signal Scan",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ek8PkYsDBJeHZqHseQfg31aE4nbw2nHyDVxUithmX8g/edit#gid=123456"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "04230f48-2c9b-49a1-af69-8abbddd0c7a5",
+      "name": "Dedup - Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9WHOMBYYUgMORHkW",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "REDACTED_SET_IN_N8N_UI__ANTHROPIC_API_KEY"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        624,
+        0
+      ],
+      "id": "4266731f-60cb-4c2d-9761-cb5c02711a74",
+      "name": "HTTP Request Antropic"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Dedup - Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request Antropic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Parse": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1 places",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1 places": {
+      "main": [
+        [
+          {
+            "node": "Code Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Merge": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dedup - Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request Antropic": {
+      "main": [
+        [
+          {
+            "node": "Code Parse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        193
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

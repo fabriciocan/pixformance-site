@@ -1,0 +1,363 @@
+{
+  "name": "GEO Monitor — Probes",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 6,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "id": "7345caec-df95-4cce-8a8b-0127a3680535",
+      "name": "Schedule Trigger",
+      "position": [
+        -220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The 20-query battery from the GEO audit (A1), verbatim\nconst BATTERY = [\n  { id:'de-cat-1',   intent:'category',   q:'Was sind die besten digitalen Trainingsgeräte für Physiotherapiepraxen?' },\n  { id:'de-cat-2',   intent:'category',   q:'Welche Anbieter gibt es für digitale Trainingsstationen in Physiotherapie und Reha?' },\n  { id:'de-cat-3',   intent:'category',   q:'Beste Geräte für gerätegestützte Trainingstherapie in der Reha' },\n  { id:'de-cat-4',   intent:'category',   q:'Wie kann ich meine Physiotherapiepraxis digitalisieren?' },\n  { id:'de-cat-5',   intent:'category',   q:'Software und Geräte für die Trainingsfläche in einer Physiopraxis' },\n  { id:'de-comp-1',  intent:'comparison', q:'EGYM Alternativen' },\n  { id:'de-comp-2',  intent:'comparison', q:'Pixformance oder EGYM, was ist besser für eine Physiopraxis?' },\n  { id:'de-comp-3',  intent:'comparison', q:'Vergleich digitale Trainingsgeräte Physiotherapie' },\n  { id:'de-brand-1', intent:'brand',      q:'Was ist Pixformance?' },\n  { id:'de-brand-2', intent:'brand',      q:'Pixformance Erfahrungen' },\n  { id:'de-brand-3', intent:'brand',      q:'Was kostet Pixformance?' },\n  { id:'de-brand-4', intent:'brand',      q:'Ist Pixformance für eine kleine Physiopraxis sinnvoll?' },\n  { id:'de-prob-1',  intent:'problem',    q:'Wie kann eine Physiopraxis trotz Personalmangel mehr Patienten betreuen?' },\n  { id:'de-prob-2',  intent:'problem',    q:'Wie baue ich Selbstzahlerangebote in meiner Physiotherapiepraxis auf?' },\n  { id:'de-prob-3',  intent:'problem',    q:'Welche Geräte brauche ich für die T-RENA Nachsorge?' },\n  { id:'en-cat-1',   intent:'category',   q:'Best digital training stations for physiotherapy clinics' },\n  { id:'en-cat-2',   intent:'category',   q:'Digital exercise therapy equipment for rehabilitation centers' },\n  { id:'en-comp-1',  intent:'comparison', q:'EGYM alternatives for rehab clinics' },\n  { id:'en-brand-1', intent:'brand',      q:'What is Pixformance?' },\n  { id:'en-brand-2', intent:'brand',      q:'Pixformance reviews' },\n];\n\nconst runDate = new Date().toISOString().split('T')[0];\nreturn BATTERY.map(b => ({ json: { ...b, run_date: runDate, engine: 'claude-api' } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "cd755118-b4cd-49b1-8994-a23c7316c4a7",
+      "name": "Battery",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "id": "98c48358-dfa9-47ed-bffb-62cb8b9c8c8a",
+      "name": "Loop",
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "id": "2e8fb9f1-6054-40af-aaa0-8555319e5b12",
+      "name": "Done",
+      "position": [
+        440,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    model: \"claude-sonnet-4-6\",\n    max_tokens: 2500,\n    messages: [{ role: \"user\", content: $json.q }],\n    tools: [{ type: \"web_search_20250305\", name: \"web_search\", max_uses: 3 }]\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "3996bb30-2e85-4adb-9e87-0731560b40ae",
+      "name": "Probe Body",
+      "position": [
+        440,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "REDACTED_SET_IN_N8N_UI__ANTHROPIC_API_KEY"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "id": "28bb6d7e-0696-4af1-bdf8-0b95300a419f",
+      "name": "HTTP Probe",
+      "position": [
+        660,
+        100
+      ],
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meta = $('Loop').item.json;          // id, intent, q, run_date, engine\nconst resp = $input.first().json;\nconst content = resp.content || resp.body?.content;\n\nif (!Array.isArray(content)) {\n  return [{ json: { ...meta, error: 'no content', answer: '', cited_urls: [] } }];\n}\n\n// full answer text (all text blocks, incl. citation-bearing ones)\nconst answer = content\n  .filter(b => b.type === 'text' && typeof b.text === 'string')\n  .map(b => b.text).join('');\n\n// cited URLs — deterministic, from citations arrays + search results actually used\nconst urls = new Set();\nfor (const b of content) {\n  if (Array.isArray(b.citations)) {\n    for (const c of b.citations) if (c.url) urls.add(c.url);\n  }\n}\n\nreturn [{ json: { ...meta, answer, cited_urls: [...urls],\n  searches_used: resp.usage?.server_tool_use?.web_search_requests ?? null } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "0cfa78f7-259e-4088-99c7-0ef32ec3a82b",
+      "name": "Extract",
+      "position": [
+        880,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const a = $json;\nconst prompt = `You will receive an AI assistant's answer to a buyer query about digital training/therapy equipment. Extract, as pure JSON only (no fences, no preamble):\n{\"pixformance_mentioned\": true|false, \"position\": <1-based order of first appearance of Pixformance among all brands named, or null>, \"brands\": [\"brand names in order of first appearance\"], \"sentiment_re_pixformance\": \"positive|neutral|negative|absent\"}\nBrands = commercial product/company names of equipment or software vendors (e.g. EGYM, milon, Proxomed, HUR, Technogym). Exclude: institutions, insurers, media outlets.\n\nANSWER:\n${a.answer.slice(0, 12000)}`;\n\nreturn [{ json: {\n  model: \"claude-haiku-4-5\",\n  max_tokens: 500,\n  messages: [{ role: \"user\", content: prompt }]\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "644a72ac-c464-445a-a0bb-c238164e4e46",
+      "name": "Analysis Body",
+      "position": [
+        1100,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "REDACTED_SET_IN_N8N_UI__ANTHROPIC_API_KEY"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "id": "6ed2bef2-dff4-46c8-9166-7c9d28c71b56",
+      "name": "HTTP Analysis",
+      "position": [
+        1320,
+        100
+      ],
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meta = $('Extract').item.json;\nconst resp = $input.first().json;\nconst content = resp.content || resp.body?.content || [];\nconst txt = content.filter(b => b.type === 'text').map(b => b.text).join('');\n\nlet x = { pixformance_mentioned: null, position: null, brands: [], sentiment_re_pixformance: null };\nconst i = txt.indexOf('{'), j = txt.lastIndexOf('}');\nif (i !== -1 && j > i) { try { x = JSON.parse(txt.slice(i, j + 1)); } catch (e) {} }\n\nreturn [{ json: {\n  run_date: meta.run_date,\n  engine: meta.engine,\n  query_id: meta.id,\n  intent: meta.intent,\n  query: meta.q,\n  mentioned: x.pixformance_mentioned === true ? 'YES' : 'NO',\n  position: x.position ?? '',\n  brands: JSON.stringify(x.brands || []),\n  cited_sources: JSON.stringify(meta.cited_urls || []),\n  sentiment: x.sentiment_re_pixformance || '',\n  searches_used: meta.searches_used ?? '',\n  answer_excerpt: (meta.answer || '').slice(0, 800)\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "5e072c32-1ead-43ba-980f-d44255c621b7",
+      "name": "Assemble Row",
+      "position": [
+        1540,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_GEO_MONITOR_SPREADSHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "probes",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "id": "1e4b4d99-0f05-45f7-9126-21bc274d669c",
+      "name": "Sheet Append",
+      "position": [
+        1760,
+        100
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9WHOMBYYUgMORHkW",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Battery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Battery": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop": {
+      "main": [
+        [
+          {
+            "node": "Done",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Probe Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Probe Body": {
+      "main": [
+        [
+          {
+            "node": "HTTP Probe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Probe": {
+      "main": [
+        [
+          {
+            "node": "Extract",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract": {
+      "main": [
+        [
+          {
+            "node": "Analysis Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analysis Body": {
+      "main": [
+        [
+          {
+            "node": "HTTP Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Analysis": {
+      "main": [
+        [
+          {
+            "node": "Assemble Row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Assemble Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Row": {
+      "main": [
+        [
+          {
+            "node": "Sheet Append",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sheet Append": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin"
+  }
+}
