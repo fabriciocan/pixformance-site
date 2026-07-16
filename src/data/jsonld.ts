@@ -164,6 +164,7 @@ export function orgSchema(locale: OrgLocale): Record<string, unknown> {
     '@type': 'Organization',
     logo: LOGO,
     foundingDate: '2012',
+    founder: { '@type': 'Person', name: 'Valerie Bures-Bönström' },
     ...ORG_LOCALES[locale],
   };
 }
