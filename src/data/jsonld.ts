@@ -14,11 +14,18 @@ const LOGO = {
   height: 1024,
 } as const;
 
+// All verified public profiles — used by every locale.
+// TODO(Wikidata): add https://www.wikidata.org/wiki/Q<ID> once the item exists
+//   (Q-ID to be provided — one-line follow-up commit).
+// TODO: kununu and Google Business Profile URLs not yet verified — never add
+//   unverified URLs here.
 const SAME_AS_FULL = [
   'https://www.linkedin.com/company/pixformance',
+  'https://www.linkedin.com/company/pixformance-usa-inc',
   'https://www.youtube.com/@pixformance',
   'https://www.facebook.com/pixformancesports',
   'https://www.instagram.com/pixformance/',
+  'https://www.crunchbase.com/organization/pixformance',
 ] as const;
 
 const ORG_LOCALES = {
@@ -55,10 +62,7 @@ const ORG_LOCALES = {
       'Patientenaktivierung',
     ],
     award: 'FORTEe EU Research Partner',
-    sameAs: [
-      'https://www.linkedin.com/company/pixformance',
-      'https://www.youtube.com/@pixformance',
-    ],
+    sameAs: SAME_AS_FULL,
     areaServed: ['DE', 'AT', 'CH', 'NL', 'FR', 'IT'],
   },
   en: {
