@@ -27,7 +27,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
   </HeaderWithDropdown>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden py-12 md:py-16">
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden pt-12 pb-8 md:py-16">
     <div class="container">
       <div class="max-w-5xl mx-auto space-y-6">
         <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
@@ -50,7 +50,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
             Aktiv gegen Krebs
           </h1>
 
-          <p class="text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+          <p class="text-left text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
             Wie Patrick Mordiconi die onkologische Trainingstherapie digital begleitet
           </p>
         </div>
@@ -59,7 +59,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
   </section>
 
   <!-- Intro -->
-  <section class="py-12 md:py-20 bg-white">
+  <section class="pt-6 pb-12 md:py-20 bg-white">
     <div class="container">
       <div class="max-w-4xl mx-auto space-y-8" data-scroll="fade-up">
         <p class="text-base md:text-lg text-foreground-muted leading-relaxed">
@@ -585,6 +585,36 @@ import Button from '@/components/ui/form/Button/Button.astro';
 
   [data-scroll][data-delay="3"] {
     transition-delay: 0.3s;
+  }
+</style>
+
+<style is:global>
+  /* Mobile: override global centering for this page — headlines left,
+     body text justified with German hyphenation. Blocks explicitly
+     marked .text-center (CTA card, image captions) stay centered. */
+  @media (max-width: 767px) {
+    section h1:not(.text-center),
+    section h2:not(.text-center),
+    section h3:not(.text-center),
+    section h4:not(.text-center) {
+      text-align: left;
+    }
+
+    section p:not(.text-center):not(.text-left) {
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* Tailwind utilities live in @layer utilities, so unlayered rules
+       like the global "section p { text-align: center }" always win
+       over .text-left regardless of specificity. Force it here. */
+    section p.text-left {
+      text-align: left !important;
+    }
+
+    section .text-center :is(h1, h2, h3, h4, p) {
+      text-align: center;
+    }
   }
 </style>
 
