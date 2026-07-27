@@ -4,6 +4,7 @@ Disallow: /datenschutz
 Disallow: /impressum
 Disallow: /agb
 Disallow: /v1/
+Disallow: /tests/
 
 User-agent: GPTBot
 Allow: /
