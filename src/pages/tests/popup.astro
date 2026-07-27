@@ -6,7 +6,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <main class="max-w-3xl mx-auto px-4 py-16">
     <a href="/tests/" class="text-sm text-[#02308C] hover:underline">&larr; Alle Tests</a>
     <h1 class="font-display text-2xl font-bold text-[#02308C] mb-2 mt-2">Popup A/B Test</h1>
-    <p class="text-gray-500 text-sm mb-8">Views, Klicks (Formular öffnen), Schließen und Klickrate pro Variante des Exit-/Timed-Popups.</p>
+    <p class="text-gray-500 text-sm mb-8">Views, Klicks (Formular öffnen), Schließen, Leads und Raten pro Variante des Exit-/Timed-Popups.</p>
 
     <div class="mb-6 flex items-center gap-3">
       <button id="refresh-btn" class="px-4 py-2 bg-[#02308C] text-white text-sm font-bold rounded-lg hover:bg-[#02308C]/90 cursor-pointer">
@@ -26,8 +26,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <th class="py-2 pr-4 text-right">Views</th>
           <th class="py-2 pr-4 text-right">Klicks (öffnen)</th>
           <th class="py-2 pr-4 text-right">Schließen</th>
+          <th class="py-2 pr-4 text-right">Leads</th>
           <th class="py-2 pr-4 text-right">CTR</th>
           <th class="py-2 pr-4 text-right">Schließrate</th>
+          <th class="py-2 pr-4 text-right">Lead-Rate</th>
         </tr>
       </thead>
       <tbody id="stats-body"></tbody>
@@ -56,22 +58,24 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     loading.classList.add('hidden');
     errorEl.classList.add('hidden');
 
-    var variants = (data.variants || []).slice().sort(function (a, b) { return b.ctr - a.ctr; });
-    var bestCtr = variants.length ? variants[0].ctr : 0;
+    var variants = (data.variants || []).slice().sort(function (a, b) { return b.lead_rate - a.lead_rate || b.ctr - a.ctr; });
+    var bestLeadRate = variants.length ? variants[0].lead_rate : 0;
 
     body.innerHTML = '';
     variants.forEach(function (v) {
       var tr = document.createElement('tr');
       tr.className = 'border-b border-gray-100';
-      var isBest = v.ctr === bestCtr && v.views > 0;
+      var isBest = v.lead_rate === bestLeadRate && v.views > 0 && v.leads > 0;
       tr.innerHTML =
         '<td class="py-2 pr-4 font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.variant + (isBest ? ' 🏆' : '') + '</td>' +
         '<td class="py-2 pr-4 text-gray-600">' + (VARIANT_LABELS[v.variant] || '') + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.views) + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.clicks) + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.closes) + '</td>' +
-        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.ctr + '%</td>' +
-        '<td class="py-2 pr-4 text-right text-gray-500">' + v.close_rate + '%</td>';
+        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + fmt(v.leads) + '</td>' +
+        '<td class="py-2 pr-4 text-right">' + v.ctr + '%</td>' +
+        '<td class="py-2 pr-4 text-right text-gray-500">' + v.close_rate + '%</td>' +
+        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.lead_rate + '%</td>';
       body.appendChild(tr);
     });
 

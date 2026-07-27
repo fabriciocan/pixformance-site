@@ -316,6 +316,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
         messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+        trackPopupEvent('lead');
       } else {
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
