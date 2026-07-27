@@ -1,0 +1,402 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout
+  title="ROI-Rechner – Vorschau | Pixformance"
+  description="Interaktiver Rechner: Wie viel Zeit und Umsatz gewinnt eine Praxis mit Pixformance? Vorschau-Seite zur internen Abstimmung."
+  noindex={true}
+  noSitePopup={true}
+>
+  <div class="min-h-screen bg-[var(--background-secondary)] px-4 py-10 md:py-16">
+    <div class="mx-auto max-w-3xl">
+      <div class="mb-8 flex justify-center">
+        <PixformanceLogo variant="black" size="lg" />
+      </div>
+
+      <!-- ================= Widget ================= -->
+      <section
+        id="roi-rechner"
+        class="overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--border)] bg-white shadow-[var(--shadow-xl)]"
+      >
+        <!-- Kopf -->
+        <header class="border-b border-[var(--border)] px-6 py-7 md:px-9 md:py-8">
+          <p class="mb-2 text-xs font-bold tracking-[0.14em] text-[var(--primary)] uppercase">
+            Praxis-Rechner
+          </p>
+          <h1 class="text-2xl leading-tight font-extrabold text-[var(--foreground)] md:text-3xl">
+            Wie viel Zeit und Umsatz steckt in Ihrer Praxis?
+          </h1>
+          <p class="mt-3 text-sm leading-relaxed text-[var(--foreground-secondary)] md:text-base">
+            Zwei Regler genügen. Sie sehen sofort, wie viele Stunden Pixformance pro Monat
+            freispielt – und was daraus an zusätzlichem Umsatz entstehen kann.
+          </p>
+
+          <!-- Umschalter 1a / 1b -->
+          <div
+            role="tablist"
+            aria-label="Version wählen"
+            class="mt-6 inline-flex rounded-[var(--radius-full)] bg-[var(--background-tertiary)] p-1"
+          >
+            <button
+              type="button"
+              role="tab"
+              data-view="a"
+              aria-selected="true"
+              class="view-tab rounded-[var(--radius-full)] px-4 py-2 text-sm font-semibold transition-colors md:px-5"
+            >
+              Einzelpraxis
+            </button>
+            <button
+              type="button"
+              role="tab"
+              data-view="b"
+              aria-selected="false"
+              class="view-tab rounded-[var(--radius-full)] px-4 py-2 text-sm font-semibold transition-colors md:px-5"
+            >
+              Praxis mit Team
+            </button>
+          </div>
+        </header>
+
+        <!-- Eingaben -->
+        <div class="px-6 py-7 md:px-9 md:py-8">
+          <div class="space-y-7">
+            <!-- Patienten -->
+            <div class="field">
+              <div class="mb-3 flex items-baseline justify-between gap-4">
+                <label for="patients" class="text-sm font-semibold text-[var(--foreground)] md:text-base">
+                  Patienten pro Woche
+                </label>
+                <output id="patients-out" for="patients" class="value-badge">120</output>
+              </div>
+              <input id="patients" type="range" min="20" max="400" step="5" value="120" />
+              <div class="range-scale"><span>20</span><span>400</span></div>
+            </div>
+
+            <!-- Preis -->
+            <div class="field">
+              <div class="mb-3 flex items-baseline justify-between gap-4">
+                <label for="price" class="text-sm font-semibold text-[var(--foreground)] md:text-base">
+                  Preis einer Selbstzahler-Sitzung
+                </label>
+                <output id="price-out" for="price" class="value-badge">35 €</output>
+              </div>
+              <input id="price" type="range" min="10" max="60" step="1" value="35" />
+              <div class="range-scale"><span>10 €</span><span>60 €</span></div>
+            </div>
+
+            <!-- Therapeuten (nur Version B) -->
+            <div class="field" data-only="b" hidden>
+              <div class="mb-3 flex items-baseline justify-between gap-4">
+                <label for="therapists" class="text-sm font-semibold text-[var(--foreground)] md:text-base">
+                  Anzahl Therapeuten
+                </label>
+                <output id="therapists-out" for="therapists" class="value-badge">4</output>
+              </div>
+              <input id="therapists" type="range" min="1" max="30" step="1" value="4" />
+              <div class="range-scale"><span>1</span><span>30</span></div>
+            </div>
+          </div>
+
+          <!-- Ergebnisse -->
+          <div class="mt-9 grid gap-4 sm:grid-cols-2">
+            <div class="result-card">
+              <p class="result-label">Freie Stunden pro Monat</p>
+              <p class="result-value"><span id="r-hours">–</span> <span class="result-unit">Std.</span></p>
+              <p class="result-hint">Zeit, die heute in Anleitung und Kontrolle steckt.</p>
+            </div>
+
+            <div class="result-card">
+              <p class="result-label">Das entspricht</p>
+              <p class="result-value"><span id="r-days">–</span> <span class="result-unit">Arbeitstagen</span></p>
+              <p class="result-hint">Gerechnet mit 8 Stunden pro Arbeitstag.</p>
+            </div>
+
+            <div class="result-card" data-only="b" hidden>
+              <p class="result-label">Zusätzliche Behandlungskapazität</p>
+              <p class="result-value"><span id="r-capacity">–</span> <span class="result-unit">Sitzungen/Monat</span></p>
+              <p class="result-hint">Je 30 Minuten pro zusätzlicher Sitzung.</p>
+            </div>
+
+            <div class="result-card" data-only="b" hidden>
+              <p class="result-label">Pro Therapeut</p>
+              <p class="result-value"><span id="r-per-therapist">–</span> <span class="result-unit">Std./Monat</span></p>
+              <p class="result-hint">Freie Zeit, die im Team ankommt.</p>
+            </div>
+
+            <div class="result-card result-card--highlight sm:col-span-2">
+              <p class="result-label">Zusätzlicher Umsatz pro Jahr</p>
+              <p class="result-value result-value--lg"><span id="r-revenue">–</span> <span class="result-unit">€</span></p>
+              <p class="result-hint">
+                Wenn <span id="r-quote-label">16</span> % Ihrer Patienten die freie Zeit als
+                Selbstzahler-Leistung buchen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Annahmen / Tweaks -->
+          <details class="tweaks mt-7">
+            <summary>Annahmen anpassen</summary>
+            <div class="mt-5 space-y-6">
+              <div class="field">
+                <div class="mb-3 flex items-baseline justify-between gap-4">
+                  <label for="minutes" class="text-sm font-semibold text-[var(--foreground)]">
+                    Gesparte Minuten pro Patient und Sitzung
+                  </label>
+                  <output id="minutes-out" for="minutes" class="value-badge value-badge--sm">8,5 Min.</output>
+                </div>
+                <input id="minutes" type="range" min="5" max="12" step="0.5" value="8.5" />
+                <div class="range-scale"><span>5 Min.</span><span>12 Min.</span></div>
+              </div>
+
+              <div class="field">
+                <div class="mb-3 flex items-baseline justify-between gap-4">
+                  <label for="quote" class="text-sm font-semibold text-[var(--foreground)]">
+                    Anteil Patienten, die zu Selbstzahlern werden
+                  </label>
+                  <output id="quote-out" for="quote" class="value-badge value-badge--sm">16 %</output>
+                </div>
+                <input id="quote" type="range" min="8" max="25" step="1" value="16" />
+                <div class="range-scale"><span>8 %</span><span>25 %</span></div>
+              </div>
+
+              <p class="text-xs leading-relaxed text-[var(--foreground-muted)]">
+                Feste Annahmen: 4,33 Wochen pro Monat, 8 Stunden pro Arbeitstag, 30 Minuten pro
+                zusätzlicher Sitzung. Alle Ergebnisse sind gerundete Näherungswerte und keine
+                Umsatzgarantie.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- CTA -->
+        <footer class="border-t border-[var(--border)] bg-[var(--background-secondary)] px-6 py-7 md:px-9 md:py-8">
+          <p class="text-base font-bold text-[var(--foreground)] md:text-lg">
+            Testen Sie diese Zahlen 60 Tage in Ihrer Praxis.
+          </p>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--foreground-secondary)]">
+            Wir zeigen Ihnen in 20 Minuten, wie die Rechnung in Ihrem Praxisalltag aussieht.
+          </p>
+          <a
+            href="/kontakt"
+            class="mt-5 inline-flex items-center justify-center rounded-[var(--radius-full)] bg-[var(--primary)] px-7 py-3.5 text-sm font-bold text-[var(--primary-foreground)] transition-colors hover:bg-[var(--primary)]/90 md:text-base"
+          >
+            Termin vereinbaren
+          </a>
+        </footer>
+      </section>
+
+      <p class="mt-6 text-center text-xs text-[var(--foreground-muted)]">
+        Interne Vorschau-Seite zur Abstimmung. Nicht verlinkt und nicht indexiert.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ---- Regler ---- */
+  .field input[type='range'] {
+    width: 100%;
+    accent-color: var(--primary);
+    height: 1.5rem;
+    cursor: pointer;
+  }
+
+  .range-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    font-size: 0.6875rem;
+    color: var(--foreground-muted);
+  }
+
+  /* ---- Wertanzeige ---- */
+  .value-badge {
+    display: inline-block;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .value-badge--sm {
+    background: var(--background-tertiary);
+    color: var(--foreground);
+    font-size: 0.8125rem;
+  }
+
+  /* ---- Umschalter ---- */
+  .view-tab {
+    color: var(--foreground-secondary);
+  }
+
+  .view-tab[aria-selected='true'] {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  /* ---- Ergebniskarten ---- */
+  .result-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--background);
+    padding: 1.15rem 1.25rem;
+  }
+
+  .result-card--highlight {
+    border-color: var(--secondary);
+    background: color-mix(in srgb, var(--secondary) 14%, white);
+  }
+
+  .result-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--foreground-secondary);
+  }
+
+  .result-value {
+    margin-top: 0.35rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .result-value--lg {
+    font-size: 2.25rem;
+  }
+
+  .result-unit {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--foreground-secondary);
+  }
+
+  .result-hint {
+    margin-top: 0.45rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--foreground-muted);
+  }
+
+  /* ---- Tweaks ---- */
+  .tweaks {
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+  }
+
+  .tweaks summary {
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--primary);
+    list-style: none;
+  }
+
+  .tweaks summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .tweaks summary::before {
+    content: '+ ';
+  }
+
+  .tweaks[open] summary::before {
+    content: '– ';
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .view-tab {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var WEEKS_PER_MONTH = 4.33;
+    var MINUTES_PER_EXTRA_SESSION = 30;
+    var HOURS_PER_WORKDAY = 8;
+
+    var nf0 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+    var nf1 = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+    var el = function (id) { return document.getElementById(id); };
+
+    var inputs = {
+      patients: el('patients'),
+      price: el('price'),
+      therapists: el('therapists'),
+      minutes: el('minutes'),
+      quote: el('quote'),
+    };
+
+    if (!inputs.patients) return;
+
+    var view = 'a';
+
+    function roundToHundred(n) {
+      return Math.round(n / 100) * 100;
+    }
+
+    function render() {
+      var patients = Number(inputs.patients.value);
+      var price = Number(inputs.price.value);
+      var therapists = Number(inputs.therapists.value);
+      var minutes = Number(inputs.minutes.value);
+      var quote = Number(inputs.quote.value) / 100;
+
+      // Eingabe-Anzeigen
+      el('patients-out').textContent = nf0.format(patients);
+      el('price-out').textContent = nf0.format(price) + ' €';
+      el('therapists-out').textContent = nf0.format(therapists);
+      el('minutes-out').textContent = nf1.format(minutes) + ' Min.';
+      el('quote-out').textContent = nf0.format(quote * 100) + ' %';
+      el('r-quote-label').textContent = nf0.format(quote * 100);
+
+      // Formeln
+      var freeHours = (patients * minutes * WEEKS_PER_MONTH) / 60;
+      var workDays = freeHours / HOURS_PER_WORKDAY;
+      var extraSessions = (freeHours * 60) / MINUTES_PER_EXTRA_SESSION;
+      var hoursPerTherapist = freeHours / therapists;
+      var revenueYear = patients * quote * price * WEEKS_PER_MONTH * 12;
+
+      // Ausgaben
+      el('r-hours').textContent = nf0.format(Math.round(freeHours));
+      el('r-days').textContent = nf1.format(workDays);
+      el('r-capacity').textContent = nf0.format(Math.round(extraSessions));
+      el('r-per-therapist').textContent = nf1.format(hoursPerTherapist);
+      el('r-revenue').textContent = nf0.format(roundToHundred(revenueYear));
+    }
+
+    function setView(next) {
+      view = next;
+      document.querySelectorAll('.view-tab').forEach(function (tab) {
+        tab.setAttribute('aria-selected', String(tab.dataset.view === view));
+      });
+      document.querySelectorAll('[data-only]').forEach(function (node) {
+        node.hidden = node.dataset.only !== view;
+      });
+      render();
+    }
+
+    Object.keys(inputs).forEach(function (key) {
+      inputs[key].addEventListener('input', render);
+    });
+
+    document.querySelectorAll('.view-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        setView(tab.dataset.view);
+      });
+    });
+
+    setView('a');
+  })();
+</script>

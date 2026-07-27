@@ -27,6 +27,7 @@ export default defineConfig({
         !page.includes('/impressum') &&
         !page.includes('/agb') &&
         !page.includes('/lp-physio') &&
+        !page.includes('/calculator') &&
         !page.includes('-danke'),
       changefreq: 'weekly',
       priority: 0.7,
