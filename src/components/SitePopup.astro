@@ -131,7 +131,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
   // --- Popup headline A/B/C test ---
   var POPUP_VARIANTS = {
     A: { line1: 'Jetzt 60 Tage', line2: 'unverbindlich testen' },
-    B: { line1: '60 Tage testen', line2: 'ohne Risiko' },
+    B: { line1: '60 Tage testen', line2: '- ohne Risiko' },
     C: { line1: 'Testen Sie unverbindlich', line2: '60 Tage lang' }
   };
 
@@ -390,13 +390,18 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     var timedCta     = document.getElementById('timed-popup-cta');
     var timedDecline = document.getElementById('timed-popup-decline');
 
-    if (timedClose)   timedClose.addEventListener('click', closeTimedPopup);
-    if (timedOverlay) timedOverlay.addEventListener('click', closeTimedPopup);
-    if (timedDecline) timedDecline.addEventListener('click', closeTimedPopup);
+    function dismissTimedPopup() {
+      if (timedPopup.classList.contains('flex')) trackPopupEvent('close');
+      closeTimedPopup();
+    }
+
+    if (timedClose)   timedClose.addEventListener('click', dismissTimedPopup);
+    if (timedOverlay) timedOverlay.addEventListener('click', dismissTimedPopup);
+    if (timedDecline) timedDecline.addEventListener('click', dismissTimedPopup);
     if (timedCta)     timedCta.addEventListener('click', function () { trackPopupEvent('click'); openPopup(); });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { closePopup(); closeTimedPopup(); }
+      if (e.key === 'Escape') { closePopup(); dismissTimedPopup(); }
     });
 
     // Popup form submit

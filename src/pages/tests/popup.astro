@@ -6,7 +6,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <main class="max-w-3xl mx-auto px-4 py-16">
     <a href="/tests/" class="text-sm text-[#02308C] hover:underline">&larr; Alle Tests</a>
     <h1 class="font-display text-2xl font-bold text-[#02308C] mb-2 mt-2">Popup A/B Test</h1>
-    <p class="text-gray-500 text-sm mb-8">Views, Klicks und Klickrate pro Variante des Exit-/Timed-Popups.</p>
+    <p class="text-gray-500 text-sm mb-8">Views, Klicks (Formular öffnen), Schließen und Klickrate pro Variante des Exit-/Timed-Popups.</p>
 
     <div class="mb-6 flex items-center gap-3">
       <button id="refresh-btn" class="px-4 py-2 bg-[#02308C] text-white text-sm font-bold rounded-lg hover:bg-[#02308C]/90 cursor-pointer">
@@ -24,8 +24,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <th class="py-2 pr-4">Variante</th>
           <th class="py-2 pr-4">Text</th>
           <th class="py-2 pr-4 text-right">Views</th>
-          <th class="py-2 pr-4 text-right">Klicks</th>
+          <th class="py-2 pr-4 text-right">Klicks (öffnen)</th>
+          <th class="py-2 pr-4 text-right">Schließen</th>
           <th class="py-2 pr-4 text-right">CTR</th>
+          <th class="py-2 pr-4 text-right">Schließrate</th>
         </tr>
       </thead>
       <tbody id="stats-body"></tbody>
@@ -38,7 +40,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   var STATS_URL = 'https://webhook.pixformance.com/webhook/popup-ab-stats';
   var VARIANT_LABELS = {
     A: '"Jetzt 60 Tage / unverbindlich testen"',
-    B: '"60 Tage testen / ohne Risiko"',
+    B: '"60 Tage testen / - ohne Risiko"',
     C: '"Testen Sie unverbindlich / 60 Tage lang"'
   };
 
@@ -67,7 +69,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         '<td class="py-2 pr-4 text-gray-600">' + (VARIANT_LABELS[v.variant] || '') + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.views) + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.clicks) + '</td>' +
-        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.ctr + '%</td>';
+        '<td class="py-2 pr-4 text-right">' + fmt(v.closes) + '</td>' +
+        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.ctr + '%</td>' +
+        '<td class="py-2 pr-4 text-right text-gray-500">' + v.close_rate + '%</td>';
       body.appendChild(tr);
     });
 
