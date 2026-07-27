@@ -199,8 +199,8 @@ const faqItems = [
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div class="group space-y-2 p-4 sm:p-6 rounded-2xl hover:bg-[#02308C]/5 transition-all duration-300 hover:scale-105 cursor-pointer hero-animate" style={`animation-delay: ${0.6 + index * 0.1}s;`}>
-              <div class="text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter" data-count={stat.count} data-suffix={stat.suffix} data-large={stat.count >= 10000 ? 'true' : 'false'}>{stat.value}</div>
-              <div class="text-xs sm:text-sm text-foreground-muted">{stat.label}</div>
+              <div class="text-4xl sm:text-3xl md:text-4xl font-bold text-[#02308C] group-hover:scale-110 transition-transform duration-300 stat-counter" data-count={stat.count} data-suffix={stat.suffix} data-large={stat.count >= 10000 ? 'true' : 'false'}>{stat.value}</div>
+              <div class="text-sm text-foreground-muted">{stat.label}</div>
             </div>
           ))}
         </div>
