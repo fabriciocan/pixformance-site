@@ -1,0 +1,101 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="LP Headline A/B Test Stats" noindex={true} noSitePopup={true}>
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <a href="/tests/" class="text-sm text-[#02308C] hover:underline">&larr; Alle Tests</a>
+    <h1 class="font-display text-2xl font-bold text-[#02308C] mb-2 mt-2">/lp Headline A/B Test</h1>
+    <p class="text-gray-500 text-sm mb-8">Views, Klicks (Formular öffnen) und tatsächliche Leads pro Headline-Variante.</p>
+
+    <div class="mb-6 flex items-center gap-3">
+      <button id="refresh-btn" class="px-4 py-2 bg-[#02308C] text-white text-sm font-bold rounded-lg hover:bg-[#02308C]/90 cursor-pointer">
+        Aktualisieren
+      </button>
+      <span id="updated-at" class="text-xs text-gray-400"></span>
+    </div>
+
+    <div id="stats-loading" class="text-gray-500 text-sm">Lade Daten...</div>
+    <div id="stats-error" class="hidden text-red-600 text-sm"></div>
+
+    <table id="stats-table" class="hidden w-full border-collapse text-sm">
+      <thead>
+        <tr class="border-b-2 border-gray-200 text-left text-gray-500">
+          <th class="py-2 pr-4">Variante</th>
+          <th class="py-2 pr-4">Headline</th>
+          <th class="py-2 pr-4 text-right">Views</th>
+          <th class="py-2 pr-4 text-right">Formular geöffnet</th>
+          <th class="py-2 pr-4 text-right">Leads</th>
+          <th class="py-2 pr-4 text-right">Öffnungsrate</th>
+          <th class="py-2 pr-4 text-right">Lead-Rate</th>
+        </tr>
+      </thead>
+      <tbody id="stats-body"></tbody>
+    </table>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  var STATS_URL = 'https://webhook.pixformance.com/webhook/lp-headline-stats';
+  var VARIANT_LABELS = {
+    A: '"Mehr Zeit. Mehr Umsatz. Mehr Möglichkeiten."',
+    B: '"Das digitale Trainingssystem mit 1.100+ Einrichtungen weltweit im Einsatz."',
+    C: '"60 Tage testen. Unverbindlich. Ohne Risiko."'
+  };
+
+  function fmt(n) { return new Intl.NumberFormat('de-DE').format(n); }
+
+  function render(data) {
+    var loading = document.getElementById('stats-loading');
+    var errorEl = document.getElementById('stats-error');
+    var table   = document.getElementById('stats-table');
+    var body    = document.getElementById('stats-body');
+    var updated = document.getElementById('updated-at');
+
+    loading.classList.add('hidden');
+    errorEl.classList.add('hidden');
+
+    var variants = (data.variants || []).slice().sort(function (a, b) { return b.lead_rate - a.lead_rate; });
+    var bestRate = variants.length ? variants[0].lead_rate : 0;
+
+    body.innerHTML = '';
+    variants.forEach(function (v) {
+      var tr = document.createElement('tr');
+      tr.className = 'border-b border-gray-100';
+      var isBest = v.lead_rate === bestRate && v.views > 0 && v.leads > 0;
+      tr.innerHTML =
+        '<td class="py-2 pr-4 font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.variant + (isBest ? ' 🏆' : '') + '</td>' +
+        '<td class="py-2 pr-4 text-gray-600">' + (VARIANT_LABELS[v.variant] || '') + '</td>' +
+        '<td class="py-2 pr-4 text-right">' + fmt(v.views) + '</td>' +
+        '<td class="py-2 pr-4 text-right">' + fmt(v.form_opens) + ' <span class="text-gray-400">(' + v.open_rate + '%)</span></td>' +
+        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + fmt(v.leads) + '</td>' +
+        '<td class="py-2 pr-4 text-right">' + v.open_rate + '%</td>' +
+        '<td class="py-2 pr-4 text-right font-bold' + (isBest ? ' text-[#02308C]' : '') + '">' + v.lead_rate + '%</td>';
+      body.appendChild(tr);
+    });
+
+    table.classList.remove('hidden');
+    updated.textContent = 'Stand: ' + new Date(data.generated_at).toLocaleString('de-DE');
+  }
+
+  function load() {
+    document.getElementById('stats-loading').classList.remove('hidden');
+    document.getElementById('stats-error').classList.add('hidden');
+    document.getElementById('stats-table').classList.add('hidden');
+
+    fetch(STATS_URL)
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(render)
+      .catch(function (err) {
+        document.getElementById('stats-loading').classList.add('hidden');
+        var errorEl = document.getElementById('stats-error');
+        errorEl.classList.remove('hidden');
+        errorEl.textContent = 'Fehler beim Laden der Daten: ' + err.message;
+      });
+  }
+
+  document.getElementById('refresh-btn').addEventListener('click', load);
+  load();
+})();
+</script>

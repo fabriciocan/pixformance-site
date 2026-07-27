@@ -183,9 +183,9 @@ const clientLogos = [
 
     <div class="container relative text-center max-w-4xl mx-auto px-5">
       <h1 class="font-display font-bold text-white leading-[1.1] hero-animate" style="font-size: clamp(2.2rem, 5vw, 3.5rem); animation-delay: 0s;">
-        MEHR ZEIT.<br />
-        MEHR UMSATZ.<br />
-        <span class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
+        <span id="lp-headline-line1">MEHR ZEIT.</span><br />
+        <span id="lp-headline-line2">MEHR UMSATZ.</span><br />
+        <span id="lp-headline-line3" class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
       </h1>
     </div>
   </section>
@@ -796,6 +796,60 @@ const clientLogos = [
 <script is:inline>
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  var LP_HEADLINE_EVENT_URL = 'https://webhook.pixformance.com/webhook/lp-headline-event';
+
+  // --- LP headline A/B/C test (independent of the popup test; does not touch site-forms) ---
+  var LP_HEADLINE_VARIANTS = {
+    A: { line1: 'MEHR ZEIT.', line2: 'MEHR UMSATZ.', line3: 'MEHR MÖGLICHKEITEN.' },
+    B: { line1: 'DAS DIGITALE TRAININGSSYSTEM', line2: 'MIT 1.100+ EINRICHTUNGEN', line3: 'WELTWEIT IM EINSATZ.' },
+    C: { line1: '60 TAGE TESTEN.', line2: 'UNVERBINDLICH.', line3: 'OHNE RISIKO.' }
+  };
+
+  function pickLpHeadlineVariant() {
+    var STORAGE_KEY = 'pix_lp_headline_variant';
+    var urlOverride = new URLSearchParams(window.location.search).get('lp_variant');
+    if (urlOverride && LP_HEADLINE_VARIANTS[urlOverride]) return urlOverride;
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && LP_HEADLINE_VARIANTS[stored]) return stored;
+    var keys = Object.keys(LP_HEADLINE_VARIANTS);
+    var chosen = keys[Math.floor(Math.random() * keys.length)];
+    localStorage.setItem(STORAGE_KEY, chosen);
+    return chosen;
+  }
+
+  var lpHeadlineVariant = pickLpHeadlineVariant();
+
+  function applyLpHeadlineVariant() {
+    var copy = LP_HEADLINE_VARIANTS[lpHeadlineVariant];
+    var l1 = document.getElementById('lp-headline-line1');
+    var l2 = document.getElementById('lp-headline-line2');
+    var l3 = document.getElementById('lp-headline-line3');
+    if (l1) l1.textContent = copy.line1;
+    if (l2) l2.textContent = copy.line2;
+    if (l3) l3.textContent = copy.line3;
+  }
+
+  function trackLpHeadlineEvent(eventType) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lp_headline_ab_' + eventType, lp_headline_variant: lpHeadlineVariant });
+    try {
+      fetch(LP_HEADLINE_EVENT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_type: eventType,
+          variant: lpHeadlineVariant,
+          session_id: (sessionStorage.getItem('pix_lp_headline_session_id') || (function () {
+            var id = 'sess_' + Math.random().toString(36).slice(2) + Date.now();
+            sessionStorage.setItem('pix_lp_headline_session_id', id);
+            return id;
+          })()),
+          page_path: window.location.pathname
+        }),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
 
   var META_EVENT_ID = '';
 
@@ -983,6 +1037,7 @@ const clientLogos = [
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
         messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
+        trackLpHeadlineEvent('lead');
       } else {
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
@@ -1034,6 +1089,8 @@ const clientLogos = [
   function init() {
     initEventId();
     initABTest();
+    applyLpHeadlineVariant();
+    trackLpHeadlineEvent('view');
 
     // Populate all deadline elements at once
     var deadline = getOfferDeadline();
@@ -1051,6 +1108,7 @@ const clientLogos = [
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+      trackLpHeadlineEvent('form_open');
     }
 
     function closePopup() {
