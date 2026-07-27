@@ -23,8 +23,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
     <div class="bg-[#6BDBD1] px-7 py-7 text-center">
       <div>
-        <span class="block font-display text-3xl font-bold text-white leading-tight mb-1">Jetzt 60 Tage</span>
-        <span class="block font-display text-3xl font-bold text-white leading-tight mb-6">unverbindlich testen</span>
+        <span id="timed-popup-line1" class="block font-display text-3xl font-bold text-white leading-tight mb-1">Jetzt 60 Tage</span>
+        <span id="timed-popup-line2" class="block font-display text-3xl font-bold text-white leading-tight mb-6">unverbindlich testen</span>
       </div>
 
       <button id="timed-popup-cta" class="w-full py-3.5 bg-white text-[#02308C] font-bold text-base rounded-xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2">
@@ -125,7 +125,62 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 <script is:inline>
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  var POPUP_AB_EVENT_URL = 'https://webhook.pixformance.com/webhook/popup-ab-event';
   var TIMED_DELAY_MS = 20000;
+
+  // --- Popup headline A/B/C test ---
+  var POPUP_VARIANTS = {
+    A: { line1: 'Jetzt 60 Tage', line2: 'unverbindlich testen' },
+    B: { line1: '60 Tage testen', line2: 'ohne Risiko' },
+    C: { line1: 'Testen Sie unverbindlich', line2: '60 Tage lang' }
+  };
+
+  function pickPopupVariant() {
+    var STORAGE_KEY = 'pix_popup_variant';
+    var urlOverride = new URLSearchParams(window.location.search).get('popup_variant');
+    if (urlOverride && POPUP_VARIANTS[urlOverride]) return urlOverride;
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && POPUP_VARIANTS[stored]) return stored;
+    var keys = Object.keys(POPUP_VARIANTS);
+    var chosen = keys[Math.floor(Math.random() * keys.length)];
+    localStorage.setItem(STORAGE_KEY, chosen);
+    return chosen;
+  }
+
+  var popupVariant = pickPopupVariant();
+
+  function applyPopupVariant() {
+    var copy = POPUP_VARIANTS[popupVariant];
+    var line1El = document.getElementById('timed-popup-line1');
+    var line2El = document.getElementById('timed-popup-line2');
+    if (line1El) line1El.textContent = copy.line1;
+    if (line2El) line2El.textContent = copy.line2;
+  }
+
+  function trackPopupEvent(eventType) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'popup_ab_' + eventType,
+      popup_variant: popupVariant
+    });
+    try {
+      fetch(POPUP_AB_EVENT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_type: eventType,
+          variant: popupVariant,
+          session_id: (sessionStorage.getItem('pix_popup_session_id') || (function () {
+            var id = 'sess_' + Math.random().toString(36).slice(2) + Date.now();
+            sessionStorage.setItem('pix_popup_session_id', id);
+            return id;
+          })()),
+          page_path: window.location.pathname
+        }),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
 
   function sha256(value) {
     var normalized = (value || '').toLowerCase().trim();
@@ -294,6 +349,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
   function init() {
     initABTest();
+    applyPopupVariant();
 
     var modal      = document.getElementById('popup-modal');
     var closeBtn   = document.getElementById('popup-close');
@@ -318,6 +374,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     function openTimedPopup() {
       timedPopup.classList.remove('hidden');
       timedPopup.classList.add('flex');
+      trackPopupEvent('view');
     }
 
     function closeTimedPopup() {
@@ -336,7 +393,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     if (timedClose)   timedClose.addEventListener('click', closeTimedPopup);
     if (timedOverlay) timedOverlay.addEventListener('click', closeTimedPopup);
     if (timedDecline) timedDecline.addEventListener('click', closeTimedPopup);
-    if (timedCta)     timedCta.addEventListener('click', openPopup);
+    if (timedCta)     timedCta.addEventListener('click', function () { trackPopupEvent('click'); openPopup(); });
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { closePopup(); closeTimedPopup(); }
