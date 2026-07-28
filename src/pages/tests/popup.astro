@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Popup A/B Test Stats" noindex={true} noSitePopup={true}>
-  <main class="max-w-3xl mx-auto px-4 py-16">
+  <main class="max-w-4xl mx-auto px-4 py-16">
     <a href="/tests/" class="text-sm text-[#02308C] hover:underline">&larr; Alle Tests</a>
     <h1 class="font-display text-2xl font-bold text-[#02308C] mb-2 mt-2">Popup A/B Test</h1>
     <p class="text-gray-500 text-sm mb-8">Views, Klicks (Formular öffnen), Schließen, Leads und Raten pro Variante des Exit-/Timed-Popups.</p>
@@ -34,8 +34,73 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       </thead>
       <tbody id="stats-body"></tbody>
     </table>
+
+    <div id="chart-section" class="hidden mt-12">
+      <h2 class="font-display text-lg font-bold text-gray-900 mb-1">Lead-Rate pro Tag</h2>
+      <p class="text-sm text-gray-500 mb-4">Tägliche Lead-Rate (Leads / Views) je Variante.</p>
+      <div id="chart-root" class="viz-root"></div>
+    </div>
   </main>
 </BaseLayout>
+
+<style>
+  .viz-root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #8a8a86;
+    --grid-line: #e7e6e1;
+    --series-a: #2a78d6;
+    --series-b: #008300;
+    --series-c: #e87ba4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      color-scheme: dark;
+      --surface-1: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #8a8a86;
+      --grid-line: #33322e;
+      --series-a: #3987e5;
+      --series-b: #008300;
+      --series-c: #d55181;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #8a8a86;
+    --grid-line: #33322e;
+    --series-a: #3987e5;
+    --series-b: #008300;
+    --series-c: #d55181;
+  }
+  .viz-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .viz-legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); }
+  .viz-legend-key { width: 14px; height: 2px; border-radius: 1px; }
+  .viz-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--surface-1);
+    border: 1px solid var(--grid-line);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    color: var(--text-primary);
+    z-index: 10;
+    white-space: nowrap;
+  }
+  .viz-tooltip-date { color: var(--text-secondary); margin-bottom: 4px; font-weight: 600; }
+  .viz-tooltip-row { display: flex; align-items: center; gap: 6px; }
+  .viz-tooltip-key { width: 10px; height: 2px; flex-shrink: 0; }
+  .viz-tooltip-value { font-weight: 700; }
+  .viz-tooltip-label { color: var(--text-secondary); }
+</style>
 
 <script is:inline>
 (function () {
@@ -45,8 +110,228 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     B: '"60 Tage testen / - ohne Risiko"',
     C: '"Testen Sie unverbindlich / 60 Tage lang"'
   };
+  var VARIANT_ORDER = ['A', 'B', 'C'];
+  var VARIANT_VARS = { A: '--series-a', B: '--series-b', C: '--series-c' };
 
   function fmt(n) { return new Intl.NumberFormat('de-DE').format(n); }
+
+  function seriesColor(root, key) {
+    return getComputedStyle(root).getPropertyValue(key).trim();
+  }
+
+  function renderLineChart(root, daily) {
+    root.innerHTML = '';
+    if (!daily || !daily.length) {
+      var empty = document.createElement('p');
+      empty.className = 'text-sm text-gray-400';
+      empty.textContent = 'Noch keine Daten für die Tagesansicht.';
+      root.appendChild(empty);
+      return;
+    }
+
+    var days = Array.from(new Set(daily.map(function (d) { return d.day; }))).sort();
+    var seriesByVariant = {};
+    VARIANT_ORDER.forEach(function (v) {
+      seriesByVariant[v] = days.map(function (day) {
+        var rec = daily.filter(function (d) { return d.day === day && d.variant === v; })[0];
+        return rec ? rec.lead_rate : null;
+      });
+    });
+
+    // Legend
+    var legend = document.createElement('div');
+    legend.className = 'viz-legend';
+    VARIANT_ORDER.forEach(function (v) {
+      var item = document.createElement('div');
+      item.className = 'viz-legend-item';
+      var key = document.createElement('span');
+      key.className = 'viz-legend-key';
+      key.style.background = 'var(' + VARIANT_VARS[v] + ')';
+      var label = document.createElement('span');
+      label.textContent = 'Variante ' + v;
+      item.appendChild(key);
+      item.appendChild(label);
+      legend.appendChild(item);
+    });
+    root.appendChild(legend);
+
+    var wrap = document.createElement('div');
+    wrap.style.position = 'relative';
+    root.appendChild(wrap);
+
+    var W = Math.max(320, root.clientWidth || 600);
+    var H = 280;
+    var padL = 36, padR = 12, padT = 12, padB = 28;
+    var plotW = W - padL - padR;
+    var plotH = H - padT - padB;
+
+    var allRates = [];
+    VARIANT_ORDER.forEach(function (v) { seriesByVariant[v].forEach(function (r) { if (r !== null) allRates.push(r); }); });
+    var maxRate = Math.max(10, allRates.length ? Math.max.apply(null, allRates) : 10) * 1.2;
+
+    var xStep = days.length > 1 ? plotW / (days.length - 1) : 0;
+    function xPos(i) { return padL + i * xStep; }
+    function yPos(r) { return padT + plotH - (r / maxRate) * plotH; }
+
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('width', '100%');
+    svg.setAttribute('height', H);
+    svg.style.display = 'block';
+    svg.style.overflow = 'visible';
+
+    // Gridlines (y) + labels
+    var yTicks = 4;
+    for (var t = 0; t <= yTicks; t++) {
+      var rVal = (maxRate / yTicks) * t;
+      var y = yPos(rVal);
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttribute('x1', padL); line.setAttribute('x2', W - padR);
+      line.setAttribute('y1', y); line.setAttribute('y2', y);
+      line.setAttribute('stroke', 'var(--grid-line)');
+      line.setAttribute('stroke-width', '1');
+      svg.appendChild(line);
+
+      var label = document.createElementNS(svgNS, 'text');
+      label.setAttribute('x', padL - 8);
+      label.setAttribute('y', y + 4);
+      label.setAttribute('text-anchor', 'end');
+      label.setAttribute('font-size', '11');
+      label.setAttribute('fill', 'var(--text-muted)');
+      label.textContent = Math.round(rVal) + '%';
+      svg.appendChild(label);
+    }
+
+    // X labels (thin out if too many days)
+    var maxLabels = 7;
+    var labelEvery = Math.max(1, Math.ceil(days.length / maxLabels));
+    days.forEach(function (day, i) {
+      if (i % labelEvery !== 0 && i !== days.length - 1) return;
+      var label = document.createElementNS(svgNS, 'text');
+      label.setAttribute('x', xPos(i));
+      label.setAttribute('y', H - 8);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '11');
+      label.setAttribute('fill', 'var(--text-muted)');
+      var d = new Date(day + 'T00:00:00');
+      label.textContent = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+      svg.appendChild(label);
+    });
+
+    // Lines + markers per variant
+    VARIANT_ORDER.forEach(function (v) {
+      var color = 'var(' + VARIANT_VARS[v] + ')';
+      var points = seriesByVariant[v];
+      var pathData = '';
+      var drawing = false;
+      points.forEach(function (r, i) {
+        if (r === null) { drawing = false; return; }
+        var cmd = drawing ? ' L ' : ' M ';
+        pathData += cmd + xPos(i) + ' ' + yPos(r);
+        drawing = true;
+      });
+      if (pathData) {
+        var path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', pathData.trim());
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', color);
+        path.setAttribute('stroke-width', '2');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(path);
+      }
+      points.forEach(function (r, i) {
+        if (r === null) return;
+        var ring = document.createElementNS(svgNS, 'circle');
+        ring.setAttribute('cx', xPos(i)); ring.setAttribute('cy', yPos(r));
+        ring.setAttribute('r', 6);
+        ring.setAttribute('fill', 'var(--surface-1)');
+        svg.appendChild(ring);
+        var dot = document.createElementNS(svgNS, 'circle');
+        dot.setAttribute('cx', xPos(i)); dot.setAttribute('cy', yPos(r));
+        dot.setAttribute('r', 4);
+        dot.setAttribute('fill', color);
+        svg.appendChild(dot);
+      });
+    });
+
+    // Crosshair
+    var crosshair = document.createElementNS(svgNS, 'line');
+    crosshair.setAttribute('y1', padT); crosshair.setAttribute('y2', padT + plotH);
+    crosshair.setAttribute('stroke', 'var(--text-muted)');
+    crosshair.setAttribute('stroke-width', '1');
+    crosshair.setAttribute('opacity', '0');
+    svg.appendChild(crosshair);
+
+    // Hit area
+    var hit = document.createElementNS(svgNS, 'rect');
+    hit.setAttribute('x', padL); hit.setAttribute('y', padT);
+    hit.setAttribute('width', plotW); hit.setAttribute('height', plotH);
+    hit.setAttribute('fill', 'transparent');
+    svg.appendChild(hit);
+
+    wrap.appendChild(svg);
+
+    var tooltip = document.createElement('div');
+    tooltip.className = 'viz-tooltip';
+    tooltip.style.display = 'none';
+    wrap.appendChild(tooltip);
+
+    function showTooltip(i, clientX) {
+      var day = days[i];
+      var d = new Date(day + 'T00:00:00');
+      tooltip.innerHTML = '';
+      var dateEl = document.createElement('div');
+      dateEl.className = 'viz-tooltip-date';
+      dateEl.textContent = d.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
+      tooltip.appendChild(dateEl);
+
+      VARIANT_ORDER.forEach(function (v) {
+        var r = seriesByVariant[v][i];
+        var row = document.createElement('div');
+        row.className = 'viz-tooltip-row';
+        var key = document.createElement('span');
+        key.className = 'viz-tooltip-key';
+        key.style.background = 'var(' + VARIANT_VARS[v] + ')';
+        var valueEl = document.createElement('span');
+        valueEl.className = 'viz-tooltip-value';
+        valueEl.textContent = r === null ? '–' : r + '%';
+        var labelEl = document.createElement('span');
+        labelEl.className = 'viz-tooltip-label';
+        labelEl.textContent = v;
+        row.appendChild(key);
+        row.appendChild(valueEl);
+        row.appendChild(labelEl);
+        tooltip.appendChild(row);
+      });
+
+      tooltip.style.display = 'block';
+      var svgRect = svg.getBoundingClientRect();
+      var left = xPos(i) * (svgRect.width / W);
+      tooltip.style.left = Math.min(left + 12, svgRect.width - 140) + 'px';
+      tooltip.style.top = '4px';
+
+      crosshair.setAttribute('x1', xPos(i));
+      crosshair.setAttribute('x2', xPos(i));
+      crosshair.setAttribute('opacity', '1');
+    }
+
+    function hideTooltip() {
+      tooltip.style.display = 'none';
+      crosshair.setAttribute('opacity', '0');
+    }
+
+    hit.addEventListener('mousemove', function (e) {
+      var rect = svg.getBoundingClientRect();
+      var scaleX = W / rect.width;
+      var mouseX = (e.clientX - rect.left) * scaleX;
+      var idx = days.length > 1 ? Math.round((mouseX - padL) / xStep) : 0;
+      idx = Math.max(0, Math.min(days.length - 1, idx));
+      showTooltip(idx, e.clientX);
+    });
+    hit.addEventListener('mouseleave', hideTooltip);
+  }
 
   function render(data) {
     var loading = document.getElementById('stats-loading');
@@ -54,6 +339,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     var table   = document.getElementById('stats-table');
     var body    = document.getElementById('stats-body');
     var updated = document.getElementById('updated-at');
+    var chartSection = document.getElementById('chart-section');
+    var chartRoot = document.getElementById('chart-root');
 
     loading.classList.add('hidden');
     errorEl.classList.add('hidden');
@@ -80,6 +367,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     });
 
     table.classList.remove('hidden');
+    chartSection.classList.remove('hidden');
+    renderLineChart(chartRoot, data.daily);
     updated.textContent = 'Stand: ' + new Date(data.generated_at).toLocaleString('de-DE');
   }
 
