@@ -27,6 +27,7 @@ export default defineConfig({
         !page.includes('/impressum') &&
         !page.includes('/agb') &&
         !page.includes('/lp-physio') &&
+        !page.includes('/lp-360-konzept') &&
         !page.includes('/calculator') &&
         !page.includes('-danke'),
       changefreq: 'weekly',
