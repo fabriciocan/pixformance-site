@@ -74,12 +74,17 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
           </div>
 
           <div>
-            <label for="dl-telefon" class="block text-sm font-bold mb-1 text-gray-700">Telefon <span class="text-red-500">*</span></label>
-            <input
-              type="tel" id="dl-telefon" name="phone" required
-              placeholder="+49"
-              class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
-            />
+            <label for="dl-number" class="block text-sm font-bold mb-1 text-gray-700">Telefon <span class="text-red-500">*</span></label>
+            <div class="flex gap-2">
+              <select id="dl-country" aria-label="Ländervorwahl" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+              <input
+                type="tel" id="dl-number" required
+                placeholder="151 12345678"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"
+              />
+              <input type="hidden" id="dl-e164" name="phone" />
+            </div>
+            <p id="dl-error" class="hidden text-red-500 text-xs mt-1"></p>
           </div>
 
           <div class="flex gap-3 items-start pt-1">
@@ -112,6 +117,7 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
   </main>
 </BaseLayout>
 
+<script src="/js/phone-field.js" is:inline></script>
 <script>
   // Document map: doc key → { title, label, desc, file }
   const DOCS: Record<string, { title: string; label: string; desc: string; file: string }> = {
@@ -271,9 +277,15 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
 
   const downloadForm    = document.getElementById('download-form') as HTMLFormElement;
   const formMessage     = document.getElementById('download-form-message');
+  const phoneCompose    = (window as any).PixPhoneField ? (window as any).PixPhoneField.init('dl', { locale: 'de' }) : null;
 
   downloadForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (phoneCompose && !phoneCompose()) {
+      (document.getElementById('dl-number') as HTMLInputElement)?.focus();
+      return;
+    }
 
     const submitBtn = downloadForm.querySelector('button[type="submit"]') as HTMLButtonElement;
     if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; submitBtn.textContent = 'Wird verarbeitet…'; }

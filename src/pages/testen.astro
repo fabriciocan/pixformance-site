@@ -541,94 +541,11 @@ const benefits = [
     }
   </style>
 
+  <script src="/js/phone-field.js" is:inline></script>
   <script is:inline>
     (function () {
       var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
-
-      // --- Phone: country dial-code dropdown + E.164 composition ---
-      // [ISO2, dial code, German country name]
-      var COUNTRIES = [
-        ['DE', '49', 'Deutschland'], ['AT', '43', 'Österreich'], ['CH', '41', 'Schweiz'],
-        ['LI', '423', 'Liechtenstein'], ['LU', '352', 'Luxemburg'],
-        ['FR', '33', 'Frankreich'], ['BE', '32', 'Belgien'], ['NL', '31', 'Niederlande'],
-        ['IT', '39', 'Italien'], ['ES', '34', 'Spanien'], ['PT', '351', 'Portugal'],
-        ['GB', '44', 'Vereinigtes Königreich'], ['IE', '353', 'Irland'],
-        ['DK', '45', 'Dänemark'], ['SE', '46', 'Schweden'], ['NO', '47', 'Norwegen'],
-        ['FI', '358', 'Finnland'], ['IS', '354', 'Island'],
-        ['PL', '48', 'Polen'], ['CZ', '420', 'Tschechien'], ['SK', '421', 'Slowakei'],
-        ['HU', '36', 'Ungarn'], ['SI', '386', 'Slowenien'], ['HR', '385', 'Kroatien'],
-        ['RO', '40', 'Rumänien'], ['BG', '359', 'Bulgarien'], ['GR', '30', 'Griechenland'],
-        ['EE', '372', 'Estland'], ['LV', '371', 'Lettland'], ['LT', '370', 'Litauen'],
-        ['MT', '356', 'Malta'], ['CY', '357', 'Zypern'],
-        ['US', '1', 'USA'], ['CA', '1', 'Kanada'],
-        ['MX', '52', 'Mexiko'], ['BR', '55', 'Brasilien'], ['AR', '54', 'Argentinien'],
-        ['CL', '56', 'Chile'], ['CO', '57', 'Kolumbien'],
-        ['AU', '61', 'Australien'], ['NZ', '64', 'Neuseeland'],
-        ['JP', '81', 'Japan'], ['KR', '82', 'Südkorea'], ['CN', '86', 'China'],
-        ['SG', '65', 'Singapur'], ['HK', '852', 'Hongkong'], ['TW', '886', 'Taiwan'],
-        ['IN', '91', 'Indien'], ['AE', '971', 'Vereinigte Arabische Emirate'],
-        ['SA', '966', 'Saudi-Arabien'], ['IL', '972', 'Israel'], ['TR', '90', 'Türkei'],
-        ['ZA', '27', 'Südafrika'],
-      ];
-      var DEFAULT_COUNTRY = 'DE';
-
-      function initPhoneField() {
-        var countrySelect = document.getElementById('phone-country');
-        var numberInput = document.getElementById('phone-number');
-        var hiddenPhone = document.getElementById('phone-e164');
-        var phoneError = document.getElementById('phone-error');
-        if (!countrySelect || !numberInput || !hiddenPhone) return;
-
-        var sortedCountries = COUNTRIES.slice().sort(function (a, b) { return a[2].localeCompare(b[2], 'de'); });
-        sortedCountries.forEach(function (c) {
-          var opt = document.createElement('option');
-          opt.value = c[0];
-          opt.textContent = '+' + c[1] + ' ' + c[0];
-          opt.title = c[2] + ' (+' + c[1] + ')';
-          countrySelect.appendChild(opt);
-        });
-
-        function setCountry(iso2) {
-          var match = COUNTRIES.some(function (c) { return c[0] === iso2; });
-          countrySelect.value = match ? iso2 : DEFAULT_COUNTRY;
-        }
-        setCountry(DEFAULT_COUNTRY);
-
-        // Geo-detect via Cloudflare (same-origin, no CORS/API key needed)
-        fetch('/cdn-cgi/trace')
-          .then(function (r) { return r.text(); })
-          .then(function (text) {
-            var m = text.match(/loc=([A-Z]{2})/);
-            if (m) setCountry(m[1]);
-          })
-          .catch(function () {});
-
-        function dialCode() {
-          var c = COUNTRIES.filter(function (c) { return c[0] === countrySelect.value; })[0];
-          return c ? c[1] : COUNTRIES[0][1];
-        }
-
-        function composeE164() {
-          var national = (numberInput.value || '').trim().replace(/[^\d]/g, '').replace(/^0+/, '');
-          if (!national) { hiddenPhone.value = ''; return true; }
-          var e164 = '+' + dialCode() + national;
-          var valid = /^\+[1-9]\d{7,14}$/.test(e164);
-          hiddenPhone.value = valid ? e164 : '';
-          if (phoneError) {
-            if (!valid) {
-              phoneError.textContent = 'Bitte geben Sie eine gültige Telefonnummer ein.';
-              phoneError.classList.remove('hidden');
-            } else {
-              phoneError.classList.add('hidden');
-            }
-          }
-          return valid;
-        }
-
-        numberInput.addEventListener('blur', composeE164);
-        countrySelect.addEventListener('change', composeE164);
-        numberInput._composeE164 = composeE164;
-      }
+      var phoneCompose = null;
 
       var META_EVENT_ID = '';
 
@@ -711,7 +628,7 @@ const benefits = [
 
       function initTesteForm() {
         initEventId();
-        initPhoneField();
+        if (window.PixPhoneField) phoneCompose = window.PixPhoneField.init('phone', { locale: 'de' });
 
         var form = document.getElementById("contact-form");
         var messageDiv = document.getElementById("form-message");
@@ -720,9 +637,8 @@ const benefits = [
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          var numberInput = document.getElementById('phone-number');
-          if (numberInput && numberInput._composeE164 && !numberInput._composeE164()) {
-            numberInput.focus();
+          if (phoneCompose && !phoneCompose()) {
+            document.getElementById('phone-number').focus();
             return;
           }
 

@@ -183,8 +183,13 @@ const clientLogos = [
           <input type="email" id="popup-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
         </div>
         <div>
-          <label for="popup-phone" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
-          <input type="tel" id="popup-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          <label for="popup-number" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+          <div class="flex gap-2">
+            <select id="popup-country" aria-label="Country code" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+            <input type="tel" id="popup-number" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+            <input type="hidden" id="popup-e164" name="phone" />
+          </div>
+          <p id="popup-error" class="hidden text-red-500 text-xs mt-1"></p>
         </div>
         <div class="flex items-start gap-3 pt-2">
           <input type="checkbox" id="popup-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
@@ -297,8 +302,13 @@ const clientLogos = [
                 </div>
               </div>
               <div>
-                <label for="step2-phone" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
-                <input type="tel" id="step2-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                <label for="step2-number" class="block text-sm font-bold mb-1 text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+                <div class="flex gap-2">
+                  <select id="step2-country" aria-label="Country code" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+                  <input type="tel" id="step2-number" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                  <input type="hidden" id="step2-e164" name="phone" />
+                </div>
+                <p id="step2-error" class="hidden text-red-500 text-xs mt-1"></p>
               </div>
               <div class="flex items-start gap-3 pt-2">
                 <input type="checkbox" id="step2-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
@@ -586,8 +596,13 @@ const clientLogos = [
                 </div>
               </div>
               <div>
-                <label for="final-phone" class="block text-sm font-bold mb-2 text-white">Phone Number <span class="text-[#FFED00]">*</span></label>
-                <input type="tel" id="final-phone" name="phone" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                <label for="final-number" class="block text-sm font-bold mb-2 text-white">Phone Number <span class="text-[#FFED00]">*</span></label>
+                <div class="flex gap-2">
+                  <select id="final-country" aria-label="Country code" class="w-[100px] shrink-0 px-2 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 shadow-lg"></select>
+                  <input type="tel" id="final-number" required class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg" />
+                  <input type="hidden" id="final-e164" name="phone" />
+                </div>
+                <p id="final-error" class="hidden text-[#FFED00] text-xs mt-2"></p>
               </div>
               <div class="flex items-start gap-3">
                 <input type="checkbox" id="final-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-0 bg-white/95 text-[#02308C] focus:ring-4 focus:ring-white/50 shadow-lg" />
@@ -679,6 +694,7 @@ const clientLogos = [
   html { scroll-behavior: smooth; }
 </style>
 
+<script src="/js/phone-field.js" is:inline></script>
 <script is:inline>
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
@@ -773,6 +789,10 @@ const clientLogos = [
     var deadline = getOfferDeadline();
     document.querySelectorAll('#offer-deadline').forEach(function (el) { el.textContent = deadline; });
 
+    var phoneComposePopup = window.PixPhoneField ? window.PixPhoneField.init('popup', { locale: 'en' }) : null;
+    var phoneComposeStep2 = window.PixPhoneField ? window.PixPhoneField.init('step2', { locale: 'en' }) : null;
+    var phoneComposeFinal = window.PixPhoneField ? window.PixPhoneField.init('final', { locale: 'en' }) : null;
+
     // POPUP MODAL
     var modal = document.getElementById('popup-modal');
     var heroBtn = document.getElementById('hero-cta-btn');
@@ -804,6 +824,7 @@ const clientLogos = [
     if (popupForm) {
       popupForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (phoneComposePopup && !phoneComposePopup()) { document.getElementById('popup-number').focus(); return; }
         submitForm(new FormData(popupForm), popupMsg, popupForm, 'Apply For Trial EN - Popup');
       });
     }
@@ -832,6 +853,7 @@ const clientLogos = [
     if (multistepForm) {
       multistepForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (phoneComposeStep2 && !phoneComposeStep2()) { document.getElementById('step2-number').focus(); return; }
         submitForm(new FormData(multistepForm), multistepMsg, multistepForm, 'Apply For Trial EN - Multi-Step');
       });
     }
@@ -842,6 +864,7 @@ const clientLogos = [
     if (finalForm) {
       finalForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (phoneComposeFinal && !phoneComposeFinal()) { document.getElementById('final-number').focus(); return; }
         submitForm(new FormData(finalForm), finalMsg, finalForm, 'Apply For Trial EN - Final Form');
       });
     }

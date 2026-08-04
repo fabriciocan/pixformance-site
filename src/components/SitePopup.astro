@@ -86,8 +86,13 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         <input type="email" id="popup-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
       </div>
       <div>
-        <label for="popup-telefon" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
-        <input type="tel" id="popup-telefon" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+        <label for="popup-number" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
+        <div class="flex gap-2">
+          <select id="popup-country" aria-label="Ländervorwahl" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+          <input type="tel" id="popup-number" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          <input type="hidden" id="popup-e164" name="phone" />
+        </div>
+        <p id="popup-error" class="hidden text-red-500 text-xs mt-1"></p>
       </div>
       <div class="flex items-start gap-3 pt-2">
         <input type="checkbox" id="popup-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
@@ -122,11 +127,13 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
   }
 </style>
 
+<script src="/js/phone-field.js" is:inline></script>
 <script is:inline>
 (function () {
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
   var POPUP_AB_EVENT_URL = 'https://webhook.pixformance.com/webhook/popup-ab-event';
   var TIMED_DELAY_MS = 20000;
+  var phoneCompose = null;
 
   // --- Popup headline A/B/C test ---
   var POPUP_VARIANTS = {
@@ -351,6 +358,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
   function init() {
     initABTest();
     applyPopupVariant();
+    if (window.PixPhoneField) phoneCompose = window.PixPhoneField.init('popup', { locale: 'de' });
 
     var modal      = document.getElementById('popup-modal');
     var closeBtn   = document.getElementById('popup-close');
@@ -411,6 +419,10 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     if (popupForm) {
       popupForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (phoneCompose && !phoneCompose()) {
+          document.getElementById('popup-number').focus();
+          return;
+        }
         var formName = 'Site Bar - ' + window.location.pathname.replace(/\/$/, '') || '/';
         submitForm(new FormData(popupForm), popupMsg, popupForm, formName);
       });
