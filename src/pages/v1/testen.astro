@@ -177,18 +177,22 @@ const benefits = [
                 >
                   <div>
                     <label
-                      for="phone"
+                      for="phone-number"
                       class="block text-sm font-bold mb-3 text-white"
                     >
                       Telefon
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
-                      placeholder="+49 (0) ..."
-                    />
+                    <div class="flex gap-2">
+                      <select id="phone-country" aria-label="Ländervorwahl" class="w-[100px] shrink-0 px-2 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 shadow-lg"></select>
+                      <input
+                        type="tel"
+                        id="phone-number"
+                        class="w-full px-5 py-4 rounded-xl border-0 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-white/50 transition-all text-gray-900 placeholder:text-gray-400 shadow-lg"
+                        placeholder="151 12345678"
+                      />
+                      <input type="hidden" id="phone-e164" name="phone" />
+                    </div>
+                    <p id="phone-error" class="hidden text-[#FFED00] text-xs mt-2"></p>
                   </div>
                 </div>
 
@@ -532,6 +536,7 @@ const benefits = [
     }
   </style>
 
+  <script src="/js/phone-field.js" is:inline></script>
   <script is:inline>
     (function () {
       var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
@@ -617,6 +622,7 @@ const benefits = [
 
       function initTesteForm() {
         initEventId();
+        var phoneCompose = window.PixPhoneField ? window.PixPhoneField.init('phone', { locale: 'de' }) : null;
 
         var form = document.getElementById("contact-form");
         var messageDiv = document.getElementById("form-message");
@@ -624,6 +630,11 @@ const benefits = [
 
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
+
+          if (phoneCompose && !phoneCompose()) {
+            document.getElementById('phone-number').focus();
+            return;
+          }
 
           var submitBtn = form.querySelector('[type="submit"]');
           if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
