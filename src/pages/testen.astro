@@ -579,7 +579,8 @@ const benefits = [
         var phoneError = document.getElementById('phone-error');
         if (!countrySelect || !numberInput || !hiddenPhone) return;
 
-        COUNTRIES.forEach(function (c) {
+        var sortedCountries = COUNTRIES.slice().sort(function (a, b) { return a[2].localeCompare(b[2], 'de'); });
+        sortedCountries.forEach(function (c) {
           var opt = document.createElement('option');
           opt.value = c[0];
           opt.textContent = '+' + c[1] + ' ' + c[0];
