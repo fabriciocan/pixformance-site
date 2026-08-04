@@ -749,9 +749,14 @@ const vergleich = [
     ]).then(([em, ph, fn, ln]) => ({ em, ph, fn, ln }));
   }
 
+  // Identifica esta LP para o Zoho: e o gatilho do e-mail com a brochure.
+  // Fixo — sobrescreve o utm_content que vier da URL.
+  const UTM_CONTENT = '360-pixformance-konzept-brochure';
+
   function getUrlParams() {
     const params: Record<string, string> = {};
     new URLSearchParams(window.location.search).forEach((value, key) => { params[key] = value; });
+    params.utm_content = UTM_CONTENT;
     return params;
   }
 
