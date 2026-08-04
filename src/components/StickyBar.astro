@@ -36,7 +36,8 @@
   document.querySelectorAll('.site-bar-trigger').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var modal = document.getElementById('popup-modal');
-      if (!modal) return;
+      // Paginas que mostram a barra sem o SitePopup (LPs) nao tem o modal: manda pra /testen.
+      if (!modal) { window.location.href = '/testen'; return; }
       var timedPopup = document.getElementById('timed-popup');
       if (timedPopup) {
         timedPopup.classList.add('hidden');

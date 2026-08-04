@@ -16,6 +16,8 @@ interface Props {
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noSitePopup?: boolean;
+  /** Mostra a barra vermelha mesmo com noSitePopup — para LPs que querem a barra sem o popup. */
+  stickyBar?: boolean;
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   noindex = false,
   jsonLd,
   noSitePopup = false,
+  stickyBar = false,
 } = Astro.props;
 
 const canonicalURL = canonical ?? Astro.url.href;
@@ -193,7 +196,7 @@ const websiteSchema = {
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot name="header" />
-    {!noSitePopup && <StickyBar />}
+    {(!noSitePopup || stickyBar) && <StickyBar />}
     <main><slot /></main>
     <slot name="footer" />
     <ChatWidget />

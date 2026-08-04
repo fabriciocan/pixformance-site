@@ -110,6 +110,7 @@ const vergleich = [
   description="Digitale Bewegungstherapie, neu gedacht: Wie das 360°-Pixformance-Konzept Therapeuten entlastet, Patienten aktiviert und Gesundheitseinrichtungen stärkt. Jetzt Broschüre herunterladen."
   noindex={true}
   noSitePopup={true}
+  stickyBar={true}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -126,11 +127,11 @@ const vergleich = [
   <!-- Hero Section -->
   <section class="bg-[#02308C] py-16 md:py-24">
     <div class="container">
-      <div class="max-w-5xl mx-auto text-center space-y-4">
+      <div class="max-w-5xl mx-auto text-left md:text-center space-y-4">
         <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight uppercase hero-animate" style="animation-delay: 0.2s;">
           Digitale Bewegungstherapie,<br />neu gedacht.
         </h1>
-        <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto hero-animate" style="animation-delay: 0.3s;">
+        <p class="text-lg md:text-xl text-white/80 max-w-3xl md:mx-auto hero-animate" style="animation-delay: 0.3s;">
           Wie das 360°-Pixformance-Konzept Therapeuten entlastet, Patienten aktiviert und Gesundheitseinrichtungen stärkt.
         </p>
       </div>
@@ -276,7 +277,7 @@ const vergleich = [
   </div>
 
   <!-- Stats Bar -->
-  <section class="py-12 md:py-16 bg-[#02308C]">
+  <section id="stats-bar" class="py-12 md:py-16 bg-[#02308C]">
     <div class="container">
       <div class="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto text-center">
         <div class="flex flex-col items-center space-y-2" data-scroll="fade-up">
@@ -321,7 +322,7 @@ const vergleich = [
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="text-left md:text-center mb-12" data-scroll="fade-up">
           <h2 class="font-display text-3xl md:text-3xl font-bold text-gray-900">
             Drei Perspektiven. Ein gemeinsamer Fortschritt.
           </h2>
@@ -332,8 +333,8 @@ const vergleich = [
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {perspektiven.map((p, i) => (
-            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center space-y-4" data-scroll="fade-up">
-              <div class="w-14 h-14 mx-auto rounded-full bg-[#02308C]/10 flex items-center justify-center">
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-left md:text-center space-y-4" data-scroll="fade-up">
+              <div class="w-14 h-14 md:mx-auto rounded-full bg-[#02308C]/10 flex items-center justify-center">
                 {i === 0 && (
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 )}
@@ -407,7 +408,7 @@ const vergleich = [
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12" data-scroll="fade-up">
+        <div class="text-left md:text-center mb-12" data-scroll="fade-up">
           <h2 class="font-display text-3xl md:text-3xl font-bold text-gray-900">
             Der Unterschied zeigt sich im Praxisalltag
           </h2>
@@ -436,7 +437,7 @@ const vergleich = [
           ))}
         </div>
 
-        <div class="text-center mt-10">
+        <div class="text-left md:text-center mt-10">
           <button
             id="download-brochure-btn-2"
             class="inline-flex items-center gap-3 px-8 py-4 bg-[#02308C] text-white font-bold text-lg rounded-full hover:bg-[#021d54] hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer uppercase tracking-wide"
@@ -492,7 +493,7 @@ const vergleich = [
   </section>
 
   <!-- Testimonials Carousel Section -->
-  <section class="py-16 md:py-24 bg-gray-50">
+  <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
     <div class="container">
       <div class="text-center mb-10" data-scroll="fade-up">
         <h2 class="font-display text-3xl md:text-3xl font-bold text-gray-900">
@@ -542,7 +543,7 @@ const vergleich = [
   <!-- Final CTA Section -->
   <section class="py-16 md:py-24 bg-[#02308C]">
     <div class="container">
-      <div class="max-w-3xl mx-auto text-center space-y-6" data-scroll="fade-up">
+      <div class="max-w-3xl mx-auto text-left md:text-center space-y-6" data-scroll="fade-up">
         <h2 class="font-display text-3xl md:text-3xl font-bold text-white">
           Wie würde Pixformance in Ihrer Einrichtung aussehen?
         </h2>
@@ -642,6 +643,36 @@ const vergleich = [
   @keyframes popup-slide {
     from { opacity: 0; transform: translateY(20px) scale(0.95); }
     to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* No mobile, o global.css centraliza todo section h1..h4/p. Nesta LP queremos
+     alinhado à esquerda — o style scoped do Astro (data-astro-cid) vence a regra global.
+     Exceção: os depoimentos continuam centralizados. */
+  @media (max-width: 767px) {
+    section h1,
+    section h2,
+    section h3,
+    section h4,
+    section p,
+    section blockquote {
+      text-align: left;
+    }
+
+    section .flex-col {
+      align-items: flex-start;
+    }
+
+    /* Depoimentos: mantêm o layout centralizado */
+    #testimonials h2,
+    #testimonials p,
+    #testimonials blockquote {
+      text-align: center;
+    }
+
+    /* Barra de números: continua centralizada */
+    #stats-bar .flex-col {
+      align-items: center;
+    }
   }
 </style>
 
