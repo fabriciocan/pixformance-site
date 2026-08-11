@@ -183,9 +183,9 @@ const clientLogos = [
 
     <div class="container relative text-center max-w-4xl mx-auto px-5">
       <h1 class="font-display font-bold text-white leading-[1.1] hero-animate" style="font-size: clamp(2.2rem, 5vw, 3.5rem); animation-delay: 0s;">
-        <span id="lp-headline-line1">MEHR ZEIT.</span><br />
-        <span id="lp-headline-line2">MEHR UMSATZ.</span><br />
-        <span id="lp-headline-line3" class="text-[#6BDBD1]">MEHR MÖGLICHKEITEN.</span>
+        <span id="lp-headline-line1">60 TAGE TESTEN.</span><br />
+        <span id="lp-headline-line2">UNVERBINDLICH.</span><br />
+        <span id="lp-headline-line3" class="text-[#6BDBD1]">OHNE RISIKO.</span>
       </h1>
     </div>
   </section>
@@ -814,26 +814,12 @@ const clientLogos = [
   var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
   var LP_HEADLINE_EVENT_URL = 'https://webhook.pixformance.com/webhook/lp-headline-event';
 
-  // --- LP headline A/B/C test (independent of the popup test; does not touch site-forms) ---
+  // --- LP headline test concluded — variant C ("60 Tage testen. Unverbindlich. Ohne Risiko.") won and is now permanent ---
   var LP_HEADLINE_VARIANTS = {
-    A: { line1: 'MEHR ZEIT.', line2: 'MEHR UMSATZ.', line3: 'MEHR MÖGLICHKEITEN.' },
-    B: { line1: 'DAS DIGITALE TRAININGSSYSTEM', line2: 'MIT 1.100+ EINRICHTUNGEN', line3: 'WELTWEIT IM EINSATZ.' },
     C: { line1: '60 TAGE TESTEN.', line2: 'UNVERBINDLICH.', line3: 'OHNE RISIKO.' }
   };
 
-  function pickLpHeadlineVariant() {
-    var STORAGE_KEY = 'pix_lp_headline_variant';
-    var urlOverride = new URLSearchParams(window.location.search).get('lp_variant');
-    if (urlOverride && LP_HEADLINE_VARIANTS[urlOverride]) return urlOverride;
-    var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && LP_HEADLINE_VARIANTS[stored]) return stored;
-    var keys = Object.keys(LP_HEADLINE_VARIANTS);
-    var chosen = keys[Math.floor(Math.random() * keys.length)];
-    localStorage.setItem(STORAGE_KEY, chosen);
-    return chosen;
-  }
-
-  var lpHeadlineVariant = pickLpHeadlineVariant();
+  var lpHeadlineVariant = 'C';
 
   function applyLpHeadlineVariant() {
     var copy = LP_HEADLINE_VARIANTS[lpHeadlineVariant];
