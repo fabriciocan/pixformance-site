@@ -5,6 +5,7 @@ import ChatWidget from '@/components/ChatWidget.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 import SitePopup from '@/components/SitePopup.astro';
 import StickyBar from '@/components/StickyBar.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import montserratFontUrl from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
 
 interface Props {
@@ -201,6 +202,7 @@ const websiteSchema = {
     <main><slot /></main>
     <slot name="footer" />
     <ChatWidget />
+    <WhatsAppButton />
     <CookieBanner />
     {!noSitePopup && <SitePopup />}
     <script is:inline src="/js/url-params.js"></script>
