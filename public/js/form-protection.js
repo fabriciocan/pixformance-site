@@ -18,7 +18,7 @@
     input.dataset.fpPhone = '1';
 
     if (!input.placeholder || input.placeholder === '+49 (0) ...') {
-      input.placeholder = '+49 123 456789';
+      input.placeholder = '151 12345678';
     }
 
     input.addEventListener('input', function () {
