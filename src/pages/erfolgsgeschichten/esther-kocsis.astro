@@ -1,0 +1,620 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+---
+
+<BaseLayout
+  title="Training, das motiviert - Esther Kocsis - Pixformance"
+  description="Wie Esther Kocsis im Gesundheitszentrum esthera Therapie und Training digital verbindet. Erfolgsgeschichte aus Berlin-Charlottenburg."
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Training, das motiviert – Wie Esther Kocsis im Gesundheitszentrum esthera Therapie und Training digital verbindet",
+    "description": "Wie Esther Kocsis im Gesundheitszentrum esthera Therapie und Training digital verbindet. Erfolgsgeschichte aus Berlin-Charlottenburg.",
+    "url": "https://pixformance.com/erfolgsgeschichten/esther-kocsis",
+    "image": "https://pixformance.com/images/erfolgsgeschichten/Esther-Kocsis-Diplom-Physiotherapeutin-Gesundheitszentrum-esthera-Berlin.jpg",
+    "publisher": {"@type": "Organization", "name": "Pixformance Sports GmbH", "logo": {"@type": "ImageObject", "url": "https://pixformance.com/images/pix-favicon.png"}},
+    "isPartOf": {"@type": "WebSite", "url": "https://pixformance.com"}
+  }}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-[#02308C]/10 to-[#6BDBD1]/10 overflow-hidden pt-12 pb-8 md:py-16">
+    <div class="container">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="inline-block hero-animate" style="animation-delay: 0.1s;">
+          <a
+            href="/erfolgsgeschichten"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+          >
+            <Icon name="arrow-left" size="sm" />
+            Zurück zur Übersicht
+          </a>
+        </div>
+
+        <div class="space-y-4">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hero-animate" style="animation-delay: 0.2s;">
+            <Icon name="heart" size="sm" />
+            Physiotherapie
+          </span>
+
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight hero-animate" style="animation-delay: 0.3s;">
+            Training, das motiviert
+          </h1>
+
+          <p class="text-left text-xl md:text-2xl text-foreground-muted leading-relaxed hero-animate" style="animation-delay: 0.4s;">
+            Wie Esther Kocsis im Gesundheitszentrum esthera Therapie und Training digital verbindet
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="pt-6 pb-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8" data-scroll="fade-up">
+        <p class="text-base md:text-lg text-foreground-muted leading-relaxed">
+          <strong class="text-foreground">Seit 2010 führt Diplom-Physiotherapeutin Esther Kocsis das Gesundheitszentrum esthera in Berlin-Charlottenburg.</strong>
+          Ihr Anspruch: Menschen nicht nur zu behandeln, sondern sie in Bewegung zu bringen. Seit einiger Zeit unterstützen sie dabei drei Pixformance Stationen, die heute einen festen Platz im Trainingsalltag des Zentrums haben.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="order-2 lg:order-1" data-scroll="fade-up">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <img
+                src="/images/erfolgsgeschichten/Esther-Kocsis-Diplom-Physiotherapeutin-Gesundheitszentrum-esthera-Berlin.jpg"
+                alt="Esther Kocsis - Inhaberin und Diplom-Physiotherapeutin des Gesundheitszentrums esthera"
+                class="w-full h-auto"
+                loading="lazy"
+              />
+            </Card>
+          </div>
+
+          <!-- Info -->
+          <div class="order-1 lg:order-2 space-y-8" data-scroll="fade-up" data-delay="1">
+            <div>
+              <h2 class="font-display text-3xl md:text-3xl font-bold mb-2">
+                Esther Kocsis
+              </h2>
+              <p class="text-xl text-[#02308C] font-semibold">
+                Inhaberin & Diplom-Physiotherapeutin des Gesundheitszentrums esthera
+              </p>
+            </div>
+
+            <!-- Praxis Info Card -->
+            <Card variant="elevated" padding="lg" class="bg-white">
+              <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                <Icon name="briefcase" size="md" class="text-[#02308C]" />
+                Praxis Kurzprofil
+              </h3>
+
+              <div class="space-y-3 text-foreground-muted">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Ort</p>
+                    <p class="text-sm">Berlin-Charlottenburg</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="calendar" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Gegründet</p>
+                    <p class="text-sm">2010</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="activity" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Schwerpunkte</p>
+                    <p class="text-sm">Aktive Physiotherapie (KGG), medizinische Fitness, Rehasport, Präventionskurse</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="users" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Mitarbeiterzahl</p>
+                    <p class="text-sm">13</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <Icon name="globe" size="sm" class="text-[#02308C] mt-1 flex-shrink-0" />
+                  <div>
+                    <p class="text-sm font-semibold text-foreground">Weitere Infos</p>
+                    <a
+                      href="https://gesundheitszentrum-esthera.de"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-[#02308C] hover:underline"
+                    >
+                      gesundheitszentrum-esthera.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 1 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Eine Vision, die lange gewachsen ist
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Die Idee zu esthera trug Esther Kocsis schon lange mit sich, bevor sie das Gesundheitszentrum gründete.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Es war der Beginn einer Vision, die mich schon sehr lange begleitet hat: einen Ort zu schaffen, an dem Menschen ganzheitlich, aktiv und mit Freude an ihrer Gesundheit arbeiten können."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Damit ging sie bewusst einen anderen Weg als viele Praxen, die sich damals vor allem auf die klassische Physiotherapie konzentrierten. Physiotherapie und medizinische Fitness, ergänzt durch Fitnessmitgliedschaften, in denen Mitglieder als Selbstzahler trainieren, sollten bei ihr gleichberechtigt nebeneinanderstehen – in einer Umgebung, die sich nicht nach Praxis anfühlt, sondern nach einem Ort, an dem man gerne Zeit verbringt.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Leicht war der Anfang allerdings nicht. Mit nur zwei Angestellten deckte Frau Kocsis zu Beginn nahezu alle Bereiche selbst ab – von Physiotherapie und Fitnesstraining über Kursangebote bis hin zur kompletten Verwaltung – und investierte viel Zeit und Energie in den Aufbau und die Bekanntheit des Zentrums. Nach rund einem Jahr kam das Konzept bei den Patienten an. Weil die Nachfrage stetig wuchs, kam der Rehasport hinzu, und mit der räumlichen Erweiterung vor zwei Jahren entstand noch mehr Platz für Bewegung und neue Ideen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Section -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto" data-scroll="scale">
+        <Card variant="elevated" padding="none" class="overflow-hidden">
+          <img
+            src="/images/erfolgsgeschichten/Team-Gesundheitszentrum-esthera-Berlin-Charlottenburg.jpg"
+            alt="Esther Kocsis mit ihrem Team beim Kurstraining im Gesundheitszentrum esthera"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 2 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Aktiv statt passiv
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              So vielfältig wie das Angebot ist auch die Zielgruppe: Bei esthera trainieren Jugendliche ebenso wie hochbetagte Menschen – der älteste Patient war 98 Jahre alt. Für alle gilt derselbe Grundsatz:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Sie sollen nicht nur ‚behandelt werden', sondern verstehen, wie sie selbst Einfluss auf ihren Fortschritt nehmen können. Gesundheit entsteht nicht nur, wenn jemand etwas für einen tut, sondern vor allem dann, wenn man selbst aktiv wird."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Im Mittelpunkt steht deshalb die aktive Physiotherapie mit Krankengymnastik am Gerät (KGG), ergänzt durch medizinische Fitness, Rehasport und Präventionskurse. Frau Kocsis lebt diese Haltung selbst vor: Neben Planung und Organisation steht sie am liebsten mitten im Kursraum.
+            </p>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Der Weg zu Pixformance
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Als sie nach neuen Impulsen für das Training suchte, hatte Frau Kocsis genaue Vorstellungen.
+            </p>
+
+            <div class="max-w-md mx-auto" data-scroll="scale">
+              <Card variant="elevated" padding="none" class="overflow-hidden">
+                <img
+                  src="/images/erfolgsgeschichten/Esther-Kocsis-Pixformance-Station-Gesundheitszentrum-esthera.jpg"
+                  alt="Esther Kocsis an einer Pixformance Station im Gesundheitszentrum esthera"
+                  class="w-full h-auto"
+                  loading="lazy"
+                />
+              </Card>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Ich war auf der Suche nach einer modernen, unkomplizierten Lösung, die Patienten Freude am freien Training vermittelt und sich gleichzeitig leicht in den Alltag integrieren lässt."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Platzsparend sollte das System sein und ohne großen Aufwand funktionieren. Beim Pixformance Team fühlte sie sich von Beginn an gut aufgehoben – hilfsbereit und gut erreichbar. Überzeugt hat sie vor allem die 60-Tage-Testphase, in der sie in Ruhe herausfinden konnte, ob das System zu esthera passt.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Das hat mir gezeigt, wie überzeugt und transparent das Team hinter dem Konzept steht."
+              </p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 3 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Drei Stationen auf wenig Raum
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Weil die Stationen so wenig Platz brauchen, konnte Frau Kocsis direkt drei Geräte aufstellen. Hinzu kamen weitere Argumente, die ihr die Entscheidung leicht machten.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Außerdem gibt es keine Lizenzgebühren oder laufenden Folgekosten, was für mich ein großer Pluspunkt war."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Auch im Teamalltag hat sich das System schnell bewährt. Einrichtung und Handhabung sind so unkompliziert, dass sich neue Mitarbeitende ohne lange Einarbeitung zurechtfinden.
+            </p>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Digitale Bewegungstherapie im Praxisalltag
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Bei esthera kommen die Pixformance Stationen in allen Bereichen zum Einsatz. In der Physiotherapie unterstützen sie die korrekte Übungsausführung, in der medizinischen Fitness ermöglichen sie eigenständiges und abwechslungsreiches Training, und im Rehasport werden sie auch einmal als Zirkel genutzt – mit hohem Spaßfaktor.
+            </p>
+
+            <div class="max-w-md mx-auto" data-scroll="scale">
+              <Card variant="elevated" padding="none" class="overflow-hidden">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Stationen-Gesundheitszentrum-esthera-Berlin.jpg"
+                  alt="Pixformance Stationen im Trainingsbereich des Gesundheitszentrums esthera in Berlin"
+                  class="w-full h-auto"
+                  loading="lazy"
+                />
+              </Card>
+            </div>
+
+            <p class="text-base md:text-lg">
+              Besonders gut funktioniert das Konzept in den KGG-Gruppen. Dort trainieren drei Teilnehmende gleichzeitig an den drei Stationen, während das System jede Bewegung in Echtzeit analysiert und korrigiert. So bleibt die Qualität der Übungsausführung hoch, auch wenn mehrere Patienten parallel trainieren. Das Punktesystem sorgt zusätzlich für Ansporn.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Die Patienten müssen die Übungen sauber ausführen, sonst gibt es keine Punkte oder Smileys – das motiviert besonders im Gruppentraining."
+              </p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 4 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Wenn Fortschritt sichtbar wird
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Was Frau Kocsis an Pixformance am meisten schätzt, bringt sie auf den Punkt.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Dass Patienten sofort sehen, was sie tun, gefällt mir besonders. Freies Training fällt vielen Patienten schwer oder macht ihnen weniger Spaß – mit Pixformance ist das anders."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              Vor allem Menschen, die auf visuelle Rückmeldung angewiesen sind, profitieren vom Echtzeit-Feedback. Über die verschiedenen Schwierigkeitsgrade verbessern viele ihre Kondition und Koordination nach und nach. Besonders beeindruckt haben sie Patienten, die anfangs Schwierigkeiten mit der Bewegungskontrolle hatten.
+            </p>
+
+            <div class="max-w-md mx-auto" data-scroll="scale">
+              <Card variant="elevated" padding="none" class="overflow-hidden">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Training-Gesundheitszentrum-esthera.jpg"
+                  alt="Training mit Echtzeit-Feedback an der Pixformance Station im Gesundheitszentrum esthera"
+                  class="w-full h-auto"
+                  loading="lazy"
+                />
+              </Card>
+            </div>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Durch das visuelle Feedback konnten sie ihre Haltung verbessern und ihre Motivation zur Bewegung steigern."
+              </p>
+            </Card>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Flexibel und eigenständig trainieren
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Ein weiterer Vorteil zeigt sich im Alltag der Mitglieder. Sie teilen ihr Training frei über den Tag ein und sind nicht auf einen Termin mit einem Therapeuten angewiesen. Das macht das Training flexibler und entlastet zugleich das Team.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Sie können einfach an das Gerät gehen und trainieren, ohne etwas falsch zu machen."
+              </p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section 5 -->
+  <section class="py-12 md:py-20 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Ergänzung statt Ersatz
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Ihren Berufskollegen empfiehlt Frau Kocsis Pixformance ohne Zögern:
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#6BDBD1]/10 border-l-4 border-[#6BDBD1]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Pixformance ist eine sinnvolle Ergänzung, weil es Therapie nicht ersetzt, sondern unterstützt. Es entlastet Therapeuten und motiviert Patienten."
+              </p>
+            </Card>
+          </div>
+        </div>
+
+        <div data-scroll="fade-up">
+          <h2 class="font-display text-3xl md:text-3xl font-bold mb-6">
+            Fazit: Modern, aktiv und bereit für die Zukunft
+          </h2>
+
+          <div class="space-y-6 text-lg text-foreground-muted leading-relaxed">
+            <p class="text-base md:text-lg">
+              Esther Kocsis hat noch viel vor. Sie möchte esthera kontinuierlich modernisieren, den Trainingsbereich weiter ausbauen, zusätzliche Therapieformen integrieren und neue Räumlichkeiten erschließen.
+            </p>
+
+            <p class="text-base md:text-lg">
+              Die digitale Bewegungstherapie ist dabei ein wichtiger Baustein. Mit Pixformance hat sie ein Konzept gefunden, das genau zu ihrem Anspruch passt: Es bringt Patienten in die aktive Bewegung, macht Fortschritte sichtbar und entlastet das Team im Alltag.
+            </p>
+
+            <Card variant="elevated" padding="lg" class="bg-[#02308C]/5 border-l-4 border-[#02308C]">
+              <p class="text-foreground italic text-base md:text-lg">
+                „Für uns ist der größte Mehrwert, dass wir ein modernes Training mit einer großen Übungsvielfalt anbieten können."
+              </p>
+            </Card>
+
+            <p class="text-base md:text-lg">
+              So verbindet esthera, was für Frau Kocsis zusammengehört: persönliche Betreuung durch erfahrene Therapeuten und Sportwissenschaftler sowie digitales Training, das motiviert – für Menschen, die selbst aktiv an ihrer Gesundheit arbeiten wollen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #6BDBD1 80%, white 100%)"></div>
+
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto" data-scroll="fade-up">
+        <Card variant="elevated" padding="lg" class="bg-white/95 backdrop-blur-sm">
+          <div class="text-center space-y-6">
+            <h2 class="font-display text-3xl md:text-3xl font-bold text-foreground">
+              Sie wünschen eine individuelle Beratung?
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-8">
+              <div class="w-48 h-48 rounded-full overflow-hidden border-4 flex-shrink-0 border-[#02308C]">
+                <img
+                  src="/images/erfolgsgeschichten/Pixformance-Tobias-Produktberater-rund.png.webp"
+                  alt="Tobias Baader"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="text-center md:text-left space-y-2">
+                <p class="text-xs uppercase tracking-widest text-foreground-muted font-semibold">Ihr Ansprechpartner</p>
+                <h3 class="font-bold text-3xl text-foreground">Tobias Baader</h3>
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              href="/testen"
+              class="bg-[#02308C] hover:bg-[#6BDBD1] text-white"
+            >
+              Schreiben Sie uns
+              <Icon name="mail" size="sm" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <section class="py-8 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href="/erfolgsgeschichten"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] hover:bg-[#02308C]/20 transition-colors"
+        >
+          <Icon name="arrow-left" size="sm" />
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  @keyframes hero-entry {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: hero-entry 0.8s ease-out forwards;
+  }
+
+  [data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll].is-visible {
+    opacity: 1;
+  }
+
+  [data-scroll="fade-up"] {
+    transform: translateY(30px);
+  }
+
+  [data-scroll="fade-up"].is-visible {
+    transform: translateY(0);
+  }
+
+  [data-scroll="scale"] {
+    transform: scale(0.95);
+  }
+
+  [data-scroll="scale"].is-visible {
+    transform: scale(1);
+  }
+
+  [data-scroll][data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  [data-scroll][data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  [data-scroll][data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+</style>
+
+<style is:global>
+  /* Mobile: override global centering for this page — headlines left,
+     body text justified with German hyphenation. Blocks explicitly
+     marked .text-center (CTA card, image captions) stay centered. */
+  @media (max-width: 767px) {
+    section h1:not(.text-center),
+    section h2:not(.text-center),
+    section h3:not(.text-center),
+    section h4:not(.text-center) {
+      text-align: left;
+    }
+
+    section p:not(.text-center):not(.text-left) {
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* Tailwind utilities live in @layer utilities, so unlayered rules
+       like the global "section p { text-align: center }" always win
+       over .text-left regardless of specificity. Force it here. */
+    section p.text-left {
+      text-align: left !important;
+    }
+
+    section .text-center :is(h1, h2, h3, h4, p) {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-scroll]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
