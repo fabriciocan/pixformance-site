@@ -29,7 +29,8 @@ export default defineConfig({
         !page.includes('/lp-physio') &&
         !page.includes('/lp-360-konzept') &&
         !page.includes('/calculator') &&
-        !page.includes('-danke'),
+        !page.includes('-danke') &&
+        !page.includes('/termin-'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
