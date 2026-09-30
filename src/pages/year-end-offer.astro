@@ -3,10 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
 import Footer from '@/components/layout/Footer.astro';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
-// Formulário exclusivo da landing de e-mail Year-End Offer 2026 (pedido da Kati:
-// não usar /lp nem /kontakt). As três variações do header chegam aqui com
-// utm_term=header-1/2/3, e a imagem do topo acompanha a variação.
+// Página própria da landing de e-mail Year-End Offer 2026 (pedido da Kati: não usar
+// /lp nem /kontakt). O formulário é o multi-step da /lp, igual, só com outro form_name,
+// para o n8n/Zoho/Meta tratarem o lead do mesmo jeito. As três variações do header
+// chegam com utm_term=header-1/2/3 e a imagem do topo acompanha a variação.
 const MESSE_TERMIN = '/calendar/tobias/therapie-hamburg';
 ---
 
@@ -54,49 +56,101 @@ const MESSE_TERMIN = '/calendar/tobias/therapie-hamburg';
           </ul>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
-          <h2 class="font-display text-2xl md:text-3xl font-bold text-[#02308C] mb-2">Special Offer anfragen</h2>
-          <p class="text-foreground-muted text-sm mb-6">Wir melden uns persönlich mit dem Angebot für Ihre Einrichtung.</p>
+        <!-- Multi-Step Form -->
+        <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg">
+          <!-- Step 1 -->
+          <div id="form-step-1">
+            <h2 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
+              Willst du mehr über unser digitales Trainingskonzept erfahren?
+            </h2>
+            <ul class="space-y-2 md:space-y-3 mb-6 md:mb-8">
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Zeitgleiche Patienten-Betreuung bei selbem Personal</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Digitale Übungsanleitung</span>
+              </li>
+              <li class="flex items-start gap-2 md:gap-3">
+                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="check" size="xs" class="text-white" />
+                </div>
+                <span class="text-sm md:text-base text-gray-700">Pro Patient 5 – 10 Min. Zeit sparen</span>
+              </li>
+            </ul>
+            <div class="space-y-4">
+              <div>
+                <label for="step1-email" class="block text-sm font-bold mb-2 text-gray-700">Email</label>
+                <input type="email" id="step1-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" placeholder="ihre.email@beispiel.de" />
+              </div>
+              <button id="step1-next" type="button" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                Weiter
+              </button>
+            </div>
+          </div>
 
-          <form id="yeo-form" class="space-y-4">
-            <div>
-              <label for="yeo-firma" class="block text-sm font-bold mb-1 text-gray-700">Einrichtung / Firma <span class="text-red-500">*</span></label>
-              <input type="text" id="yeo-firma" name="company" required placeholder="z.B. Physiopraxis Muster" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="yeo-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
-                <input type="text" id="yeo-vorname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+          <!-- Step 2 -->
+          <div id="form-step-2" class="hidden">
+            <h2 class="font-display text-xl md:text-2xl font-bold text-gray-900 mb-6">
+              Nur noch ein Schritt!
+            </h2>
+            <form id="multistep-form" class="space-y-4">
+              <input type="hidden" id="step2-email-hidden" name="email" />
+              <div data-ab-firma>
+                <div data-ab-role="control" style="display:none">
+                  <label for="step2-firma" class="block text-sm font-bold mb-1 text-gray-700">Firma <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-firma" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div data-ab-role="variant" style="display:none">
+                  <label for="step2-firma-select" class="block text-sm font-bold mb-1 text-gray-700">Gesundheits- oder Sporteinrichtung <span class="text-red-500">*</span></label>
+                  <select id="step2-firma-select" name="company" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900 appearance-none cursor-pointer">
+                    <option value="" disabled selected>Bitte auswählen ...</option>
+                    <option value="Physiopraxis">Physiopraxis</option>
+                    <option value="Rehabilitationszentrum">Rehabilitationszentrum</option>
+                    <option value="Krankenhaus">Krankenhaus</option>
+                    <option value="Fitness- & Gesundheitsstudio">Fitness- & Gesundheitsstudio</option>
+                    <option value="Wellness- & Gesundheitszentrum">Wellness- & Gesundheitszentrum</option>
+                    <option value="Pflegeeinrichtung">Pflegeeinrichtung</option>
+                    <option value="BGM">BGM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="step2-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-vorname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
+                <div>
+                  <label for="step2-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
+                  <input type="text" id="step2-nachname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                </div>
               </div>
               <div>
-                <label for="yeo-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
-                <input type="text" id="yeo-nachname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                <label for="step2-number" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
+                <div class="flex gap-2">
+                  <select id="step2-country" aria-label="Ländervorwahl" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+                  <input type="tel" id="step2-number" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                  <input type="hidden" id="step2-e164" name="phone" />
+                </div>
+                <p id="step2-error" class="hidden text-red-500 text-xs mt-1"></p>
               </div>
-            </div>
-            <div>
-              <label for="yeo-email" class="block text-sm font-bold mb-1 text-gray-700">E-Mail <span class="text-red-500">*</span></label>
-              <input type="email" id="yeo-email" name="email" required placeholder="ihre.email@beispiel.de" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
-            </div>
-            <div>
-              <label for="yeo-number" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
-              <div class="flex gap-2">
-                <select id="yeo-country" aria-label="Ländervorwahl" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
-                <input type="tel" id="yeo-number" required placeholder="151 12345678" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
-                <input type="hidden" id="yeo-e164" name="phone" />
+              <div class="flex items-start gap-3 pt-2">
+                <input type="checkbox" id="step2-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+                <label for="step2-privacy" class="text-xs text-gray-600 leading-relaxed">
+                  Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mir ein Testangebot unterbreiten und mich per E-Mail oder Telefon zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+                </label>
               </div>
-              <p id="yeo-error" class="hidden text-red-500 text-xs mt-1"></p>
-            </div>
-            <div class="flex items-start gap-3 pt-2">
-              <input type="checkbox" id="yeo-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
-              <label for="yeo-privacy" class="text-xs text-gray-600 leading-relaxed">
-                Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mich zum Year-End Offer per E-Mail oder Telefon kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
-              </label>
-            </div>
-            <div id="yeo-form-message" class="hidden"></div>
-            <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#021d54] hover:shadow-lg transition-all duration-300 cursor-pointer uppercase tracking-wide">
-              Special Offer anfragen
-            </button>
-          </form>
+              <button type="submit" class="w-full py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#02308C]/90 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                MEHR INFOS ANFORDERN
+              </button>
+            </form>
+            <div id="multistep-form-message" class="hidden"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -131,139 +185,161 @@ const MESSE_TERMIN = '/calendar/tobias/therapie-hamburg';
 </BaseLayout>
 
 <script src="/js/phone-field.js" is:inline></script>
-<script>
-  // Imagem do topo acompanha a variação do e-mail (utm_term=header-N).
-  const variant = new URLSearchParams(window.location.search).get('utm_term') || '';
-  const match = variant.match(/^header-([123])$/);
-  const headerImg = document.getElementById('yeo-header') as HTMLImageElement | null;
-  if (match && headerImg) headerImg.src = `/images/newsletter/year-end-offer-2026-header-${match[1]}.jpg`;
-
-  const WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
-  let META_EVENT_ID = '';
+<script is:inline>
+(function () {
+  var WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  var META_EVENT_ID = '';
 
   function initEventId() {
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    const dl = (window as any).dataLayer as any[];
-    for (let i = dl.length - 1; i >= 0; i--) {
-      if (dl[i]?.event_id) { META_EVENT_ID = dl[i].event_id; return; }
+    window.dataLayer = window.dataLayer || [];
+    for (var i = window.dataLayer.length - 1; i >= 0; i--) {
+      if (window.dataLayer[i] && window.dataLayer[i].event_id) {
+        META_EVENT_ID = window.dataLayer[i].event_id;
+        return;
+      }
     }
     META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
-    dl.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+    window.dataLayer.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
   }
 
-  function sha256(value: string): Promise<string> {
-    const encoded = new TextEncoder().encode((value || '').toLowerCase().trim());
-    return crypto.subtle.digest('SHA-256', encoded).then((buffer) =>
-      Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('')
-    );
+  // SHA-256 via Web Crypto API (async)
+  // Normaliza o valor antes de hashear conforme exige o Meta:
+  // - lowercase
+  // - trim de espaços
+  // - telefone: só dígitos, sem espaços/hífens (exceto o + do código de país)
+  function sha256(value) {
+    var normalized = (value || '').toLowerCase().trim();
+    var encoded = new TextEncoder().encode(normalized);
+    return crypto.subtle.digest('SHA-256', encoded).then(function (buffer) {
+      return Array.from(new Uint8Array(buffer))
+        .map(function (b) { return b.toString(16).padStart(2, '0'); })
+        .join('');
+    });
   }
 
-  function normalizePhone(phone: string | null): string {
-    let cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
-    if (cleaned && !cleaned.startsWith('+')) cleaned = '+49' + cleaned.replace(/^0/, '');
+  // Normaliza telefone para o formato E.164 que o Meta espera antes do hash:
+  // remove tudo exceto dígitos e o + inicial
+  function normalizePhone(phone) {
+    var cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+    // Garante que começa com + (código de país)
+    // Se não tiver +, assume Alemanha +49 (ajusta conforme necessário)
+    if (cleaned && !cleaned.startsWith('+')) {
+      cleaned = '+49' + cleaned.replace(/^0/, '');
+    }
     return cleaned;
   }
 
-  function hashUserData(formData: FormData) {
-    const email = ((formData.get('email') as string) || '').toLowerCase().trim();
-    const phone = normalizePhone(formData.get('phone') as string | null);
-    const firstName = ((formData.get('first_name') as string) || '').toLowerCase().trim();
-    const lastName = ((formData.get('last_name') as string) || '').toLowerCase().trim();
+  // Hasha todos os campos de usuário em paralelo
+  // Retorna objeto com os hashes prontos pra dataLayer e webhook
+  function hashUserData(formData) {
+    var email = (formData.get('email') || '').toLowerCase().trim();
+    var phone = normalizePhone(formData.get('phone'));
+    var firstName = (formData.get('first_name') || '').toLowerCase().trim();
+    var lastName = (formData.get('last_name') || '').toLowerCase().trim();
+
     return Promise.all([
-      email     ? sha256(email)     : Promise.resolve(''),
-      phone     ? sha256(phone)     : Promise.resolve(''),
+      email    ? sha256(email)     : Promise.resolve(''),
+      phone    ? sha256(phone)     : Promise.resolve(''),
       firstName ? sha256(firstName) : Promise.resolve(''),
       lastName  ? sha256(lastName)  : Promise.resolve(''),
-    ]).then(([em, ph, fn, ln]) => ({ em, ph, fn, ln }));
+    ]).then(function (results) {
+      return {
+        em: results[0],  // email hash
+        ph: results[1],  // phone hash
+        fn: results[2],  // first name hash
+        ln: results[3],  // last name hash
+      };
+    });
   }
 
-  // Sem utm_content fixo: o valor que vem do botão do e-mail (header, beratung…) segue
-  // até o Zoho, e não dispara o e-mail de brochure das outras LPs.
   function getUrlParams() {
-    const params: Record<string, string> = {};
-    new URLSearchParams(window.location.search).forEach((value, key) => { params[key] = value; });
+    var params = {};
+    new URLSearchParams(window.location.search).forEach(function (v, k) { params[k] = v; });
     return params;
   }
 
   function getCookies() {
-    const cookies: Record<string, string> = {};
+    var cookies = {};
     if (!document.cookie) return cookies;
-    document.cookie.split(';').forEach((cookie) => {
-      const idx = cookie.indexOf('=');
-      if (idx === -1) return;
-      const key = cookie.slice(0, idx).trim();
-      const value = cookie.slice(idx + 1).trim();
-      try { cookies[key] = decodeURIComponent(value); } catch { cookies[key] = value; }
+    document.cookie.split(';').forEach(function (c) {
+      var i = c.indexOf('=');
+      if (i === -1) return;
+      var k = c.slice(0, i).trim();
+      var v = c.slice(i + 1).trim();
+      try { cookies[k] = decodeURIComponent(v); } catch (e) { cookies[k] = v; }
     });
     return cookies;
   }
 
-  function getFbp(cookies: Record<string, string>): string { return cookies._fbp || ''; }
+  function getFbp(cookies) {
+    return cookies._fbp || '';
+  }
 
-  function getFbc(cookies: Record<string, string>): string {
-    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+  function getFbc(cookies) {
+    var fbclid = new URLSearchParams(window.location.search).get('fbclid');
     if (fbclid) {
-      const subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+      var subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
       return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
     }
     return cookies._fbc || '';
   }
 
-  function sanitizePhone(phone: string | null): string {
+  function sanitizePhone(phone) {
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
 
-  initEventId();
-
-  const form = document.getElementById('yeo-form') as HTMLFormElement;
-  const formMessage = document.getElementById('yeo-form-message');
-  const phoneCompose = (window as any).PixPhoneField ? (window as any).PixPhoneField.init('yeo', { locale: 'de' }) : null;
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (phoneCompose && !phoneCompose()) {
-      (document.getElementById('yeo-number') as HTMLInputElement)?.focus();
+  async function submitForm(formData, messageEl, formEl, formName) {
+    // Secondary bot check — defense in depth alongside form-protection.js
+    var honeypotFilled = (formData.get('_fax_number') || '').length > 0 ||
+                         (formData.get('website') || '').length > 0;
+    if (honeypotFilled) {
+      // Silently fake success for bots
+      formEl.style.display = 'none';
+      messageEl.classList.remove('hidden');
+      messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
+      messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
       return;
     }
 
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
-
-    const formData = new FormData(form);
-    const cookies = getCookies();
-    const computedFbc = getFbc(cookies);
-    const computedFbp = getFbp(cookies);
+    var cookies = getCookies();
+    var computedFbc = getFbc(cookies);
+    var computedFbp = getFbp(cookies);
     if (computedFbc) cookies._fbc = computedFbc;
     if (computedFbp) cookies._fbp = computedFbp;
+    var btn = formEl.querySelector('[type="submit"]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 
-    let hashed = { em: '', ph: '', fn: '', ln: '' };
-    try { hashed = await hashUserData(formData); } catch {}
+    var hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch (err) {}
 
-    let pixConsent: any = null;
+    var pixConsent = null;
     try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
     if (pixConsent && pixConsent.marketing) {
-      ((window as any).dataLayer as any[]).push({
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
         event: 'meta_user_data_ready',
-        em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
+        em: hashed.em,
+        ph: hashed.ph,
+        fn: hashed.fn,
+        ln: hashed.ln,
       });
     }
 
     try {
-      const payload = {
-        form_name: 'LP Year-End Offer 2026 – Anfrage',
+      var payload = {
+        form_name: formName,
         company: formData.get('company') || '',
         first_name: formData.get('first_name') || '',
         last_name: formData.get('last_name') || '',
         email: formData.get('email') || '',
-        phone: sanitizePhone(formData.get('phone') as string | null),
+        phone: sanitizePhone(formData.get('phone')),
         privacy_accepted: formData.get('privacy') === 'on',
         page_url: window.location.href,
         page_path: window.location.pathname,
         referrer: document.referrer || '',
         submitted_at: new Date().toISOString(),
         url_params: getUrlParams(),
-        cookies,
+        cookies: cookies,
         language: 'de',
         version: 'DACH',
         form_source: 'landing-page',
@@ -278,24 +354,110 @@ const MESSE_TERMIN = '/calendar/tobias/therapie-hamburg';
         meta_ln: hashed.ln,
       };
 
-      const response = await fetch(WEBHOOK_URL, {
+      var r = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        window.location.href = '/year-end-offer-danke';
+      if (r && r.ok) {
+        formEl.style.display = 'none';
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
+        messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
       } else {
-        throw new Error('Submission failed');
+        messageEl.classList.remove('hidden');
+        messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+        messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
       }
     } catch {
-      if (formMessage) {
-        formMessage.className = 'text-center text-red-700 bg-red-50 border border-red-200 rounded-xl p-4';
-        formMessage.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
-        formMessage.classList.remove('hidden');
-      }
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+      messageEl.classList.remove('hidden');
+      messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
+      messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+    } finally {
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; }
     }
-  });
+  }
+
+  function initABTest() {
+    var STORAGE_KEY = 'pix_ab_firma_field';
+    // URL override for QA: ?ab=control or ?ab=variant
+    var urlOverride = new URLSearchParams(window.location.search).get('ab');
+    var stored = (urlOverride === 'control' || urlOverride === 'variant') ? urlOverride : localStorage.getItem(STORAGE_KEY);
+    var variant = stored || (Math.random() < 0.5 ? 'control' : 'variant');
+    if (!stored) localStorage.setItem(STORAGE_KEY, variant);
+
+    document.querySelectorAll('[data-ab-firma]').forEach(function (group) {
+      var controlEl = group.querySelector('[data-ab-role="control"]');
+      var variantEl = group.querySelector('[data-ab-role="variant"]');
+      var showEl = variant === 'variant' ? variantEl : controlEl;
+      var hideEl = variant === 'variant' ? controlEl : variantEl;
+
+      if (showEl) {
+        showEl.style.display = '';
+        var input = showEl.querySelector('input, select');
+        if (input) input.required = true;
+      }
+      if (hideEl) {
+        hideEl.style.display = 'none';
+        var input = hideEl.querySelector('input, select');
+        if (input) { input.required = false; input.value = ''; }
+      }
+    });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'ab_test_assigned',
+      ab_test_name: 'firma_field_year_end_offer',
+      ab_variant: variant,
+    });
+  }
+
+  function init() {
+    initEventId();
+    initABTest();
+
+    // Imagem do topo acompanha a variação do e-mail (utm_term=header-N).
+    var m = (new URLSearchParams(window.location.search).get('utm_term') || '').match(/^header-([123])$/);
+    var headerImg = document.getElementById('yeo-header');
+    if (m && headerImg) headerImg.src = '/images/newsletter/year-end-offer-2026-header-' + m[1] + '.jpg';
+
+    var phoneComposeStep2 = window.PixPhoneField ? window.PixPhoneField.init('step2', { locale: 'de' }) : null;
+
+    // MULTI-STEP FORM (mesmo da /lp; só o form_name muda)
+    var step1 = document.getElementById('form-step-1');
+    var step2 = document.getElementById('form-step-2');
+    var step1Next = document.getElementById('step1-next');
+    var step1Email = document.getElementById('step1-email');
+    var step2EmailHidden = document.getElementById('step2-email-hidden');
+
+    if (step1Next) {
+      step1Next.addEventListener('click', function () {
+        if (!step1Email.value || !step1Email.checkValidity()) {
+          step1Email.reportValidity();
+          return;
+        }
+        step2EmailHidden.value = step1Email.value;
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+      });
+    }
+
+    var multistepForm = document.getElementById('multistep-form');
+    var multistepMsg = document.getElementById('multistep-form-message');
+    if (multistepForm) {
+      multistepForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (phoneComposeStep2 && !phoneComposeStep2()) { document.getElementById('step2-number').focus(); return; }
+        submitForm(new FormData(multistepForm), multistepMsg, multistepForm, 'Year-End Offer 2026 - Multi-Step');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
