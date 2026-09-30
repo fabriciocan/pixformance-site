@@ -17,8 +17,8 @@ const EINRICHTUNGEN = [
   'Betriebliches Gesundheitsmanagement (BGM)',
   'Sonstiges',
 ];
-const base = 'py-4 rounded-xl border-0 bg-white text-gray-900 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
-const field = 'w-full min-w-0 px-4 py-4 rounded-xl border-0 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
+const base = 'py-3 text-[15px] rounded-lg border-0 bg-white text-gray-900 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
+const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
 ---
 
 <BaseLayout
@@ -28,35 +28,35 @@ const field = 'w-full min-w-0 px-4 py-4 rounded-xl border-0 bg-white text-gray-9
   noSitePopup={true}
 >
   <div id="yeo" class="min-h-screen bg-[#080808] text-white flex flex-col" style="--yeo-accent:#6BDBD1">
-    <div class="flex-1 w-full max-w-xl mx-auto px-5 pt-6 pb-12 md:pt-8">
+    <div class="flex-1 w-full max-w-md mx-auto px-5 pt-6 pb-12 md:pt-8">
       <a href="/" class="block w-fit mx-auto mb-6" aria-label="Pixformance Startseite">
-        <img src="/images/logo/logoWHITE.png" alt="Pixformance" width="150" height="34" class="w-[140px] h-auto" />
+        <img src="/images/logo/logoWHITE.png" alt="Pixformance" width="150" height="34" class="w-[130px] h-auto" />
       </a>
 
       <p class="text-center text-xs font-bold tracking-[0.2em] uppercase text-[var(--yeo-accent)] mb-3">
         Year-End Offer 2026
       </p>
-      <h1 class="text-center font-display text-base font-bold leading-snug mb-5 md:-mx-16">
+      <h1 class="text-center font-display text-xl md:text-[1.375rem] font-bold leading-snug mb-5">
         Sie erhalten von uns eine persönliche Rückmeldung mit dem passenden Angebot und den aktuellen Aktionskonditionen.
       </h1>
 
-      <ul class="grid grid-cols-2 gap-3 mb-6">
-        <li class="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-center">
-          <p class="text-[11px] uppercase tracking-widest text-white/60">Aktion gültig bis</p>
-          <p class="text-base font-bold">Ende November</p>
+      <ul class="grid grid-cols-2 gap-3 mb-5">
+        <li class="bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-center">
+          <p class="text-[10px] uppercase tracking-widest text-white/60">Aktion gültig bis</p>
+          <p class="text-[15px] font-bold">Ende November</p>
         </li>
-        <li class="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-center">
-          <p class="text-[11px] uppercase tracking-widest text-white/60">Auslieferung</p>
-          <p class="text-base font-bold">Noch 2026</p>
+        <li class="bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-center">
+          <p class="text-[10px] uppercase tracking-widest text-white/60">Auslieferung</p>
+          <p class="text-[15px] font-bold">Noch 2026</p>
         </li>
       </ul>
 
-      <form id="yeo-form" class="space-y-4" novalidate>
+      <form id="yeo-form" class="space-y-3" novalidate>
         <input type="text" id="yeo-name" name="name" required autocomplete="name" placeholder="Ihr Name" aria-label="Ihr Name" class={field} />
         <input type="email" id="yeo-email" name="email" required autocomplete="email" placeholder="Ihre E-Mail-Adresse" aria-label="Ihre E-Mail-Adresse" class={field} />
         <div>
           <div class="flex gap-2">
-            <select id="yeo-country" aria-label="Ländervorwahl" class={`${base} w-[96px] shrink-0 px-2`}></select>
+            <select id="yeo-country" aria-label="Ländervorwahl" class={`${base} w-[92px] shrink-0 px-2`}></select>
             <input type="tel" id="yeo-number" required autocomplete="tel-national" placeholder="Ihre Telefonnummer" aria-label="Ihre Telefonnummer" class={field} />
             <input type="hidden" id="yeo-e164" name="phone" />
           </div>
@@ -69,17 +69,17 @@ const field = 'w-full min-w-0 px-4 py-4 rounded-xl border-0 bg-white text-gray-9
           </select>
           <svg class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>
         </div>
-        <textarea id="yeo-message" name="message" rows="5" placeholder="Ihre Nachricht" aria-label="Ihre Nachricht" class={`${field} resize-y`}></textarea>
+        <textarea id="yeo-message" name="message" rows="3" placeholder="Ihre Nachricht" aria-label="Ihre Nachricht" class={`${field} resize-y`}></textarea>
 
         <label for="yeo-privacy" class="flex items-start gap-3 pt-1 cursor-pointer">
-          <input type="checkbox" id="yeo-privacy" name="privacy" required class="mt-0.5 w-5 h-5 shrink-0 rounded border-0 accent-[var(--yeo-accent)]" />
-          <span class="text-xs text-white/75 leading-relaxed">
+          <input type="checkbox" id="yeo-privacy" name="privacy" required class="mt-0.5 w-4 h-4 shrink-0 rounded border-0 accent-[var(--yeo-accent)]" />
+          <span class="text-[11px] text-white/70 leading-relaxed">
             Ich habe die <a href="/datenschutz" target="_blank" class="underline text-white">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mich per E-Mail oder Telefon zu diesem Angebot, zu Produkten sowie allgemeinen Unternehmens-Infos kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
           </span>
         </label>
         <p id="yeo-form-error" class="hidden text-red-400 text-sm text-center"></p>
 
-        <button type="submit" class="block mx-auto px-10 py-4 rounded-xl bg-[var(--yeo-accent)] text-[#0b0b0b] font-bold uppercase tracking-wide hover:opacity-90 transition-all cursor-pointer">
+        <button type="submit" class="block mx-auto !mt-5 px-9 py-3 rounded-lg bg-[var(--yeo-accent)] text-[#0b0b0b] text-sm font-bold uppercase tracking-wide hover:opacity-90 transition-all cursor-pointer">
           Anfrage senden
         </button>
       </form>
@@ -88,7 +88,7 @@ const field = 'w-full min-w-0 px-4 py-4 rounded-xl border-0 bg-white text-gray-9
         <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--yeo-accent)] flex items-center justify-center">
           <svg width="32" height="32" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
-        <h2 class="font-display text-2xl font-bold mb-2">Vielen Dank für Ihre Anfrage!</h2>
+        <h2 class="font-display text-xl font-bold mb-2">Vielen Dank für Ihre Anfrage!</h2>
         <p class="text-white/75">Wir melden uns in Kürze mit Ihrem persönlichen Year-End Offer.</p>
       </div>
     </div>
