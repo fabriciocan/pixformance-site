@@ -30,7 +30,8 @@ export default defineConfig({
         !page.includes('/lp-360-konzept') &&
         !page.includes('/calculator') &&
         !page.includes('-danke') &&
-        !page.includes('/termin-'),
+        !page.includes('/year-end-offer') &&
+        !page.includes('/newsletter/'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

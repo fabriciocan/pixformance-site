@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout
+  title="Vielen Dank – Year-End Offer 2026 | Pixformance"
+  description="Vielen Dank für Ihre Anfrage zum Year-End Offer 2026. Wir melden uns in Kürze persönlich bei Ihnen."
+  noindex={true}
+  noSitePopup={true}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="bg-[#02308C] py-14 md:py-20">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center space-y-4 text-white">
+        <p class="text-sm uppercase tracking-widest text-[#6BDBD1] font-semibold">Year-End Offer 2026</p>
+        <h1 class="font-display text-3xl md:text-4xl font-bold">Vielen Dank für Ihre Anfrage!</h1>
+        <p class="text-white/85 text-lg">
+          Wir melden uns in Kürze persönlich mit dem Angebot für Ihre Einrichtung.
+          Sie möchten nicht warten? Buchen Sie direkt einen Termin.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <a href="/calendar/tobias/year-end-offer" class="px-6 py-3 bg-[#6BDBD1] text-[#0b0b0b] font-bold rounded-xl uppercase tracking-wide text-sm hover:opacity-90 transition-all">
+            Beratungstermin buchen
+          </a>
+          <a href="/calendar/tobias/therapie-hamburg" class="px-6 py-3 bg-white/10 border border-white/30 text-white font-bold rounded-xl uppercase tracking-wide text-sm hover:bg-white/20 transition-all">
+            Termin auf der therapie HAMBURG
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,301 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+
+// Formulário exclusivo da landing de e-mail Year-End Offer 2026 (pedido da Kati:
+// não usar /lp nem /kontakt). As três variações do header chegam aqui com
+// utm_term=header-1/2/3, e a imagem do topo acompanha a variação.
+const MESSE_TERMIN = '/calendar/tobias/therapie-hamburg';
+---
+
+<BaseLayout
+  title="Year-End Offer 2026 – Special Offer anfragen | Pixformance"
+  description="Verpassen Sie nicht unser Year-End Offer 2026: Aktion gültig bis Ende November, Auslieferung noch 2026. Jetzt unverbindlich anfragen."
+  noindex={true}
+  noSitePopup={true}
+>
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="bg-[#0b0b0b] py-10 md:py-16">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-10 items-start max-w-6xl mx-auto">
+        <div class="space-y-6 text-white">
+          <span class="inline-block bg-[#6BDBD1] text-[#0b0b0b] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded">
+            Year-End Offer 2026
+          </span>
+          <h1 class="font-display text-4xl md:text-5xl font-bold leading-tight">
+            Verpassen Sie nicht unser Special Offer.
+          </h1>
+          <p class="text-white/80 text-lg">
+            Das digitale Trainingskonzept für Physiotherapie, Reha und Fitness: mehr Zeit,
+            mehr Umsatz, mehr Entlastung für Ihr Team.
+          </p>
+          <img
+            id="yeo-header"
+            src="/images/newsletter/year-end-offer-2026-header-1.jpg"
+            alt="Year-End Offer 2026 der Pixformance"
+            width="1280"
+            height="720"
+            class="w-full h-auto rounded-2xl"
+          />
+          <ul class="grid sm:grid-cols-2 gap-4">
+            <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+              <p class="text-xs uppercase tracking-widest text-white/60">Aktion gültig bis</p>
+              <p class="text-xl font-bold">Ende November</p>
+            </li>
+            <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+              <p class="text-xs uppercase tracking-widest text-white/60">Auslieferung</p>
+              <p class="text-xl font-bold">Noch 2026</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-[#02308C] mb-2">Special Offer anfragen</h2>
+          <p class="text-foreground-muted text-sm mb-6">Wir melden uns persönlich mit dem Angebot für Ihre Einrichtung.</p>
+
+          <form id="yeo-form" class="space-y-4">
+            <div>
+              <label for="yeo-firma" class="block text-sm font-bold mb-1 text-gray-700">Einrichtung / Firma <span class="text-red-500">*</span></label>
+              <input type="text" id="yeo-firma" name="company" required placeholder="z.B. Physiopraxis Muster" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="yeo-vorname" class="block text-sm font-bold mb-1 text-gray-700">Vorname <span class="text-red-500">*</span></label>
+                <input type="text" id="yeo-vorname" name="first_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+              <div>
+                <label for="yeo-nachname" class="block text-sm font-bold mb-1 text-gray-700">Nachname <span class="text-red-500">*</span></label>
+                <input type="text" id="yeo-nachname" name="last_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+              </div>
+            </div>
+            <div>
+              <label for="yeo-email" class="block text-sm font-bold mb-1 text-gray-700">E-Mail <span class="text-red-500">*</span></label>
+              <input type="email" id="yeo-email" name="email" required placeholder="ihre.email@beispiel.de" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+            </div>
+            <div>
+              <label for="yeo-number" class="block text-sm font-bold mb-1 text-gray-700">Telefonnummer <span class="text-red-500">*</span></label>
+              <div class="flex gap-2">
+                <select id="yeo-country" aria-label="Ländervorwahl" class="w-[92px] shrink-0 px-2 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900"></select>
+                <input type="tel" id="yeo-number" required placeholder="151 12345678" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#02308C]/30 focus:border-[#02308C] transition-all text-gray-900" />
+                <input type="hidden" id="yeo-e164" name="phone" />
+              </div>
+              <p id="yeo-error" class="hidden text-red-500 text-xs mt-1"></p>
+            </div>
+            <div class="flex items-start gap-3 pt-2">
+              <input type="checkbox" id="yeo-privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#02308C] focus:ring-[#02308C]/30" />
+              <label for="yeo-privacy" class="text-xs text-gray-600 leading-relaxed">
+                Ich habe die <a href="/datenschutz" class="text-[#02308C] hover:underline font-bold">Datenschutzerklärung</a> gelesen und willige ein, dass die Pixformance Sports GmbH mich zum Year-End Offer per E-Mail oder Telefon kontaktieren darf. Die Einwilligung kann jederzeit widerrufen werden.
+              </label>
+            </div>
+            <div id="yeo-form-message" class="hidden"></div>
+            <button type="submit" class="w-full py-4 bg-[#02308C] text-white font-bold text-lg rounded-xl hover:bg-[#021d54] hover:shadow-lg transition-all duration-300 cursor-pointer uppercase tracking-wide">
+              Special Offer anfragen
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- therapie HAMBURG -->
+  <section class="bg-white py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+        <img
+          src="/images/newsletter/therapie-hamburg-2026-logo.jpg"
+          alt="therapie HAMBURG, Fachmesse mit Kongress für Therapie und medizinische Rehabilitation, 6. und 7. November 2026"
+          width="800"
+          height="289"
+          class="w-full h-auto"
+          loading="lazy"
+        />
+        <div class="space-y-4">
+          <p class="text-sm uppercase tracking-widest text-[#02308C] font-semibold">Besuchen Sie uns</p>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-gray-900">therapie HAMBURG, 6. und 7. November 2026</h2>
+          <p class="text-lg text-gray-700"><strong>Halle B4 EG, Stand E25</strong></p>
+          <p class="text-gray-600">Erleben Sie die Pixformance Station live und sichern Sie sich vor Ort das Year-End Offer. Reservieren Sie vorab Ihren Termin am Stand.</p>
+          <a href={MESSE_TERMIN} class="inline-block px-6 py-3 bg-[#02308C] text-white font-bold rounded-xl hover:bg-[#021d54] transition-all uppercase tracking-wide text-sm">
+            Termin am Stand buchen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script src="/js/phone-field.js" is:inline></script>
+<script>
+  // Imagem do topo acompanha a variação do e-mail (utm_term=header-N).
+  const variant = new URLSearchParams(window.location.search).get('utm_term') || '';
+  const match = variant.match(/^header-([123])$/);
+  const headerImg = document.getElementById('yeo-header') as HTMLImageElement | null;
+  if (match && headerImg) headerImg.src = `/images/newsletter/year-end-offer-2026-header-${match[1]}.jpg`;
+
+  const WEBHOOK_URL = 'https://webhook.pixformance.com/webhook/site-forms';
+  let META_EVENT_ID = '';
+
+  function initEventId() {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    const dl = (window as any).dataLayer as any[];
+    for (let i = dl.length - 1; i >= 0; i--) {
+      if (dl[i]?.event_id) { META_EVENT_ID = dl[i].event_id; return; }
+    }
+    META_EVENT_ID = Date.now() + '_' + Math.floor(Math.random() * 1e15);
+    dl.push({ event: 'meta_event_id_ready', event_id: META_EVENT_ID });
+  }
+
+  function sha256(value: string): Promise<string> {
+    const encoded = new TextEncoder().encode((value || '').toLowerCase().trim());
+    return crypto.subtle.digest('SHA-256', encoded).then((buffer) =>
+      Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('')
+    );
+  }
+
+  function normalizePhone(phone: string | null): string {
+    let cleaned = (phone || '').trim().replace(/[\s\-().]/g, '');
+    if (cleaned && !cleaned.startsWith('+')) cleaned = '+49' + cleaned.replace(/^0/, '');
+    return cleaned;
+  }
+
+  function hashUserData(formData: FormData) {
+    const email = ((formData.get('email') as string) || '').toLowerCase().trim();
+    const phone = normalizePhone(formData.get('phone') as string | null);
+    const firstName = ((formData.get('first_name') as string) || '').toLowerCase().trim();
+    const lastName = ((formData.get('last_name') as string) || '').toLowerCase().trim();
+    return Promise.all([
+      email     ? sha256(email)     : Promise.resolve(''),
+      phone     ? sha256(phone)     : Promise.resolve(''),
+      firstName ? sha256(firstName) : Promise.resolve(''),
+      lastName  ? sha256(lastName)  : Promise.resolve(''),
+    ]).then(([em, ph, fn, ln]) => ({ em, ph, fn, ln }));
+  }
+
+  // Sem utm_content fixo: o valor que vem do botão do e-mail (header, beratung…) segue
+  // até o Zoho, e não dispara o e-mail de brochure das outras LPs.
+  function getUrlParams() {
+    const params: Record<string, string> = {};
+    new URLSearchParams(window.location.search).forEach((value, key) => { params[key] = value; });
+    return params;
+  }
+
+  function getCookies() {
+    const cookies: Record<string, string> = {};
+    if (!document.cookie) return cookies;
+    document.cookie.split(';').forEach((cookie) => {
+      const idx = cookie.indexOf('=');
+      if (idx === -1) return;
+      const key = cookie.slice(0, idx).trim();
+      const value = cookie.slice(idx + 1).trim();
+      try { cookies[key] = decodeURIComponent(value); } catch { cookies[key] = value; }
+    });
+    return cookies;
+  }
+
+  function getFbp(cookies: Record<string, string>): string { return cookies._fbp || ''; }
+
+  function getFbc(cookies: Record<string, string>): string {
+    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) {
+      const subdomainIndex = window.location.hostname.startsWith('www.') ? 2 : 1;
+      return 'fb.' + subdomainIndex + '.' + Date.now() + '.' + fbclid;
+    }
+    return cookies._fbc || '';
+  }
+
+  function sanitizePhone(phone: string | null): string {
+    return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
+  }
+
+  initEventId();
+
+  const form = document.getElementById('yeo-form') as HTMLFormElement;
+  const formMessage = document.getElementById('yeo-form-message');
+  const phoneCompose = (window as any).PixPhoneField ? (window as any).PixPhoneField.init('yeo', { locale: 'de' }) : null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (phoneCompose && !phoneCompose()) {
+      (document.getElementById('yeo-number') as HTMLInputElement)?.focus();
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
+
+    const formData = new FormData(form);
+    const cookies = getCookies();
+    const computedFbc = getFbc(cookies);
+    const computedFbp = getFbp(cookies);
+    if (computedFbc) cookies._fbc = computedFbc;
+    if (computedFbp) cookies._fbp = computedFbp;
+
+    let hashed = { em: '', ph: '', fn: '', ln: '' };
+    try { hashed = await hashUserData(formData); } catch {}
+
+    let pixConsent: any = null;
+    try { pixConsent = JSON.parse(localStorage.getItem('pix_consent') || 'null'); } catch {}
+    if (pixConsent && pixConsent.marketing) {
+      ((window as any).dataLayer as any[]).push({
+        event: 'meta_user_data_ready',
+        em: hashed.em, ph: hashed.ph, fn: hashed.fn, ln: hashed.ln,
+      });
+    }
+
+    try {
+      const payload = {
+        form_name: 'LP Year-End Offer 2026 – Anfrage',
+        company: formData.get('company') || '',
+        first_name: formData.get('first_name') || '',
+        last_name: formData.get('last_name') || '',
+        email: formData.get('email') || '',
+        phone: sanitizePhone(formData.get('phone') as string | null),
+        privacy_accepted: formData.get('privacy') === 'on',
+        page_url: window.location.href,
+        page_path: window.location.pathname,
+        referrer: document.referrer || '',
+        submitted_at: new Date().toISOString(),
+        url_params: getUrlParams(),
+        cookies,
+        language: 'de',
+        version: 'DACH',
+        form_source: 'landing-page',
+        meta_event_id: META_EVENT_ID,
+        meta_fbp: getFbp(cookies),
+        meta_fbc: getFbc(cookies),
+        meta_user_agent: navigator.userAgent,
+        meta_event_source_url: window.location.href,
+        meta_em: hashed.em,
+        meta_ph: hashed.ph,
+        meta_fn: hashed.fn,
+        meta_ln: hashed.ln,
+      };
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        window.location.href = '/year-end-offer-danke';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      if (formMessage) {
+        formMessage.className = 'text-center text-red-700 bg-red-50 border border-red-200 rounded-xl p-4';
+        formMessage.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+        formMessage.classList.remove('hidden');
+      }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+    }
+  });
+</script>
