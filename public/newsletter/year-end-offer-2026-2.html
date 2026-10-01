@@ -13,12 +13,10 @@
   a { text-decoration:none; }
   .pill { transition:background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
   .pill:hover { background-color:#1d1d1d !important; border-color:#e9c45d !important; box-shadow:0 0 0 1px #e9c45d, 0 10px 28px rgba(0,0,0,.55) !important; transform:translateY(-3px); }
-  .pill:hover .pill-num { color:#ffffff !important; }
   @media only screen and (max-width:620px) {
     .col { display:block !important; width:100% !important; padding:0 0 12px 0 !important; }
-    .pill-wrap { padding:0 3px !important; }
-    .pill-num { font-size:28px !important; line-height:30px !important; }
-    .pill-txt { font-size:10px !important; letter-spacing:.6px !important; }
+    .pill-wrap { padding:0 2px 8px 2px !important; }
+    .pill { padding:9px 9px !important; font-size:11px !important; letter-spacing:.5px !important; }
     .h1 { font-size:34px !important; line-height:38px !important; }
     .stat td { display:block !important; width:100% !important; text-align:left !important; padding:6px 0 !important; border:0 !important; }
   }
@@ -107,39 +105,12 @@
             </td>
           </tr>
           <tr>
-            <td align="center" style="padding-bottom:24px;">
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:540px;">
+            <td align="center" style="padding-bottom:16px;">
+              <table cellpadding="0" cellspacing="0" border="0" role="presentation">
                 <tr>
-                  <td class="pill-wrap" width="33%" align="center" valign="top" style="width:33%;padding:0 6px;">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
-                      <tr>
-                        <td class="pill" align="center" bgcolor="#161616" style="background:#161616;border:1px solid #2e2e2e;border-radius:10px;padding:20px 8px 18px 8px;">
-                          <div class="pill-num" style="font-size:38px;line-height:40px;font-weight:900;color:#e9c45d;padding-bottom:6px;"><span>1</span></div>
-                          <div class="pill-txt" style="font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">Konzept</span></div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td class="pill-wrap" width="33%" align="center" valign="top" style="width:33%;padding:0 6px;">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
-                      <tr>
-                        <td class="pill" align="center" bgcolor="#161616" style="background:#161616;border:1px solid #2e2e2e;border-radius:10px;padding:20px 8px 18px 8px;">
-                          <div class="pill-num" style="font-size:38px;line-height:40px;font-weight:900;color:#e9c45d;padding-bottom:6px;"><span>3</span></div>
-                          <div class="pill-txt" style="font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">Komponenten</span></div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td class="pill-wrap" width="33%" align="center" valign="top" style="width:33%;padding:0 6px;">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
-                      <tr>
-                        <td class="pill" align="center" bgcolor="#161616" style="background:#161616;border:1px solid #2e2e2e;border-radius:10px;padding:20px 8px 18px 8px;">
-                          <div class="pill-num" style="font-size:38px;line-height:40px;font-weight:900;color:#e9c45d;padding-bottom:6px;"><span>360°</span></div>
-                          <div class="pill-txt" style="font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">Lösung</span></div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
+                  <td class="pill-wrap" style="padding:0 4px 8px 4px;"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td class="pill" bgcolor="#161616" style="background:#161616;border:1px solid #2a2a2a;border-radius:6px;padding:11px 16px;font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">1 Konzept</span></td></tr></table></td>
+                  <td class="pill-wrap" style="padding:0 4px 8px 4px;"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td class="pill" bgcolor="#161616" style="background:#161616;border:1px solid #2a2a2a;border-radius:6px;padding:11px 16px;font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">3 Komponenten</span></td></tr></table></td>
+                  <td class="pill-wrap" style="padding:0 4px 8px 4px;"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td class="pill" bgcolor="#161616" style="background:#161616;border:1px solid #2a2a2a;border-radius:6px;padding:11px 16px;font-size:13px;line-height:16px;font-weight:700;letter-spacing:1.5px;color:#ffffff;text-transform:uppercase;white-space:nowrap;"><span style="color:#ffffff !important;">360° Lösung</span></td></tr></table></td>
                 </tr>
               </table>
             </td>
@@ -149,17 +120,17 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
                 <tr>
                   <td class="col" width="33%" align="center" valign="top" style="width:33%;padding:0 8px;">
-                    <div style="font-size:13px;line-height:18px;font-weight:700;letter-spacing:1px;color:#e9c45d;padding-bottom:6px;">01</div>
+                    <img src="https://www.pixformance.com/images/newsletter/icon-station-gold.png" width="52" height="52" alt="Pixformance Station" style="display:block;width:52px;height:52px;border:0;margin:0 auto 10px auto;">
                     <div style="font-size:15px;line-height:20px;font-weight:800;color:#ffffff;padding-bottom:6px;"><span style="color:#ffffff !important;">Pixformance Station</span></div>
-                    <div style="font-size:13px;line-height:19px;color:#cfcfcf;"><span style="color:#cfcfcf !important;">25 Gelenkpunkte in Echtzeit, Korrektur jeder Übung live am Display.</span></div>
+                    <div style="font-size:13px;line-height:19px;color:#cfcfcf;"><span style="color:#cfcfcf !important;">25 Gelenkpunkte und Echtzeit-Feedback: jede Übung wird live am Display korrigiert.</span></div>
                   </td>
                   <td class="col" width="33%" align="center" valign="top" style="width:33%;padding:0 8px;">
-                    <div style="font-size:13px;line-height:18px;font-weight:700;letter-spacing:1px;color:#e9c45d;padding-bottom:6px;">02</div>
+                    <img src="https://www.pixformance.com/images/newsletter/icon-plattform-gold.png" width="52" height="52" alt="Online-Plattform" style="display:block;width:52px;height:52px;border:0;margin:0 auto 10px auto;">
                     <div style="font-size:15px;line-height:20px;font-weight:800;color:#ffffff;padding-bottom:6px;"><span style="color:#ffffff !important;">Online-Plattform</span></div>
                     <div style="font-size:13px;line-height:19px;color:#cfcfcf;"><span style="color:#cfcfcf !important;">Programme aus über 700 Übungen, Dokumentation und Fortschritt zentral.</span></div>
                   </td>
                   <td class="col" width="33%" align="center" valign="top" style="width:33%;padding:0 8px;">
-                    <div style="font-size:13px;line-height:18px;font-weight:700;letter-spacing:1px;color:#e9c45d;padding-bottom:6px;">03</div>
+                    <img src="https://www.pixformance.com/images/newsletter/icon-app-gold.png" width="52" height="52" alt="Mobile Web App" style="display:block;width:52px;height:52px;border:0;margin:0 auto 10px auto;">
                     <div style="font-size:15px;line-height:20px;font-weight:800;color:#ffffff;padding-bottom:6px;"><span style="color:#ffffff !important;">Mobile Web App</span></div>
                     <div style="font-size:13px;line-height:19px;color:#cfcfcf;"><span style="color:#cfcfcf !important;">Patienten trainieren ihr Programm zu Hause oder unterwegs weiter.</span></div>
                   </td>
