@@ -203,9 +203,7 @@ const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white
     var einrichtung = (fd.get('einrichtung') || '').trim();
     var msg = (fd.get('message') || '').trim();
     var head = einrichtung ? 'Einrichtung: ' + einrichtung : '';
-    return [head, msg].filter(Boolean).join('
-
-');
+    return [head, msg].filter(Boolean).join('\n\n');
   }
 
   function showThanks(form) {
