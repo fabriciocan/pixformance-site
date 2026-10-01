@@ -5,7 +5,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 // /lp nem /kontakt). Desde 30/09 segue o formato do concorrente: página preta, fora do
 // site (sem header e footer), só as duas informações da oferta e um formulário de uma
 // etapa. O agradecimento aparece na própria página. O select de Einrichtung é o mesmo
-// do popup do site e da variante do teste A/B da /lp, e vai no campo `company`.
+// do popup do site e da variante do teste A/B da /lp. Desde 01/10 o form tem Firma
+// (vai em `company`) e a Einrichtung entra no começo de `message`.
 // A cor de destaque acompanha a variação do e-mail (utm_term=header-2 é dourada).
 const EINRICHTUNGEN = [
   'Physiotherapie',
@@ -18,6 +19,7 @@ const EINRICHTUNGEN = [
   'Sonstiges',
 ];
 const base = 'py-3 text-[15px] rounded-lg border-0 bg-white text-gray-900 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
+const label = 'block text-sm font-bold mb-1.5 text-white';
 const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-[var(--yeo-accent)]/40 transition-all';
 ---
 
@@ -51,25 +53,42 @@ const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white
         </li>
       </ul>
 
-      <form id="yeo-form" class="space-y-3" novalidate>
-        <input type="text" id="yeo-name" name="name" required autocomplete="name" placeholder="Ihr Name" aria-label="Ihr Name" class={field} />
-        <input type="email" id="yeo-email" name="email" required autocomplete="email" placeholder="Ihre E-Mail-Adresse" aria-label="Ihre E-Mail-Adresse" class={field} />
+      <form id="yeo-form" class="space-y-4" novalidate>
         <div>
+          <label for="yeo-name" class={label}>Name <span class="text-[var(--yeo-accent)]">*</span></label>
+          <input type="text" id="yeo-name" name="name" required autocomplete="name" placeholder="Vor- und Nachname" class={field} />
+        </div>
+        <div>
+          <label for="yeo-firma" class={label}>Firma <span class="text-[var(--yeo-accent)]">*</span></label>
+          <input type="text" id="yeo-firma" name="company" required autocomplete="organization" placeholder="Name Ihrer Praxis oder Einrichtung" class={field} />
+        </div>
+        <div>
+          <label for="yeo-email" class={label}>E-Mail <span class="text-[var(--yeo-accent)]">*</span></label>
+          <input type="email" id="yeo-email" name="email" required autocomplete="email" placeholder="ihre@email.de" class={field} />
+        </div>
+        <div>
+          <label for="yeo-number" class={label}>Telefon <span class="text-[var(--yeo-accent)]">*</span></label>
           <div class="flex gap-2">
             <select id="yeo-country" aria-label="Ländervorwahl" class={`${base} w-[92px] shrink-0 px-2`}></select>
-            <input type="tel" id="yeo-number" required autocomplete="tel-national" placeholder="Ihre Telefonnummer" aria-label="Ihre Telefonnummer" class={field} />
+            <input type="tel" id="yeo-number" required autocomplete="tel-national" placeholder="Ihre Telefonnummer" class={field} />
             <input type="hidden" id="yeo-e164" name="phone" />
           </div>
           <p id="yeo-error" class="hidden text-red-400 text-xs mt-1"></p>
         </div>
-        <div class="relative">
-          <select id="yeo-einrichtung" name="company" required aria-label="Einrichtung" class={`${field} appearance-none cursor-pointer pr-12 invalid:text-gray-400`}>
-            <option value="" disabled selected>Einrichtung</option>
-            {EINRICHTUNGEN.map((e) => <option value={e} class="text-gray-900">{e}</option>)}
-          </select>
-          <svg class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>
+        <div>
+          <label for="yeo-einrichtung" class={label}>Einrichtung <span class="text-[var(--yeo-accent)]">*</span></label>
+          <div class="relative">
+            <select id="yeo-einrichtung" name="einrichtung" required class={`${field} appearance-none cursor-pointer pr-12 invalid:text-gray-400`}>
+              <option value="" disabled selected>Bitte auswählen</option>
+              {EINRICHTUNGEN.map((e) => <option value={e} class="text-gray-900">{e}</option>)}
+            </select>
+            <svg class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>
+          </div>
         </div>
-        <textarea id="yeo-message" name="message" rows="3" placeholder="Ihre Nachricht" aria-label="Ihre Nachricht" class={`${field} resize-y`}></textarea>
+        <div>
+          <label for="yeo-message" class={label}>Ihre Nachricht</label>
+          <textarea id="yeo-message" name="message" rows="3" placeholder="Optional" class={`${field} resize-y`}></textarea>
+        </div>
 
         <label for="yeo-privacy" class="flex items-start gap-3 pt-1 cursor-pointer">
           <input type="checkbox" id="yeo-privacy" name="privacy" required class="mt-0.5 w-4 h-4 shrink-0 rounded border-0 accent-[var(--yeo-accent)]" />
@@ -178,6 +197,17 @@ const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white
     return (phone || '').replace(/[^\d\s+\-()]/g, '').trim();
   }
 
+  // O Zoho não tem campo de Einrichtung: ela vai no começo da mensagem, que o n8n grava
+  // em Description e Notizen. `company` agora é o nome da empresa.
+  function buildMessage(fd) {
+    var einrichtung = (fd.get('einrichtung') || '').trim();
+    var msg = (fd.get('message') || '').trim();
+    var head = einrichtung ? 'Einrichtung: ' + einrichtung : '';
+    return [head, msg].filter(Boolean).join('
+
+');
+  }
+
   function showThanks(form) {
     form.classList.add('hidden');
     document.getElementById('yeo-thanks').classList.remove('hidden');
@@ -232,7 +262,8 @@ const field = 'w-full min-w-0 px-4 py-3 text-[15px] rounded-lg border-0 bg-white
           last_name: name.last,
           email: fd.get('email') || '',
           phone: sanitizePhone(fd.get('phone')),
-          message: fd.get('message') || '',
+          einrichtung: fd.get('einrichtung') || '',
+          message: buildMessage(fd),
           privacy_accepted: fd.get('privacy') === 'on',
           page_url: window.location.href,
           page_path: window.location.pathname,
