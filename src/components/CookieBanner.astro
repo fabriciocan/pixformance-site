@@ -24,7 +24,7 @@ const t = {
     necessaryDesc: 'Technisch erforderlich für den Betrieb der Website. Können nicht deaktiviert werden.',
     alwaysActive: 'Immer aktiv',
     statistics: 'Statistiken',
-    statisticsDesc: 'Helfen uns zu verstehen, wie Besucher mit der Website interagieren (Google Analytics).',
+    statisticsDesc: 'Helfen uns zu verstehen, wie Besucher mit der Website interagieren und über welche Kanäle sie uns finden (Google Analytics, eigene Herkunftsmessung von Pixformance).',
     marketing: 'Marketing',
     marketingDesc: 'Ermöglichen personalisierte Werbung (Google Ads, Meta/Facebook Pixel).',
     saveSelection: 'Auswahl speichern',
@@ -44,7 +44,7 @@ const t = {
     necessaryDesc: 'Technically required for the operation of the website. Cannot be disabled.',
     alwaysActive: 'Always active',
     statistics: 'Statistics',
-    statisticsDesc: 'Help us understand how visitors interact with the website (Google Analytics).',
+    statisticsDesc: 'Help us understand how visitors interact with the website and through which channels they find us (Google Analytics, Pixformance’s own origin measurement).',
     marketing: 'Marketing',
     marketingDesc: 'Enable personalised advertising (Google Ads, Meta/Facebook Pixel).',
     saveSelection: 'Save selection',
@@ -515,6 +515,13 @@ const t = {
     window.dataLayer.push({ event: 'pix_consent_updated' });
   }
 
+  // Notify Pixformance's own origin measurement (public/js/pr.js), which does not read the dataLayer.
+  function announceConsent(statistics, marketing) {
+    try {
+      document.dispatchEvent(new CustomEvent('pix:consent', { detail: { statistics: !!statistics, marketing: !!marketing } }));
+    } catch (e) {}
+  }
+
   function hideModal() {
     var m = document.getElementById('pix-cookie-modal');
     if (m) m.style.display = 'none';
@@ -547,6 +554,7 @@ const t = {
   function decide(statistics, marketing) {
     saveConsent(statistics, marketing);
     applyConsent(statistics, marketing);
+    announceConsent(statistics, marketing);
     hideModal();
   }
 
