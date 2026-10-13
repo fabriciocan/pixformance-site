@@ -5,8 +5,8 @@
  * - Ohne Einwilligung in "Statistiken": eine anonyme Zählung der Ankunft (Kanal, Kampagne,
  *   Einstiegsseite). Kein Cookie, kein Speicherzugriff, keine Geräte-Merkmale.
  * - Mit Einwilligung: der Server setzt ein HttpOnly-Cookie mit einer Zufalls-ID (12 Monate)
- *   und speichert die Kette der Ankünfte. Beim Absenden eines Formulars geht nur der
- *   SHA-256-Hash der E-Mail-Adresse mit, im Browser berechnet.
+ *   und speichert die Kette der Ankünfte. Beim Absenden eines Formulars geht nur die
+ *   zufällige event_id mit, die das Formular auch an das CRM übergibt.
  * - Widerruf im Cookie-Banner löscht die Daten dieses Geräts auf dem Server.
  *
  * /pr/* leitet das nginx der Website an Pixformance Reports weiter (gleiche Domain).
@@ -69,18 +69,22 @@
     hadStatistics = statistics;
   });
 
-  // Formular-Anfrage: nur mit Einwilligung und nur der Hash der E-Mail.
+  // Formular-Anfrage: nur mit Einwilligung. Es geht nur die zufällige event_id mit, die das
+  // Formular auch an das CRM übergibt (Feld event_Id im Zoho). Keine E-Mail, kein Name.
+  function currentEventId() {
+    var dl = window.dataLayer || [];
+    for (var i = dl.length - 1; i >= 0; i--) {
+      if (dl[i] && dl[i].event_id) return String(dl[i].event_id);
+    }
+    return '';
+  }
+
   document.addEventListener('submit', function (e) {
     var c = consent();
     var f = e.target;
-    if (!c || !c.statistics || !f || !f.querySelector || !window.crypto || !crypto.subtle) return;
-    var el = f.querySelector('input[type="email"]');
-    var email = el && el.value ? el.value.trim().toLowerCase() : '';
-    if (email.indexOf('@') < 1) return;
-    var form = f.getAttribute('data-form-name') || f.id || '';
-    crypto.subtle.digest('SHA-256', new TextEncoder().encode(email)).then(function (buf) {
-      var h = Array.prototype.map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
-      send('conv', { h: h, form: form, url: location.href });
-    });
+    if (!c || !c.statistics || !f || !f.querySelector || !f.querySelector('input[type="email"]')) return;
+    var id = currentEventId();
+    if (!/^\d{10,16}_\d{1,16}$/.test(id)) return;
+    send('conv', { e: id, form: f.getAttribute('data-form-name') || f.id || '', url: location.href });
   }, true);
 })();
