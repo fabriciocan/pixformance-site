@@ -10,6 +10,8 @@ import PixformanceLogo from '@/components/PixformanceLogo.astro';
     <PixformanceLogo slot="logo" />
   </HeaderWithDropdown>
 
+  <!-- Tells the origin measurement (public/js/pr.js) that this URL does not exist. -->
+  <script is:inline>window.__pr404 = 1;</script>
   <section class="py-24 md:py-32">
     <div class="container max-w-2xl text-center">
       <p class="font-display text-7xl md:text-8xl font-bold text-[#02308C] mb-6">404</p>
