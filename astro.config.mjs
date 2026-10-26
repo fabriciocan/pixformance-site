@@ -24,6 +24,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/datenschutz') &&
+        !page.includes('/v1/impressum') &&
         !page.includes('/agb') &&
         !page.includes('/lp-physio') &&
         !page.includes('/lp-v2') &&
