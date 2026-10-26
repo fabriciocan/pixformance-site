@@ -162,8 +162,7 @@ const clientLogos = [
       <!-- Teal body (matching original) -->
       <div class="bg-[#6BDBD1] px-7 py-7 text-center">
         <div>
-          <span class="block font-display text-3xl font-bold text-white leading-tight mb-1">Jetzt 60 Tage</span>
-          <span class="block text-white/90 text-base underline mb-1">in Ihrem Unternehmen</span>
+          <span class="block font-display text-3xl font-bold text-white leading-tight">Jetzt 60 Tage</span>
           <span class="block font-display text-3xl font-bold text-white leading-tight mb-4">testen</span>
         </div>
 
@@ -522,31 +521,21 @@ const clientLogos = [
         </h2>
       </div>
 
-      <div class="relative px-12 md:px-14">
-        <div class="overflow-hidden">
-          <div id="carousel-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
-            {carouselItems.map((item) => (
-              <div class:list={['carousel-slide shrink-0 w-[calc(85vw-6rem)] md:w-[300px] bg-white rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center gap-4 relative', item.badge && 'ring-2 ring-[#6BDBD1]']}>
-                {item.badge && (
-                  <span class="absolute top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#6BDBD1] px-4 py-1 text-center leading-tight text-[#02308C]">
-                    <span class="block text-xs font-bold uppercase tracking-wide">∞ {item.badge}</span>
-                    <span class="block text-[11px]">auf der Online-Plattform</span>
-                  </span>
-                )}
-                <div set:html={item.icon} class:list={[item.badge && 'mt-6']} />
-                <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
-              </div>
-            ))}
+      <!-- Três cards do mockup da Kati: o do meio em destaque com o selo na borda -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto pt-4 items-stretch">
+        {carouselItems.filter((item) => ['Zeitgleiche Betreuung', 'Effiziente Verwaltung', 'Individuelles Training'].includes(item.title)).map((item) => (
+          <div class:list={['relative bg-white rounded-2xl px-6 py-8 flex flex-col items-center text-center gap-4', item.badge ? 'border-2 border-[#6BDBD1] shadow-lg md:scale-105' : 'shadow-sm']}>
+            {item.badge && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#6BDBD1] px-4 py-1 text-center leading-tight text-[#02308C]">
+                <span class="block text-xs font-bold uppercase tracking-wide">∞ {item.badge}</span>
+                <span class="block text-[11px]">auf der Online-Plattform</span>
+              </span>
+            )}
+            <div set:html={item.icon} />
+            <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
           </div>
-        </div>
-
-        <button id="carousel-prev" aria-label="Vorheriger" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-left" size="md" />
-        </button>
-        <button id="carousel-next" aria-label="Nächster" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-right" size="md" />
-        </button>
+        ))}
       </div>
 
       <!-- CTA Button -->
