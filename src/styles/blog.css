@@ -1,0 +1,131 @@
+/* Corpo do post do blog: HTML vindo da API (Markdown sanitizado). */
+.blog-article {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--foreground);
+  text-align: left;
+}
+.blog-article > * + * {
+  margin-top: 1.25em;
+}
+.blog-article h2 {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-top: 2.2em;
+  scroll-margin-top: 7rem;
+  text-align: left;
+}
+.blog-article h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.8em;
+  text-align: left;
+}
+.blog-article h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 1.5em;
+}
+.blog-article p {
+  text-align: left;
+}
+.blog-article a {
+  color: #02308c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.blog-article a:hover {
+  color: #1d4fb5;
+}
+.blog-article ul,
+.blog-article ol {
+  padding-left: 1.4em;
+}
+.blog-article ul {
+  list-style: disc;
+}
+.blog-article ol {
+  list-style: decimal;
+}
+.blog-article li + li {
+  margin-top: 0.45em;
+}
+.blog-article li::marker {
+  color: #02308c;
+}
+.blog-article blockquote {
+  border-left: 3px solid #6bdbd1;
+  padding: 0.2em 0 0.2em 1.1em;
+  color: var(--foreground-secondary);
+  font-size: 1.1rem;
+}
+.blog-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+.blog-article th,
+.blog-article td {
+  border: 1px solid var(--border);
+  padding: 0.6em 0.75em;
+  text-align: left;
+  vertical-align: top;
+}
+.blog-article th {
+  background: var(--gray-100);
+  font-weight: 700;
+}
+.blog-article code {
+  background: var(--gray-100);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.blog-article pre {
+  background: #0b1a3a;
+  color: #e6ecf5;
+  padding: 1em;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+.blog-article pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.blog-article img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
+.blog-article figcaption {
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+  margin-top: 0.5em;
+}
+.blog-article hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5em 0;
+}
+
+@media (min-width: 768px) {
+  .blog-article {
+    font-size: 1.125rem;
+  }
+  .blog-article h2 {
+    font-size: 1.9rem;
+  }
+  .blog-article h3 {
+    font-size: 1.35rem;
+  }
+}
+
+/* Item "Blog" do menu: escondido até o site saber que há posts (ver BaseLayout). */
+.blog-link-off {
+  display: none !important;
+}

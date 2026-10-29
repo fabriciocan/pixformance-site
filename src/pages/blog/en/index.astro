@@ -1,0 +1,57 @@
+---
+/** Blog home in English: /blog/en. Only articles that already have a translation. */
+export const prerender = false;
+
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import BlogListView from '@/components/blog/BlogListView.astro';
+import { absolute, blogCategories, blogList, blogPaths, blogStatus } from '@/lib/blog';
+
+const page = Math.max(1, Number(Astro.url.searchParams.get('page') ?? '1') || 1);
+const [status, list, categories] = await Promise.all([blogStatus(), blogList('en', page), blogCategories('en')]);
+
+if (!status || !list || status.en === 0 || (page > 1 && list.items.length === 0)) {
+  return new Response(null, { status: 404 });
+}
+
+const site = status.site;
+const title = page > 1 ? `Blog – Page ${page} | Pixformance` : `Blog – ${site.en.tagline} | Pixformance`;
+const canonical = absolute(blogPaths.page('en', page));
+Astro.response.headers.set('Cache-Control', 'public, max-age=60');
+---
+
+<ENBaseLayout
+  title={title}
+  description={site.en.description}
+  canonical={canonical}
+  hreflangDe={absolute(blogPaths.home('de'))}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: site.name,
+    description: site.en.description,
+    url: absolute(blogPaths.home('en')),
+    inLanguage: 'en',
+    publisher: { '@type': 'Organization', name: 'Pixformance Sports GmbH', url: 'https://www.pixformance.com' },
+  }}
+>
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href={absolute(blogPaths.home('en'))} />
+    <link rel="alternate" hreflang="de" href={absolute(blogPaths.home('de'))} />
+    <link rel="alternate" hreflang="x-default" href={absolute(blogPaths.home('de'))} />
+  </Fragment>
+
+  <ENHeader slot="header" position="sticky" />
+
+  <BlogListView
+    locale="en"
+    list={list}
+    categories={categories ?? []}
+    title={site.en.tagline}
+    intro={site.en.description}
+    pageHref={(n) => blogPaths.page('en', n)}
+  />
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>

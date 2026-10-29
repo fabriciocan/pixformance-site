@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -11,6 +12,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.pixformance.com',
+  // O site continua estático (dist/client, servido pelo nginx). Só as páginas do blog
+  // (src/pages/blog, `prerender = false`) são renderizadas sob demanda pelo servidor
+  // Node em dist/server, que o nginx chama pra /blog/*. Ver nginx.conf e Dockerfile.
+  adapter: node({ mode: 'standalone' }),
   redirects: {
     '/de/brandstore': '/brandstore',
   },

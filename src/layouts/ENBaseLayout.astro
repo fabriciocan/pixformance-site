@@ -1,6 +1,7 @@
 ---
 import { orgSchema } from '@/data/jsonld';
 import '@/styles/global.css';
+import '@/styles/blog.css';
 import ChatWidget from '@/components/ChatWidget.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 
@@ -153,5 +154,32 @@ const websiteSchema = {
     <ChatWidget />
     <CookieBanner lang="en" />
     <script is:inline src="/js/form-protection.js?v=2"></script>
+    <!-- "Blog" menu item: static pages were built at the last deploy; if an article was
+         published since, the API says so and the item shows up. No article, no item. -->
+    <script is:inline>
+      (function () {
+        var links = document.querySelectorAll('[data-blog-link].blog-link-off');
+        if (!links.length) return;
+        var KEY = 'pix_blog_status';
+        function apply(status) {
+          links.forEach(function (el) {
+            var lang = el.getAttribute('data-blog-link') || 'de';
+            if (status && status[lang] > 0) el.classList.remove('blog-link-off');
+          });
+        }
+        try {
+          var cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+          if (cached && cached.ts && Date.now() - cached.ts < 10 * 60 * 1000) { apply(cached.status); return; }
+        } catch (e) {}
+        fetch('/blog/api/public/status', { headers: { accept: 'application/json' } })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (status) {
+            if (!status) return;
+            apply(status);
+            try { sessionStorage.setItem(KEY, JSON.stringify({ ts: Date.now(), status: { de: status.de, en: status.en } })); } catch (e) {}
+          })
+          .catch(function () {});
+      })();
+    </script>
   </body>
 </html>

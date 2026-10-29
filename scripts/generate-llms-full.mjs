@@ -3,8 +3,10 @@
 // Extracts the <main> content of each built page and converts it to markdown-ish text.
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIST = new URL('../dist/', import.meta.url).pathname;
+// Com o adapter Node, as páginas estáticas ficam em dist/client (dist/server é o SSR do blog).
+const DIST = fileURLToPath(new URL('../dist/client/', import.meta.url));
 const SITE = 'https://www.pixformance.com';
 
 const KEY_PAGES = ['fakten', 'konzept', 'physiotherapie', 'klinik', 'fitness', 'firmen-fitness', 'faq'];

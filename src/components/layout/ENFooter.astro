@@ -3,6 +3,7 @@
  * EN Footer Component - Pixformance
  */
 import { cn } from '@/lib/cn';
+import { blogVisible } from '@/lib/blog';
 import { footerVariants } from './footer.variants';
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 const { variant = 'default', class: className } = Astro.props;
 
 const currentYear = new Date().getFullYear();
+const showBlog = await blogVisible('en');
 
 const footerClasses = cn(footerVariants({ variant }), className);
 
@@ -25,6 +27,7 @@ const solutionsLinks = [
 const legalLinks = [
   { label: 'About us', href: '/en/about-us/' },
   { label: 'Success Stories', href: '/en/success-stories/' },
+  { label: 'Blog', href: '/blog/en', blog: 'en' },
   { label: 'FAQ', href: '/en/faq-training-with-pixformance-station/' },
   { label: 'Jobs', href: '/en/jobs/' },
   { label: 'Press', href: '/en/press/' },
@@ -68,7 +71,7 @@ const legalLinks = [
         <h4 class="font-semibold mb-4">Company</h4>
         <ul class="space-y-2">
           {legalLinks.map((link) => (
-            <li>
+            <li class={link.blog && !showBlog ? 'blog-link-off' : undefined} data-blog-link={link.blog}>
               <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
               </a>
@@ -111,7 +114,7 @@ const legalLinks = [
         <h4 class="font-semibold mb-4">Company</h4>
         <ul class="space-y-2">
           {legalLinks.map((link) => (
-            <li>
+            <li class={link.blog && !showBlog ? 'blog-link-off' : undefined} data-blog-link={link.blog}>
               <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
               </a>

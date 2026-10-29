@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn';
 import { headerVariants, headerInnerVariants } from './header.variants';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import { blogVisible } from '@/lib/blog';
 
 interface Props extends HTMLAttributes<'header'> {
   position?: 'fixed' | 'sticky' | 'static';
@@ -25,6 +26,7 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const showBlog = await blogVisible('en');
 const hasLogoSlot = Astro.slots.has('logo');
 
 const headerClasses = cn(headerVariants({ position, variant }), className);
@@ -165,6 +167,22 @@ const buttonId = `${menuId}-button`;
       </div>
 
       <a
+        href="/blog/en"
+        data-blog-link="en"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          !showBlog && 'blog-link-off',
+          isActive('/blog/en')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/blog/en') ? 'page' : undefined}
+      >
+        Blog
+      </a>
+
+      <a
         href="/en/contact/"
         class={cn(
           'nav-link rounded-md px-3 py-2 text-sm font-medium',
@@ -289,6 +307,22 @@ const buttonId = `${menuId}-button`;
       >
         <Icon name="mail" size="sm" class="mr-3 text-[#02308C]" />
         Contact
+      </a>
+
+      <a
+        href="/blog/en"
+        data-blog-link="en"
+        class={cn(
+          'mobile-nav-link flex items-center rounded-lg px-4 py-3 text-sm font-semibold border border-border mb-3',
+          'transition-colors',
+          !showBlog && 'blog-link-off',
+          isActive('/blog/en')
+            ? 'bg-[#02308C]/10 text-primary border-[#02308C]/20'
+            : 'text-foreground hover:bg-gray-50'
+        )}
+      >
+        <Icon name="file-text" size="sm" class="mr-3 text-[#02308C]" />
+        Blog
       </a>
 
       {/* Solutions Section - accordion */}

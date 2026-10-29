@@ -1,0 +1,64 @@
+---
+/**
+ * Início do blog (alemão). Renderizado sob demanda: lê a API do back-end a cada
+ * requisição, então um post aprovado no painel aparece aqui na hora.
+ */
+export const prerender = false;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BlogListView from '@/components/blog/BlogListView.astro';
+import { absolute, blogCategories, blogList, blogPaths, blogStatus } from '@/lib/blog';
+
+const page = Math.max(1, Number(Astro.url.searchParams.get('seite') ?? '1') || 1);
+const [status, list, categories] = await Promise.all([blogStatus(), blogList('de', page), blogCategories('de')]);
+
+if (!status || !list || status.de === 0 || (page > 1 && list.items.length === 0)) {
+  return new Response(null, { status: 404 });
+}
+
+const site = status.site;
+const title = page > 1 ? `Blog – Seite ${page} | Pixformance` : `Blog – ${site.de.tagline} | Pixformance`;
+const canonical = absolute(blogPaths.page('de', page));
+Astro.response.headers.set('Cache-Control', 'public, max-age=60');
+---
+
+<BaseLayout
+  title={title}
+  description={site.de.description}
+  canonical={canonical}
+  noSitePopup
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${site.name}`,
+    description: site.de.description,
+    url: absolute(blogPaths.home('de')),
+    inLanguage: 'de-DE',
+    publisher: { '@type': 'Organization', name: 'Pixformance Sports GmbH', url: 'https://www.pixformance.com' },
+  }}
+>
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href={absolute(blogPaths.home('de'))} />
+    {status.en > 0 && <link rel="alternate" hreflang="en" href={absolute(blogPaths.home('en'))} />}
+    <link rel="alternate" hreflang="x-default" href={absolute(blogPaths.home('de'))} />
+    <link rel="alternate" type="application/rss+xml" title="Pixformance Blog" href="/blog/feed.xml" />
+  </Fragment>
+
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <BlogListView
+    locale="de"
+    list={list}
+    categories={categories ?? []}
+    title={site.de.tagline}
+    intro={site.de.description}
+    pageHref={(n) => blogPaths.page('de', n)}
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /v1/
 Disallow: /tests/
+Disallow: /blog/admin
+Disallow: /blog/api/
 
 User-agent: GPTBot
 Allow: /
@@ -20,3 +22,4 @@ Allow: /
 
 Sitemap: https://www.pixformance.com/sitemap.xml
 Sitemap: https://www.pixformance.com/llms-sitemap.xml
+Sitemap: https://www.pixformance.com/blog/sitemap.xml

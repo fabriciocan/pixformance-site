@@ -1,0 +1,98 @@
+---
+/** Blog article in English: /blog/en/<slug>. */
+export const prerender = false;
+
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import BlogPostView from '@/components/blog/BlogPostView.astro';
+import { absolute, blogPaths, blogPost } from '@/lib/blog';
+
+const { slug } = Astro.params;
+const data = slug ? await blogPost('en', slug) : null;
+
+if (!data) return new Response(null, { status: 404 });
+if ('redirectTo' in data) return Astro.redirect(blogPaths.post('en', data.redirectTo), 301);
+
+const { post, category, author, alternateSlug } = data;
+const url = absolute(blogPaths.post('en', post.slug));
+const title = `${post.metaTitle || post.title} | Pixformance Blog`;
+const description = post.metaDescription || post.excerpt;
+const image = post.coverUrl ? absolute(post.coverUrl) : undefined;
+Astro.response.headers.set('Cache-Control', 'public, max-age=60');
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description,
+  inLanguage: 'en',
+  datePublished: post.publishedAt ?? undefined,
+  dateModified: post.updatedAt,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  wordCount: post.wordCount,
+  keywords: post.keywords.join(', '),
+  articleSection: category?.name,
+  image: image ? [image] : undefined,
+  ...(alternateSlug ? { translationOfWork: { '@id': absolute(blogPaths.post('de', alternateSlug)) } } : {}),
+  author: author
+    ? { '@type': 'Person', name: author.name, jobTitle: author.roleTitle ?? undefined }
+    : { '@type': 'Organization', name: 'Pixformance Sports GmbH' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Pixformance Sports GmbH',
+    url: 'https://www.pixformance.com',
+    logo: { '@type': 'ImageObject', url: 'https://www.pixformance.com/images/pix-favicon.png' },
+  },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixformance.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: absolute(blogPaths.home('en')) },
+    ...(category
+      ? [{ '@type': 'ListItem', position: 3, name: category.name, item: absolute(blogPaths.category('en', category.slug)) }]
+      : []),
+    { '@type': 'ListItem', position: category ? 4 : 3, name: post.title, item: url },
+  ],
+};
+
+const faqLd = post.faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    }
+  : null;
+---
+
+<ENBaseLayout
+  title={title}
+  description={description}
+  canonical={url}
+  type="article"
+  image={image}
+  hreflangDe={alternateSlug ? absolute(blogPaths.post('de', alternateSlug)) : undefined}
+  jsonLd={faqLd ? [articleLd, breadcrumbLd, faqLd] : [articleLd, breadcrumbLd]}
+>
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href={url} />
+    {alternateSlug && <link rel="alternate" hreflang="de" href={absolute(blogPaths.post('de', alternateSlug))} />}
+    <link rel="alternate" hreflang="x-default" href={alternateSlug ? absolute(blogPaths.post('de', alternateSlug)) : url} />
+    {post.publishedAt && <meta property="article:published_time" content={post.publishedAt} />}
+    <meta property="article:modified_time" content={post.updatedAt} />
+  </Fragment>
+
+  <ENHeader slot="header" position="sticky" />
+
+  <BlogPostView locale="en" data={data} />
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>

@@ -1,0 +1,54 @@
+---
+/** Blog category in English: /blog/en/category/<slug>. */
+export const prerender = false;
+
+import ENBaseLayout from '@/layouts/ENBaseLayout.astro';
+import ENHeader from '@/components/layout/ENHeader.astro';
+import ENFooter from '@/components/layout/ENFooter.astro';
+import BlogListView from '@/components/blog/BlogListView.astro';
+import { absolute, blogCategories, blogList, blogPaths, blogStatus } from '@/lib/blog';
+
+const { slug } = Astro.params;
+const page = Math.max(1, Number(Astro.url.searchParams.get('page') ?? '1') || 1);
+const [status, list, categories] = await Promise.all([
+  blogStatus(),
+  slug ? blogList('en', page, slug) : Promise.resolve(null),
+  blogCategories('en'),
+]);
+
+if (!status || !list || !list.category || status.en === 0 || (page > 1 && list.items.length === 0)) {
+  return new Response(null, { status: 404 });
+}
+
+const base = blogPaths.category('en', list.category.slug);
+const pageHref = (n: number) => (n <= 1 ? base : `${base}?page=${n}`);
+const canonical = absolute(pageHref(page));
+Astro.response.headers.set('Cache-Control', 'public, max-age=60');
+---
+
+<ENBaseLayout
+  title={`${list.category.name} – Blog | Pixformance`}
+  description={list.category.description ?? `Articles in the ${list.category.name} category of the Pixformance blog.`}
+  canonical={canonical}
+  hreflangDe={absolute(blogPaths.category('de', list.category.slug))}
+>
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href={absolute(base)} />
+    <link rel="alternate" hreflang="de" href={absolute(blogPaths.category('de', list.category.slug))} />
+    <link rel="alternate" hreflang="x-default" href={absolute(blogPaths.category('de', list.category.slug))} />
+  </Fragment>
+
+  <ENHeader slot="header" position="sticky" />
+
+  <BlogListView
+    locale="en"
+    list={list}
+    categories={categories ?? []}
+    title={list.category.name}
+    intro={list.category.description}
+    activeCategory={list.category.slug}
+    pageHref={pageHref}
+  />
+
+  <ENFooter slot="footer" />
+</ENBaseLayout>

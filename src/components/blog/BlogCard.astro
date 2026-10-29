@@ -1,0 +1,67 @@
+---
+/**
+ * Card de um post na lista do blog. Mesmo desenho dos cards de Erfolgsgeschichten
+ * (foto em cima, categoria, título, resumo), sem as animações de scroll.
+ */
+import { blogPaths, blogText, formatBlogDate, type BlogCard, type BlogLocale } from '@/lib/blog';
+import BlogCover from './BlogCover.astro';
+
+interface Props {
+  post: BlogCard;
+  locale: BlogLocale;
+  featured?: boolean;
+  eager?: boolean;
+}
+
+const { post, locale, featured = false, eager = false } = Astro.props;
+const t = blogText[locale];
+const href = blogPaths.post(locale, post.slug);
+---
+
+{featured ? (
+  <article class="group grid overflow-hidden rounded-xl border border-border bg-white shadow-lg md:grid-cols-2">
+    <a href={href} class="block aspect-[16/10] overflow-hidden md:aspect-auto md:h-full" aria-hidden="true" tabindex="-1">
+      <BlogCover post={post} eager={eager} class="transition-transform duration-500 group-hover:scale-[1.03]" />
+    </a>
+    <div class="flex flex-col justify-center gap-3 p-6 md:p-8">
+      <p class="text-xs font-bold uppercase tracking-wide text-[#02308C]">
+        {post.categoryName && (
+          <a href={blogPaths.category(locale, post.categorySlug!)} class="hover:underline">{post.categoryName}</a>
+        )}
+        {post.categoryName && <span class="mx-2 text-foreground-muted" aria-hidden="true">·</span>}
+        <time datetime={post.publishedAt ?? undefined} class="font-semibold normal-case tracking-normal text-foreground-muted">
+          {formatBlogDate(post.publishedAt, locale)}
+        </time>
+      </p>
+      <h2 class="text-2xl font-bold leading-tight text-foreground md:text-3xl">
+        <a href={href} class="hover:text-[#02308C]">{post.title}</a>
+      </h2>
+      <p class="text-sm leading-relaxed text-foreground-muted md:text-base">{post.excerpt}</p>
+      <a href={href} class="mt-1 inline-flex w-fit items-center gap-1 text-sm font-bold text-[#02308C] hover:gap-2 transition-all">
+        {t.readPost} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </article>
+) : (
+  <article class="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <a href={href} class="block aspect-[16/9] overflow-hidden" aria-hidden="true" tabindex="-1">
+      <BlogCover post={post} eager={eager} class="transition-transform duration-500 group-hover:scale-[1.04]" />
+    </a>
+    <div class="flex flex-1 flex-col gap-2 p-5">
+      <p class="text-[11px] font-bold uppercase tracking-wide text-[#02308C]">
+        {post.categoryName && (
+          <a href={blogPaths.category(locale, post.categorySlug!)} class="hover:underline">{post.categoryName}</a>
+        )}
+        {post.categoryName && <span class="mx-1.5 text-foreground-muted" aria-hidden="true">·</span>}
+        <time datetime={post.publishedAt ?? undefined} class="font-semibold normal-case tracking-normal text-foreground-muted">
+          {formatBlogDate(post.publishedAt, locale)}
+        </time>
+      </p>
+      <h3 class="text-lg font-bold leading-snug text-foreground">
+        <a href={href} class="hover:text-[#02308C]">{post.title}</a>
+      </h3>
+      <p class="line-clamp-3 text-sm leading-relaxed text-foreground-muted">{post.excerpt}</p>
+      <p class="mt-auto pt-2 text-xs text-foreground-muted">{t.readingTime(post.readingMinutes)}</p>
+    </div>
+  </article>
+)}

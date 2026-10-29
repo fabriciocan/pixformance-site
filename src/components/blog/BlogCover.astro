@@ -1,0 +1,39 @@
+---
+/**
+ * Capa do post. Sem imagem, cai num gradiente nas cores da marca com o título,
+ * pra lista nunca ficar com buraco.
+ */
+import type { BlogCard } from '@/lib/blog';
+
+interface Props {
+  post: Pick<BlogCard, 'title' | 'slug' | 'coverUrl' | 'coverAlt'>;
+  eager?: boolean;
+  class?: string;
+}
+
+const { post, eager = false, class: className = '' } = Astro.props;
+
+function gradient(seed: string) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) hash = (hash * 31 + seed.charCodeAt(i)) % 1000;
+  const pick = hash % 3;
+  if (pick === 0) return 'linear-gradient(135deg, #02308C 0%, #1d4fb5 60%, #6BDBD1 100%)';
+  if (pick === 1) return 'linear-gradient(135deg, #0b2566 0%, #02308C 55%, #86C9BC 100%)';
+  return 'linear-gradient(135deg, #02308C 0%, #2a5bb8 50%, #CCDFDC 100%)';
+}
+---
+
+{post.coverUrl ? (
+  <img
+    src={post.coverUrl}
+    alt={post.coverAlt ?? post.title}
+    class={`h-full w-full object-cover ${className}`}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={eager ? 'high' : undefined}
+  />
+) : (
+  <div class={`flex h-full w-full items-end p-5 ${className}`} style={`background: ${gradient(post.slug)}`} aria-hidden="true">
+    <span class="line-clamp-3 text-sm font-bold leading-snug text-white/90">{post.title}</span>
+  </div>
+)}

@@ -1,0 +1,116 @@
+---
+/**
+ * Lista de posts (início do blog e rubrica), nas duas línguas. A página só passa
+ * locale, lista e cabeçalho; o esqueleto é o mesmo das outras páginas do site.
+ */
+import { blogPaths, blogText, type BlogCategory, type BlogList, type BlogLocale } from '@/lib/blog';
+import BlogCard from './BlogCard.astro';
+import BlogCta from './BlogCta.astro';
+
+interface Props {
+  locale: BlogLocale;
+  list: BlogList;
+  categories: BlogCategory[];
+  title: string;
+  intro?: string | null;
+  /** Rubrica ativa (slug) ou nada na página inicial do blog. */
+  activeCategory?: string | null;
+  /** Base da paginação: página inicial usa ?seite=N, rubrica idem na sua própria URL. */
+  pageHref: (n: number) => string;
+}
+
+const { locale, list, categories, title, intro, activeCategory = null, pageHref } = Astro.props;
+const t = blogText[locale];
+const [featured, ...rest] = list.page === 1 ? list.items : [];
+const items = list.page === 1 ? rest : list.items;
+const pages = Array.from({ length: list.pages }, (_, index) => index + 1);
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-[#6BDBD1]/20 to-[#02308C]/10 py-12 md:py-16">
+  <div class="container">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#02308C]">
+        {activeCategory ? (
+          <a href={blogPaths.home(locale)} class="hover:underline">{t.blog}</a>
+        ) : (
+          t.blog
+        )}
+        {activeCategory && <span class="mx-2 text-foreground-muted" aria-hidden="true">/</span>}
+        {activeCategory && <span class="text-foreground-muted">{t.category}</span>}
+      </p>
+      <h1 class="text-3xl font-bold leading-tight text-foreground md:text-4xl lg:text-5xl text-left">{title}</h1>
+      {intro && <p class="text-base leading-relaxed text-foreground-secondary md:text-lg text-left">{intro}</p>}
+    </div>
+
+    {categories.length > 0 && (
+      <nav class="mt-8 flex flex-wrap gap-2" aria-label={t.categories}>
+        <a
+          href={blogPaths.home(locale)}
+          class={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+            activeCategory ? 'border-border bg-white text-foreground hover:border-[#02308C] hover:text-[#02308C]' : 'border-[#02308C] bg-[#02308C] text-white'
+          }`}
+        >
+          {t.allPosts}
+        </a>
+        {categories.map((c) => (
+          <a
+            href={blogPaths.category(locale, c.slug)}
+            class={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+              activeCategory === c.slug ? 'border-[#02308C] bg-[#02308C] text-white' : 'border-border bg-white text-foreground hover:border-[#02308C] hover:text-[#02308C]'
+            }`}
+          >
+            {c.name}
+          </a>
+        ))}
+      </nav>
+    )}
+  </div>
+</section>
+
+<section class="bg-white py-12 md:py-16">
+  <div class="container">
+    {list.items.length === 0 ? (
+      <p class="rounded-xl border border-dashed border-border p-10 text-center text-foreground-muted">{t.emptyCategory}</p>
+    ) : (
+      <>
+        {featured && <BlogCard post={featured} locale={locale} featured eager />}
+
+        {items.length > 0 && (
+          <div class={`grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ${featured ? 'mt-12' : ''}`}>
+            {items.map((post) => (
+              <BlogCard post={post} locale={locale} />
+            ))}
+          </div>
+        )}
+
+        {list.pages > 1 && (
+          <nav class="mt-12 flex flex-wrap items-center justify-center gap-2" aria-label={t.pagination}>
+            {list.page > 1 && (
+              <a href={pageHref(list.page - 1)} class="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-[#02308C] hover:text-[#02308C]">
+                {t.previous}
+              </a>
+            )}
+            {pages.map((n) => (
+              <a
+                href={pageHref(n)}
+                aria-current={n === list.page ? 'page' : undefined}
+                class={`flex h-10 w-10 items-center justify-center rounded-lg border text-sm font-semibold ${
+                  n === list.page ? 'border-[#02308C] bg-[#02308C] text-white' : 'border-border text-foreground hover:border-[#02308C] hover:text-[#02308C]'
+                }`}
+              >
+                {n}
+              </a>
+            ))}
+            {list.page < list.pages && (
+              <a href={pageHref(list.page + 1)} class="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-[#02308C] hover:text-[#02308C]">
+                {t.next}
+              </a>
+            )}
+          </nav>
+        )}
+      </>
+    )}
+  </div>
+</section>
+
+<BlogCta locale={locale} />

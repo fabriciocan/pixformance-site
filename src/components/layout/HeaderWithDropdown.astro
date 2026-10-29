@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn';
 import { headerVariants, headerInnerVariants } from './header.variants';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import { blogVisible } from '@/lib/blog';
 
 interface Props extends HTMLAttributes<'header'> {
   position?: 'fixed' | 'sticky' | 'static';
@@ -25,6 +26,10 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+// "Blog" só aparece com post publicado. Decidido no build (páginas estáticas) ou a cada
+// requisição (páginas /blog); o BaseLayout confere de novo no navegador pra pegar
+// post publicado depois do último deploy.
+const showBlog = await blogVisible('de');
 const hasLogoSlot = Astro.slots.has('logo');
 
 const headerClasses = cn(headerVariants({ position, variant }), className);
@@ -170,6 +175,22 @@ const buttonId = `${menuId}-button`;
 
 
       <a
+        href="/blog"
+        data-blog-link="de"
+        class={cn(
+          'nav-link rounded-md px-3 py-2 text-sm font-medium',
+          'transition-colors',
+          !showBlog && 'blog-link-off',
+          isActive('/blog')
+            ? 'text-primary font-semibold'
+            : 'text-foreground-muted hover:text-foreground'
+        )}
+        aria-current={isActive('/blog') ? 'page' : undefined}
+      >
+        Blog
+      </a>
+
+      <a
         href="/kontakt"
         class={cn(
           'nav-link rounded-md px-3 py-2 text-sm font-medium',
@@ -281,6 +302,22 @@ const buttonId = `${menuId}-button`;
       >
         <Icon name="layers" size="sm" class="mr-3 text-[#02308C]" />
         Konzept
+      </a>
+
+      <a
+        href="/blog"
+        data-blog-link="de"
+        class={cn(
+          'mobile-nav-link flex items-center rounded-lg px-4 py-3 text-sm font-semibold border border-border mb-1',
+          'transition-colors',
+          !showBlog && 'blog-link-off',
+          isActive('/blog')
+            ? 'bg-[#02308C]/10 text-primary border-[#02308C]/20'
+            : 'text-foreground hover:bg-gray-50'
+        )}
+      >
+        <Icon name="file-text" size="sm" class="mr-3 text-[#02308C]" />
+        Blog
       </a>
 
       <a

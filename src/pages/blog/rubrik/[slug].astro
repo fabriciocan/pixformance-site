@@ -1,0 +1,57 @@
+---
+/** Rubrica do blog em alemão: /blog/rubrik/<slug>. */
+export const prerender = false;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import BlogListView from '@/components/blog/BlogListView.astro';
+import { absolute, blogCategories, blogList, blogPaths, blogStatus } from '@/lib/blog';
+
+const { slug } = Astro.params;
+const page = Math.max(1, Number(Astro.url.searchParams.get('seite') ?? '1') || 1);
+const [status, list, categories] = await Promise.all([
+  blogStatus(),
+  slug ? blogList('de', page, slug) : Promise.resolve(null),
+  blogCategories('de'),
+]);
+
+if (!status || !list || !list.category || status.de === 0 || (page > 1 && list.items.length === 0)) {
+  return new Response(null, { status: 404 });
+}
+
+const base = blogPaths.category('de', list.category.slug);
+const pageHref = (n: number) => (n <= 1 ? base : `${base}?seite=${n}`);
+const canonical = absolute(pageHref(page));
+Astro.response.headers.set('Cache-Control', 'public, max-age=60');
+---
+
+<BaseLayout
+  title={`${list.category.name} – Blog | Pixformance`}
+  description={list.category.description ?? `Beiträge aus der Rubrik ${list.category.name} im Pixformance Blog.`}
+  canonical={canonical}
+  noSitePopup
+>
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="de" href={absolute(base)} />
+    {status.en > 0 && <link rel="alternate" hreflang="en" href={absolute(blogPaths.category('en', list.category.slug))} />}
+    <link rel="alternate" hreflang="x-default" href={absolute(base)} />
+  </Fragment>
+
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <BlogListView
+    locale="de"
+    list={list}
+    categories={categories ?? []}
+    title={list.category.name}
+    intro={list.category.description}
+    activeCategory={list.category.slug}
+    pageHref={pageHref}
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

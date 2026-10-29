@@ -5,6 +5,7 @@
 import { cn } from '@/lib/cn';
 import { footerVariants } from './footer.variants';
 import PixformanceLogo from '@/components/PixformanceLogo.astro';
+import { blogVisible } from '@/lib/blog';
 
 interface Props {
   variant?: 'default' | 'minimal';
@@ -14,6 +15,7 @@ interface Props {
 const { variant = 'default', class: className } = Astro.props;
 
 const currentYear = new Date().getFullYear();
+const showBlog = await blogVisible('de');
 
 const footerClasses = cn(footerVariants({ variant }), className);
 
@@ -28,6 +30,7 @@ const unternehmensLinks = [
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
   { label: 'Studienergebnisse', href: '/studienergebnisse' },
+  { label: 'Blog', href: '/blog', blog: 'de' },
   { label: 'Karriere', href: '/karriere' },
   { label: 'Presse', href: '/presse' },
   { label: 'FAQ', href: '/faq' },
@@ -69,7 +72,7 @@ const ressourcenLinks = [
         <h3 class="font-semibold mb-4">Unternehmen</h3>
         <ul class="space-y-2">
           {unternehmensLinks.map((link) => (
-            <li>
+            <li class={link.blog && !showBlog ? 'blog-link-off' : undefined} data-blog-link={link.blog}>
               <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
               </a>
@@ -106,7 +109,7 @@ const ressourcenLinks = [
         <h3 class="font-semibold mb-4">Unternehmen</h3>
         <ul class="space-y-2">
           {unternehmensLinks.map((link) => (
-            <li>
+            <li class={link.blog && !showBlog ? 'blog-link-off' : undefined} data-blog-link={link.blog}>
               <a href={link.href} class="text-sm text-foreground-muted hover:text-foreground transition-colors">
                 {link.label}
               </a>
