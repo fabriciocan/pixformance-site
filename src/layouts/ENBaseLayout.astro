@@ -158,13 +158,14 @@ const websiteSchema = {
          published since, the API says so and the item shows up. No article, no item. -->
     <script is:inline>
       (function () {
-        var links = document.querySelectorAll('[data-blog-link].blog-link-off');
+        var links = document.querySelectorAll('[data-blog-link]');
         if (!links.length) return;
         var KEY = 'pix_blog_status';
         function apply(status) {
+          if (!status) return;
           links.forEach(function (el) {
             var lang = el.getAttribute('data-blog-link') || 'de';
-            if (status && status[lang] > 0) el.classList.remove('blog-link-off');
+            el.classList.toggle('blog-link-off', !(status[lang] > 0));
           });
         }
         try {
