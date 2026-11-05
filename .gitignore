@@ -33,3 +33,6 @@ velocity/
 public/wp-content/uploads
 drive-download-*.zip
 
+
+# senha do /tests: fica só na VPS (/opt/pixformance/site/.htpasswd), repo é público
+.htpasswd

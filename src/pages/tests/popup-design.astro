@@ -7,7 +7,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <a href="/tests/" class="text-sm text-[#02308C] hover:underline">&larr; Alle Tests</a>
     <h1 class="font-display text-2xl font-bold text-[#02308C] mb-2 mt-2">Popup Design A/B Test</h1>
     <p class="text-gray-500 text-sm mb-6">
-      Zwei Designs des Timed-/Exit-Popups, 50/50 verteilt, auf der Website und auf /lp. Seit 05.11.2026.
+      Zwei Designs des Timed-/Exit-Popups, 50/50 verteilt, auf der Website und auf /lp. Zählung seit <span id="since">–</span>.
       Vorschau: <a class="text-[#02308C] underline" href="/?popup_design=V1">V1</a> ·
       <a class="text-[#02308C] underline" href="/?popup_design=V2">V2</a> (Vorschau zählt nicht in die Statistik).
     </p>
@@ -15,11 +15,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
       <div class="p-4 rounded-2xl border border-gray-200">
         <div class="font-bold text-[#02308C]">V1 · Türkis</div>
-        <p class="text-sm text-gray-500 mt-1">„Jetzt 60 Tage testen“, Neukunden-Special-Badge, Checks Unverbindlich / Kein monatliches Abo / Keine versteckten Kosten, Button „Unternehmen (weiter)“.</p>
+        <p class="text-sm text-gray-500 mt-1">„Jetzt 60 Tage testen“, Checks Unverbindlich / Kein monatliches Abo / Keine versteckten Kosten. Button „Unternehmen (weiter)“ öffnet das Formular; das Neukunden-Special-Badge führt zum Newsletter.</p>
       </div>
       <div class="p-4 rounded-2xl border border-gray-200">
         <div class="font-bold text-[#02308C]">V2 · Dunkel</div>
-        <p class="text-sm text-gray-500 mt-1">Header „Aktion gültig bis Ende November / Auslieferung noch in 2026“, „Training &amp; Therapie effizienter gestalten“, Button „Angebot anfragen“.</p>
+        <p class="text-sm text-gray-500 mt-1">Header „Aktion gültig bis Ende November / Auslieferung noch in 2026“, „Training &amp; Therapie effizienter gestalten“, Button „Angebot anfragen“ führt zum Newsletter (Neukunden-Special).</p>
       </div>
     </div>
 
@@ -33,6 +33,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         Aktualisieren
       </button>
       <span id="updated-at" class="text-xs text-gray-400"></span>
+      <button id="reset-btn" class="ml-auto px-4 py-2 border border-red-300 text-red-700 text-sm font-bold rounded-lg hover:bg-red-50 cursor-pointer">
+        Zahlen zurücksetzen
+      </button>
     </div>
 
     <div id="stats-loading" class="text-gray-500 text-sm">Lade Daten...</div>
@@ -47,6 +50,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <th class="py-2 pr-4 text-right">Klicks</th>
             <th class="py-2 pr-4 text-right">Schließen</th>
             <th class="py-2 pr-4 text-right">Leads</th>
+            <th class="py-2 pr-4 text-right">Newsletter</th>
             <th class="py-2 pr-4 text-right">Klickrate</th>
             <th class="py-2 pr-4 text-right">Schließrate</th>
             <th class="py-2 pr-4 text-right">Lead-Rate</th>
@@ -108,11 +112,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   function summarize() {
     var by = {};
-    VARIANTS.forEach(function (v) { by[v] = { variant: v, views: 0, clicks: 0, closes: 0, leads: 0 }; });
+    VARIANTS.forEach(function (v) { by[v] = { variant: v, views: 0, clicks: 0, closes: 0, leads: 0, newsletters: 0 }; });
     (data.totals || []).filter(matches).forEach(function (r) {
       if (!by[r.variant]) return;
       by[r.variant].views += r.views; by[r.variant].clicks += r.clicks;
       by[r.variant].closes += r.closes; by[r.variant].leads += r.leads;
+      by[r.variant].newsletters += r.newsletters || 0;
     });
     return VARIANTS.map(function (v) {
       var s = by[v];
@@ -150,6 +155,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         '<td class="py-2 pr-4 text-right">' + fmt(v.clicks) + '</td>' +
         '<td class="py-2 pr-4 text-right">' + fmt(v.closes) + '</td>' +
         '<td class="py-2 pr-4 text-right font-bold' + strong + '">' + fmt(v.leads) + '</td>' +
+        '<td class="py-2 pr-4 text-right">' + fmt(v.newsletters) + '</td>' +
         '<td class="py-2 pr-4 text-right font-bold' + strong + '">' + pctText(v.ctr) + '</td>' +
         '<td class="py-2 pr-4 text-right text-gray-500">' + pctText(v.close_rate) + '</td>' +
         '<td class="py-2 pr-4 text-right">' + pctText(v.lead_rate) + '</td>';
@@ -286,6 +292,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     renderTable(summarize());
     renderLineChart(document.getElementById('chart-root'));
     document.getElementById('updated-at').textContent = 'Stand: ' + new Date(data.generated_at).toLocaleString('de-DE');
+    document.getElementById('since').textContent = data.since ? new Date(data.since).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'noch keine Daten';
   }
 
   function load() {
@@ -306,6 +313,25 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     b.addEventListener('click', function () { placement = b.getAttribute('data-placement'); render(); });
   });
   document.getElementById('refresh-btn').addEventListener('click', load);
+
+  // Zerar: rota do nginx atrás do mesmo login do /tests, que repassa ao n8n.
+  var resetBtn = document.getElementById('reset-btn');
+  resetBtn.addEventListener('click', function () {
+    if (!window.confirm('Alle Zahlen dieses Tests löschen und neu starten? Das kann nicht rückgängig gemacht werden.')) return;
+    resetBtn.disabled = true;
+    fetch('/tests/api/popup-design-reset', { method: 'POST', credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (res) {
+        document.getElementById('updated-at').textContent = (res.deleted || 0) + ' Ereignisse gelöscht.';
+        load();
+      })
+      .catch(function (err) {
+        var e = document.getElementById('stats-error');
+        e.classList.remove('hidden');
+        e.textContent = 'Zurücksetzen fehlgeschlagen: ' + err.message;
+      })
+      .finally(function () { resetBtn.disabled = false; });
+  });
   render();
   load();
 })();
