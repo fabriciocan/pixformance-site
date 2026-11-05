@@ -2,6 +2,7 @@
 import { DISPLAY } from '@/data/stats';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import PopupDesignTest from '@/components/PopupDesignTest.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 
 const S = DISPLAY.de;
@@ -138,44 +139,8 @@ const clientLogos = [
     </div>
   </div>
 
-  <!-- TIMED POPUP (appears after 5s, once per session) -->
-  <div id="timed-popup" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4">
-    <div id="timed-popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden">
-      <button id="timed-popup-close" aria-label="Schließen" class="absolute top-3 left-3 z-10 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-colors cursor-pointer shadow-sm">
-        <Icon name="x" size="sm" />
-      </button>
-
-      <!-- Product photo -->
-      <div class="w-full h-48 overflow-hidden">
-        <img
-          src="/images/Pixformance-Station-Einzeltraining-Digitales-Sportgeraet-voll-vernetzt-Personal-Trainer.jpg"
-          alt="Pixformance Training"
-          class="w-full h-full object-cover object-top"
-          width="400"
-          height="192"
-          loading="eager"
-        />
-      </div>
-
-      <!-- Teal body (matching original) -->
-      <div class="bg-[#6BDBD1] px-7 py-7 text-center">
-        <div>
-          <span class="block font-display text-3xl font-bold text-white leading-tight mb-1">Jetzt 60 Tage</span>
-          <span class="block text-white/90 text-base underline mb-1">in Ihrem Unternehmen</span>
-          <span class="block font-display text-3xl font-bold text-white leading-tight mb-6">testen</span>
-        </div>
-
-        <button id="timed-popup-cta" class="w-full py-3.5 bg-white text-[#02308C] font-bold text-base rounded-xl hover:bg-gray-50 hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-          Unternehmen (weiter)
-        </button>
-        <button id="timed-popup-decline" class="w-full mt-3 text-sm text-white/80 hover:text-white underline transition-colors cursor-pointer py-1">
-          Privatperson (schließen)
-        </button>
-      </div>
-    </div>
-  </div>
+  <!-- TIMED POPUP: design A/B test V1 x V2, see PopupDesignTest.astro -->
+  <PopupDesignTest />
 
   <!-- HERO SECTION -->
   <section class="relative bg-black overflow-hidden" style="padding-top: clamp(4.5rem, 5vw, 5rem); padding-bottom: clamp(1.5rem, 3vw, 3rem);">
@@ -1041,6 +1006,7 @@ const clientLogos = [
         messageEl.className = 'p-8 rounded-2xl bg-white border-2 border-[#02308C]/20 text-center';
         messageEl.innerHTML = '<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#02308C] flex items-center justify-center"><svg width="32" height="32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3 class="text-xl font-bold text-[#02308C] mb-2">Vielen Dank für Ihre Anfrage!</h3><p class="text-gray-600">Wir werden uns in Kürze bei Ihnen melden.</p>';
         trackLpHeadlineEvent('lead');
+        if (formEl.id === 'popup-form' && window.PixPopupDesign) window.PixPopupDesign.track('lead');
       } else {
         messageEl.classList.remove('hidden');
         messageEl.className = 'p-4 rounded-xl bg-red-50 text-red-700 border-2 border-red-200 font-semibold text-center';
@@ -1131,13 +1097,20 @@ const clientLogos = [
     // TIMED POPUP (5s delay, once per session)
     var timedPopup = document.getElementById('timed-popup');
     var timedOverlay = document.getElementById('timed-popup-overlay');
-    var timedClose = document.getElementById('timed-popup-close');
-    var timedCta = document.getElementById('timed-popup-cta');
-    var timedDecline = document.getElementById('timed-popup-decline');
+
+    function trackPopupDesign(eventType) {
+      if (window.PixPopupDesign) window.PixPopupDesign.track(eventType);
+    }
 
     function openTimedPopup() {
       timedPopup.classList.remove('hidden');
       timedPopup.classList.add('flex');
+      trackPopupDesign('view');
+    }
+
+    function dismissTimedPopup() {
+      if (timedPopup && timedPopup.classList.contains('flex')) trackPopupDesign('close');
+      closeTimedPopup();
     }
 
     function closeTimedPopup() {
@@ -1181,13 +1154,18 @@ const clientLogos = [
       }
     }
 
-    if (timedClose) timedClose.addEventListener('click', closeTimedPopup);
-    if (timedOverlay) timedOverlay.addEventListener('click', closeTimedPopup);
-    if (timedDecline) timedDecline.addEventListener('click', closeTimedPopup);
-    if (timedCta) timedCta.addEventListener('click', function () { openPopup(); });
+    if (timedOverlay) timedOverlay.addEventListener('click', dismissTimedPopup);
+    if (timedPopup) {
+      timedPopup.querySelectorAll('[data-timed-popup="close"], [data-timed-popup="decline"]').forEach(function (btn) {
+        btn.addEventListener('click', dismissTimedPopup);
+      });
+      timedPopup.querySelectorAll('[data-timed-popup="cta"]').forEach(function (btn) {
+        btn.addEventListener('click', function () { trackPopupDesign('click'); openPopup(); });
+      });
+    }
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { closePopup(); closeTimedPopup(); }
+      if (e.key === 'Escape') { closePopup(); dismissTimedPopup(); }
     });
 
     // POPUP FORM
