@@ -76,6 +76,7 @@ const carouselItems = [
   },
   {
     title: 'Effiziente Verwaltung',
+    badge: 'Kein Nutzerlimit',
     text: 'Auf der Online-Plattform wird der Trainingsverlauf jedes Patienten für eine Trainingsanalyse exakt dokumentiert.',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#02308C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
   },
@@ -153,6 +154,16 @@ const clientLogos = [
         <span id="lp-headline-line2">UNVERBINDLICH.</span><br />
         <span id="lp-headline-line3" class="text-[#6BDBD1]">OHNE RISIKO.</span>
       </h1>
+      <ul class="w-fit mx-auto flex flex-col items-start md:w-auto md:flex-row md:flex-wrap md:justify-center gap-x-6 gap-y-2 mt-6 md:mt-8 hero-animate" style="animation-delay: 0.15s;">
+        {['Keine Lizenzgebühren', 'Keine versteckten Kosten', 'Transparente Konditionen'].map((t) => (
+          <li class="flex items-center gap-2 self-start md:self-auto text-white text-sm md:text-lg font-semibold">
+            <span class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="#02308C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            {t}
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -465,25 +476,21 @@ const clientLogos = [
         </h2>
       </div>
 
-      <div class="relative px-12 md:px-14">
-        <div class="overflow-hidden">
-          <div id="carousel-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
-            {carouselItems.map((item) => (
-              <div class="carousel-slide shrink-0 w-[calc(85vw-6rem)] md:w-[300px] bg-white rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center gap-4">
-                <div set:html={item.icon} />
-                <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
-              </div>
-            ))}
+      <!-- Três cards do mockup da Kati: o do meio em destaque com o selo na borda -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto pt-4 items-stretch">
+        {carouselItems.filter((item) => ['Zeitgleiche Betreuung', 'Effiziente Verwaltung', 'Individuelles Training'].includes(item.title)).map((item) => (
+          <div class:list={['relative bg-white rounded-2xl px-6 py-8 flex flex-col items-center text-center gap-4', item.badge ? 'border-2 border-[#6BDBD1] shadow-lg md:scale-105' : 'shadow-sm']}>
+            {item.badge && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#6BDBD1] px-4 py-1 text-center leading-tight text-[#02308C]">
+                <span class="block text-xs font-bold uppercase tracking-wide">∞ {item.badge}</span>
+                <span class="block text-[11px]">auf der Online-Plattform</span>
+              </span>
+            )}
+            <div set:html={item.icon} />
+            <h3 class="font-bold text-xl text-gray-900">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.text}</p>
           </div>
-        </div>
-
-        <button id="carousel-prev" aria-label="Vorheriger" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-left" size="md" />
-        </button>
-        <button id="carousel-next" aria-label="Nächster" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/95 shadow-md flex items-center justify-center hover:bg-gray-50 hover:scale-110 transition-all cursor-pointer z-10">
-          <Icon name="chevron-right" size="md" />
-        </button>
+        ))}
       </div>
 
       <!-- CTA Button -->
@@ -574,6 +581,7 @@ const clientLogos = [
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center bg-white rounded-3xl shadow-xl p-5 md:p-12 overflow-hidden" data-scroll="fade-up">
         <div class="space-y-6 text-center md:text-left">
+          <span class="inline-block rounded-full bg-[#6BDBD1] px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-[#02308C]">∞ Kein Nutzerlimit auf der Online-Plattform</span>
           <p class="text-lg text-foreground-muted leading-relaxed">
             Das voll vernetzte 360°-Pixformance Trainings- und Therapiekonzept bietet eine sinnvolle und zeitgemäße Ergänzung, um Physiotherapeuten bei der Betreuung zu entlasten und auf lange Sicht mehr Umsatz durch erhöhte Betreuungsmöglichkeiten oder den Aufbau eines Selbstzahlerbereichs zu generieren. Bestellen Sie noch heute Ihre Teststellung und finden Sie heraus, ob das Konzept zu Ihrer Einrichtung passt!
           </p>
