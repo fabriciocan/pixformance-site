@@ -4,7 +4,8 @@
  * V1 = teal "Jetzt 60 Tage testen" with checks; V2 = dark "Neukunden-Special" with offer header.
  * Used by SitePopup (site-wide) and /lp. The host page wires the buttons via
  * [data-timed-popup="close|cta|decline"] and reports events through window.PixPopupDesign.track().
- * Stats: /tests/popup-design (n8n webhooks popup-design-event / popup-design-stats).
+ * Events go to Pixformance Reports through /pr/ab (same origin, nginx proxies to the Reports
+ * container); stats and reset live in Reports under "A/B-Tests" (since 2026-11-05, before that n8n).
  */
 ---
 
@@ -122,7 +123,7 @@
 
 <script is:inline>
 (function () {
-  var EVENT_URL = 'https://webhook.pixformance.com/webhook/popup-design-event';
+  var EVENT_URL = '/pr/ab';
   var KEYS = ['V1', 'V2'];
   var STORAGE_KEY = 'pix_popup_design';
   var params = new URLSearchParams(window.location.search);
@@ -178,6 +179,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          test: 'popup-design',
           event_type: eventType,
           variant: variant,
           session_id: sessionId(),
