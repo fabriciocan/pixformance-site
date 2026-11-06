@@ -1,4 +1,5 @@
 ---
+import LegalLinks from './LegalLinks.astro';
 /**
  * Footer Component - Pixformance
  */
@@ -37,7 +38,7 @@ const unternehmensLinks = [
   { label: 'Fakten', href: '/fakten' },
   { label: 'Kontakt', href: '/kontakt' },
   { label: 'Impressum', href: '/impressum' },
-  { label: 'Datenschutz', href: '/datenschutz' },
+  { label: 'Datenschutzerklärung', href: '/datenschutz' },
 ];
 
 const ressourcenLinks = [
@@ -135,6 +136,7 @@ const ressourcenLinks = [
 
     {/* Bottom Bar */}
     <div class="border-t border-border pt-8 text-center">
+      <LegalLinks lang="de" />
       <p class="text-sm text-foreground-muted">
         © {currentYear} Pixformance Sports GmbH. Alle Rechte vorbehalten.
       </p>

@@ -1,4 +1,5 @@
 ---
+import LegalLinks from '@/components/layout/LegalLinks.astro';
 import { DISPLAY } from '@/data/stats';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -733,6 +734,7 @@ const clientLogos = [
   </section>
 
   <!-- Footer omitido intencionalmente na LP para manter o foco na conversão -->
+  <LegalLinks standalone />
 </BaseLayout>
 
 <style>

@@ -1,0 +1,48 @@
+---
+/**
+ * Links jurídicos visíveis (Datenschutz/Privacy Policy, Impressum, AGB).
+ * Microsoft Advertising bloqueou a conta em 11/2026 porque a política de
+ * privacidade não estava visível na home: este bloco entra em todo rodapé
+ * e, com `standalone`, nas LPs que não têm rodapé.
+ * A política existe só em alemão (/datenschutz); os outros idiomas apontam pra ela.
+ */
+interface Props {
+  lang?: 'de' | 'en' | 'fr' | 'it' | 'nl' | 'jp';
+  standalone?: boolean;
+}
+
+const { lang = 'de', standalone = false } = Astro.props;
+const currentYear = new Date().getFullYear();
+
+const labels = {
+  de: { privacy: 'Datenschutzerklärung (Privacy Policy)', imprint: 'Impressum', terms: 'AGB' },
+  en: { privacy: 'Privacy Policy', imprint: 'Imprint', terms: 'Terms (AGB)' },
+  fr: { privacy: 'Politique de confidentialité', imprint: 'Mentions légales', terms: 'CGV (AGB)' },
+  it: { privacy: 'Informativa sulla privacy', imprint: 'Note legali', terms: 'Condizioni (AGB)' },
+  nl: { privacy: 'Privacybeleid', imprint: 'Impressum', terms: 'Voorwaarden (AGB)' },
+  jp: { privacy: 'プライバシーポリシー (Privacy Policy)', imprint: '会社情報 (Impressum)', terms: '利用規約 (AGB)' },
+}[lang];
+
+const links = [
+  { label: labels.privacy, href: '/datenschutz' },
+  { label: labels.imprint, href: '/impressum' },
+  { label: labels.terms, href: '/agb' },
+];
+---
+
+{standalone ? (
+  <footer class="bg-white border-t border-gray-200 py-6 text-center">
+    <nav aria-label="Legal" class="flex flex-wrap justify-center gap-x-6 gap-y-2 px-4">
+      {links.map((link) => (
+        <a href={link.href} class="text-sm font-medium text-gray-700 underline hover:no-underline">{link.label}</a>
+      ))}
+    </nav>
+    <p class="mt-3 text-xs text-gray-500">© {currentYear} Pixformance Sports GmbH</p>
+  </footer>
+) : (
+  <nav aria-label="Legal" class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
+    {links.map((link) => (
+      <a href={link.href} class="text-sm font-medium text-foreground hover:text-primary transition-colors">{link.label}</a>
+    ))}
+  </nav>
+)}
