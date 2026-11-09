@@ -216,8 +216,9 @@ const clientLogos = [
 
   <!-- HERO SECTION -->
   <section class="relative bg-black overflow-hidden" style="padding-top: clamp(4.5rem, 5vw, 5rem); padding-bottom: clamp(1.5rem, 3vw, 3rem);">
-    <div class="absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
-    <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
+    <div class="hero-orb hero-orb-a absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
+    <div class="hero-orb hero-orb-b absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
+    <div class="hero-orb hero-orb-c hidden md:block absolute top-1/3 left-[12%] w-4 h-4 rounded-full bg-[#6BDBD1]/40 pointer-events-none"></div>
 
     <div class="container relative text-center max-w-4xl mx-auto px-5">
       <a href="/kontakt" class="mx-auto mt-4 md:mt-0 mb-6 md:mb-8 block w-fit hero-animate" aria-label="Pixformance – Kontakt">
@@ -811,6 +812,27 @@ const clientLogos = [
 </BaseLayout>
 
 <style>
+  /* Bolinhas do hero: deriva lenta, só transform (não mexe no layout nem no LCP) */
+  .hero-orb { will-change: transform; }
+  .hero-orb-a { animation: orb-a 18s ease-in-out infinite alternate; }
+  .hero-orb-b { animation: orb-b 24s ease-in-out infinite alternate; }
+  .hero-orb-c { animation: orb-c 12s ease-in-out infinite alternate; }
+  @keyframes orb-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-40px, 30px, 0) scale(1.08); }
+  }
+  @keyframes orb-b {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(50px, -35px, 0) scale(1.05); }
+  }
+  @keyframes orb-c {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(24px, -18px, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb { animation: none; }
+  }
+
   /* Hero Entry Animation – text visible immediately (LCP candidate) */
   @keyframes hero-entry {
     from { transform: translateY(10px); }
