@@ -16,14 +16,6 @@ const stats = [
 // Broschüren: os PDFs ficam atrás do formulário de sempre (lead entra no CRM)
 const brochures = [
   {
-    label: '360°-Konzept',
-    title: 'Digitale Bewegungstherapie, neu gedacht',
-    desc: 'Wie das 360°-Pixformance-Konzept Therapeuten entlastet, Patienten aktiviert und Gesundheitseinrichtungen stärkt.',
-    image: '/images/broschuere-360-konzept-mockup.webp',
-    bg: '#ffffff',
-    href: '/lp-360-konzept',
-  },
-  {
     label: 'Produktbroschüre',
     title: 'Die smarte Lösung für moderne Physiotherapiepraxen',
     desc: 'Mehr Zeit, mehr Umsatz, mehr Möglichkeiten: wie Pixformance im Praxisalltag entlastet.',
@@ -32,12 +24,12 @@ const brochures = [
     href: '/ressourcen-download?doc=smarte-loesung-physiotherapie',
   },
   {
-    label: 'Whitepaper',
-    title: 'Digitalisierung in der Physiotherapie',
-    desc: 'Wie digitale Betreuungsmöglichkeiten die Physiotherapie verändern, mit Station, App und Online-Plattform im Überblick.',
-    image: '/images/broschuere-lp-physio-digitalisierung.jpg',
-    bg: '#6BDBD1',
-    href: '/ressourcen-download?doc=digitalisierung-physiotherapie',
+    label: '360°-Konzept',
+    title: 'Digitale Bewegungstherapie, neu gedacht',
+    desc: 'Wie das 360°-Pixformance-Konzept Therapeuten entlastet, Patienten aktiviert und Gesundheitseinrichtungen stärkt.',
+    image: '/images/broschuere-360-konzept-mockup.webp',
+    bg: '#ffffff',
+    href: '/lp-360-konzept',
   },
 ];
 
@@ -662,11 +654,11 @@ const clientLogos = [
           Pixformance in Ruhe kennenlernen
         </h2>
         <p class="mt-4 text-lg text-foreground-muted leading-relaxed">
-          Konzept, Praxisalltag und Digitalisierung: alles zum Nachlesen und Weitergeben an Ihr Team.
+          Praxisalltag und 360°-Konzept: alles zum Nachlesen und Weitergeben an Ihr Team.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
         {brochures.map((brochure, index) => (
           <a
             href={brochure.href}
