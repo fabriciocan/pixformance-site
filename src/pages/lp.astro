@@ -14,6 +14,31 @@ const stats = [
   { value: S.exercises, count: 700, suffix: '+', label: 'Funktionelle Übungen', icon: 'zap' },
 ];
 
+// Infomaterialien: cada card abre a LP do material (formulário de lá manda o lead pro CRM)
+const infomaterial = [
+  {
+    title: 'Therapie-Effizienz-Report 2026',
+    desc: 'Wie digitale Bewegungstherapie Kapazitäten schafft, Teams entlastet und Einrichtungen zukunftssicher macht.',
+    image: '/images/report-therapie-effizienz-2026-900.webp',
+    href: '/lp-therapie-effizienz-report-2026',
+    cta: 'Report ansehen',
+  },
+  {
+    title: 'Die smarte Lösung für moderne Physiotherapiepraxen',
+    desc: 'Mehr Zeit, mehr Umsatz, mehr Möglichkeiten: wie Pixformance im Praxisalltag entlastet.',
+    image: '/images/broschuere-lp-physio.webp',
+    href: '/lp-physio',
+    cta: 'Broschüre ansehen',
+  },
+  {
+    title: 'Digitale Bewegungstherapie, neu gedacht',
+    desc: 'Wie das 360°-Pixformance-Konzept Therapeuten entlastet, Patienten aktiviert und Gesundheitseinrichtungen stärkt.',
+    image: '/images/broschuere-360-konzept-mockup.webp',
+    href: '/lp-360-konzept',
+    cta: 'Broschüre ansehen',
+  },
+];
+
 const testimonials = [
   {
     name: 'Swetlana Zimmermann & Claas Bickeböller',
@@ -165,16 +190,6 @@ const clientLogos = [
         <span id="lp-headline-line2">UNVERBINDLICH.</span><br />
         <span id="lp-headline-line3" class="text-[#6BDBD1]">OHNE RISIKO.</span>
       </h1>
-      <ul class="w-fit mx-auto flex flex-col items-start md:w-auto md:flex-row md:flex-wrap md:justify-center gap-x-6 gap-y-2 mt-6 md:mt-8 hero-animate" style="animation-delay: 0.15s;">
-        {['Keine Lizenzgebühren', 'Transparente Konditionen', 'Keine versteckten Kosten'].map((t) => (
-          <li class="flex items-center gap-2 self-start md:self-auto text-white text-sm md:text-lg font-semibold">
-            <span class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#6BDBD1] flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="#02308C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            {t}
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 
@@ -587,12 +602,60 @@ const clientLogos = [
     </div>
   </section>
 
+  <!-- REPORT: material pra quem quer entender o produto com calma. Abre em aba nova pra não tirar a pessoa da LP -->
+  <section id="broschueren" class="py-16 md:py-24 bg-white border-t border-gray-100">
+    <div class="container">
+      <div class="text-center mb-12 max-w-2xl mx-auto" data-scroll="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#02308C]/10 border border-[#02308C]/20 text-sm font-bold text-[#02308C] mb-6">
+          <Icon name="download" size="sm" />
+          Kostenlose Infomaterialien
+        </span>
+        <h2 class="font-display text-3xl md:text-3xl font-bold">
+          Pixformance näher kennenlernen
+        </h2>
+        <p class="mt-4 text-lg text-foreground-muted leading-relaxed">
+          Entdecken Sie, wie Pixformance Therapeuten entlastet, Patienten aktiviert und neue Möglichkeiten für Ihre Praxis schafft.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        {infomaterial.map((item, index) => (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener"
+            class="group flex flex-col bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            data-scroll="fade-up"
+            data-delay={index + 1}
+          >
+            <div class="aspect-[4/3] flex items-center justify-center overflow-hidden bg-white p-4">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="480"
+                height="360"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 gap-3 text-left">
+              <h3 class="font-bold text-lg text-gray-900 leading-snug">{item.title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed flex-1">{item.desc}</p>
+              <span class="inline-flex items-center gap-2 font-bold text-[#02308C] group-hover:gap-3 transition-all duration-300">
+                {item.cta}
+                <Icon name="arrow-right" size="sm" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- 360° KONZEPT CTA CARD -->
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center bg-white rounded-3xl shadow-xl p-5 md:p-12 overflow-hidden" data-scroll="fade-up">
         <div class="space-y-6 text-center md:text-left">
-          <span class="inline-block rounded-full bg-[#6BDBD1] px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-[#02308C]">∞ Kein Nutzerlimit auf der Online-Plattform</span>
           <p class="text-lg text-foreground-muted leading-relaxed">
             Das voll vernetzte 360°-Pixformance Trainings- und Therapiekonzept bietet eine sinnvolle und zeitgemäße Ergänzung, um Physiotherapeuten bei der Betreuung zu entlasten und auf lange Sicht mehr Umsatz durch erhöhte Betreuungsmöglichkeiten oder den Aufbau eines Selbstzahlerbereichs zu generieren. Bestellen Sie noch heute Ihre Teststellung und finden Sie heraus, ob das Konzept zu Ihrer Einrichtung passt!
           </p>
