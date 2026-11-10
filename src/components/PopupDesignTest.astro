@@ -2,6 +2,8 @@
 /**
  * Timed popup with the design A/B test (since 2026-11-05).
  * V1 = teal "Jetzt 60 Tage testen" with checks; V2 = dark "Neukunden-Special" with offer header.
+ * Since 2026-11-10 (Kati, Slack): both CTAs open the same contact form, the V1 badge is no
+ * longer a link and nothing in the popup leads to the newsletter.
  * Used by SitePopup (site-wide) and /lp. The host page wires the buttons via
  * [data-timed-popup="close|cta|decline"] and reports events through window.PixPopupDesign.track().
  * Events go to Pixformance Reports through /pr/ab (same origin, nginx proxies to the Reports
@@ -27,20 +29,20 @@
         height="590"
         loading="lazy"
       />
-      <a href="/newsletter/year-end-offer-2026-1-print" data-popup-newsletter="v1-badge" class="absolute left-4 -bottom-5 flex items-center gap-3 rounded-full bg-black py-1.5 pl-5 pr-1.5 shadow-lg transition-transform duration-200 hover:scale-[1.03]">
+      <div class="absolute left-4 -bottom-5 flex items-center gap-3 rounded-full bg-black py-1.5 pl-5 pr-1.5 shadow-lg">
         <span class="font-display text-[0.8rem] font-bold uppercase tracking-[0.09em] text-white">Neukunden-Special <span class="text-[#6BDBD1]">2026</span></span>
         <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[#6BDBD1] text-black" aria-hidden="true">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 14a8 8 0 0 1-8 8"/><path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1"/><path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
         </span>
-      </a>
+      </div>
     </div>
 
     <div class="px-7 pt-10 pb-6 text-center">
       <p id="pd-v1-title" class="font-display text-[2.15rem] font-extrabold leading-[1.05] text-white">Jetzt 60 Tage<br />testen</p>
 
       <ul class="mx-auto mt-5 inline-flex flex-col gap-2.5 text-left">
-        {['Unverbindlich', 'Kein monatliches Abo', 'Keine versteckten Kosten'].map((item) => (
-          <li class="flex items-center gap-3 font-display text-base font-bold text-[#02308C]">
+        {['Unverbindlich', 'Keine monatlichen Lizenzgebühren', 'Kostenlose Software-Updates'].map((item) => (
+          <li class="flex items-center gap-3 font-display text-[0.9375rem] font-bold text-[#02308C]">
             <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#02308C] text-white" aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             </span>
@@ -82,10 +84,10 @@
       <p id="pd-v2-title" class="mt-5 font-display text-[1.55rem] font-bold leading-[1.15] text-white">Training &amp; Therapie effizienter gestalten&nbsp;–</p>
       <p class="mt-2.5 font-display text-base font-semibold text-[#6BDBD1]">für Physiotherapie, Reha und Fitness.</p>
 
-      <a href="/newsletter/year-end-offer-2026-1-print" data-popup-newsletter="v2-cta" data-popup-primary class="pd-glow mt-7 flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[#6BDBD1] py-3.5 font-display text-base font-extrabold uppercase tracking-[0.06em] text-black transition-transform duration-200 hover:scale-[1.02]">
+      <button data-timed-popup="cta" class="pd-glow mt-7 flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[#6BDBD1] py-3.5 font-display text-base font-extrabold uppercase tracking-[0.06em] text-black transition-transform duration-200 hover:scale-[1.02]">
         Angebot anfragen
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      </button>
       <button data-timed-popup="decline" class="mt-4 w-full cursor-pointer py-1 text-sm text-gray-400 underline underline-offset-2 transition-colors hover:text-gray-200">
         Privatperson (schließen)
       </button>
@@ -189,24 +191,6 @@
       }).catch(function () {});
     } catch (e) {}
   }
-
-  // Links pra newsletter (selo do V1, CTA do V2): UTMs dizem de qual popup e página veio.
-  // A newsletter -print repassa os utm_* pros links dela, até a /year-end-offer, então o
-  // lead chega no Zoho com utm_medium=popup. utm_term=header-1 mantém o visual da variação 1.
-  var placement = /^\/lp(-v2)?\/?$/.test(window.location.pathname) ? 'lp' : 'site';
-  document.querySelectorAll('[data-popup-newsletter]').forEach(function (a) {
-    var u = new URL(a.getAttribute('href'), window.location.origin);
-    u.searchParams.set('utm_source', 'pixformance-website');
-    u.searchParams.set('utm_medium', 'popup');
-    u.searchParams.set('utm_campaign', 'neukunden-special-2026');
-    u.searchParams.set('utm_term', 'header-1');
-    u.searchParams.set('utm_content', 'popup-' + placement + '-' + a.getAttribute('data-popup-newsletter'));
-    a.href = u.pathname + u.search;
-    a.addEventListener('click', function () {
-      if (a.hasAttribute('data-popup-primary')) track('click');
-      track('newsletter');
-    });
-  });
 
   window.PixPopupDesign = { variant: variant, track: track };
 })();
