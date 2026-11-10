@@ -1,0 +1,269 @@
+---
+// Preview interno: quatro opções de animação dos ícones no header da /lp.
+// noindex, fora do sitemap e sem link interno. Sai do ar quando a opção for escolhida.
+import '@fontsource-variable/montserrat';
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>LP Header Motion</title>
+</head>
+<body>
+<style is:inline>
+/* Layout: a presentation board. Short notes in a narrow column, each followed by a
+   full-width replica of the real /lp header (red bar + black hero) carrying one motion idea. */
+:root{
+  --page:#f2f5f4; --ink:#0e1514; --muted:#56635f; --line:#d3dcda; --btn:#0e1514; --btn-ink:#ffffff;
+  --hero:#000000; --tq:#6BDBD1; --red:#dc2626; --white:#ffffff;
+  --font:'Montserrat Variable',ui-sans-serif,system-ui,sans-serif;
+  --out:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--page:#111615;--ink:#e8eeed;--muted:#9aa7a4;--line:#2a3432;--btn:#e8eeed;--btn-ink:#0e1514;color-scheme:dark}
+}
+:root[data-theme="dark"]{--page:#111615;--ink:#e8eeed;--muted:#9aa7a4;--line:#2a3432;--btn:#e8eeed;--btn-ink:#0e1514;color-scheme:dark}
+
+html{color-scheme:light dark}body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55}
+.wrap{max-width:760px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.intro{padding-block:56px 8px}
+.intro h1{font-size:clamp(1.9rem,4.5vw,2.75rem);line-height:1.1;font-weight:700;margin:0 0 14px;text-wrap:balance}
+.intro p{margin:0;color:var(--muted);max-width:60ch}
+.variant{padding-block:44px 0}
+.variant:last-of-type{padding-bottom:72px}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:18px}
+.head > div{min-width:0;flex:1 1 320px}
+.head h2{font-size:1.25rem;font-weight:700;margin:0 0 4px;line-height:1.2}
+.head p{margin:0;color:var(--muted);font-size:.95rem;max-width:58ch}
+.replay{font:600 .85rem var(--font);background:var(--btn);color:var(--btn-ink);border:0;border-radius:999px;padding:10px 18px;cursor:pointer;transition:transform .14s ease}
+.replay:active{transform:scale(.97)}
+.replay:focus-visible{outline:3px solid var(--tq);outline-offset:3px}
+
+/* ---------- replica of the real header ---------- */
+.stage{background:var(--hero);color:var(--white)}
+.bar{background:var(--red);color:var(--white);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;padding:10px 12px;text-align:center;font-weight:700;font-size:clamp(.72rem,1.6vw,.875rem);letter-spacing:.02em}
+.bar span.pill{background:var(--white);color:var(--red);border-radius:999px;padding:6px 16px;font-size:.75rem}
+.hero{position:relative;overflow:hidden;background:var(--hero);container-type:inline-size;padding-block:clamp(1.75rem,3vw,2.5rem) clamp(1.5rem,3vw,3rem)}
+.blob{position:absolute;border-radius:50%;pointer-events:none}
+.blob.a{top:-80px;right:-80px;width:clamp(192px,27cqw,384px);aspect-ratio:1;background:rgba(107,219,209,.10)}
+.blob.b{bottom:-128px;left:-128px;width:clamp(256px,35cqw,500px);aspect-ratio:1;background:rgba(107,219,209,.05)}
+.content{position:relative;text-align:center;padding-inline:20px;z-index:2}
+.logo{display:block;height:clamp(28px,2.6cqw,36px);width:auto;margin:0 auto clamp(24px,2.4cqw,32px)}
+.headline{margin:0;font-weight:700;line-height:1.1;font-size:clamp(2.2rem,5cqw,3.5rem);color:var(--white)}
+.headline b{font-weight:700;color:var(--tq)}
+.fx{position:absolute;inset:0;pointer-events:none;z-index:1}
+.ico{display:block;width:100%;height:100%;overflow:visible}
+.ico path{fill:var(--tq)}
+
+/* ---------- 1: draw-in ---------- */
+.v1 .fl{position:absolute;left:calc(50% + var(--dx)*1cqw);top:var(--y);width:calc(var(--s)*1cqw);aspect-ratio:1;transform:translate(-50%,-50%);opacity:var(--o,1)}
+.v1 .fl > div{width:100%;height:100%;transform:rotate(var(--r,0deg))}
+.v1 .ico path{stroke:var(--tq);stroke-width:5;stroke-dasharray:1;stroke-dashoffset:0;stroke-opacity:0}
+.v1.play .ico path{animation:draw 1.7s ease-in-out backwards;animation-delay:calc(var(--i)*130ms + .15s)}
+.v1.play .fl > div{animation:bob var(--t,7s) ease-in-out infinite alternate;animation-delay:calc(var(--i)*-1.3s)}
+@keyframes draw{0%{stroke-dashoffset:1;fill-opacity:0;stroke-opacity:1}62%{stroke-dashoffset:0;fill-opacity:0;stroke-opacity:1}100%{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}}
+@keyframes bob{from{transform:translateY(-7%) rotate(var(--r,0deg))}to{transform:translateY(7%) rotate(calc(var(--r,0deg) + 4deg))}}
+@container (max-width:700px){
+  .v1 .fl{width:30px;left:auto;top:auto;transform:none;opacity:.75}
+  .v1 .fl.m0{display:none}
+  .v1 .fl.tl{left:18px;top:22px}.v1 .fl.tr{right:18px;top:22px}
+  .v1 .fl.bl{left:14px;bottom:16px}.v1 .fl.br{right:14px;bottom:16px}
+}
+
+/* ---------- 2: one icon at a time ---------- */
+.v2 .row{display:flex;justify-content:center;gap:clamp(16px,3.2cqw,40px);margin-top:clamp(20px,2.6cqw,34px)}
+.v2 .slot{width:clamp(30px,4.2cqw,50px);aspect-ratio:1}
+.v2 .lit{width:100%;height:100%;opacity:.42}
+.v2 .ico, .v2 .ico path{transform-box:fill-box;transform-origin:50% 50%}
+.v2.play .slot{animation:rise .7s var(--out) backwards;animation-delay:calc(var(--i)*70ms + .2s)}
+.v2.play .lit{animation:lit 9s ease infinite;animation-delay:calc(var(--i)*1.5s + 1s)}
+.v2.play .ico, .v2.play .ico path{animation-duration:9s;animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-delay:calc(var(--i)*1.5s + 1s)}
+@keyframes rise{from{opacity:0;transform:translateY(12px) scale(.95)}}
+@keyframes lit{0%{opacity:.42}2%,15%{opacity:1}19%,100%{opacity:.42}}
+.v2.play .a-hop{animation-name:hop}
+.v2.play .a-curl{animation-name:curl}
+.v2.play .a-beat{animation-name:beat}
+.v2.play .a-squat{animation-name:squat;transform-origin:50% 100%}
+.v2.play .a-five path:nth-child(3){animation-name:handL}
+.v2.play .a-five path:nth-child(4){animation-name:handR}
+.v2.play .a-five path:not(:nth-child(3)):not(:nth-child(4)){animation-name:spark}
+.v2 .a-bars path:nth-child(-n+3){transform-origin:50% 100%}
+.v2.play .a-bars path:nth-child(3){animation-name:grow}
+.v2.play .a-bars path:nth-child(1){animation-name:grow;animation-delay:calc(var(--i)*1.5s + 1.12s)}
+.v2.play .a-bars path:nth-child(2){animation-name:grow;animation-delay:calc(var(--i)*1.5s + 1.24s)}
+@keyframes hop{0%,16%,100%{transform:none}5%{transform:translateY(-12%)}9%{transform:none}12%{transform:translateY(-5%)}}
+@keyframes curl{0%,16%,100%{transform:none}4%{transform:rotate(-24deg)}8%{transform:rotate(18deg)}12%{transform:rotate(-9deg)}}
+@keyframes beat{0%,13%,100%{transform:none}3%{transform:scale(1.18)}6%{transform:none}9%{transform:scale(1.12)}}
+@keyframes squat{0%,16%,100%{transform:none}5%{transform:translateY(4%) scaleY(.84)}10%{transform:none}13%{transform:translateY(2%) scaleY(.92)}}
+@keyframes handL{0%,9%,100%{transform:none}5%{transform:translate(-8%,3%) rotate(-8deg)}}
+@keyframes handR{0%,9%,100%{transform:none}5%{transform:translate(12%,-4%) rotate(6deg)}}
+@keyframes spark{0%,8%{opacity:0;transform:scale(.4)}10%{opacity:1;transform:scale(1.25)}14%,100%{opacity:1;transform:none}}
+@keyframes grow{0%,12%,100%{transform:none}3%{transform:scaleY(.3)}}
+
+/* ---------- 3: moving bands ---------- */
+.v3 .fx{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.v3 .band{position:absolute;left:0;display:flex;gap:clamp(34px,5cqw,64px);width:max-content;opacity:.3}
+.v3 .band svg{width:clamp(54px,8cqw,104px);aspect-ratio:1;flex:none}
+.v3 .band.t{top:8%}
+.v3 .band.u{bottom:6%}
+.v3 .band use{fill:var(--tq)}
+.v3.play .band.t{animation:slideL 70s linear infinite}
+.v3.play .band.u{animation:slideR 70s linear infinite}
+.v3 .veil{position:absolute;inset:0;background:radial-gradient(ellipse 46% 78% at 50% 56%,rgba(0,0,0,.96) 0%,rgba(0,0,0,.88) 45%,rgba(0,0,0,0) 100%)}
+.v3.play .fx{animation:fade 1.2s var(--out) backwards}
+@keyframes slideL{to{transform:translateX(-50%)}}
+@keyframes slideR{from{transform:translateX(-50%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+
+/* ---------- 4: spotlight ---------- */
+.v4 .hero{--mx:72%;--my:40%}
+.v4 .fx{pointer-events:none}
+.v4 .grid{position:absolute;inset:0;width:100%;height:100%}
+.v4 .grid.dim use{fill:var(--white);fill-opacity:.07}
+.v4 .grid.glow use{fill:var(--tq)}
+.v4 .grid.glow{-webkit-mask-image:radial-gradient(circle clamp(120px,19cqw,250px) at var(--mx) var(--my),#000 0%,rgba(0,0,0,.55) 45%,transparent 100%);mask-image:radial-gradient(circle clamp(120px,19cqw,250px) at var(--mx) var(--my),#000 0%,rgba(0,0,0,.55) 45%,transparent 100%)}
+.v4 .veil{position:absolute;inset:0;background:radial-gradient(ellipse 40% 70% at 50% 56%,rgba(0,0,0,.9) 0%,rgba(0,0,0,.7) 50%,rgba(0,0,0,0) 100%)}
+.v4.play .fx{animation:fade 1.2s var(--out) backwards}
+
+@media (prefers-reduced-motion: reduce){
+  .stage *, .stage{animation:none !important}
+}
+</style>
+
+<header class="intro wrap">
+  <h1>Four ways to bring the icons into the /lp header</h1>
+  <p>Same header as today: red bar, logo, headline, the two circles. Only the icon layer changes. They go from quiet to loud. Replay restarts the entrance of each one.</p>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs"></defs></svg>
+
+<main id="board"></main>
+
+<script is:inline>
+const LOGO = "/images/logo/logo-white-wordmark.webp";
+const ICONS = {
+  person:{vb:"0 0 566.93 566.93",p:["M297.19,117.64a48,48,0,1,1,48-48A48,48,0,0,1,297.19,117.64Zm0-72.94a25,25,0,1,0,25,25A25,25,0,0,0,297.19,44.7Z","M226.43,543.6a11.5,11.5,0,0,1-11.5-11.5V363.85a11.5,11.5,0,1,1,23,0V532.1A11.5,11.5,0,0,1,226.43,543.6Z","M422.43,510.54a11.49,11.49,0,0,1-9.36-4.81l-93.1-130a11.5,11.5,0,0,1,18.7-13.39l93.1,130a11.5,11.5,0,0,1-9.34,18.2Z","M532.91,328H34a11.5,11.5,0,0,1,0-23h498.9a11.5,11.5,0,0,1,0,23Z","M385.67,287.7a11.5,11.5,0,0,1-10.81-7.58l-33-90.92a35.62,35.62,0,0,0-33.38-23.39H230.8a35.55,35.55,0,0,0-35.51,35.51v74.88a11.5,11.5,0,0,1-23,0V201.32A58.58,58.58,0,0,1,230.8,142.8h77.66a58.69,58.69,0,0,1,55,38.54l33,90.92a11.51,11.51,0,0,1-10.81,15.43Z"]},
+  dumbbell:{vb:"0 0 566.93 566.93",p:["M170.81,295a11.5,11.5,0,1,1,0-23H434.55a11.5,11.5,0,0,1,0,23Z","M436.94,403.32a11.5,11.5,0,0,1-11.5-11.5V175.17a11.5,11.5,0,0,1,23,0V391.82A11.5,11.5,0,0,1,436.94,403.32Z","M484.26,367.21a11.5,11.5,0,0,1-11.5-11.5V211.28a11.5,11.5,0,0,1,23,0V355.71A11.5,11.5,0,0,1,484.26,367.21Z","M532.77,331.1a11.5,11.5,0,0,1-11.5-11.5V247.39a11.5,11.5,0,1,1,23,0V319.6A11.5,11.5,0,0,1,532.77,331.1Z","M129.34,403.32a11.5,11.5,0,0,1-11.5-11.5V175.17a11.5,11.5,0,1,1,23,0V391.82A11.5,11.5,0,0,1,129.34,403.32Z","M82,367.21a11.5,11.5,0,0,1-11.5-11.5V211.28a11.5,11.5,0,0,1,23,0V355.71A11.5,11.5,0,0,1,82,367.21Z","M33.51,331.1A11.5,11.5,0,0,1,22,319.6V247.39a11.5,11.5,0,0,1,23,0V319.6A11.5,11.5,0,0,1,33.51,331.1Z"]},
+  bars:{vb:"0 0 566.93 566.93",p:["M237.51,543.15a11.5,11.5,0,0,1-11.5-11.5V35.16a11.5,11.5,0,0,1,11.5-11.5h85.91a11.5,11.5,0,0,1,11.5,11.5V483.93a11.5,11.5,0,0,1-11.5,11.5h0a11.5,11.5,0,0,1-11.5-11.5V46.66H249v485A11.5,11.5,0,0,1,237.51,543.15Z","M456.33,543.17H370.42a11.5,11.5,0,0,1-11.5-11.5v-421a11.5,11.5,0,0,1,11.5-11.5h85.91a11.5,11.5,0,0,1,0,23H381.92v398h62.91V160.7a11.5,11.5,0,0,1,23,0v371a11.5,11.5,0,0,1-11.5,11.5Z","M104.61,543.16a11.5,11.5,0,0,1-11.5-11.5V283.41a11.5,11.5,0,0,1,11.5-11.5h85.91a11.5,11.5,0,0,1,11.5,11.5V483.93a11.5,11.5,0,0,1-23,0v-189H116.11V531.66A11.5,11.5,0,0,1,104.61,543.16Z","M530.74,543.17H35.26a11.5,11.5,0,0,1,0-23H530.74a11.5,11.5,0,0,1,0,23Z"]},
+  five:{vb:"0 0 521.2 519.06",p:["M116.11,65.92a11.5,11.5,0,0,0,20.17-11.05l-23-42A11.5,11.5,0,0,0,93.1,23.93Z","M35,121.8h70a11.5,11.5,0,0,0,0-23H35a11.5,11.5,0,0,0,0,23Z","M306.52,381.82a11.5,11.5,0,0,0-15.28,5.56l-29.83,64-125,45.49a7.83,7.83,0,0,1-6.51-.46l-.26-.14L31.54,444.79l-.64-.31a11.55,11.55,0,0,1-5.74-15.76l1.16-2.4a13.19,13.19,0,0,1,17.15-6.24l50.6,22.69a11.5,11.5,0,0,0,15.51-14.43L49.94,264.47c-2.27-6.23,1.25-13.26,7.85-15.66l2.55-.93a13,13,0,0,1,9.82.3,11.62,11.62,0,0,1,6.26,6.65l27.29,75a11.53,11.53,0,0,0,21.68-7.89l-47-129c-2.27-6.23,1.25-13.26,7.85-15.66l2.55-.93a13,13,0,0,1,9.82.3,11.63,11.63,0,0,1,6.26,6.66l47.57,130.19a11.5,11.5,0,0,0,21.61-7.88L139,209.16a11.62,11.62,0,0,1,.52-9.11,13,13,0,0,1,7.33-6.54l2.54-.92c6.6-2.4,13.81.71,16.09,7L209.1,318.18a11.5,11.5,0,0,0,21.6-7.9l-30.37-83.44a11.62,11.62,0,0,1,.52-9.11,13,13,0,0,1,7.33-6.54l2.54-.93a13,13,0,0,1,9.78.29l.07,0a11.62,11.62,0,0,1,6.23,6.63l49.51,136a11.5,11.5,0,1,0,21.61-7.87l-49.51-136A34.28,34.28,0,0,0,238,194.59L259.58,91.85q0-.18.07-.37c1.15-6.53,7.72-10.85,14.62-9.63l2.67.47a13,13,0,0,1,8.35,5.17,11.63,11.63,0,0,1,2.1,8.88L272,183.82a11.5,11.5,0,0,0,22.64,4L317,63.42c1.15-6.53,7.71-10.85,14.62-9.63l2.67.47a13,13,0,0,1,8.35,5.17,11.63,11.63,0,0,1,2.1,8.88l-17.81,101a11.5,11.5,0,0,0,22.65,4L373.82,36.85c1.15-6.53,7.72-10.85,14.62-9.63l2.67.47a13,13,0,0,1,8.35,5.17,11.63,11.63,0,0,1,2.1,8.88L377.71,177a11.53,11.53,0,0,0,22.72,4l13.85-78.57c1.15-6.53,7.71-10.85,14.63-9.63l2.66.47a13,13,0,0,1,8.35,5.17,11.63,11.63,0,0,1,2.1,8.88L421.51,223.7a11.5,11.5,0,1,0,22.65,4L464.68,111.3A34.44,34.44,0,0,0,458.58,85a35.88,35.88,0,0,0-23-14.35l-2.66-.47a36.18,36.18,0,0,0-13,.06l4.31-24.46a34.44,34.44,0,0,0-6.1-26.35A35.88,35.88,0,0,0,395.11,5l-2.67-.47C373,1.15,354.52,13.84,351.17,32.84l-.59,3.31a36.35,36.35,0,0,0-12.29-4.55l-2.67-.47c-19.4-3.43-37.92,9.27-41.26,28.25l-.89,5a36.34,36.34,0,0,0-12.52-4.68l-2.67-.47c-19.32-3.41-37.79,9.18-41.23,28.09l-20.82,99.16a36.32,36.32,0,0,0-13.37,2.2l-2.54.93a36.36,36.36,0,0,0-11.52,6.79l-1.73-4.7c-6.61-18.15-27-27.43-45.56-20.69l-2.54.92a36.36,36.36,0,0,0-11.32,6.61l-1.15-3.14A34.44,34.44,0,0,0,108,155.6a35.88,35.88,0,0,0-27.1-.93l-2.54.93c-18.51,6.74-28.2,27-21.6,45.14l8.49,23.32a37,37,0,0,0-12.82,2.21l-2.54.93c-18.51,6.74-28.2,27-21.6,45.14L78.68,410.66,52.89,399.1A36.36,36.36,0,0,0,5.64,416.3l-1.16,2.4a34.54,34.54,0,0,0,16.67,46.61l97.72,51.24a30.63,30.63,0,0,0,14.78,3.79,31.12,31.12,0,0,0,10.65-1.88l129.45-47.12a11.5,11.5,0,0,0,6.49-5.95l31.85-68.3A11.5,11.5,0,0,0,306.52,381.82Z","M513.59,251.3,512,249.14a36.37,36.37,0,0,0-49.46-8.78l-61,40.18-26-4.29a11.5,11.5,0,0,0-3.75,22.69l30.39,5a11.5,11.5,0,0,0,8.2-1.74l64.84-42.7.13-.09a13.2,13.2,0,0,1,18,3.17l1.56,2.16A11.55,11.55,0,0,1,492,281.29l-.57.41-87.7,67.71-.23.19a7.84,7.84,0,0,1-6.33,1.59L336,340.39A11.5,11.5,0,1,0,332,363l61.22,10.8a31.19,31.19,0,0,0,5.43.48,30.72,30.72,0,0,0,19.29-6.77l87.34-67.43a34.55,34.55,0,0,0,8.32-48.8Z","M395.86,441.7a11.5,11.5,0,1,0-20.17,11.05l23,42a11.5,11.5,0,0,0,20.17-11.05Z","M467.34,401.5l-61.22-10.8a11.5,11.5,0,0,0-4,22.65l61.22,10.8a11.5,11.5,0,0,0,4-22.65Z","M330,440a11.5,11.5,0,0,0-14.38,7.61l-14.31,46.46a11.5,11.5,0,1,0,22,6.77l14.31-46.46A11.5,11.5,0,0,0,330,440Z","M196.54,92.08a11.49,11.49,0,0,0,13.32-9.33l12-68a11.5,11.5,0,0,0-22.65-4l-12,68A11.5,11.5,0,0,0,196.54,92.08Z"]},
+  squat:{vb:"0 0 519.06 435.52",p:["M468.46,205.17a11.5,11.5,0,0,0-11.5,11.5v33H63.65v-33a11.5,11.5,0,0,0-23,0v89a11.5,11.5,0,0,0,23,0v-33H457v33a11.5,11.5,0,0,0,23,0v-89A11.5,11.5,0,0,0,468.46,205.17Z","M507.56,224a11.5,11.5,0,0,0-11.5,11.5v51.33a11.5,11.5,0,0,0,23,0V235.49A11.5,11.5,0,0,0,507.56,224Z","M11.5,224A11.5,11.5,0,0,0,0,235.49v51.33a11.5,11.5,0,0,0,23,0V235.49A11.5,11.5,0,0,0,11.5,224Z","M323.56,293.9a11.5,11.5,0,0,0-11.5,11.5V424a11.5,11.5,0,0,0,23,0V305.4A11.5,11.5,0,0,0,323.56,293.9Z","M197.9,293.9a11.5,11.5,0,0,0-11.5,11.5V424a11.5,11.5,0,0,0,23,0V305.4A11.5,11.5,0,0,0,197.9,293.9Z","M146.65,228.17a11.5,11.5,0,0,0,11.5-11.5V103.6c0-24.3,16.53-44.1,36.95-44.37q-.08,1.59-.08,3.2a62.43,62.43,0,0,0,124.85,0q0-1.61-.08-3.2c20.41.28,36.95,20.07,36.95,44.37V216.67a11.5,11.5,0,0,0,23,0V103.6c0-37.16-27.08-67.39-60.37-67.39h-5.28a62.39,62.39,0,0,0-113.27,0h-5.28c-33.29,0-60.37,30.23-60.37,67.39V216.67A11.5,11.5,0,0,0,146.65,228.17ZM257.44,23A39.43,39.43,0,1,1,218,62.43,39.47,39.47,0,0,1,257.44,23Z"]},
+  cross:{vb:"0 0 520 520",p:["M12,519.53A11.5,11.5,0,0,1,3.85,499.9L499.91,3.84A11.5,11.5,0,1,1,516.17,20.1L20.12,516.16A11.46,11.46,0,0,1,12,519.53Z","M218.57,230.07a11.46,11.46,0,0,1-8.13-3.37L3.84,20.1A11.5,11.5,0,0,1,20.11,3.84l206.6,206.6a11.5,11.5,0,0,1-8.13,19.63Z","M508,519.53a11.46,11.46,0,0,1-8.13-3.37l-248-248a11.5,11.5,0,0,1,16.26-16.26l248,248A11.5,11.5,0,0,1,508,519.53Z"]},
+  heart:{vb:"0 0 566.93 566.93",p:["M283.46,543.22a11.5,11.5,0,0,1-9.27-18.3c73.51-100.31,215-294,224.47-309.12A110.22,110.22,0,0,0,313.06,96.88c-8.92,13.6-16.39,44.55-18.51,55.32a11.5,11.5,0,0,1-22.76-1.54A110.23,110.23,0,1,0,68,215.43L265,482a11.5,11.5,0,1,1-18.5,13.67L49.27,228.73q-.27-.36-.5-.74A133.22,133.22,0,0,1,273.1,84.27,133.82,133.82,0,0,1,284,104.55a106.48,106.48,0,0,1,9.79-20.29A133.22,133.22,0,0,1,518.16,228c-12.25,19.6-216.72,298.66-225.42,310.52A11.49,11.49,0,0,1,283.46,543.22Z","M312.65,382.78a11.5,11.5,0,0,1-10.91-7.86L254.28,232.55,236,287.37a11.5,11.5,0,0,1-10.91,7.86H186.19a11.5,11.5,0,1,1,0-23h30.62l26.56-79.69a11.5,11.5,0,0,1,21.82,0l47.46,142.37,18.27-54.82a11.5,11.5,0,0,1,10.91-7.86h38.91a11.5,11.5,0,1,1,0,23H350.12l-26.56,79.69A11.5,11.5,0,0,1,312.65,382.78Z"]}
+};
+const NAMES = Object.keys(ICONS);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.getElementById('defs').innerHTML = NAMES.map(n =>
+  `<symbol id="i-${n}" viewBox="${ICONS[n].vb}">${ICONS[n].p.map(d => `<path d="${d}"/>`).join('')}</symbol>`).join('');
+
+const inline = (n, cls = '') =>
+  `<svg class="ico ${cls}" viewBox="${ICONS[n].vb}" aria-hidden="true">${ICONS[n].p.map(d => `<path pathLength="1" d="${d}"/>`).join('')}</svg>`;
+const use = n => `<svg viewBox="${ICONS[n].vb}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+
+const shell = (fx, extra = '') => `
+  <div class="bar"><span>60 TAGE TESTEN – ANGEBOT GÜLTIG BIS 30.11.26</span><span class="pill">MEHR ERFAHREN</span></div>
+  <div class="hero">
+    <div class="blob a"></div><div class="blob b"></div>
+    <div class="fx">${fx}</div>
+    <div class="content">
+      <img class="logo" src="${LOGO}" alt="Pixformance" width="900" height="124">
+      <p class="headline">60 TAGE TESTEN.<br>UNVERBINDLICH.<br><b>OHNE RISIKO.</b></p>
+      ${extra}
+    </div>
+  </div>`;
+
+// 1: icons on both sides of the headline
+const flank = [
+  ['squat',   -34, '30%', 6.2, 1,   -6, 'tl', 7],
+  ['bars',    -23, '74%', 3.6, .55,  5, 'm0', 9],
+  ['heart',   -43, '78%', 4.2, .7,   8, 'bl', 8],
+  ['dumbbell', 27, '24%', 4.4, .7, -14, 'tr', 8.5],
+  ['five',     37, '62%', 6.4, 1,    4, 'br', 7.5],
+  ['person',   24, '82%', 3.4, .5,  -4, 'm0', 10],
+];
+const v1 = shell(flank.map(([n, dx, y, s, o, r, m, t], i) =>
+  `<div class="fl ${m}" style="--dx:${dx};--y:${y};--s:${s};--o:${o};--r:${r}deg;--i:${i};--t:${t}s"><div>${inline(n)}</div></div>`).join(''));
+
+// 2: a row under the headline, one icon moves at a time
+const acts = [['person','a-hop'],['dumbbell','a-curl'],['heart','a-beat'],['squat','a-squat'],['five','a-five'],['bars','a-bars']];
+const v2 = shell('', `<div class="row">${acts.map(([n, a], i) =>
+  `<div class="slot" style="--i:${i}"><div class="lit">${inline(n, a)}</div></div>`).join('')}</div>`);
+
+// 3: two bands of large icons moving in opposite directions
+const seq = k => Array.from({length: 42}, (_, i) => use(NAMES[(i * k + (k > 1 ? 3 : 0)) % NAMES.length])).join('');
+const v3 = shell(`<div class="band t">${seq(1)}</div><div class="band u">${seq(3)}</div><div class="veil"></div>`);
+
+// 4: icon pattern, lit by a light that follows the pointer
+const v4 = shell(`<svg class="grid dim" aria-hidden="true"></svg><svg class="grid glow" aria-hidden="true"></svg><div class="veil"></div>`);
+
+const VARIANTS = [
+  ['v1', '1. Draw-in', 'The icons are drawn line by line beside the headline, fill in, then hover almost still. The quietest option.', v1],
+  ['v2', '2. One at a time', 'A row under the headline. Each icon does its own move in turn: the lift, the heartbeat, the squat, the high five, the chart. Adds about 70 px of height.', v2],
+  ['v3', '3. Moving bands', 'Large icons pass behind the headline in two directions. More presence, no extra height.', v3],
+  ['v4', '4. Spotlight', 'A faint icon pattern fills the black. A turquoise light travels over it and follows the mouse or finger. The loudest option.', v4],
+];
+
+const board = document.getElementById('board');
+board.innerHTML = VARIANTS.map(([id, t, d, html]) => `
+  <section class="variant">
+    <div class="wrap head"><div><h2>${t}</h2><p>${d}</p></div><button class="replay" id="replay-${id}" type="button">Replay</button></div>
+    <div class="stage ${id}" id="${id}">${html}</div>
+  </section>`).join('');
+
+// start each one when it scrolls into view; Replay restarts it
+const play = el => { el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); };
+const seen = new WeakSet();
+const visible = new Set();
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { visible.add(e.target.id); if (!seen.has(e.target)) { seen.add(e.target); play(e.target); } }
+  else visible.delete(e.target.id);
+}), {threshold: .35});
+VARIANTS.forEach(([id]) => {
+  const el = document.getElementById(id);
+  io.observe(el);
+  document.getElementById('replay-' + id).addEventListener('click', () => play(el));
+});
+
+// 4: build the pattern and move the light
+(() => {
+  const stage = document.getElementById('v4'), hero = stage.querySelector('.hero');
+  const grids = stage.querySelectorAll('.grid');
+  let w = 0, h = 0;
+  const build = () => {
+    const r = hero.getBoundingClientRect();
+    if (Math.abs(r.width - w) < 2 && Math.abs(r.height - h) < 2) return;
+    w = r.width; h = r.height;
+    const cell = w < 700 ? 54 : 78, size = cell * .42;
+    const cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1;
+    const ox = (w - cols * cell) / 2, oy = (h - rows * cell) / 2;
+    let s = '';
+    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+      const n = NAMES[(x * 2 + y * 3) % NAMES.length];
+      s += `<use href="#i-${n}" x="${(ox + x * cell + (cell - size) / 2).toFixed(1)}" y="${(oy + y * cell + (cell - size) / 2).toFixed(1)}" width="${size.toFixed(1)}" height="${size.toFixed(1)}"/>`;
+    }
+    grids.forEach(g => { g.setAttribute('viewBox', `0 0 ${w} ${h}`); g.innerHTML = s; });
+  };
+  build();
+  new ResizeObserver(build).observe(hero);
+  if (reduce) return;
+  let cx = .72, cy = .4, tx = cx, ty = cy, held = 0;
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; held = performance.now() + 1800;
+  });
+  const tick = now => {
+    requestAnimationFrame(tick);
+    if (!visible.has('v4')) return;
+    if (now > held) { const t = now / 1000; tx = .5 + .4 * Math.sin(t * .45); ty = .5 + .34 * Math.sin(t * .8 + 1); }
+    cx += (tx - cx) * .07; cy += (ty - cy) * .07;
+    hero.style.setProperty('--mx', (cx * 100).toFixed(2) + '%');
+    hero.style.setProperty('--my', (cy * 100).toFixed(2) + '%');
+  };
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>

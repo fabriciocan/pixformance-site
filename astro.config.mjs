@@ -33,6 +33,7 @@ export default defineConfig({
         !page.includes('/agb') &&
         !page.includes('/lp-physio') &&
         !page.includes('/lp-v2') &&
+        !page.includes('/lp-header-motion') &&
         !page.includes('/lp-360-konzept') &&
         !page.includes('/calculator') &&
         !page.includes('-danke') &&
