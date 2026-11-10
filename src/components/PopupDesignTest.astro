@@ -1,7 +1,7 @@
 ---
 /**
  * Timed popup with the design A/B test (since 2026-11-05).
- * V1 = teal "Jetzt 60 Tage testen" with checks; V2 = dark "Neukunden-Special" with offer header.
+ * V1 = teal "Jetzt Angebot anfordern" with checks; V2 = dark "Neukunden-Special" with offer header.
  * Since 2026-11-10 (Kati, Slack): both CTAs open the same contact form, the V1 badge is no
  * longer a link and nothing in the popup leads to the newsletter.
  * Used by SitePopup (site-wide) and /lp. The host page wires the buttons via
@@ -38,10 +38,10 @@
     </div>
 
     <div class="px-7 pt-10 pb-6 text-center">
-      <p id="pd-v1-title" class="font-display text-[2.15rem] font-extrabold leading-[1.05] text-white">Jetzt 60 Tage<br />testen</p>
+      <p id="pd-v1-title" class="font-display text-[2.15rem] font-extrabold leading-[1.05] text-white">Jetzt Angebot<br />anfordern</p>
 
       <ul class="mx-auto mt-5 inline-flex flex-col gap-2.5 text-left">
-        {['Unverbindlich', 'Keine monatlichen Lizenzgebühren', 'Kostenlose Software-Updates'].map((item) => (
+        {['Unverbindlich', 'Alle Software-Updates inklusive', 'Keine monatlichen Lizenzgebühren'].map((item) => (
           <li class="flex items-center gap-3 font-display text-[0.9375rem] font-bold text-[#02308C]">
             <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#02308C] text-white" aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
