@@ -38,6 +38,7 @@ export default defineConfig({
         !page.includes('/calculator') &&
         !page.includes('-danke') &&
         !page.includes('/year-end-offer') &&
+        !page.includes('/termin-bestaetigt') &&
         !page.includes('/newsletter/'),
       changefreq: 'weekly',
       priority: 0.7,

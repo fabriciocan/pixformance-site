@@ -1,0 +1,186 @@
+---
+// Página de retorno do Zoho Bookings (redirect pós-agendamento).
+// O Bookings manda booking_*, service_name, assigned_to e também nome, e-mail e
+// telefone do lead na query. O script do <head> lê o que precisa, guarda só em
+// memória e limpa a URL antes do GTM carregar, pra dado pessoal não ir pro GA,
+// pro histórico nem pro referrer.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeaderWithDropdown from '@/components/layout/HeaderWithDropdown.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PixformanceLogo from '@/components/PixformanceLogo.astro';
+---
+
+<BaseLayout
+  title="Termin bestätigt | Pixformance"
+  description="Ihr Beratungsgespräch mit Pixformance ist gebucht."
+  noindex={true}
+>
+  <script is:inline slot="head" data-cfasync="false">
+    (function () {
+      try {
+        var url = new URL(window.location.href);
+        var p = url.searchParams;
+        var keep = ['booking_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        window.__pxBooking = {
+          id: p.get('booking_id') || '',
+          service: p.get('service_name') || '',
+          assignedTo: p.get('assigned_to') || '',
+          firstName: p.get('customer_first_name') || '',
+          start: p.get('booking_start_time') || '',
+          end: p.get('booking_end_time') || ''
+        };
+        var clean = new URLSearchParams();
+        keep.forEach(function (k) {
+          var v = p.get(k);
+          if (v) clean.set(k, v);
+        });
+        var qs = clean.toString();
+        history.replaceState(null, '', url.pathname + (qs ? '?' + qs : '') + url.hash);
+      } catch (e) {
+        window.__pxBooking = {};
+      }
+    })();
+  </script>
+
+  <HeaderWithDropdown slot="header" position="sticky">
+    <PixformanceLogo slot="logo" />
+  </HeaderWithDropdown>
+
+  <section class="bg-[#C41E3A] py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="font-display text-4xl md:text-6xl font-black text-white leading-tight uppercase">
+          Ihr Termin ist gebucht
+        </h1>
+        <p id="greeting" class="mt-6 text-lg md:text-xl text-white/90">
+          Vielen Dank. Die Bestätigung kommt in wenigen Minuten per E-Mail.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container">
+      <div class="max-w-2xl mx-auto">
+        <dl id="details" class="hidden space-y-5 text-lg">
+          <div>
+            <dt class="text-sm uppercase tracking-wide text-foreground-muted">Wann</dt>
+            <dd id="d-when" class="font-display text-2xl md:text-3xl font-bold"></dd>
+          </div>
+          <div id="row-service">
+            <dt class="text-sm uppercase tracking-wide text-foreground-muted">Gespräch</dt>
+            <dd id="d-service"></dd>
+          </div>
+          <div id="row-id">
+            <dt class="text-sm uppercase tracking-wide text-foreground-muted">Buchungsnummer</dt>
+            <dd id="d-id"></dd>
+          </div>
+        </dl>
+
+        <div id="calendar" class="hidden mt-10">
+          <p class="text-lg mb-4">In den eigenen Kalender eintragen:</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              id="btn-google"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex justify-center items-center px-7 py-4 bg-[#C41E3A] text-white font-bold rounded-full hover:bg-[#A31830] transition-colors uppercase tracking-wide"
+            >
+              Google Kalender
+            </a>
+            <button
+              id="btn-ics"
+              type="button"
+              class="inline-flex justify-center items-center px-7 py-4 border-2 border-[#C41E3A] text-[#C41E3A] font-bold rounded-full hover:bg-[#C41E3A] hover:text-white transition-colors uppercase tracking-wide"
+            >
+              Outlook / Apple (.ics)
+            </button>
+          </div>
+        </div>
+
+        <p class="mt-12 text-foreground-muted">
+          Termin verschieben oder absagen? Das geht über den Link in der Bestätigungs-E-Mail.
+          Fragen vorab: <a href="/kontakt" class="underline">Kontakt</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var b = window.__pxBooking || {};
+    var start = b.start ? new Date(b.start) : null;
+    var end = b.end ? new Date(b.end) : null;
+    var valid = start && !isNaN(start.getTime());
+    if (valid && (!end || isNaN(end.getTime()))) end = new Date(start.getTime() + 30 * 60000);
+
+    if (b.firstName) {
+      document.getElementById('greeting').textContent =
+        'Vielen Dank, ' + b.firstName + '. Die Bestätigung kommt in wenigen Minuten per E-Mail.';
+    }
+    if (!valid) return;
+
+    var tz = 'Europe/Berlin';
+    var datum = new Intl.DateTimeFormat('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: tz }).format(start);
+    var uhr = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: tz });
+    document.getElementById('d-when').textContent = datum + ', ' + uhr.format(start) + ' bis ' + uhr.format(end) + ' Uhr';
+
+    if (b.service) document.getElementById('d-service').textContent = b.service;
+    else document.getElementById('row-service').remove();
+    if (b.id) document.getElementById('d-id').textContent = b.id;
+    else document.getElementById('row-id').remove();
+    document.getElementById('details').classList.remove('hidden');
+
+    var title = b.service || ('Beratungsgespräch Pixformance' + (b.assignedTo ? ' mit ' + b.assignedTo : ''));
+    var notes = 'Beratungsgespräch mit Pixformance' + (b.assignedTo ? ' (' + b.assignedTo + ')' : '') + '.' +
+      (b.id ? ' Buchungsnummer ' + b.id + '.' : '') +
+      ' Verschieben oder absagen über den Link in der Bestätigungs-E-Mail.';
+
+    function utc(d) {
+      return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    }
+
+    var g = new URL('https://calendar.google.com/calendar/render');
+    g.searchParams.set('action', 'TEMPLATE');
+    g.searchParams.set('text', title);
+    g.searchParams.set('dates', utc(start) + '/' + utc(end));
+    g.searchParams.set('details', notes);
+    document.getElementById('btn-google').href = g.toString();
+
+    function esc(s) {
+      return String(s).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
+    }
+
+    document.getElementById('btn-ics').addEventListener('click', function () {
+      var ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Pixformance//Termin//DE',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:' + (b.id || utc(start)) + '@pixformance.com',
+        'DTSTAMP:' + utc(new Date()),
+        'DTSTART:' + utc(start),
+        'DTEND:' + utc(end),
+        'SUMMARY:' + esc(title),
+        'DESCRIPTION:' + esc(notes),
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'pixformance-termin' + (b.id ? '-' + b.id : '') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    });
+
+    document.getElementById('calendar').classList.remove('hidden');
+  })();
+</script>
