@@ -234,8 +234,8 @@ const clientLogos = [
           fetchpriority="high"
         />
       </a>
-      <h1 class="font-display font-bold text-white leading-[1.1] hero-animate" style="font-size: clamp(2.2rem, 5vw, 3.5rem); animation-delay: 0s;">
-        <span id="lp-headline-line1">60 TAGE TESTEN.</span><br />
+      <h1 class="lp-headline font-display font-bold text-white leading-[1.1] hero-animate" style="animation-delay: 0s;">
+        <span id="lp-headline-line1">60 TAGE TESTEN.</span><br class="lp-br-desk" /><span class="lp-sp-mob"> </span>
         <span id="lp-headline-line2">UNVERBINDLICH.</span><br />
         <span id="lp-headline-line3" class="text-[#6BDBD1]">OHNE RISIKO.</span>
       </h1>
@@ -322,7 +322,7 @@ const clientLogos = [
     <div class="container">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         <!-- YouTube Video Facade (loads iframe only on click) -->
-        <div data-scroll="slide-left">
+        <div class="order-2 lg:order-1" data-scroll="slide-left">
           <div
             class="yt-facade relative rounded-2xl overflow-hidden shadow-xl w-full cursor-pointer group"
             style="padding-bottom: 56.25%;"
@@ -356,7 +356,7 @@ const clientLogos = [
         </script>
 
         <!-- Multi-Step Form -->
-        <div class="bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
+        <div class="order-1 lg:order-2 bg-gray-50 rounded-2xl p-5 md:p-8 shadow-lg" data-scroll="slide-right">
           <!-- Step 1 -->
           <div id="form-step-1">
             <h2 class="font-display text-xl md:text-2xl font-bold text-gray-900 leading-snug mb-3 md:mb-6">
@@ -838,11 +838,17 @@ const clientLogos = [
   }
   .hero-grid .hero-content { text-align: left; }
   .hero-grid .hero-logo { margin-left: 0; }
+  .lp-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+  .lp-sp-mob { display: none; }
   @container (max-width: 760px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-grid .hero-content { text-align: center; }
     .hero-grid .hero-logo { margin-inline: auto; }
-    .hero-grid .pxo { max-width: 460px; }
+    .hero-grid .pxo { max-width: 460px; width: 86%; }
+    /* Handy: Headline kleiner, Zeile 1 und 2 zusammen */
+    .lp-headline { font-size: clamp(1.05rem, 4.6cqw, 1.6rem); }
+    .lp-br-desk { display: none; }
+    .lp-sp-mob { display: inline; }
   }
 
   /* Clients Carousel */
