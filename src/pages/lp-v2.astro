@@ -150,6 +150,9 @@ const clientLogos = [
     <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
     <!-- Preload LCP image to eliminate 190ms resource load delay -->
     <link rel="preload" href="https://i.ytimg.com/vi/QHGnWb-glyE/hqdefault.jpg" as="image" fetchpriority="high" />
+    <!-- Header-Animation "Station mit Ring" (Handoff 16/11, Dateien unverändert) -->
+    <link rel="stylesheet" href="/header-orbit/pixformance-orbit.css" />
+    <script is:inline src="/header-orbit/pixformance-orbit.js" defer></script>
   </Fragment>
 
   <!-- STICKY TOP BAR -->
@@ -215,12 +218,13 @@ const clientLogos = [
   </div>
 
   <!-- HERO SECTION -->
-  <section class="relative bg-black overflow-hidden" style="padding-top: clamp(4.5rem, 5vw, 5rem); padding-bottom: clamp(1.5rem, 3vw, 3rem);">
+  <section class="lp-hero relative bg-black overflow-hidden" data-pxo-host style="padding-top: clamp(4.5rem, 5vw, 5rem); padding-bottom: clamp(1.5rem, 3vw, 3rem);">
     <div class="absolute -top-20 -right-20 w-48 h-48 md:w-96 md:h-96 rounded-full bg-[#6BDBD1]/10 pointer-events-none"></div>
     <div class="absolute -bottom-32 -left-32 w-64 h-64 md:w-[500px] md:h-[500px] rounded-full bg-[#6BDBD1]/5 pointer-events-none"></div>
 
-    <div class="container relative text-center max-w-4xl mx-auto px-5">
-      <a href="/kontakt" class="mx-auto mt-4 md:mt-0 mb-6 md:mb-8 block w-fit hero-animate" aria-label="Pixformance – Kontakt">
+    <div class="hero-grid">
+    <div class="hero-content">
+      <a href="/kontakt" class="hero-logo mt-4 md:mt-0 mb-6 md:mb-8 block w-fit hero-animate" aria-label="Pixformance – Kontakt">
         <img
           src="/images/logo/logo-white-wordmark.webp"
           alt="Pixformance"
@@ -235,6 +239,8 @@ const clientLogos = [
         <span id="lp-headline-line2">UNVERBINDLICH.</span><br />
         <span id="lp-headline-line3" class="text-[#6BDBD1]">OHNE RISIKO.</span>
       </h1>
+    </div>
+    <div class="pxo" data-pxo aria-hidden="true"></div>
     </div>
   </section>
 
@@ -822,6 +828,21 @@ const clientLogos = [
 
   .hero-animate {
     animation: hero-entry 0.3s ease-out;
+  }
+
+  /* Hero zweispaltig mit Header-Animation (Layout aus dem Handoff "Station mit Ring") */
+  .lp-hero { container-type: inline-size; --tq: #6BDBD1; --pxo-bg: #000; }
+  .hero-grid {
+    position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding-inline: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(8px, 2cqw, 40px);
+  }
+  .hero-grid .hero-content { text-align: left; }
+  .hero-grid .hero-logo { margin-left: 0; }
+  @container (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-grid .hero-content { text-align: center; }
+    .hero-grid .hero-logo { margin-inline: auto; }
+    .hero-grid .pxo { max-width: 460px; }
   }
 
   /* Clients Carousel */

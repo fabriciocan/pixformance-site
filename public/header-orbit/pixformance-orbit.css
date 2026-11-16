@@ -1,0 +1,58 @@
+/* Pixformance – LP header animation "Station mit Ring"
+   All classes are prefixed with pxo- so nothing clashes with the page CSS.
+   Colour: set --tq on the hero (already #6BDBD1 on the /lp page). */
+
+.pxo {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 420px;
+  margin-bottom: 34px;          /* room for the label under the ring */
+  justify-self: center;
+  color: var(--tq, #6BDBD1);
+}
+
+.pxo-glow {
+  position: absolute; left: 50%; top: 50%;
+  width: 62%; aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,219,209,.22) 0%, rgba(107,219,209,.06) 45%, transparent 70%);
+  pointer-events: none;
+}
+.pxo-rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.pxo-layer { position: absolute; inset: 0; pointer-events: none; }
+
+.pxo-station {
+  position: absolute; left: 50%; top: 50%;
+  height: 48%; aspect-ratio: 1;
+  transform: translate(-50%, -53%);
+}
+.pxo-station svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.pxo-scr { fill: var(--pxo-bg, #000); }   /* hides icons passing behind; = hero background */
+
+.pxo-ico {
+  position: absolute; left: 0; top: 0;
+  width: var(--s, 54px); height: var(--s, 54px);
+  margin: calc(var(--s, 54px) / -2) 0 0 calc(var(--s, 54px) / -2);
+  will-change: transform, opacity;
+}
+.pxo-ico svg { width: 100%; height: 100%; display: block; }
+
+.pxo .k { fill: none; stroke: currentColor; stroke-width: 23; stroke-linecap: round; stroke-linejoin: round; }
+.pxo .f { fill: currentColor; }
+
+.pxo-label {
+  position: absolute; left: 0; right: 0; top: 100%;
+  margin-top: 8px;
+  text-align: center; white-space: nowrap; min-height: 1em;
+  font: 700 13px/1 var(--font, 'Montserrat Variable', 'Montserrat', ui-sans-serif, system-ui, sans-serif);
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tq, #6BDBD1);
+  transition: opacity .3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pxo-label { transition: none; }
+}
